@@ -1,0 +1,249 @@
+_include("objects.sah");
+//Log in
+function login($user, $password){
+	_setValue($txtuserName, $user);
+	_setValue($txtPassword, $password);
+	_click($btnLogin);
+}
+
+//Log out
+function logoutQAMoodle(){
+	_click($image_Logout_Max_Manager);
+	_click($logout);
+
+}
+
+//navigate to Site administration - Users _ accounts
+function navigateToUserAccount(){
+	_click($siteAdministration);
+	_click($users);
+	_click($account);
+}
+
+//Table cell should be. Define by its row and column
+function tableCellShouldBe($tableObject, $rowId, $columnId, $expected){
+  	var $data = _getTableContents($tableObject, [($columnId-1)], [$rowId]);
+	_assertEqual($expected,$data);
+}
+
+//Table cell should not be. Define by its row and column
+function tableCellShouldNotBe($tableObject, $rowId, $columnId, $unExpected){
+  	var $data = _getTableContents($tableObject, [($columnId-1)], [$rowId]);
+	_assertNotEqual($unExpected,$table);
+}
+
+//Table column should contain
+function tableColumnShouldContain($tableObject, $columnId, $expected){
+  var $table = _getTableContents($tableObject, [($columnId-1)] );
+  for(var i = 1; i < $table.length; i++){
+    if($table[i][0] == $expected){
+      _assert(true);
+    }
+  }
+}
+
+//Table column should not contain
+function tableColumnShouldNotContain($tableObject, $columnId, $unExpected){
+  var $table = _getTableContents($tableObject, [($columnId-1)] );
+  for(var i = 1; i < $table.length; i++){
+    if($table[i][0] == $unExpected){
+      _assert(false);
+    }
+  }
+  _assert(true);
+}
+
+//Table row should contain expected text
+function tableRowShouldContain($rowId, $expectedText){
+  _assertExists(_row($rowId));
+  _assertContainsText($expectedText, _row($rowId));
+}
+
+//Table row should not contain expected text
+function tableRowShouldNotContain($rowId, $unExpectedText){
+  _assertExists(_row($rowId));
+  _assertNotContainsText($unExpectedText, _row($rowId));
+}
+
+//Table header should be
+function tableHeaderShouldBe($expectedText){
+  _assertExists(_row(0));
+  _assertContainsText($expectedText, _row(0));
+}
+
+//Table should contain expected text
+function tableShouldContain($expectedText){
+ _assertExists(_parentTable(_row(0)));
+ _assertContainsText($expectedText, _parentTable(_row(0)));
+}
+
+//Table should not contain unExpected text
+function tableShouldNotContain($unExpectedText){
+ _assertExists(_parentTable(_row(0)));
+ _assertNotContainsText($unExpectedText, _parentTable(_row(0)));
+}
+
+//Check element should contain expected text
+function elementShouldContains($element, $expectedText){
+	_assertExists($element);
+	_assertContainsText($expectedText, $element);
+}
+
+//Check element should be expected text
+function elementShouldBe($element,$expectedText){
+	_assertExists($element);
+	_assertVisible($element);
+	_assertEqual($expectedText, _getText($element));
+}
+
+//Upload file
+function setFileUpload($fileEl, $path) {
+	_focusWindow();
+	_wait(7000);
+	// focus on the element
+	_focus($fileEl);
+	// click "space" to bring up the browser dialog
+	_typeKeyCodeNative(java.awt.event.KeyEvent.VK_SPACE);
+	_wait(7000);
+	// type the file path
+	_typeNative($path);
+	_wait(7000);
+	// press enter
+	_typeKeyCodeNative(java.awt.event.KeyEvent.VK_ENTER);
+  	//_typeKeyCodeNative(java.awt.event.KeyEvent.VK_ENTER);
+	_wait(10000);
+}
+
+//Compare picture
+//need to install GraphicMagick
+function compareImages($path1, $path2){
+  	_focusWindow();
+  	_wait(4000);
+  	_windowAction("resize",813,742);
+  	_wait(10000);
+  	_takePageScreenShot(_div("inst38"), $path2, true);
+  	var $same = _compareImages($path1, $path2);
+ 	_assert($same);
+}
+
+//Read excel file. Can be of extension .xls or .xlsx
+//Check whether excel cell has value is same as expected text. Cell is found by its rowID and columnID
+function excelCellShouldBe($filePath, $excelRowID, $excelColumnID, $expectedText){
+  var $rowId = $excelRowID-1;
+  var $columnId = $excelColumnID-1;
+  var $excelObject = _readExcelFile($filePath, "Sheet1", true);
+  _assertEqual($expectedText, $excelObject[$rowId][$columnId]);
+}
+
+//Excel row should contain expected text
+function excelRowShouldContain($filePath, $excelRowID,$expectedText){
+  var $rowId = $excelRowID-1;
+  var $excelObject = _readExcelFile($filePath, "Sheet1", true);
+  var $row = $excelObject[$rowId];
+  var $result = false;
+  for(var $i=1; $i<$row.length; $i++){
+    if($row[$i] == $expectedText){
+     $result = _assertEqual($expectedText, $row[$i]);
+    }
+  }
+  _assert($result);
+}
+
+//Excel row should not contain expected text
+function excelRowShouldNotContain($filePath, $excelRowID,$unExpectedText){
+  var $rowId = $excelRowID-1;
+  var $excelObject = _readExcelFile($filePath, "Sheet1", true);
+  var $row = $excelObject[$rowId];
+  var $result = true;
+  for(var $i=1; $i<$row.length; $i++){
+    if($row[$i] == $unExpectedText){
+     $result = _assertNotEqual($unExpectedText, $row[$i]);
+    }
+  }
+  _assert($result);
+}
+
+//Excel column should contain expected text
+function excelColumnShouldContain($filePath, $excelColumnID,$expectedText){
+  var $excelColumnID = $excelColumnID-1;
+  var $excelObject = _readExcelFile($filePath, "Sheet1", true);
+  var $result = false;
+  for(var $i=1; $i<$excelObject.length; $i++){
+    var $row = $excelObject[$i];
+	if ($row[$excelColumnID] == $expectedText) {
+		$result = _assertEqual($expectedText, $row[$excelColumnID]);
+	}
+  }
+   _assert($result);
+  
+}
+
+//Excel column should not contain expected text
+function excelColumnShouldNotContain($filePath, $excelColumnID,$unExpectedText){
+  var $excelColumnID = $excelColumnID-1;
+  var $excelObject = _readExcelFile($filePath, "Sheet1", true);
+  var $result = true;
+  for(var $i=1; $i<$excelObject.length; $i++){
+    var $row = $excelObject[$i];
+	if ($row[$excelColumnID] == $unExpectedText) {
+		$result = _assertNotEqual($unExpectedText, $row[$excelColumnID]);
+	}
+  }
+   _assert($result);
+}
+
+
+//Read excel file. Can be of extension .xls or .xlsx
+//Filter excel file by cloumn name and expected text
+function filter($filePath,$columnName, $expectedText) {
+	var $excelObject = _readExcelFile($filePath, "Sheet1", true);
+	if ($columnName == "" && $expectedText == "") {
+		return $excelObject;
+	} else {
+		var $resultSet = [];
+		$resultSet[0] = $excelObject[0];
+		for (var $i=1; $i<$excelObject.length; $i++) {
+			var $row = $excelObject[$i];
+			if ($row[$columnName] == $expectedText) {
+				$resultSet.push($row);
+			}
+		}
+		return _sahi.associativeArray($resultSet, false); 
+	}
+}
+
+//Set General required informations
+function navToGeneralRequiredInfor($newUsername, $password, $newFirstName, $newLastName, $newEmail){
+	_setValue($txtuserName, $newUsername);
+	_setValue($newPassword, $password);
+	_setValue($firstName, $newFirstName);
+	_setValue($lastName, $newLastName);
+	_setValue($email, $newEmail);
+}
+
+//Set General option informations
+function navToGeneralOptionInfor($authValue, $emailDisplayType, $cityName, $countryName, $userTimezone, $userDescription){
+	_setSelected($authentication, $authValue);
+	_setSelected($emailDisplay, $emailDisplayType);
+	_setValue($txtCity, $cityName);
+	_setSelected($country, $countryName);
+	_setSelected($timezone, $userTimezone);
+	_click($description);
+	_wait(5000);
+	//Set value for div tag
+	_call($description.innerHTML=$userDescription);
+	_wait(5000);
+}
+
+//Send email
+function sendEmail($emailSubject, $emailBody) {
+  var $host = "smtp.gmail.com";
+  var $port = 465;
+  var $username = "from@gmail.com";
+  var $password = "password";
+  var $isSSL = true; // set to true if you use SSL
+  var $mailer = new Packages.net.sf.sahi.ant.Mailer($host, $port, $username, $password, $isSSL);
+  var $from = "from@gmail.com";
+  var $to = "to@example.com";
+  $mailer.send($from, $to, $emailSubject, $emailBody);
+}

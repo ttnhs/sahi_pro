@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head><title>IE9 Click Bug</title></head>
+<body>
+<script src="common.js"></script>
+<script>
+function toggle(el, s){
+	$('logs').value += el.id + ' ' + (s?s:'') + "clicked\n";
+}
+</script>
+IE8 IE9 Test<br/>
+<img id="img1" onclick="toggle(this);" src="add.gif">
+<div id="div1" onclick="toggle(this);">Diva</div>
+
+<img id="img2" ondblclick="toggle(this, 'dbl');" src="add.gif">
+<div id="div2" ondblclick="toggle(this, 'dbl');">Diva</div>
+<form>
+<textarea id="logs" style="width:800px;height:100px"></textarea>
+<br/><input type="reset" value="Clear">
+</form>
+</body>
+</html>

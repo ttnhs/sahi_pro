@@ -1,0 +1,2 @@
+testDragDrop,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\flex\dragDrop.sah,1,$draggable,$droppable,$result
+testDragDropXY,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\flex\dragDrop.sah,7,$draggable,$droppable,$x,$y

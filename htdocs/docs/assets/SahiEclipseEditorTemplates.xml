@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="false" context="javaScript" deleted="false" description="iterate over array" enabled="true" id="org.eclipse.wst.jsdt.ui.templates.for_array" name="for">for (var $$${i} = 0; $$${i} &lt; $$${array}.length; $$${i}++) {
+	${line_selection}${cursor}
+}</template><template autoinsert="false" context="javaScript" deleted="false" description="iterate over array with temporary variable" enabled="true" id="org.eclipse.wst.jsdt.ui.templates.for_temp" name="for">for (var $$${i} = 0; $$${i} &lt; $$${array}.length; $$${i}++) {
+	var $$${array_element} = $$${array}[$$${i}];
+	${cursor}
+}</template><template autoinsert="false" context="javaScript" deleted="false" description="iterate using for .. in" enabled="true" id="org.eclipse.wst.jsdt.ui.templates.for_iterable" name="forin">for (var $$${iterable_element} in $$${iterable}) {
+	${cursor}
+}</template><template autoinsert="false" context="javaScript" deleted="false" description="function" enabled="true" id="org.eclipse.wst.jsdt.ui.templates.public_method" name="function">function ${name}(${}) {
+	${line_selection}${cursor}
+}</template><template autoinsert="true" context="javaScript" deleted="false" description="Sahi Testcase" enabled="true" name="testcase">var $$${t} = _testcase($$${id}, $$${description});&#13;
+$$${t}.start();&#13;
+${line_selection}${cursor}&#13;
+$$${t}.end();</template></templates>

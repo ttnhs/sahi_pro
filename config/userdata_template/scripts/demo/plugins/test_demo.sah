@@ -1,0 +1,11 @@
+_include("test_lib.sah");
+_navigateTo("http://sahipro.com/demo/training/");
+login("test", "secret");
+addBooks("3", "2", "1");
+//if (_isIE()) {
+//verifyTotal("165");
+//} else {
+verifyTotal("1650");
+//}
+logout();
+

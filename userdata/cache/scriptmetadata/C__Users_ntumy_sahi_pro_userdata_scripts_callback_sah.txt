@@ -1,0 +1,3 @@
+onScriptEnd,C:\Users\ntumy\sahi_pro\userdata\scripts\callback.sah,1
+onScriptError,C:\Users\ntumy\sahi_pro\userdata\scripts\callback.sah,4
+onScriptFailure,C:\Users\ntumy\sahi_pro\userdata\scripts\callback.sah,7

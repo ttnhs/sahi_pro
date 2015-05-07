@@ -1,0 +1,27 @@
+<HTML>
+<head>
+<title>Temp</title>
+</head>
+<body>
+<input value="Click me" type="button" onclick="openConfirm1()">
+<input type="text" id="t1">
+<input value="Click me" type="button" onclick="openConfirm2()">
+<input type="text" id="t2">
+<script>
+function openConfirm1() {
+	var something = window.confirm("This is my confirm box");
+	if(something == true){
+		document.getElementById("t1").value = "true";
+	}
+	else document.getElementById("t1").value = "false";
+}
+function openConfirm2() {
+	var something = window.confirm("This is my confirm box too");
+	if(something == true){
+		document.getElementById("t2").value = "true";
+	}
+	else document.getElementById("t2").value = "false";
+}
+</script>
+</body>
+</HTML>

@@ -1,0 +1,11 @@
+function testGetTextOrToolTip() {
+	_assertExists(_f("sampleId1").textarea("fTTextArea"));
+	_assertEqual("This is ToolTip", _f("sampleId1").textarea("fTTextArea").getTextOrToolTip());
+	_setValue(_f("sampleId1").textarea("fTTextArea"), "This is Text");
+	_assertEqual("This is Text", _f("sampleId1").textarea("fTTextArea").getTextOrToolTip());
+	_setValue(_f("sampleId1").textarea("fTTextArea"), "");
+	_assertEqual("This is ToolTip", _f("sampleId1").textarea("fTTextArea").getTextOrToolTip());
+}
+
+_navigateTo("/sfl/TestApplication.html");
+testGetTextOrToolTip();

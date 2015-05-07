@@ -1,0 +1,4 @@
+_navigateTo("http://qa.moodle.net/");
+_setValue(_textbox("username"), "manager");
+_setValue(_password("password"), "test");
+_click(_submit("Log in"));

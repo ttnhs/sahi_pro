@@ -1,0 +1,3 @@
+init,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\db.sah,8
+getColumnNames,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\db.sah,44
+showRow,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\db.sah,55,$id,$name,$age

@@ -1,0 +1,105 @@
+May 05, 2015 1:43:20 PM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi properties file = C:\Users\ntumy\sahi_pro\config\sahi.properties
+May 05, 2015 1:43:20 PM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi user properties file = C:\Users\ntumy\sahi_pro\userdata\config\userdata.properties
+May 05, 2015 1:43:21 PM net.sf.sahi.util.BrowserTypesLoader loadAvailableBrowserTypes
+INFO: 
+-----
+Reading browser types from: C:\Users\ntumy\sahi_pro\userdata\config\browser_types.xml
+Opera was not found at C:\Program Files (x86)\Opera\opera.exe
+-----
+
+May 05, 2015 1:43:22 PM net.sf.sahi.util.Utils setUrlConnectionFollowRedirectsInternal
+INFO: urlConnectionFollowRedirectsInternal = false
+May 05, 2015 1:43:22 PM in.co.sahi.datastore.SahiDB <clinit>
+INFO: Using Database:
+driverName=org.h2.Driver
+jdbcurl=jdbc:h2:C:/Users/ntumy/sahi_pro/userdata/database/db0;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1;IGNORECASE=TRUE
+userName=sa
+May 05, 2015 1:43:22 PM in.co.sahi.datastore.SahiDB createTables
+INFO: Check tables version
+May 05, 2015 1:43:23 PM in.co.sahi.datastore.SahiDB createTables
+INFO: versionFromDB=2014-11-17 17:12:19
+May 05, 2015 1:43:23 PM in.co.sahi.datastore.SahiDB createTables
+INFO: version=2014-11-17 17:12:19
+May 05, 2015 1:43:23 PM in.co.sahi.datastore.SahiDB createTables
+INFO: At current version. No changes were done.
+May 05, 2015 1:43:23 PM in.co.sahi.datastore.SahiDB createTables
+INFO: {result: [["KEY","VALUE"],["versionNo","2014-11-17 17:12:19"]]}
+May 05, 2015 1:43:23 PM in.co.sahi.datastore.SahiDB createTables
+INFO: Finished preparing report tables: 1128ms
+May 05, 2015 1:56:09 PM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_19ba83f506a8504c080998f0a7cc22e01346
+May 05, 2015 1:56:09 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox"
+May 05, 2015 1:56:10 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [4840]; 1108 ms
+May 05, 2015 1:59:50 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: Returning get5xxResponse: http://download.cdn.mozilla.net/pub/firefox/releases/37.0.2/update/win32/en-US/firefox-37.0.2.complete.mar
+May 05, 2015 2:00:52 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: Returning get5xxResponse: http://113.171.224.167/videoplayer/firefox-37.0.2.complete.mar?ich_u_r_i=b528f75b5e6b489330c009df66fcca3a&ich_s_t_a_r_t=0&ich_e_n_d=0&ich_k_e_y=1545058905750763012417&ich_t_y_p_e=1&ich_d_i_s_k_i_d=9&ich_u_n_i_t=1
+May 05, 2015 2:17:12 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: Returning get5xxResponse: http://113.171.224.167/videoplayer/firefox-37.0.2.complete.mar?ich_u_r_i=b528f75b5e6b489330c009df66fcca3a&ich_s_t_a_r_t=0&ich_e_n_d=0&ich_k_e_y=1545058905750763162454&ich_t_y_p_e=1&ich_d_i_s_k_i_d=9&ich_u_n_i_t=1
+May 05, 2015 2:33:10 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: Returning get5xxResponse: http://download.mozilla.org/?product=firefox-37.0.2-complete&os=win&lang=en-US
+May 05, 2015 3:07:24 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: Returning get5xxResponse: http://113.171.224.167/videoplayer/firefox-37.0.2.complete.mar?ich_u_r_i=b528f75b5e6b489330c009df66fcca3a&ich_s_t_a_r_t=0&ich_e_n_d=0&ich_k_e_y=1545058905750863072461&ich_t_y_p_e=1&ich_d_i_s_k_i_d=9&ich_u_n_i_t=1
+May 05, 2015 3:57:39 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [4840]
+May 05, 2015 3:57:41 PM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_6382dc490981804df20891808109fb8881b8
+May 05, 2015 3:57:41 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Setting Proxy
+May 05, 2015 3:57:41 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Proxy set
+May 05, 2015 3:57:41 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Safari\Safari.exe"  "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=safari"
+May 05, 2015 3:57:44 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [2120]; 2774 ms
+May 05, 2015 3:59:00 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: Returning get5xxResponse: http://ocsp.apple.com/ocsp-wwdr02/MEkwRzBFMEMwQTAJBgUrDgMCGgUABBQA6wzM9HFsukYjo9UvmNQ99jCpHQQUiCcXCam2GGCL7Ou69kdZxVJUo7cCCHCugGDUjm1G
+May 05, 2015 4:07:11 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 05, 2015 4:07:11 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [2120]
+May 05, 2015 4:07:13 PM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_7f9f713300b20044210920b02f1f9cbfbf08
+May 05, 2015 4:07:13 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Setting Proxy
+May 05, 2015 4:07:13 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Proxy set
+May 05, 2015 4:07:14 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=ie"
+May 05, 2015 4:07:14 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6344, 5148]; 490 ms
+May 05, 2015 4:08:17 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 05, 2015 4:08:17 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6344, 5148]
+May 05, 2015 5:17:35 PM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_4d33e7b309cac04dec089e00a7b93e18c53a
+May 05, 2015 5:17:35 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=chrome"
+May 05, 2015 5:17:37 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5192, 6208, 5000, 6124, 6964, 2536, 6752, 6700, 6668, 2720, 3832, 1176]; 2075 ms
+May 05, 2015 5:21:42 PM net.sf.sahi.command.Debug toOut
+INFO: Debug: In include
+May 05, 2015 5:31:42 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5192, 6208, 5000, 6124, 6964, 2536, 6752, 6700, 6668, 2720, 3832, 1176]
+May 05, 2015 5:31:48 PM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_b0834a7c0aced0421d0b5d70e4266b8715c5
+May 05, 2015 5:31:48 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=chrome"
+May 05, 2015 5:31:49 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [2928, 3356, 7052]; 720 ms
+May 05, 2015 5:57:07 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [2928, 3356, 7052]
+May 05, 2015 5:57:09 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 05, 2015 5:57:09 PM net.sf.sahi.Proxy startProxy
+INFO: socket closed

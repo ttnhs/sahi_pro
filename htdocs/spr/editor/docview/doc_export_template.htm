@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>$fileName</title>
+		<style>
+			body{background-color:lightyellow;}
+			#maindiv{background-color:lightyellow;}
+			div.code{margin-bottom:60px;}
+			code {font-family:monospace;font-weight:bold;font-size:16px;padding:0;display:inline;color:black;}
+			img {margin-top:15px;margin-bottom:10px;display:inline;height:337;border-style: none}
+			td {padding-left:20px;}div.code{xborder-bottom:1px dotted gray;margin-bottom:60px;display:inline;width:370px;}	
+			.description{display:none;}
+			.codearea{width:378px;height:50px;vertical-align:top;margin-top:0px;font-family:verdana;margin-bottom:20px;}
+			.descriptionDiv{width:377px;height:262px;vertical-align:bottom;margin-top:0px;overflow-y:scroll;border-width: 1px 1px 1px; border-style: solid; border-color: rgb(204, 204, 204);}
+		</style>
+	</head>
+	<body>
+		<div id='maindiv'>
+			$body
+		</div>
+	</body>
+	<script type="text/javascript">
+		var textarea = document.getElementsByTagName("textarea");
+		var codearea = [];
+		var codeareaParent = [];
+		var description = [];
+		for (var i=0; i<textarea.length; i++){
+			textarea[i].disabled = true;
+			if(textarea[i].className=="description"){
+				description.push(textarea[i]);
+			}
+			if(textarea[i].className=="codearea"){
+				codearea.push(textarea[i]);
+			}
+		}
+		for (var i=0; i<codearea.length;i++){
+			codeareaParent.push(codearea[i].parentNode);
+		}
+		for(var i=0; i<description.length; i++){
+			var descriptionDiv = document.createElement("div");
+			descriptionDiv.className = "descriptionDiv";
+			descriptionDiv.innerHTML = description[i].value;
+			codeareaParent[i].appendChild(descriptionDiv);
+		}
+		
+		var del_button = document.getElementsByName('del_i');
+		 var totalDelete = [];
+		 for (var j=0; j<del_button.length;j++){
+			 totalDelete.push(del_button[j]);
+		}
+		 
+		 for (var i=0; i<totalDelete.length; i++){
+			 totalDelete[i].parentNode.removeChild(totalDelete[i]);
+		 }
+		 
+	</script>
+</html>

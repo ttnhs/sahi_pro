@@ -1,0 +1,4107 @@
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add('intl', function (Y, NAME) {
+
+var _mods = {},
+
+    ROOT_LANG = "yuiRootLang",
+    ACTIVE_LANG = "yuiActiveLang",
+    NONE = [];
+
+/**
+ * Provides utilities to support the management of localized resources (strings and formatting patterns).
+ *
+ * @module intl
+ */
+
+/**
+ * The Intl utility provides a central location for managing sets of localized resources (strings and formatting patterns).
+ *
+ * @class Intl
+ * @uses EventTarget
+ * @static
+ */
+Y.mix(Y.namespace("Intl"), {
+
+    /**
+     * Private method to retrieve the language hash for a given module.
+     *
+     * @method _mod
+     * @private
+     *
+     * @param {String} module The name of the module
+     * @return {Object} The hash of localized resources for the module, keyed by BCP language tag
+     */
+    _mod : function(module) {
+        if (!_mods[module]) {
+            _mods[module] = {};
+        }
+        return _mods[module];
+    },
+
+    /**
+     * Sets the active language for the given module.
+     *
+     * Returns false on failure, which would happen if the language had not been registered through the <a href="#method_add">add()</a> method.
+     *
+     * @method setLang
+     *
+     * @param {String} module The module name.
+     * @param {String} lang The BCP 47 language tag.
+     * @return boolean true if successful, false if not.
+     */
+    setLang : function(module, lang) {
+        var langs = this._mod(module),
+            currLang = langs[ACTIVE_LANG],
+            exists = !!langs[lang];
+
+        if (exists && lang !== currLang) {
+            langs[ACTIVE_LANG] = lang;
+            this.fire("intl:langChange", {module: module, prevVal: currLang, newVal: (lang === ROOT_LANG) ? "" : lang});
+        }
+
+        return exists;
+    },
+
+    /**
+     * Get the currently active language for the given module.
+     *
+     * @method getLang
+     *
+     * @param {String} module The module name.
+     * @return {String} The BCP 47 language tag.
+     */
+    getLang : function(module) {
+        var lang = this._mod(module)[ACTIVE_LANG];
+        return (lang === ROOT_LANG) ? "" : lang;
+    },
+
+    /**
+     * Register a hash of localized resources for the given module and language
+     *
+     * @method add
+     *
+     * @param {String} module The module name.
+     * @param {String} lang The BCP 47 language tag.
+     * @param {Object} strings The hash of localized values, keyed by the string name.
+     */
+    add : function(module, lang, strings) {
+        lang = lang || ROOT_LANG;
+        this._mod(module)[lang] = strings;
+        this.setLang(module, lang);
+    },
+
+    /**
+     * Gets the module's localized resources for the currently active language (as provided by the <a href="#method_getLang">getLang</a> method).
+     * <p>
+     * Optionally, the localized resources for alternate languages which have been added to Intl (see the <a href="#method_add">add</a> method) can
+     * be retrieved by providing the BCP 47 language tag as the lang parameter.
+     * </p>
+     * @method get
+     *
+     * @param {String} module The module name.
+     * @param {String} key Optional. A single resource key. If not provided, returns a copy (shallow clone) of all resources.
+     * @param {String} lang Optional. The BCP 47 language tag. If not provided, the module's currently active language is used.
+     * @return String | Object A copy of the module's localized resources, or a single value if key is provided.
+     */
+    get : function(module, key, lang) {
+        var mod = this._mod(module),
+            strs;
+
+        lang = lang || mod[ACTIVE_LANG];
+        strs = mod[lang] || {};
+
+        return (key) ? strs[key] : Y.merge(strs);
+    },
+
+    /**
+     * Gets the list of languages for which localized resources are available for a given module, based on the module
+     * meta-data (part of loader). If loader is not on the page, returns an empty array.
+     *
+     * @method getAvailableLangs
+     * @param {String} module The name of the module
+     * @return {Array} The array of languages available.
+     */
+    getAvailableLangs : function(module) {
+        var loader = Y.Env._loader,
+            mod = loader && loader.moduleInfo[module],
+            langs = mod && mod.lang;
+        return (langs) ? langs.concat() : NONE;
+
+    }
+});
+
+Y.augment(Y.Intl, Y.EventTarget);
+
+/**
+ * Notification event to indicate when the lang for a module has changed. There is no default behavior associated with this event,
+ * so the on and after moments are equivalent.
+ *
+ * @event intl:langChange
+ * @param {EventFacade} e The event facade
+ * <p>The event facade contains:</p>
+ * <dl>
+ *     <dt>module</dt><dd>The name of the module for which the language changed</dd>
+ *     <dt>newVal</dt><dd>The new language tag</dd>
+ *     <dt>prevVal</dt><dd>The current language tag</dd>
+ * </dl>
+ */
+Y.Intl.publish("intl:langChange", {emitFacade:true});
+
+
+}, '3.17.2', {"requires": ["intl-base", "event-custom"]});
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add("lang/calendar-base_en",function(e){e.Intl.add("calendar-base","en",{very_short_weekdays:["Su","Mo","Tu","We","Th","Fr","Sa"],first_weekday:0,weekends:[0,6]})},"3.17.2");
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add('datatype-date-parse', function (Y, NAME) {
+
+/**
+ * Parse number submodule.
+ *
+ * @module datatype-date
+ * @submodule datatype-date-parse
+ * @for Date
+ */
+Y.mix(Y.namespace("Date"), {
+    /**
+     * Converts data to type Date.
+     *
+     * @method parse
+     * @param data {Date|Number|String} date object, timestamp (string or number), or string parsable by Date.parse
+     * @return {Date} a Date object or null if unable to parse
+     */
+    parse: function(data) {
+        var val = new Date(+data || data);
+        if (Y.Lang.isDate(val)) {
+            return val;
+        } else {
+            return null;
+        }
+    }
+});
+
+// Add Parsers shortcut
+Y.namespace("Parsers").date = Y.Date.parse;
+
+Y.namespace("DataType");
+Y.DataType.Date = Y.Date;
+
+
+}, '3.17.2');
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add("lang/datatype-date-format_en-US",function(e){e.Intl.add("datatype-date-format","en-US",{a:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],A:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],b:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],B:["January","February","March","April","May","June","July","August","September","October","November","December"],c:"%a, %b %d, %Y %l:%M:%S %p %Z",p:["AM","PM"],P:["am","pm"],x:"%m/%d/%y",X:"%l:%M:%S %p"})},"3.17.2");
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add('datatype-date-format', function (Y, NAME) {
+
+/**
+ * The `datatype` module is an alias for three utilities, Y.Date,
+ * Y.Number and Y.XML, that provide type-conversion and string-formatting
+ * convenience methods for various JavaScript object types.
+ *
+ * @module datatype
+ * @main datatype
+ */
+
+/**
+ * The Date Utility provides type-conversion and string-formatting
+ * convenience methods for Dates.
+ *
+ * @module datatype-date
+ * @main datatype-date
+ */
+
+/**
+ * Date module.
+ *
+ * @module datatype-date
+ */
+
+/**
+ * Format date module implements strftime formatters for javascript based on the
+ * Open Group specification defined at
+ * http://www.opengroup.org/onlinepubs/007908799/xsh/strftime.html
+ * This implementation does not include modified conversion specifiers (i.e., Ex and Ox)
+ *
+ * @module datatype-date
+ * @submodule datatype-date-format
+ */
+
+/**
+ * Date provides a set of utility functions to operate against Date objects.
+ *
+ * @class Date
+ * @static
+ */
+
+/**
+ * Pad a number with leading spaces, zeroes or something else
+ * @method xPad
+ * @param x {Number}    The number to be padded
+ * @param pad {String}  The character to pad the number with
+ * @param r {Number}    (optional) The base of the pad, eg, 10 implies to two digits, 100 implies to 3 digits.
+ * @private
+ */
+var xPad=function (x, pad, r)
+{
+    if(typeof r === "undefined")
+    {
+        r=10;
+    }
+    pad = pad + "";
+    for( ; parseInt(x, 10)<r && r>1; r/=10) {
+        x = pad + x;
+    }
+    return x.toString();
+};
+
+var Dt = {
+    formats: {
+        a: function (d, l) { return l.a[d.getDay()]; },
+        A: function (d, l) { return l.A[d.getDay()]; },
+        b: function (d, l) { return l.b[d.getMonth()]; },
+        B: function (d, l) { return l.B[d.getMonth()]; },
+        C: function (d) { return xPad(parseInt(d.getFullYear()/100, 10), 0); },
+        d: ["getDate", "0"],
+        e: ["getDate", " "],
+        g: function (d) { return xPad(parseInt(Dt.formats.G(d)%100, 10), 0); },
+        G: function (d) {
+                var y = d.getFullYear();
+                var V = parseInt(Dt.formats.V(d), 10);
+                var W = parseInt(Dt.formats.W(d), 10);
+
+                if(W > V) {
+                    y++;
+                } else if(W===0 && V>=52) {
+                    y--;
+                }
+
+                return y;
+            },
+        H: ["getHours", "0"],
+        I: function (d) { var I=d.getHours()%12; return xPad(I===0?12:I, 0); },
+        j: function (d) {
+                var gmd_1 = new Date("" + d.getFullYear() + "/1/1 GMT");
+                var gmdate = new Date("" + d.getFullYear() + "/" + (d.getMonth()+1) + "/" + d.getDate() + " GMT");
+                var ms = gmdate - gmd_1;
+                var doy = parseInt(ms/60000/60/24, 10)+1;
+                return xPad(doy, 0, 100);
+            },
+        k: ["getHours", " "],
+        l: function (d) { var I=d.getHours()%12; return xPad(I===0?12:I, " "); },
+        m: function (d) { return xPad(d.getMonth()+1, 0); },
+        M: ["getMinutes", "0"],
+        p: function (d, l) { return l.p[d.getHours() >= 12 ? 1 : 0 ]; },
+        P: function (d, l) { return l.P[d.getHours() >= 12 ? 1 : 0 ]; },
+        s: function (d, l) { return parseInt(d.getTime()/1000, 10); },
+        S: ["getSeconds", "0"],
+        u: function (d) { var dow = d.getDay(); return dow===0?7:dow; },
+        U: function (d) {
+                var doy = parseInt(Dt.formats.j(d), 10);
+                var rdow = 6-d.getDay();
+                var woy = parseInt((doy+rdow)/7, 10);
+                return xPad(woy, 0);
+            },
+        V: function (d) {
+                var woy = parseInt(Dt.formats.W(d), 10);
+                var dow1_1 = (new Date("" + d.getFullYear() + "/1/1")).getDay();
+                // First week is 01 and not 00 as in the case of %U and %W,
+                // so we add 1 to the final result except if day 1 of the year
+                // is a Monday (then %W returns 01).
+                // We also need to subtract 1 if the day 1 of the year is
+                // Friday-Sunday, so the resulting equation becomes:
+                var idow = woy + (dow1_1 > 4 || dow1_1 <= 1 ? 0 : 1);
+                if(idow === 53 && (new Date("" + d.getFullYear() + "/12/31")).getDay() < 4)
+                {
+                    idow = 1;
+                }
+                else if(idow === 0)
+                {
+                    idow = Dt.formats.V(new Date("" + (d.getFullYear()-1) + "/12/31"));
+                }
+
+                return xPad(idow, 0);
+            },
+        w: "getDay",
+        W: function (d) {
+                var doy = parseInt(Dt.formats.j(d), 10);
+                var rdow = 7-Dt.formats.u(d);
+                var woy = parseInt((doy+rdow)/7, 10);
+                return xPad(woy, 0, 10);
+            },
+        y: function (d) { return xPad(d.getFullYear()%100, 0); },
+        Y: "getFullYear",
+        z: function (d) {
+                var o = d.getTimezoneOffset();
+                var H = xPad(parseInt(Math.abs(o/60), 10), 0);
+                var M = xPad(Math.abs(o%60), 0);
+                return (o>0?"-":"+") + H + M;
+            },
+        Z: function (d) {
+            var tz = d.toString().replace(/^.*:\d\d( GMT[+-]\d+)? \(?([A-Za-z ]+)\)?\d*$/, "$2").replace(/[a-z ]/g, "");
+            if(tz.length > 4) {
+                tz = Dt.formats.z(d);
+            }
+            return tz;
+        },
+        "%": function (d) { return "%"; }
+    },
+
+    aggregates: {
+        c: "locale",
+        D: "%m/%d/%y",
+        F: "%Y-%m-%d",
+        h: "%b",
+        n: "\n",
+        r: "%I:%M:%S %p",
+        R: "%H:%M",
+        t: "\t",
+        T: "%H:%M:%S",
+        x: "locale",
+        X: "locale"
+        //"+": "%a %b %e %T %Z %Y"
+    },
+
+     /**
+     * Takes a native JavaScript Date and formats it as a string for display to user.
+     *
+     * @for Date
+     * @method format
+     * @param oDate {Date} Date.
+     * @param oConfig {Object} (Optional) Object literal of configuration values:
+     *  <dl>
+     *   <dt>format {HTML} (Optional)</dt>
+     *   <dd>
+     *   <p>
+     *   Any strftime string is supported, such as "%I:%M:%S %p". strftime has several format specifiers defined by the Open group at
+     *   <a href="http://www.opengroup.org/onlinepubs/007908799/xsh/strftime.html">http://www.opengroup.org/onlinepubs/007908799/xsh/strftime.html</a>
+     *   PHP added a few of its own, defined at <a href="http://www.php.net/strftime">http://www.php.net/strftime</a>
+     *   </p>
+     *   <p>
+     *   This javascript implementation supports all the PHP specifiers and a few more.  The full list is below.
+     *   </p>
+     *   <p>
+     *   If not specified, it defaults to the ISO 8601 standard date format: %Y-%m-%d.
+     *   </p>
+     *   <dl>
+     *  <dt>%a</dt> <dd>abbreviated weekday name according to the current locale</dd>
+     *  <dt>%A</dt> <dd>full weekday name according to the current locale</dd>
+     *  <dt>%b</dt> <dd>abbreviated month name according to the current locale</dd>
+     *  <dt>%B</dt> <dd>full month name according to the current locale</dd>
+     *  <dt>%c</dt> <dd>preferred date and time representation for the current locale</dd>
+     *  <dt>%C</dt> <dd>century number (the year divided by 100 and truncated to an integer, range 00 to 99)</dd>
+     *  <dt>%d</dt> <dd>day of the month as a decimal number (range 01 to 31)</dd>
+     *  <dt>%D</dt> <dd>same as %m/%d/%y</dd>
+     *  <dt>%e</dt> <dd>day of the month as a decimal number, a single digit is preceded by a space (range " 1" to "31")</dd>
+     *  <dt>%F</dt> <dd>same as %Y-%m-%d (ISO 8601 date format)</dd>
+     *  <dt>%g</dt> <dd>like %G, but without the century</dd>
+     *  <dt>%G</dt> <dd>The 4-digit year corresponding to the ISO week number</dd>
+     *  <dt>%h</dt> <dd>same as %b</dd>
+     *  <dt>%H</dt> <dd>hour as a decimal number using a 24-hour clock (range 00 to 23)</dd>
+     *  <dt>%I</dt> <dd>hour as a decimal number using a 12-hour clock (range 01 to 12)</dd>
+     *  <dt>%j</dt> <dd>day of the year as a decimal number (range 001 to 366)</dd>
+     *  <dt>%k</dt> <dd>hour as a decimal number using a 24-hour clock (range 0 to 23); single digits are preceded by a blank. (See also %H.)</dd>
+     *  <dt>%l</dt> <dd>hour as a decimal number using a 12-hour clock (range 1 to 12); single digits are preceded by a blank. (See also %I.) </dd>
+     *  <dt>%m</dt> <dd>month as a decimal number (range 01 to 12)</dd>
+     *  <dt>%M</dt> <dd>minute as a decimal number</dd>
+     *  <dt>%n</dt> <dd>newline character</dd>
+     *  <dt>%p</dt> <dd>either "AM" or "PM" according to the given time value, or the corresponding strings for the current locale</dd>
+     *  <dt>%P</dt> <dd>like %p, but lower case</dd>
+     *  <dt>%r</dt> <dd>time in a.m. and p.m. notation equal to %I:%M:%S %p</dd>
+     *  <dt>%R</dt> <dd>time in 24 hour notation equal to %H:%M</dd>
+     *  <dt>%s</dt> <dd>number of seconds since the Epoch, ie, since 1970-01-01 00:00:00 UTC</dd>
+     *  <dt>%S</dt> <dd>second as a decimal number</dd>
+     *  <dt>%t</dt> <dd>tab character</dd>
+     *  <dt>%T</dt> <dd>current time, equal to %H:%M:%S</dd>
+     *  <dt>%u</dt> <dd>weekday as a decimal number [1,7], with 1 representing Monday</dd>
+     *  <dt>%U</dt> <dd>week number of the current year as a decimal number, starting with the
+     *          first Sunday as the first day of the first week</dd>
+     *  <dt>%V</dt> <dd>The ISO 8601:1988 week number of the current year as a decimal number,
+     *          range 01 to 53, where week 1 is the first week that has at least 4 days
+     *          in the current year, and with Monday as the first day of the week.</dd>
+     *  <dt>%w</dt> <dd>day of the week as a decimal, Sunday being 0</dd>
+     *  <dt>%W</dt> <dd>week number of the current year as a decimal number, starting with the
+     *          first Monday as the first day of the first week</dd>
+     *  <dt>%x</dt> <dd>preferred date representation for the current locale without the time</dd>
+     *  <dt>%X</dt> <dd>preferred time representation for the current locale without the date</dd>
+     *  <dt>%y</dt> <dd>year as a decimal number without a century (range 00 to 99)</dd>
+     *  <dt>%Y</dt> <dd>year as a decimal number including the century</dd>
+     *  <dt>%z</dt> <dd>numerical time zone representation</dd>
+     *  <dt>%Z</dt> <dd>time zone name or abbreviation</dd>
+     *  <dt>%%</dt> <dd>a literal "%" character</dd>
+     *   </dl>
+     *  </dd>
+     * </dl>
+     * @return {HTML} Formatted date for display.
+     */
+    format : function (oDate, oConfig) {
+        oConfig = oConfig || {};
+
+        if(!Y.Lang.isDate(oDate)) {
+            return Y.Lang.isValue(oDate) ? oDate : "";
+        }
+
+        var format, resources, compatMode, sLocale, LOCALE;
+
+        format = oConfig.format || "%Y-%m-%d";
+
+        resources = Y.Intl.get('datatype-date-format');
+
+        var replace_aggs = function (m0, m1) {
+            if (compatMode && m1 === "r") {
+                return resources[m1];
+            }
+            var f = Dt.aggregates[m1];
+            return (f === "locale" ? resources[m1] : f);
+        };
+
+        var replace_formats = function (m0, m1) {
+            var f = Dt.formats[m1];
+            switch(Y.Lang.type(f)) {
+                case "string":                  // string => built in date function
+                    return oDate[f]();
+                case "function":                // function => our own function
+                    return f.call(oDate, oDate, resources);
+                case "array":                   // built in function with padding
+                    if(Y.Lang.type(f[0]) === "string") {
+                        return xPad(oDate[f[0]](), f[1]);
+                    } // no break; (fall through to default:)
+                default:
+                    return m1;
+            }
+        };
+
+        // First replace aggregates (run in a loop because an agg may be made up of other aggs)
+        while(format.match(/%[cDFhnrRtTxX]/)) {
+            format = format.replace(/%([cDFhnrRtTxX])/g, replace_aggs);
+        }
+
+        // Now replace formats (do not run in a loop otherwise %%a will be replace with the value of %a)
+        var str = format.replace(/%([aAbBCdegGHIjklmMpPsSuUVwWyYzZ%])/g, replace_formats);
+
+        replace_aggs = replace_formats = undefined;
+
+        return str;
+    }
+};
+
+Y.mix(Y.namespace("Date"), Dt);
+
+
+Y.namespace("DataType");
+Y.DataType.Date = Y.Date;
+
+
+}, '3.17.2', {
+    "lang": [
+        "ar",
+        "ar-JO",
+        "ca",
+        "ca-ES",
+        "da",
+        "da-DK",
+        "de",
+        "de-AT",
+        "de-DE",
+        "el",
+        "el-GR",
+        "en",
+        "en-AU",
+        "en-CA",
+        "en-GB",
+        "en-IE",
+        "en-IN",
+        "en-JO",
+        "en-MY",
+        "en-NZ",
+        "en-PH",
+        "en-SG",
+        "en-US",
+        "es",
+        "es-AR",
+        "es-BO",
+        "es-CL",
+        "es-CO",
+        "es-EC",
+        "es-ES",
+        "es-MX",
+        "es-PE",
+        "es-PY",
+        "es-US",
+        "es-UY",
+        "es-VE",
+        "fi",
+        "fi-FI",
+        "fr",
+        "fr-BE",
+        "fr-CA",
+        "fr-FR",
+        "hi",
+        "hi-IN",
+        "hu",
+        "id",
+        "id-ID",
+        "it",
+        "it-IT",
+        "ja",
+        "ja-JP",
+        "ko",
+        "ko-KR",
+        "ms",
+        "ms-MY",
+        "nb",
+        "nb-NO",
+        "nl",
+        "nl-BE",
+        "nl-NL",
+        "pl",
+        "pl-PL",
+        "pt",
+        "pt-BR",
+        "ro",
+        "ro-RO",
+        "ru",
+        "ru-RU",
+        "sv",
+        "sv-SE",
+        "th",
+        "th-TH",
+        "tr",
+        "tr-TR",
+        "vi",
+        "vi-VN",
+        "zh-Hans",
+        "zh-Hans-CN",
+        "zh-Hant",
+        "zh-Hant-HK",
+        "zh-Hant-TW"
+    ]
+});
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add('datatype-date-math', function (Y, NAME) {
+
+/**
+ * Date Math submodule.
+ *
+ * @module datatype-date
+ * @submodule datatype-date-math
+ * @for Date
+ */
+var LANG = Y.Lang;
+
+Y.mix(Y.namespace("Date"), {
+
+    /**
+     * Checks whether a native JavaScript Date contains a valid value.
+     * @for Date
+     * @method isValidDate
+     * @param oDate {Date} Date in the month for which the number of days is desired.
+     * @return {Boolean} True if the date argument contains a valid value.
+     */
+     isValidDate : function (oDate) {
+        if(LANG.isDate(oDate) && (isFinite(oDate)) && (oDate != "Invalid Date") && !isNaN(oDate) && (oDate != null)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    },
+
+    /**
+     * Checks whether two dates correspond to the same date and time.
+     * @for Date
+     * @method areEqual
+     * @param aDate {Date} The first date to compare.
+     * @param bDate {Date} The second date to compare.
+     * @return {Boolean} True if the two dates correspond to the same
+     * date and time.
+     */
+    areEqual : function (aDate, bDate) {
+        return (this.isValidDate(aDate) && this.isValidDate(bDate) && (aDate.getTime() == bDate.getTime()));
+    },
+
+    /**
+     * Checks whether the first date comes later than the second.
+     * @for Date
+     * @method isGreater
+     * @param aDate {Date} The first date to compare.
+     * @param bDate {Date} The second date to compare.
+     * @return {Boolean} True if the first date is later than the second.
+     */
+    isGreater : function (aDate, bDate) {
+        return (this.isValidDate(aDate) && this.isValidDate(bDate) && (aDate.getTime() > bDate.getTime()));
+    },
+
+    /**
+     * Checks whether the first date comes later than or is the same as
+     * the second.
+     * @for Date
+     * @method isGreaterOrEqual
+     * @param aDate {Date} The first date to compare.
+     * @param bDate {Date} The second date to compare.
+     * @return {Boolean} True if the first date is later than or
+     * the same as the second.
+     */
+    isGreaterOrEqual : function (aDate, bDate) {
+        return (this.isValidDate(aDate) && this.isValidDate(bDate) && (aDate.getTime() >= bDate.getTime()));
+    },
+
+
+    /**
+     * Checks whether the date is between two other given dates.
+     * @for Date
+     * @method isInRange
+     * @param aDate {Date} The date to check
+     * @param bDate {Date} Lower bound of the range.
+     * @param cDate {Date} Higher bound of the range.
+     * @return {Boolean} True if the date is between the two other given dates.
+     */
+    isInRange : function (aDate, bDate, cDate) {
+        return (this.isGreaterOrEqual(aDate, bDate) && this.isGreaterOrEqual(cDate, aDate));
+    },
+
+    /**
+     * Adds a specified number of days to the given date.
+     * @for Date
+     * @method addDays
+     * @param oDate {Date} The date to add days to.
+     * @param numDays {Number} The number of days to add (can be negative)
+     * @return {Date} A new Date with the specified number of days
+     * added to the original date.
+     */
+    addDays : function (oDate, numDays) {
+        return new Date(oDate.getTime() + 86400000*numDays);
+    },
+
+
+    /**
+     * Adds a specified number of months to the given date.
+     * @for Date
+     * @method addMonths
+     * @param oDate {Date} The date to add months to.
+     * @param numMonths {Number} The number of months to add (can be negative)
+     * @return {Date} A new Date with the specified number of months
+     * added to the original date.
+     */
+    addMonths : function (oDate, numMonths) {
+        var newYear = oDate.getFullYear();
+        var newMonth = oDate.getMonth() + numMonths;
+
+        newYear  = Math.floor(newYear + newMonth / 12);
+        newMonth = (newMonth % 12 + 12) % 12;
+
+        var newDate = new Date (oDate.getTime());
+        newDate.setFullYear(newYear);
+        newDate.setMonth(newMonth);
+
+        return newDate;
+    },
+
+    /**
+     * Adds a specified number of years to the given date.
+     * @for Date
+     * @method addYears
+     * @param oDate {Date} The date to add years to.
+     * @param numYears {Number} The number of years to add (can be negative)
+     * @return {Date} A new Date with the specified number of years
+     * added to the original date.
+     */
+    addYears : function (oDate, numYears) {
+        var newYear = oDate.getFullYear() + numYears;
+        var newDate = new Date(oDate.getTime());
+
+        newDate.setFullYear(newYear);
+        return newDate;
+    },
+
+    /**
+     * Lists all dates in a given month.
+     * @for Date
+     * @method listOfDatesInMonth
+     * @param oDate {Date} The date corresponding to the month for
+     * which a list of dates is required.
+     * @return {Array} An `Array` of `Date`s from a given month.
+     */
+    listOfDatesInMonth : function (oDate) {
+       if (!this.isValidDate(oDate)) {
+         return [];
+       }
+
+       var daysInMonth = this.daysInMonth(oDate),
+           year        = oDate.getFullYear(),
+           month       = oDate.getMonth(),
+           output      = [];
+
+       for (var day = 1; day <= daysInMonth; day++) {
+           output.push(new Date(year, month, day, 12, 0, 0));
+       }
+
+       return output;
+    },
+
+    /**
+     * Takes a native JavaScript Date and returns the number of days
+     * in the month that the given date belongs to.
+     * @for Date
+     * @method daysInMonth
+     * @param oDate {Date} Date in the month for which the number
+     * of days is desired.
+     * @return {Number} A number (either 28, 29, 30 or 31) of days
+     * in the given month.
+     */
+     daysInMonth : function (oDate) {
+        if (!this.isValidDate(oDate)) {
+            return 0;
+        }
+
+        var mon = oDate.getMonth();
+        var lengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        if (mon != 1) {
+            return lengths[mon];
+        }
+        else {
+
+            var year = oDate.getFullYear();
+            if (year%400 === 0) {
+                   return 29;
+            }
+            else if (year%100 === 0) {
+                   return 28;
+            }
+            else if (year%4 === 0) {
+                   return 29;
+            }
+            else {
+                   return 28;
+            }
+       }
+    }
+
+});
+
+Y.namespace("DataType");
+Y.DataType.Date = Y.Date;
+
+
+}, '3.17.2', {"requires": ["yui-base"]});
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add('calendar-base', function (Y, NAME) {
+
+/**
+ * The CalendarBase submodule is a basic UI calendar view that displays
+ * a range of dates in a two-dimensional month grid, with one or more
+ * months visible at a single time. CalendarBase supports custom date
+ * rendering, multiple calendar panes, and selection.
+ * @module calendar
+ * @submodule calendar-base
+ */
+
+var getCN                 = Y.ClassNameManager.getClassName,
+    CALENDAR              = 'calendar',
+    CAL_GRID              = getCN(CALENDAR, 'grid'),
+    CAL_LEFT_GRID         = getCN(CALENDAR, 'left-grid'),
+    CAL_RIGHT_GRID        = getCN(CALENDAR, 'right-grid'),
+    CAL_BODY              = getCN(CALENDAR, 'body'),
+    CAL_HD                = getCN(CALENDAR, 'header'),
+    CAL_HD_LABEL          = getCN(CALENDAR, 'header-label'),
+    CAL_WDAYROW           = getCN(CALENDAR, 'weekdayrow'),
+    CAL_WDAY              = getCN(CALENDAR, 'weekday'),
+    CAL_COL_HIDDEN        = getCN(CALENDAR, 'column-hidden'),
+    CAL_DAY_SELECTED      = getCN(CALENDAR, 'day-selected'),
+    SELECTION_DISABLED    = getCN(CALENDAR, 'selection-disabled'),
+    CAL_ROW               = getCN(CALENDAR, 'row'),
+    CAL_DAY               = getCN(CALENDAR, 'day'),
+    CAL_PREVMONTH_DAY     = getCN(CALENDAR, 'prevmonth-day'),
+    CAL_NEXTMONTH_DAY     = getCN(CALENDAR, 'nextmonth-day'),
+    CAL_ANCHOR            = getCN(CALENDAR, 'anchor'),
+    CAL_PANE              = getCN(CALENDAR, 'pane'),
+    CAL_STATUS            = getCN(CALENDAR, 'status'),
+    L           = Y.Lang,
+    substitute  = L.sub,
+    arrayEach   = Y.Array.each,
+    objEach     = Y.Object.each,
+    iOf         = Y.Array.indexOf,
+    hasKey      = Y.Object.hasKey,
+    setVal      = Y.Object.setValue,
+    isEmpty     = Y.Object.isEmpty,
+    ydate       = Y.DataType.Date;
+
+/** Create a calendar view to represent a single or multiple
+    * month range of dates, rendered as a grid with date and
+    * weekday labels.
+    *
+    * @class CalendarBase
+    * @extends Widget
+    * @param config {Object} Configuration object (see Configuration
+    * attributes)
+    * @constructor
+    */
+function CalendarBase() {
+    CalendarBase.superclass.constructor.apply ( this, arguments );
+}
+
+
+
+Y.CalendarBase = Y.extend( CalendarBase, Y.Widget, {
+
+    /**
+     * A storage for various properties of individual month
+     * panes.
+     *
+     * @property _paneProperties
+     * @type Object
+     * @private
+     */
+    _paneProperties : {},
+
+    /**
+     * The number of month panes in the calendar, deduced
+     * from the CONTENT_TEMPLATE's number of {calendar_grid}
+     * tokens.
+     *
+     * @property _paneNumber
+     * @type Number
+     * @private
+     */
+    _paneNumber : 1,
+
+    /**
+     * The unique id used to prefix various elements of this
+     * calendar instance.
+     *
+     * @property _calendarId
+     * @type String
+     * @private
+     */
+    _calendarId : null,
+
+    /**
+     * The hash map of selected dates, populated with
+     * selectDates() and deselectDates() methods
+     *
+     * @property _selectedDates
+     * @type Object
+     * @private
+     */
+    _selectedDates : {},
+
+    /**
+     * A private copy of the rules object, populated
+     * by setting the customRenderer attribute.
+     *
+     * @property _rules
+     * @type Object
+     * @private
+     */
+    _rules : {},
+
+    /**
+     * A private copy of the filterFunction, populated
+     * by setting the customRenderer attribute.
+     *
+     * @property _filterFunction
+     * @type Function
+     * @private
+     */
+    _filterFunction : null,
+
+    /**
+     * Storage for calendar cells modified by any custom
+     * formatting. The storage is cleared, used to restore
+     * cells to the original state, and repopulated accordingly
+     * when the calendar is rerendered.
+     *
+     * @property _storedDateCells
+     * @type Object
+     * @private
+     */
+    _storedDateCells : {},
+
+    /**
+     * Designated initializer
+     * Initializes instance-level properties of
+     * calendar.
+     *
+     * @method initializer
+     */
+    initializer : function () {
+        this._paneProperties = {};
+        this._calendarId = Y.guid('calendar');
+        this._selectedDates = {};
+        if (isEmpty(this._rules)) {
+             this._rules = {};
+        }
+        this._storedDateCells = {};
+    },
+
+    /**
+     * renderUI implementation
+     *
+     * Creates a visual representation of the calendar based on existing parameters.
+     * @method renderUI
+     */
+    renderUI : function () {
+
+        var contentBox = this.get('contentBox');
+        contentBox.appendChild(this._initCalendarHTML(this.get('date')));
+
+        if (this.get('showPrevMonth')) {
+                this._afterShowPrevMonthChange();
+        }
+        if (this.get('showNextMonth')) {
+                this._afterShowNextMonthChange();
+        }
+
+        this._renderCustomRules();
+        this._renderSelectedDates();
+
+        this.get("boundingBox").setAttribute("aria-labelledby", this._calendarId + "_header");
+
+    },
+
+    /**
+     * bindUI implementation
+     *
+     * Assigns listeners to relevant events that change the state
+     * of the calendar.
+     * @method bindUI
+     */
+    bindUI : function () {
+        this.after('dateChange', this._afterDateChange);
+        this.after('showPrevMonthChange', this._afterShowPrevMonthChange);
+        this.after('showNextMonthChange', this._afterShowNextMonthChange);
+        this.after('headerRendererChange', this._afterHeaderRendererChange);
+        this.after('customRendererChange', this._afterCustomRendererChange);
+        this.after('enabledDatesRuleChange', this._afterCustomRendererChange);
+        this.after('disabledDatesRuleChange', this._afterCustomRendererChange);
+        this.after('focusedChange', this._afterFocusedChange);
+        this.after('selectionChange', this._renderSelectedDates);
+        this._bindCalendarEvents();
+    },
+
+
+    /**
+     * An internal utility method that generates a list of selected dates
+     * from the hash storage.
+     *
+     * @method _getSelectedDatesList
+     * @protected
+     * @return {Array} The array of `Date`s that are currently selected.
+     */
+    _getSelectedDatesList : function () {
+        var output = [];
+
+        objEach (this._selectedDates, function (year) {
+            objEach (year, function (month) {
+                objEach (month, function (day) {
+                    output.push (day);
+                }, this);
+            }, this);
+        }, this);
+
+        return output;
+    },
+
+    /**
+     * A utility method that returns all dates selected in a specific month.
+     *
+     * @method _getSelectedDatesInMonth
+     * @param {Date} oDate corresponding to the month for which selected dates
+     * are requested.
+     * @protected
+     * @return {Array} The array of `Date`s in a given month that are currently selected.
+     */
+    _getSelectedDatesInMonth : function (oDate) {
+        var year = oDate.getFullYear(),
+            month = oDate.getMonth();
+
+        if (hasKey(this._selectedDates, year) && hasKey(this._selectedDates[year], month)) {
+            return Y.Object.values(this._selectedDates[year][month]);
+        } else {
+            return [];
+        }
+    },
+
+
+    /**
+     * An internal parsing method that receives a String list of numbers
+     * and number ranges (of the form "1,2,3,4-6,7-9,10,11" etc.) and checks
+     * whether a specific number is included in this list. Used for looking
+     * up dates in the customRenderer rule set.
+     *
+     * @method _isNumInList
+     * @param {Number} num The number to look for in a list.
+     * @param {String} strList The list of numbers of the form "1,2,3,4-6,7-8,9", etc.
+     * @private
+     * @return {boolean} Returns true if the given number is in the given list.
+     */
+    _isNumInList : function (num, strList) {
+        if (strList === "all") {
+            return true;
+        } else {
+            var elements = strList.split(","),
+                i = elements.length,
+                range;
+
+            while (i--) {
+                range = elements[i].split("-");
+                if (range.length === 2 && num >= parseInt(range[0], 10) && num <= parseInt(range[1], 10)) {
+                    return true;
+                }
+                else if (range.length === 1 && (parseInt(elements[i], 10) === num)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    },
+
+    /**
+     * Given a specific date, returns an array of rules (from the customRenderer rule set)
+     * that the given date matches.
+     *
+     * @method _getRulesForDate
+     * @param {Date} oDate The date for which an array of rules is needed
+     * @private
+     * @return {Array} Returns an array of `String`s, each containg the name of
+     * a rule that the given date matches.
+     */
+    _getRulesForDate : function (oDate) {
+        var year = oDate.getFullYear(),
+                month = oDate.getMonth(),
+                date = oDate.getDate(),
+                wday = oDate.getDay(),
+                rules = this._rules,
+                outputRules = [],
+                years, months, dates, days;
+
+        for (years in rules) {
+            if (this._isNumInList(year, years)) {
+                if (L.isString(rules[years])) {
+                        outputRules.push(rules[years]);
+                }
+                else {
+                    for (months in rules[years]) {
+                        if (this._isNumInList(month, months)) {
+                            if (L.isString(rules[years][months])) {
+                                    outputRules.push(rules[years][months]);
+                            }
+                            else {
+                                for (dates in rules[years][months]) {
+                                    if (this._isNumInList(date, dates)) {
+                                        if (L.isString(rules[years][months][dates])) {
+                                                outputRules.push(rules[years][months][dates]);
+                                        }
+                                        else {
+                                            for (days in rules[years][months][dates]) {
+                                                if (this._isNumInList(wday, days)) {
+                                                    if (L.isString(rules[years][months][dates][days])) {
+                                                        outputRules.push(rules[years][months][dates][days]);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return outputRules;
+    },
+
+    /**
+     * A utility method which, given a specific date and a name of the rule,
+     * checks whether the date matches the given rule.
+     *
+     * @method _matchesRule
+     * @param {Date} oDate The date to check
+     * @param {String} rule The name of the rule that the date should match.
+     * @private
+     * @return {boolean} Returns true if the date matches the given rule.
+     *
+     */
+    _matchesRule : function (oDate, rule) {
+        return (iOf(this._getRulesForDate(oDate), rule) >= 0);
+    },
+
+    /**
+     * A utility method which checks whether a given date matches the `enabledDatesRule`
+     * or does not match the `disabledDatesRule` and therefore whether it can be selected.
+     * @method _canBeSelected
+     * @param {Date} oDate The date to check
+     * @private
+     * @return {boolean} Returns true if the date can be selected; false otherwise.
+     */
+    _canBeSelected : function (oDate) {
+
+        var enabledDatesRule = this.get("enabledDatesRule"),
+            disabledDatesRule = this.get("disabledDatesRule");
+
+        if (enabledDatesRule) {
+            return this._matchesRule(oDate, enabledDatesRule);
+        } else if (disabledDatesRule) {
+            return !this._matchesRule(oDate, disabledDatesRule);
+        } else {
+            return true;
+        }
+    },
+
+    /**
+     * Selects a given date or array of dates.
+     * @method selectDates
+     * @param {Date|Array} dates A `Date` or `Array` of `Date`s.
+     * @return {CalendarBase} A reference to this object
+     * @chainable
+     */
+    selectDates : function (dates) {
+        if (ydate.isValidDate(dates)) {
+            this._addDateToSelection(dates);
+        }
+        else if (L.isArray(dates)) {
+            this._addDatesToSelection(dates);
+        }
+        return this;
+    },
+
+    /**
+     * Deselects a given date or array of dates, or deselects
+     * all dates if no argument is specified.
+     * @method deselectDates
+     * @param {Date|Array} [dates] A `Date` or `Array` of `Date`s, or no
+     * argument if all dates should be deselected.
+     * @return {CalendarBase} A reference to this object
+     * @chainable
+     */
+    deselectDates : function (dates) {
+        if (!dates) {
+            this._clearSelection();
+        }
+        else if (ydate.isValidDate(dates)) {
+            this._removeDateFromSelection(dates);
+        }
+        else if (L.isArray(dates)) {
+            this._removeDatesFromSelection(dates);
+        }
+        return this;
+    },
+
+    /**
+     * A utility method that adds a given date to selection..
+     * @method _addDateToSelection
+     * @param {Date} oDate The date to add to selection.
+     * @param {Number} [index] An optional parameter that is used
+     * to differentiate between individual date selections and multiple
+     * date selections.
+     * @private
+     */
+    _addDateToSelection : function (oDate, index) {
+        oDate = this._normalizeTime(oDate);
+
+        if (this._canBeSelected(oDate)) {
+
+            var year = oDate.getFullYear(),
+                month = oDate.getMonth(),
+                day = oDate.getDate();
+
+            if (hasKey(this._selectedDates, year)) {
+                if (hasKey(this._selectedDates[year], month)) {
+                    this._selectedDates[year][month][day] = oDate;
+                } else {
+                    this._selectedDates[year][month] = {};
+                    this._selectedDates[year][month][day] = oDate;
+                }
+            } else {
+                this._selectedDates[year] = {};
+                this._selectedDates[year][month] = {};
+                this._selectedDates[year][month][day] = oDate;
+            }
+
+            this._selectedDates = setVal(this._selectedDates, [year, month, day], oDate);
+
+            if (!index) {
+                this._fireSelectionChange();
+            }
+        }
+    },
+
+    /**
+     * A utility method that adds a given list of dates to selection.
+     * @method _addDatesToSelection
+     * @param {Array} datesArray The list of dates to add to selection.
+     * @private
+     */
+    _addDatesToSelection : function (datesArray) {
+        arrayEach(datesArray, this._addDateToSelection, this);
+        this._fireSelectionChange();
+    },
+
+    /**
+     * A utility method that adds a given range of dates to selection.
+     * @method _addDateRangeToSelection
+     * @param {Date} startDate The first date of the given range.
+     * @param {Date} endDate The last date of the given range.
+     * @private
+     */
+    _addDateRangeToSelection : function (startDate, endDate) {
+
+        var timezoneDifference = (endDate.getTimezoneOffset() - startDate.getTimezoneOffset())*60000,
+            startTime = startDate.getTime(),
+            endTime   = endDate.getTime(),
+            tempTime,
+            time,
+            addedDate;
+
+        if (startTime > endTime) {
+            tempTime = startTime;
+            startTime = endTime;
+            endTime = tempTime + timezoneDifference;
+        } else {
+            endTime = endTime - timezoneDifference;
+        }
+
+
+        for (time = startTime; time <= endTime; time += 86400000) {
+            addedDate = new Date(time);
+            addedDate.setHours(12);
+            this._addDateToSelection(addedDate, time);
+        }
+        this._fireSelectionChange();
+    },
+
+    /**
+     * A utility method that removes a given date from selection..
+     * @method _removeDateFromSelection
+     * @param {Date} oDate The date to remove from selection.
+     * @param {Number} [index] An optional parameter that is used
+     * to differentiate between individual date selections and multiple
+     * date selections.
+     * @private
+     */
+    _removeDateFromSelection : function (oDate, index) {
+        var year = oDate.getFullYear(),
+            month = oDate.getMonth(),
+            day = oDate.getDate();
+
+        if (hasKey(this._selectedDates, year) &&
+            hasKey(this._selectedDates[year], month) &&
+            hasKey(this._selectedDates[year][month], day)
+        ) {
+            delete this._selectedDates[year][month][day];
+            if (!index) {
+                this._fireSelectionChange();
+            }
+        }
+    },
+
+    /**
+     * A utility method that removes a given list of dates from selection.
+     * @method _removeDatesFromSelection
+     * @param {Array} datesArray The list of dates to remove from selection.
+     * @private
+     */
+    _removeDatesFromSelection : function (datesArray) {
+        arrayEach(datesArray, this._removeDateFromSelection, this);
+        this._fireSelectionChange();
+    },
+
+    /**
+     * A utility method that removes a given range of dates from selection.
+     * @method _removeDateRangeFromSelection
+     * @param {Date} startDate The first date of the given range.
+     * @param {Date} endDate The last date of the given range.
+     * @private
+     */
+    _removeDateRangeFromSelection : function (startDate, endDate) {
+        var startTime = startDate.getTime(),
+            endTime   = endDate.getTime(),
+            time;
+
+        for (time = startTime; time <= endTime; time += 86400000) {
+            this._removeDateFromSelection(new Date(time), time);
+        }
+
+        this._fireSelectionChange();
+    },
+
+    /**
+     * A utility method that removes all dates from selection.
+     * @method _clearSelection
+     * @param {boolean} noevent A Boolean specifying whether a selectionChange
+     * event should be fired. If true, the event is not fired.
+     * @private
+     */
+    _clearSelection : function (noevent) {
+        this._selectedDates = {};
+        this.get("contentBox").all("." + CAL_DAY_SELECTED).removeClass(CAL_DAY_SELECTED).setAttribute("aria-selected", false);
+        if (!noevent) {
+            this._fireSelectionChange();
+        }
+    },
+
+    /**
+     * A utility method that fires a selectionChange event.
+     * @method _fireSelectionChange
+     * @private
+     */
+    _fireSelectionChange : function () {
+
+        /**
+        * Fired when the set of selected dates changes. Contains a payload with
+        * a `newSelection` property with an array of selected dates.
+        *
+        * @event selectionChange
+        */
+        this.fire("selectionChange", {newSelection: this._getSelectedDatesList()});
+    },
+
+    /**
+     * A utility method that restores cells modified by custom formatting.
+     * @method _restoreModifiedCells
+     * @private
+     */
+    _restoreModifiedCells : function () {
+        var contentbox = this.get("contentBox"),
+            id;
+        for (id in this._storedDateCells) {
+            contentbox.one("#" + id).replace(this._storedDateCells[id]);
+            delete this._storedDateCells[id];
+        }
+    },
+
+    /**
+     * A rendering assist method that renders all cells modified by the customRenderer
+     * rules, as well as the enabledDatesRule and disabledDatesRule.
+     * @method _renderCustomRules
+     * @private
+     */
+    _renderCustomRules : function () {
+
+        this.get("contentBox").all("." + CAL_DAY + ",." + CAL_NEXTMONTH_DAY).removeClass(SELECTION_DISABLED).setAttribute("aria-disabled", false);
+
+        if (!isEmpty(this._rules)) {
+            var paneNum,
+                paneDate,
+                dateArray;
+
+            for (paneNum = 0; paneNum < this._paneNumber; paneNum++) {
+                paneDate = ydate.addMonths(this.get("date"), paneNum);
+                dateArray = ydate.listOfDatesInMonth(paneDate);
+                arrayEach(dateArray, Y.bind(this._renderCustomRulesHelper, this));
+            }
+        }
+    },
+
+    /**
+    * A handler for a date selection event (either a click or a keyboard
+    *   selection) that adds the appropriate CSS class to a specific DOM
+    *   node corresponding to the date and sets its aria-selected
+    *   attribute to true.
+    *
+    * @method _renderCustomRulesHelper
+    * @private
+    */
+    _renderCustomRulesHelper: function (date) {
+        var enRule = this.get("enabledDatesRule"),
+            disRule = this.get("disabledDatesRule"),
+            matchingRules,
+            dateNode;
+
+        matchingRules = this._getRulesForDate(date);
+        if (matchingRules.length > 0) {
+            if ((enRule && iOf(matchingRules, enRule) < 0) || (!enRule && disRule && iOf(matchingRules, disRule) >= 0)) {
+                this._disableDate(date);
+            }
+
+            if (L.isFunction(this._filterFunction)) {
+                dateNode = this._dateToNode(date);
+                this._storedDateCells[dateNode.get("id")] = dateNode.cloneNode(true);
+                this._filterFunction (date, dateNode, matchingRules);
+            }
+        } else if (enRule) {
+            this._disableDate(date);
+        }
+    },
+
+    /**
+     * A rendering assist method that renders all cells that are currently selected.
+     * @method _renderSelectedDates
+     * @private
+     */
+    _renderSelectedDates : function () {
+        this.get("contentBox").all("." + CAL_DAY_SELECTED).removeClass(CAL_DAY_SELECTED).setAttribute("aria-selected", false);
+
+        var paneNum,
+            paneDate,
+            dateArray;
+
+        for (paneNum = 0; paneNum < this._paneNumber; paneNum++) {
+            paneDate = ydate.addMonths(this.get("date"), paneNum);
+            dateArray = this._getSelectedDatesInMonth(paneDate);
+
+            arrayEach(dateArray, Y.bind(this._renderSelectedDatesHelper, this));
+        }
+    },
+
+    /**
+    * Takes in a date and determines whether that date has any rules
+    *   matching it in the customRenderer; then calls the specified
+    *   filterFunction if that's the case and/or disables the date
+    *   if the rule is specified as a disabledDatesRule.
+    *
+    * @method _renderSelectedDatesHelper
+    * @private
+    */
+    _renderSelectedDatesHelper: function (date) {
+        this._dateToNode(date).addClass(CAL_DAY_SELECTED).setAttribute("aria-selected", true);
+    },
+
+    /**
+     * Add the selection-disabled class and aria-disabled attribute to a node corresponding
+     * to a given date.
+     *
+     * @method _disableDate
+     * @param {Date} date The date to disable
+     * @private
+     */
+    _disableDate: function (date) {
+       this._dateToNode(date).addClass(SELECTION_DISABLED).setAttribute("aria-disabled", true);
+    },
+
+    /**
+     * A utility method that converts a date to the node wrapping the calendar cell
+     * the date corresponds to..
+     * @method _dateToNode
+     * @param {Date} oDate The date to convert to Node
+     * @protected
+     * @return {Node} The node wrapping the DOM element of the cell the date
+     * corresponds to.
+     */
+    _dateToNode : function (oDate) {
+        var day = oDate.getDate(),
+            col = 0,
+            daymod = day%7,
+            paneNum = (12 + oDate.getMonth() - this.get("date").getMonth()) % 12,
+            paneId = this._calendarId + "_pane_" + paneNum,
+            cutoffCol = this._paneProperties[paneId].cutoffCol;
+
+        switch (daymod) {
+            case (0):
+                if (cutoffCol >= 6) {
+                    col = 12;
+                } else {
+                    col = 5;
+                }
+                break;
+            case (1):
+                    col = 6;
+                break;
+            case (2):
+                if (cutoffCol > 0) {
+                    col = 7;
+                } else {
+                    col = 0;
+                }
+                break;
+            case (3):
+                if (cutoffCol > 1) {
+                    col = 8;
+                } else {
+                    col = 1;
+                }
+                break;
+            case (4):
+                if (cutoffCol > 2) {
+                    col = 9;
+                } else {
+                    col = 2;
+                }
+                break;
+            case (5):
+                if (cutoffCol > 3) {
+                    col = 10;
+                } else {
+                    col = 3;
+                }
+                break;
+            case (6):
+                if (cutoffCol > 4) {
+                    col = 11;
+                } else {
+                    col = 4;
+                }
+                break;
+        }
+        return(this.get("contentBox").one("#" + this._calendarId + "_pane_" + paneNum + "_" + col + "_" + day));
+
+    },
+
+    /**
+     * A utility method that converts a node corresponding to the DOM element of
+     * the cell for a particular date to that date.
+     * @method _nodeToDate
+     * @param {Node} oNode The Node wrapping the DOM element of a particular date cell.
+     * @protected
+     * @return {Date} The date corresponding to the DOM element that the given node wraps.
+     */
+    _nodeToDate : function (oNode) {
+
+        var idParts = oNode.get("id").split("_").reverse(),
+            paneNum = parseInt(idParts[2], 10),
+            day  = parseInt(idParts[0], 10),
+            shiftedDate = ydate.addMonths(this.get("date"), paneNum),
+            year = shiftedDate.getFullYear(),
+            month = shiftedDate.getMonth();
+
+        return new Date(year, month, day, 12, 0, 0, 0);
+    },
+
+    /**
+     * A placeholder method, called from bindUI, to bind the Calendar events.
+     * @method _bindCalendarEvents
+     * @protected
+     */
+    _bindCalendarEvents : function () {},
+
+    /**
+     * A utility method that normalizes a given date by converting it to the 1st
+     * day of the month the date is in, with the time set to noon.
+     * @method _normalizeDate
+     * @param {Date} oDate The date to normalize
+     * @protected
+     * @return {Date} The normalized date, set to the first of the month, with time
+     * set to noon.
+     */
+    _normalizeDate : function (date) {
+        if (date) {
+            return new Date(date.getFullYear(), date.getMonth(), 1, 12, 0, 0, 0);
+        } else {
+            return null;
+        }
+    },
+
+    /**
+     * A utility method that normalizes a given date by setting its time to noon.
+     * @method _normalizeTime
+     * @param {Date} oDate The date to normalize
+     * @protected
+     * @return {Date} The normalized date
+     * set to noon.
+     */
+    _normalizeTime : function (date) {
+        if (date) {
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0, 0);
+        } else {
+            return null;
+        }
+    },
+
+
+    /**
+     * A render assist utility method that computes the cutoff column for the calendar
+     * rendering mask.
+     * @method _getCutoffColumn
+     * @param {Date} date The date of the month grid to compute the cutoff column for.
+     * @param {Number} firstday The first day of the week (modified by internationalized calendars)
+     * @private
+     * @return {Number} The number of the cutoff column.
+     */
+    _getCutoffColumn : function (date, firstday) {
+        var distance = this._normalizeDate(date).getDay() - firstday,
+            cutOffColumn = 6 - (distance + 7) % 7;
+        return cutOffColumn;
+    },
+
+    /**
+     * A render assist method that turns on the view of the previous month's dates
+     * in a given calendar pane.
+     * @method _turnPrevMonthOn
+     * @param {Node} pane The calendar pane that needs its previous month's dates view
+     * modified.
+     * @protected
+     */
+    _turnPrevMonthOn : function (pane) {
+        var pane_id = pane.get("id"),
+            pane_date = this._paneProperties[pane_id].paneDate,
+            daysInPrevMonth = ydate.daysInMonth(ydate.addMonths(pane_date, -1)),
+            cell;
+
+        if (!this._paneProperties[pane_id].hasOwnProperty("daysInPrevMonth")) {
+            this._paneProperties[pane_id].daysInPrevMonth = 0;
+        }
+
+        if (daysInPrevMonth !== this._paneProperties[pane_id].daysInPrevMonth) {
+
+            this._paneProperties[pane_id].daysInPrevMonth = daysInPrevMonth;
+
+            for (cell = 5; cell >= 0; cell--) {
+                pane.one("#" + pane_id + "_" + cell + "_" + (cell-5)).set('text', daysInPrevMonth--);
+            }
+        }
+    },
+
+    /**
+     * A render assist method that turns off the view of the previous month's dates
+     * in a given calendar pane.
+     * @method _turnPrevMonthOff
+     * @param {Node} pane The calendar pane that needs its previous month's dates view
+     * modified.
+     * @protected
+     */
+    _turnPrevMonthOff : function (pane) {
+        var pane_id = pane.get("id"),
+            cell;
+
+        this._paneProperties[pane_id].daysInPrevMonth = 0;
+
+        for (cell = 5; cell >= 0; cell--) {
+            pane.one("#" + pane_id + "_" + cell + "_" + (cell-5)).setContent("&nbsp;");
+        }
+    },
+
+    /**
+     * A render assist method that cleans up the last few cells in the month grid
+     * when the number of days in the month changes.
+     * @method _cleanUpNextMonthCells
+     * @param {Node} pane The calendar pane that needs the last date cells cleaned up.
+     * @private
+     */
+    _cleanUpNextMonthCells : function (pane) {
+        var pane_id = pane.get("id");
+            pane.one("#" + pane_id + "_6_29").removeClass(CAL_NEXTMONTH_DAY);
+            pane.one("#" + pane_id + "_7_30").removeClass(CAL_NEXTMONTH_DAY);
+            pane.one("#" + pane_id + "_8_31").removeClass(CAL_NEXTMONTH_DAY);
+            pane.one("#" + pane_id + "_0_30").removeClass(CAL_NEXTMONTH_DAY);
+            pane.one("#" + pane_id + "_1_31").removeClass(CAL_NEXTMONTH_DAY);
+    },
+
+    /**
+     * A render assist method that turns on the view of the next month's dates
+     * in a given calendar pane.
+     * @method _turnNextMonthOn
+     * @param {Node} pane The calendar pane that needs its next month's dates view
+     * modified.
+     * @protected
+     */
+    _turnNextMonthOn : function (pane) {
+        var dayCounter = 1,
+            pane_id = pane.get("id"),
+            daysInMonth = this._paneProperties[pane_id].daysInMonth,
+            cutoffCol = this._paneProperties[pane_id].cutoffCol,
+            cell,
+            startingCell;
+
+        for (cell = daysInMonth - 22; cell < cutoffCol + 7; cell++) {
+            pane.one("#" + pane_id + "_" + cell + "_" + (cell+23)).set("text", dayCounter++).addClass(CAL_NEXTMONTH_DAY);
+        }
+
+        startingCell = cutoffCol;
+
+        if (daysInMonth === 31 && (cutoffCol <= 1)) {
+            startingCell = 2;
+        } else if (daysInMonth === 30 && cutoffCol === 0) {
+            startingCell = 1;
+        }
+
+        for (cell = startingCell ; cell < cutoffCol + 7; cell++) {
+            pane.one("#" + pane_id + "_" + cell + "_" + (cell+30)).set("text", dayCounter++).addClass(CAL_NEXTMONTH_DAY);
+        }
+    },
+
+    /**
+     * A render assist method that turns off the view of the next month's dates
+     * in a given calendar pane.
+     * @method _turnNextMonthOff
+     * @param {Node} pane The calendar pane that needs its next month's dates view
+     * modified.
+     * @protected
+     */
+    _turnNextMonthOff : function (pane) {
+            var pane_id = pane.get("id"),
+                daysInMonth = this._paneProperties[pane_id].daysInMonth,
+                cutoffCol = this._paneProperties[pane_id].cutoffCol,
+                cell,
+                startingCell;
+
+            for (cell = daysInMonth - 22; cell <= 12; cell++) {
+                pane.one("#" + pane_id + "_" + cell + "_" + (cell+23)).setContent("&nbsp;").addClass(CAL_NEXTMONTH_DAY);
+            }
+
+            startingCell = 0;
+
+            if (daysInMonth === 31 && (cutoffCol <= 1)) {
+                startingCell = 2;
+            } else if (daysInMonth === 30 && cutoffCol === 0) {
+                startingCell = 1;
+            }
+
+            for (cell = startingCell ; cell <= 12; cell++) {
+                pane.one("#" + pane_id + "_" + cell + "_" + (cell+30)).setContent("&nbsp;").addClass(CAL_NEXTMONTH_DAY);
+            }
+    },
+
+    /**
+     * The handler for the change in the showNextMonth attribute.
+     * @method _afterShowNextMonthChange
+     * @private
+     */
+    _afterShowNextMonthChange : function () {
+
+        var contentBox = this.get('contentBox'),
+            lastPane = contentBox.one("#" + this._calendarId + "_pane_" + (this._paneNumber - 1));
+
+        this._cleanUpNextMonthCells(lastPane);
+
+        if (this.get('showNextMonth')) {
+            this._turnNextMonthOn(lastPane);
+        } else {
+            this._turnNextMonthOff(lastPane);
+        }
+
+    },
+
+    /**
+     * The handler for the change in the showPrevMonth attribute.
+     * @method _afterShowPrevMonthChange
+     * @private
+     */
+    _afterShowPrevMonthChange : function () {
+        var contentBox = this.get('contentBox'),
+            firstPane = contentBox.one("#" + this._calendarId + "_pane_" + 0);
+
+        if (this.get('showPrevMonth')) {
+            this._turnPrevMonthOn(firstPane);
+        } else {
+            this._turnPrevMonthOff(firstPane);
+        }
+
+    },
+
+     /**
+     * The handler for the change in the headerRenderer attribute.
+     * @method _afterHeaderRendererChange
+     * @private
+     */
+    _afterHeaderRendererChange : function () {
+        var headerCell = this.get("contentBox").one("." + CAL_HD_LABEL);
+        headerCell.setContent(this._updateCalendarHeader(this.get('date')));
+    },
+
+     /**
+     * The handler for the change in the customRenderer attribute.
+     * @method _afterCustomRendererChange
+     * @private
+     */
+    _afterCustomRendererChange : function () {
+        this._restoreModifiedCells();
+        this._renderCustomRules();
+    },
+
+     /**
+     * The handler for the change in the date attribute. Modifies the calendar
+     * view by shifting the calendar grid mask and running custom rendering and
+     * selection rendering as necessary.
+     * @method _afterDateChange
+     * @private
+     */
+    _afterDateChange : function () {
+
+        var contentBox = this.get('contentBox'),
+            headerCell = contentBox.one("." + CAL_HD).one("." + CAL_HD_LABEL),
+            calendarPanes = contentBox.all("." + CAL_GRID),
+            currentDate = this.get("date"),
+            counter = 0;
+
+        contentBox.setStyle("visibility", "hidden");
+        headerCell.setContent(this._updateCalendarHeader(currentDate));
+
+        this._restoreModifiedCells();
+
+        calendarPanes.each(function (curNode) {
+            this._rerenderCalendarPane(ydate.addMonths(currentDate, counter++), curNode);
+        }, this);
+
+        this._afterShowPrevMonthChange();
+        this._afterShowNextMonthChange();
+
+        this._renderCustomRules();
+        this._renderSelectedDates();
+
+        contentBox.setStyle("visibility", "inherit");
+    },
+
+
+     /**
+     * A rendering assist method that initializes the HTML for a single
+     * calendar pane.
+     * @method _initCalendarPane
+     * @param {Date} baseDate The date corresponding to the month of the given
+     * calendar pane.
+     * @param {String} pane_id The id of the pane, to be used as a prefix for
+     * element ids in the given pane.
+     * @private
+     */
+    _initCalendarPane : function (baseDate, pane_id) {
+        // Get a list of short weekdays from the internationalization package, or else use default English ones.
+        var shortWeekDays = this.get('strings.very_short_weekdays') || ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+            weekDays = Y.Intl.get('datatype-date-format').A,
+            // Get the first day of the week from the internationalization package, or else use Sunday as default.
+            firstday = this.get('strings.first_weekday') || 0,
+            // Compute the cutoff column of the masked calendar table, based on the start date and the first day of week.
+            cutoffCol = this._getCutoffColumn(baseDate, firstday),
+            // Compute the number of days in the month based on starting date
+            daysInMonth = ydate.daysInMonth(baseDate),
+            // Initialize the array of individual row HTML strings
+            row_array = ['','','','','',''],
+            // Initialize the partial templates object
+            partials = {},
+
+            day,
+            row,
+            column,
+            date,
+            id_date,
+            calendar_day_class,
+            column_visibility,
+            output;
+
+            // Initialize the partial template for the weekday row cells.
+            partials.weekday_row = '';
+
+        // Populate the partial template for the weekday row cells with weekday names
+        for (day = firstday; day <= firstday + 6; day++) {
+            partials.weekday_row +=
+                substitute(CalendarBase.WEEKDAY_TEMPLATE, {
+                    short_weekdayname: shortWeekDays[day%7],
+                    weekdayname: weekDays[day%7]
+                });
+        }
+
+        // Populate the partial template for the weekday row container with the weekday row cells
+        partials.weekday_row_template = substitute(CalendarBase.WEEKDAY_ROW_TEMPLATE, partials);
+
+        // Populate the array of individual row HTML strings
+        for (row = 0; row <= 5; row++) {
+
+            for (column = 0; column <= 12; column++) {
+
+                // Compute the value of the date that needs to populate the cell
+                date = 7*row - 5 + column;
+
+                // Compose the value of the unique id of the current calendar cell
+                id_date = pane_id + "_" + column + "_" + date;
+
+                // Set the calendar day class to one of three possible values
+                calendar_day_class = CAL_DAY;
+
+                if (date < 1) {
+                    calendar_day_class = CAL_PREVMONTH_DAY;
+                } else if (date > daysInMonth) {
+                    calendar_day_class = CAL_NEXTMONTH_DAY;
+                }
+
+                // Cut off dates that fall before the first and after the last date of the month
+                if (date < 1 || date > daysInMonth) {
+                    date = "&nbsp;";
+                }
+
+                // Decide on whether a column in the masked table is visible or not based on the value of the cutoff column.
+                column_visibility = (column >= cutoffCol && column < (cutoffCol + 7)) ? '' : CAL_COL_HIDDEN;
+
+                // Substitute the values into the partial calendar day template and add it to the current row HTML string
+                row_array[row] += substitute (CalendarBase.CALDAY_TEMPLATE, {
+                    day_content: date,
+                    calendar_col_class: "calendar_col" + column,
+                    calendar_col_visibility_class: column_visibility,
+                    calendar_day_class: calendar_day_class,
+                    calendar_day_id: id_date
+                });
+            }
+        }
+
+        // Instantiate the partial calendar pane body template
+        partials.body_template = '';
+
+        // Populate the body template with the rows templates
+        arrayEach (row_array, function (v) {
+             partials.body_template += substitute(CalendarBase.CALDAY_ROW_TEMPLATE, {calday_row: v});
+        });
+
+        // Populate the calendar grid id
+        partials.calendar_pane_id = pane_id;
+
+        // Populate the calendar pane tabindex
+        partials.calendar_pane_tabindex = this.get("tabIndex");
+        partials.pane_arialabel = ydate.format(baseDate, { format: "%B %Y" });
+
+
+        // Generate final output by substituting class names.
+        output = substitute(substitute (CalendarBase.CALENDAR_GRID_TEMPLATE, partials),
+                                                        CalendarBase.CALENDAR_STRINGS);
+
+        // Store the initialized pane information
+        this._paneProperties[pane_id] = {cutoffCol: cutoffCol, daysInMonth: daysInMonth, paneDate: baseDate};
+
+        return output;
+    },
+
+     /**
+     * A rendering assist method that rerenders a specified calendar pane, based
+     * on a new Date.
+     * @method _rerenderCalendarPane
+     * @param {Date} newDate The date corresponding to the month of the given
+     * calendar pane.
+     * @param {Node} pane The node corresponding to the calendar pane to be rerenders.
+     * @private
+     */
+    _rerenderCalendarPane : function (newDate, pane) {
+
+        // Get the first day of the week from the internationalization package, or else use Sunday as default.
+        var firstday = this.get('strings.first_weekday') || 0,
+            // Compute the cutoff column of the masked calendar table, based on the start date and the first day of week.
+            cutoffCol = this._getCutoffColumn(newDate, firstday),
+            // Compute the number of days in the month based on starting date
+            daysInMonth = ydate.daysInMonth(newDate),
+            // Get pane id for easier reference
+            paneId = pane.get("id"),
+            column,
+            currentColumn,
+            curCell;
+
+        // Hide the pane before making DOM changes to speed them up
+        pane.setStyle("visibility", "hidden");
+        pane.setAttribute("aria-label", ydate.format(newDate, {format:"%B %Y"}));
+
+        // Go through all columns, and flip their visibility setting based on whether they are within the unmasked range.
+        for (column = 0; column <= 12; column++) {
+            currentColumn = pane.all("." + "calendar_col" + column);
+            currentColumn.removeClass(CAL_COL_HIDDEN);
+
+            if (column < cutoffCol || column >= (cutoffCol + 7)) {
+                currentColumn.addClass(CAL_COL_HIDDEN);
+            } else {
+                // Clean up dates in visible columns to account for the correct number of days in a month
+                switch(column) {
+                    case 0:
+                        curCell = pane.one("#" + paneId + "_0_30");
+                        if (daysInMonth >= 30) {
+                            curCell.set("text", "30");
+                            curCell.removeClass(CAL_NEXTMONTH_DAY).addClass(CAL_DAY);
+                        } else {
+                            curCell.setContent("&nbsp;");
+                            curCell.removeClass(CAL_DAY).addClass(CAL_NEXTMONTH_DAY);
+                        }
+                        break;
+                    case 1:
+                        curCell = pane.one("#" + paneId + "_1_31");
+                        if (daysInMonth >= 31) {
+                            curCell.set("text", "31");
+                            curCell.removeClass(CAL_NEXTMONTH_DAY).addClass(CAL_DAY);
+                        } else {
+                            curCell.setContent("&nbsp;");
+                            curCell.removeClass(CAL_DAY).addClass(CAL_NEXTMONTH_DAY);
+                        }
+                        break;
+                    case 6:
+                        curCell = pane.one("#" + paneId + "_6_29");
+                        if (daysInMonth >= 29) {
+                            curCell.set("text", "29");
+                            curCell.removeClass(CAL_NEXTMONTH_DAY).addClass(CAL_DAY);
+                        } else {
+                            curCell.setContent("&nbsp;");
+                            curCell.removeClass(CAL_DAY).addClass(CAL_NEXTMONTH_DAY);
+                        }
+                        break;
+                    case 7:
+                        curCell = pane.one("#" + paneId + "_7_30");
+                        if (daysInMonth >= 30) {
+                            curCell.set("text", "30");
+                            curCell.removeClass(CAL_NEXTMONTH_DAY).addClass(CAL_DAY);
+                        } else {
+                            curCell.setContent("&nbsp;");
+                            curCell.removeClass(CAL_DAY).addClass(CAL_NEXTMONTH_DAY);
+                        }
+                        break;
+                    case 8:
+                        curCell = pane.one("#" + paneId + "_8_31");
+                        if (daysInMonth >= 31) {
+                            curCell.set("text", "31");
+                            curCell.removeClass(CAL_NEXTMONTH_DAY).addClass(CAL_DAY);
+                        } else {
+                            curCell.setContent("&nbsp;");
+                            curCell.removeClass(CAL_DAY).addClass(CAL_NEXTMONTH_DAY);
+                        }
+                        break;
+                }
+            }
+        }
+
+        // Update stored pane properties
+        this._paneProperties[paneId].cutoffCol = cutoffCol;
+        this._paneProperties[paneId].daysInMonth = daysInMonth;
+        this._paneProperties[paneId].paneDate = newDate;
+
+        // Bring the pane visibility back after all DOM changes are done
+        pane.setStyle("visibility", "inherit");
+
+    },
+
+     /**
+     * A rendering assist method that updates the calendar header based
+     * on a given date and potentially the provided headerRenderer.
+     * @method _updateCalendarHeader
+     * @param {Date} baseDate The date with which to update the calendar header.
+     * @private
+     */
+    _updateCalendarHeader : function (baseDate) {
+        var headerString = "",
+            headerRenderer = this.get("headerRenderer");
+
+        if (Y.Lang.isString(headerRenderer)) {
+            headerString = ydate.format(baseDate, {format:headerRenderer});
+        } else if (headerRenderer instanceof Function) {
+            headerString = headerRenderer.call(this, baseDate);
+        }
+
+        return headerString;
+    },
+
+     /**
+     * A rendering assist method that initializes the calendar header HTML
+     * based on a given date and potentially the provided headerRenderer.
+     * @method _initCalendarHeader
+     * @param {Date} baseDate The date with which to initialize the calendar header.
+     * @private
+     */
+    _initCalendarHeader : function (baseDate) {
+        return substitute(substitute(CalendarBase.HEADER_TEMPLATE, {
+                calheader: this._updateCalendarHeader(baseDate),
+                calendar_id: this._calendarId
+            }), CalendarBase.CALENDAR_STRINGS );
+    },
+
+     /**
+     * A rendering assist method that initializes the calendar HTML
+     * based on a given date.
+     * @method _initCalendarHTML
+     * @param {Date} baseDate The date with which to initialize the calendar.
+     * @private
+     */
+    _initCalendarHTML : function (baseDate) {
+        // Instantiate the partials holder
+        var partials = {},
+            // Counter for iterative template replacement.
+            counter = 0,
+            singlePane,
+            output;
+
+        // Generate the template for the header
+        partials.header_template =  this._initCalendarHeader(baseDate);
+        partials.calendar_id = this._calendarId;
+
+        partials.body_template = substitute(substitute (CalendarBase.CONTENT_TEMPLATE, partials),
+                                                                                 CalendarBase.CALENDAR_STRINGS);
+
+        // Instantiate the iterative template replacer function
+        function paneReplacer () {
+            singlePane = this._initCalendarPane(ydate.addMonths(baseDate, counter), partials.calendar_id + "_pane_" + counter);
+            counter++;
+            return singlePane;
+        }
+
+        // Go through all occurrences of the calendar_grid_template token and replace it with an appropriate calendar grid.
+        output = partials.body_template.replace(/\{calendar_grid_template\}/g, Y.bind(paneReplacer, this));
+
+        // Update the paneNumber count
+        this._paneNumber = counter;
+
+        return output;
+    }
+}, {
+
+     /**
+        * The CSS classnames for the calendar templates.
+        * @property CALENDAR_STRINGS
+        * @type Object
+        * @readOnly
+        * @protected
+        * @static
+        */
+    CALENDAR_STRINGS: {
+        calendar_grid_class       : CAL_GRID,
+        calendar_body_class       : CAL_BODY,
+        calendar_hd_class         : CAL_HD,
+        calendar_hd_label_class   : CAL_HD_LABEL,
+        calendar_weekdayrow_class : CAL_WDAYROW,
+        calendar_weekday_class    : CAL_WDAY,
+        calendar_row_class        : CAL_ROW,
+        calendar_day_class        : CAL_DAY,
+        calendar_dayanchor_class  : CAL_ANCHOR,
+        calendar_pane_class       : CAL_PANE,
+        calendar_right_grid_class : CAL_RIGHT_GRID,
+        calendar_left_grid_class  : CAL_LEFT_GRID,
+        calendar_status_class     : CAL_STATUS
+    },
+
+    /*
+
+    ARIA_STATUS_TEMPLATE: '<div role="status" aria-atomic="true" class="{calendar_status_class}"></div>',
+
+    AriaStatus : null,
+
+    updateStatus : function (statusString) {
+
+        if (!CalendarBase.AriaStatus) {
+            CalendarBase.AriaStatus = create(
+                                                         substitute (CalendarBase.ARIA_STATUS_TEMPLATE,
+                                                                                 CalendarBase.CALENDAR_STRINGS));
+            Y.one("body").append(CalendarBase.AriaStatus);
+        }
+
+            CalendarBase.AriaStatus.set("text", statusString);
+    },
+
+    */
+
+     /**
+        * The main content template for calendar.
+        * @property CONTENT_TEMPLATE
+        * @type String
+        * @protected
+        * @static
+        */
+    CONTENT_TEMPLATE:  '<div class="yui3-g {calendar_pane_class}" id="{calendar_id}">' +
+                        '{header_template}' +
+                        '<div class="yui3-u-1">' +
+                        '{calendar_grid_template}' +
+                        '</div>' +
+                        '</div>',
+
+     /**
+        * A single pane template for calendar (same as default CONTENT_TEMPLATE)
+        * @property ONE_PANE_TEMPLATE
+        * @type String
+        * @protected
+        * @readOnly
+        * @static
+        */
+    ONE_PANE_TEMPLATE: '<div class="yui3-g {calendar_pane_class}" id="{calendar_id}">' +
+                            '{header_template}' +
+                            '<div class="yui3-u-1">' +
+                                '{calendar_grid_template}' +
+                            '</div>' +
+                        '</div>',
+
+     /**
+        * A two pane template for calendar.
+        * @property TWO_PANE_TEMPLATE
+        * @type String
+        * @protected
+        * @readOnly
+        * @static
+        */
+    TWO_PANE_TEMPLATE: '<div class="yui3-g {calendar_pane_class}" id="{calendar_id}">' +
+                            '{header_template}' +
+                            '<div class="yui3-u-1-2">'+
+                                '<div class = "{calendar_left_grid_class}">' +
+                                    '{calendar_grid_template}' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="yui3-u-1-2">' +
+                                '<div class = "{calendar_right_grid_class}">' +
+                                    '{calendar_grid_template}' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>',
+     /**
+        * A three pane template for calendar.
+        * @property THREE_PANE_TEMPLATE
+        * @type String
+        * @protected
+        * @readOnly
+        * @static
+        */
+    THREE_PANE_TEMPLATE: '<div class="yui3-g {calendar_pane_class}" id="{calendar_id}">' +
+                            '{header_template}' +
+                            '<div class="yui3-u-1-3">' +
+                                '<div class="{calendar_left_grid_class}">' +
+                                    '{calendar_grid_template}' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="yui3-u-1-3">' +
+                                '{calendar_grid_template}' +
+                            '</div>' +
+                            '<div class="yui3-u-1-3">' +
+                                '<div class="{calendar_right_grid_class}">' +
+                                    '{calendar_grid_template}' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>',
+     /**
+        * A template for the calendar grid.
+        * @property CALENDAR_GRID_TEMPLATE
+        * @type String
+        * @protected
+        * @static
+        */
+    CALENDAR_GRID_TEMPLATE: '<table class="{calendar_grid_class}" id="{calendar_pane_id}" role="grid" aria-readonly="true" ' +
+                                'aria-label="{pane_arialabel}" tabindex="{calendar_pane_tabindex}">' +
+                                '<thead>' +
+                                    '{weekday_row_template}' +
+                                '</thead>' +
+                                '<tbody>' +
+                                    '{body_template}' +
+                                '</tbody>' +
+                            '</table>',
+
+     /**
+        * A template for the calendar header.
+        * @property HEADER_TEMPLATE
+        * @type String
+        * @protected
+        * @static
+        */
+    HEADER_TEMPLATE: '<div class="yui3-g {calendar_hd_class}">' +
+                        '<div class="yui3-u {calendar_hd_label_class}" id="{calendar_id}_header" aria-role="heading">' +
+                            '{calheader}' +
+                        '</div>' +
+                    '</div>',
+
+     /**
+        * A template for the row of weekday names.
+        * @property WEEKDAY_ROW_TEMPLATE
+        * @type String
+        * @protected
+        * @static
+        */
+    WEEKDAY_ROW_TEMPLATE: '<tr class="{calendar_weekdayrow_class}" role="row">' +
+                            '{weekday_row}' +
+                        '</tr>',
+
+     /**
+        * A template for a single row of calendar days.
+        * @property CALDAY_ROW_TEMPLATE
+        * @type String
+        * @protected
+        * @static
+        */
+    CALDAY_ROW_TEMPLATE: '<tr class="{calendar_row_class}" role="row">' +
+                            '{calday_row}' +
+                        '</tr>',
+
+     /**
+        * A template for a single cell with a weekday name.
+        * @property WEEKDAY_TEMPLATE
+        * @type String
+        * @protected
+        * @static
+        */
+    WEEKDAY_TEMPLATE: '<th class="{calendar_weekday_class}" role="columnheader" aria-label="{weekdayname}">{short_weekdayname}</th>',
+
+     /**
+        * A template for a single cell with a calendar day.
+        * @property CALDAY_TEMPLATE
+        * @type String
+        * @protected
+        * @static
+        */
+    CALDAY_TEMPLATE: '<td class="{calendar_col_class} {calendar_day_class} {calendar_col_visibility_class}" id="{calendar_day_id}" ' +
+                        'role="gridcell" tabindex="-1">' +
+                        '{day_content}' +
+                    '</td>',
+
+     /**
+        * The identity of the widget.
+        *
+        * @property NAME
+        * @type String
+        * @default 'calendarBase'
+        * @readOnly
+        * @protected
+        * @static
+        */
+    NAME: 'calendarBase',
+
+     /**
+        * Static property used to define the default attribute configuration of
+        * the Widget.
+        *
+        * @property ATTRS
+        * @type {Object}
+        * @protected
+        * @static
+        */
+    ATTRS: {
+        tabIndex: {
+            value: 1
+        },
+        /**
+         * The date corresponding to the current calendar view. Always
+         * normalized to the first of the month that contains the date
+         * at assignment time. Used as the first date visible in the
+         * calendar.
+         *
+         * @attribute date
+         * @type Date
+         * @default The first of the month containing today's date, as
+         * set on the end user's system.
+         */
+        date: {
+            value: new Date(),
+            setter: function (val) {
+                var newDate = this._normalizeDate(val);
+                if (ydate.areEqual(newDate, this.get('date'))) {
+                        return this.get('date');
+                } else {
+                        return newDate;
+                }
+            }
+        },
+
+        /**
+         * A setting specifying whether to shows days from the previous
+         * month in the visible month's grid, if there are empty preceding
+         * cells available.
+         *
+         * @attribute showPrevMonth
+         * @type boolean
+         * @default false
+         */
+        showPrevMonth: {
+            value: false
+        },
+
+        /**
+         * A setting specifying whether to shows days from the next
+         * month in the visible month's grid, if there are empty
+         * cells available at the end.
+         *
+         * @attribute showNextMonth
+         * @type boolean
+         * @default false
+         */
+        showNextMonth: {
+            value: false
+        },
+
+        /**
+         * Strings and properties derived from the internationalization packages
+         * for the calendar.
+         *
+         * @attribute strings
+         * @type Object
+         * @protected
+         */
+        strings : {
+            valueFn: function() { return Y.Intl.get("calendar-base"); }
+        },
+
+        /**
+         * Custom header renderer for the calendar.
+         *
+         * @attribute headerRenderer
+         * @type String | Function
+         */
+        headerRenderer: {
+            value: "%B %Y"
+        },
+
+        /**
+         * The name of the rule which all enabled dates should match.
+         * Either disabledDatesRule or enabledDatesRule should be specified,
+         * or neither, but not both.
+         *
+         * @attribute enabledDatesRule
+         * @type String
+         * @default null
+         */
+        enabledDatesRule: {
+            value: null
+        },
+
+        /**
+         * The name of the rule which all disabled dates should match.
+         * Either disabledDatesRule or enabledDatesRule should be specified,
+         * or neither, but not both.
+         *
+         * @attribute disabledDatesRule
+         * @type String
+         * @default null
+         */
+        disabledDatesRule: {
+            value: null
+        },
+
+        /**
+         * A read-only attribute providing a list of currently selected dates.
+         *
+         * @attribute selectedDates
+         * @readOnly
+         * @type Array
+         */
+        selectedDates : {
+            readOnly: true,
+            getter: function () {
+                return (this._getSelectedDatesList());
+            }
+        },
+
+        /**
+         * An object of the form {rules:Object, filterFunction:Function},
+         * providing  set of rules and a custom rendering function for
+         * customizing specific calendar cells.
+         *
+         * @attribute customRenderer
+         * @type Object
+         * @default {}
+         */
+        customRenderer : {
+            lazyAdd: false,
+            value: {},
+            setter: function (val) {
+                this._rules = val.rules;
+                this._filterFunction = val.filterFunction;
+            }
+        }
+    }
+
+});
+
+
+}, '3.17.2', {
+    "requires": [
+        "widget",
+        "datatype-date",
+        "datatype-date-math",
+        "cssgrids"
+    ],
+    "lang": [
+        "de",
+        "en",
+        "es",
+        "es-AR",
+        "fr",
+        "hu",
+        "it",
+        "ja",
+        "nb-NO",
+        "nl",
+        "pt-BR",
+        "ru",
+        "zh-Hans",
+        "zh-Hans-CN",
+        "zh-Hant",
+        "zh-Hant-HK",
+        "zh-HANT-TW"
+    ],
+    "skinnable": true
+});
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add('plugin', function (Y, NAME) {
+
+    /**
+     * Provides the base Plugin class, which plugin developers should extend, when creating custom plugins
+     *
+     * @module plugin
+     */
+
+    /**
+     * The base class for all Plugin instances.
+     *
+     * @class Plugin.Base
+     * @extends Base
+     * @param {Object} config Configuration object with property name/value pairs.
+     */
+    function Plugin(config) {
+        if (! (this.hasImpl && this.hasImpl(Y.Plugin.Base)) ) {
+            Plugin.superclass.constructor.apply(this, arguments);
+        } else {
+            Plugin.prototype.initializer.apply(this, arguments);
+        }
+    }
+
+    /**
+     * Object defining the set of attributes supported by the Plugin.Base class
+     *
+     * @property ATTRS
+     * @type Object
+     * @static
+     */
+    Plugin.ATTRS = {
+
+        /**
+         * The plugin's host object.
+         *
+         * @attribute host
+         * @writeonce
+         * @type Plugin.Host
+         */
+        host : {
+            writeOnce: true
+        }
+    };
+
+    /**
+     * The string identifying the Plugin.Base class. Plugins extending
+     * Plugin.Base should set their own NAME value.
+     *
+     * @property NAME
+     * @type String
+     * @static
+     */
+    Plugin.NAME = 'plugin';
+
+    /**
+     * The name of the property the the plugin will be attached to
+     * when plugged into a Plugin Host. Plugins extending Plugin.Base,
+     * should set their own NS value.
+     *
+     * @property NS
+     * @type String
+     * @static
+     */
+    Plugin.NS = 'plugin';
+
+    Y.extend(Plugin, Y.Base, {
+
+        /**
+         * The list of event handles for event listeners or AOP injected methods
+         * applied by the plugin to the host object.
+         *
+         * @property _handles
+         * @private
+         * @type Array
+         * @value null
+         */
+        _handles: null,
+
+        /**
+         * Initializer lifecycle implementation.
+         *
+         * @method initializer
+         * @param {Object} config Configuration object with property name/value pairs.
+         */
+        initializer : function(config) {
+            this._handles = [];
+        },
+
+        /**
+         * Destructor lifecycle implementation.
+         *
+         * Removes any event listeners or injected methods applied by the Plugin
+         *
+         * @method destructor
+         */
+        destructor: function() {
+            // remove all handles
+            if (this._handles) {
+                for (var i = 0, l = this._handles.length; i < l; i++) {
+                   this._handles[i].detach();
+                }
+            }
+        },
+
+        /**
+         * Listens for the "on" moment of events fired by the host,
+         * or injects code "before" a given method on the host.
+         *
+         * @method doBefore
+         *
+         * @param strMethod {String} The event to listen for, or method to inject logic before.
+         * @param fn {Function} The handler function. For events, the "on" moment listener. For methods, the function to execute before the given method is executed.
+         * @param context {Object} An optional context to call the handler with. The default context is the plugin instance.
+         * @return handle {EventHandle} The detach handle for the handler.
+         */
+        doBefore: function(strMethod, fn, context) {
+            var host = this.get("host"), handle;
+
+            if (strMethod in host) { // method
+                handle = this.beforeHostMethod(strMethod, fn, context);
+            } else if (host.on) { // event
+                handle = this.onHostEvent(strMethod, fn, context);
+            }
+
+            return handle;
+        },
+
+        /**
+         * Listens for the "after" moment of events fired by the host,
+         * or injects code "after" a given method on the host.
+         *
+         * @method doAfter
+         *
+         * @param strMethod {String} The event to listen for, or method to inject logic after.
+         * @param fn {Function} The handler function. For events, the "after" moment listener. For methods, the function to execute after the given method is executed.
+         * @param context {Object} An optional context to call the handler with. The default context is the plugin instance.
+         * @return handle {EventHandle} The detach handle for the listener.
+         */
+        doAfter: function(strMethod, fn, context) {
+            var host = this.get("host"), handle;
+
+            if (strMethod in host) { // method
+                handle = this.afterHostMethod(strMethod, fn, context);
+            } else if (host.after) { // event
+                handle = this.afterHostEvent(strMethod, fn, context);
+            }
+
+            return handle;
+        },
+
+        /**
+         * Listens for the "on" moment of events fired by the host object.
+         *
+         * Listeners attached through this method will be detached when the plugin is unplugged.
+         *
+         * @method onHostEvent
+         * @param {String | Object} type The event type.
+         * @param {Function} fn The listener.
+         * @param {Object} context The execution context. Defaults to the plugin instance.
+         * @return handle {EventHandle} The detach handle for the listener.
+         */
+        onHostEvent : function(type, fn, context) {
+            var handle = this.get("host").on(type, fn, context || this);
+            this._handles.push(handle);
+            return handle;
+        },
+
+        /**
+         * Listens for the "on" moment of events fired by the host object one time only.
+         * The listener is immediately detached when it is executed.
+         *
+         * Listeners attached through this method will be detached when the plugin is unplugged.
+         *
+         * @method onceHostEvent
+         * @param {String | Object} type The event type.
+         * @param {Function} fn The listener.
+         * @param {Object} context The execution context. Defaults to the plugin instance.
+         * @return handle {EventHandle} The detach handle for the listener.
+         */
+        onceHostEvent : function(type, fn, context) {
+            var handle = this.get("host").once(type, fn, context || this);
+            this._handles.push(handle);
+            return handle;
+        },
+
+        /**
+         * Listens for the "after" moment of events fired by the host object.
+         *
+         * Listeners attached through this method will be detached when the plugin is unplugged.
+         *
+         * @method afterHostEvent
+         * @param {String | Object} type The event type.
+         * @param {Function} fn The listener.
+         * @param {Object} context The execution context. Defaults to the plugin instance.
+         * @return handle {EventHandle} The detach handle for the listener.
+         */
+        afterHostEvent : function(type, fn, context) {
+            var handle = this.get("host").after(type, fn, context || this);
+            this._handles.push(handle);
+            return handle;
+        },
+
+        /**
+         * Listens for the "after" moment of events fired by the host object one time only.
+         * The listener is immediately detached when it is executed.
+         *
+         * Listeners attached through this method will be detached when the plugin is unplugged.
+         *
+         * @method onceAfterHostEvent
+         * @param {String | Object} type The event type.
+         * @param {Function} fn The listener.
+         * @param {Object} context The execution context. Defaults to the plugin instance.
+         * @return handle {EventHandle} The detach handle for the listener.
+         */
+        onceAfterHostEvent : function(type, fn, context) {
+            var handle = this.get("host").onceAfter(type, fn, context || this);
+            this._handles.push(handle);
+            return handle;
+        },
+
+        /**
+         * Injects a function to be executed before a given method on host object.
+         *
+         * The function will be detached when the plugin is unplugged.
+         *
+         * @method beforeHostMethod
+         * @param {String} method The name of the method to inject the function before.
+         * @param {Function} fn The function to inject.
+         * @param {Object} context The execution context. Defaults to the plugin instance.
+         * @return handle {EventHandle} The detach handle for the injected function.
+         */
+        beforeHostMethod : function(strMethod, fn, context) {
+            var handle = Y.Do.before(fn, this.get("host"), strMethod, context || this);
+            this._handles.push(handle);
+            return handle;
+        },
+
+        /**
+         * Injects a function to be executed after a given method on host object.
+         *
+         * The function will be detached when the plugin is unplugged.
+         *
+         * @method afterHostMethod
+         * @param {String} method The name of the method to inject the function after.
+         * @param {Function} fn The function to inject.
+         * @param {Object} context The execution context. Defaults to the plugin instance.
+         * @return handle {EventHandle} The detach handle for the injected function.
+         */
+        afterHostMethod : function(strMethod, fn, context) {
+            var handle = Y.Do.after(fn, this.get("host"), strMethod, context || this);
+            this._handles.push(handle);
+            return handle;
+        },
+
+        toString: function() {
+            return this.constructor.NAME + '[' + this.constructor.NS + ']';
+        }
+    });
+
+    Y.namespace("Plugin").Base = Plugin;
+
+
+}, '3.17.2', {"requires": ["base-base"]});
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add('calendarnavigator', function (Y, NAME) {
+
+/**
+ * Provides a plugin which adds navigation controls to Calendar.
+ *
+ * @module calendarnavigator
+ */
+var CONTENT_BOX = "contentBox",
+    HOST        = "host",
+    getCN       = Y.ClassNameManager.getClassName,
+    substitute  = Y.Lang.sub,
+    node        = Y.Node,
+    create      = node.create,
+    CALENDAR    = 'calendar',
+    CALENDARNAV = 'calendarnav',
+    CAL_HD      = getCN(CALENDAR, 'header'),
+    CAL_PREV_M  = getCN(CALENDARNAV, 'prevmonth'),
+    CAL_NEXT_M  = getCN(CALENDARNAV, 'nextmonth'),
+    CAL_DIS_M   = getCN(CALENDARNAV, 'month-disabled'),
+    ydate       = Y.DataType.Date;
+/**
+ * A plugin class which adds navigation controls to Calendar.
+ *
+ * @class CalendarNavigator
+ * @extends Plugin.Base
+ * @namespace Plugin
+ */
+function CalendarNavigator() {
+    CalendarNavigator.superclass.constructor.apply(this, arguments);
+}
+
+/**
+ * The namespace for the plugin. This will be the property on the widget, which will
+ * reference the plugin instance, when it's plugged in.
+ *
+ * @property NS
+ * @static
+ * @type String
+ * @default "navigator"
+ */
+CalendarNavigator.NS = "navigator";
+
+/**
+ * The NAME of the CalendarNavigator class. Used to prefix events generated
+ * by the plugin class.
+ *
+ * @property NAME
+ * @static
+ * @type String
+ * @default "pluginCalendarNavigator"
+ */
+CalendarNavigator.NAME = "pluginCalendarNavigator";
+
+
+/**
+ * Static property used to define the default attribute
+ * configuration for the plugin.
+ *
+ * @property ATTRS
+ * @type Object
+ * @static
+ */
+CalendarNavigator.ATTRS = {
+
+    /**
+     * The number of months to shift by when the control arrows are clicked.
+     *
+     * @attribute shiftByMonths
+     * @type Number
+     * @default 1 (months)
+     */
+    shiftByMonths : {
+        value: 1
+    }
+};
+
+   /**
+    * The CSS classnames for the calendar navigator controls.
+    * @property CALENDARNAV_STRINGS
+    * @type Object
+    * @readOnly
+    * @protected
+    * @static
+    */
+CalendarNavigator.CALENDARNAV_STRINGS = {
+   prev_month_class: CAL_PREV_M,
+   next_month_class: CAL_NEXT_M
+};
+
+   /**
+    * The template for the calendar navigator previous month control.
+    * @property PREV_MONTH_CONTROL_TEMPLATE
+    * @type String
+    * @protected
+    * @static
+    */
+CalendarNavigator.PREV_MONTH_CONTROL_TEMPLATE = '<a class="yui3-u {prev_month_class}" role="button" aria-label="{prev_month_arialabel}" ' +
+                                                    'tabindex="{control_tabindex}" />';
+   /**
+    * The template for the calendar navigator next month control.
+    * @property NEXT_MONTH_CONTROL_TEMPLATE
+    * @type String
+    * @readOnly
+    * @protected
+    * @static
+    */
+CalendarNavigator.NEXT_MONTH_CONTROL_TEMPLATE = '<a class="yui3-u {next_month_class}" role="button" aria-label="{next_month_arialabel}" ' +
+                                                    'tabindex="{control_tabindex}" />';
+
+
+Y.extend(CalendarNavigator, Y.Plugin.Base, {
+
+    _eventAttachments : {},
+    _controls: {},
+
+    /**
+     * The initializer lifecycle implementation. Modifies the host widget's
+     * render to add navigation controls.
+     *
+     * @method initializer
+     */
+    initializer : function() {
+
+        // After the host has rendered its UI, place the navigation cotnrols
+        this._controls = {};
+        this._eventAttachments = {};
+
+        this.afterHostMethod("renderUI", this._initNavigationControls);
+    },
+
+    /**
+     * The initializer destructor implementation. Responsible for destroying the initialized
+     * control mechanisms.
+     *
+     * @method destructor
+     */
+    destructor : function() {
+
+    },
+
+    /**
+     * Private utility method that focuses on a navigation button when it is clicked
+     * or pressed with a keyboard.
+     *
+     * @method _focusNavigation
+     * @param {Event} ev Click or keydown event from the controls
+     * @protected
+     */
+    _focusNavigation : function (ev) {
+        ev.currentTarget.focus();
+    },
+
+    /**
+     * Private utility method that subtracts months from the host calendar date
+     * based on the control click and the shiftByMonths property.
+     *
+     * @method _subtractMonths
+     * @param {Event} ev Click event from the controls
+     * @protected
+     */
+    _subtractMonths : function (ev) {
+        if ( (ev.type === "click") || (ev.type === "keydown" && (ev.keyCode === 13 || ev.keyCode === 32)) ) {
+            var host = this.get(HOST),
+                oldDate = host.get("date");
+            host.set("date", ydate.addMonths(oldDate, -1*this.get("shiftByMonths")));
+            ev.preventDefault();
+        }
+    },
+
+    /**
+     * Private utility method that adds months to the host calendar date
+     * based on the control click and the shiftByMonths property.
+     *
+     * @method _addMonths
+     * @param {Event} ev Click event from the controls
+     * @protected
+     */
+    _addMonths : function (ev) {
+        if ( (ev.type === "click") || (ev.type === "keydown" && (ev.keyCode === 13 || ev.keyCode === 32)) ) {
+            var host = this.get(HOST),
+                oldDate = host.get("date");
+            host.set("date", ydate.addMonths(oldDate, this.get("shiftByMonths")));
+            ev.preventDefault();
+        }
+    },
+
+
+    _updateControlState : function () {
+
+        var host      = this.get(HOST),
+            startDate = host.get('date'),
+            endDate   = ydate.addMonths(startDate, host._paneNumber - 1),
+            minDate   = host._normalizeDate(host.get("minimumDate")),
+            maxDate   = host._normalizeDate(host.get("maximumDate"));
+
+        if (ydate.areEqual(minDate, startDate)) {
+            if (this._eventAttachments.prevMonth) {
+                this._eventAttachments.prevMonth.detach();
+                this._eventAttachments.prevMonth = false;
+            }
+
+            if (!this._controls.prevMonth.hasClass(CAL_DIS_M)) {
+                this._controls.prevMonth.addClass(CAL_DIS_M).setAttribute("aria-disabled", "true");
+            }
+        }
+        else {
+            if (!this._eventAttachments.prevMonth) {
+            this._eventAttachments.prevMonth = this._controls.prevMonth.on(["click", "keydown"], this._subtractMonths, this);
+            }
+            if (this._controls.prevMonth.hasClass(CAL_DIS_M)) {
+              this._controls.prevMonth.removeClass(CAL_DIS_M).setAttribute("aria-disabled", "false");
+            }
+        }
+
+        if (ydate.areEqual(maxDate, endDate)) {
+            if (this._eventAttachments.nextMonth) {
+                this._eventAttachments.nextMonth.detach();
+                this._eventAttachments.nextMonth = false;
+            }
+
+            if (!this._controls.nextMonth.hasClass(CAL_DIS_M)) {
+                this._controls.nextMonth.addClass(CAL_DIS_M).setAttribute("aria-disabled", "true");
+            }
+        }
+        else {
+            if (!this._eventAttachments.nextMonth) {
+            this._eventAttachments.nextMonth = this._controls.nextMonth.on(["click", "keydown"], this._addMonths, this);
+            }
+            if (this._controls.nextMonth.hasClass(CAL_DIS_M)) {
+              this._controls.nextMonth.removeClass(CAL_DIS_M).setAttribute("aria-disabled", "false");
+            }
+        }
+
+        this._controls.prevMonth.on(["click", "keydown"], this._focusNavigation, this);
+        this._controls.nextMonth.on(["click", "keydown"], this._focusNavigation, this);
+    },
+
+
+
+
+    /**
+     * Private render assist method that renders the previous month control
+     *
+     * @method _renderPrevControls
+     * @private
+     */
+    _renderPrevControls : function () {
+      var prevControlNode = create(substitute (CalendarNavigator.PREV_MONTH_CONTROL_TEMPLATE,
+                               CalendarNavigator.CALENDARNAV_STRINGS));
+      prevControlNode.on("selectstart", this.get(HOST)._preventSelectionStart);
+
+      return prevControlNode;
+    },
+
+    /**
+     * Private render assist method that renders the next month control
+     *
+     * @method _renderNextControls
+     * @private
+     */
+    _renderNextControls : function () {
+      var nextControlNode = create(substitute (CalendarNavigator.NEXT_MONTH_CONTROL_TEMPLATE,
+                               CalendarNavigator.CALENDARNAV_STRINGS));
+      nextControlNode.on("selectstart", this.get(HOST)._preventSelectionStart);
+
+      return nextControlNode;
+    },
+
+    /**
+     * Protected render assist method that initialized and renders the navigation controls.
+     * @method _initNavigationControls
+     * @protected
+     */
+    _initNavigationControls : function() {
+        var host = this.get(HOST),
+            headerCell = host.get(CONTENT_BOX).one("." + CAL_HD);
+
+        CalendarNavigator.CALENDARNAV_STRINGS.control_tabindex = host.get("tabIndex");
+        CalendarNavigator.CALENDARNAV_STRINGS.prev_month_arialabel = "Go to previous month";
+        CalendarNavigator.CALENDARNAV_STRINGS.next_month_arialabel = "Go to next month";
+
+        this._controls.prevMonth = this._renderPrevControls();
+        this._controls.nextMonth = this._renderNextControls();
+
+        this._updateControlState();
+
+        host.after(["dateChange", "minimumDateChange", "maximumDateChange"], this._updateControlState, this);
+
+        headerCell.prepend(this._controls.prevMonth);
+        headerCell.append(this._controls.nextMonth);
+    }
+});
+
+Y.namespace("Plugin").CalendarNavigator = CalendarNavigator;
+
+
+}, '3.17.2', {"requires": ["plugin", "classnamemanager", "datatype-date", "node"], "skinnable": true});
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
+YUI.add('calendar', function (Y, NAME) {
+
+/**
+ * The Calendar component is a UI widget that allows users
+ * to view dates in a two-dimensional month grid, as well as
+ * to select one or more dates, or ranges of dates. Calendar
+ * is generated dynamically and relies on the developer to
+ * provide for a progressive enhancement alternative.
+ *
+ *
+ * @module calendar
+ */
+
+var getCN             = Y.ClassNameManager.getClassName,
+    CALENDAR          = 'calendar',
+    KEY_DOWN          = 40,
+    KEY_UP            = 38,
+    KEY_LEFT          = 37,
+    KEY_RIGHT         = 39,
+    KEY_ENTER         = 13,
+    KEY_SPACE         = 32,
+    CAL_DAY_SELECTED  = getCN(CALENDAR, 'day-selected'),
+    CAL_DAY_HILITED   = getCN(CALENDAR, 'day-highlighted'),
+    CAL_DAY           = getCN(CALENDAR, 'day'),
+    CAL_PREVMONTH_DAY = getCN(CALENDAR, 'prevmonth-day'),
+    CAL_NEXTMONTH_DAY = getCN(CALENDAR, 'nextmonth-day'),
+    CAL_GRID          = getCN(CALENDAR, 'grid'),
+    ydate             = Y.DataType.Date,
+    CAL_PANE          = getCN(CALENDAR, 'pane'),
+    os                = Y.UA.os;
+
+/** Create a calendar view to represent a single or multiple
+    * month range of dates, rendered as a grid with date and
+    * weekday labels.
+    *
+    * @class Calendar
+    * @extends CalendarBase
+    * @param config {Object} Configuration object (see Configuration attributes)
+    * @constructor
+    */
+function Calendar() {
+    Calendar.superclass.constructor.apply ( this, arguments );
+}
+
+Y.Calendar = Y.extend(Calendar, Y.CalendarBase, {
+
+    _keyEvents: [],
+
+    _highlightedDateNode: null,
+
+    /**
+     * A property tracking the last selected date on the calendar, for the
+     * purposes of multiple selection.
+     *
+     * @property _lastSelectedDate
+     * @type Date
+     * @default null
+     * @private
+     */
+    _lastSelectedDate: null,
+
+    /**
+     * Designated initializer. Activates the navigation plugin for the calendar.
+     *
+     * @method initializer
+     */
+    initializer : function () {
+        this.plug(Y.Plugin.CalendarNavigator);
+
+        this._keyEvents = [];
+        this._highlightedDateNode = null;
+        this._lastSelectedDate = null;
+    },
+
+    /**
+     * Overrides the _bindCalendarEvents placeholder in CalendarBase
+     * and binds calendar events during bindUI stage.
+     * @method _bindCalendarEvents
+     * @protected
+     */
+    _bindCalendarEvents : function () {
+        var contentBox = this.get('contentBox'),
+            pane       = contentBox.one("." + CAL_PANE);
+
+        pane.on("selectstart", this._preventSelectionStart);
+        pane.delegate("click", this._clickCalendar, "." + CAL_DAY + ", ." + CAL_PREVMONTH_DAY + ", ." + CAL_NEXTMONTH_DAY, this);
+        pane.delegate("keydown", this._keydownCalendar, "." + CAL_GRID, this);
+        pane.delegate("focus", this._focusCalendarGrid, "." + CAL_GRID, this);
+        pane.delegate("focus", this._focusCalendarCell, "." + CAL_DAY, this);
+        pane.delegate("blur", this._blurCalendarGrid, "." + CAL_GRID + ",." + CAL_DAY, this);
+
+
+        this.after(['minimumDateChange', 'maximumDateChange'], this._afterCustomRendererChange);
+    },
+
+    /**
+     * Prevents text selection if it is started within the calendar pane
+     * @method _preventSelectionStart
+     * @param event {Event} The selectstart event
+     * @protected
+     */
+    _preventSelectionStart : function (event) {
+        event.preventDefault();
+    },
+
+    /**
+     * Highlights a specific date node with keyboard highlight class
+     * @method _highlightDateNode
+     * @param oDate {Date} Date corresponding the node to be highlighted
+     * @protected
+     */
+    _highlightDateNode : function (oDate) {
+        this._unhighlightCurrentDateNode();
+        var newNode = this._dateToNode(oDate);
+        newNode.focus();
+        newNode.addClass(CAL_DAY_HILITED);
+    },
+
+    /**
+     * Unhighlights a specific date node currently highlighted with keyboard highlight class
+     * @method _unhighlightCurrentDateNode
+     * @protected
+     */
+    _unhighlightCurrentDateNode : function () {
+        var allHilitedNodes = this.get("contentBox").all("." + CAL_DAY_HILITED);
+        if (allHilitedNodes) {
+            allHilitedNodes.removeClass(CAL_DAY_HILITED);
+        }
+    },
+
+    /**
+     * Returns the grid number for a specific calendar grid (for multi-grid templates)
+     * @method _getGridNumber
+     * @param gridNode {Node} Node corresponding to a specific grid
+     * @protected
+     */
+    _getGridNumber : function (gridNode) {
+        var idParts = gridNode.get("id").split("_").reverse();
+
+        return parseInt(idParts[0], 10);
+    },
+
+    /**
+     * Handler for loss of focus of calendar grid
+     * @method _blurCalendarGrid
+     * @protected
+     */
+    _blurCalendarGrid : function () {
+        this._unhighlightCurrentDateNode();
+    },
+
+
+    /**
+     * Handler for gain of focus of calendar cell
+     * @method _focusCalendarCell
+     * @protected
+     */
+    _focusCalendarCell : function (ev) {
+        this._highlightedDateNode = ev.target;
+        ev.stopPropagation();
+    },
+
+    /**
+     * Handler for gain of focus of calendar grid
+     * @method _focusCalendarGrid
+     * @protected
+     */
+    _focusCalendarGrid : function () {
+        this._unhighlightCurrentDateNode();
+        this._highlightedDateNode = null;
+    },
+
+    /**
+     * Handler for keyboard press on a calendar grid
+     * @method _keydownCalendar
+     * @protected
+     */
+    _keydownCalendar : function (ev) {
+        var gridNum = this._getGridNumber(ev.target),
+            curDate = !this._highlightedDateNode ? null : this._nodeToDate(this._highlightedDateNode),
+            keyCode = ev.keyCode,
+            dayNum = 0,
+            dir = '',
+            selMode,
+            newDate,
+            startDate,
+            endDate,
+            lastPaneDate;
+
+        switch(keyCode) {
+            case KEY_DOWN:
+                dayNum = 7;
+                dir = 's';
+                break;
+            case KEY_UP:
+                dayNum = -7;
+                dir = 'n';
+                break;
+            case KEY_LEFT:
+                dayNum = -1;
+                dir = 'w';
+                break;
+            case KEY_RIGHT:
+                dayNum = 1;
+                dir = 'e';
+                break;
+            case KEY_SPACE: case KEY_ENTER:
+                ev.preventDefault();
+                if (this._highlightedDateNode) {
+                    selMode = this.get("selectionMode");
+                    if (selMode === "single" && !this._highlightedDateNode.hasClass(CAL_DAY_SELECTED)) {
+                            this._clearSelection(true);
+                            this._addDateToSelection(curDate);
+                    } else if (selMode === "multiple" || selMode === "multiple-sticky") {
+                        if (this._highlightedDateNode.hasClass(CAL_DAY_SELECTED)) {
+                            this._removeDateFromSelection(curDate);
+                        } else {
+                            this._addDateToSelection(curDate);
+                        }
+                    }
+                }
+                break;
+        }
+
+
+        if (keyCode === KEY_DOWN || keyCode === KEY_UP || keyCode === KEY_LEFT || keyCode === KEY_RIGHT) {
+
+            if (!curDate) {
+                curDate = ydate.addMonths(this.get("date"), gridNum);
+                dayNum = 0;
+            }
+
+            ev.preventDefault();
+
+            newDate = ydate.addDays(curDate, dayNum);
+            startDate = this.get("date");
+            endDate = ydate.addMonths(this.get("date"), this._paneNumber - 1);
+            lastPaneDate = new Date(endDate);
+            endDate.setDate(ydate.daysInMonth(endDate));
+
+            if (ydate.isInRange(newDate, startDate, endDate)) {
+/*
+                var paneShift = (newDate.getMonth() - curDate.getMonth()) % 10;
+
+                if (paneShift != 0) {
+                    var newGridNum = gridNum + paneShift,
+                            contentBox = this.get('contentBox'),
+                            newPane = contentBox.one("#" + this._calendarId + "_pane_" + newGridNum);
+                            newPane.focus();
+                }
+*/
+                this._highlightDateNode(newDate);
+            } else if (ydate.isGreater(startDate, newDate)) {
+                if (!ydate.isGreaterOrEqual(this.get("minimumDate"), startDate)) {
+                    this.set("date", ydate.addMonths(startDate, -1));
+                    this._highlightDateNode(newDate);
+                }
+            } else if (ydate.isGreater(newDate, endDate)) {
+                if (!ydate.isGreaterOrEqual(lastPaneDate, this.get("maximumDate"))) {
+                    this.set("date", ydate.addMonths(startDate, 1));
+                    this._highlightDateNode(newDate);
+                }
+            }
+        }
+    },
+
+    /**
+     * Handles the calendar clicks based on selection mode.
+     * @method _clickCalendar
+     * @param {Event} ev A click event
+     * @private
+     */
+    _clickCalendar : function (ev) {
+        var clickedCell = ev.currentTarget,
+            clickedCellIsDay = clickedCell.hasClass(CAL_DAY) &&
+                                !clickedCell.hasClass(CAL_PREVMONTH_DAY) &&
+                                !clickedCell.hasClass(CAL_NEXTMONTH_DAY),
+
+        clickedCellIsSelected = clickedCell.hasClass(CAL_DAY_SELECTED),
+        selectedDate;
+
+        switch (this.get("selectionMode")) {
+            case("single"):
+                if (clickedCellIsDay) {
+                    if (!clickedCellIsSelected) {
+                        this._clearSelection(true);
+                        this._addDateToSelection(this._nodeToDate(clickedCell));
+                    }
+                }
+                break;
+            case("multiple-sticky"):
+                if (clickedCellIsDay) {
+                    if (clickedCellIsSelected) {
+                        this._removeDateFromSelection(this._nodeToDate(clickedCell));
+                    } else {
+                        this._addDateToSelection(this._nodeToDate(clickedCell));
+                    }
+                }
+                break;
+            case("multiple"):
+                if (clickedCellIsDay) {
+                    if (!ev.metaKey && !ev.ctrlKey && !ev.shiftKey) {
+                        this._clearSelection(true);
+                        this._lastSelectedDate = this._nodeToDate(clickedCell);
+                        this._addDateToSelection(this._lastSelectedDate);
+                    } else if (((os === 'macintosh' && ev.metaKey) || (os !== 'macintosh' && ev.ctrlKey)) && !ev.shiftKey) {
+                        if (clickedCellIsSelected) {
+                            this._removeDateFromSelection(this._nodeToDate(clickedCell));
+                            this._lastSelectedDate = null;
+                        } else {
+                            this._lastSelectedDate = this._nodeToDate(clickedCell);
+                            this._addDateToSelection(this._lastSelectedDate);
+                        }
+                    } else if (((os === 'macintosh' && ev.metaKey) || (os !== 'macintosh' && ev.ctrlKey)) && ev.shiftKey) {
+                        if (this._lastSelectedDate) {
+                            selectedDate = this._nodeToDate(clickedCell);
+                            this._addDateRangeToSelection(selectedDate, this._lastSelectedDate);
+                            this._lastSelectedDate = selectedDate;
+                        } else {
+                            this._lastSelectedDate = this._nodeToDate(clickedCell);
+                            this._addDateToSelection(this._lastSelectedDate);
+                        }
+                    } else if (ev.shiftKey) {
+                        if (this._lastSelectedDate) {
+                            selectedDate = this._nodeToDate(clickedCell);
+                            this._clearSelection(true);
+                            this._addDateRangeToSelection(selectedDate, this._lastSelectedDate);
+                            this._lastSelectedDate = selectedDate;
+                        } else {
+                            this._clearSelection(true);
+                            this._lastSelectedDate = this._nodeToDate(clickedCell);
+                            this._addDateToSelection(this._lastSelectedDate);
+                        }
+                    }
+                }
+                break;
+        }
+
+        if (clickedCellIsDay) {
+            /**
+            * Fired when a specific date cell in the calendar is clicked. The event carries a
+            * payload which includes a `cell` property corresponding to the node of the actual
+            * date cell, and a `date` property, with the `Date` that was clicked.
+            *
+            * @event dateClick
+            */
+            this.fire("dateClick", {cell: clickedCell, date: this._nodeToDate(clickedCell)});
+        } else if (clickedCell.hasClass(CAL_PREVMONTH_DAY)) {
+            /**
+            * Fired when any of the previous month's days displayed before the calendar grid
+            * are clicked.
+            *
+            * @event prevMonthClick
+            */
+            this.fire("prevMonthClick");
+        } else if (clickedCell.hasClass(CAL_NEXTMONTH_DAY)) {
+            /**
+            * Fired when any of the next month's days displayed after the calendar grid
+            * are clicked.
+            *
+            * @event nextMonthClick
+            */
+            this.fire("nextMonthClick");
+        }
+    },
+
+    /**
+     * Overrides CalendarBase.prototype._canBeSelected to disable
+     * nodes earlier than minimumDate and later than maximumDate
+     * @method _canBeSelected
+     * @private
+     */
+    _canBeSelected : function (date) {
+        var minDate = this.get('minimumDate'),
+            maxDate = this.get('maximumDate');
+
+        if ((minDate && !ydate.isGreaterOrEqual(date, minDate)) ||
+            (maxDate &&  ydate.isGreater(date, maxDate))) {
+            return false;
+        }
+
+        return Calendar.superclass._canBeSelected.call(this, date);
+    },
+
+    /**
+     * Overrides CalendarBase.prototype._renderCustomRules to disable
+     * nodes earlier than minimumDate and later than maximumDate
+     * @method _renderCustomRules
+     * @private
+     */
+    _renderCustomRules: function () {
+        Calendar.superclass._renderCustomRules.call(this);
+
+        var minDate = this.get('minimumDate'),
+            maxDate = this.get('maximumDate'),
+            dates = [],
+            i, l,
+            paneDate,
+            paneNum;
+
+        if (!minDate && !maxDate) {
+            return;
+        }
+
+        for (paneNum = 0; paneNum < this._paneNumber; paneNum++) {
+            paneDate = ydate.addMonths(this.get("date"), paneNum);
+            dates = dates.concat(ydate.listOfDatesInMonth(paneDate));
+        }
+
+        if (minDate) {
+            for (i = 0, l = dates.length; i < l; i++) {
+                if (!ydate.isGreaterOrEqual(dates[i], minDate)) {
+                    this._disableDate(dates[i]);
+                } else {
+                    break;
+                }
+            }
+        }
+
+        if (maxDate) {
+            for (i = dates.length - 1; i >= 0; i--) {
+                if (ydate.isGreater(dates[i], maxDate)) {
+                    this._disableDate(dates[i]);
+                } else {
+                    break;
+                }
+            }
+        }
+    },
+
+    /**
+     * Subtracts one month from the current calendar view.
+     * @method subtractMonth
+     * @return {Calendar} A reference to this object
+     * @chainable
+     */
+    subtractMonth : function (e) {
+        this.set("date", ydate.addMonths(this.get("date"), -1));
+        if (e) {
+            e.halt();
+        }
+        return this;
+    },
+
+    /**
+     * Subtracts one year from the current calendar view.
+     * @method subtractYear
+     * @return {Calendar} A reference to this object
+     * @chainable
+     */
+    subtractYear : function (e) {
+        this.set("date", ydate.addYears(this.get("date"), -1));
+        if (e) {
+            e.halt();
+        }
+        return this;
+    },
+
+    /**
+     * Adds one month to the current calendar view.
+     * @method addMonth
+     * @return {Calendar} A reference to this object
+     * @chainable
+     */
+    addMonth : function (e) {
+        this.set("date", ydate.addMonths(this.get("date"), 1));
+        if (e) {
+            e.halt();
+        }
+        return this;
+    },
+
+    /**
+     * Adds one year to the current calendar view.
+     * @method addYear
+     * @return {Calendar} A reference to this object
+     * @chainable
+     */
+    addYear : function (e) {
+        this.set("date", ydate.addYears(this.get("date"), 1));
+        if (e) {
+            e.halt();
+        }
+        return this;
+    }
+}, {
+    /**
+    * The identity of the widget.
+    *
+    * @property NAME
+    * @type String
+    * @default 'calendar'
+    * @readOnly
+    * @protected
+    * @static
+    */
+    NAME: "calendar",
+
+    /**
+    * Static property used to define the default attribute configuration of
+    * the Widget.
+    *
+    * @property ATTRS
+    * @type {Object}
+    * @protected
+    * @static
+    */
+    ATTRS: {
+
+        /**
+         * A setting specifying the type of selection the calendar allows.
+         * Possible values include:
+         * <ul>
+         *   <li>`single` - One date at a time</li>
+         *   <li>`multiple-sticky` - Multiple dates, selected one at a time (the dates "stick"). This option
+         *   is appropriate for mobile devices, where function keys from the keyboard are not available.</li>
+         *   <li>`multiple` - Multiple dates, selected with Ctrl/Meta keys for additional single
+         *   dates, and Shift key for date ranges.</li>
+         *
+         * @attribute selectionMode
+         * @type String
+         * @default single
+         */
+        selectionMode: {
+            value: "single"
+        },
+
+        /**
+         * The date corresponding to the current calendar view. Always
+         * normalized to the first of the month that contains the date
+         * at assignment time. Used as the first date visible in the
+         * calendar.
+         *
+         * @attribute date
+         * @type Date
+         * @default Today's date as set on the user's computer.
+         */
+        date: {
+            value: new Date(),
+            lazyAdd: false,
+            setter: function (val) {
+
+                var newDate    = this._normalizeDate(val),
+                    newEndDate = ydate.addMonths(newDate, this._paneNumber - 1),
+                    minDate    = this.get("minimumDate"),
+                    maxDate    = this.get("maximumDate");
+
+                if ((!minDate || ydate.isGreaterOrEqual(newDate, minDate)) &&
+                    (!maxDate || ydate.isGreaterOrEqual(maxDate, newEndDate))
+                ) {
+                    return newDate;
+                } else if (minDate && ydate.isGreater(minDate, newDate)) {
+                    return this._normalizeDate(minDate);
+                } else if (maxDate && ydate.isGreater(newEndDate, maxDate)) {
+                    return ydate.addMonths(this._normalizeDate(maxDate), 1 - this._paneNumber);
+                }
+            }
+        },
+
+        /**
+         * Unless minimumDate is null, it will not be possible to display and select dates earlier than this one.
+         *
+         * @attribute minimumDate
+         * @type Date
+         * @default null
+         */
+        minimumDate: {
+            value: null,
+            setter: function (val) {
+                if (Y.Lang.isDate(val)) {
+                    var curDate = this.get('date'),
+                        newMin  = this._normalizeTime(val);
+                    if (curDate && !ydate.isGreaterOrEqual(curDate, newMin)) {
+                        this.set('date', val);
+                    }
+                    return newMin;
+                } else {
+                    return null;
+                }
+            }
+        },
+
+        /**
+         * Unless maximumDate is null, it will not be possible to display and select dates later than this one.
+         *
+         * @attribute maximumDate
+         * @type Date
+         * @default null
+         */
+        maximumDate: {
+            value: null,
+            setter: function (val) {
+                if (Y.Lang.isDate(val)) {
+                    var curDate = this.get('date');
+
+                    if (curDate && !ydate.isGreaterOrEqual(val, ydate.addMonths(curDate, this._paneNumber - 1))) {
+                        this.set('date', ydate.addMonths(this._normalizeDate(val), 1 - this._paneNumber));
+                    }
+
+                    return this._normalizeTime(val);
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+});
+
+
+}, '3.17.2', {"requires": ["calendar-base", "calendarnavigator"], "skinnable": true});
+YUI.add('moodle-form-dateselector', function (Y, NAME) {
+
+/**
+ * Add some custom methods to the node class to make our lives a little
+ * easier within this module.
+ */
+Y.mix(Y.Node.prototype, {
+    /**
+     * Gets the value of the first option in the select box
+     */
+    firstOptionValue: function() {
+        if (this.get('nodeName').toLowerCase() !== 'select') {
+            return false;
+        }
+        return this.one('option').get('value');
+    },
+    /**
+     * Gets the value of the last option in the select box
+     */
+    lastOptionValue: function() {
+        if (this.get('nodeName').toLowerCase() !== 'select') {
+            return false;
+        }
+        return this.all('option').item(this.optionSize()-1).get('value');
+    },
+    /**
+     * Gets the number of options in the select box
+     */
+    optionSize: function() {
+        if (this.get('nodeName').toLowerCase() !== 'select') {
+            return false;
+        }
+        return parseInt(this.all('option').size(), 10);
+    },
+    /**
+     * Gets the value of the selected option in the select box
+     */
+    selectedOptionValue: function() {
+        if (this.get('nodeName').toLowerCase() !== 'select') {
+            return false;
+        }
+        return this.all('option').item(this.get('selectedIndex')).get('value');
+    }
+});
+
+M.form = M.form || {};
+M.form.dateselector = {
+    panel: null,
+    calendar: null,
+    currentowner: null,
+    hidetimeout: null,
+    repositiontimeout: null,
+    init_date_selectors: function(config) {
+        if (this.panel === null) {
+            this.initPanel(config);
+        }
+        Y.all('.fdate_time_selector').each(function() {
+            config.node = this;
+            new CALENDAR(config);
+        });
+        Y.all('.fdate_selector').each(function() {
+            config.node = this;
+            new CALENDAR(config);
+        });
+    },
+    initPanel: function(config) {
+        this.panel = new Y.Overlay({
+            visible: false,
+            bodyContent: Y.Node.create('<div id="dateselector-calendar-content"></div>'),
+            id: 'dateselector-calendar-panel'
+        });
+        this.panel.render(document.body);
+        // zIndex is added by panel.render() and is set to 0.
+        // Remove zIndex from panel, as this should be set by CSS. This can be done by removeAttr but
+        // ie8 fails and there is know issue for it.
+        Y.one('#dateselector-calendar-panel').setStyle('zIndex', null);
+        this.panel.on('heightChange', this.fix_position, this);
+
+        Y.one('#dateselector-calendar-panel').on('click', function(e){e.halt();});
+        Y.one(document.body).on('click', this.document_click, this);
+
+        this.calendar = new MOODLECALENDAR({
+            contentBox: "#dateselector-calendar-content",
+            width: "300px",
+            showPrevMonth: true,
+            showNextMonth: true,
+            firstdayofweek: config.firstdayofweek,
+            WEEKDAYS_MEDIUM: [
+                config.sun,
+                config.mon,
+                config.tue,
+                config.wed,
+                config.thu,
+                config.fri,
+                config.sat ]
+        });
+    },
+    cancel_any_timeout: function() {
+        if (this.hidetimeout) {
+            clearTimeout(this.hidetimeout);
+            this.hidetimeout = null;
+        }
+        if (this.repositiontimeout) {
+            clearTimeout(this.repositiontimeout);
+            this.repositiontimeout = null;
+        }
+    },
+    delayed_reposition: function() {
+        if (this.repositiontimeout) {
+            clearTimeout(this.repositiontimeout);
+            this.repositiontimeout = null;
+        }
+        this.repositiontimeout = setTimeout(this.fix_position, 500);
+    },
+    fix_position: function() {
+        if (this.currentowner) {
+            var alignpoints = [
+                Y.WidgetPositionAlign.BL,
+                Y.WidgetPositionAlign.TL
+            ];
+
+            // Change the alignment if this is an RTL language.
+            if (window.right_to_left()) {
+                alignpoints = [
+                    Y.WidgetPositionAlign.BR,
+                    Y.WidgetPositionAlign.TR
+                ];
+            }
+
+
+            this.panel.set('align', {
+                node: this.currentowner.get('node').one('select'),
+                points: alignpoints
+            });
+        }
+    },
+    document_click: function(e) {
+        if (this.currentowner) {
+            if (this.currentowner.get('node').ancestor('div').contains(e.target)) {
+                setTimeout(function() {
+                    M.form.dateselector.cancel_any_timeout();
+                }, 100);
+            } else {
+                this.currentowner.release_calendar(e);
+            }
+        }
+    }
+};
+/**
+ * Provides the Moodle Calendar class.
+ *
+ * @module moodle-form-dateselector
+ */
+
+/**
+ * A class to overwrite the YUI3 Calendar in order to change the strings..
+ *
+ * @class M.form_moodlecalendar
+ * @constructor
+ * @extends Calendar
+ */
+var MOODLECALENDAR = function() {
+    MOODLECALENDAR.superclass.constructor.apply(this, arguments);
+};
+
+Y.extend(MOODLECALENDAR, Y.Calendar, {
+        initializer: function(cfg) {
+            this.set("strings.very_short_weekdays", cfg.WEEKDAYS_MEDIUM);
+            this.set("strings.first_weekday", cfg.firstdayofweek);
+        }
+    }, {
+        NAME: 'Calendar',
+        ATTRS: {}
+    }
+);
+
+M.form_moodlecalendar = M.form_moodlecalendar || {};
+M.form_moodlecalendar.initializer = function(params) {
+    return new MOODLECALENDAR(params);
+};
+/**
+ * Provides the Calendar class.
+ *
+ * @module moodle-form-dateselector
+ */
+
+/**
+ * Calendar class
+ */
+var CALENDAR = function() {
+    CALENDAR.superclass.constructor.apply(this, arguments);
+};
+CALENDAR.prototype = {
+    panel: null,
+    yearselect: null,
+    monthselect: null,
+    dayselect: null,
+    calendarimage: null,
+    enablecheckbox: null,
+    closepopup: true,
+    initializer: function() {
+        var controls = this.get('node').all('select');
+        controls.each(function(node){
+            if (node.get('name').match(/\[year\]/)) {
+                this.yearselect = node;
+            } else if (node.get('name').match(/\[month\]/)) {
+                this.monthselect = node;
+            } else if (node.get('name').match(/\[day\]/)) {
+                this.dayselect = node;
+            }
+            node.after('change', this.handle_select_change, this);
+        }, this);
+
+        // Loop through the input fields.
+        var inputs = this.get('node').all('input, a');
+        inputs.each(function(node) {
+            // Check if the current node is a calendar image field.
+            if (node.get('name').match(/\[calendar\]/)) {
+                // Set it so that when the image is clicked the pop-up displays.
+                node.on('click', this.focus_event, this);
+                // Set the node to the calendarimage variable.
+                this.calendarimage = node;
+            } else { // Must be the enabled checkbox field.
+                // If the enable checkbox is clicked we want to either disable/enable the calendar image.
+                node.on('click', this.toggle_calendar_image, this);
+                // Set the node to the enablecheckbox variable.
+                this.enablecheckbox = node;
+            }
+            // Ensure that the calendarimage and enablecheckbox values have been set.
+            if (this.calendarimage && this.enablecheckbox) {
+                // Set the calendar icon status depending on the value of the checkbox.
+                this.toggle_calendar_image();
+            }
+        }, this);
+    },
+    focus_event: function(e) {
+        M.form.dateselector.cancel_any_timeout();
+        // If the current owner is set, then the pop-up is currently being displayed, so hide it.
+        if (M.form.dateselector.currentowner === this) {
+            this.release_calendar();
+        } else if ((this.enablecheckbox === null)
+            || (this.enablecheckbox.get('checked'))) { // Must be hidden. If the field is enabled display the pop-up.
+            this.claim_calendar();
+        }
+        // Stop the input image field from submitting the form.
+        e.preventDefault();
+    },
+    handle_select_change: function() {
+        // It may seem as if the following variable is not used, however any call to set_date_from_selects will trigger a
+        // call to set_selects_from_date if the calendar is open as the date has changed. Whenever the calendar is displayed
+        // the set_selects_from_date function is set to trigger on any date change (see function connect_handlers).
+        this.closepopup = false;
+        this.set_date_from_selects();
+        this.closepopup = true;
+    },
+    claim_calendar: function() {
+        M.form.dateselector.cancel_any_timeout();
+        if (M.form.dateselector.currentowner === this) {
+            return;
+        }
+        if (M.form.dateselector.currentowner) {
+            M.form.dateselector.currentowner.release_calendar();
+        }
+        if (M.form.dateselector.currentowner !== this) {
+            this.connect_handlers();
+            this.set_date_from_selects();
+        }
+        M.form.dateselector.currentowner = this;
+        M.form.dateselector.calendar.set('mindate', new Date(this.yearselect.firstOptionValue(), 0, 1));
+        M.form.dateselector.calendar.set('maxdate', new Date(this.yearselect.lastOptionValue(), 11, 31));
+        M.form.dateselector.panel.show();
+        M.form.dateselector.calendar.show();
+        M.form.dateselector.fix_position();
+        setTimeout(function() {
+            M.form.dateselector.cancel_any_timeout();
+        }, 100);
+
+        // Focus on the calendar.
+        M.form.dateselector.calendar.focus();
+
+        // When the user tab out the calendar, close it.
+        Y.one(document.body).on('keyup', function(e) {
+            // hide the calendar if we press a key and the calendar is not focussed, or if we press ESC in the calendar.
+            if ((M.form.dateselector.currentowner === this && !M.form.dateselector.calendar.get('focused')) ||
+                ((e.keyCode === 27) && M.form.dateselector.calendar.get('focused'))) {
+                // Focus back on the calendar button.
+                this.calendarimage.focus();
+                this.release_calendar();
+            }
+        }, this);
+
+    },
+    set_date_from_selects: function() {
+        var year = parseInt(this.yearselect.get('value'), 10);
+        var month = parseInt(this.monthselect.get('value'), 10) - 1;
+        var day = parseInt(this.dayselect.get('value'), 10);
+        var date = new Date(year, month, day);
+        M.form.dateselector.calendar.deselectDates();
+        M.form.dateselector.calendar.selectDates([date]);
+        M.form.dateselector.calendar.set("date", date);
+        M.form.dateselector.calendar.render();
+        if (date.getDate() !== day) {
+            // Must've selected the 29 to 31st of a month that doesn't have such dates.
+            this.dayselect.set('value', date.getDate());
+            this.monthselect.set('value', date.getMonth() + 1);
+        }
+    },
+    set_selects_from_date: function(ev) {
+        var date = ev.newSelection[0];
+        var newyear = Y.DataType.Date.format(date, {format: "%Y"});
+        var newindex = newyear - this.yearselect.firstOptionValue();
+        this.yearselect.set('selectedIndex', newindex);
+        this.monthselect.set('selectedIndex', Y.DataType.Date.format(date, {format: "%m"}) - this.monthselect.firstOptionValue());
+        this.dayselect.set('selectedIndex', Y.DataType.Date.format(date, {format: "%d"}) - this.dayselect.firstOptionValue());
+        if (M.form.dateselector.currentowner && this.closepopup) {
+            this.release_calendar();
+        }
+    },
+    connect_handlers: function() {
+        M.form.dateselector.calendar.on('selectionChange', this.set_selects_from_date, this, true);
+    },
+    release_calendar: function(e) {
+        var wasOwner = M.form.dateselector.currentowner === this;
+        M.form.dateselector.panel.hide();
+        M.form.dateselector.calendar.detach('selectionChange', this.set_selects_from_date);
+        M.form.dateselector.calendar.hide();
+        M.form.dateselector.currentowner = null;
+
+        // Put the focus back to the image calendar that we clicked, only if it was visible.
+        if (wasOwner && (e === null || typeof e === "undefined" || e.type !== "click")) {
+            this.calendarimage.focus();
+        }
+    },
+    toggle_calendar_image: function() {
+        // If the enable checkbox is det checked, disable the image.
+        if (!this.enablecheckbox.get('checked')) {
+            this.calendarimage.set('disabled', 'disabled');
+            this.calendarimage.setStyle('cursor', 'default');
+            this.release_calendar();
+        } else {
+            this.calendarimage.set('disabled', false);
+            this.calendarimage.setStyle('cursor', null);
+        }
+    }
+};
+Y.extend(CALENDAR, Y.Base, CALENDAR.prototype, {
+    NAME: 'Date Selector',
+    ATTRS: {
+        firstdayofweek : {
+            validator: Y.Lang.isString
+        },
+        node: {
+            setter: function(node) {
+                return Y.one(node);
+            }
+        }
+    }
+});
+
+
+}, '@VERSION@', {"requires": ["base", "node", "overlay", "calendar"]});
+®DaèÅ      UIı(UIı(;%lW$ë(  ˝:http://qa.moodle.net/theme/yui_combo.php?3.17.2/intl/intl.js&3.17.2/calendar-base/lang/calendar-base_en.js&3.17.2/datatype-date-parse/datatype-date-parse.js&3.17.2/datatype-date-format/lang/datatype-date-format_en-US.js&3.17.2/datatype-date-format/datatype-date-format.js&3.17.2/datatype-date-math/datatype-date-math.js&3.17.2/calendar-base/calendar-base.js&3.17.2/plugin/plugin.js&3.17.2/calendarnavigator/calendarnavigator.js&3.17.2/calendar/calendar.js&m/1430909899/form/dateselector/dateselector-debug.js request-method GET request-Accept-Encoding gzip, deflate request-User-Agent Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0 response-head HTTP/1.1 200 OK
+Date: Wed, 06 May 2015 11:04:34 GMT
+Content-Type: application/javascript
+Content-Disposition: inline; filename="combo"
+Last-Modified: Wed, 06 May 2015 10:55:06 GMT
+Expires: Sat, 30 Apr 2016 11:04:34 GMT
+Cache-Control: public, max-age=31104000
+Etag: "9a967cbc8c5f9b7861bbc2df9bde2ab200f83da4"
+Vary: Accept-Encoding,User-Agent
+Server: cloudflare-nginx
+CF-RAY: 1e24347f0ed61407-LAX
+Accept-Ranges: none
+Content-Length: 141163
+ uncompressed-len 0  'k

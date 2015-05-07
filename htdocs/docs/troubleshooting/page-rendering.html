@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Troubleshooting Page Loading or Rendering Problems</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='index.html'>Trouble Shooting</a>
+</li><li><a href='startup-issues.html'>Startup Issues</a>
+<ul><li><a href='startup-issues.html#Browsers do not show up on the Sahi Dashboard'>Browsers do not show up on the Sahi Dashboard</a>
+</li><li><a href='startup-issues.html#Browser does not load Application page'>Browser does not load Application page</a>
+</li><li><a href='startup-issues.html#Browser does not load page in local network when fixed external proxy is configured'>Browser does not load page in local network when fixed external proxy is configured</a>
+</li><li><a href='startup-issues.html#Elements on a page are not recognized on an IE browser'>Elements on a page are not recognized on an IE browser</a>
+</li></ul></li><li><a href='page-rendering.html'>Page Loading or Rendering</a>
+</li><li><a href='drag-drop-issues.html'>Drag and drop issues</a>
+<ul><li><a href='drag-drop-issues.html#Drag and drop does not seem to work'>Drag and drop does not seem to work</a>
+</li></ul></li><li><a href='eclipse-integration-issues.html'>Eclipse integration issues</a>
+<ul><li><a href='eclipse-integration-issues.html#Syntax highlighting does not work'>Syntax highlighting does not work</a>
+</li><li><a href='eclipse-integration-issues.html#Syntax highlighting works but intellisense does not seem to work'>Syntax highlighting works but intellisense does not seem to work</a>
+</li></ul></li><li><a href='send-email-issues.html'>Email related issues</a>
+<ul><li><a href='send-email-issues.html#sendEmail fails for Microsoft Outlook with Permission denied: connect error'>sendEmail fails for Microsoft Outlook with Permission denied: connect error</a>
+</li></ul></li><li><a href='flex-issues.html'>Flex Issues</a>
+<ul><li><a href='flex-issues.html#Flex controls show up as _object or _embed'>Flex controls show up as _object or _embed</a>
+</li></ul></li><li><a href='calling-custom-java-code.html'>Calling custom Java code</a>
+<ul><li><a href='calling-custom-java-code.html#TypeError: Cannot call property ... in object'>TypeError: Cannot call property ... in object</a>
+</li></ul></li><li><a href='oracle-forms-issues.html'>Oracle Forms Issues</a>
+<ul><li><a href='oracle-forms-issues.html#Oracle forms is unable to connect'>Oracle forms is unable to connect</a>
+</li></ul></li><li><a href='proxy-issues.html'>Proxy Issues</a>
+<ul><li><a href='proxy-issues.html#Cannot connect to internet when Sahi is not running'>Cannot connect to internet when Sahi is not running</a>
+</li></ul></li><li><a href='ssl-issues.html'>SSL Issues</a>
+<ul><li><a href='ssl-issues.html#Handshake failure'>Handshake failure</a>
+</li></ul></li><li><a href='misc-issues.html'>Miscellaneous Issues</a>
+<ul><li><a href='misc-issues.html#Content blocked from being loaded'>Content blocked from being loaded</a>
+</li><li><a href='misc-issues.html#Element's class identified incorrectly'>Element's class identified incorrectly</a>
+</li><li><a href='misc-issues.html#Controller does not open in Linux'>Controller does not open in Linux</a>
+</li><li><a href='misc-issues.html#Multiple Chrome instances'>Multiple Chrome instances</a>
+</li><li><a href='misc-issues.html#Elements not getting identified on Safari browser'>Elements not getting identified on Safari browser</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Troubleshooting Page Loading or Rendering Problems</h2>
+      <!-- Troubleshooting Page Loading or Rendering Problems -->
+<br/>
+<div class="symptom"><strong class='heading'>symptom</strong>
+<ul>
+<li>AJAX pages do not render correctly when navigating through Sahi</li>
+<li>You get Javascript errors only when going through Sahi</li>
+</ul>
+</div>
+<br/>
+<div class="cause"><strong class='heading'>cause</strong>
+Sahi controls the browser by injecting javascript into web pages. However there are various<br/>
+requests like XMLHttpRequests, javascript, css, etc. where Sahi should not inject its code.<br/>
+While this is correctly detected and handled in most cases, there are instances where one<br/>
+may need to explicitly ask Sahi not to inject code. In such instances, regular expression<br/>
+patterns can be added to exclude_inject.txt. When a URL matches this pattern,<br/>
+Sahi will NOT inject its code.<br/>
+</div>
+<br/>
+<div class="resolution"><strong class='heading'>resolution</strong>
+<ol>
+<li>Just before loading the page through Sahi, click on "Enable Traffic Logs" link on the Dashboard.</li>
+<li>Then navigate to your page that causes the error. Once the page/error shows up, click on "Disable Traffic Logs" on the Dashboard.</li>
+<li>Click on the arrow near the "Enable Traffic Logs" and it should open up explorer at sahi/usedata/logs (If it does not open just go to that directory)</li>
+<li>Go to traffic folder</li>
+<li>You will see timestamped folders. Open the latest one, and look inside for various folders which represent individual URL calls made by Sahi.<br/>
+Inside those folders, you will see response.body_modified_xxx and response.body_unmodified_xxx. Open the modified one in a text editor and check<br/>
+if there is Sahi injected content in a non-html file.<br/>
+<li>If there is, open the corresponding request.header_unmodified.txt file and get the full URL from the first line. It would look something like:<br/>
+<pre><code>GET http://sahi.co.in/demo/clickCombo.htm HTTP/1.1</code></pre>
+Add the URL or a pattern of it in exclude_inject.txt file.<br/>
+<br/>
+You can do this<br/>
+<ol><li>by directly editing sahi/userdata/config/exclude_inject.txt</li></ol>
+or<br/>
+<ol>
+<li>Click on 'Configure' link on Dashboard</li>
+<li>open 'exclude_inject.txt'</li>
+<li>add the full URL or URL pattern</li>
+<li>click Save</li>
+</ol>
+</li>
+<li>Restart Sahi, clear browser cache, and check.</li>
+</ol>
+</div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

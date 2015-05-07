@@ -1,0 +1,9 @@
+_setXHRReadyStatesToWaitFor("2,3");
+_navigateTo("xhrReadyStateTest.htm");
+var $firstTime = new Date().getTime();
+_click(_button("b1"));
+_log("here");
+var $secondTime = new Date().getTime();
+var $diff = $secondTime - $firstTime;
+_log($diff);
+_assert($diff > 1000);

@@ -1,0 +1,9 @@
+function testRightClick() {
+	_assertExists(_f("sampleId1").textarea("fTTextArea"));
+	_assertEqual("", _getValue(_f("sampleId1").textarea("fTTextArea")));
+	_rightClick(_f("sampleId1").button("Submit"));
+	_assertEqual("Right Cliked", _getValue(_f("sampleId1").textarea("fTTextArea")));
+}
+
+_navigateTo("/sfl/TestApplication.html");
+testRightClick();

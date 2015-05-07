@@ -1,0 +1,5 @@
+function windowNameShouldBeBlankByDefault() {
+	// SHOULD NOT BE NULL. sessvars will fail.
+	_assertEqual("", window.name);
+}
+_runUnitTests();

@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Mouse Events </title>
+</head>
+<script type="text/javascript">
+    function mup(e) {
+    	if (!e) e = window.event;
+    	document.f1.t2.value += "[MOUSE_UP]";
+    }
+    function mdown(e) {
+    	if (!e) e = window.event;
+    	document.f1.t2.value += "[MOUSE_DOWN]";
+    }
+    function mover(e) {
+    	if (!e) e = window.event;
+    	document.f1.t2.value += "[MOUSE_OVER]";
+    }
+</script>
+<body>
+<form name="f1">
+<textarea name="t2" style="width:200px;height:100px;"></textarea><br>
+<input type="button" onclick="document.f1.t2.value=''" value="Clear" name="button1"/><br><br><br>
+<div onmousedown="mdown(event)">Mouse Down</div>
+<input type="button" onmousedown="mdown(event)" name="button2" value="Capture mouse down" ><br><br>
+<div onmouseup="mup(event)">Mouse Up</div>
+<input type="button" onmouseup="mup(event)" name="button3" value="Capture mouse up" ><br><br>
+<div onmouseover="mover(event)">Mouse Over</div>
+<input type="button" onmouseover="mover(event)" name="button4" value="Capture mouse over" ><br><br>
+</form>
+</body>
+</html>
+
+

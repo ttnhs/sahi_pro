@@ -1,0 +1,1 @@
+writeStatement,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\verify_shorthands_gen.sah,12,$elStr

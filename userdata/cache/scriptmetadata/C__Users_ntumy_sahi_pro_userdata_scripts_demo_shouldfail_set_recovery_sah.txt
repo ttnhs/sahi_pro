@@ -1,0 +1,2 @@
+recover,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\shouldfail\set_recovery.sah,4
+insideIf,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\shouldfail\..\if_include.sah,2

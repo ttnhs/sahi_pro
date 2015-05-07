@@ -1,0 +1,9 @@
+_include("first_script_lib.sah");
+_navigateTo("http://sahipro.com/demo/training/");
+$userName = "test";
+$pass = "secret";
+login($userName,$pass);
+addBooks("3", "2", "1");
+verifyTotal("1650");
+logout();
+

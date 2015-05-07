@@ -1,0 +1,98 @@
+May 07, 2015 3:12:22 PM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi properties file = C:\Users\ntumy\sahi_pro\config\sahi.properties
+May 07, 2015 3:12:22 PM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi user properties file = C:\Users\ntumy\sahi_pro\userdata\config\userdata.properties
+May 07, 2015 3:12:23 PM net.sf.sahi.util.BrowserTypesLoader loadAvailableBrowserTypes
+INFO: 
+-----
+Reading browser types from: C:\Users\ntumy\sahi_pro\userdata\config\browser_types.xml
+Opera was not found at C:\Program Files (x86)\Opera\opera.exe
+-----
+
+May 07, 2015 3:12:24 PM net.sf.sahi.util.Utils setUrlConnectionFollowRedirectsInternal
+INFO: urlConnectionFollowRedirectsInternal = false
+May 07, 2015 3:12:24 PM in.co.sahi.datastore.SahiDB <clinit>
+INFO: Using Database:
+driverName=org.h2.Driver
+jdbcurl=jdbc:h2:C:/Users/ntumy/sahi_pro/userdata/database/db0;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1;IGNORECASE=TRUE
+userName=sa
+May 07, 2015 3:12:25 PM in.co.sahi.datastore.SahiDB createTables
+INFO: Check tables version
+May 07, 2015 3:12:26 PM in.co.sahi.datastore.SahiDB createTables
+INFO: versionFromDB=2014-11-17 17:12:19
+May 07, 2015 3:12:26 PM in.co.sahi.datastore.SahiDB createTables
+INFO: version=2014-11-17 17:12:19
+May 07, 2015 3:12:26 PM in.co.sahi.datastore.SahiDB createTables
+INFO: At current version. No changes were done.
+May 07, 2015 3:12:26 PM in.co.sahi.datastore.SahiDB createTables
+INFO: {result: [["KEY","VALUE"],["versionNo","2014-11-17 17:12:19"]]}
+May 07, 2015 3:12:26 PM in.co.sahi.datastore.SahiDB createTables
+INFO: Finished preparing report tables: 346ms
+May 07, 2015 3:14:35 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah
+May 07, 2015 3:14:36 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_204fc31a0a7b204e270839d04b59e8f1e7ebsahix2e5cd58d0843604efc0ae700b03709becb81x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:14:45 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6296, 7656, 7056]; 9125 ms
+May 07, 2015 3:14:58 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: Returning get5xxResponse: https://translate.googleapis.com/translate_a/l?client=chrome&cb=sl&hl=en&key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw&alpha=1
+May 07, 2015 3:15:29 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6296, 7656, 7056]
+May 07, 2015 3:15:49 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah
+May 07, 2015 3:15:49 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_d3e3cb7707eee0474109ac20ec1999b9c467sahixd0366c41049a70436009e08078247f8773a5x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:15:50 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6072, 5044, 7068]; 1823 ms
+May 07, 2015 3:16:26 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6072, 5044, 7068]
+May 07, 2015 3:16:26 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_invalid_users.sah
+May 07, 2015 3:16:26 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_d3e3cb7707eee0474109ac20ec1999b9c467sahix681ec8980ca1504a9d0aea004985005ccc0dx__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:16:27 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [1780, 7400, 6940]; 1457 ms
+May 07, 2015 3:19:47 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [1780, 7400, 6940]
+May 07, 2015 3:20:34 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah
+May 07, 2015 3:20:34 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_b630aece0f20b043d30be38040aac72c2914sahix1a907b83011e40445008f37023d4e3120d87x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:20:36 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [2080, 7348, 1948]; 2153 ms
+May 07, 2015 3:20:53 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: Returning get5xxResponse: http://qa.moodle.net/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple.js&rollup/1430982960/mcore-debug.js
+May 07, 2015 3:21:24 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [2080, 7348, 1948]
+May 07, 2015 3:21:24 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_invalid_users.sah
+May 07, 2015 3:21:24 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_b630aece0f20b043d30be38040aac72c2914sahix9a6e2a900392604fe90985f01977afc65867x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:21:26 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6904, 1204, 6556]; 1369 ms
+May 07, 2015 3:22:58 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6904, 1204, 6556]
+May 07, 2015 3:22:58 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_valid_users.sah
+May 07, 2015 3:22:59 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_b630aece0f20b043d30be38040aac72c2914sahix8ee71751053b2042e30acd1036249b8c5186x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:23:00 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [7264, 5240, 3864]; 1129 ms
+May 07, 2015 3:25:16 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [7264, 5240, 3864]
+May 07, 2015 3:25:29 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah
+May 07, 2015 3:25:29 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_250132760ec10043d90a4ad085bf81f429a8sahix027b46f0001be048af0887a0b62d4359b57ax__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:25:30 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6328, 5884, 5672]; 703 ms
+May 07, 2015 3:26:05 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6328, 5884, 5672]
+May 07, 2015 3:26:05 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_invalid_users.sah
+May 07, 2015 3:26:06 PM net.sf.sahi.Proxy startProxy
+INFO: socket closed
+May 07, 2015 3:26:06 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 07, 2015 3:26:06 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_250132760ec10043d90a4ad085bf81f429a8sahix8d06fa320d6dc04f84081870527438be9ac4x__SahiAmpersandSahi__isSingleSession=false"

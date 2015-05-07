@@ -1,0 +1,13 @@
+if (typeof $a == "undefined") $a = "-";
+else $a+="-";
+
+if (typeof $m == "undefined") $m = "";
+$m += "a2-";
+
+_log($a + "In a2");
+_log($a + "In a2: including a3")
+_include("a3.sah");
+_log($a + "In a2: including a4")
+_include("a4.sah");
+
+$a=$a.substring(1);

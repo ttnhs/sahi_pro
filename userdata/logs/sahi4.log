@@ -1,0 +1,30 @@
+May 06, 2015 6:09:19 PM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi properties file = C:\Users\ntumy\sahi_pro\config\sahi.properties
+May 06, 2015 6:09:19 PM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi user properties file = C:\Users\ntumy\sahi_pro\userdata\config\userdata.properties
+May 06, 2015 6:09:19 PM net.sf.sahi.util.BrowserTypesLoader loadAvailableBrowserTypes
+INFO: 
+-----
+Reading browser types from: C:\Users\ntumy\sahi_pro\userdata\config\browser_types.xml
+Opera was not found at C:\Program Files (x86)\Opera\opera.exe
+-----
+
+May 06, 2015 6:09:21 PM net.sf.sahi.util.Utils setUrlConnectionFollowRedirectsInternal
+INFO: urlConnectionFollowRedirectsInternal = false
+May 06, 2015 6:09:21 PM in.co.sahi.datastore.SahiDB <clinit>
+INFO: Using Database:
+driverName=org.h2.Driver
+jdbcurl=jdbc:h2:C:/Users/ntumy/sahi_pro/userdata/database/db0;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1;IGNORECASE=TRUE
+userName=sa
+May 06, 2015 6:09:21 PM in.co.sahi.datastore.SahiDB createTables
+INFO: Check tables version
+May 06, 2015 6:09:21 PM in.co.sahi.datastore.SahiDB createTables
+INFO: versionFromDB=2014-11-17 17:12:19
+May 06, 2015 6:09:21 PM in.co.sahi.datastore.SahiDB createTables
+INFO: version=2014-11-17 17:12:19
+May 06, 2015 6:09:21 PM in.co.sahi.datastore.SahiDB createTables
+INFO: At current version. No changes were done.
+May 06, 2015 6:09:21 PM in.co.sahi.datastore.SahiDB createTables
+INFO: {result: [["KEY","VALUE"],["versionNo","2014-11-17 17:12:19"]]}
+May 06, 2015 6:09:21 PM in.co.sahi.datastore.SahiDB createTables
+INFO: Finished preparing report tables: 393ms

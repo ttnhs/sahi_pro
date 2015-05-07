@@ -1,0 +1,17 @@
+function onScriptFailure(){
+	_takeSnapShot();
+}
+
+_navigateTo("/demo/training/");
+_setValue(_textbox("user"), "test");
+_takeSnapShots(true);
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+_takeSnapShots(false);
+_setValue(_textbox("q"), "2");
+_setValue(_textbox("q[1]"), "2");
+_setValue(_textbox("q[2]"), "4");
+_click(_button("Add"));
+_takeSnapShot();
+_assertEqual("2400", _getValue(_textbox("total")));
+_click(_button("Logout"));

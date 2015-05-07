@@ -1,0 +1,20 @@
+FusionCharts Free is dual licensed under the MIT (X11) and GNU GPL licenses. 
+You can choose the license that best suits your project, and use it accordingly in both your commercial or personal projects.
+
+In a nutshell, the above licenses allow you to:
+Use the software for any purpose, commercial or personal
+Modify the software's source code to suit your needs
+Share the software with your friends and neighbors
+Re-distribute the software as part of your software or hardware applications
+RE-DISTRIBUTION AS A PART OF A PRODUCT/SOFTWARE/APPLICATION
+
+FusionCharts Free is completely free to OEM and distribute with your open or closed source applications. We would be thankful to receive the following information from you:
+Your company name & address
+Name and description of your product with which you'll be re-distributing "FusionCharts Free"
+Send us an email at support@fusioncharts.com with the above information. We would also appreciate a link back from your product website to our website www.fusioncharts.com/free
+
+WARRANTY
+InfoSoft Global expressly disclaims any warranty for the software. THE SOFTWARE AND ANY RELATED DOCUMENTATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OR MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NONINFRINGEMENT. THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE SOFTWARE REMAINS WITH YOU.
+
+INDEMNIFICATION
+You hereby imdemnify and hold harmless InfoSoft Global and its affiliates against any loss, liability, damages, costs or expenses suffered or incurred by the Indemnified Parties at any time as a result of any claim, action or proceeding arising out of or relating to your use, operation or damages, costs or expenses which may be suffered or incurred at any time by you as a result of your reliance upon or use of the Software. InfoSoft Global SHALL NOT BE LIABLE FOR DAMAGES OF ANY KIND, INCLUDING GENERAL, DIRECT, SPECIAL, INCIDENTAL AND CONSEQUENTIAL DAMAGES, RESULTING FROM OR ARISING OUT OF THIS AGREEMENT OR YOUR USE OF THE SOFTWARE.

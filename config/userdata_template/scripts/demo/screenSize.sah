@@ -1,0 +1,5 @@
+_windowAction("resize",800,400); 
+var $screensize=_getScreenSize();
+_assertTrue(($screensize[0]>=783)&&($screensize[0]<=800));
+_assertTrue(($screensize[1]>=280)&&($screensize[1]<=400));
+_assertEqual(_userAgent(),_fetch(navigator.userAgent));

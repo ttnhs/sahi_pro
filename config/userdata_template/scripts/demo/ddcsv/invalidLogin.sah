@@ -1,0 +1,4 @@
+_setValue(_textbox("user"), $username);
+_setValue(_password("password"), $password);
+_click(_submit("Login"));
+_assertExists(_div("Invalid username or password"));

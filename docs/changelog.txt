@@ -1,0 +1,1637 @@
+17 November 2014
+---------------
+Sahi Pro V6.0.1 released.
+
+This is a bugfix release
+
+* Bugfixes
+	Scripts were running slower because Sahi was waiting for uninitiated XmlHttpRequest objects also. Fixed
+	Highlighting matching brackets in Editor and Controller was broken. Fixed
+	URL encoding query parameters in REST APIs
+	Editor was saving files with \n as line separator. Fixed to use the file's original line ending.
+	After the execution on first node was aborted, when scripts were re-executed on another node, offline logs were not getting generated. Fixed.
+	When a node goes offline, master would sometimes hang waiting for a response and retry would never be invoked. Fixed.
+	windowAction APIs which were experimental in Mac, are temporarily disabled.
+	When _setStrictVisibilityCheck is true, elements inside frames were returning false for _isVisible. Fixed.
+	Object Repository is renamed to Accessor Repository to better convey its usage and meaning. File endings will now default to _AR.sah. Existing _OR.sah will continue to work.
+	Added props parameter in _assertSnapShot API which allows specifying additional attributes like delay, trim, image type etc.
+	Property java.ntlm.transparent_authentication.enabled in sahi.properties was doing the opposite. Fixed.
+	In a data driven suite, if the header column size and row column size did not match, there were failures on a single machine as well as distributed run. Fixed.
+	In a distributed run with a data driven suite, if a row had a blank value in an intermediate column, the script execution would fail and the run would go into an infinite loop. Fixed.
+	After the execution on first node was aborted, when scripts were re-executed on another node, offline logs were not getting generated. Fixed.
+	When a node goes offline, master would sometimes hang waiting for a response and retry would never be invoked. Fixed.
+	Fix to sync the scripts to the correct machine in case of Distributed Run with a different master
+	In a distributed run, if the nodes are unavailable (browser is not supported or Master cannot communicate with the node), the run would never terminate. Fixed.
+	Trimming contents in Import CSV in Editor. The untrimmed spaces was causing scenarios to fail. Fixed.
+	Fixed UI issues in ddcsv editor - Copy paste, editing etc. were broken
+	Optimizing getAssociatedLabel. Look only in current window object and only upto 8 parents. Was using too much CPU for pages with lots of nested iframes and containing lots of elements.
+	In some cases, _takePageScreenShot showed double images when the page size was less than the browser window size. Fixed
+	_assertEqualImages and _compareImages was failing when any of the file paths had a space in them. Fixed.
+	Running an empty suite returns success now
+	Optimized fetching of suites list in Logs
+	Incorrect information in junit reports removed
+	dload.bat would not terminate after running the load tests. Fixed.
+	Documentation added for APIs _startHarLogging and _stopHarLogging.
+	Load testing documentation updated
+	When testing an ANT target generated from [icode]Editor > Playback > Create Ant Target[/icode], in case of a Retry, the Retry status was not considered as the final status. Fixed.
+	Dload ANT target has been fixed
+
+* Features
+	_mouseOverNative added for native mouse events
+	subjectRepeatCount can be passed to dload. subject.sah will be run that many times at each load level. This helps average out any abnormal behaviour during that moment of execution.
+	
+
+
+14 October 2014
+---------------
+Sahi Pro V6.0.0 released.
+
+* Bugfixes
+	If email send fails, the last script's status did not get updated in the offline reports
+	Wait for offline logs to be written before returning SUCCESS or FAILURE status
+	In drun, only available browsers are now used.
+	Time taken for drun was updated twice - once before and once after log creation.
+	readCSV for mac (\r\n) fixed
+	Corrected total steps count in logs.
+	resolved image issue in _assertlogimages with drun.
+	Simple optimization to try inject in sample first. Fixes bug of Out of Memory Error in html-head-script-20mb-/script-/html
+	Fix for drun offline logs not showing images. Copying only if image exists.
+	Now creating imageDirectory if it does not exist while creating offline logs.
+	Fix for testcases reporting. Once a sript failed with an error, further testcases were not being logged. Also fixes duplicate error logging in Excel framework.
+	Sometimes a blank line with timestamp was visible in logs.
+	ERROR log now comes inside function folding
+	Handle window titles with quotes in _popup
+	Takes care of unicode in logs and controller playback tab. Fixed Log_highlight to show unicode characters properly.
+	_readCSV fixed for handling empty rows.
+	fixed saving script bug with extra new line on top.
+	DRUN Throws Exception if the nodes have space
+	XHR monitoring in IE fixed.
+	Default lock timeout increased to 1 minute from 5 seconds.
+	Added configurable delay time for typeNative Safari bug. Default time is 10 ms.
+	Changes made for showing NaN for time taken in Log in IE and firefox Browser.
+	Added Confirm message to controller if file exist.
+	Fix to show is key tool available and is jar signer available in Controller info tab
+	Fixed "SSLProtocolException: handshake alert: unrecognized_name" by setting jsse.enableSNIExtension=false.
+	Prevent NTLM auto login and prevent caching of NTLM credentials.
+	Now not storing noise data into the database for dload. 
+	_windowAction() will now fail gracefully upon call in Linux.
+	_collectAttributes() was returning null if the collection array is huge.
+	Now HARViewer works in H2 db as well as MySql.
+	Alerts did not appear when recording script.
+	Fixed broken XUA injection
+	email properties changed for prefix in subject and content
+	SSL root certificate acceptance fails if there is a space in path of sahi
+	
+	log is showing chrome while running with latest opera. _isOpera and _isChrome was not working for latest opera.
+	Fixed wrong message in assertExists failure.
+	ie8 _getTableContents fixed.
+	domainfix.txt file no longer needed. Sahi automatically handles this.
+	_assert statements fixed to always cause failure, not error. Also fixed browser stacktrace.
+	Removed console.log statements and also added a dummy console.log for older browsers.
+	removed exception for java and ruby driver while recording confirm and prompt.
+	Changed displayInfo to fix accessor.value for java/ruby controller mode.
+	Record _checkbox and _radio with _check and _uncheck instead of _click.
+	Fixed issue of slashes in the identifier
+	_assertSnapShot fixed for the images for offline reports
+	Assertions when recorded, should not double escape newlines. "a\nb" should not become "a\\nb"
+	Fixing flakiness due to race conditions in fetch functionality. Fixes collect and count related random failures.
+	Fix for _setStrictVisibility not working on iframes unless page is reloaded.
+	Fixing build recurseInIframes handles different domains.
+	_position api 2nd param relative added
+	Chrome runs too fast since Chrome 34. Happens because document.readyState is complete even during unload. Fixed with isChrome33Minus
+	Fixed toLowerCase error if sahi.accessor.ignore_case=true.
+	Identification of <object> tag in Opera, IE9 and IE10.
+	Fix for testcases reporting. Once a sript failed with an error, further testcases were not being logged. Also fixes duplicate error logging in Excel framework.
+	_compareimages thresold can be equal to score given by graphics magic
+	Truncating long strings in logs of function arguments
+	Excel framework null, blank behavior fixes: If blank cell, treat as null in excelfw. Handle null in function logging (was [object])
+	now _wait works for time given as String
+	setselected now works with selectbox with size > 0. conversion added for java keycodes to phantomjs keycodes.
+	Changes in _writeCSVFile API For Extra line in start of a CSV file While overwriting. and changes accordingly in csv.sah
+	Added other characters (like '$', "@', etc) to be written using native events
+	Setting zIndex to max value in placePattern. 
+	_assertSnapShot fixed bug for 3rd param and for offline reports
+
+
+* Features
+	Security add: Configure screens can only be accessed from local machine. Configurable via sahi.properties.
+	DRun works with multiple browsers
+	Logs can be viewed in English if "&lang=en" is added to the logs URL.
+	Suites and Scripts are shown in logs. Can be filtered using either fields.
+	Customization on whether to send attachment with email after runs; allowable size of attachment. Configurable via sahi.properties.
+	_popup: added identifier sahiWindowId which is an id autogenerated by Sahi.
+	Dload now runs subject 3 times and shows average time. Number of times subject script is run is configurable.
+	_isWindowExists api implemented.
+	CSV separator is configurable via sahi.properties.
+	Excel reports enhanced.
+	Accessor metadata has been externalized. Modifiable via userdata/config/accessors_metadata.txt, accessors_applet_metadata.txt and accessors_flex_metadata.txt
+	Can specify downloadable content in content_detection.txt
+	Enhanced stacktraces in logs
+	_getExcel: If a cell has a formula, getData and get functions return value instead of formula. getCellFormula returns formula.	
+	Handling domains with protocols in _selectDomain. 
+	Made NTLM transparent authentication configurable.
+	Script Editor and logs will open in default browser from controller. 
+	Added AccessControlAllowAllResponse for crossDomain Access of Sahi urls. 
+	Added sahi-integration.html for sahi integration with other tools.
+	Entries in userdata/config/function_names.txt file will appear in "Function Name" autocompletion
+	global_include.sah added for including in all scripts during execution
+	Added onBeforeStep and onAfterStep callback functions
+	XHR ready state 1 default wait time added.
+	implemented _takeScreenShots for phantomjs
+	implemented _sahi.SKIP_ASSERT_SNAPSHOTS = true to temporarily disable screenshots in a script;
+	_lockWindow and _unlockWindow
+	Added new methods getSheetNames and getRawWorkbook in excel api.
+	Added exclude_inject_applet.txt to exclude specific applets from being injected by Sahi.
+	Support for signed applets
+	New Applet automation implementation
+	Fixed takeScreenShot for phantomjs.
+	reimplemented scriptStartTime to use javaScript Date instead of Java Date.
+	Modified _lastConfirm to get All confirm messages.
+	Added _lastAlert(true) to get all alerts of that session.
+	_takePageScreenShot API to take browser and element screenshots
+	Added getCellObject and GetCellFont in ExcelPOI API. 
+	Updated graphs for dload reports.
+	Added Step-vs-Time and URL-vs-Time graph for dload test.
+	Every load run has been modified to run 3 times and the values have been taken on average to display using graphs.
+	Added os and pro versions to documented APIs.
+	_log can also take an image
+	Added _assertEqual() statement while recording Alert / Confirm / Prompt
+	Record _checkbox and _radio with _check and _uncheck instead of _click.
+	Added "controller.display_attribute_type.enabled" in sahi.properties and default value is false.
+	Added attribute type in the alternative list on controller.
+	if strictvisibility is true, recurseInFrames ignores invisible frames and iframes.
+	_takePageScreenShot api with props
+	Added 3rd parameter doScroll for _isVisible.
+	added check for zindex in isVisible.
+	Added _toJSON method to sahi api.
+	added _userAgent and _getScreenSize
+	clickNative added for Flex too.
+	_getRecentWindow api implemented.
+	_WindowExists api implemented.
+	APIs _enableDefaultErrorLogging and _disableDefaultErrorLogging added
+	Added line information for script parsing errors. 
+	_compareImages implemented
+	_startDocumentation takes third parameter to update existing "template" document
+	implemented _sahi.SKIP_ASSERT_SNAPSHOTS = true;
+	_takeScreenShot api with props
+	Added new methods getSheetNames and getRawWorkbook in excel api.
+	Added setBody API, docs for setCredentials API and modified test case in Sahi REST APIs.
+
+
+12 February 2014
+----------------
+Sahi Pro V5.1.1 released.
+
+* Bugfixes
+	Fixed Testrunner playback in single session.
+	Fixed Suites playback on mobile devices.
+	Docs will now open correctly on IE 8 browser.
+	Fixed Email Reports functionality for Linux.
+	Fixed failure in SSL root certificate acceptance when there was a space in the Sahi installation path.
+	Fixed Element identification problems in Flex.
+	Fixed under API in Sahi Java driver to handle limit parameter.
+	Fixed bug causing textarea (input type = "textarea") not to be identified.
+	Fixed bug in _fieldset. _fieldset API would previously throw an exception if not present on the page. Thus one could not do _exists(_fieldset("xyz")) or _isVisible(_fieldset("xyz")).
+	Fixed Evaluate Expression smart dropdown in Controller, for IE8.
+	_readCSVFile can now read the contents of a file specified through a URL.
+	Fixed bug in Sahi code injection to honour X-UA-Compatible meta tag on IE10.
+	Fixed bug in Sahi code injection when script tag appears above head tag.
+	_getSelectionText API fixed for IE11.
+	Fixed logs generated on using _fail API. _fail API when used in a script, would get logged thrice.
+	_typeKeyCodeNative fixed to handle special characters (like '$', "@', etc).
+	_writeCSVFile API fixed in case of file overwrite. Previously, an additional blank line was being added as the first line of the csv file in the case of 'overwrite'.
+	On Mac, .sh files (start_dashboard.sh, testrunner.sh etc) are now automatically executable.
+	If a script is run from TestNG/JUnit on IE browser, and the proxy settings of the browser were to be reset externally (through a ProxySettings monitor, say), Sahi would not kill the browser and execution would hang. Now Sahi will throw an exception after 150 seconds and the browser will close.
+	Fixed broken upload functionality through XmlHttpRequest.
+	Fixed bug to filter columns Run, Passed, Failed correctly on the main Reports page when Show Testcase Summary is pressed.
+	Fixed broken Doc Viewer functionality in Script Editor on Linux.
+	Fixed closing of new Download window and addToSession window for IE.
+	 
+* Features
+	Added donot_download_urls.txt in userdata/config.
+	- download_contenttypes.txt and download_urls.txt specify which files should be downloaded using contenttype or url pattern. Sometimes all urls of a particular content type need to be downloaded, EXCEPT some matching a particular URL pattern. These exception URLs can be specified in donot_download_urls.txt
+	Working with Sahi APIs made easier through Controller.
+	- Select an API from APIs List: textbox and press Enter key to copy it to the Evaluate expression box.
+	- Element Accessors can be inserted at a specific cursor position or cursor selection in the expression inside the Evaluate expression box, through the Accessor Copier
+	Added more support for REST APIs.
+	-Added API RESTRequest.setCredentials to handle pages that require Authentication (401 response code).
+	-Added API RESTRequest.setBody to set the body of the request with a complete set of key-value pairs.
+	Added APIs _frame, _startLookInside, _stopLookInside.
+	_wait now accepts a function as the condition argument. Sahi will wait for either the entire timeout or till the specified function returns true.
+	Added ability to configure substitutions.xml, content_detection.txt, email_template.txt, response_header_Remove.txt, urlHistory.txt, donot_download_urls.txt and user_extension.js through Configure link on Dashboard.
+	Changes to configuration files (through Configure link on Dashboard) excluding browser_types.xml and userdata.properties do not need a restart of SahiPro. Refresh the application page for changes to take effect.
+	Added argument ignoreEmptyRows in _readCSVFile API, to ignore blank rows in the csv file.
+	Added Find functionality in Sahi Script Editor. Earlier, unless the script had been scrolled once, text could not be found successfully on the page.
+	Applet docs updated.
+	Renamed mail.subject to mail.subject.prefix and mail.content to mail.content.prefix in email.properties. These values can be left blank.
+	Updated documentation for sending email through Sahi.
+	Sahi favicon changed on the Controller.
+	PhantomJS icon will be displayed on the Dashboard if phantomjs.exe is present in <SAHI_INSTALL_FOLDER>/ext/phantomjs. The configuration need not be explicitly added to browser_types.xml.
+	Changes to expand Links automatically in the Docs tree on search.
+	
+
+26 November 2013
+----------------
+Sahi Pro V5.1.0 released.
+
+* Bugfixes
+	Opening correct file with external script directories.
+	Fixed showing title for offline script report.
+	Fixed JS error in Controller during Java playback
+	Fixed Controller opening in main page.
+	Fixed update query in persist().
+	Fixed Excel Framework reports.
+	Fixed bug with Illegal characters in download file name
+	_cell API fixed for spark grid.
+	_cell API fixed for flex grid.
+	Fixed Controller popup prefix for flex
+	Fixed _setValue API compatibility with all HTML5 elements.
+	Assert button of Controller fixed for applet.
+	Fixed ++ and -- operators' usage in scripts.
+	Fix for cookie containing comma issue.
+	Bug fix for UA compatibility for IE.
+	Start URL field on Sahi Start Page fixed for Enter key press.
+	Fixed java and ruby mode to work for controller action with multi domain and pop-up
+	Fixed _writeToCSV to append newline if already not there.
+	_readCSVFile fixed for files with duplicate column header
+	_takeScreenShot fixed for drun.
+	Fixed _takeScreenShot on mac.
+	Fixed apis _copyFile, _writeToFile and _renameFile to work with relative file path
+
+* Features
+	Sahi Documention added. The latest documentation can be accessed by clicking the "Docs" link on Sahi Dashboard.
+	Email containing the playback reports can be sent on playback of suite/script files via testRunner, drun and ant.
+	Web UI added for Excel Framework.
+	Added Doc Viewer to record the manual test case.
+	Added DDCSV format for Data driven testing.
+	Sahi creates a last_failed_scripts file that contains all the scripts that failed in the last suite/ddcsv file run.
+	Installer upgraded to update installed Sahi to a newer version.
+	Sahi can launch multiple browsers in the same session when needed.
+	Sahi can now use custom domain insted of the default 'sahi.example.com'.
+	Added _getWindows, _selectTextRange, _selectRange, _embed, _pause, _launchNewBrowser, _font, _lock, _unlock, _copyFile, _stop, _mapDomainToIP, _getSelectionText, _collectAttributes, _trim APIs.
+	_setAccessorIgnoreCase API  forces Sahi to ignore case when comparing accessor attributes.
+	Sahi can now work with the new Robot Framework.
+	Sahi now integrates with Microsoft Test Manager(MTM).
+	Ruby Docs updated.
+	Added height and width parameters for resizing browser window using _windowAction api. Added to Sahi Java driver too.
+	Added ability to change controller mode from Info tab in the controller.
+	Added Anchor button on ruby and java controller.
+	Added "Compare logs" button that compares the logs of 2 script files.
+	Added support to identify elements using multiple attributes in Sahi Ruby driver.
+	Added advice on _setXHRReadyStatesToWaitFor on clicking the "Diagnose" link in the Record tab of the controller.
+	Fourth argument to specify encoding added to _writeToFile API.
+	_expectConfirm and _expectPrompt APIs can accept regular expression.
+	_rightOf, _leftOf and _under APIs upgraded to accept bounds in flex.
+	Added bat file and ant target to clear IE History.
+	lock, unlock, selectRange, selectTextRange, hr, font, collect APIs added to Sahi Java driver to reflect _lock, _unlock _selectRange, _selectTextRange, _hr, _font, _collect APIs respectively.
+	select_text_range, select_range, selection_text, left_of, right_of, left_or_right_of, above, under, above_or_under, collect APIs added to ruby driver to reflect _selectTextRange, _selectRange, _getSelectionText, _leftOf, _rightOf, _leftOrRightOf, _above, _under, _aboveOrUnder and _collect APIs.
+	Sahi identifies elements through its label. If the HTMLFor property is speicified for the label or if the element is the child of the label, Sahi identifies the element based on the label's name also.
+	Ability to add bounds added to _leftOf, _rightOf, _leftOrRightOf APIs.
+	Added third paramter for _expectConfirm API. It defines the scope of the _expect confirm statement.
+	Added executeSahi API for Sahi Java driver and execute_sahi API for Sahi Ruby driver. Statements in Sahi script can be executed using this API. eg. 
+	b.executeSahi("_click(_button(\"button1\")"); // Sahi Java Driver
+	@b.execute_sahi("_click(_button('button1')"); // Sahi Ruby Driver
+	_windowAction APInow accepts width and height as additional optional parameters to resize the browser window.
+	Implemented for Show/Hide Failure scripts logs in suite report
+	Added create new script and create new scenario link to script explorer
+	Added db connection pooling through c3p0
+	
+
+26 August 2013
+----------------
+Sahi Pro V5.0.9 released.
+
+This is a bugfix release.
+
+* Bugfixes
+	Fixed: IE renders correctly depending on X-UA-Compatible for ie meta tag
+	Fixed: Cookie value containing extra trailing comma issue
+	Fixed: Setting UserDefinedId from inside a script.
+	To set the userDefinedId from inside a script, use the following code
+	ScriptRunner.getSession().getSuiteInfo().setUserDefinedId("sampleid");
+	Fixed: For Ajax requests, Sahi will return a 401 response by default, instead of returning a custom 401 page with 200 status.
+	To change the behavior, add xhr.return_401_response=false in userdata.properties.
+	Fixed: parser bug where switch statement immediately following a case statement was ignored
+	Fixed: parser bug where function.bind was causing classcast exception
+	Fixed: parser bug to handle unary operators in statements; like _click(_link($i++))
+	Fixed: Missing dload.sh added
+	Fixed: Correctly showing error in logs if path is wrong while running from suite from testrunner.
+	Fixed: Screenshot comparison logs in IE9
+	
+23 July 2013
+----------------
+Sahi Pro V5.0.8 released.
+
+This is a bugfix release.
+
+* Bugfixes
+	Fixed: AltDblClick brings controller into focus
+	Fixed Flex for chrome and firefox
+	Fixed support for input events on IE - fixes angularjs problems
+	Fixed popup prefix when identifying flex objects
+	Fixed data base issue for MySQL on linux
+	Fixed slow loading of web based testrunner
+	Fixed identifying elements across iframes from same domain but different from parent domain
+	Fixed _in so that it does not look for elements in frames outside of the reference element
+	Fixed slow running of drun tests when H2 database is very large. Added index.
+	
+
+16 July 2013
+----------------
+Sahi Pro V5.0.7 released.
+
+This is a bugfix release.
+
+* Bugfixes
+	Fixed Excel Framework reports
+	Fixed Excel Framework loadSahi script using _include
+	Fixed _dragDrop waits for full drag drop
+	Fixed bug where step starting with tab in Controller Evaluate Expression throws error
+	Fixed code folding related bugs which caused some Object methods to be skipped or incorrectly processed  
+	Fixed NullPointerException in PacProxySelector 
+	Fixed Origin request header not being sent to server: Set sun.net.http.allowRestrictedHeaders=true by default
+	Fixed parsing of E4X code in Sahi Script
+	Fixed automatic scroll up bug in Controller in some IE versions	
+
+12 June 2013
+----------------
+Sahi Pro V5.0.6 released.
+
+This is a bugfix release.
+
+* Bugfixes
+	Fixed _openBrowser() and _closeBrowser() for toggling proxy.
+	
+* Features
+	Added MSSQL support for reports.
+	
+11 June 2013
+----------------
+Sahi Pro V5.0.5 released.
+
+This is a bugfix release.
+
+* Bugfixes
+	Fixed switch case null pointer exception when there are no statements in case
+	Fixed _takeSnapShot. Behaves same as _takeScreenShot
+	Fixed: In reports, clicking on log statements points to corresponding _log step
+	
+* Features
+	Added _hr API to identify html HR tag.
+	Added browser method sendHTMLResponseAfterFileDownload(b) in java driver
+
+
+10 June 2013
+----------------
+Sahi Pro V5.0.4 released.
+
+This is a bugfix release.
+
+* Bugfixes
+	Fixed Code folding for functions used as constructors
+	Fixed switch case parsing when case has a scope ({}) instead of a single statement
+	Fixed Mailer: addRecipient used for multiple to addresses 
+	Removed Mailer SSL port hard coding
+	Fixed recursive includes leading to StackOverflowError
+	
+* Features
+	Added _object to identify html tag object.
+	
+
+30 May 2013
+----------------
+Sahi Pro V5.0.3 released.
+
+This is a bugfix release.
+
+* Bugfixes
+	Fixed recording of elements which have index as their first identification attribute
+	Fixed java.awt.Robot references which cause PhantomJS scripts to fail on linux machines without X Windows
+	Fixed handling of negative values in _xy() API
+	Fixed fetch API in ruby driver to handle both attributes and chained attributes (like rows.cells.length)
+	Fixed Assertion selection in Java Controller
+	Fixed code folding logs when functions are declared inside included files
+	Fixed Controller pause/step buttons. Removed current step, next step counters. 
+	Fixed showing _wait statements in Controller.
+	Fixed display of time when time taken is more than 24 hours (prettyTimeMoreThan24Hours added and exposed in XSLUtils)
+	Fixed Recorded Steps not showing correctly in Controller
+	Fixed HTML reports not showing browser name when run via testrunner or Controller.
+	Fixed remembering "Record" button state
+	Fixed issue of Controller content opening on main window with blank Controller on some versions of IE
+	
+* Features
+	Added openWindow API in java driver to launch in different resolutions
+	Added _sahi.isReadyForStepDefault. This is called from _sahi.isReadyForStep which can be overridden to add custom waiting conditions.
+	Added JSDoc comments to apis.sah for auto-complete help in editors like Eclipse 
+
+
+16 May 2013
+----------------
+Sahi Pro V5.0.2 released.
+
+This is a bugfix release.
+
+* Bugfixes
+	Fixed "return" statement parsing bug
+	Fixed testrunner for singleSession=true threads=1
+	Fixed JS error alert in Controller during Java playback
+	ignorable_ids applied only on ids. Added zk pattern
+	Ruby Sahi: Added support to identify elements using multiple attributes via hash 
+		eg @browser.textbox({"name"=>"q","sahiIndex"=>2}).
+
+* Features
+	Added ability to show/hide Base Url and User Defined Id based on flags in Suites List
+		Set XSL param showUserDefinedId to true in suites_list.xsl to show the User Defined Id
+		Set XSL param showBaseUrl to true to show the Base Url
+
+15 May 2013
+----------------
+Sahi Pro V5.0.1 released.
+
+This is a bugfix release.
+
+* Bugfixes
+	Fixed "switch" statement parsing bug
+	Fixed Run button from mobile user interface (launch.htm)
+	Fixed browser type detection (launch.htm)
+	Fixed suite inside suite bug when start url is specified along suite.
+	Fixed web based testrunner to run scripts from custom paths configured via scripts.dir
+
+07 May 2013
+----------------
+Sahi Pro V5.0 released.
+
+* Features
+	Parallel browser launching enabled from java driver.
+	Added Start URL in reports
+	Updated the API list for Notepad ++ plug-in.
+	scrollOffsets added to mouse events
+	Added setFile2 API to Sahi Java
+	Added diagnose link to Dashboard
+	Added Sahi version to Dashboard 
+	Script parsing done via AST parser.
+	Added _windowAction API which can be used to perform maximize, minimize, focus, refresh, restore and close window 
+	Added feature to set java path automatically during installation of Sahi.
+	User Agent added to initialized.htm
+	Added support to specify suites inside a suite.
+	Support provided for Microsoft SQL database.
+	_verifyLayout and _readLayout API created
+	Make Streaming configurable; added streaming_contenttypes.txt and streaming_urls.txt
+	_includeOnce API added
+	_openWindow API added
+	proxy selector with pac file
+	Allow playback of scripts without refreshing page ("Use Start URL" checkbox added)
+	Detached Controller implemented to allow easy recording via multiple domains/windows without opening multiple Controller windows
+	New playback mechanism using ping
+	
+* Bug fixes
+	Fixed identification of divs where each text is encapsulated by 2 divs
+	Fix for very slow performance of removeComments. Fixes slow loading.
+	Log Exception takes to the correct line number in script.
+	Script parsing error reporting fixed.
+	Fix _under in IE. 
+	_under and _above fixed to take offsets on both sides
+	Mysql logging fixed
+	.js files fixed to be treated as single .sah file instead of .suite
+	HAR logging fixed
+	changes to terminate a load test, if the capacity is  exhausted on all nodes
+	Fixed "Test->" assert of multiple lines from controller
+	Dsync fixed to copy scripts to nodes from master if master is not in list
+	Update of suite reports result in dload fixed
+	_setValue bug fixed for firefox 20
+	Suite report time taken format changed
+	fixed: reports dumped to FS
+	database table creation fixed
+	load runner fixed
+	Status and graph for drun fixed
+	drun logs for suites fixed
+	leftOf, RightOf fixed
+	domanifix with 2 parameters fixed
+	Fixed reports for csv based suites
+	test case reporting fixed
+	_takeScreenShot fixed
+	Linux certgen problem fixed
+
+
+07 March 2013
+----------------
+Sahi Pro V4.6 released.
+
+* Features
+	under API added for flex
+	Launch screen on mobile device shows dir,path and start url with autocomplete
+	"input" events fired correctly. Fixes angularjs text input problems
+	Added pause. Will show new users error easily
+	leftOf RightOf added for flex
+	Mobile Launch UI allows installing Root Certificate via URL
+	Added _startHARLogging, _stopHARLogging to enable/disable HAR logging from script
+	Added Export to Excel for Suite and Script Reports
+	Added Proxy Switching on Mac
+	Added accessors for svg elements
+	Up/down arrows for identifying parent/child implemented for flex too
+	_focusWindow waits for correct amount of time after setting title
+	Exposed _typeNative and _typeKeyCodeNative
+	Added new links for proxy switching on Dashboard
+	cookie.add_sahi_cookie_on_all_pages property added. Allows turning off setting of Sahi cookies on Web Application under Test.
+	Launch Suite in current browser for mobile devices
+	Mac Proxy Switcher, Mac SSL link on Dashboard
+	Added testcase summary table to script report
+	TroubleShoot Mind map added
+	addCustomEncaps added for flex
+	Textarea size increases on page load by default in Script Editor
+	Added missing APIs in notepad++ plugin
+	
+* Bug fixes
+	markStepDone called from _click for firefox 18 [auto] error
+	ActiveX loading problems on IE fixed
+	OPTION HTTP Method handled
+	fixed _focusWindow on popups
+	_isIE10 added to makeFetchAPIs
+	chrome getText fixed for elements which have visibility none 
+	Fixed _focusWindow for trailing spaces
+	Path for chrome changed to Programfiles X86
+	Recording AJAX should not be async. Fix for missing recording of buttons.
+	HAR Viewer throwing exceptions fixed
+	onJSError JS error handling added
+	assert fixed.
+	
+
+05 February 2013
+----------------
+Sahi Pro V4.5.2 released.
+This is a bug fix release
+
+* Features
+	_disableInfoLogging and _enableInfoLogging added to reduce logging if needed
+	
+* Bugfixes
+	Fixed showing highlighted line in script from logs
+	Identification by custom attributes fixed
+	_isVisible _assertNotExists _assertNotNull fixed for Flex elements
+
+
+22 January 2013
+----------------
+Sahi Pro V4.5.1 released.
+This is a bug fix release
+
+* Features
+	Added ability to pass extra parameters to Web based Script Runner
+* Bugfixes
+	Fixed memory leak in distributed playback
+	Fixed problem with session timeout causing "Script did not complete in 150 seconds" error if page does not load within 90 seconds
+
+
+11 January 2013
+----------------
+Sahi Pro V4.5 released.
+
+* Features
+	* _maskLogs and _unmaskLogs added to mask sensitive information 
+	* _addToSession added: Allows adding different domains to a session
+	* Added up down arrows to move to parentNode in Controller.
+	* Rerouter added to specifically map Domain to IP
+	* Added threads field in web based script runner.
+	* Added ability to copy screen shot images into output logs folder
+	* Testcase based reporting enhanced.
+	* Evaluate Expression in flex shows more details.
+	* Added logging for miscellaneous functions like _focusWindow(), _takeScreenShot etc.
+	* _setFile2 added. Automatically handles js validations.
+	* Fixed Java APIs
+	* Selenium Java API Support (beta) added.                                                   
+	* Applet Support (beta) added via _applet API
+	* Rerouter added for dynamic domain to IP mapping
+                                             
+* Bug Fixes
+	* Fixed keypress issues in various browsers.
+	* Test case reports show count of testcases instead of scripts.
+	* Mixing file and url scripts fixed.
+	* Modal from different domain fix.
+	* Double commas in SFL metadata fixed.
+	* Limiting controller logs length to 100 steps to fix hang issues.
+	* PhantomJS: removed 
+	* Fixed image path of screenshots in logs for Mac
+	* handle newlines and spaces in browser_types.xml
+	* Flex issues fixed. Horizontal Scroll Bar, NumericStepper, MenubarItem(only using number)
+	* browser_types.xml Remove duplicate (x86) from browser path. Also expand $sahiDir.
+	* Fixes _takeScreenShot on mac issue.
+	* Added _setFile with 3 parameters in Sahi Java.
+	* NO_LOG type handled
+
+
+26 September 2012
+----------------
+Sahi Pro V4.3.2 released.
+
+* Features
+	* State persistence in Expand-Collapse of logs
+	* Controller states remembered even after restarting sahi.
+	* _closeBrowser and _openBrowser added
+	* _setXHRReadyStatesToWaitFor API added
+	* Added support for logging reports into MySQL database
+	* Added support for upgrade from within Sahi Pro
+	* Added index based identification for cells
+	
+
+* Bugfixes
+	* Fixed bug in reporting large log files
+	* Fixed _byText
+	* Fixed bug in resizing Evaluation Expression box
+	* Fixed bug in storing tab states
+	* Fix for some images not getting stitched correctly.- Yodlee
+	* Fixed IE focus issue.
+	* Fixed upgrade version comparison bug.
+
+
+03 August 2012
+----------------
+Sahi Pro V4.3 released.
+
+* Features
+	* _focusWindow API added - focuses windows on Windows OS
+	* _takeScreenShot API added
+	* Ability to automatically store and retry failed scripts during suite run
+	* Added Script Explorer to trigger test cases from anywhere via web
+	* Added Syntax Highlighting to Evaluate Expression box and Script Editor
+	* Ability to add base64 encoded passwords in userdata.properties
+	* Added missing Flex mx and spark components 
+	* Ability to add custom fields in suite reports 
+	* Ability to use Properties files when connecting to database
+
+* Bugfixes
+	* Array toJSON recursive_access bug fixed
+	* RegExp with modifiers handled correctly
+	* onScriptError logging issue fixed
+	* Sahi injects properly for conditional comments
+	* _setValue($a,$b) with no space after comma handled correctly
+	* Fixed Excel POI APIs
+	* Fixed focusin focusout events on IE9
+	* sfl files recompiled with correct versions and bugfixes
+	* URL history added to Controller and Script Explorer
+	* Window name is blank by default. Not null. Fix for sessvars
+	* Fixed bugs in logs display and code folding
+	* Fixed Excel inside Excel log steps
+	* javascript-xpath.js blanked by default.
+	* Drag drop significantly improved. Works across scrolling panels.
+	* Firefox 13 suite run fixed
+	* _confirm and _prompt wait for input
+	* writeCSVFile writes double quotes correctly
+	* Significant fixes for memory leaks during long suite execution
+	* Fixed log reporting failures due to length of message
+	
+
+05 April 2012
+----------------
+Sahi Pro V4.2 released.
+
+* Features
+	* Graphs added in reports
+	* Ability to filter and compare reports
+	* Run multiple browsers simultaneously via testrunner using +
+	* Ability to Update to next or previous version
+	* _assertEqual & _assertNotEqual take RegExp in expected value
+	* _extract API added to extract portions of text
+	* Ability to pass an associative array as identifier to Sahi Accessor APIs
+	* _leftOf, _rightOf, _leftOrRightOf, _above and _aboveOrUnder positional APIs added
+	* Bin link added for Mac version. Automatically opens terminal at userdata/bin
+	* _readExcelFile returns associative array keyed by header value
+	* _sendHTMLResponseAfterFileDownload added
+	* _paragraph added for P tag
+	
+* Bugfixes
+	* _count, _collect fixed
+	* Fixed duplicate events on IE9 Strict Mode
+	* Fixed fetching of ajax/js files with content-disposition attachment
+	* Fixed _under such that complex nesting also works properly
+	* Increased Dashboard browser session timeout
+	* _dragDrop fixed for YUI
+	* Displays JDBC error in logs
+	* Fixed window/domain not found error when iframes with different domains are loaded on a slow page. (Facebook integrated pages)
+	* Fixed concurrent modification error bug in reports
+	
+
+29 November 2011
+----------------
+Sahi Pro V4.0 released.
+
+* Features
+	Logs are stored in database by default.
+	Reports customization via XSL.
+	Downloadable CSV reports for testcase runs.
+	Root Certificate importer added.
+	Evaluate Expression added for Java controller
+	Apache POI integrated for Excel
+	Fusion charts integrated
+	License importer added
+	popup takes URL regex
+	SSL support for Mailer
+	Right click can be recorded
+	Flex implicit waits introduced
+	New APIs:
+		_dList, _dTerm, _dDesc, _setHttpHeader, _resetHttpHeader,
+		_addHttpHeader, _removeHttpHeader, _compareImages, 
+		_assertSnapShot, _readExcelFile, _getExcel, _activeElement
+		_setFlexReadyCondition
+	
+* Bugfixes
+	_isSafari() fixed
+	script status correctly set for _continueOnError, try catch
+	_takeSnapShot and _takeSnapShots fixed to capture browser content.
+	Script Editor textarea fixed
+	Fix for cross-domain communication for Flex 4
+	File name is picked from content-disposition header.
+	made create_report_tables.sql path relative
+	Ruby driver: guid replaced with timestamps.
+	Fixed issue in flex fetch function in java
+
+16 August 2011
+--------------
+* Features
+	Testcase support added
+	Excel csv runner added with reconciled reports
+	Load testing capability added
+	SFL DataGrid and AdvancedDataGrid support added via cell, getGridData APIs
+	
+
+20 Jul 2011
+-----------
+
+* Features
+	_abbr API added
+	Default encoding is now UTF-8
+	
+* Bugfixes
+	Object repository issue in the controller fixed.
+	Flex bugfixes:
+		Dropdown event fix for flex 4
+		DateFormat mismatch fixed
+		
+30 Jun 2011
+-----------
+Sahi Pro V3.6.2 released.
+
+* Features
+	Sfl (Sahi Flex support) libraries for Flex 3.2 and Flex 4.5 released
+	Java Flex support added
+	_exists check for flex.
+	Traffic Logs can now be enabled from the Dashboard
+	SingleSessionTestRunner takes initJS at test level.
+	
+* Bugfixes
+	Fix for ZLIB EOFException error	
+	Controller's "Script Editor" link for linux fixed
+	Fixed null pointer exception in Single Session report generation
+	Fix for Firefox 5
+	Flex bugfixes:
+		Assertion on UITextField
+		Click recording on button
+		Adding content as id for image
+		Added columnchart
+	
+
+30 May 2011
+-----------
+Sahi Pro V3.6 released.
+
+* Features 
+	Sfl (Sahi Flex support) libraries for Flex 3.5 and Flex 4.0 released
+	_takeSnapShot() and _takeSnapShots(toggle) added
+	Compare Logs added
+	domainfix for setting document.domain made configurable via userdata/domainfix.txt
+	Exposed Realm in 401 auth for greater control
+	near and in apis available in Sfl
+
+* Bugfixes
+	File name of xls shown correctly
+	Fixed bug causing some clicks on IE to fail
+	Installation of Sahi Pro does not need Admin privileges now
+		
+
+05 Apr 2011
+-----------
+Sahi Pro V3.5.2 released.
+
+* Bugfixes
+	Fixed ConfigureUI screens on IE
+	Fixed bugs in Script Editor
+	
+	
+* Features
+	IE9, FF4, Chrome 10 support
+	Object Repository enhanced
+	Enhancements to Excel run report
+	_setStrictVisibilityCheck added. If true, Sahi APIs will look at visible elements only.
+	Blocked unnecessary https calls via block_ssl_domains.txt (fix for FF hang due to safe-browse and addons update)
+	_isFF4() and _isIE9() added
+	added keyUp, keyDown, mouseUp, mouseDown to java APIs
+	Made JUnit log reporting better and easier to plugin with hudson
+
+
+28 Feb 2011
+-----------
+Sahi Pro V3.5 released.
+This is a significant release with lots of feature additions and bug fixes. 
+Some code has been merged from Sahi Pro codebase.
+
+* Bugfixes to 
+	Page load wait for non IE browsers fixed
+
+* Features
+	Added Installer
+	Added Dashboard
+	Added ability to configure browsers in browser_types.xml
+	Added auto switching of system Proxy
+	testrunner.bat added
+	SSL certs are copied over from profile0 in Firefox
+	Excel based framework added
+	sfl - Sahi Flex support added (Beta)
+	HTML5 form elements support added
+	_count and _collect APIs added
+	
+01 Feb 2011
+-----------
+This is a significant release with lots of feature additions and bug fixes. 
+
+* Bugfixes
+	Proxy code injection bug for .NET apps fixed	
+	
+*Features
+	Framework for running Excel sheets added.
+	Logging for excel sheets merged with original Sahi logs.
+	testrunner.bat added
+	Most browser information moved to browser_types.xml
+	SSL certs are copied over from profile0 in Firefox
+
+03 Nov 2010
+-----------
+This is a significant release with lots of feature additions and bug fixes. 
+
+* Bugfixes
+	AJAX bug on IE related to XHR.abort fixed
+	_under position bug fixed
+	coordinates of events correctly set to clientX and clientY
+	_dragDrop on jquery related bug fixed
+	
+* Features
+	_mouseDown and _mouseUp added
+	browser_types.xml added, to pre-configure browsers
+	commandline parameters to TestRunner can be supplied as -key1 value1 -key2 value2
+	APIs and hooks for integration with Test Management tools added. 
+		Look at http://localhost:9999/_s_/runner/runner.htm
+	TrafficLogger can log both unmodified and modified data.
+	
+
+31 Aug 2010
+-----------
+* Bugfixes
+	Fixed steps recorded for actions on Controller
+	
+* Features added
+	Multi machine playback
+	Database logging
+	Refactoring tool
+	Controller UI changed to show recorded steps
+	Edit from Controller
+	domRelations anchor
+	UI changes
+	Auto HTTPS certificate acceptance
+
+20 Aug 2010
+-----------
+* Bugfixes
+	Fixed Chinese language filename issue
+	Fixed error in _option(/non existent/)
+	Updated browser options in various places
+	Fixed _scriptPath error (hang in Java mode when there are JS errors on page)
+
+* Features added		
+	_writeCSVFile and _readCSVFile take optional wordSeparator as last parameter
+		_readCSVFile(filePath, wordSeparator)
+		_writeCSVFile(array2d, filePath, overwrite, wordSeparator)
+		
+
+
+17 Aug 2010
+-----------
+* Bugfixes
+	Removed StreamingHttpResponse for html and js content. Fixes random data loss bug.
+	$x.replace(/a/) parsing error fixed
+	_setSelected invokes click on option.
+	Fixed multi cookie header bug. (All headers are considered now.)
+	Firefox not killed on first run on Mac fixed.
+	Fixed memory leak bug in IE.
+	Fixed _under bug for form elements.
+
+* Features added		
+	Following APIs are exposed on the browser too:
+		_scriptName, _scriptPath, _suiteInfo, _userDataDir, 
+		_sessionInfo, _userDataPath, _readFile, _readCSVFile
+	Added _evalOnRhino to help browser communicate with RhinoScriptRunner
+	Added _domain(), browser.domain() for multidomain frames/iframes (needs thirdparty cookies to be enabled.)
+	
+	
+
+
+05 Jul 2010
+-----------
+* Bugfixes
+	Fixes NullPointerException when no message in 5xx errors
+	Fixes text/xml, xhtml file handling in Firefox
+	batch files ie.bat, ff.bat etc. take start url as parameter
+	204 responses will not suspend playback
+
+* Features added		
+	Added support for multi-domain frames/iframes
+	_domain("domain.com") can be used similar to _popup("window name")
+	Handle file downloads better
+	_isIE(), _isFF(), _isChrome() and _isSafari() APIs added
+	_set and _condition are no longer required for the following APIs:
+		_getValue, _getAttribute, _containsText,
+		_containsHTML, _getText, _getCellText, _getSelectedText, 
+		_lastAlert, _lastPrompt, _lastConfirm, _style, _cookie, 
+		_position, _rteHTML, _rteText, _isVisible, 
+		_contains, _title, _exists, _isIE, _isFF, _isFF3, _isChrome, _isSafari
+		var $text = _getText(_div("id")); will work now
+	
+	
+10 Jun 2010
+-----------
+* Bugfixes
+	Fixed data truncation bug introduced in 30 Apr build
+	Fixed getText bug which returned ab on FF and a b on IE for a<br>b
+	Fixed for &nbsp; in select option text 
+	Fixed window.opener behaviour for link clicks
+	Fixed parsing error for $a == $b
+
+* Features added		
+	Added Shiretoko as variant of Firefox
+	_byXPath added. 
+	  For browsers without XPath support, 
+	  download the javascript file from http://coderepos.org/share/wiki/JavaScript-XPath 
+	  and save the contents in sahi/htdocs/spr/javascript-xpath.js 
+	_under added as a positional relation
+	  Lets identify elements under another element eg. _cell(0, _under(_tableHeader("Status")))
+	5xx errors are displayed on screen too.
+	Time taken by each test is displayed in logs.
+	XHR redirects are excluded from injection
+	Added Driver.setControllerMode. Takes sahi, java, ruby
+	_option brought in sync with other APIs. 
+	  NOTE: older _option(selElement, value)  will not work any more
+	  	    Replace with _option(value, _in(selElement))
+	_row brought in sync with other APIs. 
+	  NOTE: older _row(tablElement, rowNumber) will not work any more
+	        Replace with _row(rowNumber, _in(tablElement))
+	_getText(_select("id")) returns an array of options' text
+
+
+30 Apr 2010
+-----------
+* Bugfixes
+	Fixed Sahi to work with Java 1.5+ instead of 1.6+
+
+* Features added		
+	Added dblclick and right_click to ruby driver
+	Added doubleClick and rightClick to Java driver
+
+28 Apr 2010
+-----------
+* Bugfixes
+	Fixed bug where characters were malformed in UTF-8.
+	Fixed memory leak in SahiTestSuite
+	Fixed realm detection bug for 401 authentication
+	All regular expression based matches match the innermost element
+	Picking the correct firstLine of HTTPRequests which caused headers to be visible	
+	Workaround for bug in Rhino's Regexp.toString where RegExp has /	
+	Modified browser options to reflect latest browser releases
+	Fixed Cannot Connect response message to show changes to userdata.properties.
+	
+* Features added	
+	Using Richard Li's StreamFilterInputStream to reduce number of threads used
+	Waiting for comet requests
+	_sahi.lastAssertStatus added which can be used to check state of last alert. 
+	   returns "success" or "failure".
+	Controller shows encapsulating link and table in alternatives
+	Showing recorded steps on Java/Ruby Controller
+	_setFile shows error if file is not found. File paths resolved relative to userdata dir.
+
+26 Mar 2010
+-----------
+* Bugfixes
+	Fixed regexp based searches to return innermost element.
+	Fixed blur related callback.
+	Changed dragAndDropOn to drag_and_drop_on in ruby driver
+	Fixed some synchronization (thread deadlock) issues
+
+* Features added
+	Regexp based identifiers can have index.
+	  Third view link may be identified as _link("/View/[2]")
+	exists and isVisible check a few times before returning false.	
+	
+
+21 Mar 2010
+-----------
+* Bugfixes
+	_set fixed for popup windows.
+	
+* Features added
+	Support for UTF-8 characters
+	Verify only one Proxy is bound to port 9999
+	Ruby driver for Sahi added
+	Detailed logging added
+	_xy API added for clicking on coordinates relative to an element
+	setSpeed added to control execution speed from script
+		
+02 Mar 2010
+-----------
+* Bugfixes
+	Fixed blur/onchange event generation.
+	Fixed event.button on IE.
+	Host/port made configurable on Browser class for java driver
+	Honoring maxlength limit
+
+21 Feb 2010
+-----------
+This release has more bugfixes/enhancements with the ZK framework in focus.
+* Features added
+	Some smaller Accessor APIs like _italic, _emphasis, _strong etc. added
+	Added ability to wait on different readyStates of AJAX calls. Default waits for 1,2,3
+	Updated java sample project
+	Modified _keyPress, _keyDown and _keyUp to take an array [keyCode, charCode] too as parameter 
+	Added details to Java Sample Project
+	
+* Bugfixes
+	Some click events on Safari, Chrome and Opera fixed
+	Fixed XMLHttpRequest proxying on Safari
+
+08 Feb 2010
+-----------
+* Features added
+	Added more events like _rightClick,_doubleClick to Controller 
+	_runUnitTests added to run all functions which start with test
+	_dataDrive(fn, data2D) added
+	Improved performance by pooling threads in RemoteRequestProcessor (Thanks to Richard Li for pointing this out)
+	Log_highlight scrolls to highlighted line
+	Added href based identification to _link
+	Added support for running single script via HTTP request
+	Added batch files for running single script
+	_getText returns value for text and textarea elements
+	_area Accessor API added for area tags
+	Sahi version check link added to Controller
+	addURLMock and removeURLMock added to Browser
+	Added gzip encoding when fetching remote URLs. Big performance boost.
+	Externalized Rhino context.setOptimizationLevel in sahi.properties
+	Externalized buffer size for tweaking performance
+	 
+* Bugfixes
+	Multiple file uploads of same name (fileField[]) fixed
+	Event simulation enhanced for _click and _dragDrop
+	Fixed Diagnostics tab for case when OS is not listed in os.properties
+	Focus called in _setValue
+	_set fixed for array elements
+	sahi.example.com lookup optimized. (Thanks to Richard Li for pointing this out)
+	Bugfix in IE rightClick and doubleClick
+	SessionState_ping stops if proxy switched off
+	Fixed Authentication Scheme and Realm handling
+	Escaping newline characters when reading from database
+	Fixed MockResponder
+	Fixed PID gathering when driver and proxy are in separate VMs
+	Fixed expectConfirm and expectPrompt recording in Java mode
+	
+30 Nov 2009
+-----------
+* Features added
+	Info tab added to Sahi Controller for easier diagnosis.
+	Scripts dropdown in Playback tab made a suggest box.
+	Add domain narrow down box in SSLManager.
+	Show script name and line number in logs as tooltip.
+	404 errors are logged into playback logs.
+	Controller refactored to be a single HTML page.
+	_closeWindow() added for closing popups. Eg. _popup("myWin")._closeWindow();
+	_exists() added for checking if an element exists. (Same as el != null)
+
+* Bugfixes
+	NTLM related fixes.
+	$ in ids left unescaped while recording for Java.
+	Fixed bug causing one script result to be written into another file.
+	Fixed bug which caused multiple recordings of the same event on slow loading iframe pages.
+	Fixed bug due to which links were not honoring base target 	
+
+
+11 Nov 2009
+-----------
+This is minor bugfix release over 22 Oct 2009 build.
+* Features added
+	Added cleanup of unused sessions.
+
+29 Oct 2009
+-----------
+This is minor bugfix release over 22 Oct 2009 build.
+* Features added
+	Added _renameFile
+	Added _sessionInfo(): returns an object with following attributes: isRecording, isPlaying, isPaused, sessionId, threadNumber, scriptPath
+	Usage:
+	$sessionInfo = _sessionInfo();
+	_alert($sessionInfo.sessionId);
+
+* Bugfixes	
+	Fixed conversion of Java String to javascript string in $ variables.
+
+23 Oct 2009
+-----------
+This is minor bugfix release over 22 Oct 2009 build.
+* Features added
+	Ability to set a function as recovery function, which will be called 
+		when an error occurs in a script. 
+	_setRecovery(fn) and _removeRecovery() added
+	
+* Bugfixes	
+	Fixed SSL certificates creation on Linux which was failing due to incorrect 
+		keytool command tokens. 
+	Fixed bug where spaces after _include caused _include to not work correctly.
+	Fixed highlighted line number of syntax errors in script (without includes).
+
+
+22 Oct 2009
+-----------
+This is a major release where the directory structure of Sahi has been changed.
+SAHI_HOME and SAHI_USERDATA_DIR system variables can be declared and Sahi can be invoked from anywhere on the system.
+
+All userdata has been moved into sahi/userdata directory. Sahi can be started using sahi/userdata/bin/start_sahi.bat or start_sahi.sh.
+The userdata directory can be copied to any other location on the filesystem. SAHI_HOME and SAHI_USERDATA_DIR need to be correctly set in start_sahi.bat  
+This helps upgrading to newer versions of Sahi easier.
+To point to a new version of Sahi, one needs to only change SAHI_HOME in start_sahi.bat.
+ 
+* Features added
+	User specific data moved to sahi/userdata directory.
+	Configuration properties are picked from userdata.properties and if not found, default to sahi.properties.
+	element.checked() implemented in Java for radio buttons and checkboxes
+	PID commands detected automatically based on OS. Commands can be modified in sahi/config/os.properties. 	
+
+* Bugfixes
+	keytool correctly quoted for paths and passwords with spaces
+	Fixed Java recorder freezing
+	Fixed Firefox 1st window not closing bug
+	Fixed handling of local urls with querystrings 
+	Added _heading5
+	Fixed _click on links with onclick surrounding other tags like span or image. 
+	500 Internal Server Errors are no longer sent as 200 responses in AJAX requests. 
+	Marshalling of unicode variables fixed. 
+	Fixed getDoc errors on windows with variable "type".
+	Fixed Sahi problems on some Frameset pages on IE
+
+
+22 Sep 2009
+-----------
+This is a major release, with lots of bugfixes and refactoring.
+* Features added
+	Java APIs refined and docs added
+	_title and browser.title() added
+	_writeCSVFile added. Writes 2D array to file in csv format
+	SSL Algorithm made configurable in sahi.properties. Can now use SSL with IBM JVM.	
+	Google Chrome multi threaded playback support added
+	Support for record and playback in IFrames rendered via document.write
+	
+* Bugfixes
+	Caching of js files turned on
+	NPE Bugfix in 401 processing
+	Textarea value with newline bugfix
+	Bugfix for recording on pages with frames (prev. required a reload)
+	Command tokenizing done properly before passing to Runtime.exec
+	IE Controller positioned at point of double click.
+	Optimized String trim() and added queued identification on mouseover for better performance.
+	Changed validity of SSL certificates from 3 months to 10 years.
+	Removed automatic addition of "cmd /C" from windows commands in _execute. 
+	
+	
+02 Sep 2009
+-----------
+
+This is a major release, with lots of bugfixes and refactoring.
+* Features added
+	Java driver for Sahi added. Have a look at sahi/sample_java_client
+	Controller shows multiple alternatives for accessors
+	Accessor APIs added:
+	_tableHeader for TH tags
+	_heading1 for H1 tags
+	_heading2 for H2 tags
+	_heading3 for H3 tags
+	_heading4 for H4 tags
+	
+	_check added - checks a checkbox/radio button if unchecked
+	_uncheck - unchecks a checkbox/radio button if checked
+	_removeFocus - removes focus from element
+	_blur - same as _removeFocus. removes focus from element
+	_clearLastAlert - clears last alert message retreived by _lastAlert
+	_clearLastPrompt - clears last prompt message retreived by _lastPrompt
+	_clearLastConfirm - clears last confirm message retreived by _lastConfirm		
+	
+* Bugfixes
+	Session id creation made unique.
+	5xx Internal Server Errors will not break playback.
+	If a page does not load within a time Sahi continues with execution based on sahi.properties settings.
+
+
+11 Aug 2009
+-----------
+This is a nightly release. Use at own risk.
+* Features added
+	Support for regular expressions in _popup
+
+15 Jul 2009
+-----------
+This is a nightly release. Use at own risk.
+* Features added
+	Support for 401 authentication. A dialog box is shown on the browser for authentication.
+	Support for HTTPS client certificates. Look at ssl.client.* settings in sahi.properties
+	_hidden(identifier [, domRelation]) added 
+	_byClassName(className, tagName [, domRelation]) added 
+
+* Bugfixes
+	checkbox onchange triggered for IE.
+	Content-Length removed from parts of MultiPartRequest
+
+
+21 May 2009
+-----------
+This is a stable build. 
+Use and give feedback to make next release more stable.
+
+* Features added
+    Optimizations to increase speed.
+    Optimized listing of log files.
+    Added better error messages for el = null errors.
+    Added tests for failing features.
+
+    Added _parentNode(el, tagName, occurrence),
+    Added _parentCell(el, occurrence)
+    Added _parentRow(el, occurrence)
+    Added _parentTable(el, occurrence)
+    Added _cell("cellText")
+    Added _in() and modified other accessors to take inElement as parameter
+    
+    saveAs looks at Content-Disposition: attachment to download files
+    Added tests around accessor identification
+    Test and highlight on the Recorder tab work on selected text
+    Temp files saved via "Save As" have session id prefixed to prevent overwrite.
+
+    _near
+    _rte for richtext editors based on iframe
+    Reset button added to Playback. Does not refresh page.
+    _scriptPath added
+    _type added to type partial content without blur or onchange.
+    moved to chunked encoding
+
+    Added element.visibility_check.strict = false to sahi.properties. This is the default now.  
+    Added download.download_if_contentdisposition_is_attachment = false to sahi.properties. 
+    Set this to true to automatically download files with header Content-Disposition:attachment. 
+    Causes problems with blogger.com profile images.
+
+    Stubs for Sahi's APIs and basic objects like window and document added.
+      This allows variable declarations like 
+      var $ln = _link("Form Test"); 
+      _click($ln);
+    Added xhr.wait_when_ready_state_3 to sahi.properties.
+      Set to false for cases if some XHRs never reach readyState 4. Needed for gmail. 
+
+* Bugfixes
+
+    Playback to recorder tab switch when moving between multiple domains during playback fixed.
+    Messages displayed multiple times during retry of step removed. Shows only once.
+    Fixed NaN error in _logException and _logExceptionAsFailure.
+    Fixed Content-Type related errors for state.js.
+    Fixed order of response headers (SignIn Cookie problem).
+    Log viewer shows file not found message and does not throw exception on console.
+
+    Autosuggest on Controller Accessor field does not disappear to the right.
+    APIs dropdown only lists public APIs of Sahi
+    _imageSubmitButton indexes fixed. (Treats alt and title equivalently)
+    saveAs NPE fixed
+
+    Fixed traffic logging. It had stopped working after moving to streams.
+
+    Divs are identified as _div instead of _spandiv
+    Spans are identified as _span instead of _spandiv       
+
+
+23 Apr 2009
+-----------
+This is a nightly release. Use at own risk.
+
+NOTE: This and further releases will need Java 1.5 or greater.
+
+* Features added
+	Stubs for Sahi's APIs and basic objects like window and document added.
+	  This allows variable declarations like 
+	  var $ln = _link("Form Test"); 
+	  _click($ln);
+	Added xhr.wait_when_ready_state_3 to sahi.properties.
+	  Set to false for cases if some XHRs never reach readyState 4. 
+	
+* Bugfixes
+	Divs are identified as _div instead of _spandiv
+	Spans are identified as _span instead of _spandiv		
+
+16 Apr 2009
+-----------
+This is a nightly release. Use at own risk.
+
+* Features added
+	Added element.visibility_check.strict = false to sahi.properties. This is the default now.	
+	Added download.download_if_contentdisposition_is_attachment = false to sahi.properties. 
+	Set this to true to automatically download files with header Content-Disposition:attachment. Causes problems with blogger.com profile images.
+
+* Bugfixes
+	Fixed traffic logging. It had stopped working after moving to streams.
+
+11 Apr 2009
+-----------
+This is a nightly release. Use at own risk.
+
+This release contains features showcased in Dev Camp 2009.
+
+* Features added
+	_near
+	_rte for richtext editors based on iframe
+	Reset button added to Playback. Does not refresh page.
+	_scriptPath added
+	_type added to type partial content without blur or onchange.
+	moved to chunked encoding
+
+
+23 Mar 2009
+-----------
+This is a nightly release. Use at own risk.
+
+* Features added
+	Added _parentNode(el, tagName, occurrence),
+	Added _parentCell(el, occurrence)
+	Added _parentRow(el, occurrence)
+	Added _parentTable(el, occurrence)
+	Added _cell("cellText")
+	Added _in() and modified other accessors to take inElement as parameter
+	saveAs looks at Content-Disposition: attachment to download files
+	Added tests around accessor identification
+	Test and highlight on the Recorder tab work on selected text
+	Temp files saved via "Save As" have session id prefixed to prevent overwrite.
+
+* Bugfixes
+	Autosuggest on Controller Accessor field does not disappear to the right.
+	APIs dropdown only lists public APIs of Sahi
+	_imageSubmitButton indexes fixed. (Treats alt and title equivalently)
+	saveAs NPE fixed
+
+
+13 Mar 2009
+-----------
+This is a nightly release. Use at own risk.
+
+* Features added
+	Optimizations to increase speed.
+	Optimized listing of log files.
+	Added better error messages for el = null errors.
+	Added tests for failing features.
+
+* Bugfixes
+	Playback to recorder tab switch when moving between multiple domains during playback fixed.
+	Messages displayed multiple times during retry of step removed. Shows only once.
+	Fixed NaN error in _logException and _logExceptionAsFailure.
+	Fixed Content-Type related errors for state.js.
+	Fixed order of response headers (SignIn Cookie problem).
+	Log viewer shows file not found message and does not throw exception on console.
+
+04 Mar 2009
+-----------
+* Features added
+	Displaying popup name in Controller.
+	Using -no-remote flag instead of MOZ_NO_REMOTE. Older users need to add this to ant targets.
+	_fail(msg) added
+
+	Added ext.http.both.proxy.bypass_hosts to sahi.properties to bypass some domains while
+	 connecting through external proxy
+
+	Added _sahi.printDiagnostics to get some info about browser and XMLHttpRequest being used.
+
+	id ignored for JSF RichFaces.
+	Support for IE modal dialogs (invoked via showModalDialog).
+	_setSelected identifies options by id and index.
+	_listItem API added for identification of LI tags.
+
+
+* Bugfixes
+	Fix for identifying popups from a different domain
+	Fixed _continueOnError
+	Put back no-cache headers because pages were being picked from cache in IE causing login/logouts on some sites to fail.
+	Fixed issues with link clicks on Chrome and Safari
+	Missing tests now fail the build.
+
+	Fix related to contentlength and transfer-encoding introduced in previous build.
+	Fix for XHRs not tagged properly (and hence wrongly handled) when different domains were present in iframes.
+	_readFile returns javascript string.
+
+	Handling of events registered via listeners on link clicks.
+	Links with numbers in text are quoted during recording. _link("<number>").
+
+	Link click does not proceed if event.returnValue is false
+	Checking contentType also to figure out javascript content for XHR handling
+
+	Fixed proxying to https sites which do not have a valid certificate. (bug introduced in 21 Jan 2009 build).
+
+
+27 Feb 2009
+-----------
+This is a nightly release. Use at own risk.
+
+* Bugfixes
+	Fix related to contentlength and transfer-encoding introduced in previous build.
+	Fix for XHRs not tagged properly (and hence wrongly handled) when different domains were present in iframes.
+	_readFile returns javascript string.
+
+25 Feb 2009
+-----------
+This is a nightly release. Use at own risk.
+
+* Features added
+	Added ext.http.both.proxy.bypass_hosts to sahi.properties to bypass some domains while
+	 connecting through external proxy
+
+* Bugfixes
+	Handling of events registered via listeners on link clicks.
+	Links with numbers in text are quoted during recording. _link("<number>").
+
+16 Feb 2009
+-----------
+This is a nightly release. Use at own risk.
+
+* Features added
+	Added _sahi.printDiagnostics to get some info about browser and XMLHttpRequest being used.
+
+* Bugfixes
+	Link click does not proceed if event.returnValue is false
+	Checking contentType also to figure out javascript content for XHR handling
+
+12 Feb 2009
+-----------
+This is a nightly release. Use at own risk.
+
+* Features added
+	id ignored for JSF RichFaces.
+	Support for IE modal dialogs (invoked via showModalDialog).
+	_setSelected identifies options by id and index.
+	_listItem API added for identification of LI tags.
+
+* Bugfixes
+	Fixed proxying to https sites which do not have a valid certificate. (bug introduced in 21 Jan 2009 build).
+
+
+21 Jan 2009
+-----------
+* Features added
+	Tunneling through external proxy added.
+	try catch support in Sahi script.
+	_logException added. Lets you catch an error, take corrective action and also log the error.
+	_logExceptionAsError added. Same as _logException but fails the test script. Useful for clean up before fail.
+	Added _isVisible to check for visibility of elements.
+	Actions on elements now occur only if they are visible.
+	Better support for zkoss by identification of js.dsp files and fixing AJAX issues.
+	Form elements recorded even without enclosing form tags.
+	Added experimental SSL Manager.
+	Added TrafficLogger to log HTTP traffic for debugging purposes.
+
+* Bugfixes
+	Pages with unicode characters display properly.
+	Pause and Step fixed.
+	Fixed AJAX issues on IE using ActiveX.
+	Fixed issues with multidomain iframes.
+
+
+26 Oct 2008
+-----------
+* Features added
+	logging added for errors in browser functions
+	logs for suites available while the suite is running
+	_scriptName added. Returns the script's name
+	proper killing of browser process using PIDs
+	BASIC authentication for proxies added
+
+* Bugfixes
+	browser functions in included scripts handled properly
+	line numbers in logs handled properly.
+	strings got from _readFile quoted properly.
+	suite execution related bugs
+	Step wise play rectified
+
+31 Aug 2008
+-----------
+NOTE: THIS RELEASE MAY REQUIRE CHANGES TO YOUR EXISTING SCRIPTS (http://sahi.co.in/w/scripting-changes-in-sahi-v2)
+Sahi-v2
+* Features added
+	rhino based script execution on the proxy rather than on browser - helps remove a lot of scripting confusion
+	Better management of sockets in proxy - fixes BindExceptions
+	Better management of browser crashes during suite run. Sahi will not hang the build but will fail and continue
+
+* Bugfixes
+	BindExceptions fixed
+	Hanging of builds because of browser crashes fixed
+	Connections closed in db calls
+
+
+27 Jun 2008
+-----------
+* Features added
+    _rteWrite, _rteHTML, _rteText added for writing and accessing Rich Text Editors
+    _spandiv identifies elements better
+    _re added for easily making strings to regular expressions
+    Defaults in sahi.properties changed to:
+        script.time_between_steps=100
+        script.time_between_steps_on_error=1500
+        script.max_reattempts_on_error=8
+
+* Bugfixes
+    Bug relating to some windows being identified as popups if the page was opened from a contained iframe.
+    Bug in _spandiv causing "unresponsive script" error on firefox.
+    Bug in View Script causing failure if the word "sah" was present in script.
+    _click on _label() will click the related element also.
+
+25 Jun 2008
+-----------
+* Features added
+    _label added
+    _spandiv identifies elements better
+    Some support for downloading files added
+    _lastDownloadedFileName, _saveDownloadedAs, _clearLastDownloadedFileName added
+
+* Bugfixes
+    SahiNotMyWindowException related bug fixed
+
+05 Mar 2008
+-----------
+* Features added
+    _log(message, customLevel) for logging in different colors without affecting test stats,
+        customLevel can be 'custom1', 'custom2', 'custom3', 'custom4', 'custom5'
+    _stopOnError and _continueOnError added to continue inspite of errors during execution.
+    sahi.bat, sahi.sh modified to work with external classpaths
+    _printCalled() and _clearPrintCalled() added.
+        If window.print() was called, you can assert by
+        _assertTrue(_printCalled());
+        _clearPrintCalled();
+    Firefox "already running, but is not responding" errors during suite run handled.
+        This will happen only once now when the suite uses a freshly created profile.
+
+
+* Bugfixes
+    Some changes related to fileupload
+    _spandiv on IE would be recorded with ID rather than text
+    bugfix for multiline alert
+    some changes to _getDB. Uses _set now.
+
+
+21 Oct 2007
+-----------
+
+* Features added
+    _dragDropXY(element, x, y, isRelative) for positioning relative to current position
+    _dragDropXY(element, null, y) stays on the same x coord.
+    _dragDropXY(element, x, null) stays on the same y coord.
+    _position(element) added, which returns [x, y] of element
+
+* Bugfixes
+    _dragDrop and _dragDropXY related bugs fixed. This fixes scriptaculous drag drop.
+    _click works slowly bug fixed.
+
+
+15 Oct 2007
+-----------
+
+_set modified to handle $variables properly.
+fixed json encodeuricomponent bug.
+
+
+11 Oct 2007
+-----------
+* Features added
+    Calls to non existent functions in script will fail script.
+    Hooking into XHR requests so that _wait statements are not required for AJAX.
+    _set added which takes away the confusion from _getGlobal, _setGlobal etc.
+    While running suites, the browser will be killed if no request is received from the browser in 20 seconds.
+    Further tests will be stopped if the ant target/command to run suites is killed.
+    Added sample rake scripts, ant project files and a commandline batch file for easy kickstart to running suites.
+    _dragDrop improved. (Not yet perfect though)
+    _dragDropXY(el, x, y) added
+    _createCookie(name, value) added
+    _deleteCookie(name) added
+    _byText(text, tagName) added
+    _cookie(name) added
+
+* Bugfixes
+    _setFile on IE
+    _wait
+    _confirm
+    _prompt
+    Some problems around _button
+    Proxy-Connection header used instead of Connection header.
+    Changed www.sahidomain.com to sahi.example.com
+
+Known issues
+* Turn off keep-alive in sahi.properties if browser hangs
+* IE7 will always bypass proxy for http://localhost. Use http://machine_name/ instead
+* Framesets with frames from different domains will not work with Sahi

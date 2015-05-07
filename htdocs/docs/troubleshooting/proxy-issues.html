@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proxy Issues</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='index.html'>Trouble Shooting</a>
+</li><li><a href='startup-issues.html'>Startup Issues</a>
+<ul><li><a href='startup-issues.html#Browsers do not show up on the Sahi Dashboard'>Browsers do not show up on the Sahi Dashboard</a>
+</li><li><a href='startup-issues.html#Browser does not load Application page'>Browser does not load Application page</a>
+</li><li><a href='startup-issues.html#Browser does not load page in local network when fixed external proxy is configured'>Browser does not load page in local network when fixed external proxy is configured</a>
+</li><li><a href='startup-issues.html#Elements on a page are not recognized on an IE browser'>Elements on a page are not recognized on an IE browser</a>
+</li></ul></li><li><a href='page-rendering.html'>Page Loading or Rendering</a>
+</li><li><a href='drag-drop-issues.html'>Drag and drop issues</a>
+<ul><li><a href='drag-drop-issues.html#Drag and drop does not seem to work'>Drag and drop does not seem to work</a>
+</li></ul></li><li><a href='eclipse-integration-issues.html'>Eclipse integration issues</a>
+<ul><li><a href='eclipse-integration-issues.html#Syntax highlighting does not work'>Syntax highlighting does not work</a>
+</li><li><a href='eclipse-integration-issues.html#Syntax highlighting works but intellisense does not seem to work'>Syntax highlighting works but intellisense does not seem to work</a>
+</li></ul></li><li><a href='send-email-issues.html'>Email related issues</a>
+<ul><li><a href='send-email-issues.html#sendEmail fails for Microsoft Outlook with Permission denied: connect error'>sendEmail fails for Microsoft Outlook with Permission denied: connect error</a>
+</li></ul></li><li><a href='flex-issues.html'>Flex Issues</a>
+<ul><li><a href='flex-issues.html#Flex controls show up as _object or _embed'>Flex controls show up as _object or _embed</a>
+</li></ul></li><li><a href='calling-custom-java-code.html'>Calling custom Java code</a>
+<ul><li><a href='calling-custom-java-code.html#TypeError: Cannot call property ... in object'>TypeError: Cannot call property ... in object</a>
+</li></ul></li><li><a href='oracle-forms-issues.html'>Oracle Forms Issues</a>
+<ul><li><a href='oracle-forms-issues.html#Oracle forms is unable to connect'>Oracle forms is unable to connect</a>
+</li></ul></li><li><a href='proxy-issues.html'>Proxy Issues</a>
+<ul><li><a href='proxy-issues.html#Cannot connect to internet when Sahi is not running'>Cannot connect to internet when Sahi is not running</a>
+</li></ul></li><li><a href='ssl-issues.html'>SSL Issues</a>
+<ul><li><a href='ssl-issues.html#Handshake failure'>Handshake failure</a>
+</li></ul></li><li><a href='misc-issues.html'>Miscellaneous Issues</a>
+<ul><li><a href='misc-issues.html#Content blocked from being loaded'>Content blocked from being loaded</a>
+</li><li><a href='misc-issues.html#Element's class identified incorrectly'>Element's class identified incorrectly</a>
+</li><li><a href='misc-issues.html#Controller does not open in Linux'>Controller does not open in Linux</a>
+</li><li><a href='misc-issues.html#Multiple Chrome instances'>Multiple Chrome instances</a>
+</li><li><a href='misc-issues.html#Elements not getting identified on Safari browser'>Elements not getting identified on Safari browser</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Proxy Issues</h2>
+      <!-- Proxy Issues -->
+<h3><a href="#Cannot connect to internet when Sahi is not running" name="Cannot connect to internet when Sahi is not running" class="headinganchor2" hideFocus="hideFocus">Cannot connect to internet when Sahi is not running</a></h3>
+<div class="symptom"><strong class='heading'>symptom</strong>
+After installing Sahi, I cannot connect to the internet from any browser when Sahi is not running.<br/>
+<br/>
+Even though Sahi is not running, all browsers show that proxy settings have been set to point to Sahi's proxy.<br/>
+</div>
+<br/>
+<div class="cause"><strong class='heading'>cause</strong>
+To understand why this may be happening, some background information is in order.<br/>
+<br/>
+Sahi needs to change system/browser proxy settings in order to work with browsers. This lets Sahi inject Sahi script in web pages that in turn allows Sahi to record and playback scripts on the page.<br/>
+<br/>
+Sahi reverts the proxy settings when it closes.<br/>
+<br/>
+But there may be some scenarios when this does not happen.<br/>
+<br/>
+Before looking at these scenarios, let us see how IE, FireFox and Chrome differ in the proxy behavior.<br/>
+<br/>
+<strong>Firefox and Chrome</strong><br/>
+<br/>
+When a Firefox or Chrome browser is opened from the Sahi Dashboard, it is opened in a separate profile. Proxy settings are changed only for that profile. What this means is that if you were to open a Firefox, Chrome or IE browser outside of the Sahi Dashboard at the same time, they will NOT go through the Sahi proxy. Thus a user will be able to access the internet directly from the latter browser session(s) like he/she normally does.<br/>
+<br/>
+<strong>IE is different</strong><br/>
+<br/>
+When an IE browser is opened from the dashboard, the system proxy settings are modified to go through Sahi.<br/>
+<ul>
+<li>
+If you were to open an IE browser from outside the Sahi dashboard at the same time, it will go through the Sahi proxy since the system proxy has been modified.<br/>
+</li>
+<li>
+If you were to open a Chrome browser from outside the Sahi dashboard at the same time, it will go through the Sahi proxy since Chrome uses the system proxy settings.<br/>
+</li>
+<li>
+If you were to open a Firefox browser from outside the Sahi dashboard at the same time, it will go through the Sahi proxy if it is configured to use the system proxy settings.<br/>
+</li>
+</ul>
+For all such browsers that go through the Sahi proxy, the user may see some anamolous behavior. So if you wish to browse the internet, do so after closing the Sahi IE window.<br/>
+<br/>
+<strong>Why am I unable to connect to the internet despite closing Sahi?</strong><br/>
+<br/>
+You can get into the above problem by doing the following steps in order.<br/>
+<ol>
+<li>
+Start the Sahi server.<br/>
+</li>
+<li>
+Then launch an IE browser from the Sahi Dashboard and navigate to your application.<br/>
+</li>
+<li>
+Instead of closing the IE browser, close Sahi in either of these ways<br/>
+<ul>
+<li>
+Do <code>Ctrl + C</code> on the Sahi server command window<br/>
+</li>
+<li>
+Or simply close it by pressing the <code>Close (x)</code> button on the Sahi server command window (not on the Sahi Dashboard).<br/>
+</li>
+</ul>
+</li>
+</ol>
+<strong>Explanation</strong><br/>
+<br/>
+The system proxy settings are reverted under the following circumstances.<br/>
+<ul>
+<li>
+When the last IE browser window launched from Sahi (Dashboard, Testrunner, Ant etc) is closed.<br/>
+</li>
+<li>
+When the Sahi Dashboard is closed (by clicking the <code>Close(x)</code> button on the Sahi Dashboard).<br/>
+</li>
+</ul>
+In the case described above, since the IE window was not closed, the proxy settings were not reverted. Also the user did not close the Sahi Dashboard but instead closed the Sahi server command window. Even if the IE window was closed after this, the proxy settings will not be reset.<br/>
+<br/>
+<strong>Effect</strong><br/>
+<br/>
+Since the system proxy settings were not reverted, any browser using the system proxy settings will NOT be able to connect to the internet unless Sahi is running.<br/>
+</div>
+<br/>
+<div class="resolution"><strong class='heading'>resolution</strong>
+We need to revert the system proxy settings.<br/>
+<br/>
+You can do any of the following to achieve this.<br/>
+<ul>
+<li>
+Launch Sahi, open an IE browser, close the IE browser<br/>
+</li>
+<li>
+Launch Sahi and close it by clicking the <code>Close(x)</code> button on the Sahi Dashboard.<br/>
+</li>
+<li>
+Launch Sahi and click System Proxy Off from the Sahi Dashboard. This is the least recommended solution, since you should never toggle the System Proxy from the Dashboard under normal circumstances.<br/>
+</li>
+</ul>
+</div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

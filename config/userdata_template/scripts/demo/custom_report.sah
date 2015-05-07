@@ -1,0 +1,31 @@
+var customReportMessages909 = new Array();
+function onScriptEnd(){
+	var suite = ScriptRunner.getSession().getSuite();
+	if (suite == null) return;
+	var $contents = "";
+	var $htmlLogDir = ScriptRunner.getSession().getSuite().getHtmlLogDir();
+	var $summaryFile = $htmlLogDir + "/summary.htm";
+	if (new java.io.File($summaryFile).exists()){
+		$contents = _sahi._readFile($summaryFile);
+	} else {
+		$contents = _sahi._readFile("custom_report_template.htm");
+	}
+	var $suiteLogDirName = new java.io.File($htmlLogDir).getName(); 
+	var $url = "http://localhost:9999/_s_/dyn/Log_viewLogs/" + $suiteLogDirName + "/" + ScriptRunner.getLogFileNameBase() + ".htm";
+	var $row = "";
+	for (var i=0; i<customReportMessages909.length; i++){
+		var $status = customReportMessages909[i][2];
+		if (!$status) $status = _sahi._scriptStatus()
+		$row += "<tr class='step_" + $status + "'>" +
+				"<td>" + customReportMessages909[i][0] + "</td>" +
+				"<td>" + customReportMessages909[i][1] + "</td>" +
+				"<td><a href='" + $url + "'>" + $status + "</a></td>" +
+				"</tr>";
+	}
+	$contents = $contents.replace("<!--$contents-->", $row+"\n<!--$contents-->");
+	$contents = $contents.replace("$suiteName", suite.getSuiteName());
+	_sahi._writeToFile($contents, $summaryFile, true);
+}
+function addToReport($groupBy1, $message1, $status){
+	customReportMessages909.push([$groupBy1, $message1, $status])
+}

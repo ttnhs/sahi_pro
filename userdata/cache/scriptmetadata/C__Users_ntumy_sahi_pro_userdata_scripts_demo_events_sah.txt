@@ -1,0 +1,12 @@
+commonEvents,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,3
+safariLikeEvents,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,16
+setUp,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,125
+testBlurChangeSequence,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,138
+testCheckboxEvents,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,146
+testRadioEvents,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,154
+testButtonEvents,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,162
+testSelectBoxWithSize,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,168
+testDivDblClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,179
+testTextboxDblClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,190
+testDivRightClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,201
+testTextboxRightClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\events.sah,212

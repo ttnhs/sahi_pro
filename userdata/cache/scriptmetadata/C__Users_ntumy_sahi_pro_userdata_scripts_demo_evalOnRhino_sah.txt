@@ -1,0 +1,7 @@
+testScriptName,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\evalOnRhino.sah,1
+testScriptPath,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\evalOnRhino.sah,4
+testUserDataPath,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\evalOnRhino.sah,10
+testReadFile,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\evalOnRhino.sah,14
+testReadCSVFile,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\evalOnRhino.sah,19
+xtestLocalVariable,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\evalOnRhino.sah,24
+testGlobalVariable,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\evalOnRhino.sah,32

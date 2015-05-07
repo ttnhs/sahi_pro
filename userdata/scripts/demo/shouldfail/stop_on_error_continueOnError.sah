@@ -1,0 +1,16 @@
+onScriptError = null;
+onScriptFailure = null;
+$thrownError = false;
+$continued = false;
+_continueOnError();
+try{
+	_click(_link("Link Test"));
+	_click(_link("linkByContent"));
+	_click(_link("BackXX")); // SHOULD FAIL ON THIS LINE ONLY
+	$continued = true;
+	_click(_link("Back"));
+}catch(e){
+	$thrownError = true;
+}
+_assertFalse($thrownError);
+_assertTrue($continued);

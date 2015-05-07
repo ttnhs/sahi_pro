@@ -1,0 +1,10 @@
+//onScriptError=onScriptFailure=null;
+_navigateTo("/demo/training/");
+_setValue(_textbox("user"), "test");
+_assertEqualImages("snapshot_login_short.png", "snapshot_login_short.png", 10, false, "Oh no! Image assertion failed!");
+_assertEqualImages("snapshot_login_short.png", "snapshot_login_short.png", 10, true, "Oh no! Image assertion failed!");
+//_assertEqualImages("snapshot_login_short.png", "snapshot_totaled.png", 10, true, "Oh no! Image assertion 2 failed!");
+_log("Done");
+_log("Tiger image via log!", "INFO", "assert_log_tiger.jpg");
+_logImage("assert_log_tiger.jpg", "Tiger image via logImage!", "INFO");
+

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>What is new in Sahi Pro v6.0.1</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='whats-new-index.html'>Sahi Pro - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.1.html'>Sahi Pro v6.0.1 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.1.html#Bug Fixes'>Bug Fixes</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.1.html#Features'>Features</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v6.0.0.html'>Sahi Pro v6.0.0 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Key features'>Key features</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Editor'>Editor</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Triggering Sahi Pro from Jenkins'>Triggering Sahi Pro from Jenkins</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Object Repository'>Object Repository</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Better Reporting'>Better Reporting</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Browser Page and Element Screenshots via _takePageScreenShot'>Browser Page and Element Screenshots via _takePageScreenShot</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Better error stacktraces'>Better error stacktraces</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Script locking for synchronization'>Script locking for synchronization</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Globally included global_include.sah file'>Globally included global_include.sah file</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Searching scripts within suites in Sahi's logs'>Searching scripts within suites in Sahi's logs</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Improved Graphs'>Improved Graphs</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Compare images'>Compare images</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Native events'>Native events</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#New APIs'>New APIs</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Modified API's'>Modified API's</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Other Features and Enhancements'>Other Features and Enhancements</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v5.1.2.html'>Sahi Pro v5.1.2 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v5.1.2.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v5.1.1.html'>Sahi Pro v5.1.1 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v5.1.1.html#Features'>Features</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.1.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v5.1.0.html'>Sahi Pro v5.1.0 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Key features'>Key features</a>
+<ul><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Internet Explorer 11 Support'>Internet Explorer 11 Support</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#CORS support'>CORS support</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Data Driven Suites'>Data Driven Suites</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Brand new documentation'>Brand new documentation</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Scenario Editor for Excel Framework'>Scenario Editor for Excel Framework</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Sahi as a Documentation Tool'>Sahi as a Documentation Tool</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Script specific object repository files'>Script specific object repository files</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Upgrading Sahi becomes easier'>Upgrading Sahi becomes easier</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Multiple browser sessions in single script'>Multiple browser sessions in single script</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#REST APIs for WebServices'>REST APIs for WebServices</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Email notification on Suite execution'>Email notification on Suite execution</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Lots of optimizations'>Lots of optimizations</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#New APIs'>New APIs</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Other features'>Other features</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li></ul></li><li><a href='whats-new-os-index.html'>Sahi OS - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-os-v5.0.html'>Sahi OS v5.0 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-os-v5.0.html#New Features'>New Features</a>
+</li><li><a href='whats-new-in-sahi-os-v5.0.html#New APIs'>New APIs</a>
+</li><li><a href='whats-new-in-sahi-os-v5.0.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li></ul></li><li><a href='index.html'>Sahi - Introduction</a>
+<ul><li><a href='index.html#Main differentiating features'>Main differentiating features</a>
+</li><li><a href='index.html#Full feature list'>Full feature list</a>
+</li><li><a href='index.html#Browser Support'>Browser Support</a>
+</li><li><a href='index.html#Sahi Name'>Sahi Name</a>
+</li></ul></li><li><a href='architecture.html'>Architecture</a>
+<ul><li><a href='architecture.html#User Goals'>User Goals</a>
+</li><li><a href='architecture.html#Technical Goals'>Technical Goals</a>
+<ul><li><a href='architecture.html#Handling new browsers and operating systems'>Handling new browsers and operating systems</a>
+</li><li><a href='architecture.html#Object Identification'>Object Identification</a>
+</li><li><a href='architecture.html#Event simulation'>Event simulation</a>
+</li><li><a href='architecture.html#Scripting'>Scripting</a>
+</li><li><a href='architecture.html#Agile'>Agile</a>
+</li></ul></li><li><a href='architecture.html#Architecture'>Architecture</a>
+</li></ul></li><li><a href='sahi-script.html'>Sahi Script</a>
+<ul><li><a href='sahi-script.html#Sample Code'>Sample Code</a>
+</li><li><a href='sahi-script.html#Parsing and Execution'>Parsing and Execution</a>
+</li><li><a href='sahi-script.html#Rhino Engine'>Rhino Engine</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - What is new in Sahi Pro v6.0.1</h2>
+      <!-- What is new in Sahi Pro v6.0.1-->
+<br/>
+<div class="abstract"><strong class='heading'>abstract</strong>
+Sahi Pro v6.0.1 is a bugfix release.<br/>
+</div>
+<br/>
+<div class="warning"><strong class='heading'>warning</strong>
+<b>WARNING related to Upgrades</b><br/>
+<ul>
+<li>
+<b>Upgrade from SahiPro versions older than 6.0.0</b><br/>
+Please do NOT upgrade to Sahi Pro 6.0.1 from an existing installation whose version is earlier than 6.0.0.<br/>
+There were significant changes in userdata folder introduced in 6.0.0 which would cause problems.<br/>
+<br/>
+Please do a fresh installation of Sahi Pro 6.0.1 in another folder and copy over your older userdata/scripts folder to the new installation.<br/>
+Also selectively copy changes from userdata/config files to the new installation.<br/>
+</li>
+<li>
+<b>It is OK to <a href="../using-sahi/quick-tutorial.html#Upgrade Sahi">upgrade</a> to Sahi Pro 6.0.1 from Sahi Pro 6.0.0.</b><br/>
+<br/>
+A few files are different in Sahi Pro 6.0.1.<br/>
+<ol>
+<li>
+If you have not changed any xsls in the <code>userdata/config/reports</code> folder, just copy over the contents from <code>config/userdata_template/config/reports</code>. Else, merge the differences manually.<br/>
+</li>
+<li>
+Merge the contents of <code>config/userdata_template/config/donot_download_urls.txt</code> to <code>userdata/config/donot_download_urls.txt</code> folder.<br/>
+</li>
+<li>
+Copy over <code>config/userdata_template/scripts/global_include.sah</code> to <code>userdata/scripts/global_include.sah</code>
+</li>
+<li>
+Copy over <code>subject.sah</code> and <code>noise.sah</code> from <code>config/userdata_template/scripts/demo/load</code> to <code>userdata/scripts/demo/load</code> folder<br/>
+</li>
+<li>
+If you have previously created ANT xmls <b>with Retry targets</b> using the <code>Editor</code>, regenerate the ANT xmls from <code>Editor | Playback | Create Ant Target</code>, since the Retry targets have changed. If your ANT xmls do not contain Retry targets, you do not need to regenerate the ANT xmls.<br/>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<br/>
+<h3><a href="#Bug Fixes" name="Bug Fixes" class="headinganchor2" hideFocus="hideFocus">Bug Fixes</a></h3>
+<ul>
+<li>Scripts were running slower because Sahi was waiting for uninitiated XmlHttpRequest objects also. Fixed</li>
+<li>Highlighting matching brackets in Editor and Controller was broken. Fixed</li>
+<li>URL encoding query parameters in REST APIs</li>
+<li>Editor was saving files with \n as line separator. Fixed to use the file's original line ending.</li>
+<li>windowAction APIs which were experimental in Mac, are temporarily disabled.</li>
+<li>When _setStrictVisibilityCheck is true, elements inside frames were returning false for _isVisible. Fixed.</li>
+<li>Object Repository is renamed to Accessor Repository to better convey its usage and meaning. File endings will now default to _AR.sah. Existing _OR.sah will continue to work.</li>
+<li>Added props parameter in _assertSnapShot API which allows specifying additional attributes like delay, trim, image type etc.</li>
+<li>Property java.ntlm.transparent_authentication.enabled in sahi.properties was doing the opposite. Fixed.</li>
+<li>In a data driven suite, if the header column size and row column size did not match, there were failures on a single machine as well as distributed run. Fixed.</li>
+<li>In a distributed run with a data driven suite, if a row had a blank value in an intermediate column, the script execution would fail and the run would go into an infinite loop. Fixed.</li>
+<li>After the execution on first node was aborted, when scripts were re-executed on another node, offline logs were not getting generated. Fixed.</li>
+<li>When a node goes offline, master would sometimes hang waiting for a response and retry would never be invoked. Fixed.</li>
+<li>Fix to sync the scripts to the correct machine in case of Distributed Run with a different master</li>
+<li>In a distributed run, if the nodes are unavailable (browser is not supported or Master cannot communicate with the node), the run would never terminate. Fixed.</li>
+<li>Trimming contents in Import CSV in Editor. The untrimmed spaces was causing scenarios to fail. Fixed.</li>
+<li>Fixed UI issues in ddcsv editor - Copy paste, editing etc. were broken</li>
+<li>Optimizing getAssociatedLabel. Look only in current window object and only upto 8 parents. Was using too much CPU for pages with lots of nested iframes and containing lots of elements.</li>
+<li>In some cases, _takePageScreenShot showed double images when the page size was less than the browser window size. Fixed</li>
+<li>_assertEqualImages and _compareImages was failing when any of the file paths had a space in them. Fixed.</li>
+<li>Running an empty suite returns success now</li>
+<li>Optimized fetching of suites list in Logs</li>
+<li>Incorrect information in junit reports removed</li>
+<li>dload.bat would not terminate after running the load tests. Fixed.</li>
+<li>Documentation added for APIs <a href="../sahi-apis/logging-apis.html#_startHarLogging">_startHarLogging</a> and <a href="../sahi-apis/logging-apis.html#_stopHarLogging">_stopHarLogging</a></li>
+<li>Load testing documentation updated</li>
+<li>When testing an ANT target generated from <code>Editor &gt; Playback &gt; Create Ant Target</code>, in case of a Retry, the Retry status was not considered as the final status. Fixed.</li>
+<li>Dload ANT target has been fixed</li>
+</ul>
+<br/>
+<h3><a href="#Features" name="Features" class="headinganchor2" hideFocus="hideFocus">Features</a></h3>
+<ul>
+<li><a href="../sahi-apis/action-apis.html#_mouseOverNative">_mouseOverNative</a> added for native mouse events</li>
+<li>subjectRepeatCount can be passed to dload. subject.sah will be run that many times at each load level. This helps average out any abnormal behaviour during that moment of execution.</li>
+</ul>
+
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+_log("NOTE: Close and open of browser only works if 1) you run it from command line or ant target and 2) have SINGLE_SESSION=false", "CUSTOM1");
+
+
+_navigateTo("/demo/training/");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+
+_closeBrowser();
+_openBrowser();
+
+_navigateTo("/demo/training/books.htm");
+
+_setValue(_textbox("q"), "2");
+_setValue(_textbox("q[1]"), "1");
+_setValue(_textbox("q[2]"), "1");
+_click(_button("Add"));
+_click(_cell("Rs.200[1]"));
+_assertExists(_textbox("total"));
+_assert(_isVisible(_textbox("total")));
+_assertEqual("1150", _textbox("total").value);
+_click(_button("Logout"));

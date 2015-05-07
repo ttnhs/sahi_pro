@@ -1,0 +1,22 @@
+function testSelectRangeFormEl() {
+	_click(_link("Form Test"))
+	_setValue(_textarea("ta1"), "abcdefgh");
+	_selectRange(_textarea("ta1"), 2, 4);
+	var $value = _getSelectionText();
+	_assertEqual("cd", $value);
+}
+
+function testSelectRangeFormElInIFrame() {
+	_click(_link("IFrames Test"))
+	_click(_link("Form Test"))
+	_setValue(_textarea("ta1"), "abcdefgh");
+	_selectRange(_textarea("ta1"), 2, 4);
+	var $value = _getSelectionText();
+	_assertEqual("cd", $value);
+}
+
+function setUp() {
+	_navigateTo("/demo/");
+}
+
+_runUnitTests();

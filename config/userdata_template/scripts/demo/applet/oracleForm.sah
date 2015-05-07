@@ -1,0 +1,51 @@
+_navigateTo("/demo/applet/oracle/oracleForm.htm");
+
+//FormsTabPanel
+function testFormsTabPanel() {
+  	 _setSelected(_a("OracleApplet").formstabpanel("TabPanel"),"Second Tab");
+	 _assertExists(_a("OracleApplet").jtextfield("Result"));
+	 _assertEqual("Second Tab Selected", _getValue(_a("OracleApplet").jtextfield("Result")));
+}
+
+//VButton
+function testVButton() {
+  	 _setSelected(_a("OracleApplet").formstabpanel("TabPanel"),"First Tab");
+	 _assertExists(_a("OracleApplet").vbutton("vButton"));
+     _click(_a("OracleApplet").vbutton("vButton"));
+	 _assertExists(_a("OracleApplet").jtextfield("Result"));
+	 _assertEqual("vButton Clicked", _getValue(_a("OracleApplet").jtextfield("Result")));
+}
+
+//ExtendedCheckBox
+function testExtendedCheckBox() {
+	_setSelected(_a("OracleApplet").formstabpanel("TabPanel"),"First Tab");
+	_assertExists(_a("OracleApplet").extendedcheckbox("Check"));
+	_click(_a("OracleApplet").extendedcheckbox("Check"));
+	_assertExists(_a("OracleApplet").jtextfield("Result"));
+	_assertEqual("Check Box Selected", _getValue(_a("OracleApplet").jtextfield("Result")));
+}
+
+//LWScrollbar
+function testLWScrollbar() {
+	_setSelected(_a("OracleApplet").formstabpanel("TabPanel"),"First Tab");
+	_assertExists(_a("OracleApplet").lwscrollbar("LWScroll"));
+	_setValue(_a("OracleApplet").lwscrollbar("LWScroll"), "30");
+	_assertEqual("30", _getValue(_a("OracleApplet").lwscrollbar("LWScroll")));
+}
+
+//TextArea and TextFields
+function testTextFields() {
+	_setSelected(_a("OracleApplet").formstabpanel("TabPanel"),"First Tab");
+	
+	_assertExists(_a("OracleApplet").flwtextarea("FLWTextA"));
+	_setValue(_a("OracleApplet").flwtextarea("FLWTextA"),"This is flwTextArea");
+	_assertEqual("This is flwTextArea", _getValue(_a("OracleApplet").flwtextarea("FLWTextA")));
+	
+	_assertExists(_a("OracleApplet").vtextfield("VTextF"));
+	_setValue(_a("OracleApplet").vtextfield("VTextF"),"This is vTextField");
+	_assertEqual("This is vTextField", _getValue(_a("OracleApplet").vtextfield("VTextF")));
+
+}
+
+_runUnitTests();
+

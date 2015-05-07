@@ -1,0 +1,9 @@
+_navigateTo("/demo/testFieldSet.htm");
+_setValue(_textbox(0), "Pratyush");
+_setValue(_textbox(1), "Tyto Software");
+_setValue(_textbox(2), "Bangalore");
+_assertExists(_textbox(0));
+_assert(_isVisible(_textbox(0)));
+_assertEqual("Pratyush", _getValue(_textbox(0)));
+_assertExists(_fieldset("Address Details"));
+_assert(_isVisible(_fieldset("Address Details")));

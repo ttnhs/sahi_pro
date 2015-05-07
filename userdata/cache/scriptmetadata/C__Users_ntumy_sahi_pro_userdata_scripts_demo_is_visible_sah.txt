@@ -1,0 +1,1 @@
+checkVisible,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\is_visible.sah,1

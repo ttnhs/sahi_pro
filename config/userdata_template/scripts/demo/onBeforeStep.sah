@@ -1,0 +1,60 @@
+var $expectedLineNum = 0;
+var $lineNumber = 0;
+var $stepToExecute;
+function onBeforeStep($step, $debugInfo){
+	$expectedLineNum++;
+	_assertEqual($expectedLineNum,$lineNumber);
+  	_assertEqual($step , $stepToExecute);
+    _log("On before step Executed!!");
+}
+function testOnBeforeStep(){
+	$lineNumber = 1;
+	$stepToExecute = "_navigateTo(\"/demo/training/\")";
+	_navigateTo("/demo/training/");
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_setValue(_textbox(\"user\"), \"test\")";
+	_setValue(_textbox("user"), "test");
+	
+	$lineNumber = $lineNumber+1;
+	var $temp = $expectedLineNum +1;
+	$stepToExecute = "_assertEqual(3, 3)";
+	_assertEqual($lineNumber, $temp);
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_setValue(_password(\"password\"), \"secret\")";
+	_setValue(_password("password"), "secret");
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_click(_submit(\"Login\"))";
+	_click(_submit("Login"));
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_setValue(_textbox(\"q[0]\"), \"2\")";
+	_setValue(_textbox("q[0]"), "2");
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_setValue(_textbox(\"q[1]\"), \"1\")";
+	_setValue(_textbox("q[1]"), "1");
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_setValue(_textbox(\"q[2]\"), \"1\")";
+	_setValue(_textbox("q[2]"), "1");
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_click(_button(\"Add\"))";
+	_click(_button("Add"));
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_assertExists(_textbox(\"total\"))";
+	_assertExists(_textbox("total"));
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_assert(_isVisible(_textbox(\"total\")))";
+	_assert(_isVisible(_textbox("total")));
+	
+	$lineNumber = $lineNumber+1;
+	$stepToExecute = "_assertEqual(\"1150\", _textbox(\"total\").value)";
+	_assertEqual("1150", _textbox("total").value);
+}
+_runUnitTests();

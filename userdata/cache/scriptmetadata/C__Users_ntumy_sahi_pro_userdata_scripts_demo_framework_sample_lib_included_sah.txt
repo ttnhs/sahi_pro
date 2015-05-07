@@ -1,0 +1,2 @@
+login,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\sample_lib_included.sah,1,$username,$password
+addBooks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\sample_lib_included.sah,7,$numJava,$numRuby,$numPython

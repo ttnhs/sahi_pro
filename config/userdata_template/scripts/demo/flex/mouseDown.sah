@@ -1,0 +1,9 @@
+function testMouseDown() {
+	_click(_f("sampleId1").tab("Fifth Tab"));
+	_assertExists(_f("sampleId1").textarea("mDTextArea"));
+	_assertEqual("", _getValue(_f("sampleId1").textarea("mDTextArea")));
+	_mouseDown(_f("sampleId1").button("Mouse Down over Me"))
+	_assertEqual("Mouse Down", _getValue(_f("sampleId1").textarea("mDTextArea")));
+}
+_navigateTo("/sfl/TestApplication.html");
+testMouseDown();

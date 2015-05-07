@@ -1,0 +1,4 @@
+login,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\plugins\test_lib.sah,1,$user,$password
+addBooks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\plugins\test_lib.sah,8,$java,$ruby,$python
+verifyTotal,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\plugins\test_lib.sah,15,$total
+logout,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\plugins\test_lib.sah,19

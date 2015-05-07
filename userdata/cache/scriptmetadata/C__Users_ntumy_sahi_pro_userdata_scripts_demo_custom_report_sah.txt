@@ -1,0 +1,2 @@
+onScriptEnd,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\custom_report.sah,2
+addToReport,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\custom_report.sah,29,$groupBy1,$message1,$status

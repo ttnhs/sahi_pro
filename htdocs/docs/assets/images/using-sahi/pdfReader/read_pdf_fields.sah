@@ -1,0 +1,6 @@
+_include("pdf_fields_lib.sah");
+var $pdf = new SahiFrameWork_PDFFields();
+$pdf.load("C://a.pdf");
+$pdf.printAll();
+_assertEqual("Jan",  $pdf.getValue("Dropdown2"));
+_assertTrue($pdf.isChecked("Check Box1"));

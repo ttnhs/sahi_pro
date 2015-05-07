@@ -1,0 +1,3 @@
+testCollectWorksWithoutRel,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\collect.sah,39
+testCollectWorksForAll,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\collect.sah,43
+testCollectWorksWithRel,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\collect.sah,47

@@ -1,0 +1,15 @@
+_include("commonFeatures.sah");
+_include("objects.sah");
+_navigateTo($url);
+login($userName,$password);
+navigateToUserAccount();
+_click(_link("Browse list of users"));
+tableRowShouldContain(1,"Admin User");
+_wait(4000);
+_click(_link("2"));
+tableShouldContain("student30@example.com");
+_wait(4000);
+_click(_link("Next"));
+tableCellShouldBe($adminTable, 2, 3, "Brussels");
+_wait(4000);
+logoutQAMoodle();

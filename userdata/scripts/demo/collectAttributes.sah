@@ -1,0 +1,41 @@
+_navigateTo("/demo/count.htm");
+var $els = _collectAttributes("_link", "/group 1/", "sahiText");
+var $len = $els.length;
+_assertEqual(5, $len);
+_assertEqual("group 1 link1", $els[0]);
+_assertEqual("group 1 link2", $els[1]);
+
+<browser>
+function myFn(el){
+	return el.innerHTML;
+}
+</browser>
+
+function myFn2(el) {
+	return myFn(el);
+}
+
+
+var $els = _collectAttributes("_link", "/group 1/",  myFn2, _in(_div("div1")));
+var $len = $els.length;
+_assertEqual(2, $len);
+_assertEqual("group 1 link3", $els[0]);
+_assertEqual("group 1 link4", $els[1]);
+
+
+var $els = _collectAttributes("_link", "/group 333/", "sahiText", _in(_div("div1")));
+var $len = $els.length;
+_assertEqual(0, $len);
+
+_navigateTo("/demo/training/books.htm");
+
+function testCollectWorksWithoutRel(){
+	_assertEqual(3, _collectAttributes("_textbox", "q", "id").length);
+}
+
+function testCollectWorksForAll(){
+	_assertEqual(4, _collectAttributes("_textbox", "/.*/", "id").length);
+}
+
+_runUnitTests();
+

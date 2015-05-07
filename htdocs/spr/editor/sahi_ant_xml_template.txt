@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+/**
+ * Copyright Tyto Software Pvt. Ltd.
+ */
+-->
+<project name="demo" default="$defaultTarget">
+	<taskdef name="sahi" classname="net.sf.sahi.ant.RunSahiTask" classpath="lib/ant-sahi.jar"/>
+	$callParallelTargets
+	$runtestTargets	
+</project>

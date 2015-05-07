@@ -1,0 +1,47 @@
+function checkVisible(){
+	_assertTrue(_isVisible(_spandiv("using display")));
+	_assertVisible(_spandiv("using display"));
+	_click(_button("Display none"));
+	_assertFalse(_isVisible(_spandiv("using display")));
+	_assertNotVisible(_isVisible(_spandiv("using display")));
+	_click(_button("Display block"));
+	_assertTrue(_isVisible(_spandiv("using display")));
+	_assertVisible(_spandiv("using display"));
+	_click(_button("Display none"));
+	_assertFalse(_isVisible(_spandiv("using display")));
+	_assertNotVisible(_isVisible(_spandiv("using display")));
+	_click(_button("Display inline"));
+	_assertTrue(_isVisible(_spandiv("using display")));
+	_assertVisible(_spandiv("using display"));
+	_assertTrue(_isVisible(_spandiv("using visibility")));
+	_assertVisible(_spandiv("using visibility"));
+	_click(_button("Visibility hidden"));
+	_assertFalse(_isVisible(_spandiv("using visibility")));
+	_assertNotVisible(_isVisible(_spandiv("using visibility")));
+	_click(_button("Visibility visible"));
+	_assertTrue(_isVisible(_spandiv("using visibility")));
+	_assertVisible(_spandiv("using visibility"));
+	_assertFalse(_isVisible(_byId("nestedBlockInNone")));
+	_assertNotVisible(_byId("nestedBlockInNone"));
+	_assertFalse(_isVisible(_byId("absoluteNestedBlockInNone")));
+	_assertNotVisible(_byId("absoluteNestedBlockInNone"));
+}
+
+_click(_link("Visible Test"));
+checkVisible();
+_navigateTo("/demo/iframesTest.htm");
+_click(_link("Visible Test[1]"));
+checkVisible();
+_navigateTo("/demo/isVisibleTest.htm");
+_assertTrue(_isVisible(_bold("fourth")));
+_assertVisible(_bold("fourth"));
+_assertFalse(_isVisible(_paragraph(second)));
+_assertNotVisible(_paragraph(second));
+_assertFalse(_isVisible(_paragraph(third)));
+_assertNotVisible(_paragraph(third));
+_assertFalse(_isVisible(_paragraph(thirdsub)));
+_assertNotVisible(_paragraph(thirdsub));
+_assertFalse(_isVisible(_paragraph("fifth")));
+_assertNotVisible(_paragraph("fifth"));
+
+

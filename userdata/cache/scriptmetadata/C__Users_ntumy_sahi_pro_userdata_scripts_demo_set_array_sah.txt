@@ -1,0 +1,4 @@
+testSetWorksWithArrays,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\set_array.sah,2
+testSetWorksWithVariableInValue,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\set_array.sah,16
+testSetWorksOnPopups,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\set_array.sah,25
+testSetWorksOnPopupsWithVariableNames,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\set_array.sah,35

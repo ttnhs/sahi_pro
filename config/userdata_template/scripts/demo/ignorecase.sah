@@ -1,0 +1,21 @@
+_assertExists(_link("Link Test"));
+_assertNotExists(_link("LINK TEST"));
+_assertExists(_link("/Link Te/"));
+_assertNotExists(_link("/LINK TE/"));
+
+_setAccessorIgnoreCase(true);
+_assertExists(_link("Link Test"));
+_assertExists(_link("LINK TEST"));
+_assertExists(_link("/Link Te/"));
+_assertExists(_link("/LINK TE/"));
+_assertExists(_link("/LINK TE/i"));
+_assertExists(_link({sahiText:"/LINK TE/"}));
+_assertExists(_link({sahiText:"/LINK TE/i"}));
+
+
+_setAccessorIgnoreCase(false);
+_assertExists(_link("Link Test"));
+_assertNotExists(_link("LINK TEST"));
+_assertExists(_link("/Link Te/"));
+_assertNotExists(_link("/LINK TE/"));
+_assertExists(_link("/LINK TE/i"));

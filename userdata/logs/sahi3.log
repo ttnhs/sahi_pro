@@ -1,0 +1,1003 @@
+May 07, 2015 8:41:10 AM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi properties file = C:\Users\ntumy\sahi_pro\config\sahi.properties
+May 07, 2015 8:41:11 AM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi user properties file = C:\Users\ntumy\sahi_pro\userdata\config\userdata.properties
+May 07, 2015 8:41:19 AM net.sf.sahi.util.BrowserTypesLoader loadAvailableBrowserTypes
+INFO: 
+-----
+Reading browser types from: C:\Users\ntumy\sahi_pro\userdata\config\browser_types.xml
+Opera was not found at C:\Program Files (x86)\Opera\opera.exe
+-----
+
+May 07, 2015 8:41:24 AM net.sf.sahi.util.Utils setUrlConnectionFollowRedirectsInternal
+INFO: urlConnectionFollowRedirectsInternal = false
+May 07, 2015 8:41:24 AM in.co.sahi.datastore.SahiDB <clinit>
+INFO: Using Database:
+driverName=org.h2.Driver
+jdbcurl=jdbc:h2:C:/Users/ntumy/sahi_pro/userdata/database/db0;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1;IGNORECASE=TRUE
+userName=sa
+May 07, 2015 8:41:26 AM in.co.sahi.datastore.SahiDB createTables
+INFO: Check tables version
+May 07, 2015 8:41:33 AM in.co.sahi.datastore.SahiDB createTables
+INFO: versionFromDB=2014-11-17 17:12:19
+May 07, 2015 8:41:33 AM in.co.sahi.datastore.SahiDB createTables
+INFO: version=2014-11-17 17:12:19
+May 07, 2015 8:41:33 AM in.co.sahi.datastore.SahiDB createTables
+INFO: At current version. No changes were done.
+May 07, 2015 8:41:33 AM in.co.sahi.datastore.SahiDB createTables
+INFO: {result: [["KEY","VALUE"],["versionNo","2014-11-17 17:12:19"]]}
+May 07, 2015 8:41:33 AM in.co.sahi.datastore.SahiDB createTables
+INFO: Finished preparing report tables: 6922ms
+May 07, 2015 9:26:52 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:26:52 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:26:52 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:26:52 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:26:52 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:26:52 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:26:54 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:26:54 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:26:54 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:26:54 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:26:54 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:26:55 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_baa52ae30a9f30487d0bd0e079fe586e4ae2sahix218efdd402f37042b60b5f30973a25aa839dx__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:26:56 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5836]; 1394 ms
+May 07, 2015 9:27:03 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 9:27:32 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5836]
+May 07, 2015 9:31:37 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:31:37 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:31:37 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:31:37 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:31:37 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:31:37 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:31:38 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:31:38 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:31:38 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:31:38 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:31:38 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:31:38 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_84e1e07e04ee304b440875603f8c94a2a5c8sahixc572d07f01edc0412a0bf0f07c5b8beef89bx__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:31:39 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5248]; 750 ms
+May 07, 2015 9:31:45 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 9:32:10 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5248]
+May 07, 2015 9:34:20 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:34:20 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:34:20 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:34:20 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:34:20 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:34:20 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:34:20 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:34:20 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:34:20 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:34:20 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:34:20 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:34:20 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_f96179b308e100437b0b4170c925c584eaa6sahix4acc18130189204f0f09f320f5a78b3141a2x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:34:21 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [3476]; 921 ms
+May 07, 2015 9:34:27 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 9:34:58 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [3476]
+May 07, 2015 9:35:10 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:35:10 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:35:10 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:35:10 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:35:10 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:35:10 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:35:11 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:35:11 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:35:11 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:35:11 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:35:11 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:35:11 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_d69d938b0863204b9d0b0e90bc15727b2607sahix84fa54cc038ab0458e095960f4d02a59b38ax__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:35:12 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [2592]; 1189 ms
+May 07, 2015 9:35:18 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 9:35:51 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [2592]
+May 07, 2015 9:43:26 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:43:26 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:43:26 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:43:26 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:43:26 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:43:26 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:43:26 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:43:26 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:43:26 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:43:27 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:43:27 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:43:27 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_3441a82901e7e04a2b08dec005ba345b33f4sahix99effd610fb290470408dfc09029c63ffa6ex__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:43:28 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [3588]; 969 ms
+May 07, 2015 9:43:33 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 9:44:02 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [3588]
+May 07, 2015 9:49:09 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:49:09 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:49:09 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:49:09 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:49:09 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:49:09 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:49:09 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:49:09 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:49:09 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:49:09 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:49:09 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:49:09 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_108e202c082f104d4d0aac203c013ab275d2sahix87ade1e909c08049d10a3d50d73805e44b25x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:49:10 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [3648]; 968 ms
+May 07, 2015 9:49:16 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 9:50:56 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [3648]
+May 07, 2015 9:52:13 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:52:13 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:52:13 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:52:13 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:52:13 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:52:13 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:52:13 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:52:13 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:52:13 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:52:13 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:52:13 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:52:13 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_047161a70b28d046f5098650cc99bcd612f7sahix5273affe0c990042c608b3f06dddd82167eax__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:52:14 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [3652]; 875 ms
+May 07, 2015 9:52:14 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [3652]
+May 07, 2015 9:52:46 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:52:46 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:52:46 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:52:46 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:52:46 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:52:46 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:52:46 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:52:46 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:52:46 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:52:46 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:52:46 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:52:46 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_c30ea2b5097a8046680a1a7006c5cdb25920sahix2e3557ab04e3d0406808a870dccf281cbb26x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:52:47 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [2540]; 874 ms
+May 07, 2015 9:52:53 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 9:53:35 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [2540]
+May 07, 2015 9:57:43 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:57:43 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:57:43 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:57:43 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:57:43 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:57:43 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:57:43 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:57:43 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:57:43 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:57:43 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:57:43 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:57:43 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_037a9669053e404c770b60a09955e8b136f1sahix4c551947075bb04a000a6a4024a6bc2b0583x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:57:44 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [1780]; 891 ms
+May 07, 2015 9:57:49 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 9:58:18 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [1780]
+May 07, 2015 9:59:35 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 9:59:35 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 9:59:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 9:59:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 9:59:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 9:59:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 9:59:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 9:59:35 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 9:59:35 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 9:59:35 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 9:59:35 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 9:59:35 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_273da74505001046880a18f0ad5ddcb6e48fsahixccd14b2901ced04e7c0a2e9090cd68137f83x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 9:59:36 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5736]; 968 ms
+May 07, 2015 9:59:42 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 10:00:11 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5736]
+May 07, 2015 10:02:27 AM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_4cbc79e50160804f4b09df906f5215acc904
+May 07, 2015 10:02:27 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox"
+May 07, 2015 10:02:28 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5332]; 968 ms
+May 07, 2015 10:02:34 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 10:03:38 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5332]
+May 07, 2015 10:04:31 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 10:04:31 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 10:04:31 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 10:04:31 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 10:04:31 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 10:04:31 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 10:04:31 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 10:04:31 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 10:04:31 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 10:04:32 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 10:04:32 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 10:04:32 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_22ab10a30e770041590be370a741de0113b9sahix5b20b4f70855f046c009626009a76e4cdb69x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 10:04:32 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5960]; 859 ms
+May 07, 2015 10:04:38 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 10:05:07 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5960]
+May 07, 2015 10:07:50 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 10:07:50 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 10:07:50 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 10:07:50 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 10:07:50 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 10:07:50 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 10:07:50 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 10:07:50 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 10:07:50 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 10:07:50 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 10:07:50 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 10:07:50 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_fd4836150536c042ed09aae03c0b09e7cd94sahix9c930dcb0cd42048110ba8904fafc02dd9c4x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 10:07:51 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [2116]; 1015 ms
+May 07, 2015 10:07:57 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 10:08:37 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [2116]
+May 07, 2015 10:09:35 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 10:09:35 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 10:09:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 10:09:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 10:09:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 10:09:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 10:09:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 10:09:35 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 10:09:35 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 10:09:35 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 10:09:35 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 10:09:35 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_f6a9c75407dff04e6908abb0df1f1b9ab3c2sahixdb453b3005ee2049bc09bdc0c4ed9b3a18c1x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 10:09:36 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5668]; 890 ms
+May 07, 2015 10:09:42 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 10:11:27 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5668]
+May 07, 2015 10:12:13 AM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_8133646607b0504a4c098df0aa3f6b44cd40
+May 07, 2015 10:12:13 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox"
+May 07, 2015 10:12:14 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5212]; 844 ms
+May 07, 2015 10:12:20 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 07, 2015 10:12:26 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5212]
+May 07, 2015 10:12:28 AM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_eb2a4f6707c4104f7c0960d0df32477612a9
+May 07, 2015 10:12:28 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=chrome"
+May 07, 2015 10:12:31 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6124, 320, 4148]; 3417 ms
+May 07, 2015 10:29:16 AM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Setting Proxy
+May 07, 2015 10:29:17 AM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Proxy set
+May 07, 2015 10:29:17 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Safari\Safari.exe"  "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_abf349440e5620485509d2c09d78cf6f80b0sahix0e3ac9020d42b04b2e08a630c18e54834857x__SahiAmpersandSahi__isSingleSession=true"
+May 07, 2015 10:29:17 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah
+May 07, 2015 10:29:20 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [1684]; 3973 ms
+May 07, 2015 10:30:03 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_invalid_users.sah
+May 07, 2015 10:31:38 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_valid_users.sah
+May 07, 2015 10:31:38 AM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_safari.suite
+May 07, 2015 10:31:56 AM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_safari.suite
+May 07, 2015 10:31:56 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/add_a_new_users.sah
+May 07, 2015 10:31:58 AM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_safari.suite
+May 07, 2015 10:31:58 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/bulk_user_actions.sah
+May 07, 2015 10:32:15 AM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_safari.suite
+May 07, 2015 10:32:16 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [1684]
+May 07, 2015 10:32:16 AM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 07, 2015 10:35:03 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://clients1.google.com/tbproxy/af/query?client=Google%20Chrome
+May 07, 2015 10:45:55 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://safebrowsing.google.com/safebrowsing/downloads?client=googlechrome&appver=42.0.2311.135&pver=3.0&key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw
+May 07, 2015 10:46:25 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6124, 320, 4148]
+May 07, 2015 11:32:35 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 11:32:35 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding 10.128.196.243:9999
+May 07, 2015 11:32:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=10.128.196.243:9999
+May 07, 2015 11:32:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 11:32:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 11:32:35 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSync syncNodes
+INFO: 10.128.196.243:9999
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSync sync
+INFO: http://10.128.196.243:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSync sync
+INFO: 403
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSuiteRunner syncToLocalHost
+INFO: Adding localhost:9999
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 11:32:36 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 11:32:36 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 11:32:37 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 11:32:37 AM in.co.sahi.distributed.DTestLauncher incrementAbortedNodeRetryCount
+INFO: Script browse_list_of_users.sah - Node 10.128.196.243 abort retry count = 1
+May 07, 2015 11:32:38 AM in.co.sahi.distributed.DTestLauncher incrementAbortedNodeRetryCount
+INFO: Script browse_list_of_users.sah - Node 10.128.196.243 abort retry count = 2
+May 07, 2015 11:32:39 AM in.co.sahi.distributed.DTestLauncher incrementAbortedNodeRetryCount
+INFO: Script browse_list_of_users.sah - Node 10.128.196.243 abort retry count = 3
+May 07, 2015 11:32:39 AM in.co.sahi.distributed.DTestLauncher shouldExecutionStop
+INFO: Execution should stop for DTestLauncher script browse_list_of_users.sah
+May 07, 2015 11:32:39 AM in.co.sahi.distributed.DSuiteRunner executeOnAnyNode
+INFO: Execution stopped for DTestLauncher script browse_list_of_users.sah
+May 07, 2015 11:32:39 AM in.co.sahi.distributed.DSuiteRunner execute
+INFO: No nodes available
+May 07, 2015 11:32:41 AM in.co.sahi.distributed.DSuiteRunner getCurrentStatus
+INFO: Nodes not available. Returning FAILURE
+May 07, 2015 11:33:44 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 11:33:44 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 11:33:44 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 11:33:44 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 11:33:44 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 11:33:44 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 11:33:44 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 11:33:44 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 11:33:44 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 11:33:45 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 11:33:45 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 11:33:45 AM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Setting Proxy
+May 07, 2015 11:33:45 AM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Proxy set
+May 07, 2015 11:33:45 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Safari\Safari.exe"  "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_288f142f06c15041c60920e07b8c9b463dd9sahixb13f78900d02a047830ade00fa476657724fx__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 11:33:48 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5776]; 2412 ms
+May 07, 2015 11:34:24 AM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 07, 2015 11:34:25 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5776]
+May 07, 2015 11:39:54 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=otherhost:9999
+May 07, 2015 11:39:54 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/staging/
+May 07, 2015 11:39:54 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 11:39:54 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 11:39:54 AM in.co.sahi.distributed.DSync syncNodes
+INFO: otherhost:9999
+May 07, 2015 11:39:54 AM in.co.sahi.distributed.DSync sync
+INFO: http://otherhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fstaging%2F
+May 07, 2015 11:39:55 AM in.co.sahi.distributed.DSync sync
+INFO: 504
+May 07, 2015 11:39:57 AM net.sf.sahi.command.CommandExecuter execute
+WARNING: commandClass = >in.co.sahi.command.EditorUI< commandMethod = >getStatus<
+May 07, 2015 11:39:57 AM net.sf.sahi.command.CommandExecuter execute
+WARNING: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.sf.sahi.command.CommandExecuter.execute(CommandExecuter.java:41)
+	at net.sf.sahi.LocalRequestProcessor.handleDyn(LocalRequestProcessor.java:82)
+	at net.sf.sahi.LocalRequestProcessor.getLocalResponse(LocalRequestProcessor.java:29)
+	at net.sf.sahi.ProxyProcessor.processLocally(ProxyProcessor.java:200)
+	at net.sf.sahi.ProxyProcessor.run(ProxyProcessor.java:69)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.NullPointerException
+	at java.lang.String.<init>(Unknown Source)
+	at in.co.sahi.command.EditorUI.getStatus(EditorUI.java:469)
+	... 10 more
+
+May 07, 2015 11:40:08 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 11:40:08 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding otherhost:9999
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=otherhost:9999
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync syncNodes
+INFO: otherhost:9999
+May 07, 2015 11:40:08 AM in.co.sahi.distributed.DSync sync
+INFO: http://otherhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 11:40:09 AM in.co.sahi.distributed.DSync sync
+INFO: 504
+May 07, 2015 11:40:09 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 11:40:09 AM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Setting Proxy
+May 07, 2015 11:40:09 AM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Proxy set
+May 07, 2015 11:40:09 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Safari\Safari.exe"  "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_23dabb130a060048220afb30292f262b3f71sahix613fd774039cc04e3a09ed504c9ab3a6d764x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 11:40:10 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [3696]; 1508 ms
+May 07, 2015 11:40:21 AM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 07, 2015 11:40:21 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [3696]
+May 07, 2015 11:40:53 AM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding otherhost:9999
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=otherhost:9999
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: otherhost:9999
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync sync
+INFO: http://otherhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync sync
+INFO: 504
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSuiteRunner syncToLocalHost
+INFO: Adding localhost:9999
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 11:40:53 AM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 11:40:53 AM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 11:40:54 AM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 11:40:54 AM in.co.sahi.distributed.DTestLauncher incrementAbortedNodeRetryCount
+INFO: Script browse_list_of_users.sah - Node otherhost abort retry count = 1
+May 07, 2015 11:40:55 AM in.co.sahi.distributed.DTestLauncher incrementAbortedNodeRetryCount
+INFO: Script browse_list_of_users.sah - Node otherhost abort retry count = 2
+May 07, 2015 11:40:56 AM in.co.sahi.distributed.DTestLauncher incrementAbortedNodeRetryCount
+INFO: Script browse_list_of_users.sah - Node otherhost abort retry count = 3
+May 07, 2015 11:40:56 AM in.co.sahi.distributed.DTestLauncher shouldExecutionStop
+INFO: Execution should stop for DTestLauncher script browse_list_of_users.sah
+May 07, 2015 11:40:56 AM in.co.sahi.distributed.DSuiteRunner executeOnAnyNode
+INFO: Execution stopped for DTestLauncher script browse_list_of_users.sah
+May 07, 2015 11:40:56 AM in.co.sahi.distributed.DSuiteRunner execute
+INFO: No nodes available
+May 07, 2015 11:40:58 AM in.co.sahi.distributed.DSuiteRunner getCurrentStatus
+INFO: Nodes not available. Returning FAILURE
+May 07, 2015 2:35:39 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Setting Proxy
+May 07, 2015 2:35:40 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Proxy set
+May 07, 2015 2:35:40 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah
+May 07, 2015 2:35:41 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Safari\Safari.exe"  "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_c5fbc78b0c1b5042ad0b3ca0b4dd2fda2879sahix879603870c2cb04a7a0af6400eac586f2a6ex__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:35:53 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5132]; 12402 ms
+May 07, 2015 2:36:45 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5132]
+May 07, 2015 2:36:46 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 07, 2015 2:56:42 PM in.co.sahi.command.Master addNodes
+INFO: syncNodes = true
+May 07, 2015 2:56:42 PM in.co.sahi.distributed.DSuiteRunner addNode
+INFO: Adding localhost:9999
+May 07, 2015 2:56:42 PM in.co.sahi.distributed.DSync syncNodes
+INFO: nodes=localhost:9999
+May 07, 2015 2:56:42 PM in.co.sahi.distributed.DSync syncNodes
+INFO: destFolder=temp/scripts/copied
+May 07, 2015 2:56:42 PM in.co.sahi.distributed.DSync syncNodes
+INFO: originFolder=C:/Users/ntumy/sahi_pro/userdata/scripts/
+May 07, 2015 2:56:42 PM in.co.sahi.distributed.DSync syncNodes
+INFO: ignorePattern=.*(svn|copied).*
+May 07, 2015 2:56:43 PM in.co.sahi.distributed.DSync syncNodes
+INFO: localhost:9999
+May 07, 2015 2:56:43 PM in.co.sahi.distributed.DSync sync
+INFO: http://localhost:9999/_s_/dyn/pro/Synchronizer_saveFile?destFolder=temp%2Fscripts%2Fcopied
+May 07, 2015 2:56:43 PM in.co.sahi.command.Synchronizer saveFile
+INFO: destFolder=C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied
+May 07, 2015 2:56:43 PM in.co.sahi.distributed.DSync sync
+INFO: 200
+May 07, 2015 2:56:43 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\browse_list_of_users.sah
+May 07, 2015 2:56:43 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\upload_invalid_users.sah
+May 07, 2015 2:56:44 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\upload_valid_users.sah
+May 07, 2015 2:56:44 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\add_a_new_users.sah
+May 07, 2015 2:56:44 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:\Users\ntumy\sahi_pro\userdata\temp\scripts\copied\bulk_user_actions.sah
+May 07, 2015 2:56:44 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Setting Proxy
+May 07, 2015 2:56:44 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Proxy set
+May 07, 2015 2:56:44 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_b229d0a1037e9041fc0b5470f2dfc3be718csahix3dffea3c09aef04b410acad06c5c7abfc7f8x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:56:46 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5528, 5824]; 2543 ms
+May 07, 2015 2:56:46 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_b229d0a1037e9041fc0b5470f2dfc3be718csahix42c1dbdb0294d04af3081350db850fe778f9x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:56:47 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6748, 6676]; 655 ms
+May 07, 2015 2:56:47 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_b229d0a1037e9041fc0b5470f2dfc3be718csahixdbd052aa0f740046b6082ec0fa2326129ca0x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:56:47 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5388, 2696]; 484 ms
+May 07, 2015 2:56:48 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_b229d0a1037e9041fc0b5470f2dfc3be718csahixb20f805309d750496f08a210cd746b49f0dax__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:56:48 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5344, 6188]; 374 ms
+May 07, 2015 2:56:48 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_b229d0a1037e9041fc0b5470f2dfc3be718csahixdb4bd93507966045660b66e01fcc385d1396x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:56:48 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5732, 4660]; 359 ms
+May 07, 2015 2:56:49 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6748, 6676]
+May 07, 2015 2:57:15 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5732, 4660]
+May 07, 2015 2:57:19 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5388, 2696]
+May 07, 2015 2:57:24 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5528, 5824]
+May 07, 2015 2:58:01 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah
+May 07, 2015 2:58:02 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_9b7475a10ac9504f37088ed009ac7a5e273fsahix2891027d06581047f708e170caf2f11714a4x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:58:02 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [1952, 6608]; 421 ms
+May 07, 2015 2:58:21 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [1952, 6608]
+May 07, 2015 2:58:21 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie.suite
+May 07, 2015 2:58:21 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_invalid_users.sah
+May 07, 2015 2:58:21 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_9b7475a10ac9504f37088ed009ac7a5e273fsahix14d8b1250e13604e910affb0786ed979f443x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:58:22 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [1968, 5984]; 500 ms
+May 07, 2015 2:58:40 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [1968, 5984]
+May 07, 2015 2:58:40 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie.suite
+May 07, 2015 2:58:40 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_valid_users.sah
+May 07, 2015 2:58:40 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_9b7475a10ac9504f37088ed009ac7a5e273fsahixb8fef2d70d54b04515088a80e441958e823ex__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:58:41 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6116, 7852]; 530 ms
+May 07, 2015 2:58:59 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6116, 7852]
+May 07, 2015 2:58:59 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie.suite
+May 07, 2015 2:58:59 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/add_a_new_users.sah
+May 07, 2015 2:58:59 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_9b7475a10ac9504f37088ed009ac7a5e273fsahixe4304c000014204bc20a90807367b9419219x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:59:00 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6060, 4444]; 437 ms
+May 07, 2015 2:59:01 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6060, 4444]
+May 07, 2015 2:59:01 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie.suite
+May 07, 2015 2:59:01 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/bulk_user_actions.sah
+May 07, 2015 2:59:01 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_9b7475a10ac9504f37088ed009ac7a5e273fsahix583683310bdec04f470bc8f09502941d48c2x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:59:02 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [1684, 7424]; 422 ms
+May 07, 2015 2:59:20 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [1684, 7424]
+May 07, 2015 2:59:20 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie.suite
+May 07, 2015 2:59:22 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah
+May 07, 2015 2:59:22 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_67e7b171056ea0446a0a0e004ccd11d26435sahix816e49ec0694d04516093d80f04872095f6fx__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:59:22 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6016, 5736]; 514 ms
+May 07, 2015 2:59:40 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6016, 5736]
+May 07, 2015 2:59:41 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie_failed_ie.suite
+May 07, 2015 2:59:41 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_invalid_users.sah
+May 07, 2015 2:59:41 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_67e7b171056ea0446a0a0e004ccd11d26435sahix911875ba08782047760a5650417840e2819bx__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 2:59:41 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [4252, 7368]; 452 ms
+May 07, 2015 3:00:36 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5344, 6188]
+May 07, 2015 3:01:24 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [4252, 7368]
+May 07, 2015 3:01:25 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie_failed_ie.suite
+May 07, 2015 3:01:25 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_valid_users.sah
+May 07, 2015 3:01:25 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_67e7b171056ea0446a0a0e004ccd11d26435sahixd1958a810290e047120abe9046582d33039ax__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:01:25 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [7316, 7400]; 421 ms
+May 07, 2015 3:02:33 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: 
+-- Calling downloadFile --
+http://github-windows.s3.amazonaws.com/Application%20Files/GitHub_2_13_2_4/Images/App.ico.deploy
+downloadURL = false
+response.isAttachment() = false
+fileName = App.ico.deploy
+contentTypeHeader = application/octet-stream
+downloadContentType = true
+Content-Disposition=null
+contentDispositionForcesDownload = false
+--
+May 07, 2015 3:02:33 PM net.sf.sahi.RemoteRequestProcessor saveInTemp
+INFO: Downloading sahi_e084f913070bd04fb8084bc0e2042e39281a__App.ico.deploy to temp directory:
+C:\Users\ntumy\sahi_pro\userdata\temp\download
+May 07, 2015 3:02:33 PM net.sf.sahi.RemoteRequestProcessor downloadFile
+INFO: Setting download_lastFile = App.ico.deploy
+Session Id: sahi_e084f913070bd04fb8084bc0e2042e39281a
+May 07, 2015 3:02:35 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: 
+-- Calling downloadFile --
+http://github-windows.s3.amazonaws.com/Application%20Files/GitHub_2_13_2_4/GitHub.exe.config.deploy
+downloadURL = false
+response.isAttachment() = false
+fileName = GitHub.exe.config.deploy
+contentTypeHeader = application/octet-stream
+downloadContentType = true
+Content-Disposition=null
+contentDispositionForcesDownload = false
+--
+May 07, 2015 3:02:35 PM net.sf.sahi.RemoteRequestProcessor saveInTemp
+INFO: Downloading sahi_73d1e0200a72b04cb508a5e02caa99baa1ad__GitHub.exe.config.deploy to temp directory:
+C:\Users\ntumy\sahi_pro\userdata\temp\download
+May 07, 2015 3:02:35 PM net.sf.sahi.RemoteRequestProcessor downloadFile
+INFO: Setting download_lastFile = GitHub.exe.config.deploy
+Session Id: sahi_73d1e0200a72b04cb508a5e02caa99baa1ad
+May 07, 2015 3:04:14 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [7316, 7400]
+May 07, 2015 3:04:14 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie_failed_ie.suite
+May 07, 2015 3:04:14 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/add_a_new_users.sah
+May 07, 2015 3:04:15 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_67e7b171056ea0446a0a0e004ccd11d26435sahix41eaf75c05830046750b5be08d321a410ddex__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:04:15 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5140, 5264]; 421 ms
+May 07, 2015 3:04:16 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5140, 5264]
+May 07, 2015 3:04:17 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie_failed_ie.suite
+May 07, 2015 3:04:17 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/bulk_user_actions.sah
+May 07, 2015 3:04:17 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_67e7b171056ea0446a0a0e004ccd11d26435sahix1e64e52f0e33204e650b3ed0c99a6e11d9f2x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:04:17 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6160, 5672]; 422 ms
+May 07, 2015 3:04:35 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6160, 5672]
+May 07, 2015 3:04:35 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie_failed_ie.suite
+May 07, 2015 3:04:36 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 07, 2015 3:04:58 PM net.sf.sahi.RemoteRequestProcessor processHttp
+INFO: 
+-- Calling downloadFile --
+http://github-windows.s3.amazonaws.com/Application%20Files/GitHub_2_13_2_4/lfs-x86.7z.deploy
+downloadURL = false
+response.isAttachment() = false
+fileName = lfs-x86.7z.deploy
+contentTypeHeader = application/octet-stream
+downloadContentType = true
+Content-Disposition=null
+contentDispositionForcesDownload = false
+--
+May 07, 2015 3:04:58 PM net.sf.sahi.RemoteRequestProcessor saveInTemp
+INFO: Downloading sahi_6a734fe00094e049610a3df0e3a8c7290636__lfs-x86.7z.deploy to temp directory:
+C:\Users\ntumy\sahi_pro\userdata\temp\download
+May 07, 2015 3:04:58 PM net.sf.sahi.RemoteRequestProcessor downloadFile
+INFO: Setting download_lastFile = lfs-x86.7z.deploy
+Session Id: sahi_6a734fe00094e049610a3df0e3a8c7290636
+May 07, 2015 3:06:53 PM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_f26ef02c0207c0447409c8900b0f125951c7
+May 07, 2015 3:06:53 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Setting Proxy
+May 07, 2015 3:06:54 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Proxy set
+May 07, 2015 3:06:54 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=ie"
+May 07, 2015 3:06:54 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [2960, 7988]; 405 ms
+May 07, 2015 3:07:11 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 07, 2015 3:07:11 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [2960, 7988]
+May 07, 2015 3:10:46 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Setting Proxy
+May 07, 2015 3:10:46 PM net.sf.sahi.util.ProxySwitcher setSahiAsProxyOnWindows
+INFO: Proxy set
+May 07, 2015 3:10:46 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah
+May 07, 2015 3:10:46 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_c8ee4e1204dd4046160bb710ad17adee4db6sahixb567ef8d0eb2f04c1b08fa30f0cf323d47dax__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:10:47 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [2972, 1684]; 421 ms
+May 07, 2015 3:11:08 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [2972, 1684]
+May 07, 2015 3:11:08 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie.suite
+May 07, 2015 3:11:08 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_invalid_users.sah
+May 07, 2015 3:11:08 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_c8ee4e1204dd4046160bb710ad17adee4db6sahix4723509d0e7af040380b6bd037cd3eb00915x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:11:09 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [2800, 4360]; 470 ms
+May 07, 2015 3:11:30 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [2800, 4360]
+May 07, 2015 3:11:30 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie.suite
+May 07, 2015 3:11:30 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/upload_valid_users.sah
+May 07, 2015 3:11:30 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_c8ee4e1204dd4046160bb710ad17adee4db6sahix4fdd487d0067404a5109aab0cf5655cdd20cx__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:11:30 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [8024, 1868]; 517 ms
+May 07, 2015 3:11:52 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [8024, 1868]
+May 07, 2015 3:11:52 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie.suite
+May 07, 2015 3:11:52 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/add_a_new_users.sah
+May 07, 2015 3:11:52 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_c8ee4e1204dd4046160bb710ad17adee4db6sahix94f3889c0c11e047430bfeb0a18878b72b34x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:11:52 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [7272, 6340]; 502 ms
+May 07, 2015 3:11:54 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [7272, 6340]
+May 07, 2015 3:11:54 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_ie.suite
+May 07, 2015 3:11:54 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/bulk_user_actions.sah
+May 07, 2015 3:11:54 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Internet Explorer\iexplore.exe" -noframemerging "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_c8ee4e1204dd4046160bb710ad17adee4db6sahix0f5fc280087d4041700b2f50f4b56581d685x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:11:55 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [8044, 4844]; 453 ms
+May 07, 2015 3:11:58 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy
+May 07, 2015 3:11:58 PM net.sf.sahi.Proxy startProxy
+INFO: socket closed

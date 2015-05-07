@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Eclipse configuration for Syntax Highlighting, Template proposals and Refactoring in Sahi scripts</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='evaluation-questions.html'>Evaluation Questions</a>
+<ul><li><a href='evaluation-questions.html#Browser and OS support'>Browser and OS support</a>
+</li><li><a href='evaluation-questions.html#AJAX support'>AJAX support</a>
+</li><li><a href='evaluation-questions.html#SSL support'>SSL support</a>
+</li><li><a href='evaluation-questions.html#Configuring Sahi'>Configuring Sahi</a>
+</li><li><a href='evaluation-questions.html#Can Sahi work without proxy configuration?'>Can Sahi work without proxy configuration?</a>
+</li></ul></li><li><a href='how-are-elements-identified.html'>How does Sahi identify elements?</a>
+<ul><li><a href='how-are-elements-identified.html#Standard attributes'>Standard attributes</a>
+</li><li><a href='how-are-elements-identified.html#Custom attributes'>Custom attributes</a>
+</li><li><a href='how-are-elements-identified.html#Relation to an anchor element'>Relation to an anchor element</a>
+</li></ul></li><li><a href='handling-streaming-responses.html'>Handling streaming responses</a>
+</li><li><a href='downloads.html'>File Downloads</a>
+<ul><li><a href='downloads.html#Pdf and Word files'>Pdf and Word files</a>
+</li><li><a href='downloads.html#Iterate a list of wsdl urls'>Iterate a list of wsdl urls</a>
+</li><li><a href='downloads.html#Saving an image'>Saving an image</a>
+</li><li><a href='downloads.html#File download dialog appears with Save & Open options'>File download dialog appears with Save & Open options</a>
+</li><li><a href='downloads.html#Blank page after download'>Blank page after download</a>
+</li><li><a href='downloads.html#Blank page appears'>Blank page appears</a>
+</li><li><a href='downloads.html#File does not get downloaded to Sahi's temp downloads folder'>File does not get downloaded to Sahi's temp downloads folder</a>
+</li><li><a href='downloads.html#Downloaded file does not get saved'>Downloaded file does not get saved</a>
+</li></ul></li><li><a href='delete-cookies.html'>How to delete cookies</a>
+</li><li><a href='how_to_show_custom_fields_in_reports.html'>How to show custom fields in reports</a>
+<ul><li><a href='how_to_show_custom_fields_in_reports.html#How to show custom fields in Excel reports'>How to show custom fields in Excel reports</a>
+</li><li><a href='how_to_show_custom_fields_in_reports.html#How to access custom fields in a test script'>How to access custom fields in a test script</a>
+</li></ul></li><li><a href='how-to-customize-html-reports.html'>How to customize HTML reports</a>
+</li><li><a href='eclipse-integration.html'>Eclipse configuration for Syntax Highlighting and Template proposals and Refactoring in Sahi scripts</a>
+<ul><li><a href='eclipse-integration.html#Sahi scripts - .sah Vs .js'>Sahi scripts - .sah Vs .js</a>
+</li><li><a href='eclipse-integration.html#Eclipse configuration'>Eclipse configuration</a>
+</li><li><a href='eclipse-integration.html#Refactoring a script into functions'>Refactoring a script into functions</a>
+</li><li><a href='eclipse-integration.html#Renaming a function or variable name'>Renaming a function or variable name</a>
+</li><li><a href='eclipse-integration.html#Navigate to functions'>Navigate to functions</a>
+</li></ul></li><li><a href='access-outlook-email.html'>How can I access an Outlook email from a Sahi script?</a>
+</li><li><a href='extract-dynamic-text.html'>How do I extract visible text of a div that changes dynamically?</a>
+</li><li><a href='extract-partial-text.html'>How do I extract text partially from dynamically changing visible text?</a>
+<ul><li><a href='extract-partial-text.html#Example 1'>Example 1</a>
+</li><li><a href='extract-partial-text.html#Example 2'>Example 2</a>
+</li></ul></li><li><a href='how-can-i-automate-ftp-file-transfer.html'>How can I automate FTP file transfer?</a>
+</li><li><a href='unit-tests.html'>Writing Unit tests - A Use Case</a>
+</li><li><a href='get-tooltip-text.html'>Getting the text of a tool tip</a>
+</li><li><a href='get-cell-data.html'>Getting cell data from a table</a>
+</li><li><a href='multiple-scripts-folders-and-network-share.html'>Multiple scripts folders and Network Share</a>
+<ul><li><a href='multiple-scripts-folders-and-network-share.html#Multiple Scripts folders'>Multiple Scripts folders</a>
+</li><li><a href='multiple-scripts-folders-and-network-share.html#Scripts on a network share'>Scripts on a network share</a>
+</li></ul></li><li><a href='using-license-data.html'>Using license.data</a>
+</li><li><a href='how-to-scroll.html'>How to scroll</a>
+<ul><li><a href='how-to-scroll.html#Check movement of scrollbar'>Check movement of scrollbar</a>
+</li></ul></li><li><a href='diagnose.html'>Using Diagnose</a>
+<ul><li><a href='diagnose.html#Diagnose does not return any results'>Diagnose does not return any results</a>
+</li></ul></li><li><a href='_under-in-5.x.y.html'>How is _under different in 5.x.y?</a>
+</li><li><a href='userdefinedid.html'>UserDefinedId</a>
+<ul><li><a href='userdefinedid.html#UserDefinedId not visible in V5.x.y by default'>UserDefinedId not visible in V5.x.y by default</a>
+</li></ul></li><li><a href='webservices.html'>Web Services via REST APIs</a>
+</li><li><a href='sahi-with-notepad++.html'>Sahi with Notepad++</a>
+</li><li><a href='sahi-with-textpad.html'>Sahi with TextPad</a>
+</li><li><a href='misc-questions.html'>Miscellaneous</a>
+<ul><li><a href='misc-questions.html#Verifying Sahi installation'>Verifying Sahi installation</a>
+</li><li><a href='misc-questions.html#How can I run the same script multiple times with different parameters simultaneously?'>How can I run the same script multiple times with different parameters simultaneously?</a>
+</li><li><a href='misc-questions.html#How can I launch/execute a url that initiates some long running activity?'>How can I launch/execute a url that initiates some long running activity?</a>
+</li><li><a href='misc-questions.html#Is it possible to add watch variables and debug a Sahi script?'>Is it possible to add watch variables and debug a Sahi script?</a>
+</li><li><a href='misc-questions.html#Copy row text and output to csv file'>Copy row text and output to csv file</a>
+</li><li><a href='misc-questions.html#Java assertEquals'>Java assertEquals</a>
+</li><li><a href='misc-questions.html#How to handle onbeforeunload popup'>How to handle onbeforeunload popup</a>
+</li><li><a href='misc-questions.html#Using pound and euro symbols'>Using pound and euro symbols</a>
+</li><li><a href='misc-questions.html#Reading an XML file'>Reading an XML file</a>
+</li><li><a href='misc-questions.html#Integration with XStudio'>Integration with XStudio</a>
+</li><li><a href='misc-questions.html#Integration with FitNesse'>Integration with FitNesse</a>
+</li><li><a href='misc-questions.html#Using _rteWrite()'>Using _rteWrite()</a>
+</li><li><a href='misc-questions.html#Accessing Sahi from a different browser'>Accessing Sahi from a different browser</a>
+</li><li><a href='misc-questions.html#How can I prevent caching of page?'>How can I prevent caching of page?</a>
+</li><li><a href='misc-questions.html#Text of alert shown through Ext.msg.show'>Text of alert shown through Ext.msg.show</a>
+</li><li><a href='misc-questions.html#_wait does not work inside an Excel file'>_wait does not work inside an Excel file</a>
+</li><li><a href='misc-questions.html#When is _condition needed?'>When is _condition needed?</a>
+</li><li><a href='misc-questions.html#_assertExists parameters'>_assertExists parameters</a>
+</li><li><a href='misc-questions.html#Java driver tests in parallel'>Java driver tests in parallel</a>
+</li><li><a href='misc-questions.html#Accessing a random row from a grid'>Accessing a random row from a grid</a>
+</li><li><a href='misc-questions.html#How do I set Date field which has date separator?'>How do I set Date field which has date separator?</a>
+</li><li><a href='misc-questions.html#Integrate Sahi with existing test repository tools'>Integrate Sahi with existing test repository tools</a>
+</li><li><a href='misc-questions.html#Read data from Excel using Sahi APIs'>Read data from Excel using Sahi APIs</a>
+</li><li><a href='misc-questions.html#_assertExists in if condition'>_assertExists in if condition</a>
+</li><li><a href='misc-questions.html#Assert equality of arrays'>Assert equality of arrays</a>
+</li><li><a href='misc-questions.html#Does Sahi Excel framework support .xlsx files?'>Does Sahi Excel framework support .xlsx files?</a>
+</li><li><a href='misc-questions.html#Identifying parent of element'>Identifying parent of element</a>
+</li><li><a href='misc-questions.html#Identify element class using Java Driver'>Identify element class using Java Driver</a>
+</li><li><a href='misc-questions.html#Scripts in suite do not run in order'>Scripts in suite do not run in order</a>
+</li><li><a href='misc-questions.html#401 authentication dialog'>401 authentication dialog</a>
+</li><li><a href='misc-questions.html#Browser in testrunner command'>Browser in testrunner command</a>
+</li><li><a href='misc-questions.html#Run tests in multiple browsers simultaneously'>Run tests in multiple browsers simultaneously</a>
+</li><li><a href='misc-questions.html#Selective login'>Selective login</a>
+</li><li><a href='misc-questions.html#Silverlight support'>Silverlight support</a>
+</li><li><a href='misc-questions.html#Dropdown with Java driver'>Dropdown with Java driver</a>
+</li><li><a href='misc-questions.html#Getting absolute file path'>Getting absolute file path</a>
+</li><li><a href='misc-questions.html#Regular expressions in Sahi'>Regular expressions in Sahi</a>
+</li><li><a href='misc-questions.html#Regular expression usecase'>Regular expression usecase</a>
+</li><li><a href='misc-questions.html#Check to see that page is functional'>Check to see that page is functional</a>
+</li><li><a href='misc-questions.html#Excel files as part of Suite'>Excel files as part of Suite</a>
+</li><li><a href='misc-questions.html#Reports database'>Reports database</a>
+</li><li><a href='misc-questions.html#Scheduling tests'>Scheduling tests</a>
+</li><li><a href='misc-questions.html#Drag and drop'>Drag and drop</a>
+</li><li><a href='misc-questions.html#Single smoke script to test multiple sites'>Single smoke script to test multiple sites</a>
+</li><li><a href='misc-questions.html#_debug() output'>_debug() output</a>
+</li><li><a href='misc-questions.html#Sahi with file: URLs'>Sahi with file: URLs</a>
+</li><li><a href='misc-questions.html#_runUnitTests'>_runUnitTests</a>
+</li></ul></li><li><a href='other-resources.html'>Other Resources</a>
+</li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Eclipse configuration for Syntax Highlighting, Template proposals and Refactoring in Sahi scripts</h2>
+      <!-- Eclipse configuration for Syntax Highlighting, Template proposals and Refactoring in Sahi scripts -->
+<br/>
+You can use any text editor to write your sahi scripts. But <code>Eclipse</code> as an editor provides advantages like <code>Syntax highlighting</code>, <code>Template proposals</code> and <code>Refactoring</code>. This article explains how to use <code>Eclipse</code> as editor for Sahi scripts.<br/>
+<br/>
+<h3><a href="#Sahi scripts - .sah Vs .js" name="Sahi scripts - .sah Vs .js" class="headinganchor2" hideFocus="hideFocus">Sahi scripts - .sah Vs .js</a></h3>
+Sahi scripts carry a <code>.sah</code> extension. But a <code>.js</code> extension can be used in place of <code>.sah</code>. Sahi treats a <code>.js</code> file the same as a <code>.sah</code> file.<br/>
+<br/>
+To write scripts in Eclipse, one needs to have the <code>JSDT</code> Eclipse plug-in installed. The <code>JSDT</code> Eclipse plug-in provides native support for <code>JavaScript (.js)</code> files. One can add support for <code>.sah</code> files as well. But the <code>JSDT</code> plugin provides some additional features for <code>.js</code> files as compared to <code>.sah</code> files. Hence it is possible to rename <code>.sah</code> files as <code>.js</code> files and get better Eclipse support without losing any Sahi functionality.<br/>
+<div class="danger"><strong class='heading'>danger</strong>
+We are looking at ways to make the script authoring experience easier and better for end users. At the time of writing this document, Sahi scripts carry a <code>.sah</code> extension by default. We are undecided on whether we will change the default extension to <code>.js</code> in a future release. We leave it to the end user to decide whether to use scripts with a <code>.sah</code> extension or change them to have a <code>.js</code> extension. This document explains how to deal with both extensions.<br/>
+</div>
+<div class="info"><strong class='heading'>info</strong>
+If any configuration step is specific to <code>.sah</code> or <code>.js</code> files, it is explicitly mentioned. Unless explicitly mentioned, the step applies to both <code>.sah</code> and <code>.js</code> files.<br/>
+<br/>
+This document explains features available for both <code>.js</code> and <code>.sah</code> files. If some feature is not available for <code>.sah</code> files, it is explicitly mentioned.<br/>
+</div>
+<div class="danger"><strong class='heading'>danger</strong>
+It is assumed that your scripts will either have a <code>.sah</code> or <code>.js</code> extension.<br/>
+</div>
+<div class="danger"><strong class='heading'>danger</strong>
+The steps have been documented for <a href = "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR1/eclipse-standard-kepler-SR1-win32-x86_64.zip"><code>Eclipse Kepler (Eclipse Standard 4.3.1 - Windows 64 Bit version)</code></a> version. It is possible that you may face difficulties with a different Eclipse version.<br/>
+</div>
+<h3><a href="#Eclipse configuration" name="Eclipse configuration" class="headinganchor2" hideFocus="hideFocus">Eclipse configuration</a></h3>
+<ol>
+<li>
+Open Eclipse. It will ask for the workspace path. We will assume that the workspace is (to be) created at the following location: <code>C:\Sahi\SampleWorkspace</code>. Specify the workspace path as indicated below, and click <code>OK</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/workspace-launcher.png" height="300px" alt="Launch Workspace"/>
+</li>
+<li>
+Ensure that the <code>JSDT</code> Eclipse plug-in has been installed. Click on <code>Help | About Eclipse SDK | Installation Details</code>.<br/>
+<br/>
+<img src="../assets/images/faq/eclipse-integration/install-details.png" alt="Eclipse Installation Details"/>
+</li>
+<li>
+If not installed, click on <code>Help | Install New Software</code>. Use the settings displayed in the image below.<br/>
+If you are using an older version of Eclipse, you should see a corresponding update site in the <code>Work with</code> dropdown box.<br/>
+<img src="../assets/images/faq/eclipse-integration/install-new-software.png" width="800px" alt="Install New Software"/>
+<br/>
+Proceed with the installation.<br/>
+<br/>
+Restart Eclipse after installation. Give the same workspace path as before - <code>C:\Sahi\SampleWorkspace.</code>
+<img src="../assets/images/faq/eclipse-integration/workspace-launcher.png" height="300px" alt="Launch Workspace"/>
+</li>
+<br/>
+<li>
+Adding support for <code>.sah</code> files<br/>
+<div class="danger"><strong class='heading'>danger</strong>
+This step applies only if you are using <code>.sah</code> files. This is not needed for <code>.js</code> files.<br/>
+</div>
+<ul>
+<li>
+Click on Windows | Preferences | General | Content Types<br/>
+</li>
+<li>
+In <code>Content types:</code> section, select <code>Text | JavaScript Source File</code> and then in <code>File associations:</code> section, click on <code>Add</code>.<br/>
+</li>
+<li>
+Make association for <code>*.sah</code> and click <code>OK</code>.<br/>
+<br/>
+<img src="../assets/images/faq/eclipse-integration/make-association.png" height="400px" alt="Make Sahi Association"/>
+</li>
+</ul>
+</li>
+<li>
+Let us now create a new JavaScript Project.<br/>
+<br/>
+Click on <code>File | New | Project...</code>
+<img src="../assets/images/faq/eclipse-integration/create-new-project.png" height="400px" alt="Create Project"/>
+Search for JavaScript Project in Wizards and click on <code>Next</code>
+<img src="../assets/images/faq/eclipse-integration/create-js-project.png" height="400px" alt="Create JS Project"/>
+<br/>
+Give a Project name of your choice. We have given it the name: <code>SampleProject</code>. Click <code>Next</code>
+<img src="../assets/images/faq/eclipse-integration/project-name.png" height="400px" alt="Give Project Name"/>
+You should see the following two JavaScript Libraries in the Libraries tab<br/>
+<ol>
+<li>ECMAScript Built-in Library</li>
+<li>ECMA 3 Browser Support Library</li>
+</ol>
+Click on <code>Finish</code>
+<img src="../assets/images/faq/eclipse-integration/js-libraries.png" height="400px" alt="JS Libraries"/>
+<br/>
+If this is the first JavaScript project you created, an <code>Open Associated Perspective</code> dialog box will be opened, prompting you to use the JavaScript perspective.<br/>
+<br/>
+Click <code>Yes</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/js-perspective.png" height="300px" alt="Open Associated Perspective"/>
+</li>
+<li>
+You can create new files and folders under the project created. We will place all Sahi scripts inside a <code>scripts</code> folder.<br/>
+To create a new folder, right click on the project, and then click on <code>New | Folder</code>. Give the folder name as <code>scripts</code> and click on <code>Finish</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/create-folder.png" height="400px" alt="Create Folder"/>
+To create a script file inside the <code>scripts</code> folder, right click on the folder, and then click on <code>New | File</code>. Give the new file its appropriate name and click on <code>Finish</code>. Let us name the file as <code>sampleFile.js</code>. If you intend to use <code>.sah</code> extension, name it as <code>sampleFile.sah</code>
+<img src="../assets/images/faq/eclipse-integration/create-file.png" height="400px" alt="Create File"/>
+You can copy your existing scripts into the scripts folder of the current project by pasting them at the appropriate location - <code>C:\Sahi\SampleWorkspace\SampleProject\scripts</code>. The screenshot shows scripts as <code>.js</code> files. If you intend to use <code>.sah</code> extension, the scripts will be <code>.sah</code> files.<br/>
+<img src="../assets/images/faq/eclipse-integration/move-files.png" height="400px" alt="Move Files"/>
+Refresh the project to see the copied files in your Eclipse IDE.<br/>
+<img src="../assets/images/faq/eclipse-integration/refresh-project.png" height="400px" alt="Refreshed Project"/>
+</li>
+<li>
+The <code>JSDT</code> plugin provides various templates for auto completion. Example: <code>for</code>, <code>if</code> etc.<br/>
+<div class="info"><strong class='heading'>info</strong>
+These templates can be used in <code>.js</code> as well as <code>.sah</code> files.<br/>
+</div>
+Sahi ships with a readymade template file, <a href="../assets/SahiEclipseEditorTemplates.xml">SahiEclipseEditorTemplates.xml</a> that customizes some of these templates for better use in Sahi scripts.<br/>
+Download <a href="../assets/SahiEclipseEditorTemplates.xml">SahiEclipseEditorTemplates.xml</a> to a folder location, say <code>C:\Sahi\SampleWorkspace\EditorTemplates</code>
+To install this templates file, click on <code>Window | Preferences</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/open-preferences.png" height="400px" alt="Path to Preferences"/>
+Now go to <code>Javascript | Editor | Templates</code> as shown in the figure and click on <code>Import</code> on the right.<br/>
+<img src="../assets/images/faq/eclipse-integration/editor-templates.png" height="400px" alt="Import Templates"/>
+Select the templates file <code>SahiEclipseEditorTemplates.xml</code> that we downloaded above, and press <code>Open</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/import-template.png" height="400px" alt="Import Templates"/>
+Press <code>OK</code> on the <code>Templates</code> window. <code>SahiEclipseEditorTemplates.xml</code> has now been successfully imported.<br/>
+<br/>
+To make use of any template, type the first few letters of the template and press <code>Ctrl + Space</code> to bring up the template proposal.<br/>
+<br/>
+Here are a few examples.<br/>
+<br/>
+Example: Type the first few letters of the template <code>testcase</code> and press <code>Ctrl + Space</code> to bring up the template proposal for <code>_testcase</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/testcase-template.png" height="400px" alt="using testcase template"/>
+Example: Type the first few letters of the <code>for</code> loop command and press <code>Ctrl + Space</code> to bring up template proposals related to <code>for</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/for-template.png" height="400px" alt="using for template"/>
+<br/>
+Likewise you can expand other templates listed at the location below.<br/>
+<img src="../assets/images/faq/eclipse-integration/editor-templates.png" height="400px" alt="Import Templates"/>
+</li>
+<li>
+Template functionality can also be added for <code>Sahi APIs</code>.<br/>
+<div class="info"><strong class='heading'>info</strong>
+These templates can be used in <code>.js</code> as well as <code>.sah</code> files.<br/>
+</div>
+<ul>
+<li>
+If you are using <code>.sah</code> extension, copy <code>apis.sah</code> from <code>&lt;SAHI_INSTALL_FOLDER&gt;/userdata/scripts</code> into the <code>scripts</code> folder in the project.<br/>
+</li>
+<li>
+If you are using <code>.js</code> extension, copy <code>apis.sah</code> from <code>&lt;SAHI_INSTALL_FOLDER&gt;/userdata/scripts</code> into the <code>scripts</code> folder in the project and rename it as <code>apis.js</code>.<br/>
+</li>
+</ul>
+<br/>
+Open any <code>.js</code> (or <code>.sah</code>) file from the JavaScript project, and you should be able to see <code>Syntax highlighting</code>.<br/>
+<br/>
+Type the first few letters of a Sahi function and press <code>Ctrl + Space</code> to bring up template proposals for Sahi APIs.<br/>
+<br/>
+<img src="../assets/images/faq/eclipse-integration/apis-usage.png" height="400px" alt="View Intellisense"/>
+</li>
+</ol>
+<h3><a href="#Refactoring a script into functions" name="Refactoring a script into functions" class="headinganchor2" hideFocus="hideFocus">Refactoring a script into functions</a></h3>
+<div class="info"><strong class='heading'>info</strong>
+This feature is available in <code>.js</code> as well as <code>.sah</code> files.<br/>
+</div>
+Once you have a recorded script, Eclipse can help in refactoring the linear script into functions.<br/>
+<br/>
+We have taken the following script to demonstrate refactoring using Eclipse<br/>
+<img src="../assets/images/faq/eclipse-integration/script-start.png" height="400px" alt="Original Script"/>
+Refactoring in Eclipse requires the code to be part of a function. Since the recorded script is not part of any function, we will first create a function surrounding our original code.<br/>
+<br/>
+Select all the lines of code, <code>Right Click | Surround With | function (function)</code> as shown in the figure. Give the function an appropriate name (we have named it <code>sampleApp</code>). We will remove this function at the end of the Refactoring.<br/>
+<img src="../assets/images/faq/eclipse-integration/script-enclosed-function.png" height="400px" alt="Original Script"/>
+Now, to extract a function out of selected lines of code, do the following: <code>Select the lines of code | Right Click | Refactor | Extract Function</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/script-extract-function.png" height="400px" alt="Original Script"/>
+A dialogue box would show up, write the function name, and press <code>OK</code>, as shown in the figure.<br/>
+<img src="../assets/images/faq/eclipse-integration/script-extract-function-name.png" height="300px" alt="Original Script"/>
+Repeat the same steps for all the lines of code you want to extract out as functions. At the end of this exercise, our script now looks like this:<br/>
+<img src="../assets/images/faq/eclipse-integration/script-after-func-extraction.png" height="400px" alt="Original Script"/>
+<ol>You can see the following changes in the script:<br/>
+<li>The selected lines of code have been replaced by functions and calls to the respective functions.</li>
+<li>The refactored function code may not be formatted correctly. If so, you will have to format it manually.</li>
+<li>The created functions do not have any parameters. We will fix this in the next step.</li>
+</ol>
+To convert a value inside the function into a function parameter, do the following. <code>Select the value | Right Click | Refactor | Introduce Parameter</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/script-introduce-parameter-1.png" height="400px" alt="Right Click On Variable"/>
+Give a name to the parameter, beginning with <code>$</code> and press <code>OK</code>. Here we have named the parameter as <code>$java</code>
+<img src="../assets/images/faq/eclipse-integration/script-introduce-parameter-2.png" height="400px" alt="Give Variable Name"/>
+You can see that the value has been extracted out as a parameter and function calls have been modified to pass a value for the parameter.<br/>
+<img src="../assets/images/faq/eclipse-integration/script-introduce-parameter-3.png" height="400px" alt="Observe Changes"/>
+We continue doing this for all the variables in our script. At this point, the script looks like this:<br/>
+<img src="../assets/images/faq/eclipse-integration/script-introduce-parameter-final.png" height="400px" alt="Observe Changes"/>
+We still have the temporary function we had made at the starting of Refactoring code, <code>sampleApp</code>. The script now looks like this:<br/>
+<img src="../assets/images/faq/eclipse-integration/final-script.png" height="400px" alt="Observe Changes"/>
+<br/>
+Let us now move the functions <code>login</code>, <code>addAndAssertTotalCost</code> and <code>logout</code> to a different file so that they can be included from multiple scripts.<br/>
+<div class="warning"><strong class='heading'>warning</strong>
+The functions have to be moved manually.<br/>
+</div>
+Add a new file called <code>sampleLib.js</code> (or <code>sampleLib.sah</code> if you are using <code>.sah</code> extension). Copy the functions to this file. This will have to be done manually.<br/>
+<img src="../assets/images/faq/eclipse-integration/lib-script.png" height="400px" alt="SampleLib file"/>
+<br/>
+Remove the functions from <code>sampleFile.js</code> (or <code>sampleFile.sah</code> if you are using <code>.sah</code> extension). Include <code>sampleLib.js</code> (or <code>sampleLib.sah</code>) using <code>_include</code> manually. <code>sampleFile.js</code> now looks like this<br/>
+<img src="../assets/images/faq/eclipse-integration/sample-script-with-include.png" height="400px" alt="Sample script with include"/>
+<h3><a href="#Renaming a function or variable name" name="Renaming a function or variable name" class="headinganchor2" hideFocus="hideFocus">Renaming a function or variable name</a></h3>
+<div class="info"><strong class='heading'>info</strong>
+This feature is available in <code>.js</code> as well as <code>.sah</code> files.<br/>
+</div>
+<div class="danger"><strong class='heading'>danger</strong>
+However, it appears that it is more reliable in <code>.js</code> files than in <code>.sah</code> files.<br/>
+</div>
+There are times when one needs to rename a variable or function name. On doing so, the name should get changed at all places of usage, in all scripts.<br/>
+<br/>
+Eclipse allows for such refactoring. Let us see how to rename a function name. We will rename the function <code>addAndAssertTotalCost</code> to <code>addBooksAndAssertTotalCost</code>.<br/>
+<br/>
+To do this, open <code>sampleLib.js</code>, select <code>addAndAssertTotalCost</code>, <code>Right Click | Refactor | Rename</code> (or select <code>addAndAssertTotalCost</code> and press <code>Alt + Shift + R</code>).<br/>
+<img src="../assets/images/faq/eclipse-integration/function-rename-action.png" height="400px" alt="Launch Refactor - Rename"/>
+<br/>
+You will be asked to enter a new name. Enter the new name <code>addBooksAndAssertTotalCost</code> and press <code>Enter</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/function-rename.png" height="400px" alt="Rename function"/>
+The function name gets changed to <code>addBooksAndAssertTotalCost</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/sample-lib-after-refactoring.png" height="400px" alt="Sample lib after refactoring"/>
+<br/>
+Open <code>sampleFile.js</code>. You will notice that the function name has been changed automatically in this file as well.<br/>
+<img src="../assets/images/faq/eclipse-integration/sample-script-after-refactoring.png" height="400px" alt="Sample script after refactoring"/>
+If this function were to be included in other files, it would get modified at all these locations.<br/>
+<h3><a href="#Navigate to functions" name="Navigate to functions" class="headinganchor2" hideFocus="hideFocus">Navigate to functions</a></h3>
+<div class="danger"><strong class='heading'>danger</strong>
+This works only for <code>.js</code> files and not for <code>.sah</code> files.<br/>
+</div>
+One often needs to open a function declaration to view its contents. The function declaration could be present inside another script altogether. For example, let us try and look at the function declaration of <code>addBooksAndAssertTotalCost</code> from inside <code>sampleFile.js</code>.<br/>
+<br/>
+One can open a function declaration in the following ways.<br/>
+<ul>
+<li>
+Press the <code>Ctrl</code> key and <code>hover the mouse over the function</code> that you want to open. The function name will appear as a <code>link</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/sample-script-control-mouseover.png" height="400px" alt="Press Control and mouse over"/>
+Click on the <code>link</code> while keeping the <code>Ctrl</code> key pressed.<br/>
+</li>
+<li>
+Or select the function, <code>Right Click | Open Declaration</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/sample-script-open-declaration.png" height="400px" alt="Open Declaration"/>
+</li>
+<li>
+Or select the function, and press <code>F3</code>.<br/>
+</li>
+</ul>
+<br/>
+You will be navigated to the function declaration in the appropriate script file. In this case, you will be navigated to <code>addBooksAndAssertTotalCost</code> in <code>sampleLib.js</code>.<br/>
+<img src="../assets/images/faq/eclipse-integration/sample-lib-opened-declaration.png" height="400px" alt="Function navigated to"/>
+
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+<html>
+<script>
+//document.domain="sahi.co.in";
+if (opener) {
+	//alert(1);
+	//alert(typeof window.dialogArguments != 'undefined');
+	//alert(document.domain);
+	//alert(window.dialogArguments.popupTitle);
+} else {
+	//alert(2);
+	//alert(typeof window.dialogArguments != 'undefined');
+	//alert(document.domain);
+	alert(window.external.dialogArguments.popupTitle);
+}
+</script>
+<title>
+me modal
+</title>
+Hi there
+<form>
+<input type="checkbox" value=""> Check me.<br/>
+<input type="button" onclick="window.close();" value="Close">
+<br/>
+<iframe src="/demo/index.htm" height="300px" width="400px">
+</iframe>
+</form>
+</html>

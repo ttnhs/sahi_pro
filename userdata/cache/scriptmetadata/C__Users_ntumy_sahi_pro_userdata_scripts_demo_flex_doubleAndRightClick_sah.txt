@@ -1,0 +1,1 @@
+testDoubleClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\flex\doubleAndRightClick.sah,1

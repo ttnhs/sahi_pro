@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Action APIs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='index.html'>Overview</a>
+<ul><li><a href='index.html#Browser Accessor APIs'>Browser Accessor APIs</a>
+</li><li><a href='index.html#Browser Action APIs'>Browser Action APIs</a>
+</li><li><a href='index.html#Miscellaneous APIs'>Miscellaneous APIs</a>
+</li></ul></li><li><a href='accessor-api-basics.html'>Accessor API Basics</a>
+<ul><li><a href='accessor-api-basics.html#Overview'>Overview</a>
+</li><li><a href='accessor-api-basics.html#Identifying unique element'>Identifying unique element</a>
+</li><li><a href='accessor-api-basics.html#Identifying element among similar elements'>Identifying element among similar elements</a>
+</li><li><a href='accessor-api-basics.html#Use of DOM Relation APIs'>Use of DOM Relation APIs</a>
+</li><li><a href='accessor-api-basics.html#Use of Positional Relation APIs'>Use of Positional Relation APIs</a>
+</li><li><a href='accessor-api-basics.html#_near vs _rightOf or_leftOf'>_near vs _rightOf or_leftOf</a>
+</li><li><a href='accessor-api-basics.html#Forcing Sahi Pro to ignore case when identifying elements'>Forcing Sahi Pro to ignore case when identifying elements</a>
+<ul><li><a href='accessor-api-basics.html#_setAccessorIgnoreCase'>_setAccessorIgnoreCase</a>
+</li></ul></li></ul></li><li><a href='accessor-apis.html'>Accessor APIs</a>
+<ul><li><a href='accessor-apis.html#Form Input Elements'>Form Input Elements</a>
+<ul><li><a href='accessor-apis.html#_password'>_password</a>
+</li><li><a href='accessor-apis.html#_textbox'>_textbox</a>
+</li><li><a href='accessor-apis.html#_hidden'>_hidden</a>
+</li><li><a href='accessor-apis.html#_datebox'>_datebox</a>
+</li><li><a href='accessor-apis.html#_datetimebox'>_datetimebox</a>
+</li><li><a href='accessor-apis.html#_datetimelocalbox'>_datetimelocalbox</a>
+</li><li><a href='accessor-apis.html#_emailbox'>_emailbox</a>
+</li><li><a href='accessor-apis.html#_monthbox'>_monthbox</a>
+</li><li><a href='accessor-apis.html#_numberbox'>_numberbox</a>
+</li><li><a href='accessor-apis.html#_rangebox'>_rangebox</a>
+</li><li><a href='accessor-apis.html#_searchbox'>_searchbox</a>
+</li><li><a href='accessor-apis.html#_telephonebox'>_telephonebox</a>
+</li><li><a href='accessor-apis.html#_timebox'>_timebox</a>
+</li><li><a href='accessor-apis.html#_urlbox'>_urlbox</a>
+</li><li><a href='accessor-apis.html#_weekbox'>_weekbox</a>
+</li><li><a href='accessor-apis.html#_textarea'>_textarea</a>
+</li></ul></li><li><a href='accessor-apis.html#Button Like Elements'>Button Like Elements</a>
+<ul><li><a href='accessor-apis.html#_button'>_button</a>
+</li><li><a href='accessor-apis.html#_button'>_button</a>
+</li><li><a href='accessor-apis.html#_checkbox'>_checkbox</a>
+</li><li><a href='accessor-apis.html#_radio'>_radio</a>
+</li><li><a href='accessor-apis.html#_submit'>_submit</a>
+</li><li><a href='accessor-apis.html#_submit'>_submit</a>
+</li><li><a href='accessor-apis.html#_reset'>_reset</a>
+</li><li><a href='accessor-apis.html#_reset'>_reset</a>
+</li><li><a href='accessor-apis.html#_imageSubmitButton'>_imageSubmitButton</a>
+</li></ul></li><li><a href='accessor-apis.html#Dropdowns'>Dropdowns</a>
+<ul><li><a href='accessor-apis.html#_select'>_select</a>
+</li><li><a href='accessor-apis.html#_option'>_option</a>
+</li></ul></li><li><a href='accessor-apis.html#File Uploads'>File Uploads</a>
+<ul><li><a href='accessor-apis.html#_file'>_file</a>
+</li></ul></li><li><a href='accessor-apis.html#Table Elements'>Table Elements</a>
+<ul><li><a href='accessor-apis.html#_table'>_table</a>
+</li><li><a href='accessor-apis.html#_row'>_row</a>
+</li><li><a href='accessor-apis.html#_cell'>_cell</a>
+</li><li><a href='accessor-apis.html#_tableHeader'>_tableHeader</a>
+</li></ul></li><li><a href='accessor-apis.html#Other HTML Tags'>Other HTML Tags</a>
+<ul><li><a href='accessor-apis.html#_link'>_link</a>
+</li><li><a href='accessor-apis.html#_image'>_image</a>
+</li><li><a href='accessor-apis.html#_label'>_label</a>
+</li><li><a href='accessor-apis.html#_listItem'>_listItem</a>
+</li><li><a href='accessor-apis.html#_list'>_list</a>
+</li><li><a href='accessor-apis.html#_list'>_list</a>
+</li><li><a href='accessor-apis.html#_div'>_div</a>
+</li><li><a href='accessor-apis.html#_span'>_span</a>
+</li><li><a href='accessor-apis.html#_fieldset'>_fieldset</a>
+</li><li><a href='accessor-apis.html#_heading1'>_heading1</a>
+</li><li><a href='accessor-apis.html#_heading2'>_heading2</a>
+</li><li><a href='accessor-apis.html#_heading3'>_heading3</a>
+</li><li><a href='accessor-apis.html#_heading4'>_heading4</a>
+</li><li><a href='accessor-apis.html#_heading5'>_heading5</a>
+</li><li><a href='accessor-apis.html#_heading6'>_heading6</a>
+</li><li><a href='accessor-apis.html#_area'>_area</a>
+</li><li><a href='accessor-apis.html#_map'>_map</a>
+</li><li><a href='accessor-apis.html#_paragraph'>_paragraph</a>
+</li><li><a href='accessor-apis.html#_italic'>_italic</a>
+</li><li><a href='accessor-apis.html#_emphasis'>_emphasis</a>
+</li><li><a href='accessor-apis.html#_bold'>_bold</a>
+</li><li><a href='accessor-apis.html#_strong'>_strong</a>
+</li><li><a href='accessor-apis.html#_preformatted'>_preformatted</a>
+</li><li><a href='accessor-apis.html#_code'>_code</a>
+</li><li><a href='accessor-apis.html#_blockquote'>_blockquote</a>
+</li><li><a href='accessor-apis.html#_canvas'>_canvas</a>
+</li><li><a href='accessor-apis.html#_abbr'>_abbr</a>
+</li><li><a href='accessor-apis.html#_hr'>_hr</a>
+</li><li><a href='accessor-apis.html#_iframe'>_iframe</a>
+</li><li><a href='accessor-apis.html#_frame'>_frame</a>
+</li><li><a href='accessor-apis.html#_object'>_object</a>
+</li><li><a href='accessor-apis.html#_embed'>_embed</a>
+</li><li><a href='accessor-apis.html#_dList'>_dList</a>
+</li><li><a href='accessor-apis.html#_dTerm'>_dTerm</a>
+</li><li><a href='accessor-apis.html#_dDesc'>_dDesc</a>
+</li><li><a href='accessor-apis.html#_font'>_font</a>
+</li><li><a href='accessor-apis.html#_svg_rect'>_svg_rect</a>
+</li><li><a href='accessor-apis.html#_svg_tspan'>_svg_tspan</a>
+</li><li><a href='accessor-apis.html#_svg_circle'>_svg_circle</a>
+</li><li><a href='accessor-apis.html#_svg_ellipse'>_svg_ellipse</a>
+</li><li><a href='accessor-apis.html#_svg_line'>_svg_line</a>
+</li><li><a href='accessor-apis.html#_svg_polygon'>_svg_polygon</a>
+</li><li><a href='accessor-apis.html#_svg_polyline'>_svg_polyline</a>
+</li><li><a href='accessor-apis.html#_svg_path'>_svg_path</a>
+</li><li><a href='accessor-apis.html#_svg_text'>_svg_text</a>
+</li></ul></li><li><a href='generic-accessor-apis.html'>Generic Accessor APIs</a>
+<ul><li><a href='generic-accessor-apis.html#_activeElement'>_activeElement</a>
+</li><li><a href='generic-accessor-apis.html#_byId'>_byId</a>
+</li><li><a href='generic-accessor-apis.html#_byText'>_byText</a>
+</li><li><a href='generic-accessor-apis.html#_byClassName'>_byClassName</a>
+</li><li><a href='generic-accessor-apis.html#_byXPath'>_byXPath</a>
+</li><li><a href='generic-accessor-apis.html#_accessor'>_accessor</a>
+</li><li><a href='generic-accessor-apis.html#_bySeleniumLocator'>_bySeleniumLocator</a>
+</li></ul></li></ul></li><li><a href='relation-apis.html'>Relation APIs</a>
+<ul><li><a href='relation-apis.html#DOM Relation APIs'>DOM Relation APIs</a>
+<ul><li><a href='relation-apis.html#_near'>_near</a>
+</li><li><a href='relation-apis.html#_in'>_in</a>
+</li><li><a href='relation-apis.html#_startLookInside'>_startLookInside</a>
+</li><li><a href='relation-apis.html#_stopLookInside'>_stopLookInside</a>
+</li></ul></li><li><a href='relation-apis.html#Positional Relation APIs'>Positional Relation APIs</a>
+<ul><li><a href='relation-apis.html#_rightOf'>_rightOf</a>
+</li><li><a href='relation-apis.html#_leftOf'>_leftOf</a>
+</li><li><a href='relation-apis.html#_leftOrRightOf'>_leftOrRightOf</a>
+</li><li><a href='relation-apis.html#_under'>_under</a>
+</li><li><a href='relation-apis.html#_above'>_above</a>
+</li><li><a href='relation-apis.html#_aboveOrUnder'>_aboveOrUnder</a>
+</li></ul></li><li><a href='relation-apis.html#Parent APIs'>Parent APIs</a>
+<ul><li><a href='relation-apis.html#_parentNode'>_parentNode</a>
+</li><li><a href='relation-apis.html#_parentCell'>_parentCell</a>
+</li><li><a href='relation-apis.html#_parentRow'>_parentRow</a>
+</li><li><a href='relation-apis.html#_parentTable'>_parentTable</a>
+</li></ul></li></ul></li><li><a href='action-apis.html'>Action APIs</a>
+<ul><li><a href='action-apis.html#Mouse Events'>Mouse Events</a>
+<ul><li><a href='action-apis.html#_xy'>_xy</a>
+</li><li><a href='action-apis.html#_click'>_click</a>
+</li><li><a href='action-apis.html#_doubleClick'>_doubleClick</a>
+</li><li><a href='action-apis.html#_rightClick'>_rightClick</a>
+</li><li><a href='action-apis.html#_mouseDown'>_mouseDown</a>
+</li><li><a href='action-apis.html#_mouseUp'>_mouseUp</a>
+</li><li><a href='action-apis.html#_mouseOver'>_mouseOver</a>
+</li><li><a href='action-apis.html#_check'>_check</a>
+</li><li><a href='action-apis.html#_uncheck'>_uncheck</a>
+</li><li><a href='action-apis.html#_setSelected'>_setSelected</a>
+</li><li><a href='action-apis.html#_dragDrop'>_dragDrop</a>
+</li><li><a href='action-apis.html#_dragDropXY'>_dragDropXY</a>
+</li></ul></li><li><a href='action-apis.html#Touch Events'>Touch Events</a>
+<ul><li><a href='action-apis.html#_tap'>_tap</a>
+</li><li><a href='action-apis.html#_touch'>_touch</a>
+</li><li><a href='action-apis.html#_touchStart'>_touchStart</a>
+</li><li><a href='action-apis.html#_touchEnd'>_touchEnd</a>
+</li><li><a href='action-apis.html#_touchCancel'>_touchCancel</a>
+</li><li><a href='action-apis.html#_touchMove'>_touchMove</a>
+</li><li><a href='action-apis.html#_swipe'>_swipe</a>
+</li></ul></li><li><a href='action-apis.html#Keyboard Events'>Keyboard Events</a>
+<ul><li><a href='action-apis.html#_setValue'>_setValue</a>
+</li><li><a href='action-apis.html#_keyDown'>_keyDown</a>
+</li><li><a href='action-apis.html#_keyUp'>_keyUp</a>
+</li><li><a href='action-apis.html#_keyPress'>_keyPress</a>
+</li><li><a href='action-apis.html#_type'>_type</a>
+</li></ul></li><li><a href='action-apis.html#Focus Events'>Focus Events</a>
+<ul><li><a href='action-apis.html#_focus'>_focus</a>
+</li><li><a href='action-apis.html#_removeFocus'>_removeFocus</a>
+</li><li><a href='action-apis.html#_blur'>_blur</a>
+</li></ul></li><li><a href='action-apis.html#Text Selection'>Text Selection</a>
+<ul><li><a href='action-apis.html#_selectRange'>_selectRange</a>
+</li><li><a href='action-apis.html#_selectTextRange'>_selectTextRange</a>
+</li></ul></li><li><a href='action-apis.html#Page Navigation'>Page Navigation</a>
+<ul><li><a href='action-apis.html#_navigateTo'>_navigateTo</a>
+</li></ul></li><li><a href='action-apis.html#Waits'>Waits</a>
+<ul><li><a href='action-apis.html#_wait'>_wait</a>
+</li></ul></li><li><a href='action-apis.html#Native Events'>Native Events</a>
+<ul><li><a href='action-apis.html#_typeNative'>_typeNative</a>
+</li><li><a href='action-apis.html#_typeKeyCodeNative'>_typeKeyCodeNative</a>
+</li><li><a href='action-apis.html#_focusWindow'>_focusWindow</a>
+</li><li><a href='action-apis.html#_windowAction'>_windowAction</a>
+</li><li><a href='action-apis.html#_clickNative'>_clickNative</a>
+</li><li><a href='action-apis.html#_rightClickNative'>_rightClickNative</a>
+</li><li><a href='action-apis.html#_doubleClickNative'>_doubleClickNative</a>
+</li><li><a href='action-apis.html#_clickNativeXY'>_clickNativeXY</a>
+</li><li><a href='action-apis.html#_mouseOverNative'>_mouseOverNative</a>
+</li><li><a href='action-apis.html#_dragDropNative'>_dragDropNative</a>
+</li><li><a href='action-apis.html#_dragDropNativeXY'>_dragDropNativeXY</a>
+</li></ul></li><li><a href='action-apis.html#File Upload'>File Upload</a>
+<ul><li><a href='action-apis.html#_setFile'>_setFile</a>
+</li><li><a href='action-apis.html#_setFile2'>_setFile2</a>
+</li><li><a href='action-apis.html#Troubleshooting'>Troubleshooting</a>
+</li><li><a href='action-apis.html#Identifying action url for _setFile/_setFile2'>Identifying action url for _setFile/_setFile2</a>
+</li><li><a href='action-apis.html#File upload using native events'>File upload using native events</a>
+</li></ul></li><li><a href='action-apis.html#File Download'>File Download</a>
+<ul><li><a href='action-apis.html#File download overview'>File download overview</a>
+</li><li><a href='action-apis.html#_lastDownloadedFileName'>_lastDownloadedFileName</a>
+</li><li><a href='action-apis.html#_saveDownloadedAs'>_saveDownloadedAs</a>
+</li><li><a href='action-apis.html#_clearLastDownloadedFileName'>_clearLastDownloadedFileName</a>
+</li><li><a href='action-apis.html#File download APIs example'>File download APIs example</a>
+</li><li><a href='action-apis.html#File download troubleshooting'>File download troubleshooting</a>
+</li><li><a href='action-apis.html#Handling file downloads triggered in a new window'>Handling file downloads triggered in a new window</a>
+</li><li><a href='action-apis.html#_sendHTMLResponseAfterFileDownload'>_sendHTMLResponseAfterFileDownload</a>
+</li><li><a href='action-apis.html#File download from a different domain'>File download from a different domain</a>
+</li><li><a href='action-apis.html#_addToSession'>_addToSession</a>
+</li></ul></li><li><a href='action-apis.html#Window open/close APIs'>Window open/close APIs</a>
+<ul><li><a href='action-apis.html#_closeWindow'>_closeWindow</a>
+</li><li><a href='action-apis.html#_closeBrowser'>_closeBrowser</a>
+</li><li><a href='action-apis.html#_openBrowser'>_openBrowser</a>
+</li></ul></li><li><a href='action-apis.html#Calling Generic Code'>Calling Generic Code</a>
+<ul><li><a href='action-apis.html#_call'>_call</a>
+</li><li><a href='action-apis.html#_eval'>_eval</a>
+</li></ul></li></ul></li><li><a href='screenshot-apis.html'>Screenshot APIs</a>
+<ul><li><a href='screenshot-apis.html#_takeScreenShot'>_takeScreenShot</a>
+</li><li><a href='screenshot-apis.html#_takeScreenShots'>_takeScreenShots</a>
+</li><li><a href='screenshot-apis.html#_takePageScreenShot'>_takePageScreenShot</a>
+</li><li><a href='screenshot-apis.html#_assertSnapShot'>_assertSnapShot</a>
+</li><li><a href='screenshot-apis.html#_compareImages'>_compareImages</a>
+</li><li><a href='screenshot-apis.html#Configuring GraphicsMagick'>Configuring GraphicsMagick</a>
+<ul><li><a href='screenshot-apis.html#Configure GM on Windows'>Configure GM on Windows</a>
+</li><li><a href='screenshot-apis.html#Configure GM on Linux/Mac'>Configure GM on Linux/Mac</a>
+</li></ul></li><li><a href='screenshot-apis.html#Skip the Screenshot APIs'>Skip the Screenshot APIs</a>
+</li><li><a href='screenshot-apis.html#Notes'>Notes</a>
+</li></ul></li><li><a href='include-apis.html'>Include APIs</a>
+<ul><li><a href='include-apis.html#_include'>_include</a>
+</li><li><a href='include-apis.html#_includeOnce'>_includeOnce</a>
+</li><li><a href='include-apis.html#_dynamicInclude'>_dynamicInclude</a>
+</li></ul></li><li><a href='fetch-apis.html'>Fetch APIs</a>
+<ul><li><a href='fetch-apis.html#_getValue'>_getValue</a>
+</li><li><a href='fetch-apis.html#_getText'>_getText</a>
+</li><li><a href='fetch-apis.html#_getOptions'>_getOptions</a>
+</li><li><a href='fetch-apis.html#_getCellText'>_getCellText</a>
+</li><li><a href='fetch-apis.html#_getSelectedText'>_getSelectedText</a>
+</li><li><a href='fetch-apis.html#_getAttribute'>_getAttribute</a>
+</li><li><a href='fetch-apis.html#_exists'>_exists</a>
+</li><li><a href='fetch-apis.html#_areEqual'>_areEqual</a>
+</li><li><a href='fetch-apis.html#_isVisible'>_isVisible</a>
+</li><li><a href='fetch-apis.html#_containsText'>_containsText</a>
+</li><li><a href='fetch-apis.html#_containsHTML'>_containsHTML</a>
+</li><li><a href='fetch-apis.html#_contains'>_contains</a>
+</li><li><a href='fetch-apis.html#_title'>_title</a>
+</li><li><a href='fetch-apis.html#_getTableContents'>_getTableContents</a>
+</li><li><a href='fetch-apis.html#_style'>_style</a>
+</li><li><a href='fetch-apis.html#_position'>_position</a>
+</li><li><a href='fetch-apis.html#_getSelectionText'>_getSelectionText</a>
+<li><a href='fetch-apis.html#Browser Detection APIs'>Browser Detection APIs</a>
+<ul><li><a href='fetch-apis.html#_userAgent'>_userAgent</a>
+</li><li><a href='fetch-apis.html#_getScreenSize'>_getScreenSize</a>
+</li><li><a href='fetch-apis.html#_isIE'>_isIE</a>
+</li><li><a href='fetch-apis.html#_isIE9'>_isIE9</a>
+</li><li><a href='fetch-apis.html#_isIE10'>_isIE10</a>
+</li><li><a href='fetch-apis.html#_isFF'>_isFF</a>
+</li><li><a href='fetch-apis.html#_isFF3'>_isFF3</a>
+</li><li><a href='fetch-apis.html#_isFF4'>_isFF4</a>
+</li><li><a href='fetch-apis.html#_isChrome'>_isChrome</a>
+</li><li><a href='fetch-apis.html#_isSafari'>_isSafari</a>
+</li><li><a href='fetch-apis.html#_isOpera'>_isOpera</a>
+</li><li><a href='fetch-apis.html#_isPhantomJS'>_isPhantomJS</a>
+</li><li><a href='fetch-apis.html#_isHTMLUnit'>_isHTMLUnit</a>
+</li></ul></li><li><a href='fetch-apis.html#Rich Text Editors (Content Editable elements)'>Rich Text Editors (Content Editable elements)</a>
+</li><li><a href='fetch-apis.html#Generic attribute fetching mechanism'>Generic attribute fetching mechanism</a>
+<ul><li><a href='fetch-apis.html#_fetch'>_fetch</a>
+</li><li><a href='fetch-apis.html#_set'>_set</a>
+</li><li><a href='fetch-apis.html#_condition'>_condition</a>
+</li></ul></li><li><a href='fetch-apis.html#Multiple Elements'>Multiple Elements</a>
+<ul><li><a href='fetch-apis.html#_collect'>_collect</a>
+</li><li><a href='fetch-apis.html#_count'>_count</a>
+</li><li><a href='fetch-apis.html#_collectAttributes'>_collectAttributes</a>
+</li></ul></li></ul></li><li><a href='assertions.html'>Assertion APIs</a>
+<ul><li><a href='assertions.html#_assert'>_assert</a>
+</li><li><a href='assertions.html#_assertTrue'>_assertTrue</a>
+</li><li><a href='assertions.html#_assertNotTrue'>_assertNotTrue</a>
+</li><li><a href='assertions.html#_assertFalse'>_assertFalse</a>
+</li><li><a href='assertions.html#_assertNull'>_assertNull</a>
+</li><li><a href='assertions.html#_assertNotNull'>_assertNotNull</a>
+</li><li><a href='assertions.html#_assertExists'>_assertExists</a>
+</li><li><a href='assertions.html#_assertVisible'>_assertVisible</a>
+</li><li><a href='assertions.html#_assertNotVisible'>_assertNotVisible</a>
+</li><li><a href='assertions.html#_assertNotExists'>_assertNotExists</a>
+</li><li><a href='assertions.html#_assertEqual'>_assertEqual</a>
+</li><li><a href='assertions.html#_assertEqualArrays'>_assertEqualArrays</a>
+</li><li><a href='assertions.html#_assertNotEqual'>_assertNotEqual</a>
+</li><li><a href='assertions.html#_assertContainsText'>_assertContainsText</a>
+</li><li><a href='assertions.html#_assertNotContainsText'>_assertNotContainsText</a>
+</li><li><a href='assertions.html#_assertEqualImages'>_assertEqualImages</a>
+</li></ul></li><li><a href='logging-apis.html'>Logging APIs</a>
+<ul><li><a href='logging-apis.html#_log'>_log</a>
+</li><li><a href='logging-apis.html#_logException'>_logException</a>
+</li><li><a href='logging-apis.html#_logExceptionAsFailure'>_logExceptionAsFailure</a>
+</li><li><a href='logging-apis.html#_logImage'>_logImage</a>
+<li><a href='logging-apis.html#Masking logs'>Masking logs</a>
+<ul><li><a href='logging-apis.html#_maskLogs'>_maskLogs</a>
+</li><li><a href='logging-apis.html#_unmaskLogs'>_unmaskLogs</a>
+</li><li><a href='logging-apis.html#Example of _maskLogs _unmaskLogs'>Example of _maskLogs _unmaskLogs</a>
+</li></ul></li><li><a href='logging-apis.html#Disable/Enable INFO logging'>Disable/Enable INFO logging</a>
+<ul><li><a href='logging-apis.html#_disableInfoLogging'>_disableInfoLogging</a>
+</li><li><a href='logging-apis.html#_enableInfoLogging'>_enableInfoLogging</a>
+</li></ul></li><li><a href='logging-apis.html#Demarcating Test Cases'>Demarcating Test Cases</a>
+<ul><li><a href='logging-apis.html#_testcase'>_testcase</a>
+</li></ul></li><li><a href='logging-apis.html#HAR Logging'>HAR Logging</a>
+<ul><li><a href='logging-apis.html#Globally enable HAR Logging'>Globally enable HAR Logging</a>
+</li><li><a href='logging-apis.html#Locally enable HAR Logging'>Locally enable HAR Logging</a>
+</li><li><a href='logging-apis.html#_startHarLogging'>_startHarLogging</a>
+</li><li><a href='logging-apis.html#_stopHarLogging'>_stopHarLogging</a>
+</li></ul></li></ul></li><li><a href='debug-helper-apis.html'>Debug Helper APIs</a>
+<ul><li><a href='debug-helper-apis.html#_debug'>_debug</a>
+</li><li><a href='debug-helper-apis.html#_debugToErr'>_debugToErr</a>
+</li><li><a href='debug-helper-apis.html#_debugToFile'>_debugToFile</a>
+</li><li><a href='debug-helper-apis.html#_pause'>_pause</a>
+</li><li><a href='debug-helper-apis.html#_alert'>_alert</a>
+</li><li><a href='debug-helper-apis.html#_confirm'>_confirm</a>
+</li><li><a href='debug-helper-apis.html#_prompt'>_prompt</a>
+</li><li><a href='debug-helper-apis.html#_highlight'>_highlight</a>
+</li></ul></li><li><a href='file-apis.html'>File APIs</a>
+<ul><li><a href='file-apis.html#Text Files'>Text Files</a>
+<ul><li><a href='file-apis.html#_readFile'>_readFile</a>
+</li><li><a href='file-apis.html#_writeFile'>_writeFile</a>
+</li><li><a href='file-apis.html#_writeToFile'>_writeToFile</a>
+</li><li><a href='file-apis.html#_deleteFile'>_deleteFile</a>
+</li><li><a href='file-apis.html#_renameFile'>_renameFile</a>
+</li><li><a href='file-apis.html#_copyFile'>_copyFile</a>
+</li></ul></li><li><a href='file-apis.html#CSV Files'>CSV Files</a>
+<ul><li><a href='file-apis.html#_readCSVFile'>_readCSVFile</a>
+</li><li><a href='file-apis.html#_writeCSVFile'>_writeCSVFile</a>
+</li></ul></li></ul></li><li><a href='excel-apis.html'>Excel APIs</a>
+<ul><li><a href='excel-apis.html#_readExcelFile'>_readExcelFile</a>
+</li><li><a href='excel-apis.html#_getExcel'>_getExcel</a>
+</li></ul></li><li><a href='database-apis.html'>Database APIs</a>
+<ul><li><a href='database-apis.html#_getDB'>_getDB</a>
+</li><li><a href='database-apis.html#_getDB'>_getDB</a>
+</li><li><a href='database-apis.html#Using the SahiDB object'>Using the SahiDB object</a>
+</li><li><a href='database-apis.html#SahiDB.select'>SahiDB.select</a>
+</li><li><a href='database-apis.html#SahiDB.selectWithHeader'>SahiDB.selectWithHeader</a>
+</li><li><a href='database-apis.html#SahiDB.update'>SahiDB.update</a>
+</li><li><a href='database-apis.html#Accessing databases directly'>Accessing databases directly</a>
+</li></ul></li><li><a href='data-drive-apis.html'>Data Drive APIs</a>
+<ul><li><a href='data-drive-apis.html#_dataDrive'>_dataDrive</a>
+<li><a href='data-drive-apis.html#Using with various data source APIs'>Using with various data source APIs</a>
+<ul><li><a href='data-drive-apis.html#Simple 2D array'>Simple 2D array</a>
+</li><li><a href='data-drive-apis.html#CSV'>CSV</a>
+</li><li><a href='data-drive-apis.html#Excel Sheet'>Excel Sheet</a>
+</li><li><a href='data-drive-apis.html#Database'>Database</a>
+</li></ul></li></ul></li><li><a href='url-apis.html'>URL APIs</a>
+<ul><li><a href='url-apis.html#_readURL'>_readURL</a>
+</li></ul></li><li><a href='script-suite-info-apis.html'>Script/Suite Info APIs</a>
+<ul><li><a href='script-suite-info-apis.html#_scriptName'>_scriptName</a>
+</li><li><a href='script-suite-info-apis.html#_scriptPath'>_scriptPath</a>
+</li><li><a href='script-suite-info-apis.html#_scriptStartTime'>_scriptStartTime</a>
+</li><li><a href='script-suite-info-apis.html#_scriptStatus'>_scriptStatus</a>
+</li><li><a href='script-suite-info-apis.html#_userDataDir'>_userDataDir</a>
+</li><li><a href='script-suite-info-apis.html#_userDataPath'>_userDataPath</a>
+</li><li><a href='script-suite-info-apis.html#_resolvePath'>_resolvePath</a>
+</li><li><a href='script-suite-info-apis.html#_sessionInfo'>_sessionInfo</a>
+</li><li><a href='script-suite-info-apis.html#_suiteInfo'>_suiteInfo</a>
+</li><li><a href='script-suite-info-apis.html#_isDataPassed'>_isDataPassed</a>
+</li></ul></li><li><a href='script-execution-control-apis.html'>Script Execution Control APIs</a>
+<ul><li><a href='script-execution-control-apis.html#_wait'>_wait</a>
+</li><li><a href='script-execution-control-apis.html#_setXHRReadyStatesToWaitFor'>_setXHRReadyStatesToWaitFor</a>
+</li><li><a href='script-execution-control-apis.html#_setStrictVisibilityCheck'>_setStrictVisibilityCheck</a>
+</li><li><a href='script-execution-control-apis.html#_setSpeed'>_setSpeed</a>
+</li><li><a href='script-execution-control-apis.html#_stopOnError'>_stopOnError</a>
+</li><li><a href='script-execution-control-apis.html#_continueOnError'>_continueOnError</a>
+</li><li><a href='script-execution-control-apis.html#_runUnitTests'>_runUnitTests</a>
+</li><li><a href='script-execution-control-apis.html#_fail'>_fail</a>
+</li><li><a href='script-execution-control-apis.html#_stop'>_stop</a>
+<li><a href='script-execution-control-apis.html#Script Synchronization'>Script Synchronization</a>
+<ul><li><a href='script-execution-control-apis.html#_lock'>_lock</a>
+</li><li><a href='script-execution-control-apis.html#_unlock'>_unlock</a>
+</li><li><a href='script-execution-control-apis.html#_lockWindow'>_lockWindow</a>
+</li><li><a href='script-execution-control-apis.html#_unlockWindow'>_unlockWindow</a>
+</li></ul></li><li><a href='script-execution-control-apis.html#Callback functions'>Callback functions</a>
+<ul><li><a href='script-execution-control-apis.html#onScriptFailure'>onScriptFailure</a>
+</li><li><a href='script-execution-control-apis.html#onScriptError'>onScriptError</a>
+</li><li><a href='script-execution-control-apis.html#onScriptEnd'>onScriptEnd</a>
+</li><li><a href='script-execution-control-apis.html#Callback example'>Callback example</a>
+</li><li><a href='script-execution-control-apis.html#Taking screenshots on error/failure'>Taking screenshots on error/failure</a>
+</li><li><a href='script-execution-control-apis.html#Force Sahi to continue on error after screenshots and logging.'>Force Sahi to continue on error after screenshots and logging.</a>
+</li><li><a href='script-execution-control-apis.html#onBeforeStep'>onBeforeStep</a>
+</li><li><a href='script-execution-control-apis.html#onAfterStep'>onAfterStep</a>
+</li></ul></li><li><a href='script-execution-control-apis.html#Recovery Functions (DEPRECATED)'>Recovery Functions (DEPRECATED)</a>
+<ul><li><a href='script-execution-control-apis.html#_setRecovery'>_setRecovery</a>
+</li><li><a href='script-execution-control-apis.html#_removeRecovery'>_removeRecovery</a>
+</li></ul></li></ul></li><li><a href='http-header-manipulation-apis.html'>HTTP Header Manipulation APIs</a>
+<ul><li><a href='http-header-manipulation-apis.html#_setHttpHeader'>_setHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_addHttpHeader'>_addHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_removeHttpHeader'>_removeHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_resetHttpHeader'>_resetHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_mapDomainToIP'>_mapDomainToIP</a>
+<li><a href='http-header-manipulation-apis.html#Keep-Alive'>Keep-Alive</a>
+<ul><li><a href='http-header-manipulation-apis.html#_disableKeepAlive'>_disableKeepAlive</a>
+</li><li><a href='http-header-manipulation-apis.html#_enableKeepAlive'>_enableKeepAlive</a>
+</li></ul></li><li><a href='http-header-manipulation-apis.html#Cookie APIs'>Cookie APIs</a>
+<ul><li><a href='http-header-manipulation-apis.html#_cookie'>_cookie</a>
+</li><li><a href='http-header-manipulation-apis.html#_createCookie'>_createCookie</a>
+</li><li><a href='http-header-manipulation-apis.html#_deleteCookie'>_deleteCookie</a>
+</li><li><a href='http-header-manipulation-apis.html#Cookie Manager'>Cookie Manager</a>
+</li></ul></li></ul></li><li><a href='url-mock-apis.html'>URL Mock APIs</a>
+<ul><li><a href='url-mock-apis.html#_addMock'>_addMock</a>
+</li><li><a href='url-mock-apis.html#_mockImage'>_mockImage</a>
+</li><li><a href='url-mock-apis.html#_removeMock'>_removeMock</a>
+</li></ul></li><li><a href='javascript-dialogs.html'>Javascript Dialogs</a>
+<ul><li><a href='javascript-dialogs.html#Alert'>Alert</a>
+<ul><li><a href='javascript-dialogs.html#_lastAlert'>_lastAlert</a>
+</li><li><a href='javascript-dialogs.html#_clearLastAlert'>_clearLastAlert</a>
+</li><li><a href='javascript-dialogs.html#Alert Example'>Alert Example</a>
+</li></ul></li><li><a href='javascript-dialogs.html#Confirm'>Confirm</a>
+<ul><li><a href='javascript-dialogs.html#_lastConfirm'>_lastConfirm</a>
+</li><li><a href='javascript-dialogs.html#_expectConfirm'>_expectConfirm</a>
+</li><li><a href='javascript-dialogs.html#_clearLastConfirm'>_clearLastConfirm</a>
+</li><li><a href='javascript-dialogs.html#Confirm Example'>Confirm Example</a>
+</li></ul></li><li><a href='javascript-dialogs.html#Prompt'>Prompt</a>
+<ul><li><a href='javascript-dialogs.html#_lastPrompt'>_lastPrompt</a>
+</li><li><a href='javascript-dialogs.html#_expectPrompt'>_expectPrompt</a>
+</li><li><a href='javascript-dialogs.html#_clearLastPrompt'>_clearLastPrompt</a>
+</li><li><a href='javascript-dialogs.html#Prompt Example'>Prompt Example</a>
+</li></ul></li><li><a href='javascript-dialogs.html#Print dialog'>Print dialog</a>
+<ul><li><a href='javascript-dialogs.html#_printCalled'>_printCalled</a>
+</li><li><a href='javascript-dialogs.html#_clearPrintCalled'>_clearPrintCalled</a>
+</li></ul></li></ul></li><li><a href='rte-apis.html'>Rich Text Editors</a>
+<ul><li><a href='rte-apis.html#Identification'>Identification</a>
+<ul><li><a href='rte-apis.html#_rte'>_rte</a>
+</li></ul></li><li><a href='rte-apis.html#RTE Fetch APIs'>RTE Fetch APIs</a>
+<ul><li><a href='rte-apis.html#_rteText'>_rteText</a>
+</li><li><a href='rte-apis.html#_rteHTML'>_rteHTML</a>
+</li></ul></li><li><a href='rte-apis.html#RTE Action APIs'>RTE Action APIs</a>
+<ul><li><a href='rte-apis.html#_rteWrite'>_rteWrite</a>
+</li></ul></li><li><a href='rte-apis.html#RTE Text Selection APIs'>RTE Text Selection APIs</a>
+</li></ul></li><li><a href='popup-windows.html'>Popup Windows</a>
+<ul><li><a href='popup-windows.html#_selectWindow'>_selectWindow</a>
+</li><li><a href='popup-windows.html#_popup'>_popup</a>
+</li><li><a href='popup-windows.html#_getWindows'>_getWindows</a>
+</li><li><a href='popup-windows.html#_windowExists'>_windowExists</a>
+</li><li><a href='popup-windows.html#_getRecentWindow'>_getRecentWindow</a>
+</li></ul></li><li><a href='multiple-domains.html'>Multiple Domains</a>
+<ul><li><a href='multiple-domains.html#_selectDomain'>_selectDomain</a>
+</li><li><a href='multiple-domains.html#_domain'>_domain</a>
+</li></ul></li><li><a href='frames-domains.html'>Frames and Domains</a>
+<ul><li><a href='frames-domains.html#Frames from same domain'>Frames from same domain</a>
+</li><li><a href='frames-domains.html#Frames from different domains'>Frames from different domains</a>
+</li><li><a href='frames-domains.html#Subdomains with document.domain'>Subdomains with document.domain</a>
+</li></ul></li><li><a href='multiple-browsers.html'>Multiple Browsers</a>
+<ul><li><a href='multiple-browsers.html#_launchNewBrowser'>_launchNewBrowser</a>
+</li><li><a href='multiple-browsers.html#_selectBrowser'>_selectBrowser</a>
+</li><li><a href='multiple-browsers.html#Sample code'>Sample code</a>
+</li></ul></li><li><a href='execute-external-programs.html'>Execute External Programs</a>
+<ul><li><a href='execute-external-programs.html#_execute'>_execute</a>
+</li></ul></li><li><a href='util-apis.html'>Utility APIs</a>
+<ul><li><a href='util-apis.html#_random'>_random</a>
+</li><li><a href='util-apis.html#_extract'>_extract</a>
+</li><li><a href='util-apis.html#_trim'>_trim</a>
+</li><li><a href='util-apis.html#_toJSON'>_toJSON</a>
+</li></ul></li><li><a href='rest-apis.html'>Rest APIs</a>
+<ul><li><a href='rest-apis.html#RESTRequest'>RESTRequest</a>
+</li><li><a href='rest-apis.html#RESTRequest.addToQueryString'>RESTRequest.addToQueryString</a>
+</li><li><a href='rest-apis.html#RESTRequest.addToBody'>RESTRequest.addToBody</a>
+</li><li><a href='rest-apis.html#RESTRequest.setHeader'>RESTRequest.setHeader</a>
+</li><li><a href='rest-apis.html#RESTRequest.setURL'>RESTRequest.setURL</a>
+</li><li><a href='rest-apis.html#RESTRequest.setBody'>RESTRequest.setBody</a>
+</li><li><a href='rest-apis.html#RESTRequest.setCredentials'>RESTRequest.setCredentials</a>
+</li><li><a href='rest-apis.html#RESTRequest.submit'>RESTRequest.submit</a>
+</li><li><a href='rest-apis.html#RESTResponse'>RESTResponse</a>
+</li><li><a href='rest-apis.html#RESTResponse.getResponseCode'>RESTResponse.getResponseCode</a>
+</li><li><a href='rest-apis.html#RESTResponse.getHeader'>RESTResponse.getHeader</a>
+</li><li><a href='rest-apis.html#RESTResponse.getBodyAsString'>RESTResponse.getBodyAsString</a>
+</li><li><a href='rest-apis.html#RESTResponse.getBody'>RESTResponse.getBody</a>
+</li><li><a href='rest-apis.html#Parameter'>Parameter</a>
+</li><li><a href='rest-apis.html#Parameter.add'>Parameter.add</a>
+</li><li><a href='rest-apis.html#Parameter.remove'>Parameter.remove</a>
+</li><li><a href='rest-apis.html#Parameter.getQueryString'>Parameter.getQueryString</a>
+</li></ul></li><li><span>---</span>
+</li><li><a href='applet-apis.html'>Applet APIs</a>
+<ul><li><a href='applet-apis.html#_applet'>_applet</a>
+</li><li><a href='applet-apis.html#_a'>_a</a>
+<li><a href='applet-apis.html#Applet Accessors'>Applet Accessors</a>
+</li><li><a href='applet-apis.html#Applet Actions'>Applet Actions</a>
+</li><li><a href='applet-apis.html#Applet Fetch APIs'>Applet Fetch APIs</a>
+</li></ul></li><li><a href='flex-apis.html'>Flex APIs</a>
+<ul><li><a href='flex-apis.html#_flex'>_flex</a>
+</li><li><a href='flex-apis.html#_f'>_f</a>
+</li><li><a href='flex-apis.html#_setFlexReadyCondition'>_setFlexReadyCondition</a>
+</li></ul></li><li><a href='layout-verification.html'>Layout APIs</a>
+<ul><li><a href='layout-verification.html#_readLayoutFile'>_readLayoutFile</a>
+</li><li><a href='layout-verification.html#_verifyLayout'>_verifyLayout</a>
+</li><li><a href='layout-verification.html#Layout verification example'>Layout verification example</a>
+</li></ul></li><li><a href='document-creation.html'>Documentation APIs</a>
+<ul><li><a href='document-creation.html#_startDocumentation'>_startDocumentation</a>
+</li><li><a href='document-creation.html#_stopDocumentation'>_stopDocumentation</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Action APIs</h2>
+      <!-- Action APIs -->
+<div class="abstract">
+Sahi's Action APIs simulate user actions on the browser.<br/>
+</div>
+Normally Sahi tries to perform actions via Javascript events. This allows play back without the browser being in focus.<br/>
+In rare cases where Javascript events do not work properly, we switch to native events.<br/>
+<h2><a href="#Mouse Events" name="Mouse Events" class="headinganchor2" hideFocus="hideFocus">Mouse Events</a></h2>
+Mouse events simulate the user's mouse based actions.<br/>
+Mouse events are normally triggered at 0,0 coordinates of that element (top left)<br/>
+Events can be forced to perform at other coordinates by using the _xy API.<br/>
+<br/>
+<div class="api">
+<h3><a href="#_xy" name="_xy" class="headinganchor2" hideFocus="hideFocus">_xy</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_xy($element, $x, $y)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>Element within which we want to perform the mouse action</td></tr><tr><td width="15%">$x</td><td width="20%">integer </td><td>x co-ordinate in pixels</td></tr><tr><td width="15%">$y</td><td width="20%">integer </td><td>y co-ordinate in pixels</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Specifies the coordinates on element where the event should be fired.<br/>
+<br/>
+Eg. <code>_click(_xy(_button("id"), 10, 20))</code> clicks inside the button, 10px from the left and 20 pixels from the top.<br/>
+<br/>
+Negative values can be given to specify offset from right and bottom.<br/>
+Eg. <code>_click(_xy(_button("id"), -5, -10))</code> clicks inside the button, 5px from the right and 10px from the bottom.<br/>
+
+</div>
+</div>
+<br/>
+Combo keys are available with some mouse events to simulate SHIFT click, CTRL click etc.<br/>
+These are used for multi-selecting on some UIs.<br/>
+<br/>
+<div class="api">
+<h3><a href="#_click" name="_click" class="headinganchor2" hideFocus="hideFocus">_click</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_click($element[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>element to click on</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td>Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+_click simulates a user's click on the given element.<br/>
+<pre><code>_click(_button("Click Me"));
+_click(_button("Click Me"), "CTRL"); // clicks with CTRL key pressed
+_click(_button("Click Me"), "CTRL|SHIFT"); // clicks with CTRL and SHIFT keys pressed
+
+// With _xy
+_click(_xy(_button("Click Me"),4,5)); // Click at coordinates 4,5 pixels inside the button</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_doubleClick" name="_doubleClick" class="headinganchor2" hideFocus="hideFocus">_doubleClick</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_doubleClick($element[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>element to double click on</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td>Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+_doubleClick simulates a user's click on the given element.<br/>
+<pre><code>_doubleClick(_button("DblClick Me"));
+_doubleClick(_button("DblClick Me"), "CTRL"); // double clicks with CTRL key pressed
+_doubleClick(_button("DblClick Me"), "CTRL|SHIFT"); // double clicks with CTRL and SHIFT keys pressed
+
+// With _xy
+_doubleClick(_xy(_button("DblClick Me"),4,5)); // double click at coordinates 4,5 pixels inside the button</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_rightClick" name="_rightClick" class="headinganchor2" hideFocus="hideFocus">_rightClick</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_rightClick($element[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>element to right click on</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td>Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+_rightClick simulates a user's click on the given element.<br/>
+<pre><code>_rightClick(_button("Right Click Me"));
+_rightClick(_button("Right Click Me"), "CTRL"); // right clicks with CTRL key pressed
+_rightClick(_button("Right Click Me"), "CTRL|SHIFT"); // right clicks with CTRL and SHIFT keys pressed
+
+// With _xy
+_rightClick(_xy(_button("Right Click Me"),4,5)); // right click at coordinates 4,5 pixels inside the button</code></pre>
+<div class="warning"><strong class='heading'>warning</strong>
+_rightClick will not bring up the browser's context menu.<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_mouseDown" name="_mouseDown" class="headinganchor2" hideFocus="hideFocus">_mouseDown</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_mouseDown($element[, $isRight[, $combo]])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>element to perform mouse down on</td></tr><tr><td width="15%">$isRight</td><td width="20%">boolean optional</td><td>Set to true for a left-hand mouse, default false</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td>Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+_mouseDown simulates a mousedown on the given element.<br/>
+<pre><code>_mouseDown(_button("Mouse Down"));
+_mouseDown(_button("Mouse Down"), true); //mouseDown for a left-hand mouse
+_mouseDown(_button("Mouse Down"), false, "CTRL"); //mouseDown with CTRL key pressed
+_mouseDown(_button("Mouse Down"), false, "CTRL|SHIFT"); //mouseDown with CTRL and SHIFT keys pressed</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_mouseUp" name="_mouseUp" class="headinganchor2" hideFocus="hideFocus">_mouseUp</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_mouseUp($element[, $isRight[, $combo]])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>element to perform mouse up on</td></tr><tr><td width="15%">$isRight</td><td width="20%">boolean optional</td><td>Set to true for a left-hand mouse, default false</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td>Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+simulates a mouseup on the given element.<br/>
+<pre><code>_mouseup(_button("Mouse up"));
+ _mouseup(_button("Mouse up"), true); // mouseup for a left-hand mouse
+_mouseup(_button("Mouse up"), false, "CTRL"); // mouseup with CTRL key pressed
+_mouseup(_button("Mouse up"), false, "CTRL|SHIFT"); // mouseup with CTRL and SHIFT keys pressed</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_mouseOver" name="_mouseOver" class="headinganchor2" hideFocus="hideFocus">_mouseOver</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_mouseOver($element[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>element to perform hover over or move the mouse over.</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td>Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+_mouseOver simulates mouse hovering on the given element.<br/>
+<pre><code>_mouseOver(_button("Click Me"));
+_mouseOver(_button("Click Me"), "CTRL"); // mouseOver with CTRL key pressed
+_mouseOver(_button("Click Me"), "CTRL|SHIFT"); // mouseOver with CTRL and SHIFT keys pressed</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_check" name="_check" class="headinganchor2" hideFocus="hideFocus">_check</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_check($checkBoxOrRadioElement)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$checkBoxOrRadioElement</td><td width="20%">HTML DOM element </td><td>The check box or Radio element to check</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Checks the given checkbox or radio element. If already checked, this API does not do anything.<br/>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_uncheck" name="_uncheck" class="headinganchor2" hideFocus="hideFocus">_uncheck</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_uncheck($checkBoxElement)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$checkBoxElement</td><td width="20%">HTML DOM element </td><td>The check box to uncheck</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Unchecks the given checkbox. If already unchecked, this API does not do anything.<br/>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_setSelected" name="_setSelected" class="headinganchor2" hideFocus="hideFocus">_setSelected</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_setSelected($element, $optionToSelect[, $isMultiple])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>Select dropdown</td></tr><tr><td width="15%">$optionToSelect</td><td width="20%">string|integer|array of string and/or int </td><td>Option's text, id or index;<br/>can also pass an array of options for multi-select</td></tr><tr><td width="15%">$isMultiple</td><td width="20%">boolean optional</td><td>set isMultiple true for multiselect</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Selects one or more elements in a select dropdown.<br/>
+<pre><code>_setSelected(_select("Age"), "28"); // Selects the option visible as "28" in a select box
+_setSelected(_select("color"), 1);  // Selects the second option in a select box
+_setSelected(_select("color"), "red");         // Selects red in a multiselect box
+_setSelected(_select("color"), "blue", true);  // Selects blue also in the multiselect box
+_setSelected(_select("color"), ["red", "blue"]); // Unselects previous and selects red and blue in a multiselect box
+_setSelected(_select("color"), [1,2,3]); // Unselects previous and selects the second, third and fourth options in a multiselect box
+_setSelected(_select("color"), ["green", "yellow"], true); // Keeps previous options selected and selects "green" and "yellow" also</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_dragDrop" name="_dragDrop" class="headinganchor2" hideFocus="hideFocus">_dragDrop</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_dragDrop($dragElement, $dropElement)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$dragElement</td><td width="20%">HTML DOM element </td><td>HTML element to be dragged</td></tr><tr><td width="15%">$dropElement</td><td width="20%">HTML DOM element </td><td>HTML Element where the dragged element will be dropped</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a drag and drop action<br/>
+<pre><code>// Drag the item and drop it in the shopping cart
+_dragDrop(_image("item"), _byId("ShoppingCart"));
+// Drag the item and drop it at coordinates 20,40 pixels inside shopping cart
+_dragDrop(_image("item"), _xy(_byId("ShoppingCart"), 20, 40));</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_dragDropXY" name="_dragDropXY" class="headinganchor2" hideFocus="hideFocus">_dragDropXY</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_dragDropXY($dragElement, $x, $y[, $isRelative])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$dragElement</td><td width="20%">HTML DOM element </td><td> HTML Element to be dragged</td></tr><tr><td width="15%">$x</td><td width="20%">integer </td><td> x coordinate of drop point on the page</td></tr><tr><td width="15%">$y</td><td width="20%">integer </td><td> y coordinate of drop point on the page</td></tr><tr><td width="15%">$isRelative</td><td width="20%">boolean optional</td><td> Specifies whether the coordinates are relative to current position of draggable element.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+_dragDropXY simulates a drag and drop action. It drags the element and drops it at the given x, y coordinate.<br/>
+<pre><code>// If _image("item") is located at coordinates (50, 150)
+
+// Drag the item and drop it at the coordinate (100, 300)
+// The end result is that the element's coordinates will be at (100, 300)
+_dragDropXY(_image("item"),  100, 300);
+
+// Drag the item and drop it at the coordinate (50+100, 150+300)
+// The end result is that the element's coordinates will be at (150, 450)
+_dragDropXY(_image("item"),  100, 300, true);</code></pre>
+
+</div>
+</div>
+<br/>
+<h2><a href="#Touch Events" name="Touch Events" class="headinganchor2" hideFocus="hideFocus">Touch Events</a></h2>
+<div class="api">
+<h3><a href="#_tap" name="_tap" class="headinganchor2" hideFocus="hideFocus">_tap</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_tap($element[, $count])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>HTML form element that needs to be tapped</td></tr><tr><td width="15%">$count</td><td width="20%">integer optional</td><td>number of times the element needs to be tapped. Default value is 1.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a tap event(touch event) on the HTML element<br/>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_touch" name="_touch" class="headinganchor2" hideFocus="hideFocus">_touch</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_touch($element[, $count])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>HTML form element on which we need to fire a touch event</td></tr><tr><td width="15%">$count</td><td width="20%">integer optional</td><td>number of times the element needs to be touched. Default value is 1.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a touch event on the HTML element<br/>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_touchStart" name="_touchStart" class="headinganchor2" hideFocus="hideFocus">_touchStart</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_touchStart($element)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>HTML form element on which we need to fire a touch start event</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a touch start event on the HTML element<br/>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_touchEnd" name="_touchEnd" class="headinganchor2" hideFocus="hideFocus">_touchEnd</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_touchEnd($element)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>HTML form element on which we need to fire a touch end event</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a touch end event on the HTML element<br/>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_touchCancel" name="_touchCancel" class="headinganchor2" hideFocus="hideFocus">_touchCancel</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_touchCancel($element)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>HTML form element on which we need to cancel the ongoing touch event</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a touch cancel event on the HTML element<br/>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_touchMove" name="_touchMove" class="headinganchor2" hideFocus="hideFocus">_touchMove</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_touchMove($element, $moveX, $moveY[, $isRelative])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>HTML form element which we need to move/drag.</td></tr><tr><td width="15%">$moveX</td><td width="20%">integer </td><td>number of pixels the element needs to move in x-direction</td></tr><tr><td width="15%">$moveY</td><td width="20%">integer </td><td>number of pixels the element needs to move in y-direction</td></tr><tr><td width="15%">$isRelative</td><td width="20%">boolean optional</td><td>if true, the element will move relative to the current location of the element.if false, element will move to the position where the horizontal coordinate and vertical coordinate are 'moveX' and 'moveY'. Default value is true.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a touch move event on the HTML element<br/>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_swipe" name="_swipe" class="headinganchor2" hideFocus="hideFocus">_swipe</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_swipe($element, $moveX, $moveY, $isRelative)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>HTML form element on which we need to simulate swipe event.</td></tr><tr><td width="15%">$moveX</td><td width="20%">integer </td><td>number of pixels the element needs to move in x-direction</td></tr><tr><td width="15%">$moveY</td><td width="20%">integer </td><td>number of pixels the element needs to move in y-direction</td></tr><tr><td width="15%">$isRelative</td><td width="20%">boolean </td><td>if true, the element will move relative to the current location of the element. If false, element will move to the position where clientX and clientY are moveX and moveY.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a touch move event on the HTML element<br/>
+
+</div>
+</div>
+<br/>
+<h2><a href="#Keyboard Events" name="Keyboard Events" class="headinganchor2" hideFocus="hideFocus">Keyboard Events</a></h2>
+<div class="api">
+<h3><a href="#_setValue" name="_setValue" class="headinganchor2" hideFocus="hideFocus">_setValue</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_setValue($element, $value)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>HTML form element whose value is to be set</td></tr><tr><td width="15%">$value</td><td width="20%">string </td><td>Value to be set</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates text entry into html form elements (textbox like elements and textareas)<br/>
+The sequence of events performed are<br/>
+Focus<br/>
+Enter Text<br/>
+Remove focus<br/>
+<pre><code>// populates textbox identified as _textbox("user") with Ram
+_setValue(_textbox("user"), "Ram");</code></pre>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_keyDown" name="_keyDown" class="headinganchor2" hideFocus="hideFocus">_keyDown</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_keyDown($element, $charInfo[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> Any HTML element</td></tr><tr><td width="15%">$charInfo</td><td width="20%">charInfo </td><td>charInfo can be:<br/><ul><li>a character (eg. 'b')</li><li>charCode of a character (eg. 98)</li><li>an array of [keyCode, charCode] (eg. [13,13] for pressing ENTER key)</li></ul></td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td>Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates pressing down a key on the given element.<br/>
+<pre><code>_keyDown(document.body, 'a');
+_keyDown(document.body, 98);
+_keyDown(document.body, [13,13]);
+_keyDown(document.body, 'a', "CTRL");</code></pre>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_keyUp" name="_keyUp" class="headinganchor2" hideFocus="hideFocus">_keyUp</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_keyUp($element, $charInfo[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> Any HTML element</td></tr><tr><td width="15%">$charInfo</td><td width="20%">charInfo </td><td>charInfo can be:<br/><ul><li>a character (eg. 'b')</li><li>charCode of a character (eg. 98)</li><li>an array of [keyCode, charCode] (eg. [13,13] for pressing ENTER key)</li></ul></td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td>Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates releasing a key press on the given element.<br/>
+<pre><code>_keyUp(document.body, 'a');
+_keyUp(document.body, 98);
+_keyUp(document.body, [13,13]);
+_keyUp(document.body, 'a', "CTRL");</code></pre>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_keyPress" name="_keyPress" class="headinganchor2" hideFocus="hideFocus">_keyPress</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_keyPress($element, $charInfo[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> Any HTML element</td></tr><tr><td width="15%">$charInfo</td><td width="20%">charInfo </td><td>charInfo can be:<br/><ul><li>a character (eg. 'b')</li><li>charCode of a character (eg. 98)</li><li>an array of [keyCode, charCode] (eg. [13,13] for pressing ENTER key)</li></ul></td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td>Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates pressing a key on the given element. Does keyDown and keyUp together.<br/>
+<pre><code>_keyPress(document.body, 'a');
+_keyPress(document.body, 98);
+_keyPress(document.body, [13,13]);
+_keyPress(document.body, 'a', "CTRL");</code></pre>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_type" name="_type" class="headinganchor2" hideFocus="hideFocus">_type</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_type($element, $text)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> element in which the text is to be typed</td></tr><tr><td width="15%">$text</td><td width="20%">string </td><td> text to be typed</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Types the text into the element. Different from _setValue. _type does not bring or remove focus from element.<br/>
+<pre><code>_type(_textbox("user"), "am");</code></pre>
+
+</div>
+</div>
+<br/>
+<h2><a href="#Focus Events" name="Focus Events" class="headinganchor2" hideFocus="hideFocus">Focus Events</a></h2>
+<div class="api">
+<h3><a href="#_focus" name="_focus" class="headinganchor2" hideFocus="hideFocus">_focus</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_focus($element)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> Any HTML element to focus on</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Brings focus to given element.<br/>
+<pre><code>_focus(_textbox("username"));</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_removeFocus" name="_removeFocus" class="headinganchor2" hideFocus="hideFocus">_removeFocus</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_removeFocus($element)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> Any HTML element to remove focus from</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Similar to clicking somewhere else on the window to remove focus from given element.<br/>
+Forces onblur events to be called.<br/>
+Blur happens automatically during Sahi's script execution.<br/>
+This API is rarely used explicitly. Same as _blur.<br/>
+<pre><code>_removeFocus(_textbox("username"));</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_blur" name="_blur" class="headinganchor2" hideFocus="hideFocus">_blur</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_blur($element)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> Any HTML element to remove focus from</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Similar to clicking somewhere else on the window to remove focus from given element.<br/>
+Forces onblur events to be called.<br/>
+Blur happens automatically during Sahi's script execution.<br/>
+This API is rarely used explicitly. Same as _removeFocus.<br/>
+<pre><code>_blur(_textbox("username"));</code></pre>
+
+</div>
+</div>
+<br/>
+<h2><a href="#Text Selection" name="Text Selection" class="headinganchor2" hideFocus="hideFocus">Text Selection</a></h2>
+Selecting text for manipulation (like selecting text in a Rich Text Editor to change font to bold)<br/>
+<br/>
+<div class="api">
+<h3><a href="#_selectRange" name="_selectRange" class="headinganchor2" hideFocus="hideFocus">_selectRange</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: 5.0<br/>
+<br/>
+<pre><code>_selectRange($element, $rangeStart, $rangeEnd)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>element to select on</td></tr><tr><td width="15%">$rangeStart</td><td width="20%">integer </td><td>start position of selection</td></tr><tr><td width="15%">$rangeEnd</td><td width="20%">integer </td><td>end position of selection</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Example:<br/>
+<pre><code>// If the text was "abcdefghij"
+_selectRange(_rte(1), 2, 4); // selects text cd
+var $text = _getSelectionText(); // $text = "cd"
+
+_selectRange(_rte(1), 2, 2); // places the cursor at 3rd position without any selection</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_selectTextRange" name="_selectTextRange" class="headinganchor2" hideFocus="hideFocus">_selectTextRange</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: 5.0<br/>
+<br/>
+<pre><code>_selectTextRange($element, $searchText[, $position])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td>element to select on</td></tr><tr><td width="15%">$searchText</td><td width="20%">string </td><td>text to search for and select.<br/>The text can be a pure string or a regular expression with an index</td></tr><tr><td width="15%">$position</td><td width="20%">string optional</td><td>can be "before" or "after".<br/>if specified, the selection moves to the start or end of searchText.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Example:<br/>
+<pre><code>//Given a sample string
+//This bright red apple is sweeter than that dull red apple
+
+_selectTextRange(_rte(1), "red apple"); // selects the first red apple
+_selectTextRange(_rte(1), "red apple[1]"); // selects the second red apple
+_selectTextRange(_rte(1), "/ap.le/[1]"); // selects the second apple
+var $text = _getSelectionText(); // $text = "apple"
+_selectTextRange(_rte(1), "/ap.le/[1]", "before"); // moves the cursor before the second apple, with no selection
+_selectTextRange(_rte(1), "/ap.le/[1]", "after"); // moves the cursor after the second apple, with no selection</code></pre>
+
+</div>
+</div>
+<br/>
+<!--<br/>
+< h2>Touch Events</h2>
+< h2>Combination Events</h2>
+ -->
+<h2><a href="#Page Navigation" name="Page Navigation" class="headinganchor2" hideFocus="hideFocus">Page Navigation</a></h2>
+<div class="api">
+<h3><a href="#_navigateTo" name="_navigateTo" class="headinganchor2" hideFocus="hideFocus">_navigateTo</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_navigateTo($url[, $forceReload])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$url</td><td width="20%">string </td><td>URL to navigate to. Can be relative to current page.</td></tr><tr><td width="15%">$forceReload</td><td width="20%">boolean optional</td><td> If the current page URL is same as url, Sahi will not reload the page by default.<br/>Set to true to force reload when urls are same.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+_navigateTo loads the given url in the top frame of the window.<br/>
+To load in a popupWindow, use _selectWindow to select that window first.<br/>
+<br/>
+<pre><code>// If current page is not http://sahi.co.in/demo/
+_navigateTo("http://sahi.co.in/demo/"); // Will navigate to this page.
+
+// If current page is itself "http://sahi.co.in/demo/"
+_navigateTo("http://sahi.co.in/demo/"); // will do nothing
+_navigateTo("http://sahi.co.in/demo/", true); // Will force navigation to this page.
+
+_selectWindow("popWin");
+_navigateTo("http://sahi.co.in/demo/"); // loads in the popup window.</code></pre>
+
+</div>
+</div>
+<div class="info"><strong class='heading'>info</strong>
+To force reload of the current page without knowing the URL, you may use<br/>
+<pre><code>_call(top.location.reload()); // reload via Javascript
+// or
+_windowAction("refresh"); // native event</code></pre>
+</div>
+<br/>
+<h2><a href="#Waits" name="Waits" class="headinganchor2" hideFocus="hideFocus">Waits</a></h2>
+<div class="api">
+<h3><a href="#_wait" name="_wait" class="headinganchor2" hideFocus="hideFocus">_wait</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_wait($timeout[, $condition])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$timeout</td><td width="20%">integer </td><td> time in milliseconds to wait for</td></tr><tr><td width="15%">$condition</td><td width="20%">Sahi expression optional</td><td> condition to wait for.<br/>If specified, _wait will return if either the condition is met<br/>or if the time elapsed has exceeded timeout, whichever comes first.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Forces script to wait for given time or given condition to  be true, which ever comes first<br/>
+<pre><code>_wait(1000); // Will stop execution for a second
+
+// Wait till div by id "ajaxConfirm" is populated for max 5 seconds.
+_wait(5000, _getText(_div("ajaxConfirm"))!="");
+
+// Wait till button becomes visible
+_wait(5000, _isVisible(_button("Confirm")));
+
+// Wait till "Loading ..." message disappears
+_wait(1000); // may take a second before that message appears.
+_wait(5000, !_isVisible(_div("Loading ..."))); // wait max 5 seconds for it to disappear.</code></pre>
+
+</div>
+</div>
+<br/>
+<h2><a href="#Native Events" name="Native Events" class="headinganchor2" hideFocus="hideFocus">Native Events</a></h2>
+In rare cases where Javascript events do not work properly, we switch to native events. These events are created by<br/>
+the underlying Operating System. The browser needs to be in focus for this to work properly.<br/>
+These APIs only work if the browser and Sahi's proxy are on the same system. So these APIs are not available on mobile devices.<br/>
+Some native events may not work on all platforms.<br/>
+<div class="danger">
+For native events, the window and element SHOULD be in focus.<br/>
+Use <code>_focusWindow()</code> before using native events in a script.<br/>
+When using suites, do one of these<br/>
+<ul>
+<li>
+isolate all scripts with native events into its own suite, and run that suite using 1 thread only.<br/>
+</li>
+<li>
+OR<br/>
+Use _lock and _unlock in scripts where contention for window focus is possible.<br/>
+</li>
+</ul>
+</div>
+<div class="api">
+<h3><a href="#_typeNative" name="_typeNative" class="headinganchor2" hideFocus="hideFocus">_typeNative</a></h3>
+Since Sahi Pro: 5.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_typeNative($text)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$text</td><td width="20%">string </td><td>Text to type</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Types the text using native events<br/>
+<pre><code>_focus(_textbox("user"));
+_focusWindow();
+_typeNative("Ram");</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_typeKeyCodeNative" name="_typeKeyCodeNative" class="headinganchor2" hideFocus="hideFocus">_typeKeyCodeNative</a></h3>
+Since Sahi Pro: 5.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_typeKeyCodeNative($keyCode)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$keyCode</td><td width="20%">integer </td><td>Key Code of keyboard key to be pressed.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Presses the keyboard key for given keyCode<br/>
+<a href="http://docs.oracle.com/javase/1.4.2/docs/api/java/awt/event/KeyEvent.html" target="_blank">java.awt.event.KeyEvent</a> defines keyCodes as constants which can be passed to this function.<br/>
+<br/>
+<pre><code>_focusWindow();
+_setValue(_textbox("search"), "coffee");
+_typeKeyCodeNative(java.awt.event.KeyEvent.VK_ENTER); // Press enter key</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_focusWindow" name="_focusWindow" class="headinganchor2" hideFocus="hideFocus">_focusWindow</a></h3>
+Since Sahi Pro: 4.3<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_focusWindow()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Brings the window above all other windows.<br/>
+It is generally needed before using other native events or before taking screen shots<br/>
+Works only on Windows Operating Systems currently. On Mac and Linux, does nothing.<br/>
+For popup windows, use _selectWindow first.<br/>
+<pre><code>_focusWindow(); // bring window into focus.
+_takeScreenShot();
+
+// For popup windows, use _selectWindow first
+_selectWindow("popWin"); // target further statements at popWin window
+_focusWindow(); // bring popup window into focus.
+_takeScreenShot();</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_windowAction" name="_windowAction" class="headinganchor2" hideFocus="hideFocus">_windowAction</a></h3>
+Since Sahi Pro: 5.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_windowAction($action[, $width[, $height]])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$action</td><td width="20%">string </td><td> Action can be one of<br/><ul><li>"focus"</li><li>"maximize"</li><li>"minimize"</li><li>"restore"</li><li>"refresh"</li><li>"resize"</li></ul></td></tr><tr><td width="15%">$width</td><td width="20%">integer optional</td><td> Specifies the width of the browser window while using the 'resize' option.</td></tr><tr><td width="15%">$height</td><td width="20%">integer optional</td><td> Specifies the height of the browser window while using the 'resize' option.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Performs various window level actions. Current works only on Windows Operating Systems.<br/>
+On Mac and Linux does nothing.<br/>
+For popup windows, use _selectWindow first.<br/>
+<pre><code>_windowAction("focus"); // focus window. Same as _focusWindw
+_windowAction("maximize"); // mazimize window.
+_windowAction("minimize"); // minimize window.
+_windowAction("restore"); // restore window.
+_windowAction("refresh"); // refresh window.
+_windowAction("resize",500,300); // resize the window with the given width and height.
+
+// maximizing a popup window
+_selectWindow("popWin"); // first select the popWin window to target further steps on.
+_windowAction("maximize");</code></pre>
+To set delay for a window action API, please do the following<br/>
+<ul>
+<li>Search and edit the following section in <i>sahi.properties</i><code>[SAHI_INSTALL_PATH\config\sahi.properties]</code></li>
+</ul>
+<pre><code>window_action_api.wait_after_unique_title_set=300 // waits for 300ms after unique title set.
+window_action_api.wait_before_title_revert=200 // waits for 200ms before unique title revert.
+window_action_api.wait_after_unique_title_revert=500 // waits for 500ms after unique title revert.</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_clickNative" name="_clickNative" class="headinganchor2" hideFocus="hideFocus">_clickNative</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_clickNative($element[, $combo[, $isRight[, $isDouble]]])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> Element that has to be clicked.</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td> Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr><tr><td width="15%">$isRight</td><td width="20%">boolean optional</td><td> If true, the click is a right click</td></tr><tr><td width="15%">$isDouble</td><td width="20%">boolean optional</td><td>If true, the click is a double click</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a native click event on the element.<br/>
+<div class="warning"><strong class='heading'>warning</strong>Before calling this API, we need to call <code>_focusWindow</code> to bring the window into focus.</div>
+<pre><code>_clickNative(_button("b1"));</code></pre>
+<div class="info"><strong class='heading'>info</strong>
+This API is very useful when <a href="action-apis.html#_click">_click</a> does not help or a native click cannot be simulated by focusing on the element and generating a Space or Enter key (<a href="action-apis.html#_typeKeyCodeNative">_typeKeyCodeNative</a>(java.awt.event.KeyEvent.VK_SPACE)).<br/>
+<br/>
+One can use this to click on File elements to bring up the File chooser dialog, when _setFile and _setFile2 do not work.<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_rightClickNative" name="_rightClickNative" class="headinganchor2" hideFocus="hideFocus">_rightClickNative</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_rightClickNative($element[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> element that has to be clicked.</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td> Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a native right click event on the element.<br/>
+<div class="warning"><strong class='heading'>warning</strong>Before calling this API, we need to call <code>_focusWindow</code> to bring the window into focus.</div>
+<pre><code>_rightClickNative(_button("b1"));</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_doubleClickNative" name="_doubleClickNative" class="headinganchor2" hideFocus="hideFocus">_doubleClickNative</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_doubleClickNative($element[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> element that has to be double clicked.</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td> Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a native double click event on the element.<br/>
+<div class="warning"><strong class='heading'>warning</strong>Before calling this API, we need to call <code>_focusWindow</code> to bring the window into focus.</div>
+<pre><code>_doubleClickNative(_button("b1"));</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_clickNativeXY" name="_clickNativeXY" class="headinganchor2" hideFocus="hideFocus">_clickNativeXY</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_clickNativeXY($x, $y[, $combo[, $isRight[, $isDouble]]])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$x</td><td width="20%">integer </td><td> x coordinate of the screen position to be clicked</td></tr><tr><td width="15%">$y</td><td width="20%">integer </td><td> y coordinate of the screen position to be clicked</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td> Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr><tr><td width="15%">$isRight</td><td width="20%">boolean optional</td><td> If true, the click is a right click</td></tr><tr><td width="15%">$isDouble</td><td width="20%">boolean optional</td><td>If true, the click is a double click</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a click event at the point (x,y).<br/>
+<div class="warning"><strong class='heading'>warning</strong>Before calling this API, we need to call <code>_focusWindow</code> to bring the window into focus.</div>
+<pre><code>_clickNativeXY(100, 200);
+_clickNativeXY(150,300, "ALT"); // ALT + click</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_mouseOverNative" name="_mouseOverNative" class="headinganchor2" hideFocus="hideFocus">_mouseOverNative</a></h3>
+Since Sahi Pro: 6.0.1<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_mouseOverNative($element[, $combo])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> Element to perform hover over or move the mouse over.</td></tr><tr><td width="15%">$combo</td><td width="20%">string optional</td><td> Any combo key: can be "CTRL", "SHIFT", "ALT" or "META";<br/>Can also be two or more keys together like "CTRL|SHIFT"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a native mouse over event on the element.<br/>
+<div class="warning"><strong class='heading'>warning</strong>Before calling this API, we need to call <code>_focusWindow</code> to bring the window into focus.</div>
+<pre><code>_mouseOverNative(_button("b1"));</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_dragDropNative" name="_dragDropNative" class="headinganchor2" hideFocus="hideFocus">_dragDropNative</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_dragDropNative($el, $el2)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$el</td><td width="20%">HTML DOM element </td><td> the draggable element</td></tr><tr><td width="15%">$el2</td><td width="20%">HTML DOM element </td><td> the droppable element</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a dragdrop event from element 1 to element 2 using native events.<br/>
+<div class="warning"><strong class='heading'>warning</strong>Before calling this API, we need to call <code>_focusWindow</code> to bring the window into focus.</div>
+<pre><code>_dragDropNative(_div("draggable"), _div("droppable"));</code></pre>
+<div class="info"><strong class='heading'>info</strong>
+This API is useful when <a href="action-apis.html#_dragDrop">_dragDrop</a> does not help.<br/>
+Example: When you need to drag an element from one iframe into a drop target in another iframe, you would use _dragDropNative.<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_dragDropNativeXY" name="_dragDropNativeXY" class="headinganchor2" hideFocus="hideFocus">_dragDropNativeXY</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_dragDropNativeXY($x1, $y1, $x2, $y2)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$x1</td><td width="20%">integer </td><td> x coordinate of the draggable element</td></tr><tr><td width="15%">$y1</td><td width="20%">integer </td><td> y coordinate of the draggable element</td></tr><tr><td width="15%">$x2</td><td width="20%">integer </td><td> x coordinate of the droppable element</td></tr><tr><td width="15%">$y2</td><td width="20%">integer </td><td> y coordinate of the droppable element</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Simulates a dragdrop event from element at first set of coordinates to element at second set of coordinates, using native events.<br/>
+<div class="warning"><strong class='heading'>warning</strong>Before calling this API, we need to call <code>_focusWindow</code> to bring the window into focus.</div>
+<pre><code>_dragDropNativeXY(100,50, 100,150);</code></pre>
+
+</div>
+</div>
+<br/>
+<h2><a href="#File Upload" name="File Upload" class="headinganchor2" hideFocus="hideFocus">File Upload</a></h2>
+_setFile and _setFile2 are used to set a file in the file input field.<br/>
+Form elements of type "file" cannot be populated using javascript on the browser.<br/>
+So Sahi has a workaround for handling file uploads.<br/>
+Sahi intercepts the request in the proxy, reads the file off the file system and inserts it into the multipart request.<br/>
+The file has to be present on that path on the machine running the proxy.<br/>
+<div class="api">
+<h3><a href="#_setFile" name="_setFile" class="headinganchor2" hideFocus="hideFocus">_setFile</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_setFile($element, $filePath[, $actionURL])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> HTML Form File Element whose value needs to be set</td></tr><tr><td width="15%">$filePath</td><td width="20%">string </td><td> Path of the file to be uploaded.</td></tr><tr><td width="15%">$actionURL</td><td width="20%">string optional</td><td> The form action URL to which the file is submitted. This is an optional parameter.<br/>Use it in cases where the form's action URL is changed on setting the file.<br/>By default, it uses the form's current action URL.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+<pre><code>_setFile(_file("id"), "C:\\abc\\efg.jpg");
+_setFile(_file("id"), "C:\\abc\\efg.jpg", "formSubmit.jsp");</code></pre>
+<div class="warning"><strong class='heading'>warning</strong>
+Note that _setFile works in a round about way. It is not handled at the browser level. It is handled at the proxy. <strong>So you will not see the file input box being populated with your desired filename.</strong> But when the form is submitted, the proxy will add the correct file to the request before it sends it to your web server. But if there are javascript checks before form submit to see if the filename is non-empty, then the script will not work as desired.<br/>
+</div>
+<div class="info"><strong class='heading'>info</strong>
+If there are javascript validations on the file field, use _setFile2 which works in the same way, but changes the file type using javascript so that validations may pass.<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_setFile2" name="_setFile2" class="headinganchor2" hideFocus="hideFocus">_setFile2</a></h3>
+Since Sahi Pro: 4.5<br/>
+Since Sahi OS: 4.3<br/>
+<br/>
+<pre><code>_setFile2($element, $filePath[, $actionURL])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$element</td><td width="20%">HTML DOM element </td><td> HTML Form File Element whose value needs to be set</td></tr><tr><td width="15%">$filePath</td><td width="20%">string </td><td> Path of the file to be uploaded.</td></tr><tr><td width="15%">$actionURL</td><td width="20%">string optional</td><td> The form action URL to which the file is submitted. This is an optional parameter.<br/>Use it in cases where the form's action URL is changed on setting the file.<br/>By default, it uses the form's current action URL.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Before submitting the file, <strong>_setFile2</strong> internally changes the field's type to "text", and then set its value.<br/>
+<code>_setFile2</code> is the same as doing the following:<br/>
+<pre><code>// _setFile2 implementation
+// set the file
+_setFile(_file("file"), "scripts/demo/uploadme.txt");
+// Change the "type" attribute of file field
+if (_isIE()){
+  _call(_file("file").outerHTML = _file("file").outerHTML.replace(/type=['"]?file['"]?/, "type=text"));
+}else{
+  _call(_file("file").type = "text");
+}
+// Set the value into the textbox
+_setValue(_textbox("file"), "scripts/demo/uploadme.txt");</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="info"><strong class='heading'>info</strong>
+If you use relative paths in _setFile and _setFile2, they should be relative to <code>userdata</code> folder.<br/>
+Either use the correct relative path or the full absolute path.<br/>
+</div>
+<br/>
+<h3><a href="#Troubleshooting" name="Troubleshooting" class="headinganchor2" hideFocus="hideFocus">Troubleshooting</a></h3>
+<ol>
+<li>Look to see if there are any exceptions on the Sahi console (the command prompt). If it shows any FileNotFoundException, correct the path of your file.</li>
+<li>Check if the URL to which the form is being submitted is correct. Sometimes the URL is changed when the form is submitted, and Sahi needs to be told about it using the 3rd parameter in _setFile/setFile2</li>
+</ol>
+<br/>
+<h3><a href="#Identifying action url for _setFile/_setFile2" name="Identifying action url for _setFile/_setFile2" class="headinganchor2" hideFocus="hideFocus">Identifying action url for _setFile/_setFile2</a></h3>
+<br/>
+<ol>
+<li>
+Launch a browser from the Sahi Dashboard.<br/>
+</li>
+<li>
+Perform the file upload functionality in your app manually.</li>
+<li>
+Check the output on the Sahi server console. It will look something like this.<br/>
+<pre><code>[java] FileUpload: Multipart Request Found
+[java] Action URL for upload:
+[java] http://localhost/demo/php/fileUpload.php
+[java] The above action URL may be required as the third parameter while
+[java] calling _setFile and _setFile2 APIs.
+[java] Recording: false
+[java] For troubleshooting, click on 'Enable Traffic Logs' link on the Sahi Dashboard
+[java] and perform the upload operation. Upload logs will be created in
+[java] sahi/userdata/logs/file_upload/ folder.</code></pre>
+<br/>
+As you can see from the output, <code>http://localhost/demo/php/fileUpload.php</code> is the action url in this case.<br/>
+</li>
+<li>
+Once you have identified the action url, use that as the third parameter in _setFile/_setFile2.<br/>
+</li>
+</ol>
+<br/>
+<div class="info"><strong class='heading'>info</strong>
+Complete examples on _setFile and _setFile2 are available in sahi/userdata/scripts/demo/fileUpload.sah<br/>
+It can be run with start URL http://sahi.co.in/demo/<br/>
+</div>
+<br/>
+<h3><a href="#File upload using native events" name="File upload using native events" class="headinganchor2" hideFocus="hideFocus">File upload using native events</a></h3>
+Sometimes file uploads with the previous method may fail. In such cases we resort to native events.<br/>
+<pre><code>function setFileUpload($fileEl, $path) {
+	_focusWindow();
+	_wait(1000); // needed
+	// focus on the element
+	_focus($fileEl);
+	// click "space" to bring up the browser dialog
+	_typeKeyCodeNative(java.awt.event.KeyEvent.VK_SPACE);
+	_wait(1000);
+	// type the file path
+	_typeNative($path);
+	_wait(1000);
+	// press enter
+	_typeKeyCodeNative(java.awt.event.KeyEvent.VK_ENTER);
+	_wait(1000);
+}
+// Then invoke it like this:
+setFileUpload(_file("id"), "C:\\abc\\efg.jpg");
+//or
+setFileUpload(_file("id"), _resolvePath("uploadme.txt")); // resolves relative to this file</code></pre>
+<div class="warning"><strong class='heading'>warning</strong>
+_focusWindow is available since Sahi Pro V4.3. It works only on Windows currently.<br/>
+</div>
+<br/>
+<h2><a href="#File Download" name="File Download" class="headinganchor2" hideFocus="hideFocus">File Download</a></h2>
+<br/>
+<h3><a href="#File download overview" name="File download overview" class="headinganchor2" hideFocus="hideFocus">File download overview</a></h3>
+Sahi's proxy detects file downloads, and automatically saves them to <code>sahi/userdata/temp/download</code> directory.<br/>
+Sahi also adds the sessionId to the file name, so that multiple simultaneous tests do not overwrite each others files.<br/>
+So if you were clicking on a "download" link which downloads a "setup.exe" file, this is how Sahi will handle it.<br/>
+<ol>
+<li>Click on "download" link</li>
+<li>Sahi detects that it is a downloadable file, based on its MimeType and Content-Disposition headers.<br/>
+It then downloads and saves the file into sahi/userdata/temp/download/ after renaming it to<br/>
+something like: sahi_0384a26207e6104f5f08868032bd170de76d__setup.exe</li>
+<li>Once the file is downloaded Sahi exposes the original name of the file ("setup.exe")<br/>
+through the API:  _lastDownloadedFileName()</li>
+<li>Another API, _saveDownloadedAs, allows the file to be renamed and copied over to a convenient directory for you to work on.</li>
+<li>API: _clearLastDownloadedFileName() clears out the _lastDownloadedFileName() so that further files can be downloaded and worked upon.</li>
+</ol>
+<br/>
+<div class="api">
+<h3><a href="#_lastDownloadedFileName" name="_lastDownloadedFileName" class="headinganchor2" hideFocus="hideFocus">_lastDownloadedFileName</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_lastDownloadedFileName()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Returns the last downloaded file name.<br/>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_saveDownloadedAs" name="_saveDownloadedAs" class="headinganchor2" hideFocus="hideFocus">_saveDownloadedAs</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_saveDownloadedAs($path)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$path</td><td width="20%">string </td><td>File path to copy this file into. Needs to be a file path not a directory. If path is relative, it is resolved relative to userdata directory.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Renames/copies the file into specified directory for further processing.<br/>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_clearLastDownloadedFileName" name="_clearLastDownloadedFileName" class="headinganchor2" hideFocus="hideFocus">_clearLastDownloadedFileName</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_clearLastDownloadedFileName()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Clears out the _lastDownloadedFileName() so that further files can be downloaded and worked upon<br/>
+
+</div>
+</div>
+<br/>
+<h3><a href="#File download APIs example" name="File download APIs example" class="headinganchor2" hideFocus="hideFocus">File download APIs example</a></h3>
+<pre><code>_assertNull(_lastDownloadedFileName()); // nothing so far
+_click(_link("download")); // click on download link
+// Wait for a while till _lastDownloadedFileName() becomes NOT null. This is when the download is complete.
+// We wait for a maximum of 90 seconds or till _lastDownloadedFileName() becomes NOT null.
+// If you find that your file is huge and takes much longer, run the following statement in a loop for 5 or 6 retries.
+// Do NOT increase 90000 to more than 120000.
+_wait(90000, _lastDownloadedFileName() != null);
+// Assert the name of the downloaded file.
+_assertEqual("setup.exe", _lastDownloadedFileName()); // check if downloaded
+
+if (_lastDownloadedFileName() != null) {
+	_saveDownloadedAs("c:/myownpath/setup.exe"); // save to another path
+	_clearLastDownloadedFileName(); // clear the variable
+	_assertNull(_lastDownloadedFileName()); // check to see if cleared.
+}</code></pre>
+<br/>
+<h3><a href="#File download troubleshooting" name="File download troubleshooting" class="headinganchor2" hideFocus="hideFocus">File download troubleshooting</a></h3>
+<div class="info"><strong class='heading'>info</strong>
+Sahi detects that a file is to be downloaded, based on<br/>
+<ol><li>its content type (configurable via sahi/userdata/config/download_contenttypes.txt)</li>
+<li>The Content-Disposition: attachment header</li>
+<li>Whether the URL is configured in sahi/userdata/config/download_urls.txt</li>
+</ol>
+</div>
+<br/>
+<strong>If you see a file download dialog during playback, do the following:</strong><br/>
+<ol>
+<li>Check if the download URL follows a specific pattern. If yes, add the pattern of the URL to download_urls.txt<br/>
+Eg., if your download url is <code>http://mysite.example.com/export_doc.jsp?id=12318812</code>, add<br/>
+<pre><code>.*export_doc[.]jsp.*</code></pre>
+to <code>sahi/userdata/config/download_urls.txt</code></li>
+<li>If there are multiple files that are to be downloaded, and they all are of a particular content-type,<br/>
+add the content type to <code>sahi/userdata/config/download_contenttypes.txt</code></li>
+<li>If your file download response always has content-disposition as "attachment", you can tell sahi to<br/>
+download them by default by setting<br/>
+<pre><code>download.download_if_contentdisposition_is_attachment=true</code></pre>
+in <code>sahi/userdata/config/userdata.properties</code>. This is the default since Sahi Pro 4.3.2</li>
+</ol>
+<br/>
+<h3><a href="#Handling file downloads triggered in a new window" name="Handling file downloads triggered in a new window" class="headinganchor2" hideFocus="hideFocus">Handling file downloads triggered in a new window</a></h3>
+Sometimes a webpage may open a new window to show a PDF file.<br/>
+In this case, we need to ask Sahi to send a HTML response back using<br/>
+_sendHTMLResponseAfterFileDownload API (need Sahi Pro V4.2+).<br/>
+<br/>
+<div class="api">
+<h3><a href="#_sendHTMLResponseAfterFileDownload" name="_sendHTMLResponseAfterFileDownload" class="headinganchor2" hideFocus="hideFocus">_sendHTMLResponseAfterFileDownload</a></h3>
+Since Sahi Pro: 4.3<br/>
+Since Sahi OS: 4.3<br/>
+<br/>
+<pre><code>_sendHTMLResponseAfterFileDownload($enable)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$enable</td><td width="20%">boolean </td><td>true enables html response behaviour, false disables html response</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Forces Sahi to send back an HTML response after file download. Useful when file opens/downloads in a new window.<br/>
+<br/>
+Add<br/>
+<pre><code>_sendHTMLResponseAfterFileDownload(true);</code></pre>
+before the statement which triggers the download and Sahi will send back an HTML response. To turn it off, call<br/>
+<pre><code>_sendHTMLResponseAfterFileDownload(false);</code></pre>
+
+</div>
+</div>
+<br/>
+Use it like this:<br/>
+<pre><code>_assertNull(_lastDownloadedFileName()); // nothing so far
+_sendHTMLResponseAfterFileDownload(true);
+
+_click(_link("Show PDF in new Window"));
+_wait(90000, _lastDownloadedFileName() != null);
+_assertEqual("test.pdf", _lastDownloadedFileName());
+
+if (_lastDownloadedFileName() != null) {
+	_saveDownloadedAs("c:/test.pdf");
+	_clearLastDownloadedFileName(); // clear the variable
+	_assertNull(_lastDownloadedFileName()); // check to see if cleared.
+}
+// Close the popup window
+_selectWindow("/File Downloaded/");
+_click(_link("Close Window"));
+
+// Select back the main window
+_selectWindow();
+
+_sendHTMLResponseAfterFileDownload(false);</code></pre>
+<br/>
+<div class="info"><strong class='heading'>info</strong>
+Technical Explanation<br/>
+When the browser navigates to a downloadable file, Sahi automatically downloads the file.<br/>
+After the file has downloaded Sahi sends a 204 response which essentially asks the page to stay where it is.<br/>
+Now if that original page has Sahi's code in it, the Sahi script will proceed normally.<br/>
+If it does not, then the script will stop. Since the PDF window is a fresh window, there is no content in it and Sahi's script stops.<br/>
+</div>
+<br/>
+<h3><a href="#File download from a different domain" name="File download from a different domain" class="headinganchor2" hideFocus="hideFocus">File download from a different domain</a></h3>
+When a file is downloaded from a different domain than the invoking page, the file will get downloaded to<br/>
+<code>userdata\temp\download</code> folder successfully. But since the download is from a different domain,<br/>
+it is not associated with the current script session. Hence _lastDownloadedFileName() will return null and<br/>
+so _saveDownloadedAs() will fail.<br/>
+To solve this problem, add _addToSession("http://newdomain") in the script before triggering download.<br/>
+<br/>
+<div class="api">
+<h3><a href="#_addToSession" name="_addToSession" class="headinganchor2" hideFocus="hideFocus">_addToSession</a></h3>
+Since Sahi Pro: 4.5<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_addToSession($domain)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$domain</td><td width="20%">string </td><td>Domain to be associated with the current script session</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Adds the domain to the current script session.<br/>
+<br/>
+Example:<br/>
+<pre><code>_addToSession("http://downloaddomain.com"); // Here the download url is http. Change downloaddomain.com to your domain.
+_addToSession("https://downloaddomain.com"); // Here the download url is https. Change downloaddomain.com to your domain.</code></pre>
+<div class="danger"><strong class='heading'>danger</strong>
+NOTE: If it is a https url, it is a MUST to prefix the domain name with "https://".<br/>
+</div>
+
+</div>
+</div>
+<pre><code>// Add new domain url to Sahi's playback session
+_addToSession("http://downloads.mydomain.com");
+// NOTE _addToSession comes before click
+_click(_link("Download"));
+// The rest of the code is same as above...</code></pre>
+<br/>
+Once we add _addToSession, _lastDownloadedFileName() will return the correct downloaded file name, and hence _saveDownloadedAs() will work correctly.<br/>
+<br/>
+<h2><a href="#Window open/close APIs" name="Window open/close APIs" class="headinganchor2" hideFocus="hideFocus">Window open/close APIs</a></h2>
+<div class="api">
+<h3><a href="#_closeWindow" name="_closeWindow" class="headinganchor2" hideFocus="hideFocus">_closeWindow</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_closeWindow()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Closes the current window.<br/>
+This will work only for popups.<br/>
+Eg.<br/>
+<pre><code>_popup("popWin")._closeWindow();</code></pre>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_closeBrowser" name="_closeBrowser" class="headinganchor2" hideFocus="hideFocus">_closeBrowser</a></h3>
+Since Sahi Pro: 4.3.2<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_closeBrowser()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Closes the browsers in this session in the middle of a script.<br/>
+<div class="warning"><strong class='heading'>warning</strong>
+Use with caution.<br/>
+<ol>
+<li>This can be only used when singleSession is false in a suite.</li>
+<li>ALWAYS follow this with _openBrowser(). Otherwise the script will hang.</li>
+<li>A wait(5000) may be needed after closing to allow the browser to clean up properly.</li>
+</ol>
+</div>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_openBrowser" name="_openBrowser" class="headinganchor2" hideFocus="hideFocus">_openBrowser</a></h3>
+Since Sahi Pro: 4.3.2<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_openBrowser()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Opens the browser in this session in the middle of a script. Used to reopen browser after _closeBrowser.<br/>
+<div class="warning"><strong class='heading'>warning</strong>Use with caution.<br/>
+<ol>
+<li>This can be only used when singleSession is false in a suite.</li>
+<li>Always use it after a _closeBrowser() command</li>
+<li>This will not allow multiple browsers in the same session. Use <a href="multiple-browsers.html">_launchNewBrowser and _selectBrowser</a> for that</li>
+</ol>
+</div>
+
+</div>
+</div>
+<br/>
+<h2><a href="#Calling Generic Code" name="Calling Generic Code" class="headinganchor2" hideFocus="hideFocus">Calling Generic Code</a></h2>
+<div class="api">
+<h3><a href="#_call" name="_call" class="headinganchor2" hideFocus="hideFocus">_call</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_call($expression)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$expression</td><td width="20%">expression </td><td> Any expression which needs to be evaluated on the browser<br/>Note that the expression is not quoted and is NOT a string.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+_call is a generic API to bypass Sahi's action APIs and directly call javascript on the DOM.<br/>
+<pre><code>// For example, a date field may bring up the calendar, but selecting the year,month etc. may be time consuming.
+// For repeated flows, one may want to bypass this by directly setting the value of the field through javascript.
+_call(_textbox("date").value = "25/02/1990");</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_eval" name="_eval" class="headinganchor2" hideFocus="hideFocus">_eval</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_eval($evalString)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$evalString</td><td width="20%">string </td><td> Any string which needs to be javascript 'eval'ed on the browser</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+_eval, like _call, is a generic API to bypass Sahi's action APIs and directly call javascript on the DOM.<br/>
+However, _eval takes a string instead of an expression.<br/>
+<pre><code>// For example, a date field may bring up the calendar, but selecting the year,month etc. may be time consuming.
+// For repeated flows, one may want to bypass this by directly setting the value of the field through javascript.
+_eval("_textbox(\"date\").value = \"25/02/1990\"");</code></pre>
+<div class="warning"><strong class='heading'>warning</strong>_call is recommended over _eval since _call is easier to use.</div>
+
+</div>
+</div>
+
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

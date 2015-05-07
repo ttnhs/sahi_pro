@@ -1,0 +1,136 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version|0.17|$
+Arch|x86-msvc|$
+
+[PLUGINS]
+nppdf32.dll|$
+C:\Program Files (x86)\Adobe\Reader 10.0\Reader\browser\nppdf32.dll|$
+10.1.13.16|$
+1417629980000|0|0|0|$
+Adobe PDF Plug-In For Firefox and Netscape 10.1.13|$
+Adobe Acrobat|$
+7
+0|application/pdf|Acrobat Portable Document Format|pdf|$
+1|application/vnd.adobe.pdfxml|Adobe PDF in XML Format|pdfxml|$
+2|application/vnd.adobe.x-mars|Adobe PDF in XML Format|mars|$
+3|application/vnd.fdf|Acrobat Forms Data Format|fdf|$
+4|application/vnd.adobe.xfdf|XML Version of Acrobat Forms Data Format|xfdf|$
+5|application/vnd.adobe.xdp+xml| Acrobat XML Data Package|xdp|$
+6|application/vnd.adobe.xfd+xml|Adobe FormFlow99 Data File|xfd|$
+nppdf32.dll|$
+C:\Program Files (x86)\Adobe\Reader 10.0\Reader\AIR\nppdf32.dll|$
+10.1.13.16|$
+1417629984000|0|0|0|$
+Adobe PDF Plug-In For Firefox and Netscape 10.1.13|$
+Adobe Acrobat|$
+7
+0|application/pdf|Acrobat Portable Document Format|pdf|$
+1|application/vnd.adobe.pdfxml|Adobe PDF in XML Format|pdfxml|$
+2|application/vnd.adobe.x-mars|Adobe PDF in XML Format|mars|$
+3|application/vnd.fdf|Acrobat Forms Data Format|fdf|$
+4|application/vnd.adobe.xfdf|XML Version of Acrobat Forms Data Format|xfdf|$
+5|application/vnd.adobe.xdp+xml| Acrobat XML Data Package|xdp|$
+6|application/vnd.adobe.xfd+xml|Adobe FormFlow99 Data File|xfd|$
+npGoogleUpdate3.dll|$
+C:\Program Files (x86)\Google\Update\1.3.26.9\npGoogleUpdate3.dll|$
+1.3.26.9|$
+1425268129390|0|0|0|$
+Google Update|$
+Google Update|$
+2
+0|application/x-vnd.google.update3webcontrol.3|||$
+1|application/x-vnd.google.oneclickctrl.9|||$
+npctrl.dll|$
+C:\Program Files (x86)\Microsoft Silverlight\5.1.30514.0\npctrl.dll|$
+5.1.30514.0|$
+1399997822000|0|0|0|$
+5.1.30514.0|$
+Silverlight Plug-In|$
+2
+0|application/x-silverlight|npctrl|scr|$
+1|application/x-silverlight-2|||$
+npYState.dll|$
+C:\Program Files (x86)\Yahoo!\Shared\npYState.dll|$
+1.0.0.7|$
+1337894704000|0|0|0|$
+Yahoo Application State Plugin version 1.0.0.7|$
+Yahoo Application State Plugin|$
+1
+0|application/x-vnd.yahoo.applicationstate|npYState|npYState|$
+npjp2.dll|$
+C:\Program Files (x86)\Java\jre1.8.0_45\bin\plugin2\npjp2.dll|$
+11.45.2.14|$
+1429580316119|0|0|0|$
+Next Generation Java Plug-in 11.45.2 for Mozilla browsers|$
+Java(TM) Platform SE 8 U45|$
+38
+0|application/x-java-applet|Java Applet||$
+1|application/x-java-bean|JavaBeans||$
+2|application/x-java-vm|||$
+3|application/x-java-applet;version=1.1.1|||$
+4|application/x-java-bean;version=1.1.1|||$
+5|application/x-java-applet;version=1.1|||$
+6|application/x-java-bean;version=1.1|||$
+7|application/x-java-applet;version=1.2|||$
+8|application/x-java-bean;version=1.2|||$
+9|application/x-java-applet;version=1.1.3|||$
+10|application/x-java-bean;version=1.1.3|||$
+11|application/x-java-applet;version=1.1.2|||$
+12|application/x-java-bean;version=1.1.2|||$
+13|application/x-java-applet;version=1.3|||$
+14|application/x-java-bean;version=1.3|||$
+15|application/x-java-applet;version=1.2.2|||$
+16|application/x-java-bean;version=1.2.2|||$
+17|application/x-java-applet;version=1.2.1|||$
+18|application/x-java-bean;version=1.2.1|||$
+19|application/x-java-applet;version=1.3.1|||$
+20|application/x-java-bean;version=1.3.1|||$
+21|application/x-java-applet;version=1.4|||$
+22|application/x-java-bean;version=1.4|||$
+23|application/x-java-applet;version=1.4.1|||$
+24|application/x-java-bean;version=1.4.1|||$
+25|application/x-java-applet;version=1.4.2|||$
+26|application/x-java-bean;version=1.4.2|||$
+27|application/x-java-applet;version=1.5|||$
+28|application/x-java-bean;version=1.5|||$
+29|application/x-java-applet;version=1.6|||$
+30|application/x-java-bean;version=1.6|||$
+31|application/x-java-applet;version=1.7|||$
+32|application/x-java-bean;version=1.7|||$
+33|application/x-java-applet;jpi-version=1.8.0_45|||$
+34|application/x-java-bean;jpi-version=1.8.0_45|||$
+35|application/x-java-vm-npruntime|||$
+36|application/x-java-applet;deploy=11.45.2|||$
+37|application/x-java-applet;javafx=8.0.45|||$
+npDeployJava1.dll|$
+C:\Windows\SysWOW64\npDeployJava1.dll|$
+10.25.2.17|$
+1425441222729|0|0|0|$
+NPRuntime Script Plug-in Library for Java(TM) Deploy|$
+Java Deployment Toolkit 7.0.250.17|$
+1
+0|application/java-deployment-toolkit|||$
+npIntelWebAPIIPT.dll|$
+C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT\npIntelWebAPIIPT.dll|$
+4.0.5.0|$
+1379305162000|0|0|0|$
+Intel web components for Intel® Identity Protection Technology|$
+Intel® Identity Protection Technology|$
+1
+0|application/x-vnd-intel-webapi-ipt-4.0.5|npIntelWebAPIipt-3-5||$
+npIntelWebAPIUpdater.dll|$
+C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT\npIntelWebAPIUpdater.dll|$
+4.0.5.0|$
+1379305162000|0|0|0|$
+Intel web components updater - Installs and updates the Intel web components|$
+Intel® Identity Protection Technology|$
+1
+0|application/x-vnd-intel-webapi-updater|npIntelWebAPIupdater-2-0|intel_webapi_updater-2-0|$
+
+[INVALID]
+C:\Program Files (x86)\Microsoft Silverlight\5.1.30514.0\npctrlui.dll|$
+1399997822000|$
+C:\Windows\SysWOW64\npmproxy.dll|$
+1247534171654|$

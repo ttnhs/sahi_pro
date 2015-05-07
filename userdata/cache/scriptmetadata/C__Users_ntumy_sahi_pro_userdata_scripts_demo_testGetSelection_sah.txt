@@ -1,0 +1,7 @@
+testHTML5TextBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testGetSelection.sah,1
+testHTML5TelephoneBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testGetSelection.sah,7
+testHTML5URLBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testGetSelection.sah,12
+testHTML5SearchBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testGetSelection.sah,17
+testHTML5EMailBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testGetSelection.sah,23
+testHTML5NumberBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testGetSelection.sah,30
+testNonFrameText,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testGetSelection.sah,38

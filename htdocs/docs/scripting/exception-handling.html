@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exception Handling and Recovery</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='sahi-scripting-basics.html'>Sahi Scripting Basics</a>
+<ul><li><a href='sahi-scripting-basics.html#Statements'>Statements</a>
+</li><li><a href='sahi-scripting-basics.html#Variable declaration'>Variable declaration</a>
+</li><li><a href='sahi-scripting-basics.html#Comments'>Comments</a>
+</li><li><a href='sahi-scripting-basics.html#if statements'>if statements</a>
+</li><li><a href='sahi-scripting-basics.html#for loops'>for loops</a>
+</li><li><a href='sahi-scripting-basics.html#while loops'>while loops</a>
+<li><a href='sahi-scripting-basics.html#Structuring Sahi Code'>Structuring Sahi Code</a>
+<ul><li><a href='sahi-scripting-basics.html#Functions'>Functions</a>
+</li><li><a href='sahi-scripting-basics.html#Including another Sahi script file'>Including another Sahi script file</a>
+</li></ul></li></ul></li><li><a href='data-types.html'>Some Basic Data Types</a>
+<ul><li><a href='data-types.html#Data Types'>Data Types</a>
+</li><li><a href='data-types.html#Data Structures'>Data Structures</a>
+<ul><li><a href='data-types.html#Single dimensional array'>Single dimensional array</a>
+</li><li><a href='data-types.html#Two dimensional array'>Two dimensional array</a>
+</li><li><a href='data-types.html#Associative Array'>Associative Array</a>
+</li></ul></li></ul></li><li><a href='exception-handling.html'>Exception Handling</a>
+<ul><li><a href='exception-handling.html#Try Catch'>Try Catch</a>
+<ul><li><a href='exception-handling.html#Corrective Action'>Corrective Action</a>
+</li><li><a href='exception-handling.html#Corrective Action and Log the Exception Message'>Corrective Action and Log the Exception Message</a>
+</li><li><a href='Log and then Fail'>Corrective Action</a>
+</li></ul></li><li><a href='exception-handling.html#Script Callback Functions'>Script Callback Functions</a>
+<ul><li><a href='exception-handling.html#Taking screenshots'>Taking screenshots</a>
+</li><li><a href='exception-handling.html#Force Sahi to continue on error after screenshots and logging.'>Force Sahi to continue on error after screenshots and logging.</a>
+</li></ul></li><li><a href='exception-handling.html#_setRecovery'>_setRecovery</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Exception Handling and Recovery</h2>
+      <!-- Exception Handling and Recovery -->
+<h2><a href="#Try Catch" name="Try Catch" class="headinganchor2" hideFocus="hideFocus">Try Catch</a></h2>
+For anticipated exceptions, one may use try catch blocks.<br/>
+<br/>
+<strong>Syntax</strong><br/>
+<pre><code>try{
+// sahi statements
+}catch($e){
+// Corrective action
+// Can print exact source of error in log
+// Can throw the same or another exception
+}</code></pre>
+<br/>
+<h3><a href="#Corrective Action" name="Corrective Action" class="headinganchor2" hideFocus="hideFocus">Corrective Action</a></h3>
+<pre><code>try{
+  _click(_link("does not exist"));
+}catch($e){
+  _log("Exception occured"); // simple logging. no failure
+  _click(_link("linkByHtml")); // Corrective action
+}</code></pre>
+<br/>
+<h3><a href="#Corrective Action and Log the Exception Message" name="Corrective Action and Log the Exception Message" class="headinganchor2" hideFocus="hideFocus">Corrective Action and Log the Exception Message</a></h3>
+<pre><code>try{
+  _click(_link("does not exist"));
+}catch($e){
+  _click(_link("linkByHtml")); // Corrective action
+  _logException($e); // Logs the exception, but does not fail
+}</code></pre>
+<br/>
+<h3><a href="#Corrective Action, Log and then Fail" name="Corrective Action, Log and then Fail" class="headinganchor2" hideFocus="hideFocus">Corrective Action, Log and then Fail</a></h3>
+<pre><code>try{
+  _click(_link("does not exist"));
+}catch($e){
+  _click(_link("linkByHtml")); // Corrective action
+  _logExceptionAsFailure($e); // Logs the exception, and fails,
+  // and in the logs, points to the original line as source of failure.
+}</code></pre>
+<br/>
+<h2><a href="#Script Callback Functions" name="Script Callback Functions" class="headinganchor2" hideFocus="hideFocus">Script Callback Functions</a></h2>
+For unanticipated exceptions, override Sahi's callback functions to recover.<br/>
+<br/>
+Example:<br/>
+<pre><code>function onScriptEnd(){
+  _click(_button("Logout"));
+}
+function onScriptError(){
+  _log("&gt;&gt; In onScriptError");
+}
+function onScriptFailure(){
+  _log("&gt;&gt; In onScriptFailure");
+}
+
+_navigateTo("http://sahi.co.in/demo/training/");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+_assertExists(_submit("Login")); // cause SCRIPT ASSERTION FAILURE - triggers onScriptFailure
+_setValue(_textbox("q11"), "2"); // causes SCRIPT ERROR - triggers onScriptError
+
+// Script aborts here, but executes onScriptEnd() to logout
+
+_setValue(_textbox("q[1]"), "1");
+_setValue(_textbox("q[2]"), "1");
+_click(_button("Add"));
+_assertEqual("1150", _textbox("total").value); // cause SCRIPT FAILURE
+
+// If not aborted earlier, automatically calls onScriptEnd() to logout.</code></pre>
+<br/>
+<h3><a href="#Taking screenshots" name="Taking screenshots" class="headinganchor2" hideFocus="hideFocus">Taking screenshots</a></h3>
+Use _focusWindow() and _takeScreenShot() (available since Sahi Pro V4.3)<br/>
+<pre><code>function onScriptError($e){
+  _focusWindow();
+  _takeScreenShot();
+}
+onScriptFailure = onScriptError;
+_navigateTo("http://sahi.co.in/demo/training/");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));</code></pre>
+<br/>
+<h3><a href="#Force Sahi to continue on error after screenshots and logging." name="Force Sahi to continue on error after screenshots and logging." class="headinganchor2" hideFocus="hideFocus">Force Sahi to continue on error after screenshots and logging.</a></h3>
+<pre><code>function onScriptError($e){
+  _logExceptionAsFailure($e);
+  _focusWindow();
+  _takeScreenShot();
+  return true; // Forces Sahi to continue execution and not stop at error. Since Sahi Pro V4.3
+}
+
+_navigateTo("http://sahi.co.in/demo/training/");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));</code></pre>
+<br/>
+<h2><a href="#_setRecovery" name="_setRecovery" class="headinganchor2" hideFocus="hideFocus">_setRecovery</a></h2>
+<div class="warning"><strong class='heading'>warning</strong>_setRecovery is no longer recommended and may be deprecated soon. Please use the callback functions instead</div>
+<br/>
+The relevant APIs are:<br/>
+<br/>
+_setRecovery(fn)<br/>
+_removeRecovery()<br/>
+<br/>
+Any function can be assigned to a script as a recovery function.<br/>
+Once set, if there is an error during execution, the recovery function will be called before the script stops.<br/>
+<br/>
+<pre><code>_navigateTo("http://sahi.co.in/demo/");
+
+function myRecoveryFn(){
+  _alert("In myRecoveryFn."); // This statement will be alerted in case of script error.
+}
+
+_setRecovery(myRecoveryFn); // Set the myRecoveryFn as recovery function.
+_click(_link("Link Test")); // Works normally
+_click(_link("Bad Link"));
+// This statement fails and causes myRecoveryFn to be called.
+_alert("done");
+// This statement will not be called, because script failed in the last statement.</code></pre>
+<br/>
+The recovery function can be removed via _removeRecovery();<br/>
+<br/>
+<div class="warning"><strong class='heading'>warning</strong>_setRecovery is no longer recommended and may be deprecated soon. Please use the callback functions instead</div>
+
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

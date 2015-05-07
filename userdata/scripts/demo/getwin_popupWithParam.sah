@@ -1,0 +1,10 @@
+_navigateTo("/demo/");
+_click(_link("Window Open Test"));
+_popup("popWin").close();
+_wait(3000);
+var $windows = _getWindows();
+var $windows2 = _getWindows(0);
+var $window3 = _getWindows(2000);
+_assertEqual(2, $windows.length);
+_assertEqual(2, $windows2.length);
+_assertEqual(1, $window3.length);

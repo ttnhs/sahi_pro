@@ -1,0 +1,4 @@
+_wait(2000);
+var $windows = _getWindows();
+_assertEqual(1, $windows.length);
+_assertEqual('Sahi Tests', $windows[0].windowTitle);

@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Sahi::ElementStub - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>sahi.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-_perform">#_perform</a>
+    
+    <li ><a href="#method-i-above">#above</a>
+    
+    <li ><a href="#method-i-above_or_under">#above_or_under</a>
+    
+    <li ><a href="#method-i-checked-3F">#checked?</a>
+    
+    <li ><a href="#method-i-choose">#choose</a>
+    
+    <li ><a href="#method-i-collect_similar">#collect_similar</a>
+    
+    <li ><a href="#method-i-concat_identifiers">#concat_identifiers</a>
+    
+    <li ><a href="#method-i-contains_html-3F">#contains_html?</a>
+    
+    <li ><a href="#method-i-contains_text-3F">#contains_text?</a>
+    
+    <li ><a href="#method-i-count_similar">#count_similar</a>
+    
+    <li ><a href="#method-i-drag_and_drop_on">#drag_and_drop_on</a>
+    
+    <li ><a href="#method-i-exists1-3F">#exists1?</a>
+    
+    <li ><a href="#method-i-exists-3F">#exists?</a>
+    
+    <li ><a href="#method-i-fetch">#fetch</a>
+    
+    <li ><a href="#method-i-fetch_boolean">#fetch_boolean</a>
+    
+    <li ><a href="#method-i-file-3D">#file=</a>
+    
+    <li ><a href="#method-i-in">#in</a>
+    
+    <li ><a href="#method-i-key_press">#key_press</a>
+    
+    <li ><a href="#method-i-left_of">#left_of</a>
+    
+    <li ><a href="#method-i-left_or_right_of">#left_or_right_of</a>
+    
+    <li ><a href="#method-i-method_missing">#method_missing</a>
+    
+    <li ><a href="#method-i-near">#near</a>
+    
+    <li ><a href="#method-i-parent_node">#parent_node</a>
+    
+    <li ><a href="#method-i-right_of">#right_of</a>
+    
+    <li ><a href="#method-i-select_range">#select_range</a>
+    
+    <li ><a href="#method-i-select_text_range">#select_text_range</a>
+    
+    <li ><a href="#method-i-selected_text">#selected_text</a>
+    
+    <li ><a href="#method-i-text">#text</a>
+    
+    <li ><a href="#method-i-to_identifiers">#to_identifiers</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+    <li ><a href="#method-i-to_type">#to_type</a>
+    
+    <li ><a href="#method-i-under">#under</a>
+    
+    <li ><a href="#method-i-value">#value</a>
+    
+    <li ><a href="#method-i-value-3D">#value=</a>
+    
+    <li ><a href="#method-i-visible1-3F">#visible1?</a>
+    
+    <li ><a href="#method-i-visible-3F">#visible?</a>
+    
+    <li ><a href="#method-i-xy">#xy</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../doc/created_rid.html">created.rid</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Sahi.html">Sahi</a>
+  
+    <li><a href="../Sahi/Browser.html">Sahi::Browser</a>
+  
+    <li><a href="../Sahi/ElementStub.html">Sahi::ElementStub</a>
+  
+    <li><a href="../Sahi/Utils.html">Sahi::Utils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Sahi::ElementStub</h1>
+
+  <div id="description" class="description">
+    
+<p>This class is a stub representation of various elements on the browser Most
+of the methods are implemented via method missing.</p>
+
+<p>All APIs available in <a href="../Sahi.html">Sahi</a> are available in
+ruby. The full list is available here: <a
+href="http://sahi.co.in/w/browser-accessor-apis">sahi.co.in/w/browser-accessor-apis</a></p>
+
+<p>Most commonly used action methods are: click - for all elements mouse_over
+- for all elements focus - for all elements remove_focus - for all elements
+check - for checkboxes or radio buttons uncheck - for checkboxes</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(browser, type, identifiers)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 424</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> (<span class="ruby-identifier">browser</span>, <span class="ruby-identifier">type</span>,  <span class="ruby-identifier">identifiers</span>)
+  <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">type</span>
+  <span class="ruby-ivar">@browser</span>  = <span class="ruby-identifier">browser</span>      
+  <span class="ruby-ivar">@identifiers</span> = <span class="ruby-identifier">identifiers</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-_perform" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">_perform</span><span
+            class="method-args">(type)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="_perform-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 437</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">_perform</span>(<span class="ruby-identifier">type</span>)
+  <span class="ruby-identifier">step</span> = <span class="ruby-node">&quot;_sahi._#{type}(#{self.to_s()})&quot;</span>
+  <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-identifier">step</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- _perform-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- _perform-method -->
+
+    
+      <div id="method-i-above" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">above</span><span
+            class="method-args">(el2, offset=nil, limit_under=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="above-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 549</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">above</span>(<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">limit_under</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">ar</span> = (<span class="ruby-identifier">offset!</span>=<span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">limit_under!</span>=<span class="ruby-keyword">nil</span>) <span class="ruby-operator">?</span> [<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">limit_under</span>] <span class="ruby-operator">:</span> [<span class="ruby-identifier">el2</span>];
+  <span class="ruby-ivar">@identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;above&quot;</span>, <span class="ruby-identifier">ar</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- above-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- above-method -->
+
+    
+      <div id="method-i-above_or_under" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">above_or_under</span><span
+            class="method-args">(el2, offset=nil, limit_under=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="above_or_under-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 555</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">above_or_under</span>(<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">limit_under</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">ar</span> = (<span class="ruby-identifier">offset!</span>=<span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">limit_under!</span>=<span class="ruby-keyword">nil</span>) <span class="ruby-operator">?</span> [<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">limit_under</span>] <span class="ruby-operator">:</span> [<span class="ruby-identifier">el2</span>];
+  <span class="ruby-ivar">@identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;aboveOrUnder&quot;</span>, <span class="ruby-identifier">ar</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- above_or_under-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- above_or_under-method -->
+
+    
+      <div id="method-i-checked-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">checked?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns checked state of checkbox or radio button</p>
+          
+          
+
+          
+          <div class="method-source-code" id="checked-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 513</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">checked?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;checked&quot;</span>) <span class="ruby-operator">==</span> <span class="ruby-string">&quot;true&quot;</span>;
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- checked-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- checked-3F-method -->
+
+    
+      <div id="method-i-choose" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">choose</span><span
+            class="method-args">(val)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>choose option in a select box</p>
+          
+          
+
+          
+          <div class="method-source-code" id="choose-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 452</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">choose</span>(<span class="ruby-identifier">val</span>)
+  <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._setSelected(#{self.to_s()}, #{val.to_json})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- choose-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- choose-method -->
+
+    
+      <div id="method-i-collect_similar" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">collect_similar</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns array elements similar to this element</p>
+          
+          
+
+          
+          <div class="method-source-code" id="collect_similar-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 635</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">collect_similar</span>()
+    <span class="ruby-identifier">count</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">count_similar</span>()
+    <span class="ruby-identifier">els</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">count</span>)
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">count</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+            <span class="ruby-identifier">copy</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@identifiers</span>)
+            <span class="ruby-identifier">copy</span>[<span class="ruby-value">0</span>] = <span class="ruby-node">&quot;#{copy[0]}[#{i}]&quot;</span>
+            <span class="ruby-identifier">els</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-ivar">@type</span>, <span class="ruby-identifier">copy</span>);
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">els</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- collect_similar-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- collect_similar-method -->
+
+    
+      <div id="method-i-concat_identifiers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">concat_identifiers</span><span
+            class="method-args">(ids)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="concat_identifiers-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 658</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">concat_identifiers</span>(<span class="ruby-identifier">ids</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">Utils</span>.<span class="ruby-identifier">quoted</span>(<span class="ruby-identifier">id</span>) <span class="ruby-operator">:</span> (<span class="ruby-identifier">id</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ElementStub</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>() <span class="ruby-operator">:</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_json</span>())}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- concat_identifiers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- concat_identifiers-method -->
+
+    
+      <div id="method-i-contains_html-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">contains_html?</span><span
+            class="method-args">(html)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns true if the element contains this html</p>
+          
+          
+
+          
+          <div class="method-source-code" id="contains_html-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 625</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">contains_html?</span>(<span class="ruby-identifier">html</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi._containsHTML(#{self.to_s()}, #{Utils.quoted(html)})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- contains_html-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- contains_html-3F-method -->
+
+    
+      <div id="method-i-contains_text-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">contains_text?</span><span
+            class="method-args">(text)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns true if the element contains this text</p>
+          
+          
+
+          
+          <div class="method-source-code" id="contains_text-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 620</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">contains_text?</span>(<span class="ruby-identifier">text</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi._containsText(#{self.to_s()}, #{Utils.quoted(text)})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- contains_text-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- contains_text-3F-method -->
+
+    
+      <div id="method-i-count_similar" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">count_similar</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns count of elements similar to this element</p>
+          
+          
+
+          
+          <div class="method-source-code" id="count_similar-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 630</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">count_similar</span>()
+    <span class="ruby-keyword">return</span> <span class="ruby-constant">Integer</span>(<span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi._count(\&quot;_#{@type}\&quot;, #{concat_identifiers(@identifiers).join(&quot;, &quot;)})&quot;</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- count_similar-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- count_similar-method -->
+
+    
+      <div id="method-i-drag_and_drop_on" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">drag_and_drop_on</span><span
+            class="method-args">(el2)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>drag element and drop on another element</p>
+          
+          
+
+          
+          <div class="method-source-code" id="drag_and_drop_on-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 447</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">drag_and_drop_on</span>(<span class="ruby-identifier">el2</span>)
+  <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._dragDrop(#{self.to_s()}, #{el2.to_s()})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- drag_and_drop_on-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- drag_and_drop_on-method -->
+
+    
+      <div id="method-i-exists1-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">exists1?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="exists1-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 602</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exists1?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;true&quot;</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi._exists(#{self.to_s()})&quot;</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- exists1-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- exists1-3F-method -->
+
+    
+      <div id="method-i-exists-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">exists?</span><span
+            class="method-args">(optimistic = false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns true if the element exists on the browser</p>
+          
+          
+
+          
+          <div class="method-source-code" id="exists-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 594</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">optimistic</span> = <span class="ruby-keyword">false</span>)
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exists1?</span>() <span class="ruby-keyword">if</span> <span class="ruby-identifier">optimistic</span>;
+            (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">5</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span>
+                    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exists1?</span>();
+            <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>;
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- exists-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- exists-3F-method -->
+
+    
+      <div id="method-i-fetch" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetch</span><span
+            class="method-args">(attr=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>fetches value of specified attribute</p>
+          
+          
+
+          
+          <div class="method-source-code" id="fetch-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 485</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">attr</span>=<span class="ruby-keyword">nil</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">&quot;.&quot;</span>
+                    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;#{self.to_s()}.#{attr}&quot;</span>)
+            <span class="ruby-keyword">else</span>
+                    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi.getAttribute(#{self.to_s()}, #{Utils.quoted(attr)})&quot;</span>)
+            <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">else</span>
+                    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;#{self.to_s()}&quot;</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- fetch-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- fetch-method -->
+
+    
+      <div id="method-i-fetch_boolean" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetch_boolean</span><span
+            class="method-args">(attr=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns boolean value of attribute. returns true only if fetch returns
+“true”</p>
+          
+          
+
+          
+          <div class="method-source-code" id="fetch_boolean-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 498</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetch_boolean</span>(<span class="ruby-identifier">attr</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch_boolean</span>(<span class="ruby-identifier">attr</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- fetch_boolean-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- fetch_boolean-method -->
+
+    
+      <div id="method-i-file-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">file=</span><span
+            class="method-args">(val)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Emulates setting filepath in a file input box.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="file-3D-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 503</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">file=</span>(<span class="ruby-identifier">val</span>)
+  <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._setFile(#{self.to_s()}, #{Utils.quoted(val)})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- file-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- file-3D-method -->
+
+    
+      <div id="method-i-in" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">in</span><span
+            class="method-args">(el2)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns a stub with a DOM “in” relation to another element Eg.</p>
+
+<pre>browser.image(&quot;plus.gif&quot;).in(browser.div(&quot;Tree Node 2&quot;)) will denote the plus icon inside a tree node with text &quot;Tree Node 2&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="in-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 533</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">in</span>(<span class="ruby-identifier">el2</span>)
+  <span class="ruby-ivar">@identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;in&quot;</span>, [<span class="ruby-identifier">el2</span>])
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- in-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- in-method -->
+
+    
+      <div id="method-i-key_press" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">key_press</span><span
+            class="method-args">(codes, combo=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="key_press-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 442</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">key_press</span>(<span class="ruby-identifier">codes</span>, <span class="ruby-identifier">combo</span>=<span class="ruby-keyword">nil</span>)
+        <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._keyPress(#{self.to_s()}, #{codes.to_json}, #{combo.to_json})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- key_press-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- key_press-method -->
+
+    
+      <div id="method-i-left_of" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">left_of</span><span
+            class="method-args">(el2, offset=nil, limit_under=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="left_of-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 567</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">left_of</span>(<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">limit_under</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">ar</span> = (<span class="ruby-identifier">offset!</span>=<span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">limit_under!</span>=<span class="ruby-keyword">nil</span>) <span class="ruby-operator">?</span> [<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">limit_under</span>] <span class="ruby-operator">:</span> [<span class="ruby-identifier">el2</span>];
+  <span class="ruby-ivar">@identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;leftOf&quot;</span>, <span class="ruby-identifier">ar</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- left_of-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- left_of-method -->
+
+    
+      <div id="method-i-left_or_right_of" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">left_or_right_of</span><span
+            class="method-args">(el2, offset=nil, limit_under=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="left_or_right_of-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 573</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">left_or_right_of</span>(<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">limit_under</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">ar</span> = (<span class="ruby-identifier">offset!</span>=<span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">limit_under!</span>=<span class="ruby-keyword">nil</span>) <span class="ruby-operator">?</span> [<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">limit_under</span>] <span class="ruby-operator">:</span> [<span class="ruby-identifier">el2</span>];
+  <span class="ruby-ivar">@identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;leftOrRightOf&quot;</span>, <span class="ruby-identifier">ar</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- left_or_right_of-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- left_or_right_of-method -->
+
+    
+      <div id="method-i-method_missing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_missing</span><span
+            class="method-args">(m, *args, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="method_missing-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 430</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">m</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)  
+  <span class="ruby-identifier">key</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@actions</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-identifier">_perform</span>(<span class="ruby-identifier">@@actions</span>[<span class="ruby-identifier">key</span>])
+  <span class="ruby-keyword">end</span>      
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- method_missing-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- method_missing-method -->
+
+    
+      <div id="method-i-near" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">near</span><span
+            class="method-args">(el2)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns a stub with a DOM “near” relation to another element Eg.</p>
+
+<pre>browser.button(&quot;delete&quot;).near(browser.cell(&quot;User One&quot;)) will denote the delete button near the table cell with text &quot;User One&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="near-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 525</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">near</span>(<span class="ruby-identifier">el2</span>)
+  <span class="ruby-ivar">@identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;near&quot;</span>, [<span class="ruby-identifier">el2</span>])
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- near-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- near-method -->
+
+    
+      <div id="method-i-parent_node" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parent_node</span><span
+            class="method-args">(tag_name="ANY", occurrence=1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>denotes the DOM parentNode of element. If tag_name is specified, returns
+the parent element which matches the tag_name occurrence finds the nth
+parent of a particular tag_name eg. browser.cell(“inner nested
+cell”).parent_node(“TABLE”, 3) will return the 3rd encapsulating table of
+the given cell.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="parent_node-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 589</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parent_node</span>(<span class="ruby-identifier">tag_name</span>=<span class="ruby-string">&quot;ANY&quot;</span>, <span class="ruby-identifier">occurrence</span>=<span class="ruby-value">1</span>) 
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;parentNode&quot;</span>, [<span class="ruby-keyword">self</span>]);
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parent_node-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parent_node-method -->
+
+    
+      <div id="method-i-right_of" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">right_of</span><span
+            class="method-args">(el2, offset=nil, limit_under=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="right_of-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 561</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">right_of</span>(<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">limit_under</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">ar</span> = (<span class="ruby-identifier">offset!</span>=<span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">limit_under!</span>=<span class="ruby-keyword">nil</span>) <span class="ruby-operator">?</span> [<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">limit_under</span>] <span class="ruby-operator">:</span> [<span class="ruby-identifier">el2</span>];
+  <span class="ruby-ivar">@identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;rightOf&quot;</span>, <span class="ruby-identifier">ar</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- right_of-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- right_of-method -->
+
+    
+      <div id="method-i-select_range" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">select_range</span><span
+            class="method-args">(rangeStart, rangeEnd, type=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>select text for manipulation</p>
+          
+          
+
+          
+          <div class="method-source-code" id="select_range-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 463</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">select_range</span>(<span class="ruby-identifier">rangeStart</span>, <span class="ruby-identifier">rangeEnd</span>, <span class="ruby-identifier">type</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">type!</span>= <span class="ruby-keyword">nil</span>)
+       <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._selectRange(#{self.to_s()}, rangeStart, rangeEnd, #{Utils.quoted(type)})&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._selectRange(#{self.to_s()}, #{rangeStart}, #{rangeEnd})&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- select_range-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- select_range-method -->
+
+    
+      <div id="method-i-select_text_range" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">select_text_range</span><span
+            class="method-args">(searchText, position=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="select_text_range-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 471</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">select_text_range</span>(<span class="ruby-identifier">searchText</span>, <span class="ruby-identifier">position</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">position</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+        <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._selectTextRange(#{self.to_s()}, #{Utils.quoted(searchText)}, #{Utils.quoted(position)})&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._selectTextRange(#{self.to_s()}, #{Utils.quoted(searchText)})&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- select_text_range-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- select_text_range-method -->
+
+    
+      <div id="method-i-selected_text" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">selected_text</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns selected text from select box</p>
+          
+          
+
+          
+          <div class="method-source-code" id="selected_text-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 518</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">selected_text</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi._getSelectedText(#{self.to_s()})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- selected_text-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- selected_text-method -->
+
+    
+      <div id="method-i-text" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">text</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns inner text of any element</p>
+          
+          
+
+          
+          <div class="method-source-code" id="text-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 508</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">text</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi._getText(#{self.to_s()})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- text-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- text-method -->
+
+    
+      <div id="method-i-to_identifiers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_identifiers</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_identifiers-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 654</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_identifiers</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;#{concat_identifiers(@identifiers).join(&quot;, &quot;) }&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_identifiers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_identifiers-method -->
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 646</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;_sahi._#{@type}(#{concat_identifiers(@identifiers).join(&quot;, &quot;) })&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_s-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_s-method -->
+
+    
+      <div id="method-i-to_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_type</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_type-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 650</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_type</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;_#{@type}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_type-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_type-method -->
+
+    
+      <div id="method-i-under" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">under</span><span
+            class="method-args">(el2, offset=nil, limit_under=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns a stub with a POSITIONAL “under” relation to another element.  Eg.</p>
+
+<pre>browser.cell(0).under(browser.cell(&quot;Header&quot;)) will denote the cell visually under &quot;Header&quot;
+browser.cell(0).near(browser.cell(&quot;Book&quot;)).under(browser.cell(&quot;Cost&quot;)) may be used to denote the Cost of Book in a grid</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="under-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 543</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">under</span>(<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">limit_under</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">ar</span> = (<span class="ruby-identifier">offset!</span>=<span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">limit_under!</span>=<span class="ruby-keyword">nil</span>) <span class="ruby-operator">?</span> [<span class="ruby-identifier">el2</span>, <span class="ruby-identifier">offset</span>, <span class="ruby-identifier">limit_under</span>] <span class="ruby-operator">:</span> [<span class="ruby-identifier">el2</span>];
+  <span class="ruby-ivar">@identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;under&quot;</span>, <span class="ruby-identifier">ar</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- under-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- under-method -->
+
+    
+      <div id="method-i-value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">value</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns value of textbox or textareas and other relevant input elements</p>
+          
+          
+
+          
+          <div class="method-source-code" id="value-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 480</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">value</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi._getValue(#{self.to_s()})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- value-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- value-method -->
+
+    
+      <div id="method-i-value-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">value=</span><span
+            class="method-args">(val)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>sets the value for textboxes or textareas. Also triggers necessary events.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="value-3D-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 457</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">value=</span>(<span class="ruby-identifier">val</span>)
+  <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._setValue(#{self.to_s()}, #{Utils.quoted(val)})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- value-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- value-3D-method -->
+
+    
+      <div id="method-i-visible1-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">visible1?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="visible1-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 615</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">visible1?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;true&quot;</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi._isVisible(#{self.to_s()})&quot;</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- visible1-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- visible1-3F-method -->
+
+    
+      <div id="method-i-visible-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">visible?</span><span
+            class="method-args">(optimistic = false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns true if the element exists and is visible on the browser</p>
+          
+          
+
+          
+          <div class="method-source-code" id="visible-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 607</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">visible?</span>(<span class="ruby-identifier">optimistic</span> = <span class="ruby-keyword">false</span>)
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">visible1?</span>() <span class="ruby-keyword">if</span> <span class="ruby-identifier">optimistic</span>;
+            (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">5</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span>
+                    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">visible1?</span>();
+            <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>;
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- visible-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- visible-3F-method -->
+
+    
+      <div id="method-i-xy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">xy</span><span
+            class="method-args">(x, y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>specifies exacts coordinates to click inside an element. The coordinates
+are relative to the element. x is from left and y is from top. Can be
+negative to specify other direction browser.button(“Menu Button with Arrow
+on side”).xy(-5, 10).click will click on the button, 5 pixels from right
+and 10 pixels from top.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="xy-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 581</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">xy</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;xy&quot;</span>, [<span class="ruby-keyword">self</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- xy-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- xy-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

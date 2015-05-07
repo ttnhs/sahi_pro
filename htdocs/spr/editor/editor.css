@@ -1,0 +1,254 @@
+body * {font-family:verdana;font-size:9pt;}
+	
+	.icon-new_file{
+		background:url('../images/document-new.png') no-repeat center center;
+	}
+	
+	.icon-play_file{
+		background:url('images/play.ico') no-repeat center center;
+	}
+	
+	.icon-reset{
+		background:url('images/reset.png') no-repeat center center;
+	}
+	
+	.icon-link{
+		background:url('images/linkwith.png') no-repeat center center;
+	}
+	
+	.icon-nolink{
+		background:url('images/nolinkwith.png') no-repeat center center;
+	}
+	
+	.icon-open_file{
+		background:url('../images/document-open.png') no-repeat center center;
+	}
+	
+	.icon-open_doc{
+		background:url('refactor/view-details.ico') no-repeat center center;
+	}
+	
+	.icon-open_logs{
+		background:url('images/show_logs.png') no-repeat center center;
+	}
+	
+	.icon-remove_tab{
+		background:url('images/delete.png') no-repeat center center;
+	}
+	
+	.icon-save_file{
+		background:url('../images/save.png') no-repeat center center;
+	}
+	
+	.icon-script{
+		background:url('../images/tree_file.gif') no-repeat center center;
+	}
+	
+	.icon-excel{
+		background:url('images/excel_icon.png') no-repeat center center;
+	}
+	
+	.icon-ddcsv{
+		background:url('images/ddcsv.png') no-repeat center center;
+	}
+	
+	.icon-saveAs_file{
+		background:url('images/save_edit.png') no-repeat center center;
+	}
+	
+	.icon-saveAll_file{
+		background:url('images/save_all.png') no-repeat center center;
+	}
+	
+	.icon-window_full{
+		background:url('images/window.ico') no-repeat center center;
+	}
+	
+	.icon-window_tile{
+		background:url('images/window_tile.ico') no-repeat center center;
+	}
+	
+	.icon-delete{
+		background:url('images/delete.ico') no-repeat center center;
+	}
+	
+	.icon-rename{
+		background:url('images/rename.ico') no-repeat center center;
+	}
+	
+	.icon-edit{
+		background:url('images/edit.ico') no-repeat center center;
+	}
+	
+	.icon-favicon{
+		background:url('images/sahifavicon.png') no-repeat center center;
+	}
+	
+	.icon-new_suite{
+		background:url('images/new_test_suite.png') no-repeat center center;
+	}
+	
+	.icon-schedule{
+		background:url('images/schedule.png') no-repeat center center;
+	}
+	
+	.icon-ant{
+		background:url('images/ant.png') no-repeat center center;
+	}
+	
+	.icon-gear{
+		background:url('images/gear.png') no-repeat center center;
+	}
+	
+	.icon-stop{
+		background:url('images/stop.ico') no-repeat center center;
+	}
+	
+	.in_icon {
+		display:initial;
+	    position:relative;
+	    width:215px;
+	    margin:5px
+	}
+	
+	#runSelected:hover{
+		border:1px solid #ccc;background:#e2e2e2;
+		padding:1px
+	}
+	
+	#runSelected{
+		border:1px solid #ccc;background:#fafafa;
+		padding:1px
+	}
+	
+	.tabs li a.tabs-inner strong { display: none; }
+
+	.tabs li {
+		margin-right: 2px;
+	}
+	
+	#usenodes {
+	  	display:inline-block;
+	  	vertical-align:middle;
+	  	width:305px;
+	    -moz-border-radius: 5px;
+	    border-radius: 5px;
+	    border:solid 1px #D8D8D8;
+	    padding:3px;
+	    xbackground-color:#EBEBE4; 
+	  }
+	  
+	  .txtBorder {
+	  	width:194px;
+	  	border:solid 1px #D8D8D8;
+	  	display:inline-block;
+	  	vertical-align:middle;
+	  	padding:2.5px;
+	  	-moz-border-radius: 5px;
+	    border-radius: 5px;
+	  }
+	  
+	.right-link {
+		display:inline;
+		vertical-align:bottom;
+		float:right;
+		line-height:22px;
+		margin-right:10px;
+	}
+	
+	.copyright {
+		float: left;
+		margin-top: 40px;
+		color:#999;
+	}
+	
+	input.xlargerCheckbox {
+		xwidth: 20px;
+		xheight: 20px;
+		xvertical-align:middle;
+		xmargin:0;
+	}
+	
+	#w3 {
+	    background-color: #eee;
+	    width:700px;
+	    height:560px;
+	}
+	
+	#antTargetText { width: 99.5%; height: 84%; padding: 0;}
+	
+	.CodeMirror-scroll {
+		width: auto;
+		height: 500px;
+		background-color: #FFFFFF;
+	}
+	
+	.playback-prop_col1 {
+		width: 28%
+	}
+	
+td hr {
+	border:0px;
+	border-top:1px solid #ddd;
+	margin: 15px 0px;
+}
+	#confirmDialogButtons .easyui-linkbutton{
+		padding-left: 10px;
+		padding-right: 10px;	 
+	}
+
+/*easyui override start*/
+.tabs li.tabs-selected a.tabs-inner {
+  color: #575765;
+  background-color: #f3f3f3;
+  background: -webkit-linear-gradient(top,#F8F8F8 0,#eeeeee 100%);
+  background: -moz-linear-gradient(top,#F8F8F8 0,#eeeeee 100%);
+  background: -o-linear-gradient(top,#F8F8F8 0,#eeeeee 100%);
+  background: linear-gradient(to bottom,#F8F8F8 0,#eeeeee 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F8F8F8,endColorstr=#eeeeee,GradientType=0);
+}
+.tabs li a.tabs-inner {
+  background-color: #ffffff;
+  color: #575765;
+  background: -webkit-linear-gradient(top,#F8F8F8 0,#ffffff 100%);
+  background: -moz-linear-gradient(top,#F8F8F8 0,#ffffff 100%);
+  background: -o-linear-gradient(top,#F8F8F8 0,#ffffff 100%);
+  background: linear-gradient(to bottom,#F8F8F8 0,#ffffff 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F8F8F8,endColorstr=#ffffff,GradientType=0);
+}
+.tabs-modified-file::before {
+	content: "*";
+}
+.tabs li.tabs-selected a.tabs-inner {
+  border-bottom: 1px solid #eeeeee;
+}
+/*easyui override end*/
+
+#playbackDistribute {
+	width: 100%;
+	margin:10px;
+	padding:10px;
+	border: 1px solid #ddd;
+}
+#playbackDistribute td {
+	vertical-align:middle;
+}
+#playbackModeTable td {
+	height:25px;
+	vertical-align:top;
+}
+.filedir_dialog{
+	width:440px;
+	height:110px;
+	padding:15px;
+}
+.filedir_dialog td{
+	padding:5px;
+
+	}
+b.status_SUCCESS{color:green;} 
+b.status_FAILURE{color:red;} 
+b.status_ERROR{color:red;} 
+b.status_RUNNING{color:orange;} 

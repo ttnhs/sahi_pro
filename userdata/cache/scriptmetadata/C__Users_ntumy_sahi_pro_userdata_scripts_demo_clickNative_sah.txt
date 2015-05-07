@@ -1,0 +1,1 @@
+setFiles,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\clickNative.sah,79

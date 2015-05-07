@@ -1,0 +1,83 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Drag n' drop touch demo - sewa.se</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;">
+    <script class="jsbin" src="touchMoveTest/jquery.min.js"></script>
+    <style type="text/css">
+		html { 
+			-ms-touch-action: none;
+		}
+      .draggable {
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        width: 60px;
+        height: 60px;
+
+
+        color: #FFF;
+        font: bold 16px Helvetica,Arial,Sans-serif;
+        text-align: center;
+        background-color: #ABF;
+        border: 3px solid #669;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="draggable">Drag me!</div>
+    <div class="draggable">Drag me!</div>
+  
+    <script type="text/javascript">
+	 var xPart,yPart;
+		isIE = function(){
+			return window.navigator.appName == "Microsoft Internet Explorer";
+		}
+      $.fn.draggable = function() {
+        var offset = null;
+        var start = function(e) {
+		  e.preventDefault();
+          var orig = e.originalEvent;
+          var pos = $(this).position();
+		  if(isIE()){
+			  offset = {
+				x: orig.offsetX - pos.left,
+				y: orig.offsetY - pos.top
+			  };
+		  }else {
+			  offset = {
+				x: orig.changedTouches[0].pageX - pos.left,
+				y: orig.changedTouches[0].pageY - pos.top
+			  };
+		  }
+
+        };		 
+		
+		
+		
+        var moveMe = function(e) {
+			console.log(e);
+          e.preventDefault();
+          var orig = e.originalEvent;
+		  if(isIE()){
+			  $(this).css({
+				top: orig.offsetY - offset.y,
+				left: orig.offsetX - offset.x
+			  });
+		  }else {
+			$(this).css({
+				top: orig.changedTouches[0].pageY - offset.y,
+				left: orig.changedTouches[0].pageX - offset.x
+          });
+
+		  }
+        };		
+		this.bind("MSPointerDown", start);
+        this.bind("MSPointerMove", moveMe);
+        this.bind("touchstart", start);
+        this.bind("touchmove", moveMe);
+      };
+
+      $(".draggable").draggable();
+    </script>
+
+</body></html>

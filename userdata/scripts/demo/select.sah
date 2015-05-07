@@ -1,0 +1,110 @@
+_navigateTo("/demo/selectTest.htm");
+
+function testSelectOneByText(){
+	_setSelected(_select("s1Id"), "o1");
+	_assertEqual("o1", _getSelectedText(_select("s1Id")));
+}
+
+function testSelectOneById(){
+	_setSelected(_select("s1Id"), "id1");
+	_assertEqual("o1", _getSelectedText(_select("s1Id")));
+}
+
+function testSelectOneByValue(){
+	_setSelected(_select("s3Id"), "o3val");
+	_assertEqual("o3", _getSelectedText(_select("s3Id")));
+}
+
+function testSelectOneIgnoresIsMultiple(){
+	_setSelected(_select("s1Id"), "o1");
+	_setSelected(_select("s1Id"), "o2", true);
+	_assertEqual("o2", _getSelectedText(_select("s1Id")));
+	_assertFalse(_option("o1", _in(_select("s1Id"))).selected);
+}
+
+function testSelectMultipleWithArrayOneElement(){
+	_setSelected(_select("s4Id"), ["o1"]);
+	_setSelected(_select("s4Id"), ["o2"]);
+	_assertEqual("o2", _getSelectedText(_select("s4Id")));
+	_assertFalse(_option("o1", _in(_select("s4Id"))).selected);
+}
+
+function testSelectMultipleWithArrayTwoElements(){
+	_setSelected(_select("s4Id"), ["o1"]);
+	_setSelected(_select("s4Id"), ["o2", "o3"]);
+	_assertEqual(["o2", "o3"], _getSelectedText(_select("s4Id")));
+	_assertEqual("o2,o3", _getSelectedText(_select("s4Id")));
+	_assertTrue(_option("o2", _in(_select("s4Id"))).selected);	
+	_assertTrue(_option("o3", _in(_select("s4Id"))).selected);	
+	_assertFalse(_option("o1", _in(_select("s4Id"))).selected);	
+}
+
+function testSelectMultipleWithIsMultiple(){
+	_setSelected(_select("s4Id"), "o1");
+	_setSelected(_select("s4Id"), "o2", true);
+	_assertEqual("o1,o2", _getSelectedText(_select("s4Id")));
+}
+
+function testSelectMultipleWithIsMultipleAndArrays(){
+	_setSelected(_select("s4Id"), "o1");
+	_setSelected(_select("s4Id"), ["o2", "o3"], true);
+	_assertEqual("o1,o2,o3", _getSelectedText(_select("s4Id")));
+}
+
+function testSelectMultipleWithRegExpArray(){
+	_setSelected(_select("s4Id"), "/o/[0]");
+	_setSelected(_select("s4Id"), "/o/[2]", true);
+	_assertEqual("o1,o3", _getSelectedText(_select("s4Id")));
+}
+
+function testOption(){
+	_assertExists(_option("o1"));
+	_assertExists(_option("o1", _in(_select("s4Id"))));
+	_assertEqual(_option("o1[3]"), _option("o1", _in(_select("s4Id"))));
+	_assertEqual(_option("/o1/[3]"), _option("o1", _in(_select("s4Id"))));
+}
+
+function testInvalidOption(){
+	_assertNotExists(_option(/ppp/));
+}
+
+function setUp(){
+	_setSelected(_select("s1Id"), "");
+	_setSelected(_select("s4Id"), []);
+}
+
+function testGetOptionValues(){
+	var $list = _getOptions(_select("s1"),"value");
+	_assertEqual("-1", $list[0]);
+	_assertEqual("49", $list[4]);
+	_assertEqual("50", $list[6]);
+	_assertEqual(7, $list.length);
+}
+
+function testGetOptionTextsThroughDefault(){
+	var $list = _getOptions(_select("s1"));
+	_assertEqual("--SELECT--", $list[0]);
+	_assertEqual("Email", $list[3]);
+	_assertEqual("Mail", $list[6]);
+	_assertEqual(7, $list.length);
+}
+
+function testGetOptionTexts(){
+	var $list = _getOptions(_select("s1"),"text");
+	_assertEqual("--SELECT--", $list[0]);
+	_assertEqual("Business Phone", $list[1]);
+	_assertEqual("Cell Phone", $list[2]);
+	_assertEqual("Email", $list[3]);
+	_assertEqual("Fax", $list[4]);
+	_assertEqual("Home Phone", $list[5]);
+	_assertEqual("Mail", $list[6]);
+	_assertEqual(7, $list.length);
+}
+
+function testGetOptionAssertionWithArray(){
+	var $ar = [-1, 46, 47, 48, 49, 51, 50];
+	var $ar2 = _getOptions(_select("s1"),"value");
+	_assertEqual($ar,$ar2);
+}
+_runUnitTests();
+//testSelectMultipleWithRegExpArray();

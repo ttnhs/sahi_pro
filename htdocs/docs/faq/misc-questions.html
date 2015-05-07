@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Miscellaneous</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='evaluation-questions.html'>Evaluation Questions</a>
+<ul><li><a href='evaluation-questions.html#Browser and OS support'>Browser and OS support</a>
+</li><li><a href='evaluation-questions.html#AJAX support'>AJAX support</a>
+</li><li><a href='evaluation-questions.html#SSL support'>SSL support</a>
+</li><li><a href='evaluation-questions.html#Configuring Sahi'>Configuring Sahi</a>
+</li><li><a href='evaluation-questions.html#Can Sahi work without proxy configuration?'>Can Sahi work without proxy configuration?</a>
+</li></ul></li><li><a href='how-are-elements-identified.html'>How does Sahi identify elements?</a>
+<ul><li><a href='how-are-elements-identified.html#Standard attributes'>Standard attributes</a>
+</li><li><a href='how-are-elements-identified.html#Custom attributes'>Custom attributes</a>
+</li><li><a href='how-are-elements-identified.html#Relation to an anchor element'>Relation to an anchor element</a>
+</li></ul></li><li><a href='handling-streaming-responses.html'>Handling streaming responses</a>
+</li><li><a href='downloads.html'>File Downloads</a>
+<ul><li><a href='downloads.html#Pdf and Word files'>Pdf and Word files</a>
+</li><li><a href='downloads.html#Iterate a list of wsdl urls'>Iterate a list of wsdl urls</a>
+</li><li><a href='downloads.html#Saving an image'>Saving an image</a>
+</li><li><a href='downloads.html#File download dialog appears with Save & Open options'>File download dialog appears with Save & Open options</a>
+</li><li><a href='downloads.html#Blank page after download'>Blank page after download</a>
+</li><li><a href='downloads.html#Blank page appears'>Blank page appears</a>
+</li><li><a href='downloads.html#File does not get downloaded to Sahi's temp downloads folder'>File does not get downloaded to Sahi's temp downloads folder</a>
+</li><li><a href='downloads.html#Downloaded file does not get saved'>Downloaded file does not get saved</a>
+</li></ul></li><li><a href='delete-cookies.html'>How to delete cookies</a>
+</li><li><a href='how_to_show_custom_fields_in_reports.html'>How to show custom fields in reports</a>
+<ul><li><a href='how_to_show_custom_fields_in_reports.html#How to show custom fields in Excel reports'>How to show custom fields in Excel reports</a>
+</li><li><a href='how_to_show_custom_fields_in_reports.html#How to access custom fields in a test script'>How to access custom fields in a test script</a>
+</li></ul></li><li><a href='how-to-customize-html-reports.html'>How to customize HTML reports</a>
+</li><li><a href='eclipse-integration.html'>Eclipse configuration for Syntax Highlighting and Template proposals and Refactoring in Sahi scripts</a>
+<ul><li><a href='eclipse-integration.html#Sahi scripts - .sah Vs .js'>Sahi scripts - .sah Vs .js</a>
+</li><li><a href='eclipse-integration.html#Eclipse configuration'>Eclipse configuration</a>
+</li><li><a href='eclipse-integration.html#Refactoring a script into functions'>Refactoring a script into functions</a>
+</li><li><a href='eclipse-integration.html#Renaming a function or variable name'>Renaming a function or variable name</a>
+</li><li><a href='eclipse-integration.html#Navigate to functions'>Navigate to functions</a>
+</li></ul></li><li><a href='access-outlook-email.html'>How can I access an Outlook email from a Sahi script?</a>
+</li><li><a href='extract-dynamic-text.html'>How do I extract visible text of a div that changes dynamically?</a>
+</li><li><a href='extract-partial-text.html'>How do I extract text partially from dynamically changing visible text?</a>
+<ul><li><a href='extract-partial-text.html#Example 1'>Example 1</a>
+</li><li><a href='extract-partial-text.html#Example 2'>Example 2</a>
+</li></ul></li><li><a href='how-can-i-automate-ftp-file-transfer.html'>How can I automate FTP file transfer?</a>
+</li><li><a href='unit-tests.html'>Writing Unit tests - A Use Case</a>
+</li><li><a href='get-tooltip-text.html'>Getting the text of a tool tip</a>
+</li><li><a href='get-cell-data.html'>Getting cell data from a table</a>
+</li><li><a href='multiple-scripts-folders-and-network-share.html'>Multiple scripts folders and Network Share</a>
+<ul><li><a href='multiple-scripts-folders-and-network-share.html#Multiple Scripts folders'>Multiple Scripts folders</a>
+</li><li><a href='multiple-scripts-folders-and-network-share.html#Scripts on a network share'>Scripts on a network share</a>
+</li></ul></li><li><a href='using-license-data.html'>Using license.data</a>
+</li><li><a href='how-to-scroll.html'>How to scroll</a>
+<ul><li><a href='how-to-scroll.html#Check movement of scrollbar'>Check movement of scrollbar</a>
+</li></ul></li><li><a href='diagnose.html'>Using Diagnose</a>
+<ul><li><a href='diagnose.html#Diagnose does not return any results'>Diagnose does not return any results</a>
+</li></ul></li><li><a href='_under-in-5.x.y.html'>How is _under different in 5.x.y?</a>
+</li><li><a href='userdefinedid.html'>UserDefinedId</a>
+<ul><li><a href='userdefinedid.html#UserDefinedId not visible in V5.x.y by default'>UserDefinedId not visible in V5.x.y by default</a>
+</li></ul></li><li><a href='webservices.html'>Web Services via REST APIs</a>
+</li><li><a href='sahi-with-notepad++.html'>Sahi with Notepad++</a>
+</li><li><a href='sahi-with-textpad.html'>Sahi with TextPad</a>
+</li><li><a href='misc-questions.html'>Miscellaneous</a>
+<ul><li><a href='misc-questions.html#Verifying Sahi installation'>Verifying Sahi installation</a>
+</li><li><a href='misc-questions.html#How can I run the same script multiple times with different parameters simultaneously?'>How can I run the same script multiple times with different parameters simultaneously?</a>
+</li><li><a href='misc-questions.html#How can I launch/execute a url that initiates some long running activity?'>How can I launch/execute a url that initiates some long running activity?</a>
+</li><li><a href='misc-questions.html#Is it possible to add watch variables and debug a Sahi script?'>Is it possible to add watch variables and debug a Sahi script?</a>
+</li><li><a href='misc-questions.html#Copy row text and output to csv file'>Copy row text and output to csv file</a>
+</li><li><a href='misc-questions.html#Java assertEquals'>Java assertEquals</a>
+</li><li><a href='misc-questions.html#How to handle onbeforeunload popup'>How to handle onbeforeunload popup</a>
+</li><li><a href='misc-questions.html#Using pound and euro symbols'>Using pound and euro symbols</a>
+</li><li><a href='misc-questions.html#Reading an XML file'>Reading an XML file</a>
+</li><li><a href='misc-questions.html#Integration with XStudio'>Integration with XStudio</a>
+</li><li><a href='misc-questions.html#Integration with FitNesse'>Integration with FitNesse</a>
+</li><li><a href='misc-questions.html#Using _rteWrite()'>Using _rteWrite()</a>
+</li><li><a href='misc-questions.html#Accessing Sahi from a different browser'>Accessing Sahi from a different browser</a>
+</li><li><a href='misc-questions.html#How can I prevent caching of page?'>How can I prevent caching of page?</a>
+</li><li><a href='misc-questions.html#Text of alert shown through Ext.msg.show'>Text of alert shown through Ext.msg.show</a>
+</li><li><a href='misc-questions.html#_wait does not work inside an Excel file'>_wait does not work inside an Excel file</a>
+</li><li><a href='misc-questions.html#When is _condition needed?'>When is _condition needed?</a>
+</li><li><a href='misc-questions.html#_assertExists parameters'>_assertExists parameters</a>
+</li><li><a href='misc-questions.html#Java driver tests in parallel'>Java driver tests in parallel</a>
+</li><li><a href='misc-questions.html#Accessing a random row from a grid'>Accessing a random row from a grid</a>
+</li><li><a href='misc-questions.html#How do I set Date field which has date separator?'>How do I set Date field which has date separator?</a>
+</li><li><a href='misc-questions.html#Integrate Sahi with existing test repository tools'>Integrate Sahi with existing test repository tools</a>
+</li><li><a href='misc-questions.html#Read data from Excel using Sahi APIs'>Read data from Excel using Sahi APIs</a>
+</li><li><a href='misc-questions.html#_assertExists in if condition'>_assertExists in if condition</a>
+</li><li><a href='misc-questions.html#Assert equality of arrays'>Assert equality of arrays</a>
+</li><li><a href='misc-questions.html#Does Sahi Excel framework support .xlsx files?'>Does Sahi Excel framework support .xlsx files?</a>
+</li><li><a href='misc-questions.html#Identifying parent of element'>Identifying parent of element</a>
+</li><li><a href='misc-questions.html#Identify element class using Java Driver'>Identify element class using Java Driver</a>
+</li><li><a href='misc-questions.html#Scripts in suite do not run in order'>Scripts in suite do not run in order</a>
+</li><li><a href='misc-questions.html#401 authentication dialog'>401 authentication dialog</a>
+</li><li><a href='misc-questions.html#Browser in testrunner command'>Browser in testrunner command</a>
+</li><li><a href='misc-questions.html#Run tests in multiple browsers simultaneously'>Run tests in multiple browsers simultaneously</a>
+</li><li><a href='misc-questions.html#Selective login'>Selective login</a>
+</li><li><a href='misc-questions.html#Silverlight support'>Silverlight support</a>
+</li><li><a href='misc-questions.html#Dropdown with Java driver'>Dropdown with Java driver</a>
+</li><li><a href='misc-questions.html#Getting absolute file path'>Getting absolute file path</a>
+</li><li><a href='misc-questions.html#Regular expressions in Sahi'>Regular expressions in Sahi</a>
+</li><li><a href='misc-questions.html#Regular expression usecase'>Regular expression usecase</a>
+</li><li><a href='misc-questions.html#Check to see that page is functional'>Check to see that page is functional</a>
+</li><li><a href='misc-questions.html#Excel files as part of Suite'>Excel files as part of Suite</a>
+</li><li><a href='misc-questions.html#Reports database'>Reports database</a>
+</li><li><a href='misc-questions.html#Scheduling tests'>Scheduling tests</a>
+</li><li><a href='misc-questions.html#Drag and drop'>Drag and drop</a>
+</li><li><a href='misc-questions.html#Single smoke script to test multiple sites'>Single smoke script to test multiple sites</a>
+</li><li><a href='misc-questions.html#_debug() output'>_debug() output</a>
+</li><li><a href='misc-questions.html#Sahi with file: URLs'>Sahi with file: URLs</a>
+</li><li><a href='misc-questions.html#_runUnitTests'>_runUnitTests</a>
+</li></ul></li><li><a href='other-resources.html'>Other Resources</a>
+</li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Miscellaneous</h2>
+      <!-- Miscellaneous-->
+<h3><a href="#Verifying Sahi installation" name="Verifying Sahi installation" class="headinganchor2" hideFocus="hideFocus">Verifying Sahi installation</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How can we verify that Sahi is installed and working properly?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+You can check the following.<br/>
+<ul>
+<li>
+If you are on Windows, launching SahiPro from the Desktop shortcut should launch the Sahi Dashboard.<br/>
+<br/>
+If you are on Linux or Mac, navigate to <code>userdata/bin</code>. Launch <code>start_dashboard.sh</code> to start Sahi server with the Dashboard.<br/>
+</li>
+<li>
+Open a browser from the Sahi Dashboard. This should open the http://sahi.example.com page correctly.<br/>
+</li>
+<li>
+Access http://sahi.co.in/demo/training/login.htm. You should be able to record and playback correctly.<br/>
+</li>
+</ul>
+</div>
+<h3><a href="#How can I run the same script multiple times with different parameters simultaneously?" name="How can I run the same script multiple times with different parameters simultaneously?" class="headinganchor2" hideFocus="hideFocus">How can I run the same script multiple times with different parameters simultaneously?</a></h3>
+The <a href="../using-sahi/data-driven-suites.html">data driven suite</a> allows the user to specify a script multiple times in a suite with different parameters.<br/>
+<br/>
+To execute the scripts in the data driven suite in parallel, you just need to use <code>testrunner.bat</code> with <code>SINGLE_SESSION</code> as false and <code>THREADS=5</code> (any value greater than 1).<br/>
+<br/>
+<h3><a href="#How can I launch/execute a url that initiates some long running activity?" name="How can I launch/execute a url that initiates some long running activity?" class="headinganchor2" hideFocus="hideFocus">How can I launch/execute a url that initiates some long running activity?</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+My application has a component that performs some long running activity. This component functionality is exposed through a url. How can I launch/execute this url from a Sahi script?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Use _readURL(url) and give the component url. You don't need to process the returned value. This will essentially execute the url call.<br/>
+</div>
+<h3><a href="#Is it possible to add watch variables and debug a Sahi script?" name="Is it possible to add watch variables and debug a Sahi script?" class="headinganchor2" hideFocus="hideFocus">Is it possible to add watch variables and debug a Sahi script?</a></h3>
+You cannot really add variables to watch and check status at run time as of now since there is no debugger as such.<br/>
+<br/>
+The best way to debug would be to add _debug and _log statements and run the script.<br/>
+<br/>
+Apart from this, you can step through various steps from the controller.<br/>
+<ol>
+<li>
+Add a _wait(10000) in the script so the script waits at that point.<br/>
+</li>
+<li>
+When this wait step is being evaluated, press Pause on the Playback tab. Once paused, you can use the controller buttons like Click, Highlight, Set etc.<br/>
+</li>
+<li>
+You can then press Step to get out of the wait immediately and process one step at a time. Or you can press Play. Play will remain in the wait till it is over.<br/>
+</li>
+</ol>
+<h3><a href="#Copy row text and output to csv file" name="Copy row text and output to csv file" class="headinganchor2" hideFocus="hideFocus">Copy row text and output to csv file</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+I'm trying to copy text (using getText) and output it to a csv file. How can I do this?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+A simple example would be:<br/>
+<pre><code>var $data = [];
+var $firstRow = [];
+$firstRow[0] = _getText(_div(0)); // assuming _div(0)
+$firstRow[1] = _getText(_div(1)); // assuming _div(1)
+$data.push($firstRow);
+
+var $secondRow = [];
+$secondRow[0] = _getText(_div(2)); // assuming _div(2)
+$secondRow[1] = _getText(_div(3)); // assuming _div(3)
+$data.push($secondRow);
+
+_writeCSVFile($data, "C:/a.csv", true);</code></pre>
+<br/>
+You can run it against <a href="http://sahi.co.in/demo/spandiv.htm">http://sahi.co.in/demo/spandiv.htm</a>
+</div>
+<h3><a href="#Java assertEquals" name="Java assertEquals" class="headinganchor2" hideFocus="hideFocus">Java assertEquals</a></h3>
+<br/>
+When using the Java driver, it is better to use JUnit's <code>assertEquals</code> method directly, instead of trying to use the Sahi equivalent as follows - <code>b.executeSahi("_assertEqual(...)")</code>.<br/>
+<br/>
+Likewise, use JUnit's other assert methods instead of invoking equivalent Sahi asserts through b.executeSahi.<br/>
+<br/>
+<h3><a href="#How to handle onbeforeunload popup" name="How to handle onbeforeunload popup" class="headinganchor2" hideFocus="hideFocus">How to handle onbeforeunload popup</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+When I click on a link in current page, it should take me to a new page.<br/>
+<br/>
+But it throws a windows popup dialog that says<br/>
+"This page is asking you to confirm that you want to leave - data you have entered may not be saved."<br/>
+with two buttons "Leave this page" and "Stay on this page".<br/>
+<br/>
+How do I automate this dialog?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+The popup dialog that you see is thrown from the <code>window.onbeforeunload</code> function that the page has implemented. This is not a web dialog and cannot be identified by Sahi.<br/>
+<br/>
+<ul>
+<li>
+You can avoid this popup while running through Sahi by adding this line<br/>
+<pre><code>_call(window.onbeforeunload = null);</code></pre>
+<br/>
+before the link click that navigates out of the page.<br/>
+<br/>
+This will cause the new page to be shown without the alert being shown to you.<br/>
+</li>
+<li>
+If this does not work, you can use Native keypress events to click on the "Leave Page" button.<br/>
+<br/>
+Typically, the focus would be on the "Leave Page" button, so pressing Space or Enter key will cause the button to be clicked.<br/>
+<br/>
+Please use below native key events.<br/>
+<br/>
+To move focus between controls, use VK_TAB or VK_SHIFT_TAB (to give focus to previous element).<br/>
+eg.<br/>
+<pre><code>_typeKeyCodeNative(java.awt.event.KeyEvent.VK_TAB); // Presses TAB to change the current focus to give focus to next element.</code></pre>
+To click on the button, use VK_SPACE or VK_ENTER.<br/>
+eg.<br/>
+<pre><code>_typeKeyCodeNative(java.awt.event.KeyEvent.VK_SPACE); // Fires Space key press event on the focused element. Or you can use VK_ENTER.</code></pre>
+<br/>
+So you can use a combination of the above methods to navigate between the controls and press Space or Enter on the focused buttons.<br/>
+<br/>
+Example code:<br/>
+<pre><code>// Do _focusWindow before clicking on the link that throws up the dialog.
+_focusWindow();
+_click(_link("Sign out"));
+_wait(2000);
+_typeKeyCodeNative(java.awt.event.KeyEvent.VK_SPACE);</code></pre>
+</li>
+</ul>
+</div>
+<h3><a href="#Using pound and euro symbols" name="Using pound and euro symbols" class="headinganchor2" hideFocus="hideFocus">Using pound and euro symbols</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How can we refer to the pound or euro symbol from inside a script?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Since SahiScript is really Javascript, you could either use<br/>
+<ul>
+<li>
+The Javascript notation - the unicode character <code>\u00A3</code> for pound and <code>\u20AC</code> for euro.<br/>
+</li>
+<li>
+Or use the literal pound or euro sign itself in the script.<br/>
+You will need to ensure that the Sahi script is <code>UTF 8</code> encoded (If you are using Notepad++, use the option <code>Encode in UTF-8 without BOM</code>).<br/>
+</li>
+</ul>
+</div>
+<h3><a href="#Reading an XML file" name="Reading an XML file" class="headinganchor2" hideFocus="hideFocus">Reading an XML file</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How can I read an XML file using Sahi script?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+We don't have out of the box functionality yet to process xml files from Sahi scripts like we have for Excel files.<br/>
+<br/>
+But from Sahi scripts you can invoke any java class that is available in the class path. So you can create java class(es) for reading xml file and you can call the same from sahi.<br/>
+<br/>
+Please refer to <a href="http://sahi.co.in/w/sahi-scripting-calling-java">http://sahi.co.in/w/sahi-scripting-calling-java</a> below for how to call java classes from sahi.<br/>
+</div>
+<h3><a href="#Integration with XStudio" name="Integration with XStudio" class="headinganchor2" hideFocus="hideFocus">Integration with XStudio</a></h3>
+<br/>
+The following urls contain details about the integration.<br/>
+<br/>
+<a href="http://www.xqual-forums.com/viewtopic.php?f=4&t=1545">http://www.xqual-forums.com/viewtopic.php?f=4&t=1545</a>
+<br/>
+<a href="http://www.xqual.com/documentation/launchers/sahi.html">http://www.xqual.com/documentation/launchers/sahi.html</a>
+<h3><a href="#Integration with FitNesse" name="Integration with FitNesse" class="headinganchor2" hideFocus="hideFocus">Integration with FitNesse</a></h3>
+<br/>
+We have ourselves not tried an integration with FitNesse.<br/>
+<br/>
+But someone else has done it <a href="http://anubhava.wordpress.com/2012/03/29/jump-start-fitnesse-with-sahi-using-generic-fixture/">here</a>.<br/>
+<h3><a href="#Using _rteWrite()" name="Using _rteWrite()" class="headinganchor2" hideFocus="hideFocus">Using _rteWrite()</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How do I use _rteWrite() to write to a Rich Text Editor? The _rte accessor is not visible from the controller.<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+From Controller you will not be able to find the rte accessor.<br/>
+<br/>
+To write to the rich text editor field, please follow below steps.<br/>
+<ol>
+<li>
+Open the RTE page in the browser.<br/>
+</li>
+<li>
+Right click on the RTE and select Inspect Element.<br/>
+</li>
+<li>
+You will find that RTE is in some container like IFrame.<br/>
+</li>
+<li>
+Copy the id of that Iframe. Let us say, it is "rtedemo".<br/>
+</li>
+<li>
+Now you can use this in the _rteWrite() statement like<br/>
+<pre><code>_rteWrite(_rte("rtedemo"),"some text");</code></pre>
+or<br/>
+<pre><code>_rteWrite(_iframe("rtedemo"),"some text");</code></pre>
+</li>
+</ol>
+</div>
+<h3><a href="#Accessing Sahi from a different browser" name="Accessing Sahi from a different browser" class="headinganchor2" hideFocus="hideFocus">Accessing Sahi from a different browser</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+I have a test lab machine that has Sahi installed. I wish to test Sahi from remote machines so that I can cover different client configurations (OS and Browser). How do I do this?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+What you want to do is:<br/>
+<ol>
+<li>
+Run Sahi server on the remote machine.<br/>
+</li>
+<li>
+Run tests from your browser (without running Sahi on your machine)<br/>
+</li>
+</ol>
+For this, essentially your browser needs to be configured to use the remote machine's proxy. There is no way to do so automatically.<br/>
+<br/>
+NOTE that when you launch browsers from the Sahi Dashboard on your local machine, the proxy settings are automatically configured. But since you want to use a remote proxy, the configuration has to be done manually.<br/>
+<br/>
+<ol>
+<li>
+Start Sahi on remote machine.<br/>
+</li>
+<li>
+Open browser on your machine. Note that Sahi is not running on your machine, so you will be opening the browser outside of Sahi.<br/>
+</li>
+<li>
+Configure the proxy setting in your browser to point to your remote machine.<br/>
+<br/>
+Example:<br/>
+If Remote machine IP is 192.168.1.21<br/>
+<br/>
+Configure browser proxy setting to address:192.168.1.21 and port:9999.<br/>
+</li>
+</ol>
+<br/>
+There are 2 ways in which you can run the scripts on your machine.<br/>
+<ol>
+<li>
+Open the controller on the page and run scripts. You cannot run a suite from the controller.<br/>
+</li>
+<li>
+Access 192.168.1.21:9999 to open the launcher url from where you can choose the scripts or suite and run the tests.<br/>
+</li>
+</ol>
+</div>
+<h3><a href="#How can I prevent caching of page?" name="How can I prevent caching of page?" class="headinganchor2" hideFocus="hideFocus">How can I prevent caching of page?</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+Web pages are being cached in my application. How can I ensure that a new page is returned everytime?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+We can append a unique identifier to the url such that the url is unique every time.<br/>
+<br/>
+We can use <code>new Date().getTime()</code> as the unique id to append to the url.<br/>
+<br/>
+For example:<br/>
+<pre><code>var $uniqueID=new Date().getTime();
+_navigateTo("http://localhost/demo/getUsers?"+$uniqueID);</code></pre>
+</div>
+<h3><a href="#Text of alert shown through Ext.msg.show" name="Text of alert shown through Ext.msg.show" class="headinganchor2" hideFocus="hideFocus">Text of alert shown through Ext.msg.show</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+We use ext js. How can I get the text of an alert shown using <code>Ext.msg.show</code>?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+When you use <code>Ext.msg.show</code> to show the message(alert), it shows the alert as an HTML inline element on the page and it is not suppressed by Sahi. Hence it is visible on the page.<br/>
+<br/>
+Since it is a HTML element, we have access to that element and we can deal with it from the controller.<br/>
+<br/>
+Mostly you will see a _div() container containing the alert on the page.<br/>
+<br/>
+You can use _getText() function to get the text of alert.<br/>
+<br/>
+But since the alert is not suppressed, you will have to click on OK or Cancel from the script.<br/>
+</div>
+<h3><a href="#_wait does not work inside an Excel file" name="_wait does not work inside an Excel file" class="headinganchor2" hideFocus="hideFocus">_wait does not work inside an Excel file</a></h3>
+<br/>
+To work around this, please add a function called <code>doWait()</code> in the script that you are loading inside the excel file.<br/>
+<code>function doWait($timetowait){
+_wait($timetowait);
+}</code>
+Please call <code>doWait</code> from inside the excel file, instead of calling _wait.<br/>
+<h3><a href="#When is _condition needed?" name="When is _condition needed?" class="headinganchor2" hideFocus="hideFocus">When is _condition needed?</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+When is it mandatory to use _condition in an if statement in Sahi?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+If you are checking for any attribute through a Sahi function, like <code>_getText</code>, <code>_isVisible</code>, <code>_exists</code> etc, you do not need to use <code>_condition</code>.<br/>
+<br/>
+If you are checking for an attribute directly, like say <code>_div("some-div").innerHTML</code>, then you should use <code>_condition</code>.<br/>
+<div class="info"><strong class='heading'>info</strong>
+However, using <code>_condition</code> is not harmful, so when you are in doubt, use <code>_condition</code>.<br/>
+</div>
+</div>
+<h3><a href="#_assertExists parameters" name="_assertExists parameters" class="headinganchor2" hideFocus="hideFocus">_assertExists parameters</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+I am using <code>_assertExists(condition, _alert('condition exists'))</code> to alert if condition exists. The alert seems to be called always.<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+NOTE that the second parameter in <code>_assertExists</code> should be a string <code>message</code>. You cannot have a function call or a Sahi step in the second parameter.<br/>
+<br/>
+The message will be logged if the condition does NOT exist. So the correct usage is <code>_assertExists(condition, 'condition does not exist'))</code>.<br/>
+<br/>
+In the given usage, the _alert step gets evaluated like a normal Sahi step and hence you always get the alert.<br/>
+</div>
+<h3><a href="#Java driver tests in parallel" name="Java driver tests in parallel" class="headinganchor2" hideFocus="hideFocus">Java driver tests in parallel</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+We are using Sahi with Java driver. We have a customized runner to run the java tests (junit based). Is it possible to run the java tests in parallel?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Multiple browser instances can be launched using new Browser() instances.<br/>
+<br/>
+So if your junit based test runner can execute testcases in parallel, you will be able to run java tests in parallel.<br/>
+</div>
+<h3><a href="#Accessing a random row from a grid" name="Accessing a random row from a grid" class="headinganchor2" hideFocus="hideFocus">Accessing a random row from a grid</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How can I select a random row from a grid?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+You can do the following.<br/>
+<ol>
+<li>
+Use <code>_count()</code> to get the count of rows in the grid.<br/>
+</li>
+<li>
+Use _random(rowcount-1) to get a random number between 0 and rowcount-1.<br/>
+</li>
+<li>
+Identify the row at this random index<br/>
+</li>
+</ol>
+</div>
+<h3><a href="#How do I set Date field which has date separator?" name="How do I set Date field which has date separator?" class="headinganchor2" hideFocus="hideFocus">How do I set Date field which has date separator?</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+I have a <code>Date of Birth</code> field with date separators (<code>/</code>). How can I enter the date through Sahi?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Based on the format (<code>dd/mm/yyyy</code> or <code>mm/dd/yyyy</code> or something else), do an appropriate <code>_setValue</code> which includes the <code>/</code> separator.<br/>
+Example:<br/>
+Assuming that the format is <code>dd/mm/yyyy</code>
+<pre><code>_setValue(_textbox('dob'), '14/08/1990')</code></pre>
+<br/>
+If this results in an invalid date being set, ignore the <code>/</code> separator and just do<br/>
+<pre><code>_setValue(_textbox('dob'), '14081990')</code></pre>
+<br/>
+If this does not work, try the following<br/>
+<pre><code>_call(_textbox('dob').value="14/08/1990");</code></pre>
+<br/>
+Same goes for a Phone Number field or a SSN field that has <code>-</code> as a separator.<br/>
+</div>
+<h3><a href="#Integrate Sahi with existing test repository tools" name="Integrate Sahi with existing test repository tools" class="headinganchor2" hideFocus="hideFocus">Integrate Sahi with existing test repository tools</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How easy is it to integrate Sahi with an existing test repository tool?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Sahi can be almost entirely controlled using http calls. You can trigger testcases, view reports, launch browsers etc. using just URL calls. It should be easy to integrate with your test repository tool.<br/>
+</div>
+<h3><a href="#Read data from Excel using Sahi APIs" name="Read data from Excel using Sahi APIs" class="headinganchor2" hideFocus="hideFocus">Read data from Excel using Sahi APIs</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+I am trying to read data from an excel. How can I get the active row count?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Have a look at this section <a href="../sahi-apis/excel-apis.html">Working with Excel Sheets in Sahi Pro</a>.<br/>
+<br/>
+You would do something like:<br/>
+<br/>
+var $excel = _getExcel("D:\\poiTest.xls","Sheet1");<br/>
+var $data=$excel.getData();<br/>
+var $activeRowCount = $data.length;<br/>
+</div>
+<br/>
+<h3><a href="#_assertExists in if condition" name="_assertExists in if condition" class="headinganchor2" hideFocus="hideFocus">_assertExists in if condition</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+Can I use _assertExists in if condition?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+<code>_assertExists</code> does not return true or false. So you cannot use it inside if condition. Instead use <code>_exists</code> in the if condition, like below.<br/>
+<pre><code>if (_exists(_button("Confirm"))) {
+	_click(_button("Confirm"));
+}
+else {
+	_assert(false, '_button("Confirm") does not exist');
+}</code></pre>
+</div>
+<h3><a href="#Assert equality of arrays" name="Assert equality of arrays" class="headinganchor2" hideFocus="hideFocus">Assert equality of arrays</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How can I assert that two arrays are equal?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+You can use _assertEqual and pass the two arrays to directly compare the two arrays. You don't need to loop the arrays and compare the elements individually.<br/>
+</div>
+<h3><a href="#Does Sahi Excel framework support .xlsx files?" name="Does Sahi Excel framework support .xlsx files?" class="headinganchor2" hideFocus="hideFocus">Does Sahi Excel framework support .xlsx files?</a></h3>
+<br/>
+One can write .xlsx files as part of the Excel framework.<br/>
+<div class="danger"><strong class='heading'>danger</strong>
+However note that you should not rename .xls files as .xlsx.<br/>
+</div>
+<h3><a href="#Identifying parent of element" name="Identifying parent of element" class="headinganchor2" hideFocus="hideFocus">Identifying parent of element</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How can I find the parent of an element using the Controller?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Do the following.<br/>
+<ol>
+<li>
+Identify the element by pressing Ctrl key and hovering mouse over the element.<br/>
+</li>
+<li>
+Once the element identifier is visible in the Accessor textbox in the Record tab, click the Up arrow near the <code>Accessor:</code> label.<br/>
+</li>
+<li>
+This will show the parent of the element.<br/>
+</li>
+<li>
+To come back to the previous child element, press the Down arrow near the <code>Accessor:</code> label.<br/>
+</li>
+<li>
+You can walk up the parent heirarchy by continously clicking on the Up arrow.<br/>
+</li>
+</ol>
+<div class="info"><strong class='heading'>info</strong>
+Finding the parent is especially useful when you want to locate the element inside a container element using the <a href="../sahi-apis/relation-apis.html#_in">_in</a> Relation API.<br/>
+</div>
+</div>
+<h3><a href="#Identify element class using Java Driver" name="Identify element class using Java Driver" class="headinganchor2" hideFocus="hideFocus">Identify element class using Java Driver</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How can I get the class of an element using the Java driver?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+You can use the following line of code.<br/>
+<pre><code>String className = b.button("Login").fetch("className"); // Replace button("Login") with the specific element type and name.</code></pre>
+</div>
+<h3><a href="#Scripts in suite do not run in order" name="Scripts in suite do not run in order" class="headinganchor2" hideFocus="hideFocus">Scripts in suite do not run in order</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+I have SET SINGLE_SESSION=true and SET THREADS=1 in testrunner.bat. When I run a suite, it seems that scripts are not being executed in the order mentioned in the suite but in alphabetical order. Why is this so?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+The scripts are executed in the same order as listed in the suite. However the script links in the Suite Report are shown alphabetically.<br/>
+</div>
+<h3><a href="#401 authentication dialog" name="401 authentication dialog" class="headinganchor2" hideFocus="hideFocus">401 authentication dialog</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+My website puts up a 401 Authentication windows dialog. How can I automate this?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+You will see the windows dialog from a normal browser outside of Sahi.<br/>
+<br/>
+But when you go through Sahi, Sahi will intercept the original response and present its own embedded dialog in the html page. Since the dialog is embedded in the html page itself, this can be automated like any other html page.<br/>
+<div class="info"><strong class='heading'>info</strong>
+Always test the behavior through a Sahi browser because that is what the test script will interact with.<br/>
+</div>
+</div>
+<h3><a href="#Browser in testrunner command" name="Browser in testrunner command" class="headinganchor2" hideFocus="hideFocus">Browser in testrunner command</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How do I specify the browser(s) in the testrunner command?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+When running a suite/script with testrunner.bat, one needs to specify the browser to run the test(s) in.<br/>
+<br/>
+Do the following to find out the browser label<br/>
+<ol>
+<li>
+Only those browsers that are available in the Dashboard can be tested against. If your preferred browser is not part of the Dashboard, refer to <a href="../using-sahi/sahi-configuration-basic.html#Configure Browsers in Dashboard">this</a> link.<br/>
+</li>
+<li>
+Hover the mouse over your preferred browser button on the Dashboard. A tooltip will appear. The tooltip text is the browser label that should be passed to the testrunner command.<br/>
+</li>
+</ol>
+</div>
+<br/>
+<h3><a href="#Run tests in multiple browsers simultaneously" name="Run tests in multiple browsers simultaneously" class="headinganchor2" hideFocus="hideFocus">Run tests in multiple browsers simultaneously</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+Is it possible to run the same script or suite in 3 different browsers (IE, Firefox and Chrome) simultaneously?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Yes, it is possible to run the same script or suite in 3 different browsers simultaneously through testrunner.<br/>
+<br/>
+Please Start Sahi Pro, click "Bin" link on the Dashboard.<br/>
+<br/>
+In the command prompt, you can run myscript.sah on IE, Firefox and Chrome simultaneously as follows.<br/>
+<pre><code>testrunner myscript.sah http://sahi.co.in/demo/ ie+firefox+chrome</code></pre>
+<br/>
+Similarly you can run a suite mysuite.suite on the 3 browsers as follows.<br/>
+<pre><code>testrunner mysuite.suite http://sahi.co.in/demo/ ie+firefox+chrome</code></pre>
+</div>
+<h3><a href="#Selective login" name="Selective login" class="headinganchor2" hideFocus="hideFocus">Selective login</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+My application has a login page. On IE, in the first run of the script, if I close the browser without logging out, the user's session is not terminated.<br/>
+When I run the script the second time, the application shows the user as logged in, and so the login step fails. How can I handle login selectively?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Ideally you should logout from the application at the end of the test.<br/>
+<br/>
+If you don't want that, you can do the following.<br/>
+<ul>
+<li>
+If there is no Logout button, do a Login.<br/>
+</li>
+<li>
+If there is a Logout button,<br/>
+<ul>
+<li>
+Either logout and login<br/>
+</li>
+<li>
+Or do NOT login.<br/>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h3><a href="#Silverlight support" name="Silverlight support" class="headinganchor2" hideFocus="hideFocus">Silverlight support</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+Does Sahi support Silverlight applications?<br/>
+</div>>
+<div class="answer"><strong class='heading'>answer</strong>
+No, Sahi does not support Silverlight applications.<br/>
+</div>
+<h3><a href="#Dropdown with Java driver" name="Dropdown with Java driver" class="headinganchor2" hideFocus="hideFocus">Dropdown with Java driver</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How can I choose a value from a dropdown using Java driver?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+You can use the following code.<br/>
+<pre><code>b.select("colors").choose("red"); // Here "colors" identifies the dropdown and "red" identifies a value in the dropdown.</code></pre>
+</div>
+<h3><a href="#Getting absolute file path" name="Getting absolute file path" class="headinganchor2" hideFocus="hideFocus">Getting absolute file path</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+We refer to a file from inside a script using relative path. How can we get the absolute path of the file.<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Use <a href="../sahi-apis/script-suite-info-apis.html#_resolvePath">_resolvePath</a>
+</div>
+<h3><a href="#Regular expressions in Sahi" name="Regular expressions in Sahi" class="headinganchor2" hideFocus="hideFocus">Regular expressions in Sahi</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How do I use a regular expression in any Sahi API?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+In Sahi, we treat the regular expression as a String, so specify it within double quotes. A regular expression starts and ends with <code>/</code>.<br/>
+Example: If you had a textbox whose name shows up as <code>Test email 123</code>, you can specify this as <code>_textbox("/Test email/")</code>.<br/>
+</div>
+<h3><a href="#Regular expression usecase" name="Regular expression usecase" class="headinganchor2" hideFocus="hideFocus">Regular expression usecase</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+A link on my page changes dynamically every time but has some words that do not change. How can I test this link from a Sahi script?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Use a regular expression that matches the unchanged text in the link identifier.<br/>
+<br/>
+Example:<br/>
+Assume that the text "search" stays static in the link identifier.<br/>
+<pre><code>_click(_link("/search/"));</code></pre>
+This regular expression will match strings like,<br/>
+<pre><code>_click(_link("search1234"));
+_click(_link("search-132"));
+_click(_link("sdf-search-sdf"));</code></pre>
+</div>
+<h3><a href="#Check to see that page is functional" name="Check to see that page is functional" class="headinganchor2" hideFocus="hideFocus">Check to see that page is functional</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+What is the best way to perform a simple check that a page is functional and displaying correct content? Should I use _exists(), _isVisible() etc?<br/>
+Can I use _assertEqual to check for content?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+There is no standard answer to this question.<br/>
+<br/>
+<code>_exists()</code> checks if an element is available in the Javascript DOM.<br/>
+<br/>
+<code>_isVisible()</code> checks if an element is available in the JavaScript DOM and also whether it is visible. By visibility, we mean DOM visibility and not whether it is visible on the screen.<br/>
+<br/>
+So if you have an element whose display is set to none, <code>_exists()</code> will return true while <code>_isVisible()</code> will return false.<br/>
+<br/>
+From a functional point of view, <code>_isVisible()</code> can be more useful because an end user only interacts with visible elements.<br/>
+<br/>
+In normal use cases, <code>_assertEqual</code> and <code>_assert</code> for <code>_isVisible</code> would be the most used.<br/>
+<code>_assertEqual</code> is used mostly to<br/>
+<ol>
+<li>
+Check for messages shown on the screen.<br/>
+</li>
+<li>
+Check default values<br/>
+</li>
+<li>
+Validate output values of calculations.<br/>
+</li>
+</ol>
+<br/>
+<code>_assert(_isVisible())</code> would be used to check if the correct elements appear based on workflow/permissions etc.<br/>
+</div>
+<br/>
+<h3><a href="#Excel files as part of Suite" name="Excel files as part of Suite" class="headinganchor2" hideFocus="hideFocus">Excel files as part of Suite</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+Can excel files be run as part of a suite?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Yes, you can add excel files as part of a suite and run the suite through testrunner.bat.<br/>
+<div class="warning"><strong class='heading'>warning</strong>
+Note that if testrunner.bat is run with multiple threads, the excel files will be run in parallel. So make sure that there are no dependencies between the excel files.<br/>
+</div>
+</div>
+<h3><a href="#Reports database" name="Reports database" class="headinganchor2" hideFocus="hideFocus">Reports database</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+What database is used by Sahi internally for test reports generated by Sahi?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+We use h2 database.<br/>
+<br/>
+We also support mysql and mssql, but you will have to manually run the db script and make configuration changes.<br/>
+<br/>
+create_report_tables_mysql.sql and create_report_tables_mssql.sql are available inside <code>userdata\config\db</code> folder.<br/>
+</div>
+<h3><a href="#Scheduling tests" name="Scheduling tests" class="headinganchor2" hideFocus="hideFocus">Scheduling tests</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+How can I schedule tests to run at a specific time?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+To trigger the tests at a particular time, you can do either of the following<br/>
+<ul>
+<li>
+You can configure <a href="../using-sahi/integrate-with-jenkins.html">Jenkins</a> to build periodically, and trigger the batch file or ANT task at the end of a build.<br/>
+</li>
+<li>
+Or use the Windows Task Scheduler.<br/>
+</li>
+</ul>
+</div>
+<h3><a href="#Drag and drop" name="Drag and drop" class="headinganchor2" hideFocus="hideFocus">Drag and drop</a></h3>
+<div class="question"><strong class='heading'>question</strong>Does Sahi support drag and drop?</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Yes, Sahi Pro supports the drag and drop feature through the following APIs.<br/>
+<br/>
+<a href="../sahi-apis/action-apis.html#_dragDrop">_dragDrop</a>
+<a href="../sahi-apis/action-apis.html#_dragDropXY">_dragDropXY</a>
+</div>
+<h3><a href="#Single smoke script to test multiple sites" name="Single smoke script to test multiple sites" class="headinganchor2" hideFocus="hideFocus">Single smoke script to test multiple sites</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+I would like to use a single smoke script to test multiple websites (staging, prod, etc) and show the results using the suite report. How can I do this?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+It is possible for you to have a suite that calls the same script multiple times, only differing in the start url.<br/>
+<br/>
+Example:<br/>
+You could have a demo.suite with contents like<br/>
+<br/>
+test.sah http://url1.com<br/>
+test.sah http://url2.com<br/>
+test.sah http://url3.com<br/>
+<br/>
+If you need to pass parameters, use a <a href="../using-sahi/data-driven-suites.html">data driven suite</a> instead of a suite.<br/>
+</div>
+<h3><a href="#_debug() output" name="_debug() output" class="headinganchor2" hideFocus="hideFocus">_debug() output</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+_debug does not seem to print on console of the browser.<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+_debug() will not write to the console of the browser. It will write to the Sahi server console (the black command window).<br/>
+</div>
+<h3><a href="#Sahi with file: URLs" name="Sahi with file: URLs" class="headinganchor2" hideFocus="hideFocus">Sahi with file: URLs</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+Can Sahi work with file: URLs?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+Sahi does not work on <code>file:</code> URLs. It will work only with <code>http</code> or <code>https</code> urls.<br/>
+<br/>
+So you cannot use <code>file:</code> URLs<br/>
+<ul>
+<li>
+As start urls with testrunner.bat.<br/>
+</li>
+<li>
+In the _navigateTo statement.<br/>
+</li>
+</ul>
+</div>
+<br/>
+<h3><a href="#_runUnitTests" name="_runUnitTests" class="headinganchor2" hideFocus="hideFocus">_runUnitTests</a></h3>
+<div class="question"><strong class='heading'>question</strong>
+What does _runUnitTests do?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+It picks all the functions in the script which start with <code>test</code> and executes them one after the other (in unit testing style).<br/>
+<br/>
+<ul>
+<li>
+Use _runUnitTests() to run all tests.<br/>
+</li>
+<li>
+Pass an array of testcases in _runUnitTests() to run the specific set of testcases.<br/>
+Example:<code>_runUnitTests(["testUserNameMax50Characters", "testPasswordAlphaNumeric"])</code> will run testUserNameMax50Characters and testPasswordAlphaNumeric.<br/>
+</li>
+</ul>
+<br/>
+For more details, refer to <a href="unit-tests.html">this link</a>.<br/>
+</div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

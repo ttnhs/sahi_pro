@@ -1,0 +1,34 @@
+_include("commonFeatures.sah");
+_include("objects.sah");
+_navigateTo($url);
+login($userName,$password);
+navigateToUserAccount();
+_click($uploadUsers);
+_wait(10000, _isVisible($btnChooseAFile));
+_click($btnChooseAFile);
+_wait(10000,_isVisible($uploadAFile));
+_click($uploadAFile);
+_wait(6000);
+
+setFileUpload($browse, "D:\\DC1-RBD\\TMAWebAutoTest2.0\\TestData\\TestFile\\userListInvalid.csv");
+
+_setValue($txtTitle, "InvalidUsers");
+_wait(2000);
+_click($btnUploadThisFile);
+_wait(2000);
+elementShouldContains($dropFile,"InvalidUsers.csv");
+_wait(2000);
+_click($btnUploadUsers);
+_wait(2000);
+_assertExists($errorMessage );
+elementShouldContains($errorMessage, "usernamewrong");
+_wait(4000);
+_assertExists($debugInfor);
+elementShouldContains($debugInfor, "Debug info: Error code: invalidfieldname");
+_wait(4000);
+_assertExists($alertError);
+elementShouldContains($alertError, "Stack trace: line 463 of /lib/setuplib.php: moodle_exception thrownline 206 of /admin/tool/uploaduser/locallib.php: call to print_error()");
+_wait(4000);
+_click($btnContinue);
+_wait(4000);
+logoutQAMoodle();

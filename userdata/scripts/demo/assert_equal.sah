@@ -1,0 +1,24 @@
+_assertEqual("abc", "abc");
+_assertEqual("/ab/", "abc");
+_assertEqual("/^a.*c$/", "abc");
+_assertEqual(/^a.*c$/, "abc");
+
+_assertNotEqual("/^ab$/", "abc");
+
+$exp = ["/[a-z]+$/", "b"];
+$act = ["ab", "b"];
+_assertEqual($exp, $act);
+
+// The following step would show an assertion failure. Uncomment to test it.
+// _assertNotEqual($exp, $act);
+
+_assertNotEqual($exp, ["ab123", "b"]);
+
+
+$exp = [/[a-z]+$/, "b"];
+$act = ["ab", "b"];
+_assertEqual($exp, $act);
+//The following step would show an assertion failure. Uncomment to test it.
+//_assertNotEqual($exp, $act);
+
+_assertNotEqual($exp, ["ab123", "b"]);

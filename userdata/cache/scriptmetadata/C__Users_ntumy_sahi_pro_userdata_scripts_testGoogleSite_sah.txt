@@ -1,0 +1,2 @@
+login,C:\Users\ntumy\sahi_pro\userdata\scripts\testGoogleSite.sah,5,$Email,$Passwd
+navigateToMoreGoogleApps,C:\Users\ntumy\sahi_pro\userdata\scripts\testGoogleSite.sah,11

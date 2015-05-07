@@ -1,0 +1,9 @@
+_navigateTo("/demo/focusTest.htm");
+_focus(_textbox("t2"));
+_assertEqual("focused", _textbox("t1").value);
+_removeFocus(_textbox("t2"));
+_assertEqual("not focused", _textbox("t1").value);
+_focus(_textbox("t2"));
+_assertEqual("focused", _textbox("t1").value);
+_blur(_textbox("t2"));
+_assertEqual("not focused", _textbox("t1").value);

@@ -1,0 +1,6 @@
+_navigateTo("flex/mx/PopupTest41.html");
+_click(_f("sampleId1").button("Show Popup"));
+_assertExists(_f("sampleId1").uitextfield("Showing Popup1"));
+_click(_f("sampleId1").button("OK"));
+_assertExists(_f("sampleId1").uitextfield("Showing Popup2"));
+_click(_f("sampleId1").button("OK"));

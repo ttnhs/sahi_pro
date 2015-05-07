@@ -1,0 +1,9 @@
+_include("file_exists.sah");
+_navigateTo("/demo/training");
+_setValue(_textbox("user"), "test");
+_focusWindow();
+_takeScreenShot();	
+_setValue(_password("password"), "secret");
+_takeScreenShot("D:\\dev\\capture.jpg", false, {format:'jpg', resizePercentage:75});
+var $exists = fileExists("D:\\dev\\capture.jpg");
+_assert($exists);

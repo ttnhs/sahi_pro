@@ -1,0 +1,5 @@
+onScriptError,C:\Users\ntumy\sahi_pro\userdata\scripts\global_include.sah,1,$e
+onScriptFailure,C:\Users\ntumy\sahi_pro\userdata\scripts\global_include.sah,4,$e
+onScriptErrorDefault,C:\Users\ntumy\sahi_pro\userdata\scripts\global_include.sah,9,$e
+onScriptFailureDefault,C:\Users\ntumy\sahi_pro\userdata\scripts\global_include.sah,25,$e
+dumpWindowInfo,C:\Users\ntumy\sahi_pro\userdata\scripts\global_include.sah,40

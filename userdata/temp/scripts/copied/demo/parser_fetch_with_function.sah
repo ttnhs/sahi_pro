@@ -1,0 +1,15 @@
+var $AdaptiveCharacteristics = {
+	$deviceWidth : _fetch(window.screen.width),
+	$documentWidth : _fetch(document.body.clientWidth),
+
+	log : function() {
+		var $isDevGreater = this.$deviceWidth > 200;
+		var $isDocGreater = this.$documentWidth > 200;
+		_log("Device Width = " + this.$deviceWidth, "info");
+		_log("Document Width = " + this.$documentWidth, "info");
+		_assertTrue($isDevGreater);
+		_assertTrue($isDocGreater);
+	}
+};
+
+$AdaptiveCharacteristics.log();

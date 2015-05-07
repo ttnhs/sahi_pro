@@ -1,0 +1,17 @@
+<browser>
+var browserObj = {
+  "name":"John Johnson",
+  "street":"Oslo West 16", 
+  "age":33,
+  "phone":"555 1234567"};
+</browser>
+
+var $libObj = {
+  "name":"John Johnson",
+  "street":"Oslo West 16", 
+  "age":33,
+  "phone":"555 1234567"};
+
+var $jsonString = _toJSON($libObj);
+_assertEqual("{\"name\":\"John Johnson\",\"street\":\"Oslo West 16\",\"age\":33,\"phone\":\"555 1234567\"}",$jsonString);
+_assertEqual("{\"name\":\"John Johnson\",\"street\":\"Oslo West 16\",\"age\":33,\"phone\":\"555 1234567\"}",_toJSON(browserObj));

@@ -1,0 +1,3 @@
+myFn2,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\collectAttributes.sah,14,el
+testCollectWorksWithoutRel,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\collectAttributes.sah,32
+testCollectWorksForAll,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\collectAttributes.sah,36

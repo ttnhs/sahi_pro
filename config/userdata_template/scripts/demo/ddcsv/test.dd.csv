@@ -1,0 +1,12 @@
+#script,url,tags,username,password
+login.sah,http://sahipro.com/demo/training/login.htm ,"user,high",test,secret
+invalidLogin.sah,http://sahipro.com/demo/training/login.htm ,"user,medium",test,s1234
+invalidLogin.sah,http://sahipro.com/demo/training/login.htm ,"user,medium",aa,dd
+
+#script,,,,
+scriptWithoutTags.sah,,,,
+
+#script,tags,empid,,
+ddcsvInsideddcsv.dd.csv,"admin,high",1000,,
+ddcsv.dd.csv,user,2000,,
+suiteInsideddcsv.suite,"admin,high",3000,,

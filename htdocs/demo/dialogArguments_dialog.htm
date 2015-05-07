@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<SCRIPT>
+function fnLaunch()
+{
+    var aForm;
+    aForm = oForm.elements;
+    var myObject = new Object();
+    myObject.firstName = aForm.oFirstName.value;
+    myObject.lastName = aForm.oLastName.value;
+	// The object "myObject" is sent to the modal window.
+    window.showModalDialog("dialogArguments_dialog.htm", myObject, "dialogHeight:300px; dialogLeft:200px;"); 
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<BUTTON onclick="fnLaunch();" >Launch The Dialog</BUTTON>
+<FORM ID= "oForm">
+First Name:
+<INPUT TYPE="text" NAME="oFirstName" VALUE="Jane">
+<BR>
+Last Name:
+<INPUT TYPE="text" NAME="oLastName" VALUE="Smith">
+</FORM>
+</BODY>
+</HTML>

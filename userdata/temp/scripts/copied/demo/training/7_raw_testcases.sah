@@ -1,0 +1,22 @@
+_navigateTo("/demo/training/");
+
+var $t = _testcase("TC_1", "Login");
+$t.start();
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+$t.end();
+
+var $t2 = _testcase("TC_2", "Add books").start(); // can be in one line also
+_setValue(_textbox("q"), "2");
+_setValue(_textbox("q[1]"), "1");
+_setValue(_textbox("q[2]"), "1");
+_click(_button("Add"));
+$t2.end();
+
+var $t3 = _testcase("TC_8", "Verify total");
+$t3.start();
+_assertExists(_textbox("total"));
+_assert(_isVisible(_textbox("total")));
+_assertEqual("1150", _textbox("total").value);
+$t3.end();

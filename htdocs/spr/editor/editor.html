@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Editor</title>
+  <link rel="shortcut icon" href="../favicon.ico" type="image/png"/>
+  <link rel="stylesheet" type="text/css" href="../ext/easyui/themes/gray/easyui.css"/>
+  <link rel="stylesheet" type="text/css" href="../ext/easyui/themes/icon.css"/>
+  <script type="text/javascript" src="../ext/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="../ext/easyui/jquery.easyui.min.js"></script>
+  <script type="text/javascript" src="/_s_/spr/util.js"></script>
+  <script type="text/javascript" src="editor.js"></script>
+  <script type="text/javascript" src="easyui.override.js"></script>
+  <script type="text/javascript" src="editor_user_extensions.js"></script>
+ 
+  <script src="../ext/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../ext/codemirror/lib/codemirror.css"/>
+  <script src="../ext/codemirror/mode/xml/xml.js"></script>
+  <script src="../ext/codemirror/lib/util/simple-hint.js"></script>
+  <link rel="stylesheet" href="../ext/codemirror/lib/util/simple-hint.css"/>
+  <script src="../ext/codemirror/lib/util/foldcode.js"></script>
+  <script src="../ext/codemirror/lib/util/search.js"></script>
+  <script src="../ext/codemirror/lib/util/dialog.js"></script>
+  <link rel="stylesheet" href="../ext/codemirror/lib/util/dialog.css"/>
+  <script src="../ext/codemirror/lib/util/searchcursor.js"></script>
+  <link rel="stylesheet" href="../ext/codemirror/theme/eclipse.css"/>
+  <link rel="stylesheet" href="../ext/codemirror/theme/neat.css"/>
+  <link rel="stylesheet" href="../ext/jquery/jquery-ui.css" />
+  <script type="text/javascript" src="../codemirror_wrapper.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="editor.css" />
+  <script>
+  window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
+	return true;
+  }
+  
+  </script>
+</head>
+<body onresize="maskresize()">
+<div id="boxes">  
+  <script type="text/javascript" src="/_s_/spr/exception.js"></script>
+  <div id="loadDialog" class="filedir_dialog easyui-window" title="&nbsp;Load Existing File" data-options="maximizable:true,modal:true,collapsible:false,minimizable:false,closed:true,iconCls:'icon-open_file'">
+    <form name='f1' method="post" onsubmit="openNewTabFromOpen(); return false;">
+      <table>
+         <tr>
+          <td>Script Directory: </td>
+          <td>
+            <input id="load_s_dir" size="40" panelHeight='auto' class="easyui-combobox" data-options="valueField:'id',textField:'text',data:_scriptDirList,onSelect:loadDirScripts">
+          </td>
+         </tr>
+         <tr>
+          <td bgcolor="">File:</td>
+          <td>
+            <input id="load_f_dir" size="40" class="easyui-combobox" data-options="valueField:'id',textField:'text',data:_scriptsList">
+          </td> 
+         </tr>
+         <tr>
+           <td colspan='2' style="padding-top:10px;">
+             <input name="Load" type="submit" value="Load" />
+             <input name="closeLoad" id="closeLoad" type="button" value="Close" onclick="closeWindow('loadDialog'); return false;"/>
+           </td>
+          </tr>
+        </table>
+      </form>
+  </div>
+  <div id="saveAsDialog" class="filedir_dialog easyui-window" title="&nbsp;Save the File" data-options="maximizable:true,modal:true,collapsible:false,minimizable:false,closed:true,iconCls:'icon-saveAs_file'">
+    <form name='f2' method="post" onsubmit="saveAsNewTab(); return false;">
+      <table>
+         <tr>
+          <td>Script Directory: </td>
+          <td>
+           <input id="saveas_s_dir" size="40" panelHeight='auto' class="easyui-combobox" data-options="valueField:'id',textField:'text',data:_scriptDirList">
+          </td>
+         </tr>
+         <tr>
+          <td bgcolor="">File:</td>
+          <td>
+            <input class="txtBorder" type="text" id="filebox2" name="filebox" style="width:295px" autocomplete="off">
+          </td> 
+         </tr>
+         <tr>
+           <td colspan='2' style="padding-top:10px;">
+             <input name="Save" type="submit" value="Save" />
+             <input name="closeLoad" id="closeLoad" type="button" value="Close" onclick="closeWindow('saveAsDialog'); return false;"/>
+           </td>
+          </tr>
+        </table>
+     </form>
+  </div>
+  <div id="newDialog" style="width:450px;height:170px;padding:10px;" class="easyui-window" title="&nbsp;New File" data-options="maximizable:true,modal:true,collapsible:false,minimizable:false,closed:true,iconCls:'icon-new_file'">
+    <form name='f3' method="post" onsubmit="createNewFile2(); return false;">
+      <table>
+         <tr>
+          <td bgcolor="">Parent Directory:</td>
+          <td>
+            <input class="txtBorder" type="text" id="parentDir" style="width:300px" autocomplete="off">
+          </td> 
+         </tr>
+         <tr>
+          <td bgcolor="">File Name:</td>
+          <td>
+            <input class="txtBorder" type="text" id="filebox3" name="filebox3" style="width:300px" autocomplete="off">
+          </td> 
+         </tr>
+         <tr>
+           <td colspan='2' style="padding-top:15px;">
+             <input name="Finish" type="submit" value="Finish" />
+             <input name="closeNew" id="closeNew" type="button" value="Close" onclick="closeWindow('newDialog'); return false;"/>
+           </td>
+          </tr>
+        </table>
+      </form>
+  </div>
+  <div id="main">
+    <div id='titlebox' style='display:none;'></div>
+    <div style="position:fixed;top:0px;background-color:#eee;z-index:10;left: 0;width:100%;">&nbsp;
+        <a title="New (Alt+N)" onclick="createNewFile()" class="easyui-splitbutton" data-options="menu:'#mm3',plain:true,iconCls:'icon-new_file'">New</a>
+        <a onclick="openLoadModal()" title="Open (Alt+O)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-open_file'">Open</a>
+        <a title="Save (Ctrl+S)" id="saveId" onclick="saveSelected()" class="easyui-splitbutton" data-options="menu:'#mm4',plain:true,iconCls:'icon-save_file'">Save</a>
+        <a id="createSuite" class="easyui-splitbutton" data-options="menu:'#mm7',plain:true,iconCls:'icon-new_suite'" onclick="addSelectedSuiteNewTab()">Create Suite</a>
+        <a onclick="playbackWindow()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-gear'">Playback</a>
+        <a onclick="StopAll()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-stop'">Stop All</a>
+        <img title="About" id="infoId" onclick="openWindow('w')" style="float: right; margin-right:10px;margin-top:5px;" src="images/sahifavicon.png"/>
+        <a href="/_s_/dyn/pro/DBReports" target="_blank" title="Logs" style="margin-top:3px;" class="right-link">Logs</a>
+        <a href="/_s_/docs/introduction/index.html" target="_blank" title="Docs" style="margin-top:3px;" class="right-link">Docs</a>
+    </div>
+    <div id='mainContainer' style="margin-top:18px;left:0;position:fixed;">  
+    <script>
+     $('mainContainer').style.height = (winHeight() - 28) + 'px';
+     $('mainContainer').style.width =  (winWidth() ) + 'px';
+    </script>   
+	<div id="container" data-options="fit:true" class="easyui-layout">
+		<div region="west" split="true" title="Navigator" 
+           style="width:250px;" data-options="tools:'#reload',onExpand:viewSetting,onCollapse:onWestPanelCollapse,collapsed:westPanelCollapsedStateCookie()">
+            <div style="margin:2px">
+            <input title="Filter" id="filter_id" panelHeight='auto' style="width:90%" class="easyui-combobox" data-options="onSelect:onFilterSelect,valueField:'id',textField:'text',data:filterData"/>
+            </div>
+		    <ul id="tt" class="easyui-tree">
+	        </ul>
+		</div>
+		<div id="content" region="center" style="padding:0px;">
+          <div id="tt2" class="easyui-tabs" data-options="onSelect:onTabSelect,onClose:onCloseTab,onAdd:writeHistoryData2,onUpdate:writeHistoryData2,tools:'#tab-tools'" fit="true" border="false" plain="true">
+          </div>
+		</div>
+	</div>
+  </div>
+   <div id="reload">
+        <a class="icon-reload" onclick="reloadNavigator()"></a>
+        <a id='linkWithE' class="icon-link" onclick="linkWithEditor(this)"></a>
+    </div>
+  
+    <div id="mm" class="easyui-menu" style="width:130px;">
+      <div onclick="runs()" data-options="iconCls:'icon-play_file'">Run</div>
+      <div onclick="opens()" data-options="iconCls:'icon-open_file'">Open</div>
+      <div onclick="logs()" data-options="iconCls:'icon-open_logs'">Logs</div>
+      <div onclick="docs()" data-options="iconCls:'icon-open_doc'">Docs</div>
+      <div title="Rename (F2)" onclick="renameNode()" data-options="iconCls:'icon-rename'">Rename</div>
+      <div title="Delete (Del)" onclick="deleteNode()" data-options="iconCls:'icon-delete'">Delete</div>
+    </div>
+    
+    <div id="mm2" class="easyui-menu" style="width:130px;">
+      <div onclick="runs()" data-options="iconCls:'icon-play_file'">Run</div>
+      <div onclick="opens()" data-options="iconCls:'icon-open_file'">Open</div>
+      <div onclick="logs()" data-options="iconCls:'icon-open_logs'">Logs</div>
+      <div disabled=true data-options="iconCls:'icon-open_doc'">Docs</div>
+      <div title="Rename (F2)" onclick="renameNode()" data-options="iconCls:'icon-rename'">Rename</div>
+      <div title="Delete (Del)" onclick="deleteNode()" data-options="iconCls:'icon-delete'">Delete</div>
+    </div>
+    
+    <div id="mm3" style="width:150px;">
+        <div title="New Script(Alt+N)" onclick="createNewFile()" data-options="iconCls:'icon-script'">Script</div>
+        <div onclick="createNewFile('scsv')" data-options="iconCls:'icon-excel'">Scenario</div>
+    </div>
+    
+    <div id="mm4" style="width:150px;">
+        <div id="saveId2" onclick="saveSelected()" title="Save (Ctrl+S)" data-options="iconCls:'icon-save_file'">Save</div>
+        <div id="saveAsId" onclick="openSaveAsModal()" title="Save As (Alt + F2)" data-options="iconCls:'icon-saveAs_file'">Save As</div>
+        <div id="saveAllId" title="Save (Ctrl+Shift+S)" onclick="saveAll('scsv')" data-options="iconCls:'icon-saveAll_file'">Save All</div>
+    </div>
+    
+    <div id="mm5" class="easyui-menu" style="width:120px;">
+      <div onclick="openNewFolderModal()" data-options="iconCls:'icon-new_file'">New</div>
+      <div title="Rename (F2)" onclick="renameNode()" data-options="iconCls:'icon-rename'">Rename</div>
+      <div title="Delete (Del)" onclick="deleteNode()" data-options="iconCls:'icon-delete'">Delete</div>
+    </div>
+    
+    <div id="mm6" style="width:150px;">
+        <div id="saveId3" onclick="runSelectedFilesSuite()" data-options="iconCls:'icon-play_file'">Run</div>
+        <div onclick="openScheduleWindow('w2')" data-options="iconCls:'icon-schedule'">Schedule</div>
+    </div>
+    
+    <div id="mm7" style="width:150px;">
+        <div onclick="addSelectedSuiteNewTab()" data-options="iconCls:'icon-new_suite'">Suite</div>
+        <div onclick="addSelectedDDCSVNewTab()" data-options="iconCls:'icon-ddcsv'">Data Driven Suite</div>
+    </div>
+    
+    <div id="w" class="easyui-window" title="&nbsp;About Sahi Pro" data-options="modal:true,collapsible:false,minimizable:false,maximizable:false,resizable:false,closed:true,iconCls:'icon-favicon'" style="width:500px;height:200px;padding:10px;">
+         <div class="easyui-layout" data-options="fit:true">
+            <div data-options="region:'east',border:false" style="width:150px">
+             <u style="margin-top:28px;float:left;font-weight:bold" id="sahiProVersion"></u><br>
+             <a style="margin-top:58px;float:left;" target="_blank" href="http://sahipro.com/downloads-archive/">Download Archive</a>
+            </div>
+            <div data-options="region:'center',border:false" style="padding:10px;">
+                <img height="54" width="270" src="images/sahi-logo.png"/>
+                <div class="copyright">
+                    © 2014 Sahi. All rights reserved. 
+                </div>
+            </div>
+        </div>
+        <script>
+          $('sahiProVersion').innerHTML = "Sahi Pro " + sahiSendToServer("/_s_/dyn/pro/EditorUI_getVersion");;
+        </script>
+    </div>
+        
+    <div id="w2" class="easyui-window" title="&nbsp;Schedule" data-options="modal:true,collapsible:false,minimizable:false,closed:true,iconCls:'icon-schedule'" style="width:345px;height:230px;padding:10px;">
+            <table>
+              <tr>
+                <td>Script Directory</td>
+                <td><input class="txtBorder" style="background-color:#EBEBE4;" readonly type="text" id="s_dir"></td>
+              </tr>
+              <tr>
+                <td>File</td>
+                <td><input class="txtBorder" style="background-color:#EBEBE4;" readonly type="text" id="s_file"></td>
+              </tr>
+              <tr>
+                <td>Date and Time</td>
+                <td>
+                  <input id="datetimebox" class="easyui-datetimebox" data-options="required:true,showSeconds:false" style="width:200px">
+                </td>
+              </tr>
+              <tr>
+                <td>Description</td>
+                <td><input type="text" class="txtBorder" id="description"></td>
+              </tr>
+            </table>
+          <a id="schedulePlayback" style="margin-top:5px" onclick="schedulePlayback()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">Schedule</a>
+    </div>
+    
+    <div id="w3" class="easyui-window" title="&nbsp;Ant Target" data-options="maximizable:false,modal:true,collapsible:false,minimizable:false,closed:true,iconCls:'icon-ant'">
+            <textarea id="antTargetText"></textarea>
+            <br/><a id="antTarget" style="margin:5px" onclick="closeWindow('w3');" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">Ok</a>
+            <span>
+              <input type="checkbox" onchange="changeAntTarget()" title="Show Retry Target" class="largerCheckbox" id="retryTarget">
+              <label for="retryTarget">Show Retry Target</label>
+            </span>
+            <a style="margin:10px" id="antRunDoc" href="/_s_/docs/using-sahi/playback-desktop.html#Playback via ANT" target="_blank" title="Documentation" class="right-link">
+              <img src="images/document.png" border=null/>
+            </a>
+    </div>
+    
+    <div id="w4" class="easyui-window" style="width:630px;padding:10px;" title="&nbsp;Playback Properties" data-options="shadow:false,onClose:function(){paramEditorDisplayNone();nodesEditorDisplayNone();reportEditorDisplayNone();return false;},modal:true,collapsible:false,minimizable:false,maximizable:false,closed:true,iconCls:'icon-gear',top:30">
+            <div style="margin:5px 0px 0px 10px;">
+            <table class="playback-prop" cellspacing="0px">
+              <tr>
+                <td class="playback-prop_col1">Script Directory:</td>
+                <td><input style="width:403px;background-color:#EBEBE4;" class="txtBorder" readonly type="text" id="s_dir_w4"></td>
+              </tr>
+              <tr>
+                <td class="playback-prop_col1">Script File:</td>
+                <td><input style="width:403px;background-color:#EBEBE4;" class="txtBorder" readonly type="text" id="s_file_w4"></td>
+              </tr>
+              <tr>
+                <td class="playback-prop_col1">Browser:</td>
+                <td><input id="browserTxt" style="width:410px" required="required" panelHeight='auto' class="easyui-combobox" data-options="disabled:false,editable:false,multiple:true,valueField:'id',textField:'text',data:browserData"></td> 
+              </tr>
+              <tr>
+                <td class="playback-prop_col1">Start URL:</td>
+                <td><input id="startURLTxt" style="width:410px" required="required" class="easyui-combobox" data-options="valueField:'id',textField:'text',data:urlData"></td> 
+              </tr>
+              <tr id="tagsTable">
+                <td class="playback-prop_col1">Tags:</td>
+                <td><input id="tagsTextId" class="easyui-textbox" style="width:410px;"></td>  
+              </tr>    
+              <tr><td colspan="2"><hr/></td></tr>
+              <tr><td colspan="2">
+             	<table id="playbackModeTable">
+             	<tr><td><label><input name="playbackMode" type="radio" value="parallel" onclick="onPlaybackModeChange()" checked="true"> Run in parallel</label> <span  class="easyui-tooltip" title="Threads are used for parallel playback on single machine runs. In Distributed run, capacity from browser_types.xml determines how many browsers are run in parallel on each participating machine." 
+                	id="threadsSpan" style="margin-left:20px;">Threads: <input id="threads" value="5" class="easyui-numberspinner" size="10" required="required" data-options="min:1"/>
+                	</span></td></tr>
+             	<tr><td><label><input name="playbackMode" type="radio" value="singlesession" onclick="onPlaybackModeChange()"> Run sequentially in single browser session</label></td></tr>
+             	<tr><td>
+				<label><input name="playbackMode" id="playbackMode" type="radio" value="distributed" onclick="onPlaybackModeChange()"> Run distributed (multiple machines)</label>     
+				<table id="playbackDistribute">
+				<tr id="distributeOptions">
+                <td class="playback-prop_col1">Distribution nodes:</td>
+                <td>
+	                  <input id="extraNodes" type="hidden"/>
+	                  <input id="usenodes" onClick="editor_tooltip('nodesEditor')" title="Use available nodes" type="text" readonly/>
+                      <a style="display:inline-block;margin:0px 0px 2px 0px;vertical-align:bottom;cursor:pointer;" id="nodesEditor" onclick="editor_tooltip(this.id)" class="easyui-tooltip" ><img style="border:0;vertical-align:middle" src="images/edit.ico"/></a>
+	                  <script>
+	                    if(!getN_info() || getN_info() == ""){
+	                      $('extraNodes').value = "localhost:9999";
+	                      $('usenodes').value = "localhost:9999";
+	                    }
+	                    else{
+	                      $('extraNodes').value = getN_info();
+	                      setReadOnlyNodesInfo();
+	                    }
+	                  </script>                  
+                  <div style="display:none">   
+                    <div id="nodes_editor">
+                      <div id="nodesedit">
+                          <b>Configure Nodes</b>
+                          <table id="nodesedittable" style="border-collapse:collapse;margin:10px 0px;">
+                            <tbody id="nodesedittbody">
+                            <tr id="nodes_header">
+                              <th>Name</th>
+                              <th>Port</th>
+                              <th>Use</th>
+                            </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                    </div>
+                  </div>                   
+                </td> 
+              </tr>
+              <tr id="diffMasterDiv" style="display:none">
+                <td class="playback-prop_col1">Use Different Master:</td>
+                <td>
+                  <input type="checkbox" class="largerCheckbox" id="usedifferentmaster" onchange="onUseDiffMasterChanged(this)"/>
+                  <span id="diffMasterTxtDiv" style="display:none;">
+                    <input id="diffmasterhost" class="easyui-textbox" style="width:230px;" required="required"/>
+                    :
+                    <input id="diffmasterport" class="easyui-textbox" style="width:74px;" required="required"/>
+                  </span>
+                </td>
+              </tr>   				
+				</table>        	
+             	</td></tr>
+             	</table>
+              </td></tr>
+              <tr><td colspan="2"><hr/></td></tr>
+             </table>
+             
+             <a id="advancedSettings" href="#" onclick="advancedSettings();return false">Show advanced settings</a>
+             <table id="advancedSettingsTable" class="playback-prop" style="height:170px;width:97%;display:none;" cellspacing="0px">
+              <tr><td colspan="2"><hr/></td></tr>
+              <tr>
+                <td class="playback-prop_col1">Offline Reports:</td>
+                <td><input style="width:383px;background-color:#EBEBE4;" class="txtBorder" id="reportsInfo" type="text" readonly><a id="reportsEditor" onclick="editor_tooltip(this.id)" class="easyui-tooltip" ><img style="margin-left:3px;margin-top:4px;border:0;vertical-align:middle;cursor:pointer;" src="images/edit.ico"/></a></td>
+              </tr>
+              <tr><td colspan="2"><hr/></td></tr>           
+              <tr>
+                <td>
+                  Send Email Reports:
+                </td>
+                <td>
+                  <input style="margin-right:5px" type="checkbox" class="largerCheckbox" id="sendEmail" onchange="showSendEmailProperties(this.checked)"/> 
+                 </td>
+                 </tr>
+                 <tr id="sendEmailOptions" style="display:none"><td>
+                    Send on </td><td>
+                    <input id="e_trigger" panelHeight='auto' class="easyui-combobox" name="trigger" style="width:410px" data-options="disabled:false,multiple:true,valueField:'id',textField:'text',data:emailTriggerData"/>
+                </td>
+              </tr>
+              <tr id="sendEmailFile" style="display:none">
+                <td class="playback-prop_col1">Email Properties File:</td>
+                <td>
+                  <input id="email_prop" class="easyui-textbox" style="width:386px;" data-options="disabled:true">
+                  <a href="/_s_/dyn/ConfigureUI?id=temail_properties" target="_blank"><img style="margin-left:3px;margin-top:4px;border:0;vertical-align:middle;cursor:pointer;" src="images/edit.ico"/></a>
+                </td> 
+              </tr>              
+              <tr><td colspan="2"><hr/></td></tr>
+              <tr>
+                <td class="playback-prop_col1">Extra Parameters:</td>
+                <td><input style="width:383px;" class="txtBorder" id="extraParams" type="text"><a id="paramEditor" onclick="editor_tooltip(this.id)" class="easyui-tooltip" ><img style="margin-left:3px;margin-top:4px;border:0;vertical-align:middle;cursor:pointer;" src="images/edit.ico"/></a></td> 
+              </tr>
+              <tr>
+                <td class="playback-prop_col1">UserDefinedId:</td>
+                <td><input id="userDefinedIdTextId" class="easyui-textbox" style="width:410px;"></td>  
+              </tr>
+            </table>
+       <div style="display:none">   
+       <div id="p_editor">
+        <div id="paramedit">
+            <b>Extra Param Editor</b>
+            <table id="paramedittable" style="border-collapse:collapse;margin:10px 0px;">
+              <tbody id="paramedittbody">
+              <tr id="header">
+                <th>Name</th>
+                <th>Value</th>
+                <th>Mask</th>
+              </tr>
+              </tbody>
+            </table>
+        </div></div></div>
+       <div style="display:none">   
+       <div id="r_editor">
+        <div id="reportsedit">
+            <b>Logs Info Editor</b>
+            <table id="reportsedittable" style="border-collapse:collapse;margin:10px 0px;">
+              <tbody id="reportsedittbody">
+              <tr id="reports_header">
+                <th>Type</th>
+                <th>Location</th>
+                <th>Use</th>
+              </tr>
+              </tbody>
+            </table>
+        </div></div></div>
+		<div style="margin:3px 0px 0px 0px;">
+        
+            <a style="margin-top:10px" onclick="resetPlaybackProp()" class="easyui-linkbutton" data-options="iconCls:'icon-reset'">Reset</a>&nbsp;
+            <!--
+            <a style="margin-top:10px" class="easyui-linkbutton" data-options="iconCls:'icon-open_logs'" onclick="addDbLogTab()">View Logs</a>
+            -->
+            <a style="margin-top:10px" class="easyui-linkbutton" data-options="iconCls:'icon-ant'" onclick="openAntTargetWindow()">Create Ant Target</a>
+            <a style="margin:10px 35px 0px 0px;float:right;" id="runSelected" onclick="runSelectedFilesSuite();" class="easyui-splitbutton" data-options="menu:'#mm6',plain:true,iconCls:'icon-play_file'">Run</a>&nbsp;
+          </div>
+          </div>
+    </div>
+    
+    <div id="tab-tools" style="height:28px !important;padding:0px">
+        <a id="view" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-window_full'" onclick="fullView()"></a>
+        <a title='Click to close selected Tab.' style="margin-right: 3px;" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove_tab'" onclick="removePanel()"></a>
+    </div>
+</div>
+</div>
+<div style="clear:both;"></div>
+</body>
+</html>

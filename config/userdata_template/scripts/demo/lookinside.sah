@@ -1,0 +1,14 @@
+function run(){
+	_startLookInside(_frame(1));
+	_assertExists(_heading2("Sahi Tests"));
+	_assertNotExists(_heading2("Table Test"));
+	_stopLookInside();
+	
+	_startLookInside(_frame(0));
+	_assertNotExists(_heading2("Sahi Tests"));
+	_assertExists(_heading2("Table Test"));
+    _stopLookInside();
+}
+_click(_link("Frames Test"));
+_click(_link("Table Test"));
+run();

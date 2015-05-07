@@ -1,0 +1,15 @@
+
+http://sahi.co.in/demo/training
+http://google.com
+https://www.google.com
+https://www.google.com/
+http://sahitest.com/demo/training/login.htm
+http://qa.moodle.net/
+q
+http://sahi.example.com
+http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox
+http://demo.moodle.net
+http://qa.moodle.net
+http://qa
+http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox#
+http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=chrome#

@@ -1,0 +1,3 @@
+testSetOnPopup,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\set_popup.sah,9
+testSetUsingSelectWindow,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\set_popup.sah,16
+testConditionOnPopup,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\set_popup.sah,25

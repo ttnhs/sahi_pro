@@ -1,0 +1,5 @@
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "badpassword");
+_click(_submit("Login"));
+_assert(_isVisible(_div("errorMessage")));
+_assertEqual("Invalid username or password", _getText(_div("errorMessage")));

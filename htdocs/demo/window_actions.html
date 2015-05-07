@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Window Action Test</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<style>
+#wrapper {
+	margin: 0 auto;
+}
+
+html {
+	border-top: 3px solid green;
+}
+</style>
+<script>
+	window.onfocus = function() {
+		document.getElementById('focus').value = "focused";
+	}
+	window.onblur = function() {
+
+		document.getElementById('focus').value = "not focused";
+	};
+	function changeText() {
+		document.getElementById('refresh').value = "changed";
+	}
+	function isMax() {
+		if(screen.availWidth == window.innerWidth){
+		if ((screen.availHeight - window.innerHeight) < 100) { // Maximized
+			//alert("s");
+			document.getElementById('maximize').value = "maximized";
+		} else { // Other size
+			// alert(window.innerHeight - screen.availHeight);
+			document.getElementById('maximize').value = "not maximized";
+		}
+		}else{
+			
+			document.getElementById('maximize').value = "not maximized";
+		}
+	}
+	window.onbeforeunload = function() {
+		isMax();
+
+	}
+	window.onresize = function() {
+		isMax();
+
+	}
+	window.onload = function() {
+		isMax();
+		document.getElementById('focus').value = "focused";
+		document.getElementById('refresh').value = "original";
+
+	}
+</script>
+</head>
+<body>
+
+	<div id="wrapper" class="well">
+		<div
+			style="border: 1px solid #ccc; padding: 30px; margin-bottom: 30px;">
+
+			<label>Is window in focus?</label> <input type="text" name="q"
+				id="focus" /><br />
+		</div>
+		<div
+			style="border: 1px solid #ccc; padding: 30px; margin-bottom: 30px;">
+			<label>Is window maximized?</label> <input type="text" name="q"
+				id="maximize" /><br />
+		</div>
+		<div style="border: 1px solid #ccc; padding: 30px;">
+			<label>Click button to change text </label> <input type="text"
+				name="q" id="refresh" /><br /> <input type="button"
+				onclick="changeText()" value="Change" class="btn btn-primary" /><br />
+		</div>
+
+	</div>
+
+
+</body>
+</html>

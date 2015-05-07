@@ -1,0 +1,1527 @@
+<html xmlns:util="in.co.sahi.util.XSLUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+		
+		var openedElement = new Array();
+		var cookieHashMap = {};
+		function hideImage(i){i.style.display='none';}
+        function attachFn(d){ d.getElementsByTagName('DIV')[0].onclick = function () {showHideDiv(d);}	} 
+        function getInnerDiv(d){var els = d.getElementsByTagName('DIV'); for (var i=0; i<els.length;i++) {if (els[i].className == 'GROUP_INNER') return els[i];}}
+        function showHideDiv(groupDiv){
+        	var stepsDiv = getInnerDiv(groupDiv);
+        	var els = document.getElementsByTagName('DIV');
+        	for(var i = 0; i < els.length; i++){
+        		if (els[i] == stepsDiv){
+        			if(stepsDiv.style.display == 'block'){
+        				removeFromCookieArray(i);
+        				stepsDiv.style.display = 'none';
+        				changeIconToPlus(groupDiv);
+        				break;
+        			}else{
+        				stepsDiv.style.display = 'block';
+        				addToCookieArray(i);
+        				changeIconToMinus(groupDiv);
+        				break;
+        			}
+        		}	
+        	}
+        }; 
+        
+        function changeIconToMinus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[+]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        }
+        
+        function changeIconToPlus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[-]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        }
+        
+        function getGroupLabelDiv(groupDiv){
+        	var div = groupDiv.getElementsByTagName("DIV");
+        	for(var i=0;i<div.length;i++){
+        		if(div[i].className.indexOf("GROUP_LABEL") == 0){
+        			return div[i];
+        		}
+        	}
+        }
+        
+        function showHideNetworkActivity(el, scriptId, stepId){
+        	if(document.getElementById('harInfo' + stepId).innerHTML == ""){
+        		var html = "<iframe onload=\"setAutoHeight('harIFrame" + stepId +"')\" id=\"harIFrame" + stepId +"\" src=\"/_s_/dyn/pro/HARViewer_viewHARLogs?scriptReportId=" + scriptId + "&stepId=" + stepId + "\" style=\"width:100%;\"  frameborder=\"0\" />";
+        		document.getElementById('harInfo' + stepId).innerHTML = html;
+        	}
+        	var plus = "Show Network Activity";
+        	var minus = "Hide Network Activity";
+        	if(el.innerHTML == plus){
+        		el.innerHTML = minus;
+        		document.getElementById('harInfo' + stepId).style.display = "block";
+        	} else {
+        		el.innerHTML = plus;
+        		document.getElementById('harInfo' + stepId).style.display = "none";
+        	}
+        }
+        
+        function expandAll(isExcel){
+	        if(isExcel == "true"){
+	        	ignoregroup_showHideAll(true);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "block";
+	        			addToCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function collapseAll(isExcel){
+        	if(isExcel == "true"){
+	        	ignoregroup_showHideAll(false);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "none";
+	        			removeFromCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[-]", "[+]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function setNetworkActivityLinks(){
+			var xmlhttp;
+			if (window.XMLHttpRequest){ // code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			} else {// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  			}
+  			xmlhttp.onreadystatechange = function() {
+				if (this.readyState==4 && this.status==200) {
+			    	var steps = xmlhttp.responseText;
+			    	steps = steps.substring(1,steps.lastIndexOf("]"));
+			    	steps = steps.split(", ");
+			    	for(i = 0; i < steps.length; i++){
+			    		try{
+			    			document.getElementById('networkActivityLink' + steps[i]).style.display = 'block';
+			    		}catch(err){
+			    		}
+			    	}
+			    }
+			}
+  			xmlhttp.open("GET","/_s_/dyn/pro/HARViewer_getStepsWithNetworkActivity?scriptReportId=" + scriptReportID ,true);
+			xmlhttp.send();
+		}
+        function setAutoHeight(id){
+        	return;
+			var newheight;
+			if(document.getElementById(id)){
+				newheight=document.getElementById(id).contentWindow.document.body.scrollHeight;
+			}
+			document.getElementById(id).style.height= (newheight) + "px";
+		}
+		
+		
+        
+		function markStatus(d) {d.getElementsByTagName('DIV')[0].className += (d.innerHTML.indexOf('<!--SAHI_TESTCASE_FAIL_MARKER-->') == -1) ? ' SUCCESS' : ' FAILURE'};
+		function addToCookieArray(element){
+			openedElement.push(element)
+		}
+		function removeFromCookieArray(element){
+			removeByValue(openedElement,element)
+		}
+		function removeByValue(arr, val) {
+			for ( var i = 0; i < arr.length; i++) {
+				if (arr[i] == val) {
+					arr.splice(i, 1);
+					break;
+				}
+			}
+		}
+		function getUrlQueryString(name){
+		   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+		      return decodeURIComponent(name[1]);
+		}
+		function highlightUrl(url){
+			expandAll(false);
+			var scriptReportId = getUrlQueryString("id");
+			var stepId = getUrlQueryString("stepId");
+			var networkActivityLinkId = "networkActivityLink"+stepId;
+			showHideNetworkActivity(document.getElementById(networkActivityLinkId),scriptReportId,stepId);
+			
+			var iframe =document.getElementById("harInfo"+stepId).getElementsByTagName("iframe")[0];
+			iframe.onload = function() {
+ 				  var doc = iframe.contentDocument || iframe.contentWindow.document;
+			  var row = doc.getElementById(encodeURIComponent("netAct_"+url));	
+			  row.className = 'HIGHLIGHT';								
+			 	
+ 				};					
+			location.href = "#toScrollTo_" + stepId;
+		}
+		
+		function highlightStep(stepId){
+			var scriptReportId = getUrlQueryString("id");
+			var stepId = getUrlQueryString("stepId");
+			var el = document.getElementById("toScrollTo_" + stepId);
+			if (el) el.className = 'HIGHLIGHT';	
+			location.href = "#toScrollTo_" + stepId;
+		}
+		function onLoad(){
+	        var divs = document.getElementsByTagName('DIV'); 
+	        for (var i=0; i<divs.length; i++){
+	        	var d = divs[i]; 
+	        	if (d.className == 'GROUP') { attachFn(d); markStatus(d);} 
+	        }
+	        fixImagePaths();
+			var cookieValue = readCookie("OpenedElement");
+			if(cookieValue){
+				cookieHashMap = eval("("+cookieValue+")");
+				openedElement=cookieHashMap[scriptReportID];
+				if (!openedElement) openedElement = [];
+				delete cookieHashMap[scriptReportID];
+				var els = document.getElementsByTagName('DIV');
+				for(var i = 0; i < openedElement.length; i++){
+					els[openedElement[i]].style.display = 'block';
+					var iconDiv = els[openedElement[i]].parentNode.children[0];
+					if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+						iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+					}
+        		}
+			}
+			try {
+				setNetworkActivityLinks();
+			} catch (e) {}
+			showStackTraceMessages();
+
+			var url = getUrlQueryString("url");
+			if(url){
+				highlightUrl(url);
+			}  else {
+				var stepId = getUrlQueryString("stepId"); 
+				if(stepId!=undefined) highlightStep(stepId);
+			}
+		}
+		
+		function onUnload(){
+	
+			var count = 0;
+			var firstElement;
+			for(firstElement in cookieHashMap){
+				break;
+			}
+			for(var j in cookieHashMap){
+				count++;
+			}
+			if(count == 10){
+				delete cookieHashMap[firstElement];
+			}
+			cookieHashMap[scriptReportID] = openedElement;
+			var cookieValue = getJSON(cookieHashMap);
+			createCookie("OpenedElement", cookieValue, 1);
+		}
+		function getJSON(o) {
+			var s = "{";
+			for (var i in o) {
+				s += "'" + i + "':[" + o[i] + "],"
+			}
+			s += "}";
+			return s;
+		}
+		function createCookie(name,value,days)
+		{
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime()+(days*24*60*60*1000));
+				var expires = "; expires="+date.toGMTString();
+			}
+			else var expires = "";
+			document.cookie = name+"="+value+expires+"; path=/";
+		}
+		
+		function readCookie(name)
+		{
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0;i < ca.length;i++)
+			{
+				var c = ca[i];
+				c = c.replace(/[,][}]$/,'}');
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		}
+		function fixImagePaths(){
+			if (location.href.indexOf("_s_") != -1) return;
+			var imgs = document.getElementsByTagName('IMG'); 
+	        for (var i=0; i<imgs.length; i++){
+	        	var img = imgs[i]; 	        	
+ 				if (img.src.indexOf("Log_viewLogs/images") != -1) {
+ 					img.src = makeRelative(img.src);
+ 					if (img.parentNode.tagName.toLowerCase() == "a") {
+ 						img.parentNode.href = makeRelative(img.parentNode.href);
+ 					}
+ 				}
+	        }
+		}
+		function makeRelative(s){
+			var ix = s.indexOf("/images/"); 
+			if (ix != -1) {
+				s = s.substring(ix+1);
+			}
+			return s;
+		}
+		function showStackTraceMessages() { 
+			var els = document.getElementsByClassName("FAILURE_ST");
+			for (var i=0; i<els.length; i++) {
+				if (els[i].tagName == "DIV") {
+					try {
+						els[i].innerHTML = showStackTraceMessage(els[i].innerHTML);
+					} catch (e){}
+				}
+			}
+		}
+		function trim(s) {
+			return s.replace(/^\s*/, '').replace(/\s*$/, '')
+		} 
+		function showStackTraceMessage(message) {
+			var hasStackTrace = false;
+			message = message.replace("_STACKTRACE_", "\n");
+			var noparse = false;
+			if (message.indexOf("_NOPARSE_") != -1) {
+				noparse = true;
+				message = message.replace("_NOPARSE_", "");
+			}
+			var paths = message.split("\n");
+			var length = paths.length;
+			var s = "";
+			for (var i=0;i<length;i++) {
+				var path = trim(paths[i]);
+				if (path == "") continue;
+				var re = /^\s*at /;
+				if (path.match(re)) {
+					hasStackTrace = true;
+					var path = paths[i].replace(re, "").replace('/\s*$/', '').replace(/\\\\/g, "\\");
+					var fnName = path.substring(path.indexOf(" "), path.length);
+					path = path.substring(0, path.length - fnName.length);
+					var onClick = "/_s_/dyn/Log_highlight?href=" + path + (noparse ? "" : "&parsed=true") + "#selected";
+					var link = "at: <a style='text-decoration:underline' href=" + onClick + "> (" + path.replace(/&n=/g, ' ') + ")</a> <b>" + fnName + "</b>";
+					s += link;
+				} else {
+					s += path;
+				}
+				if (i != length-1) {
+					s += "</br>";
+				}
+			}
+			if (hasStackTrace) {
+				s = "<div style='background-color:#222;color:white'>" + s + "</div>";
+			}
+			return s;
+		}
+		function addImages(screenShots){
+			var images = screenShots.split(",");
+			var msg =  "<table class='imgcompare'><tr><td>Expected</td><td>Actual</td><td>Difference</td></tr><tr>" +
+						"<td class='imgcell'><img width='300px' src='/_s_/dyn/Log_viewLogs/images/" + images[0] + "' style='cursor:pointer' onclick='window.open(this.src)'></td>" + 
+						"<td class='imgcell'><img width='300px' src='/_s_/dyn/Log_viewLogs/images/"+images[1]+"' style='cursor:pointer' onclick='window.open(this.src)'></td>" +
+						"<td class='imgcell'><img width='300px' src='/_s_/dyn/Log_viewLogs/images/"+images[2]+"' style='cursor:pointer' onclick='window.open(this.src)'></td>" +
+						"</tr></table>";
+			document.write(msg);
+		}
+        
+        </script>
+<style>
+					div{padding:3px;}
+					a{text-decoration:none;color:white;}
+					a.INFO{color:black;}
+					a.START,a.STOP{color:black;font-weight:bold;}
+					div.INFO{background-color:white;}
+					div.SUCCESS{background-color:green;color:white}
+					div.FAILURE,div.ERROR{background-color:red;color:white}
+					a.CUSTOM, a.CUSTOM2, a.CUSTOM4{color:black}
+					div.CUSTOM{background-color:yellow;}
+					div.CUSTOM1{background-color:orange;}
+					div.CUSTOM2{background-color:#EFEFEF;}
+					div.CUSTOM3{background-color:green;}
+					div.CUSTOM4{background-color:violet;}
+					div.CUSTOM5{background-color:indigo;}
+					div.networkActivity{float:right;width:200px;color:#ccc;cursor:pointer;display:none;padding:0px;}
+					a.SCRIPT{text-decoration:underline;}
+					span.extra{color:#CCC;margin-left:20px;}
+					div.SKIPPED{background-color:#eed;}
+					a.SKIPPED{color:gray;}
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					div.GROUP {padding:0px;}
+					div.GROUP_LABEL {font-weight: bold;cursor:pointer; padding:5px;border-top:5px solid white}
+					div.GROUP_INNER{padding:10px;display:none;border:1px solid gray;}
+				
+					table.summary {border-top:1px solid gray;border-right:1px solid
+					gray;border-spacing:0px;border-collapse:collapse;}
+					table.summary td{border-bottom:1px solid gray;border-left:1px solid
+					gray;padding:5px;text-align:right;}
+					td a.SCRIPT{float:left;}
+					tr.FAILURE{background-color:red;color:white;}
+					tr.SUCCESS{background-color:green;color:white;}
+					a{color:white;}
+					
+					body *{font-family:verdana;font-size:10pt;}
+					body {margin:10px; background-color:lightyellow;}
+					
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					
+					#navbar a{color: blue;}
+					#navbar {padding:2px;border:1px solid white;border-bottom:1px solid gray;padding:1px}
+					
+					.HIGHLIGHT{background-color:brown;}
+					.HIGHLIGHT a{color:white;}
+					#stepsDiv {margin:0px; padding:0px;}
+					#stepsDiv A IMG {box-shadow: 10px 10px 5px #888888;padding:10px;border: 1px solid #ccc;}
+					table.imgcompare {border:1px solid #ccc;margin-top:15px;background-color:#efefef}
+					.imgcompare td{vertical-align:top;xcolor:white;padding:10px 20px;}
+					td.imgcell {vertical-align:top;padding-bottom:30px;}
+					td.imgcell img{mxargin:20px;border: 1px solid #ccc;box-shadow: 10px 10px 5px #888888}
+				</style>
+</head>
+<body onunload="onUnload()" onload="onLoad()">
+<script type="text/javascript">var scriptReportID = 'upload_valid_users_firefox__16Apr2015__11_19_05_691'; var currentTimestamp = null;</script><span>
+<h2>
+				Script Name: upload_valid_users.sah</h2>
+</span>
+<table class="summary" style="background-color:white;margin-top:20px;width:800px;">
+<tr>
+<td>Test</td><td>Total Steps</td><td>Failures</td><td>Errors</td><td>Success Rate</td><td>Time Taken (ms)</td><td>Node</td><td>Load</td><td>Browser</td>
+</tr>
+<tr class="FAILURE">
+<td>upload_valid_users.sah</td><td>95</td><td>2</td><td>0</td><td>98
+							%
+						</td><td>153288</td><td>localhost:9999</td><td>0</td><td>firefox</td>
+</tr>
+<tr>
+<td colspan="9" style="text-align:left">Report Id: upload_valid_users_firefox__16Apr2015__11_19_05_692 | </td>
+</tr>
+</table>
+<table id="testCaseSummaryTable" class="summary" style="background-color:white;margin-top:20px;width:350px;">
+<tr>
+<td>Total Test Cases</td><td>Passed</td><td>Failed</td><td>Success Rate</td>
+</tr>
+<tr class="FAILURE">
+<td>0</td><td>0</td><td>0</td><td>
+							0%
+						</td>
+</tr>
+</table>
+<table class="summary" style="background-color:white;margin-top:20px;width:700px;"></table>
+<div id="stepsDiv">
+<br>
+<div style="padding:10px;background-color:white;border:1px solid #ddd;">
+<div class="START">
+<a class="START">Starting script</a><a style="padding:10px; font-size:11px; color:black; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:expandAll('false'); return false;">Expand All</a><a style="color:black; font-size:11px; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:collapseAll('false'); return false;">Collapse All</a>
+</div>
+<script>
+		scriptReportId = "upload_valid_users_firefox__16Apr2015__11_19_05_691";
+		var preTimestampString = scriptReportId.substring(scriptReportId.length-23, scriptReportId.length);
+		function getMonthFromString(mon){
+   			var d = Date.parse(mon + "1, 2012");
+ 			if(!isNaN(d)){
+      		return new Date(d).getMonth();
+   			}
+   			return -1;
+ 		}
+		var prevTimestamp = new Date();
+		prevTimestamp.setDate(preTimestampString.substring(0,2));
+		prevTimestamp.setMonth(getMonthFromString(preTimestampString.substring(2,5)));
+		prevTimestamp.setFullYear(preTimestampString.substring(5,9));
+		prevTimestamp.setHours(preTimestampString.substring(11,13));
+		prevTimestamp.setMinutes(preTimestampString.substring(14,16));
+		prevTimestamp.setSeconds(preTimestampString.substring(17,19));
+		prevTimestamp.setMilliseconds(preTimestampString.substring(20,23));
+		</script>
+<div id="toScrollTo_1" class="INFO">
+<div id="networkActivityLink1" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '1')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=2">_navigateTo("http://qa.moodle.net")</span><script>var currentTimestamp = '1429157946341';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:06.341]
+						</span>
+<div id="harInfo1" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] login("manager", "test")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_2" class="INFO">
+<div id="networkActivityLink2" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '2')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=5">_setValue(_textbox("username"), "manager")</span><script>var currentTimestamp = '1429157947682';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:07.682]
+						</span>
+<div id="harInfo2" style="display:none"></div>
+</div>
+<div id="toScrollTo_3" class="INFO">
+<div id="networkActivityLink3" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '3')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=6">_setValue(_password("password"), "test")</span><script>var currentTimestamp = '1429157947792';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:07.792]
+						</span>
+<div id="harInfo3" style="display:none"></div>
+</div>
+<div id="toScrollTo_4" class="INFO">
+<div id="networkActivityLink4" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '4')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=7">_click(_submit("Log in"))</span><script>var currentTimestamp = '1429157947900';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:07.900]
+						</span>
+<div id="harInfo4" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] navigateToUserAccount()</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_5" class="INFO">
+<div id="networkActivityLink5" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '5')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=19">_click(_span("Site administration"))</span><script>var currentTimestamp = '1429157950817';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:10.817]
+						</span>
+<div id="harInfo5" style="display:none"></div>
+</div>
+<div id="toScrollTo_6" class="INFO">
+<div id="networkActivityLink6" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '6')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=20">_click(_span("Users"))</span><script>var currentTimestamp = '1429157951757';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:11.757]
+						</span>
+<div id="harInfo6" style="display:none"></div>
+</div>
+<div id="toScrollTo_7" class="INFO">
+<div id="networkActivityLink7" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '7')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=21">_click(_span("Accounts"))</span><script>var currentTimestamp = '1429157951873';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:11.873]
+						</span>
+<div id="harInfo7" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_8" class="INFO">
+<div id="networkActivityLink8" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '8')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=5">_click(_link("Upload users"))</span><script>var currentTimestamp = '1429157951989';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:11.989]
+						</span>
+<div id="harInfo8" style="display:none"></div>
+</div>
+<div id="toScrollTo_9" class="INFO">
+<div id="networkActivityLink9" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '9')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=6">_wait(10000, _isVisible(_button("Choose a file...")));</span><script>var currentTimestamp = '1429157954173';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:14.173]
+						</span>
+<div id="harInfo9" style="display:none"></div>
+</div>
+<div id="toScrollTo_10" class="INFO">
+<div id="networkActivityLink10" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '10')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=7">_click(_button("Choose a file..."))</span><script>var currentTimestamp = '1429157954283';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:14.283]
+						</span>
+<div id="harInfo10" style="display:none"></div>
+</div>
+<div id="toScrollTo_11" class="INFO">
+<div id="networkActivityLink11" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '11')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=8">_wait(10000, _isVisible(_button("Upload a file")));</span><script>var currentTimestamp = '1429157964338';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:24.338]
+						</span>
+<div id="harInfo11" style="display:none"></div>
+</div>
+<div id="toScrollTo_12" class="INFO">
+<div id="networkActivityLink12" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '12')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=9">_click(_span("Upload a file"))</span><script>var currentTimestamp = '1429157964412';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:24.412]
+						</span>
+<div id="harInfo12" style="display:none"></div>
+</div>
+<div id="toScrollTo_13" class="INFO">
+<div id="networkActivityLink13" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '13')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=10">_wait(4000)</span><script>var currentTimestamp = '1429157968439';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:28.439]
+						</span>
+<div id="harInfo13" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] setFileUpload([object], "D:\\DC1-RBD\\TMAWebAutoTest2.0\\TestData\\TestFile\\userList.csv")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_16" class="INFO">
+<div id="networkActivityLink16" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '16')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=77">_focusWindow()</span><script>var currentTimestamp = '1429157969545';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:29.545]
+						</span>
+<div id="harInfo16" style="display:none"></div>
+</div>
+<div id="toScrollTo_17" class="INFO">
+<div id="networkActivityLink17" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '17')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=78">_wait(7000)</span><script>var currentTimestamp = '1429157976816';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:36.816]
+						</span>
+<div id="harInfo17" style="display:none"></div>
+</div>
+<div id="toScrollTo_18" class="INFO">
+<div id="networkActivityLink18" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '18')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=80">_focus(_file("repo_upload_file"))</span><script>var currentTimestamp = '1429157976911';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:36.911]
+						</span>
+<div id="harInfo18" style="display:none"></div>
+</div>
+<div id="toScrollTo_18" class="INFO">
+<div id="networkActivityLink18" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '18')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=82">_typeKeyCodeNative(java.awt.event.KeyEvent.VK_SPACE)</span><script>var currentTimestamp = '1429157976943';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:36.943]
+						</span>
+<div id="harInfo18" style="display:none"></div>
+</div>
+<div id="toScrollTo_19" class="INFO">
+<div id="networkActivityLink19" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '19')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=83">_wait(7000)</span><script>var currentTimestamp = '1429157984606';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:44.606]
+						</span>
+<div id="harInfo19" style="display:none"></div>
+</div>
+<div id="toScrollTo_19" class="INFO">
+<div id="networkActivityLink19" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '19')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=85">_typeNative($path)</span><script>var currentTimestamp = '1429157985543';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:45.543]
+						</span>
+<div id="harInfo19" style="display:none"></div>
+</div>
+<div id="toScrollTo_20" class="INFO">
+<div id="networkActivityLink20" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '20')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=86">_wait(7000)</span><script>var currentTimestamp = '1429157993203';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:53.203]
+						</span>
+<div id="harInfo20" style="display:none"></div>
+</div>
+<div id="toScrollTo_20" class="INFO">
+<div id="networkActivityLink20" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '20')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=88">_typeKeyCodeNative(java.awt.event.KeyEvent.VK_ENTER)</span><script>var currentTimestamp = '1429157993204';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:19:53.204]
+						</span>
+<div id="harInfo20" style="display:none"></div>
+</div>
+<div id="toScrollTo_21" class="INFO">
+<div id="networkActivityLink21" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '21')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=90">_wait(10000)</span><script>var currentTimestamp = '1429158004219';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:04.219]
+						</span>
+<div id="harInfo21" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_22" class="INFO">
+<div id="networkActivityLink22" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '22')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=14">_setValue(_textbox("title"), "validUsers")</span><script>var currentTimestamp = '1429158004361';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:04.361]
+						</span>
+<div id="harInfo22" style="display:none"></div>
+</div>
+<div id="toScrollTo_23" class="INFO">
+<div id="networkActivityLink23" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '23')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=15">_wait(2000)</span><script>var currentTimestamp = '1429158006656';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:06.656]
+						</span>
+<div id="harInfo23" style="display:none"></div>
+</div>
+<div id="toScrollTo_24" class="INFO">
+<div id="networkActivityLink24" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '24')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=16">_click(_submit("Upload this file"))</span><script>var currentTimestamp = '1429158006657';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:06.657]
+						</span>
+<div id="harInfo24" style="display:none"></div>
+</div>
+<div id="toScrollTo_25" class="INFO">
+<div id="networkActivityLink25" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '25')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=17">_wait(2000)</span><script>var currentTimestamp = '1429158008966';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:08.966]
+						</span>
+<div id="harInfo25" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] elementShouldContains([object], "validUsers.csv")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_26" class="SUCCESS">
+<div id="networkActivityLink26" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '26')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=66">_assertExists(_div("validUsers.csv Drop files here to upload"))</span><script>var currentTimestamp = '1429158009078';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:09.078]
+						</span>
+<div id="harInfo26" style="display:none"></div>
+</div>
+<div id="toScrollTo_27" class="SUCCESS">
+<div id="networkActivityLink27" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '27')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=67">_assertContainsText("validUsers.csv", _div("validUsers.csv Drop files here to upload"))</span><script>var currentTimestamp = '1429158009203';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:09.203]
+						</span>
+<div id="harInfo27" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_28" class="INFO">
+<div id="networkActivityLink28" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '28')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=19">_wait(2000)</span><script>var currentTimestamp = '1429158011423';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:11.423]
+						</span>
+<div id="harInfo28" style="display:none"></div>
+</div>
+<div id="toScrollTo_29" class="INFO">
+<div id="networkActivityLink29" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '29')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=20">_click(_submit("Upload users"))</span><script>var currentTimestamp = '1429158011517';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:11.517]
+						</span>
+<div id="harInfo29" style="display:none"></div>
+</div>
+<div id="toScrollTo_30" class="INFO">
+<div id="networkActivityLink30" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '30')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=21">_wait(2000)</span><script>var currentTimestamp = '1429158013734';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:13.734]
+						</span>
+<div id="harInfo30" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] elementShouldBe([object], "2")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_31" class="SUCCESS">
+<div id="networkActivityLink31" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '31')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=71">_assertExists(_cell("2"))</span><script>var currentTimestamp = '1429158016122';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:16.122]
+						</span>
+<div id="harInfo31" style="display:none"></div>
+</div>
+<div id="toScrollTo_32" class="SUCCESS">
+<div id="networkActivityLink32" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '32')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=72">_assertVisible(_cell("2"))</span><script>var currentTimestamp = '1429158016279';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:16.279]
+						</span>
+<div id="harInfo32" style="display:none"></div>
+</div>
+<div id="toScrollTo_33" class="SUCCESS">
+<div id="networkActivityLink33" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '33')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=73">_assertEqual("2", _getText(_cell("2")))</span><script>var currentTimestamp = '1429158016421';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:16.421]
+						</span>
+<div id="harInfo33" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_34" class="INFO">
+<div id="networkActivityLink34" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '34')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=23">_wait(2000)</span><script>var currentTimestamp = '1429158018702';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:18.702]
+						</span>
+<div id="harInfo34" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldContain(1, "ntucmy")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_35" class="SUCCESS">
+<div id="networkActivityLink35" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '35')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=40">_assertExists(_row(1))</span><script>var currentTimestamp = '1429158018782';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:18.782]
+						</span>
+<div id="harInfo35" style="display:none"></div>
+</div>
+<div id="toScrollTo_36" class="SUCCESS">
+<div id="networkActivityLink36" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '36')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=41">_assertContainsText("ntucmy", _row(1))</span><script>var currentTimestamp = '1429158018908';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:18.908]
+						</span>
+<div id="harInfo36" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_37" class="INFO">
+<div id="networkActivityLink37" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '37')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=25">_wait(2000)</span><script>var currentTimestamp = '1429158021157';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:21.157]
+						</span>
+<div id="harInfo37" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldContain(1, "my")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_38" class="SUCCESS">
+<div id="networkActivityLink38" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '38')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=40">_assertExists(_row(1))</span><script>var currentTimestamp = '1429158021237';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:21.237]
+						</span>
+<div id="harInfo38" style="display:none"></div>
+</div>
+<div id="toScrollTo_39" class="SUCCESS">
+<div id="networkActivityLink39" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '39')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=41">_assertContainsText("my", _row(1))</span><script>var currentTimestamp = '1429158021362';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:21.362]
+						</span>
+<div id="harInfo39" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_40" class="INFO">
+<div id="networkActivityLink40" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '40')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=27">_wait(2000)</span><script>var currentTimestamp = '1429158023642';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:23.642]
+						</span>
+<div id="harInfo40" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] elementShouldBe([object], "3")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_41" class="SUCCESS">
+<div id="networkActivityLink41" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '41')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=71">_assertExists(_cell("3"))</span><script>var currentTimestamp = '1429158023675';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:23.675]
+						</span>
+<div id="harInfo41" style="display:none"></div>
+</div>
+<div id="toScrollTo_42" class="SUCCESS">
+<div id="networkActivityLink42" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '42')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=72">_assertVisible(_cell("3"))</span><script>var currentTimestamp = '1429158023801';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:23.801]
+						</span>
+<div id="harInfo42" style="display:none"></div>
+</div>
+<div id="toScrollTo_43" class="SUCCESS">
+<div id="networkActivityLink43" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '43')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=73">_assertEqual("3", _getText(_cell("3")))</span><script>var currentTimestamp = '1429158023927';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:23.927]
+						</span>
+<div id="harInfo43" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_44" class="INFO">
+<div id="networkActivityLink44" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '44')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=29">_wait(2000)</span><script>var currentTimestamp = '1429158026206';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:26.206]
+						</span>
+<div id="harInfo44" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldContain(2, "ntucmy1")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_45" class="SUCCESS">
+<div id="networkActivityLink45" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '45')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=40">_assertExists(_row(2))</span><script>var currentTimestamp = '1429158026353';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:26.353]
+						</span>
+<div id="harInfo45" style="display:none"></div>
+</div>
+<div id="toScrollTo_46" class="SUCCESS">
+<div id="networkActivityLink46" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '46')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=41">_assertContainsText("ntucmy1", _row(2))</span><script>var currentTimestamp = '1429158026479';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:26.479]
+						</span>
+<div id="harInfo46" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_47" class="INFO">
+<div id="networkActivityLink47" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '47')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=31">_wait(2000)</span><script>var currentTimestamp = '1429158028774';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:28.774]
+						</span>
+<div id="harInfo47" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldContain(2, "nguyen1")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_48" class="SUCCESS">
+<div id="networkActivityLink48" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '48')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=40">_assertExists(_row(2))</span><script>var currentTimestamp = '1429158028901';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:28.901]
+						</span>
+<div id="harInfo48" style="display:none"></div>
+</div>
+<div id="toScrollTo_49" class="SUCCESS">
+<div id="networkActivityLink49" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '49')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=41">_assertContainsText("nguyen1", _row(2))</span><script>var currentTimestamp = '1429158029026';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:29.026]
+						</span>
+<div id="harInfo49" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_50" class="INFO">
+<div id="networkActivityLink50" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '50')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=33">_wait(2000)</span><script>var currentTimestamp = '1429158031337';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:31.337]
+						</span>
+<div id="harInfo50" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] elementShouldBe([object], "4")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_51" class="SUCCESS">
+<div id="networkActivityLink51" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '51')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=71">_assertExists(_cell("4"))</span><script>var currentTimestamp = '1429158031386';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:31.386]
+						</span>
+<div id="harInfo51" style="display:none"></div>
+</div>
+<div id="toScrollTo_52" class="SUCCESS">
+<div id="networkActivityLink52" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '52')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=72">_assertVisible(_cell("4"))</span><script>var currentTimestamp = '1429158031512';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:31.512]
+						</span>
+<div id="harInfo52" style="display:none"></div>
+</div>
+<div id="toScrollTo_53" class="SUCCESS">
+<div id="networkActivityLink53" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '53')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=73">_assertEqual("4", _getText(_cell("4")))</span><script>var currentTimestamp = '1429158031638';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:31.638]
+						</span>
+<div id="harInfo53" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_54" class="INFO">
+<div id="networkActivityLink54" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '54')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=35">_wait(2000)</span><script>var currentTimestamp = '1429158033902';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:33.902]
+						</span>
+<div id="harInfo54" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldContain(3, "my2@gmail.com")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_55" class="SUCCESS">
+<div id="networkActivityLink55" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '55')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=40">_assertExists(_row(3))</span><script>var currentTimestamp = '1429158034028';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:34.028]
+						</span>
+<div id="harInfo55" style="display:none"></div>
+</div>
+<div id="toScrollTo_56" class="SUCCESS">
+<div id="networkActivityLink56" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '56')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=41">_assertContainsText("my2@gmail.com", _row(3))</span><script>var currentTimestamp = '1429158034154';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:34.154]
+						</span>
+<div id="harInfo56" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_57" class="INFO">
+<div id="networkActivityLink57" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '57')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=37">_wait(2000)</span><script>var currentTimestamp = '1429158036465';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:36.465]
+						</span>
+<div id="harInfo57" style="display:none"></div>
+</div>
+<div id="toScrollTo_58" class="INFO">
+<div id="networkActivityLink58" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '58')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=38">_click(_submit("Upload users"))</span><script>var currentTimestamp = '1429158036513';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:36.513]
+						</span>
+<div id="harInfo58" style="display:none"></div>
+</div>
+<div id="toScrollTo_59" class="INFO">
+<div id="networkActivityLink59" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '59')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=39">_wait(10000)</span><script>var currentTimestamp = '1429158047529';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:47.529]
+						</span>
+<div id="harInfo59" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldContain(2, "New user")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_60" class="SUCCESS">
+<div id="networkActivityLink60" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '60')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=40">_assertExists(_row(2))</span><script>var currentTimestamp = '1429158047609';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:47.609]
+						</span>
+<div id="harInfo60" style="display:none"></div>
+</div>
+<div id="toScrollTo_61" class="SUCCESS">
+<div id="networkActivityLink61" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '61')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=41">_assertContainsText("New user", _row(2))</span><script>var currentTimestamp = '1429158047735';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:47.735]
+						</span>
+<div id="harInfo61" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_62" class="INFO">
+<div id="networkActivityLink62" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '62')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=41">_wait(2000)</span><script>var currentTimestamp = '1429158050000';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:50.000]
+						</span>
+<div id="harInfo62" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldContain(3, "No")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_63" class="SUCCESS">
+<div id="networkActivityLink63" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '63')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=40">_assertExists(_row(3))</span><script>var currentTimestamp = '1429158050049';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:50.049]
+						</span>
+<div id="harInfo63" style="display:none"></div>
+</div>
+<div id="toScrollTo_64" class="SUCCESS">
+<div id="networkActivityLink64" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '64')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=41">_assertContainsText("No", _row(3))</span><script>var currentTimestamp = '1429158050175';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:50.175]
+						</span>
+<div id="harInfo64" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_65" class="INFO">
+<div id="networkActivityLink65" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '65')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=43">_wait(2000)</span><script>var currentTimestamp = '1429158052454';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:20:52.454]
+						</span>
+<div id="harInfo65" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldContain(4, "manual")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<!--SAHI_TESTCASE_FAIL_MARKER--><!--FAILURE--><div id="toScrollTo_66" class="FAILURE">
+<div id="networkActivityLink66" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '66')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=40">_assertExists(_row(4))</span><script>var currentTimestamp = '1429158062644';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:02.644]
+						</span>
+<div class="FAILURE_ST">[Assertion Failed]
+at C:\\Users\\ntumy\\sahi_pro\\userdata\\scripts\\commonFeatures.sah&n=27 tableRowShouldContain
+at C:\\Users\\ntumy\\sahi_pro\\userdata\\scripts\\upload_valid_users.sah&n=42 
+</div>
+<div id="harInfo66" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] onScriptFailureDefault([object])</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_66" class="INFO">
+<div id="networkActivityLink66" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '66')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=33">_lockWindow()</span><script>var currentTimestamp = '1429158062771';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:02.771]
+						</span>
+<div id="harInfo66" style="display:none"></div>
+</div>
+<div id="toScrollTo_69" class="INFO">
+<div id="networkActivityLink69" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '69')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=34">_focusWindow()</span><script>var currentTimestamp = '1429158063848';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:03.848]
+						</span>
+<div id="harInfo69" style="display:none"></div>
+</div>
+<div id="toScrollTo_70" class="INFO">
+<div id="networkActivityLink70" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '70')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=35">_takePageScreenShot()</span><script>var currentTimestamp = '1429158064926';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:04.926]
+						</span><a href="/_s_/dyn/Log_viewLogs/images/upload_valid_users_firefox__16Apr2015__11_19_05_691_70.png" style="margin:0px;padding:0px" target="_blank"><img style="margin-top:15px;margin-bottom:30px;display:block;max-width:600px" src="/_s_/dyn/Log_viewLogs/images/upload_valid_users_firefox__16Apr2015__11_19_05_691_70.png"></a>
+<div id="harInfo70" style="display:none"></div>
+</div>
+<div id="toScrollTo_70" class="INFO">
+<div id="networkActivityLink70" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '70')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=36">_unlockWindow()</span><script>var currentTimestamp = '1429158064942';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:04.942]
+						</span>
+<div id="harInfo70" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<!--SAHI_TESTCASE_FAIL_MARKER--><!--FAILURE--><div id="toScrollTo_71" class="FAILURE">
+<div id="networkActivityLink71" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '71')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=41">_assertContainsText("manual", _row(4))</span><script>var currentTimestamp = '1429158075288';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:15.288]
+						</span>
+<div class="FAILURE_ST">[Assertion Failed]The parameter passed to _assertContainsText was not found on the browser 
+at C:\\Users\\ntumy\\sahi_pro\\userdata\\scripts\\commonFeatures.sah&n=28 tableRowShouldContain
+at C:\\Users\\ntumy\\sahi_pro\\userdata\\scripts\\upload_valid_users.sah&n=42 
+</div>
+<div id="harInfo71" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] onScriptFailureDefault([object])</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_71" class="INFO">
+<div id="networkActivityLink71" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '71')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=33">_lockWindow()</span><script>var currentTimestamp = '1429158075399';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:15.399]
+						</span>
+<div id="harInfo71" style="display:none"></div>
+</div>
+<div id="toScrollTo_74" class="INFO">
+<div id="networkActivityLink74" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '74')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=34">_focusWindow()</span><script>var currentTimestamp = '1429158076742';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:16.742]
+						</span>
+<div id="harInfo74" style="display:none"></div>
+</div>
+<div id="toScrollTo_75" class="INFO">
+<div id="networkActivityLink75" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '75')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=35">_takePageScreenShot()</span><script>var currentTimestamp = '1429158077835';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:17.835]
+						</span><a href="/_s_/dyn/Log_viewLogs/images/upload_valid_users_firefox__16Apr2015__11_19_05_691_75.png" style="margin:0px;padding:0px" target="_blank"><img style="margin-top:15px;margin-bottom:30px;display:block;max-width:600px" src="/_s_/dyn/Log_viewLogs/images/upload_valid_users_firefox__16Apr2015__11_19_05_691_75.png"></a>
+<div id="harInfo75" style="display:none"></div>
+</div>
+<div id="toScrollTo_75" class="INFO">
+<div id="networkActivityLink75" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '75')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=36">_unlockWindow()</span><script>var currentTimestamp = '1429158077836';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:17.836]
+						</span>
+<div id="harInfo75" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<!--SAHI_TESTCASE_FAIL_MARKER--><!--TESTCASE_END-->
+					
+					</div></div>
+					
+					<div id="toScrollTo_76" class="INFO">
+<div id="networkActivityLink76" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '76')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=45">_wait(2000)</span><script>var currentTimestamp = '1429158080055';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:20.055]
+						</span>
+<div id="harInfo76" style="display:none"></div>
+</div>
+<div id="toScrollTo_77" class="INFO">
+<div id="networkActivityLink77" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '77')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=46">_click(_submit("Continue"))</span><script>var currentTimestamp = '1429158080087';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:20.087]
+						</span>
+<div id="harInfo77" style="display:none"></div>
+</div>
+<div id="toScrollTo_78" class="INFO">
+<div id="networkActivityLink78" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '78')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=47">_wait(2000)</span><script>var currentTimestamp = '1429158082374';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:22.374]
+						</span>
+<div id="harInfo78" style="display:none"></div>
+</div>
+<div id="toScrollTo_79" class="INFO">
+<div id="networkActivityLink79" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '79')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=48">_click(_link("Browse list of users"))</span><script>var currentTimestamp = '1429158082469';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:22.469]
+						</span>
+<div id="harInfo79" style="display:none"></div>
+</div>
+<div id="toScrollTo_80" class="INFO">
+<div id="networkActivityLink80" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '80')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=49">_wait(2000)</span><script>var currentTimestamp = '1429158084685';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:24.685]
+						</span>
+<div id="harInfo80" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableShouldContain("my nguyen")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_81" class="SUCCESS">
+<div id="networkActivityLink81" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '81')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=56">_assertExists(_parentTable(_row(0)))</span><script>var currentTimestamp = '1429158084780';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:24.780]
+						</span>
+<div id="harInfo81" style="display:none"></div>
+</div>
+<div id="toScrollTo_82" class="SUCCESS">
+<div id="networkActivityLink82" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '82')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=57">_assertContainsText("my nguyen", _parentTable(_row(0)))</span><script>var currentTimestamp = '1429158084906';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:24.906]
+						</span>
+<div id="harInfo82" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_83" class="INFO">
+<div id="networkActivityLink83" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '83')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=51">_wait(4000)</span><script>var currentTimestamp = '1429158089339';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:29.339]
+						</span>
+<div id="harInfo83" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableShouldContain("my1@gmail.com")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_84" class="SUCCESS">
+<div id="networkActivityLink84" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '84')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=56">_assertExists(_parentTable(_row(0)))</span><script>var currentTimestamp = '1429158089450';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:29.450]
+						</span>
+<div id="harInfo84" style="display:none"></div>
+</div>
+<div id="toScrollTo_85" class="SUCCESS">
+<div id="networkActivityLink85" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '85')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=57">_assertContainsText("my1@gmail.com", _parentTable(_row(0)))</span><script>var currentTimestamp = '1429158089576';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:29.576]
+						</span>
+<div id="harInfo85" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_86" class="INFO">
+<div id="networkActivityLink86" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '86')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=53">_wait(4000)</span><script>var currentTimestamp = '1429158093992';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:33.992]
+						</span>
+<div id="harInfo86" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableShouldContain("my2 nguyen2")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_87" class="SUCCESS">
+<div id="networkActivityLink87" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '87')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=56">_assertExists(_parentTable(_row(0)))</span><script>var currentTimestamp = '1429158094119';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:34.119]
+						</span>
+<div id="harInfo87" style="display:none"></div>
+</div>
+<div id="toScrollTo_88" class="SUCCESS">
+<div id="networkActivityLink88" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '88')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=57">_assertContainsText("my2 nguyen2", _parentTable(_row(0)))</span><script>var currentTimestamp = '1429158094245';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:34.245]
+						</span>
+<div id="harInfo88" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_89" class="INFO">
+<div id="networkActivityLink89" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '89')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/upload_valid_users.sah&amp;n=55">_wait(4000)</span><script>var currentTimestamp = '1429158098740';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:38.740]
+						</span>
+<div id="harInfo89" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] logoutQAMoodle()</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_90" class="INFO">
+<div id="networkActivityLink90" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '90')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=12">_click(_image("Picture of Max Manager"))</span><script>var currentTimestamp = '1429158098805';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:38.805]
+						</span>
+<div id="harInfo90" style="display:none"></div>
+</div>
+<div id="toScrollTo_91" class="INFO">
+<div id="networkActivityLink91" class="networkActivity" onclick="showHideNetworkActivity(this, 'upload_valid_users_firefox__16Apr2015__11_19_05_691', '91')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=13">_click(_span("Log out"))</span><script>var currentTimestamp = '1429158098962';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[11:21:38.962]
+						</span>
+<div id="harInfo91" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div class="STOP">
+<a class="STOP">Stopping script</a>
+</div>
+</div>
+<style>div.GROUP_LABEL {display:block;}</style>
+</div>
+</body>
+</html>

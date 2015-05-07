@@ -1,0 +1,4 @@
+login,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\5_included.sah,1,$username,$password
+addBooks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\5_included.sah,7,$numJava,$numRuby,$numPython
+verifyTotal,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\5_included.sah,14,$total
+verifyTotal111,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\5_included.sah,18,$total

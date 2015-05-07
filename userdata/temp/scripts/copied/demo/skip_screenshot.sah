@@ -1,0 +1,13 @@
+_include("file_exists.sah")
+_sahi.SKIP_SCREENSHOTS = true;
+_takeScreenShot("d:\\screen.png");
+_takePageScreenShot("d:\\page-screen.png");
+var $exists = fileExists("d:\\screen.png");
+_assert(!$exists);
+var $exists2 = fileExists("d:\\page-screen.png");
+_assert(!$exists2);
+
+_sahi.SKIP_ASSERT_SNAPSHOTS = true;
+_assertSnapShot("snapshot_login_short.png", 20, true);
+var $same = _compareImages("snapshot_login_short.png", "snapshot_totaled.png", 10);
+_assertNull($same);

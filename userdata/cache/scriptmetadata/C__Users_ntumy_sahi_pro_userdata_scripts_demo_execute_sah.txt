@@ -1,0 +1,6 @@
+exists,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\execute.sah,12,dir
+createDeleteDir,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\execute.sah,16,$dir
+testExecutionReturnsOutput,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\execute.sah,42
+testCreateDeleteDir,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\execute.sah,47
+testDoesNotStopForLongExecutes,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\execute.sah,64
+testExecuteProceedsAfterTimeout,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\execute.sah,72

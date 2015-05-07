@@ -1,0 +1,51 @@
+_navigateTo("/demo/formTest.htm");
+
+function getExample($color) {
+	switch($color)
+	{
+		case "lightblue" : 
+		case "blue" : 
+		    _setValue(_textbox("t1"), "sky"); 
+		    break;
+		case "red" : 
+			_setValue(_textbox("t1"), "sun"); break;
+		case "yellow" : { 
+			_setValue(_textbox("t1"), "sand"); 
+			break;
+		}
+		default : 
+			_setValue(_textbox("t1"), "grass"); 
+	}
+}
+
+getExample("red");
+_assertEqual("sun", _getValue(_textbox("t1")));
+getExample("lightblue");
+_assertEqual("sky", _getValue(_textbox("t1")));
+getExample("blue");
+_assertEqual("sky", _getValue(_textbox("t1")));
+getExample("yellow");
+_assertEqual("sand", _getValue(_textbox("t1")));
+getExample("green");
+_assertEqual("grass", _getValue(_textbox("t1")));
+
+
+// Outside function
+var $color = "yellow";
+switch($color)
+{
+	case "blue" : 
+	    _setValue(_textbox("t1"), "sky"); 
+	    break;
+	case "red" : 
+		_setValue(_textbox("t1"), "sun"); break;
+	case "yellow" : { 
+		_log("In yellow");
+		_setValue(_textbox("t1"), "sand"); 
+		break;
+	}
+	default : 
+		_setValue(_textbox("t1"), "grass"); 
+}
+
+_assertEqual("sand", _getValue(_textbox("t1")));

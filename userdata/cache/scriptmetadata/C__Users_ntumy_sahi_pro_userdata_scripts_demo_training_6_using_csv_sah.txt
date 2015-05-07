@@ -1,0 +1,1 @@
+addAndVerify,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\6_using_csv.sah,3,$numJava,$numRuby,$numPython,$total

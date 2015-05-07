@@ -1,0 +1,48 @@
+function mouseOver($combo, $expected){
+	_mouseOverNative(_textbox("result"));
+	_mouseOverNative(_div("Experiment Zone MouseOver"), $combo);
+	_assertEqual($expected, _textbox("result").value);
+}
+function tearDown(){
+	_setValue(_textbox("result"), "");
+}
+function testNormalClick(){
+	mouseOver(null, "mouseOver");
+}
+
+function testCtrlClick(){
+	mouseOver("CTRL", "<ctrl>mouseOver");
+}
+
+function testAltClick(){
+  if(!_isIE()){ 
+    mouseOver("ALT", "<alt>mouseOver");
+  }
+}
+
+function testShiftClick(){
+	mouseOver("SHIFT", "<shift>mouseOver");
+}
+
+function xtestMetaClick(){
+	mouseOver("META", "<meta>mouseOver");
+}
+
+function testCombinationClicks(){
+	mouseOver("CTRL|SHIFT", "<ctrl><shift>mouseOver");
+	if(!_isIE()){
+		mouseOver("CTRL|ALT", "<ctrl><alt>mouseOver");
+		mouseOver("ALT|SHIFT", "<alt><shift>mouseOver");
+		mouseOver("SHIFT|ALT", "<alt><shift>mouseOver");
+		mouseOver("CTRL|ALT|SHIFT", "<ctrl><alt><shift>mouseOver");
+	}
+	
+}
+
+_navigateTo("mouseover.htm");
+_focusWindow();
+_runUnitTests();
+
+_navigateTo("framesTest.htm");
+_click(_link("Mouse over"));
+_runUnitTests();

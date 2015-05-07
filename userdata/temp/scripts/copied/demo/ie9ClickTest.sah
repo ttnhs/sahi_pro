@@ -1,0 +1,7 @@
+_navigateTo("/demo/ie9ClickTest.htm");
+_click(_image("img1"));
+_assertEqual("img1 clicked\n", _getValue(_textarea("logs")));
+_click(_reset("Clear"));
+_click(_div("Diva"));
+_assertEqual("div1 clicked\n", _getValue(_textarea("logs")));
+_click(_reset("Clear"));

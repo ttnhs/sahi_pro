@@ -1,0 +1,48 @@
+//Sample code for attached XML.
+var $xmlStr = '' + 
+'<MyApp xmlns="http://sahipro.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"' +  
+'	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' + 
+'   <Id xmlns="">730484</Id>' + 
+'   <Messages>' +
+'        <Welcome>Welcome1 to MyApp</Welcome>' + 
+'        <Farewell>Thank1 you for using MyApp</Farewell>' +
+'    </Messages>' +
+'	<Messages>' +
+'        <Welcome>Welcome2 to MyApp</Welcome>' +
+'        <Farewell>Thank2 you for using MyApp</Farewell>' +
+'    </Messages>' +
+'	<Messages>' +
+'        <Welcome>Welcome3 to MyApp</Welcome>' +
+'       <Farewell>Thank3 you for using MyApp</Farewell>' +
+'    </Messages>' +
+'    <Windows>' +
+'        <Window name="MainFrame" x="5" y="15" w="400" h="250" />' +
+'    </Windows>' +
+'    <Connection ip="192.168.0.10" timeout="30000" />' +
+'</MyApp>' ;
+var $x = new XML($xmlStr);
+var ns = new Namespace("http://sahipro.com");
+var $welcome0 = $x..ns::Welcome[0].toString();
+_assertEqual("730484", $x.Id.toString());
+_assertEqual("Welcome1 to MyApp", $welcome0);
+
+//--- 
+var $xmlStr = '' + 
+'<MyApp xmlns="http://sahipro.com">' + 
+'   <Id xmlns="http://www.tytosoftware.com">123</Id>' + 
+'   <Messages>' +
+'        <Welcome>Welcome1 to MyApp</Welcome>' + 
+'        <Farewell>Thank1 you for using MyApp</Farewell>' +
+'    </Messages>' +
+'</MyApp>' ;
+var $x = new XML($xmlStr);
+// Set the default namespace. All elements will be in this namespace
+default xml namespace = "http://sahipro.com";
+var $welcome0 = $x..Welcome[0].toString();
+_assertEqual("Welcome1 to MyApp", $welcome0);
+
+
+// Specific namespace for id
+var idns = new Namespace("http://www.tytosoftware.com");
+var $id = $x.idns::Id.toString();
+_assertEqual("123", $id);

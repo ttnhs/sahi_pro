@@ -1,0 +1,5 @@
+xlogin,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\books_lib.sah,1,$username,$password
+addBooks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\books_lib.sah,7,$numJava,$numRuby,$numPython
+verifyTotal,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\books_lib.sah,14,$total
+verifyTotal111,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\books_lib.sah,18,$total
+logout,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\books_lib.sah,22

@@ -1,0 +1,65 @@
+_navigateTo("http://localhost.sahipro.com/demo/iframesDomainTest.htm");
+
+var $tcCount = 1;
+
+var $t = _testcase($tcCount++, "Indexing spans multiple iframes from different domains").start();
+_domain("sahipro.com")._assertExists(_link("Link Test"));
+_domain("sahipro.com")._assertExists(_link("Link Test[1]"));
+$t.end();
+
+$t = _testcase($tcCount++, "Drop back to base domain").start();
+_setValue(_textbox("checkRecord"), "abc");
+$t.end();
+
+
+$t = _testcase($tcCount++, "Perform actions on domain again.").start();
+_domain("sahipro.com")._click(_link("Form Test"));
+_wait(1000);
+_domain("sahipro.com")._click(_link("Form Test"));
+_domain("sahipro.com")._setValue(_textbox("t1"), "aa");
+_domain("sahipro.com")._setValue(_textbox("t1[1]"), "bb");
+$t.end();
+
+$t = _testcase($tcCount++, "With ignore case").start();
+_setAccessorIgnoreCase(true);
+_domain("sAHIpro.com")._setValue(_textbox("t1[1]"), "bb");
+_setAccessorIgnoreCase(false);
+$t.end();
+
+
+$t = _testcase($tcCount++, "Using _selectDomain. Indexing spans multiple iframes from different domains").start();
+_navigateTo("/demo/iframesDomainTest.htm");
+
+_selectDomain("http://sahipro.com");
+_assertExists(_link("Link Test"));
+_assertExists(_link("Link Test[1]"));
+$t.end();
+
+$t = _testcase($tcCount++, "Using _selectDomain. With ignore case").start();
+_setAccessorIgnoreCase(true);
+
+_selectDomain("SAHIpro.com");
+_assertExists(_link("Link Test"));
+_assertExists(_link("Link Test[1]"));
+$t.end();
+
+$t = _testcase($tcCount++, "Using _selectDomain. Drop back to base domain").start();
+_selectDomain();
+_setValue(_textbox("checkRecord"), "abc");
+
+
+_selectDomain("sahipro.com");
+_click(_link("Form Test"));
+
+_selectDomain();
+_wait(1000);
+$t.end();
+
+
+$t = _testcase($tcCount++, "Using _selectDomain. Reselect domain and check").start();
+_selectDomain("sahipro.com");
+_click(_link("Form Test"));
+_setValue(_textbox("t1"), "aa");
+_setValue(_textbox("t1[1]"), "bb");
+$t.end();
+

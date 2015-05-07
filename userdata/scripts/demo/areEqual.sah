@@ -1,0 +1,19 @@
+
+_assertTrue(_areEqual("abc", "abc"));
+_assertTrue(_areEqual("/ab/", "abc"));
+_assertTrue(_areEqual("/^a.*c$/", "abc"));
+_assertTrue(_areEqual(/^a.*c$/, "abc"));
+
+_assertFalse(_areEqual("/^ab$/", "abc"));
+
+$exp = ["/[a-z]+$/", "b"];
+$act = ["ab", "b"];
+_assertTrue(_areEqual($exp, $act));
+
+_assertFalse(_areEqual($exp, ["ab123", "b"]));
+
+
+$exp = [/[a-z]+$/, "b"];
+$act = ["ab", "b"];
+_assertTrue(_areEqual($exp, $act));
+_assertFalse(_areEqual($exp, ["ab123", "b"]));

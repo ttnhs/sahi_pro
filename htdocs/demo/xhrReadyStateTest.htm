@@ -1,0 +1,25 @@
+<html>
+<head>
+<script>
+	var req = new XMLHttpRequest();
+	function ajaxWait() {
+		req.open('GET', 'clicks.htm', true);
+		req.onreadystatechange = function() {
+			document.getElementById("myDiv").innerHTML += req.readyState + "<br/>";
+			if (req.readyState == 4 && req.status == 200) {
+				document.getElementById("myDiv").innerHTML += req.readyState + " " + req.responseText + "<br/>";
+			}
+		}		
+		setTimeout(function() {
+			req.send(null);
+		}, 4000)
+	}
+</script>
+<title>XHR Ready State</title>
+</head>
+<body>
+	<input type="button" id="b1" value="click me" onclick="ajaxWait()">
+	<input type="text" id="tb">
+	<div id="myDiv"></div>
+</body>
+</html>

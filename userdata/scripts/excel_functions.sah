@@ -1,0 +1,27 @@
+_include("commonFeatures.sah");
+//_navigateTo("http://qa.moodle.net");
+var $filePath = "D:\\TMAWebAutoTest\\TestData\\TestFile\\TestData.xlsx";
+//excelCellShouldBe($filePath, 2, 2, "Ha");
+//excelCellShouldBe($filePath, 3, 4, "1990");
+//excelCellShouldBe($filePath, 4, 5, "true");
+//excelCellShouldBe($filePath, 5, 6, "03/19/15");
+//excelCellShouldBe($filePath, 3, 7, "");
+//excelCellShouldBe($filePath, 2, 8, "16 Mar 2015, 1:10 AM");
+//excelCellShouldBe($filePath, 5, 9, "11:00 AM");
+//Filter excel column
+//var $filtered = filter($filePath,"FirstName", "My");
+//	_assertEqual("My", $filtered[0]["FirstName"]);
+//	_assertEqual(1, $filtered.length);
+
+//Excel row should contain
+excelRowShouldContain($filePath, 2,"ha@tma");
+//Excel row should not contain
+excelRowShouldNotContain($filePath, 5,"sang@tma");
+
+//Excel column should contain
+excelColumnShouldContain($filePath, 5,"false");
+excelColumnShouldContain($filePath, 7,"");
+//excelColumnShouldContain($filePath, 2,"Hoang");
+
+//Excel column should not contain
+excelColumnShouldNotContain($filePath, 2,"Hoang");

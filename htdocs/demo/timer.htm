@@ -1,0 +1,16 @@
+<div id="timer">aa</div>
+<script>
+function setTime() {
+	document.getElementById('timer').innerHTML= (new Date()).getTime();
+}
+function stop() {
+	window.clearInterval($t);
+}
+function start() {
+	$t = window.setInterval(setTime, 1);
+}
+start();
+</script>
+<input type="button" onmousedown="stop()" value="Stop">
+<input type="button" onclick="start()" value="Start">
+

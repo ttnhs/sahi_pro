@@ -1,0 +1,10 @@
+_navigateTo("/demo/download.htm");
+_assertNull(_lastDownloadedFileName()); 
+_click(_link("Download"));
+_assertNull(_lastDownloadedFileName()); 
+_addToSession("http://tytosoftware.com");
+_click(_link("Download")); 
+_assertNotNull(_lastDownloadedFileName()); 
+_saveDownloadedAs("temp/download/renamed.pdf"); 
+_clearLastDownloadedFileName(); 
+_assertNull(_lastDownloadedFileName()); 

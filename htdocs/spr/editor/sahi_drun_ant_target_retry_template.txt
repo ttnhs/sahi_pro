@@ -1,0 +1,18 @@
+	<!-- Retry target that runs if drun fails. Scripts are run one by one on the Master only -->
+	<target name="retryfailed$browser" depends="set_properties_$browser, set_timestamp" if="sahi.failed.${browser}">
+		<sahi suite="${scriptDir}${failedSuite}"
+			sendEmail="${sendemail}"
+			emailtrigger="${emailtrigger}"
+			emailProperties="${emailproperties}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			baseurl="${baseURL}"
+			sahihost="${host}"
+			sahiport="${port}"
+			failureproperty="sahi.retry.failed.${browser}"
+			haltonfailure="false"
+			browsertype="${browser}"
+			ignorePattern=".*(svn|copied).*"
+			threads="1"$tags$userDefinedId>$extraParam$reportsRetryInfo
+		</sahi>
+		<antcall target="failsahi$browser"/>
+	</target>

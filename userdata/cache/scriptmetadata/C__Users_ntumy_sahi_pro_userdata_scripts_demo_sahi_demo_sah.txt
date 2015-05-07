@@ -1,0 +1,3 @@
+getT1,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\sahi_demo.sah,13
+testAccessors,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\sahi_demo.sah,17
+testClicks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\sahi_demo.sah,66

@@ -1,0 +1,4 @@
+_navigateTo("/demo/custom_accessor_attribute.htm");
+_assertEqual("1 2 3", _getText(_cell({'rowId':'1','columnId':'2','position':'3'})))
+_assertEqual("3 4 5", _getText(_cell({'rowId':'3','columnId':'4','position':'5'})))
+_assertEqual("MyValue", _getValue(_textbox({'data-aid':'MyUniqueId'})));

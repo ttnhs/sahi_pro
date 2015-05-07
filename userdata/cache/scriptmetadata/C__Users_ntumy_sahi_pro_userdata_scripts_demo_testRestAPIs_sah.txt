@@ -1,0 +1,9 @@
+testMethodGet,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testRestAPIs.sah,3
+testREST401,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testRestAPIs.sah,24
+testMethodPost,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testRestAPIs.sah,36
+testMethodDelete,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testRestAPIs.sah,54
+testHttpDefaultGetCredentialKey,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testRestAPIs.sah,63
+testHttpsDefaultGetCredentialKey,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testRestAPIs.sah,69
+testHttpsWithPortGetCredentialKey,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testRestAPIs.sah,75
+testHttpWithPortGetCredentialKey,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testRestAPIs.sah,81
+testURLWithoutSingleSlashGetCredentialKey,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\testRestAPIs.sah,87

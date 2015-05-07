@@ -1,0 +1,13 @@
+_navigateTo("/demo/formTest.htm");
+function checkTA($value, $expected){
+	if (!$expected) $expected = $value;
+	_setValue(_textbox("invalidType"), $value);
+	_assertEqual($expected, _textbox("invalidType").value);
+	_setValue(_textbox("invalidType2"), $value);
+	_assertEqual($expected, _textbox("invalidType2").value);
+	_setValue(_textbox("noType"), $value);
+	_assertEqual($expected, _textbox("noType").value);
+}
+
+checkTA("abcd");
+_assertEqual(9, _collect("_textbox", "/.*/", _in(_table(0))).length);

@@ -1,0 +1,16 @@
+_navigateTo("/demo/");
+_click(_link("Window Open Test"));
+_wait(3000);
+var $exists = _windowExists("/demo/");
+var $exists2 = _windowExists("popWin");
+_assertTrue($exists);
+_assertTrue($exists2);
+var $recentWindowId = _getRecentWindow().sahiWinId;
+var $exists3 = _windowExists($recentWindowId);
+_assertTrue($exists3);
+_selectWindow("popWin");
+_closeWindow();
+_selectWindow();
+_wait(2000);
+var $exists4 = _windowExists("popWin", 2000);
+_assertFalse($exists4);

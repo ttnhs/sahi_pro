@@ -1,0 +1,4 @@
+_navigateTo("http://localhost.sahipro.com/demo/", true);
+_include("set_included.sah");
+f1();
+f1();

@@ -1,0 +1,10 @@
+_include("commonFeatures.sah");
+_include("objects.sah");
+_navigateTo($url);
+login($userName,$password);
+navigateToUserAccount();
+_click($addANewUser);
+navToGeneralRequiredInfor("ntumy7","ntumy7", "my7", "nguyen7", "ntumy7@example.com");
+navToGeneralOptionInfor("No login", "Hide my email address from everyone", "Saigon", "Viet Nam", "Asia/Ho_Chi_Minh", "New user is from Vietnam.");
+_click($btnCreateUser);
+logoutQAMoodle();

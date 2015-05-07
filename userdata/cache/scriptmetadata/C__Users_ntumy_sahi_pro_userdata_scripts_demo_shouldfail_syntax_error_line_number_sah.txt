@@ -1,0 +1,1 @@
+fn1,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\shouldfail\syntax_error_line_number.sah,3

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Sahi Spread Sheet Editor</title>
+<style data-jsfiddle="common">
+    .handsontable .currentRow {
+      background-color: #E7E8EF;
+    }
+
+    .handsontable .currentCol {
+      background-color: #F9F9FB;
+   	}
+</style>
+  <!--
+  Loading Handsontable (full distribution that includes all dependencies apart from jQuery)
+  -->
+  <script src="../ext/jquery/jquery.min.js"></script>
+  <script src="../ext/handsontable/jquery.handsontable.full.js"></script>
+  <script type="text/javascript" src="/_s_/spr/util.js"></script>
+
+  <link rel="stylesheet" media="screen" href="../ext/handsontable/jquery.handsontable.full.css">
+
+  <!--
+  Loading demo dependencies. They are used here only to enhance the examples on this page
+  -->
+  <link rel="stylesheet" media="screen" href="demo/css/samples.css">
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div class="centerLayout">
+
+<div id="example"></div>
+
+<button name="load">Load</button>
+<input type="text" id="loader" value="C:\Users\Kshitij\Desktop\scenario1.csv">
+<button name="save" style="display:block">Save</button>
+<!--  
+<label><input type="checkbox" name="autosave" checked="checked" autocomplete="off"> Autosave</label>
+-->
+<script src="spreadsheet.js"></script>
+
+</div>
+
+</div>
+
+</body>
+</html>

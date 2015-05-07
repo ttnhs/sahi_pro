@@ -1,0 +1,93 @@
+var $ar = new Array();
+$ar[$ar.length] = ["hi", "there", "one", "a\"b"];
+//$ar[$ar.length] = [];
+//$ar[$ar.length] = [];
+$ar[$ar.length] = ["hey", "he,re", 2, " aa "];
+	
+function testWithComma(){	
+	checkWithXXX(",");
+}
+function testWithIgnoreEmptyRows(){	
+	checkWithIgnoreEmptyRows(",", true);
+}
+function checkWithIgnoreEmptyRows($separator, $ignoreEmptyRows){
+	_writeFile("hi, there, one, \"a\"\"b\"\n,\nhey, \"he,re\", 2, \" aa \"", "sahicsv.txt", true);
+	var $arr2 = _readCSVFile("sahicsv.txt", $separator, $ignoreEmptyRows);
+	_assertEqual(2, $arr2.length);
+}
+function testWithoutIgnoreEmptyRows(){	
+	checkWithoutIgnoreEmptyRows(",", false);
+}
+function checkWithoutIgnoreEmptyRows($separator, $ignoreEmptyRows){
+	_writeFile("hi, there, one, \"a\"\"b\"\n,\nhey, \"he,re\", 2, \" aa \"", "sahicsv.txt", true);
+	var $arr2 = _readCSVFile("sahicsv.txt", $separator, $ignoreEmptyRows);
+	_assertEqual(3, $arr2.length);
+}
+function testWithDefaultIgnoreEmptyRows(){	
+	checkWithDefaultIgnoreEmptyRows(",");
+}
+function checkWithDefaultIgnoreEmptyRows($separator){
+	_writeFile("hi, there, one, \"a\"\"b\"\n,\nhey, \"he,re\", 2, \" aa \"", "sahicsv.txt", true);
+	var $arr2 = _readCSVFile("sahicsv.txt", $separator);
+	_assertEqual(3, $arr2.length);
+}
+
+function testWithPipe(){	
+	checkWithXXX("|");
+}
+function checkWithXXX($separator){
+	_writeCSVFile($ar, "sahicsv.txt", true, $separator);
+
+	var $ar2 = _readCSVFile("sahicsv.txt", $separator);
+
+	for (var $i=0; $i<$ar.length; $i++){
+		for (var $j=0; $j<$ar[$i].length; $j++){
+			_assertEqual($ar[$i][$j], $ar2[$i][$j]);
+		}
+	}
+}
+function checkWithDefault(){
+	_writeCSVFile($ar, "sahicsv.txt", true);
+
+	var $ar2 = _readCSVFile("sahicsv.txt");
+
+	for (var $i=0; $i<$ar.length; $i++){
+		for (var $j=0; $j<$ar[$i].length; $j++){
+			_assertEqual($ar[$i][$j], $ar2[$i][$j]);
+		}
+	}
+}
+function checkDefaultUsesComma(){
+	_writeCSVFile($ar, "sahicsv.txt", true);
+
+	var $ar2 = _readCSVFile("sahicsv.txt", ",");
+
+	for (var $i=0; $i<$ar.length; $i++){
+		for (var $j=0; $j<$ar[$i].length; $j++){
+			_assertEqual($ar[$i][$j], $ar2[$i][$j]);
+		}
+	}
+}
+function testCSVArrayEquals(){
+	_writeFile("hi, there, one, \"a\"\"b\"\nhey, \"he,re\", 2, \" aa \"", "sahicsv.txt", true);
+	var $ar2 = _readCSVFile("sahicsv.txt");
+	
+	for (var $i=0; $i<$ar.length; $i++){
+		for (var $j=0; $j<$ar[$i].length; $j++){
+			_assertEqual($ar[$i][$j], $ar2[$i][$j]);
+		}
+	}
+}
+function testReadCSVWithoutHeaderWithDuplicates(){
+	$data = [];
+	$data[0] = ["1", "1", 18, "Male"];
+	$data[1] = ["2", "2", 20, "Male"];
+	_writeCSVFile($data, "sahicsv.txt", true);
+	
+	var $fileData = _readCSVFile("sahicsv.txt");
+	var $compareString = [["1","1","18","Male"],["2","2","20","Male"]];
+	var $compareStringIfFirstLineNull = [["","","",""],["1","1","18","Male"],["2","2","20","Male"]];
+	_assertEqual($compareString, $fileData);
+	_assertNotEqual($compareStringIfFirstLineNull, $fileData);
+}
+_runUnitTests();

@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Playback on Desktop</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='index.html'>Using Sahi</a>
+</li><li><a href='quick-tutorial.html'>Quick Tutorial</a>
+<ul><li><a href='quick-tutorial.html#Prerequisites'>Prerequisites</a>
+</li><li><a href='quick-tutorial.html#Download Sahi Pro'>Download Sahi Pro</a>
+</li><li><a href='quick-tutorial.html#Install Sahi'>Install Sahi</a>
+</li><li><a href='quick-tutorial.html#Upgrade Sahi'>Upgrade Sahi</a>
+</li><li><a href='quick-tutorial.html#Start Sahi Dashboard'>Start Sahi Dashboard</a>
+</li><li><a href='quick-tutorial.html#Recording through Sahi'>Recording through Sahi</a>
+</li><li><a href='quick-tutorial.html#Add assertions'>Add assertions</a>
+</li><li><a href='quick-tutorial.html#Playing back'>Playing back</a>
+</li><li><a href='quick-tutorial.html#View Logs'>View Logs</a>
+</li><li><a href='quick-tutorial.html#Edit the recorded script'>Edit the recorded script</a>
+</li><li><a href='quick-tutorial.html#Running a test from command line'>Running a test from command line</a>
+</li><li><a href='quick-tutorial.html#Suites - Automating playback of multiple scripts'>Suites - Automating playback of multiple scripts</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html'>Configuring Sahi (Basic)</a>
+<ul><li><a href='sahi-configuration-basic.html#Configure Browsers in Dashboard'>Configure Browsers in Dashboard</a>
+<ul><li><a href='sahi-configuration-basic.html#browserType Node'>browserType Node</a>
+</li><li><a href='sahi-configuration-basic.html#Variables used in browser_types.xml'>Variables used in browser_types.xml</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html#Other browser modifications needed'>Other browser modifications needed</a>
+<ul><li><a href='sahi-configuration-basic.html#Internet Explorer 11'>Internet Explorer 11</a>
+</li><li><a href='sahi-configuration-basic.html#Internet Explorer 10'>Internet Explorer 10</a>
+</li><li><a href='sahi-configuration-basic.html#Opera'>Opera</a>
+</li><li><a href='sahi-configuration-basic.html#Safari'>Safari</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html#Configure SSL'>Configure SSL</a>
+<ul><li><a href='sahi-configuration-basic.html#Enabling weaker algorithms on Java 1.7 and later'>Enabling weaker algorithms on Java 1.7 and later</a>
+</li><li><a href='sahi-configuration-basic.html#For Linux'>For Linux</a>
+</li><li><a href='sahi-configuration-basic.html#For Mac'>For Mac</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html#External Proxy'>External Proxy</a>
+<ul><li><a href='sahi-configuration-basic.html#Proxy AutoConfig Script'>Proxy AutoConfig Script</a>
+</li><li><a href='sahi-configuration-basic.html#Fixed Proxy'>Fixed Proxy</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html#Configuring Proxy on Mac'>Configuring Proxy on Mac</a>
+</li></ul></li><li><a href='sahi-controller.html'>Using Sahi Controller</a>
+<ul><li><a href='sahi-controller.html#Record Tab'>Record Tab</a>
+</li><li><a href='sahi-controller.html#Identify Elements'>Identify Elements</a>
+</li><li><a href='sahi-controller.html#Action Buttons'>Action Buttons</a>
+</li><li><a href='sahi-controller.html#Assertions'>Assertions</a>
+</li><li><a href='sahi-controller.html#Evaluate Expression'>Evaluate Expression</a>
+</li><li><a href='sahi-controller.html#Use . to get attributes'>Use . to get attributes</a>
+</li><li><a href='sahi-controller.html#Up and Down arrows'>Up and Down arrows</a>
+</li><li><a href='sahi-controller.html#Anchor button'>Anchor button</a>
+</li><li><a href='sahi-controller.html#Directly copy the Accessor to Evaluate Expression'>Directly copy the Accessor to Evaluate Expression</a>
+</li><li><a href='sahi-controller.html#Smart Dropdown for Evaluate Expression'>Smart Dropdown for Evaluate Expression</a>
+</li><li><a href='sahi-controller.html#APIs List Box'>APIs List Box</a>
+</li><li><a href='sahi-controller.html#Retrieve Coordinates of a point'>Retrieve Coordinates of a point</a>
+</li><li><a href='sahi-controller.html#History of Evaluate Expression'>History of Evaluate Expression</a>
+</li><li><a href='sahi-controller.html#Record a script'>Record a script</a>
+</li><li><a href='sahi-controller.html#Record with Accessor Repository'>Record with Accessor Repository</a>
+</li><li><a href='sahi-controller.html#Record Documentation'>Record Documentation</a>
+</li><li><a href='sahi-controller.html#Playback Tab'>Playback Tab</a>
+<ul><li><a href='sahi-controller.html#With page refresh'>With page refresh</a>
+</li><li><a href='sahi-controller.html#Without page refresh'>Without page refresh</a>
+</li><li><a href='sahi-controller.html#View logs'>View logs</a>
+</li></ul></li><li><a href='sahi-controller.html#Debug during Playback'>Debug during Playback</a>
+</li><li><a href='sahi-controller.html#Play Scripts from a URL'>Play Scripts from a URL</a>
+</li><li><a href='sahi-controller.html#Clipboard Tab'>Clipboard Tab</a>
+</li><li><a href='sahi-controller.html#Info Tab'>Info Tab</a>
+</li></ul></li><li><a href='sahi-script-editor.html'>Sahi Script Editor</a>
+<ul><li><a href='sahi-script-editor.html#Launching the Editor'>Launching the Editor</a>
+</li><li><a href='sahi-script-editor.html#Navigator'>Navigator</a>
+</li><li><a href='sahi-script-editor.html#Script Editor'>Script Editor</a>
+</li><li><a href='sahi-script-editor.html#Context Panel'>Context Panel</a>
+</li><li><a href='sahi-script-editor.html#Function Creator'>Function Creator</a>
+</li><li><a href='sahi-script-editor.html#Search'>Search</a>
+</li><li><a href='sahi-script-editor.html#Scenario Editor'>Scenario Editor</a>
+</li><li><a href='sahi-script-editor.html#Documentation tool'>Documentation tool</a>
+</li><li><a href='sahi-script-editor.html#Playback'>Playback</a>
+<ul><li><a href='sahi-script-editor.html#Distributed Playback'>Distributed Playback</a>
+</li><li><a href='sahi-script-editor.html#Advanced Playback Settings'>Advanced Playback Settings</a>
+</li><li><a href='sahi-script-editor.html#Scheduling a Test'>Scheduling a Test</a>
+</li></ul></li><li><a href='sahi-script-editor.html#Creating suites'>Creating suites</a>
+</li></ul></li><li><a href='excel-framework.html'>Excel Framework</a>
+<ul><li><a href='excel-framework.html#Sample Excel Sheet'>Sample Excel Sheet</a>
+</li><li><a href='excel-framework.html#Loading Sahi script libraries'>Loading Sahi script libraries</a>
+</li><li><a href='excel-framework.html#Executing the Excel Sheet'>Executing the Excel Sheet</a>
+</li><li><a href='excel-framework.html#Play back reports/logs'>Play back reports/logs</a>
+</li><li><a href='excel-framework.html#Syntax'>Syntax</a>
+</li><li><a href='excel-framework.html#Variables'>Variables</a>
+</li><li><a href='excel-framework.html#SetUp and TearDown'>SetUp and TearDown</a>
+</li><li><a href='excel-framework.html#Creating Keywords on the fly in Excel'>Creating Keywords on the fly in Excel</a>
+</li><li><a href='excel-framework.html#Data driven testing'>Data driven testing</a>
+</li><li><a href='excel-framework-web-ui.html'>Excel Framework Web UI</a>
+<ul><li><a href='excel-framework-web-ui.html#Launching the Scenario Editor'>Launching the Scenario Editor</a>
+</li><li><a href='excel-framework-web-ui.html#Introduction to the Web UI'>Introduction to the Web UI</a>
+</li><li><a href='excel-framework-web-ui.html#Key features'>Key features</a>
+<ul><li><a href='excel-framework-web-ui.html#loadSahi'>loadSahi</a>
+</li><li><a href='excel-framework-web-ui.html#Detail box'>Detail box</a>
+</li><li><a href='excel-framework-web-ui.html#Red colored notification'>Red colored notification</a>
+</li></ul></li><li><a href='excel-framework-web-ui.html#List of shortcuts'>List of shortcuts</a>
+<ul><li><a href='excel-framework-web-ui.html#CTRL combination shortcut keys'>CTRL combination shortcut keys</a>
+</li><li><a href='excel-framework-web-ui.html#ALT combination shortcut keys'>ALT combination shortcut keys</a>
+</li><li><a href='excel-framework-web-ui.html#Function keys'>Function keys</a>
+</li><li><a href='excel-framework-web-ui.html#Other useful shortcut keys'>Other useful shortcut keys</a>
+</li></ul></li></ul></li></ul></li><li><a href='sahi-suite.html'>Sahi Suites</a>
+<ul><li><a href='plain-suites.html'>Plain Suites</a>
+</li><li><a href='data-driven-suites.html'>Data Driven Suites</a>
+<ul><li><a href='data-driven-suites.html#Introduction'>Introduction</a>
+</li><li><a href='data-driven-suites.html#Structure'>Structure</a>
+</li><li><a href='data-driven-suites.html#Structure Explained'>Structure Explained</a>
+</li><li><a href='data-driven-suites.html#Running Data Driven Suites'>Running Data Driven Suites</a>
+</li><li><a href='data-driven-suites.html#Variable $isDataPassed and _isDataPassed()'>Variable $isDataPassed and _isDataPassed()</a>
+</li></ul></li><li><a href='csv-files-as-suites-with-tags.html'>CSV Files as Suites with Tags</a>
+<ul><li><a href='csv-files-as-suites-with-tags.html#Demarcating multiple test case boundaries in single script'>Demarcating multiple test case boundaries in single script</a>
+</li><li><a href='csv-files-as-suites-with-tags.html#Reports and Summary'>Reports and Summary</a>
+</li></ul></li></ul></li><li><a href='playback-desktop.html'>Playback on Desktop</a>
+<ul><li><a href='playback-desktop.html#Playback via Editor (new in 6.0.0)'>Playback via Editor (new in 6.0.0)</a>
+</li><li><a href='playback-desktop.html#Playback via Sahi Controller'>Playback via Sahi Controller</a>
+</li><li><a href='playback-desktop.html#Playback via testrunner'>Playback via testrunner</a>
+</li><li><a href='playback-desktop.html#Distributed playback via drun'>Distributed playback via drun</a>
+<ul><li><a href='playback-desktop.html#drun'>drun</a>
+</li><li><a href='playback-desktop.html#drun_different_master'>drun_different_master</a>
+</li></ul></li><li><a href='playback-desktop.html#Playback via ANT'>Playback via ANT</a>
+<ul><li><a href='playback-desktop.html#Playback on a single machine'>Playback on a single machine</a>
+</li><li><a href='playback-desktop.html#Attributes and their description'>Attributes and their description</a>
+</li><li><a href='playback-desktop.html#Command to execute the above ANT target'>Command to execute the above ANT target</a>
+</li><li><a href='playback-desktop.html#Distributed playback via ANT'>Distributed playback via ANT</a>
+</li><li><a href='playback-desktop.html#Distributed run on the same Master'>Distributed run on the same Master</a>
+</li><li><a href='playback-desktop.html#Attributes and their description'>Attributes and their description</a>
+</li><li><a href='playback-desktop.html#Command to execute the above ANT target'>Command to execute the above ANT target</a>
+</li><li><a href='playback-desktop.html#Distributed run on a different Master'>Distributed run on a different Master</a>
+</li><li><a href='playback-desktop.html#Attributes and their description'>Attributes and their description</a>
+</li><li><a href='playback-desktop.html#Command to execute the above ANT target'>Command to execute the above ANT target</a>
+</li></ul></li><li><a href='playback-desktop.html#Email.properties file explained'>Email.properties file explained</a>
+<ul><li><a href='playback-desktop.html#Configuration file for javax.mail'>Configuration file for javax.mail</a>
+</li><li><a href='playback-desktop.html#Sample properties file'>Sample properties file</a>
+</li></ul></li><li><a href='web-based-testrunner.html'>Web based Testrunner</a>
+</li></ul></li><li><a href='playback-mobile.html'>Playback on Mobile</a>
+<ul><li><a href='recording-for-mobile-devices.html'>Recording for mobile devices</a>
+</li><li><a href='run-sahi-on-ipad.html'>Sahi on iPad</a>
+</li><li><a href='run-sahi-on-android.html'>Sahi on Android</a>
+<ul><li><a href='run-sahi-on-android.html#Start the Emulator'>Start the Emulator</a>
+</li><li><a href='run-sahi-on-android.html#Configure the proxy on the Emulator's browser (for 2.3.3):'>Configure the proxy on the Emulator's browser (for 2.3.3):</a>
+</li><li><a href='run-sahi-on-android.html#Configure Sahi browser_types.xml'>Configure Sahi browser_types.xml</a>
+</li><li><a href='run-sahi-on-android.html#Run the test using testrunner.bat'>Run the test using testrunner.bat</a>
+</li></ul></li></ul></li><li><a href='sahi-reports.html'>Reports</a>
+<ul><li><a href='sahi-reports.html#Reports - Architecture and Flow'>Reports - Architecture and Flow</a>
+</li><li><a href='sahi-reports.html#logsInfo attribute'>logsInfo attribute</a>
+</li><li><a href='sahi-reports.html#Understanding reports and report types'>Understanding reports and report types</a>
+</li><li><a href='sahi-reports.html#Adding logsInfo in testrunner.bat'>Adding logsInfo in testrunner.bat</a>
+</li><li><a href='sahi-reports.html#Adding logsInfo in drun.bat'>Adding logsInfo in drun.bat</a>
+</li><li><a href='sahi-reports.html#Adding a new custom reporting type'>Adding a new custom reporting type</a>
+<li><a href='storing-reports-in-mysql.html'>Storing Reports in MySQL</a>
+<ul><li><a href='storing-reports-in-mysql.html#Create a Database'>Create a Database</a>
+</li><li><a href='storing-reports-in-mysql.html#Create Tables'>Create Tables</a>
+</li><li><a href='storing-reports-in-mysql.html#Add MySQL Driver Jars to Sahi Classpath'>Add MySQL Driver Jars to Sahi Classpath</a>
+</li><li><a href='storing-reports-in-mysql.html#Point Sahi to use the MySQL Database'>Point Sahi to use the MySQL Database</a>
+</li><li><a href='storing-reports-in-mysql.html#Restart and Run'>Restart and Run</a>
+</li><li><a href='storing-reports-in-mysql.html#Trouble-shooting'>Trouble-shooting</a>
+</li></ul></li><li><a href='storing-reports-in-mssql.html'>Storing Reports in MSSQL</a>
+<ul><li><a href='storing-reports-in-mssql.html#Create a Database'>Create a Database</a>
+</li><li><a href='storing-reports-in-mssql.html#Create Tables'>Create Tables</a>
+</li><li><a href='storing-reports-in-mssql.html#Add MSSQL Driver Jars to Sahi Classpath'>Add MSSQL Driver Jars to Sahi Classpath</a>
+</li><li><a href='storing-reports-in-mssql.html#Point Sahi to use the MSSQL Database'>Point Sahi to use the MSSQL Database</a>
+</li><li><a href='storing-reports-in-mssql.html#Restart and Run'>Restart and Run</a>
+</li></ul></li></ul></li><li><a href='adding-jars-to-sahis-classpath.html'>Adding Jars to Sahi Classpath</a>
+<ul><li><a href='adding-jars-to-sahis-classpath.html#From command-line'>From command-line</a>
+</li><li><a href='adding-jars-to-sahis-classpath.html#From ant'>From ant</a>
+</li></ul></li><li><a href='including-sahi-script-globally.html'>Including Sahi script globally</a>
+</li><li><a href='flex.html'>Flex</a>
+<ul><li><a href='flex.html#Introduction'>Introduction</a>
+</li><li><a href='flex.html#Compile with sfl.swc using command line'>Compile with sfl.swc using command line</a>
+</li><li><a href='flex.html#Compile using Ant'>Compile using Ant</a>
+</li><li><a href='flex.html#Compile using Adobe Flash Builder (Add SWC files to Flex Builder projects)'>Compile using Adobe Flash Builder (Add SWC files to Flex Builder projects)</a>
+</li><li><a href='flex.html#Recording a flex application'>Recording a flex application</a>
+</li><li><a href='flex.html#Identification of Flex Components'>Identification of Flex Components</a>
+</li><li><a href='flex.html#Recognizing Custom Components'>Recognizing Custom Components</a>
+</li><li><a href='flex.html#Performing actions on Flex elements'>Performing actions on Flex elements</a>
+</li><li><a href='flex.html#Relational operators in SFL'>Relational operators in SFL</a>
+</li><li><a href='flex.html#Known Issues'>Known Issues</a>
+</li><li><a href='flex.html#Tips on usage'>Tips on usage</a>
+</li><li><a href='flex.html#Flex app and SahiPro version'>Flex app and SahiPro version</a>
+</li></ul></li><li><a href='applet.html'>Applet</a>
+<ul><li><a href='applet.html#Introduction'>Introduction</a>
+</li><li><a href='applet.html# Automating Oracle Forms'>Automating Oracle Forms</a>
+</li><li><a href='applet.html# Recording an Applet'>Recording an Applet</a>
+</li><li><a href='applet.html#Applet APIs'>Applet APIs</a>
+</li><li><a href='applet.html#Trouble Shooting'>Trouble Shooting</a>
+<ul><li><a href='applet.html#Java security error while loading applets with Sahi'>Java security error while loading applets with Sahi</a>
+</li><li><a href='applet.html#Page hangs or Sahi does not recognize any element'>Page hangs or Sahi does not recognize any element</a>
+</li><li><a href='applet.html#Applet: Delete Java Cache'>Applet: Delete Java Cache</a>
+</li></ul></li><li><a href='applet.html#Sample applet'>Sample applet</a>
+</li></ul></li><li><a href='401-authentication.html'>401 Authentication</a>
+</li><li><a href='securing-sahi-for-enterprise.html'>Securing Sahi for Enterprises</a>
+<ul><li><a href='securing-sahi-for-enterprise.html#Using custom domain instead of sahi.example.com'>Using custom domain instead of sahi.example.com</a>
+</li><li><a href='securing-sahi-for-enterprise.html#Creating Custom SSL Root Certificates'>Creating Custom SSL Root Certificates</a>
+<ul><li><a href='securing-sahi-for-enterprise.html#Create the root certificate'>Create the root certificate</a>
+</li><li><a href='securing-sahi-for-enterprise.html#Accept the root certificate on browsers'>Accept the root certificate on browsers</a>
+<ul><li><a href='securing-sahi-for-enterprise.html#Configuring Firefox template for new root certificate'>Configuring Firefox template for new root certificate</a>
+</li></ul></li><li><a href='securing-sahi-for-enterprise.html#Deploying the root certificate changes on other Sahi Pro installations'>Deploying the root certificate changes on other Sahi Pro installations</a>
+</li></ul></li></ul></li><li><a href='complex-usecases.html'>Complex Use Cases</a>
+<ul><li><a href='calling-java.html'>Calling Java</a>
+<ul><li><a href='calling-java.html#Calling inbuilt Java classes'>Calling inbuilt Java classes</a>
+</li><li><a href='calling-java.html#Working with Java object directly in Sahi Script'>Working with Java object directly in Sahi Script</a>
+</li><li><a href='calling-java.html#Calling Java classes in Custom Packages'>Calling Java classes in Custom Packages</a>
+</li><li><a href='calling-java.html#Accessing Your Own Custom Classes from Sahi'>Accessing Your Own Custom Classes from Sahi</a>
+<ul><li><a href='calling-java.html#Sample Custom Class'>Sample Custom Class</a>
+</li></ul></li><li><a href='calling-java.html#Add to Classpath'>Add to Classpath</a>
+</li><li><a href='calling-java.html#Call loadProperties Method from Sahi Script'>Call loadProperties Method from Sahi Script</a>
+</li></ul></li><li><a href='parsing-xml.html'>Parsing XML in Sahi</a>
+<ul><li><a href='parsing-xml.html#Parsing XML containing namespaces'>Parsing XML containing namespaces</a>
+</li></ul></li><li><a href='working-with-ssh-from-sahi.html'>Working with SSH</a>
+<ul><li><a href='working-with-ssh-from-sahi.html#Prerequisites'>Prerequisites</a>
+</li><li><a href='working-with-ssh-from-sahi.html#Add to classpath'>Add to classpath</a>
+</li><li><a href='working-with-ssh-from-sahi.html#The Sahi Script'>The Sahi Script</a>
+</li><li><a href='working-with-ssh-from-sahi.html#NOTES'>NOTES</a>
+</li></ul></li><li><a href='reading-pdf-files.html'>Reading PDF Files</a>
+<ul><li><a href='reading-pdf-files.html#Prerequisites'>Prerequisites</a>
+</li><li><a href='reading-pdf-files.html#Code'>Code</a>
+</li><li><a href='reading-pdf-files.html#Reading values of editable fields from pdf'>Reading values of editable fields from pdf</a>
+</li></ul></li><li><a href='running-sahi-scripts-from-java.html'>Run Sahi Scripts from Java</a>
+<ul><li><a href='running-sahi-scripts-from-java.html#Problem'>Problem</a>
+</li><li><a href='running-sahi-scripts-from-java.html#Java code invoking TestRunner'>Java code invoking TestRunner</a>
+</li><li><a href='running-sahi-scripts-from-java.html#The Sahi script being invoked'>The Sahi script being invoked</a>
+</li><li><a href='running-sahi-scripts-from-java.html#Passing parameters into Sahi script from Java'>Passing parameters into Sahi script from Java</a>
+</li><li><a href='running-sahi-scripts-from-java.html#Passing data values from the Script back to Java'>Passing data values from the Script back to Java</a>
+</li></ul></li><li><a href='sending-emails.html'>Sending Emails</a>
+</li><li><a href='sahi-gui-less-installation.html'>Sahi GUI Less Installation</a>
+</li><li><a href='sahi-headless-execution-with-phantomjs.html'>Sahi headless with PhantomJS</a>
+<ul><li><a href='sahi-headless-execution-with-phantomjs.html#Documentation since Sahi Pro V4.3.2'>Documentation since Sahi Pro V4.3.2</a>
+<ul><li><a href='sahi-headless-execution-with-phantomjs.html#For Windows:'>For Windows:</a>
+</li><li><a href='sahi-headless-execution-with-phantomjs.html#For Linux:'>For Linux:</a>
+</li></ul></li><li><a href='sahi-headless-execution-with-phantomjs.html#Older Documentation (before Sahi Pro V4.3.2)'>Older Documentation (before Sahi Pro V4.3.2)</a>
+</li></ul></li><li><a href='configuring-sahi-with-xvbf.html'>Sahi headless with Xvfb</a>
+<ul><li><a href='configuring-sahi-with-xvbf.html#What is xvfb?'>What is xvfb?</a>
+</li><li><a href='configuring-sahi-with-xvbf.html#Installing Xvfb'>Installing Xvfb</a>
+<ul><li><a href='configuring-sahi-with-xvbf.html#Ubuntu'>Ubuntu</a>
+</li><li><a href='configuring-sahi-with-xvbf.html#For Fedora'>For Fedora</a>
+</li><li><a href='configuring-sahi-with-xvbf.html#For other linux'>For other linux</a>
+</li></ul></li><li><a href='configuring-sahi-with-xvbf.html#Setting up Xvfb on display 1'>Setting up Xvfb on display 1</a>
+</li><li><a href='configuring-sahi-with-xvbf.html#Running test in Xvfb headless browser through Sahi'>Running test in Xvfb headless browser through Sahi</a>
+</li></ul></li></ul></li><li><a href='tweaking-sahi-apis.html'>Tweaking Sahi APIs</a>
+<ul><li><a href='tweaking-sahi-apis.html#Identifying elements by an attribute not available with Sahi'>Identifying elements by an attribute not available with Sahi</a>
+</li></ul></li><li><a href='integrate-with-jenkins.html'>Jenkins Integration</a>
+<ul><li><a href='integrate-with-jenkins.html#Building the new jenkins software project'>Building the new jenkins software project</a>
+</li><li><a href='integrate-with-jenkins.html#Prerequisites'>Prerequisites</a>
+</li><li><a href='integrate-with-jenkins.html#Configure Jenkins'>Configure Jenkins</a>
+</li><li><a href='integrate-with-jenkins.html#View Sahi Pro HTML Logs in Jenkins'>View Sahi Pro HTML Logs in Jenkins</a>
+</li></ul></li><li><a href='sahi-as-a-documentation-tool.html'>Sahi As Documentation Tool</a>
+<ul><li><a href='sahi-as-a-documentation-tool.html#Recording in Documentation Mode'>Recording in Documentation Mode</a>
+</li><li><a href='sahi-as-a-documentation-tool.html#Viewing and Editing Document'>Viewing and Editing Document</a>
+</li></ul></li><li><a href='other-language-drivers.html'>Other Language Drivers</a>
+<ul><li><a href='java.html'>Java Driver</a>
+<ul><li><a href='java.html#Recording Java code'>Recording Java code</a>
+</li></ul></li><li><a href='ruby.html'>Ruby Driver</a>
+<ul><li><a href='ruby.html#Recording Ruby code'>Recording Ruby code</a>
+</li></ul></li></ul></li><li><a href='robot-sahi.html'>Sahi Robot Driver</a>
+<ul><li><a href='robot-sahi.html#Installation'>Installation</a>
+</li><li><a href='robot-sahi.html#Keywords'>Keywords</a>
+</li></ul></li><li><a href='mtm-sahi-integration.html'>Sahi MTM Integration</a>
+<ul><li><a href='mtm-sahi-integration.html#Installation'>Installation</a>
+</li><li><a href='mtm-sahi-integration.html#MTM Bridge'>MTM Bridge</a>
+</li></ul></li><li><a href='load-testing.html'>Load Testing with Sahi Pro</a>
+<ul><li><a href='load-testing.html#Setting up'>Setting up</a>
+</li><li><a href='load-testing.html#Reporting'>Reporting</a>
+</li><li><a href='load-testing.html#Running load tests through ANT'>Running load tests through ANT</a>
+<ul><li><a href='load-testing.html#Attributes and their description'>Attributes and their description</a>
+</li><li><a href='load-testing.html#Command to execute the above ANT target'>Command to execute the above ANT target</a>
+</li></ul></li></ul></li><li><a href='sahi-integration.html'>Sahi Integration</a>
+<ul><li><a href='sahi-integration.html#Set Sahi Server'>Set Sahi Server</a>
+</li><li><a href='sahi-integration.html#Get Script Directory'>Get Script Directory</a>
+</li><li><a href='sahi-integration.html#Get All Scripts Path In The Given Directory'>Get All Scripts Path In The Given Directory</a>
+</li><li><a href='sahi-integration.html#Get All Available Browsers'>Get All Available Browsers</a>
+</li><li><a href='sahi-integration.html#Running the Script/Suite'>Running the Script/Suite</a>
+</li><li><a href='sahi-integration.html#Check the status of Script/Suite'>Check the status of Script/Suite</a>
+</li><li><a href='sahi-integration.html#Get the Suite logs'>Get the Suite logs</a>
+</li><li><a href='sahi-integration.html#Get the Script Log'>Get the Script Log</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Playback on Desktop</h2>
+      <!-- Playback on Desktop -->
+<div class="abstract"><strong class='heading'>abstract</strong>
+This section describes various ways of playing back Sahi scripts.<br/>
+</div>
+<br/>
+<h3><a href="#Playback via Editor (new in 6.0.0)" name="Playback via Editor (new in 6.0.0)" class="headinganchor2" hideFocus="hideFocus">Playback via Editor (new in 6.0.0)</a></h3>
+The enhanced Editor (available from v6.0.0) allows the user to playback scripts, suites, data driven suites and scenarios from a web interface.<br/>
+<br/>
+The user can choose to playback on a single machine or distribute across machines. All command line scenarios (testrunner, drun, drun_different_master) can be tested from the Editor Playback UI.<br/>
+<br/>
+One can also generate ANT xml content for various scenarios from the Playback UI. The xml content needs to be copied and saved in an xml file. The XML file can then be run through ANT.<br/>
+Example: If we copy the generated ANT xml content to demo.xml, one can launch the ANT target as ant -f demo.xml<br/>
+<br/>
+Please refer to the <a href="sahi-script-editor.html#Playback">Playback</a> section of the Editor documentation for more details on the Playback UI.<br/>
+<br/>
+<h3><a href="#Playback via Sahi Controller" name="Playback via Sahi Controller" class="headinganchor2" hideFocus="hideFocus">Playback via Sahi Controller</a></h3>
+To playback via Controller, go to the Playback tab, choose the script to play and click "Play".<br/>
+As the script executes, Sahi will display the steps executed and also log them into a database.<br/>
+You can view the logs by clicking on "Logs" link at the bottom of the Controller.<br/>
+<br/>
+<h3><a href="#Playback via testrunner" name="Playback via testrunner" class="headinganchor2" hideFocus="hideFocus">Playback via testrunner</a></h3>
+<br/>
+<code>testrunner.bat</code> and <code>testrunner.sh</code> files allow running scripts from the command line.<br/>
+<ol>
+<li>Open a command prompt and cd to sahi/userdata/bin<br/>
+(or click on the "Bin" link on the Sahi Dashboard)<br/>
+</li>
+<li>Run testrunner.bat to see the syntax<br/>
+<div class="console">
+D:\sahi_pro\userdata\bin>testrunner<br/>
+--<br/>
+Usage: testrunner <sah file|suite file> <startURL> <browserType> <tags>
+File path is relative to userdata/scripts<br/>
+Multiple browsers can be specified using +. Eg. ie+firefox<br/>
+tags are used only if the input suite is a csv file<br/>
+--<br/>
+Example:<br/>
+testrunner demo/demo.suite http://sahi.co.in/demo/ firefox<br/>
+testrunner demo/sahi_demo.sah http://sahi.co.in/demo/ ie<br/>
+testrunner demo/sahi_demo.sah http://sahi.co.in/demo/ ie+firefox<br/>
+testrunner demo/testcases/testcases_sample.csv http://sahi.co.in/demo/ ie "(user||admin)&&medium"<br/>
+testrunner demo/ddcsv/test.dd.csv http://sahi.co.in/demo/ ie "(user||admin)&&medium"<br/>
+--<br/>
+<br/>
+D:\sahi_pro\userdata\bin>
+</div>
+</li>
+<li>
+To run your suite, use,<br/>
+<pre><code>C:\sahi\userdata\bin&gt;testrunner.bat myapp.suite http://myappdomain/startpage.jsp firefox</code></pre>
+You can specify the browser you want to run it on.<br/>
+</li>
+<li>
+Parameters other than suite, startURL and browserType can be modified by editing <code>testrunner.bat</code><br/>
+<ol>
+<li>
+To set the number of parallel browsers to execute the script in, modify<br/>
+<pre><code>SET THREADS=5</code></pre>
+To run in one thread only, ie. to run scripts one after the other sequentially, use<br/>
+<pre><code>SET THREADS=1</code></pre>
+</li>
+<li>
+Sahi normally opens and closes the browser for each script.<br/>
+To execute all scripts sequentially without closing and reopening browsers, use<br/>
+<pre><code>SET THREADS=1
+SET SINGLE_SESSION=true</code></pre>
+</li>
+<li>
+Sahi, by default, writes logs to the database only.<br/>
+To force it to write logs to the filesystem, use<br/>
+<pre><code>SET LOGS_INFO=html,xml</code></pre>
+html and xml logs will be created in the <code>sahi/userdata/logs/playback</code> folder<br/>
+<br/>
+To force it to write logs to specific file locations, use,<br/>
+<pre><code>SET LOGS_INFO=html:D:/reports/htmllogs/,xml:D:/reports/xmllogs/</code></pre>
+<br/>
+Output formats available are html,xml,junit,excel<br/>
+<br/>
+The format to specify LOGS_INFO is<br/>
+<pre><code>reportType1:filePath1,reportType2,reportType3:filePath3,...</code></pre>
+</li>
+<li>
+When a Sahi suite is run, some scripts may fail because of environment reasons or due to browser crashes.<br/>
+A natural next step for testers is to verify the failure by running the script again.<br/>
+Sahi now automatically creates a suite of all failed scripts. The name of the failed suite has <code>_failed</code> appended to the filename.<br/>
+For example if you ran a suite <code>admin/admin.suite</code> failed suite will be created as <code>admin/admin_failed.suite</code><br/>
+For  <code>admin/admin.dd.csv</code>, it will be <code>admin/admin_failed.dd.csv</code><br/>
+<br/>
+This failed suite file can then be run to verify only the failed testcases.<br/>
+</li>
+<li>
+Sahi can send out emails at the end of a suite run.<br/>
+Set the following properties in testrunner.bat file.<br/>
+<pre><code>SET SEND_EMAIL_REPORT=true
+SET EMAIL_TRIGGER=success,failure
+SET EMAIL_PROPERTIES=email.properties
+SET EMAIL_PASSWORD_HIDDEN=true</code></pre>
+Email specific parameters like username, password etc. are defined in <code>sahi/userdata/bin/<a href="http://localhost:9999/_s_/ddocs/using-sahi/playback-desktop.html#Email.properties file explained">email.properties</a></code> file.<br/>
+</li>
+</ol>
+</li>
+</ol>
+<br/>
+<div class="info"><strong class='heading'>info</strong>
+Browser names are defined in sahi/userdata/browser-types-xml<br/>
+testrunner.bat and testrunner.sh use the TestRunner java class internally.<br/>
+</div>
+<br/>
+<h3><a href="#Distributed playback via drun" name="Distributed playback via drun" class="headinganchor2" hideFocus="hideFocus">Distributed playback via drun</a></h3>
+<br/>
+Sahi Pro can distribute and run tests on multiple machines (nodes).<br/>
+The machine which distributes the scripts and manages the distributed run is referred to as the <code>Master</code>. All Dashboard logs are visible from the <code>Master</code>. The other machines are called <code>Slaves</code>. Any machine in the distributed environment can serve as the <code>Master</code>. The machine which launches the distributed run is referred to as the <code>Initiator</code>.<br/>
+Sahi provides a couple of batch files - <code>drun.bat</code> and <code>drun_different_master.bat</code> (and equivalent shell scripts). They allow running test scripts on multiple machines from the command line.<br/>
+<ul>
+<li>
+<code>drun.bat</code> should be used when the <code>Master</code> and <code>Initiator</code> are the same machine.<br/>
+</li>
+<li>
+<code>drun_different_master.bat</code> should be used when the <code>Master</code> is different from the <code>Initiator</code>.<br/>
+</li>
+</ul>
+<div class="danger"><strong class='heading'>danger</strong>
+Please ensure that the same SahiPro version has been installed on all the machines participating in the distributed run.<br/>
+</div>
+<h4><a href="#drun" name="drun" class="headinganchor2" hideFocus="hideFocus">drun</a></h4>
+<ol>
+<li>Sahi distributes the scripts to different machines based on their capacity and availability of browsers. Please note that Sahi should be running on each of the nodes. Also, on each machine, the browser paths must be correctly specified.</li>
+<li>Open <code>sahi_pro/userdata/bin/drun.bat</code> (drun.sh on linux) using any editor.</li>
+<li>
+	SOURCE_SCRIPTS_PATH points to the folder that contains ALL the scripts to be run. It should be relative to <code>sahi_pro/userdata</code> folder OR it should be an absolute path.<br/>
+<br/>
+	For Windows:<br/>
+	<pre><code>SET SOURCE_SCRIPTS_PATH=scripts</code></pre>
+	For Linux:<br/>
+	<pre><code>export SOURCE_SCRIPTS_PATH=scripts</code></pre>
+</li>
+<li>
+	Configure the NODES variable to contain all the machines on which the tests should run. The command to set the nodes in Windows and Linux respectively are:<br/>
+	For Windows:<br/>
+	<pre><code>SET NODES=localhost:9999,othermachine:9999,thirdmachine:9999</code></pre>
+	For Linux:<br/>
+	<pre><code>export NODES=localhost:9999,othermachine:9999,thirdmachine:9999</code></pre>
+	<div class="info"><strong class='heading'>info</strong>
+	The nodes may or may not include the <code>Master</code> machine (localhost). If the <code>Master</code> machine is not included, scripts will not be run on the <code>Master</code>.<br/>
+	</div>
+	<div class="warning"><strong class='heading'>warning</strong>
+	"othermachine" and "thirdmachine" are placeholders to illustrate usage. Replace them with actual machine names. The nodes can contain 1 or more machines.<br/>
+	</div>
+</li>
+<li>
+When a Sahi suite is run, some scripts may fail because of environment reasons or due to browser crashes.<br/>
+A natural next step for testers is to verify the failure by running the script again.<br/>
+Sahi now automatically creates a suite of all failed scripts. The name of the failed suite has <code>_failed_&lt;browsertype&gt;</code> appended to the filename.<br/>
+For example if you ran a suite <code>admin/admin.suite</code> in Chrome, failed suite will be created as <code>admin/admin_failed_chrome.suite</code><br/>
+For  <code>admin/admin.dd.csv</code>, it will be <code>admin/admin_failed_chrome.dd.csv</code><br/>
+<br/>
+This failed suite file can then be run to verify only the failed scripts.<br/>
+</li>
+<li>
+	Sahi can send a mail summarizing the playback. The variable SEND_EMAIL_REPORT can be set as true or false. If true, Sahi sends the mail.<br/>
+<br/>
+	For Windows:<br/>
+	<pre><code>SET SEND_EMAIL_REPORT=true</code></pre>
+	For Linux:<br/>
+	<pre><code>export SEND_EMAIL_REPORT=true</code></pre>
+</li>
+<li>
+	Sahi can send a mail based on success or failure or in both the cases. This condition can be set using the EMAIL_TRIGGER variable.<br/>
+<br/>
+	For Windows:<br/>
+	<pre><code>SET EMAIL_TRIGGER=success,failure</code></pre>
+	For Linux:<br/>
+	<pre><code>export EMAIL_TRIGGER=success,failure</code></pre>
+</li>
+<li>The relative path to the properties file containing information about the mail such as sender, recipient, host, port etc. can be set using the EMAIL_PROPERTIES variable.</li>
+<li>Passwords can be hidden or shown from the console and logs by toggling the EMAIL_PASSWORD_HIDDEN variable.<br/>
+It can be set as true or false. If true, Sahi hides the password from Sahi console and logs.</li>
+<li>
+	Custom fields can be passed to the scripts using the CUSTOM_FIELDS variable. More than one custom field can be passed. Replace the custom field keys and values as appropriate.<br/>
+<br/>
+	For Windows:<br/>
+	<pre><code>SET CUSTOM_FIELDS=-customField customValue -anotherCustomField "another value"</code></pre>
+	For Linux:<br/>
+	<pre><code>export CUSTOM_FIELDS=-customField customValue -anotherCustomField "another value"</code></pre>
+<br/>
+	<div class="info"><strong class='heading'>info</strong>
+	Specifying custom fields is not mandatory.<br/>
+	</div>
+</li>
+<li>
+	The end user can pass a specific id for each suite/script run using the USER_DEFINED_ID variable.<br/>
+<br/>
+	For Windows:<br/>
+	<pre><code>SET USER_DEFINED_ID=-userDefinedId  "Some Id"</code></pre>
+	For Linux:<br/>
+	<pre><code>export USER_DEFINED_ID=-userDefinedId  "Some Id"</code></pre>
+<br/>
+	Replace the value "Some Id" as appropriate.<br/>
+	<div class="warning"><strong class='heading'>warning</strong>
+	The key should remain as userDefinedId.<br/>
+	</div>
+	<div class="info"><strong class='heading'>info</strong>
+	Specifying user defined id is not mandatory.<br/>
+	</div>
+</li>
+<li>
+	Sahi can set offline logs to be generated in <code>xml</code>, <code>html</code>, <code>junit</code>, <code>tm6</code> and <code>excel</code> types. The default type is <code>html</code>.<br/>
+<br/>
+	For Windows:<br/>
+	<pre><code>SET LOGS_INFO=xml,html</code></pre>
+	For Linux:<br/>
+	<pre><code>export LOGS_INFO=xml,html</code></pre>
+</li>
+<li>To execute the scripts using drun.bat, open a command window and go to the <code>&lt;sahi_home&gt;/userdata/bin</code> directory. This can also be done easily by clicking the bin link on the dashboard.</li>
+<li>Run drun.bat to see the syntax.<br/>
+<div class="console">
+D:\sahi_pro\userdata\bin>drun<br/>
+--<br/>
+NOTE: Use this batch file only if this machine is same as the Master machine. Else, use drun_different_master.bat instead.<br/>
+--<br/>
+Usage: drun <sah file|suite file> <startURL> <browserType> <tags>
+File path is relative to userdata/scripts<br/>
+Multiple browsers can be specified using +. Eg. ie+firefox<br/>
+tags are used only if the input suite is a csv file<br/>
+--<br/>
+Example:<br/>
+drun demo/demo.suite http://sahi.co.in/demo/ firefox<br/>
+drun demo/sahi_demo.sah http://sahi.co.in/demo/ ie<br/>
+drun demo/sahi_demo.sah http://sahi.co.in/demo/ ie+firefox<br/>
+drun demo/testcases/testcases_sample.csv http://sahi.co.in/demo/ ie "(user||admin)&&medium"<br/>
+drun demo/ddcsv/test.dd.csv http://sahi.co.in/demo/ ie "(user||admin)&&medium"<br/>
+--<br/>
+<br/>
+D:\sahi_pro\userdata\bin>
+</div>
+<br/>
+In the usage above,<br/>
+<ul>
+<li>
+The first argument is the suite or script path. This path is always relative to the path set in SOURCE_SCRIPTS_PATH.<br/>
+</li>
+<li>
+The second argument is the Start URL.<br/>
+</li>
+<li>
+The third argument is the Browser Type.<br/>
+</li>
+<li>
+Tags (the fourth argument) will be used only when running a data driven suite (.dd.csv) or a CSV as suite with tags.<br/>
+Tags are specified to run specific scripts/testcases from the suite.<br/>
+eg. If tags are specified as "(user||admin)&&medium", all the scripts which have 'medium' tag and 'admin' or 'user' (or both) tag will be run<br/>
+</li>
+</ul>
+</li>
+</ol>
+<h4><a href="#drun_different_master" name="drun_different_master" class="headinganchor2" hideFocus="hideFocus">drun_different_master</a></h4>
+This should be used when the <code>Master</code> is different from the <code>Initiator</code>.<br/>
+A typical case where you would use this or the ANT equivalent, is when you have a continuous integration build server that is not capable of launching any UI.<br/>
+The build server will contain all the scripts but since it cannot launch any UI, it cannot run Sahi tests. In such a case, Sahi can be run on other machines and <code>drun_different_master</code> can be used on the integration build server to trigger the Sahi tests on these machines.<br/>
+<br/>
+<code>drun_different_master</code> does the following.<br/>
+<ul>
+<li>
+It first syncs the contents of scripts folder from the <code>Initiator</code> to a staging folder on the <code>Master</code>.<br/>
+</li>
+<li>
+It then distributes the scripts from the staging folder of the <code>Master</code> to various nodes and runs the tests.<br/>
+</li>
+<li>
+If offline logs are requested, the logs are copied over from the <code>Master</code> to the <code>Initiator</code> after the run is over.<br/>
+</li>
+</ul>
+Let us look at <code>drun_different_master</code> in more detail.<br/>
+<ol>
+<li>Sahi (running on the <code>Master</code>) distributes the scripts to different machines based on their capacity and availability of browsers. Please note that Sahi should be running on each of the nodes. Also, on each machine, the browser paths must be correctly specified.<br/>
+<div class="info"><strong class='heading'>info</strong>
+Sahi does not need to be installed on the <code>Initiator</code> machine.<br/>
+</div>
+</li>
+<li>
+The following directory structure is assumed on the <code>Initiator</code> machine. The requisite files like ant-sahi.jar should be copied over from a SahiPro installation. The directory structure of the files is the same in the SahiPro installation.<br/>
+<pre><code>&lt;TOP_LEVEL_FOLDER&gt;
+	lib
+		ant-sahi.jar
+	logs
+	userdata
+		bin
+			drun_different_master.bat
+			setjava.bat
+			email.properties
+		scripts
+			&lt;ALL YOUR SCRIPT FOLDERS AND SCRIPTS&gt;</code></pre>
+</li>
+<li>Open <code>&lt;sahi_home&gt;/userdata/bin/drun_different_master.bat</code> (drun_different_master.sh on linux) using any Editor.</li>
+<li>MASTER_HOST should point to the Master machine.<br/>
+For Windows:<br/>
+<pre><code>SET MASTER_HOST=machine2</code></pre>
+For Linux:<br/>
+<pre><code>export MASTER_HOST=machine2</code></pre>
+<div class="danger"><strong class='heading'>danger</strong>
+Make sure you change "machine2" to the actual machine name<br/>
+</div>
+</li>
+<li>
+INITIATOR_ORIGIN_FOLDER is the path to the base folder containing the various scripts. With the above assumed directory structure, it would point to <code>&lt;TOP_LEVEL_FOLDER&gt;/userdata/scripts</code>.<br/>
+<div class="info"><strong class='heading'>info</strong>
+The default value need not be changed.<br/>
+</div>
+</li>
+<li>
+MASTER_STAGING_PATH refers to the Staging folder on the Master machine to which the contents of INITIATOR_ORIGIN_FOLDER will be first synced to. Distribution of scripts will happen from MASTER_STAGING_PATH.<br/>
+<div class="info"><strong class='heading'>info</strong>
+The default value need not be changed.<br/>
+</div>
+</li>
+<li>
+	Configure the NODES variable to contain all the machines on which the tests should run. The command to set the nodes in Windows and Linux respectively are:<br/>
+	For Windows:<br/>
+	<pre><code>SET NODES=machine2:9999,machine3:9999,machine4:9999</code></pre>
+	For Linux:<br/>
+	<pre><code>export NODES=machine2:9999,machine3:9999,machine4:9999</code></pre>
+	<div class="info"><strong class='heading'>info</strong>
+	The nodes may or may not include the <code>Master</code> machine. If the <code>Master</code> machine is not included, scripts will not be run on the <code>Master</code>.<br/>
+	</div>
+	<div class="danger"><strong class='heading'>danger</strong>
+	Do not include localhost (the <code>Initiator</code>) here since Sahi may not be installed on the <code>Initiator</code>. If you want localhost as one of the nodes, run drun instead.<br/>
+	</div>
+	<div class="warning"><strong class='heading'>warning</strong>
+	"machine2", "machine3" and "machine4" are placeholders to illustrate usage. Replace them with actual machine names. The nodes can contain 1 or more machines.<br/>
+	</div>
+</li>
+<li>
+	When a Sahi suite is run, some scripts may fail because of environment reasons or due to browser crashes.<br/>
+	A natural next step for testers is to verify the failure by running the script again.<br/>
+	Sahi now automatically creates a suite of all failed scripts. The name of the failed suite has <code>_failed_&lt;browsertype&gt;</code> appended to the filename.<br/>
+	For example if you ran a suite <code>admin/admin.suite</code> in Chrome, failed suite will be created as <code>admin/admin_failed_chrome.suite</code><br/>
+	For  <code>admin/admin.dd.csv</code>, it will be <code>admin/admin_failed_chrome.dd.csv</code><br/>
+<br/>
+	This failed suite file can then be run to verify only the failed scripts.<br/>
+</li>
+<li>
+	Sahi can send a mail summarizing the playback. The variable SEND_EMAIL_REPORT can be set as true or false. If true, Sahi sends the mail.<br/>
+	For Windows:<br/>
+	<pre><code>SET SEND_EMAIL_REPORT=true</code></pre>
+	For Linux:<br/>
+	<pre><code>export SEND_EMAIL_REPORT=true</code></pre>
+</li>
+<li>
+	Sahi can send a mail based on success or failure or in both the cases. This condition can be set using the EMAIL_TRIGGER variable.<br/>
+	For Windows:<br/>
+	<pre><code>SET EMAIL_TRIGGER=success,failure</code></pre>
+	For Linux:<br/>
+	<pre><code>export EMAIL_TRIGGER=success,failure</code></pre>
+</li>
+<li>The relative path to the properties file containing information about the mail such as sender, recipient, host, port etc. can be set using the EMAIL_PROPERTIES variable.</li>
+<li>Passwords can be hidden or shown from the console and logs by toggling the EMAIL_PASSWORD_HIDDEN variable.<br/>
+It can be set as true or false. If true, Sahi hides the password from Sahi console and logs.</li>
+<li>
+Custom fields can be passed to the scripts using the CUSTOM_FIELDS variable. More than one custom field can be passed. Replace the custom field keys and values as appropriate.<br/>
+	For Windows:<br/>
+	<pre><code>SET CUSTOM_FIELDS=-customField customValue -anotherCustomField "another value"</code></pre>
+	For Linux:<br/>
+	<pre><code>export CUSTOM_FIELDS=-customField customValue -anotherCustomField "another value"</code></pre>
+<br/>
+	<div class="info"><strong class='heading'>info</strong>
+	Specifying custom fields is not mandatory.<br/>
+	</div>
+</li>
+<li>
+	The end user can pass a specific id for each suite/script run using the USER_DEFINED_ID variable.<br/>
+	For Windows:<br/>
+	<pre><code>SET USER_DEFINED_ID=-userDefinedId  "Some Id"</code></pre>
+	For Linux:<br/>
+	<pre><code>export USER_DEFINED_ID=-userDefinedId  "Some Id"</code></pre>
+<br/>
+	Replace the value "Some Id" as appropriate.<br/>
+	<div class="warning"><strong class='heading'>warning</strong>
+	The key should remain as userDefinedId.<br/>
+	</div>
+	<div class="info"><strong class='heading'>info</strong>
+	Specifying user defined id is not mandatory.<br/>
+	</div>
+</li>
+<li>
+Sahi can set offline logs to be generated in <code>xml</code>, <code>html</code>, <code>junit</code>, <code>tm6</code> and <code>excel</code> types. The default type is <code>html</code>. These logs will be generated on the <code>Master</code> and pulled back to the <code>Initiator</code>, since the user would want to see the logs on the <code>Initiator</code>.<br/>
+The following set of commands illustrate how HTML and XML logs can be generated.<br/>
+<br/>
+For Windows:<br/>
+<pre><code>SET DATESTAMP=%DATE:~10,4%_%DATE:~4,2%_%DATE:~7,2%
+SET TIMESTAMP=%TIME:~0,2%_%TIME:~3,2%_%TIME:~6,2%
+SET DATEANDTIME=%DATESTAMP%_%TIMESTAMP%
+
+SET MASTER_HTMLLOGS_DIR=logs/temp/html/%DATEANDTIME%
+SET MASTER_XMLLOGS_DIR=logs/temp/xml/%DATEANDTIME%
+
+SET LOGS_INFO=html:%MASTER_HTMLLOGS_DIR%,xml::%MASTER_XMLLOGS_DIR%
+
+SET INITIATOR_OUTPUT_HTMLLOGS_DIR=%TOP_LEVEL_FOLDER%/logs/html/%DATEANDTIME%
+SET INITIATOR_OUTPUT_XMLLOGS_DIR=%TOP_LEVEL_FOLDER%/logs/xml/%DATEANDTIME%</code></pre>
+For Linux:<br/>
+<pre><code>export MASTER_HTMLLOGS_DIR=logs/temp/html
+export MASTER_XMLLOGS_DIR=logs/temp/xml
+
+export LOGS_INFO=html:$MASTER_HTMLLOGS_DIR,xml:$MASTER_XMLLOGS_DIR
+
+export INITIATOR_OUTPUT_HTMLLOGS_DIR=$TOP_LEVEL_FOLDER/logs/html
+export INITIATOR_OUTPUT_XMLLOGS_DIR=$TOP_LEVEL_FOLDER/logs/xml</code></pre>
+<div class="info"><strong class='heading'>info</strong>
+The default values can be left as is.<br/>
+</div>
+</li>
+<li>To execute the scripts using drun_different_master.bat, open a command window and go to the <code>&lt;sahi_home&gt;/userdata/bin</code> directory. This can also be done easily by clicking the bin link on the dashboard.</li>
+<li>Run drun_different_master.bat to see the syntax.<br/>
+<div class="console">
+D:\sahi_pro\userdata\bin>drun_different_master.bat<br/>
+--<br/>
+NOTE: Use this batch file only if this machine is different from the Master machine. Else, use drun.bat instead.<br/>
+--<br/>
+Usage: drun_different_master.bat <sah file|suite file> <startURL> <browserType> <tags>
+File path is relative to userdata/scripts<br/>
+Multiple browsers can be specified using +. Eg. ie+firefox<br/>
+tags are used only if the input suite is a csv file<br/>
+--<br/>
+Example:<br/>
+drun_different_master.bat demo/demo.suite http://sahi.co.in/demo/ firefox<br/>
+drun_different_master.bat demo/sahi_demo.sah http://sahi.co.in/demo/ ie<br/>
+drun_different_master.bat demo/sahi_demo.sah http://sahi.co.in/demo/ ie+firefox<br/>
+drun_different_master.bat demo/testcases/testcases_sample.csv http://sahi.co.in/demo/ ie "(user||admin)&&medium"<br/>
+drun_different_master.bat demo/ddcsv/test.dd.csv http://sahi.co.in/demo/ ie "(user||admin)&&medium"<br/>
+--<br/>
+<br/>
+D:\sahi_pro\userdata\bin>
+</div>
+<br/>
+In the usage above,<br/>
+<ul>
+<li>
+The first argument is the suite or script path. This path is always relative to the path set in SOURCE_SCRIPTS_PATH.<br/>
+</li>
+<li>
+The second argument is the Start URL.<br/>
+</li>
+<li>
+The third argument is the Browser Type.<br/>
+</li>
+<li>
+Tags (the fourth argument) will be used only when running a data driven suite (.dd.csv) or a CSV as suite with tags.<br/>
+Tags are specified to run specific scripts/testcases from the suite.<br/>
+eg. If tags are specified as "(user||admin)&&medium", all the scripts which have 'medium' tag and 'admin' or 'user' (or both) tag will be run.<br/>
+</li>
+</ul>
+</li>
+</ol>
+<h3><a href="#Playback via ANT" name="Playback via ANT" class="headinganchor2" hideFocus="hideFocus">Playback via ANT</a></h3>
+<div class="warning"><strong class='heading'>warning</strong>
+demo.xml has been removed from the Sahi installation. Use the Editor Playback UI to generate the ANT xml content and create an xml with that content in your <code>&lt;SAHI_INSTALLATION_FOLDER&gt;</code>.<br/>
+</div>
+<h4><a href="#Playback on a single machine" name="Playback on a single machine" class="headinganchor2" hideFocus="hideFocus">Playback on a single machine</a></h4>
+One can now use the Editor Playback UI to generate the ANT xml automatically. Refer <a href="sahi-script-editor.html#Playback">here</a> for details on the UI.<br/>
+<ul>
+<li>Choose the <code>Run in parallel</code> option.</li>
+<li>Click the <code>Create Ant Target</code> button</li>
+</ul>
+<br/>
+<img src="../assets/images/using-sahi/playbackdesktop/antsingle.png"/>
+<br/>
+This will generate the contents of an ANT xml file. If you wish to add a Retry target as well, click on the <code>Show Retry Target</code> button on the next window.<br/>
+<br/>
+Once the ANT xml content is generated, copy the content to an empty file and save the file as an xml, say <code>demo.xml</code> in your <code>&lt;SAHI_INSTALLATION_FOLDER&gt;</code>.<br/>
+You can now run the default ANT target in the xml file as<br/>
+<pre><code>ant -f demo.xml</code></pre>
+<br/>
+NOTE: The main target is the default target, so you do not need to specify the target when running the xml.<br/>
+<br/>
+The above UI would generate an ANT xml that looks like the following.<br/>
+<pre><code>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;!--
+/**
+ * Copyright Tyto Software Pvt. Ltd.
+ */
+--&gt;
+&lt;project name="demo" default="runtestsie"&gt;
+	&lt;taskdef name="sahi" classname="net.sf.sahi.ant.RunSahiTask" <span class='code-highlight'>classpath="lib/ant-sahi.jar"</span>/&gt;
+
+
+	&lt;target name="set_properties_ie"&gt;
+    		<span class='code-highlight'>&lt;property name="scriptDir" value="D:/sahi/userdata/scripts/"/&gt;</span>
+    		<span class='code-highlight'>&lt;property name="scriptName" value="demo/ddcsv/test.dd.csv"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="browser" value="ie"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="sendemail" value="true"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="emailtrigger" value="success,failure"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="emailproperties" value="D:\sahi\userdata\config\email.properties"/&gt;</span>
+		&lt;property name="emailPasswordHidden" value="true"/&gt;
+		<span class='code-highlight'>&lt;property name="baseURL" value="http://sahi.co.in/demo/"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="host" value="localhost"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="port" value="9999"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="singlesession" value="false"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="threads" value="5"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="failedSuite" value="demo/ddcsv/test_failed_${browser}.dd.csv"/&gt;</span>
+	&lt;/target&gt;
+
+	&lt;target name="runtestsie" depends="set_properties_ie"&gt;
+		&lt;sahi suite="${scriptDir}${scriptName}"
+			browsertype="${browser}"
+			sendemail="${sendemail}"
+	        	emailtrigger="${emailtrigger}"
+	        	emailproperties="${emailproperties}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			baseurl="${baseURL}"
+			sahihost="${host}"
+			sahiport="${port}"
+			failureproperty="sahi.failed.${browser}"
+			haltonfailure="false"
+			singlesession="${singlesession}"
+			threads="${threads}"
+			<span class='code-highlight'>tags="(user||admin)&amp;&amp;medium"</span>
+			<span class='code-highlight'>userDefinedId="IETestRun1"</span>&gt;
+			<span class='code-highlight'>
+			&lt;!-- Custom fields - add, edit or remove as required --&gt;
+			&lt;customfield key="user" value="test"/&gt;
+			&lt;customfield key="mask_password" value="secret"/&gt;
+			&lt;!-- Offline reports --&gt;
+			&lt;report type="html" logdir="d:/temp/html"/&gt;
+			&lt;report type="xml"/&gt;
+			</span>
+		&lt;/sahi&gt;
+		&lt;antcall target="failsahiie"/&gt;
+	&lt;/target&gt;
+
+    &lt;target name="failsahiie" depends="set_properties_ie" if="sahi.failed.${browser}"&gt;
+        &lt;fail message="Sahi tests failed on browser ${browser}!"/&gt;
+    &lt;/target&gt;
+&lt;/project&gt;</code></pre>
+<br/>
+<div class="info"><strong class='heading'>info</strong>
+If you choose the <code>Run sequentially in single browser session</code> option, singlesession attribute would be set to true. Everything else remains the same.<br/>
+</div>
+<br/>
+<div class="danger"><strong class='heading'>danger</strong>
+Please NOTE:<br/>
+The above XML content is for illustration purposes only. Use the <a href="sahi-script-editor.html#Playback">Editor UI</a> to generate the ANT xml content and create an xml with that content in your <code>&lt;SAHI_INSTALLATION_FOLDER&gt;</code>.<br/>
+</div>
+<br/>
+Let us look at the important attributes used in the ANT xml target (specified in <strong>bold</strong> above).<br/>
+<br/>
+<h4><a href="#Attributes and their description" name="Attributes and their description" class="headinganchor2" hideFocus="hideFocus">Attributes and their description</a></h4>
+<div class="info"><strong class='heading'>info</strong>
+taskdef classpath is relative to where ant is run from.<br/>
+</div>
+<table>
+<tr><td>scriptDir</td><td>Specifies the path to the scripts folder. Can be the absolute path or a path relative to the userdata folder</td></tr>
+<tr><td>scriptName</td><td>Relative path to the script/suite/data driven suite. It is relative to scriptDir.</td></tr>
+<tr><td>browser</td><td>The browser on which the suite file plays back</td></tr>
+<tr><td>baseurl</td><td>Specifies URL which is the starting URL for all the scripts in the suite</td></tr>
+<tr><td>host</td><td>Hostname of the server where Sahi is running (Can be IP as well)</td></tr>
+<tr><td>port</td><td>Port on which Sahi is running</td></tr>
+<tr><td>threads</td><td>Number of simultaneous browser instances on which sahi tests will be run.</td></tr>
+<tr><td>singlesession</td><td>Since this is a parallel run, it will be "false". If "true", runs all scripts in a single browser without closing it between scripts.</td></tr>
+<tr><td>sendemail</td><td>Takes "true" or "false". If "true", Sahi sends an email summarizing the playback.</td></tr>
+<tr><td>emailtrigger</td><td>Takes "success" or "failure" or "success,failure". Triggers email in case of SUCCESS, FAILURE and both cases respectively.</td></tr>
+<tr><td>emailproperties</td><td>Path to the properties file that contains details about the mail viz. information about the sender, receiver, host, port, subject, content etc. Path can be the absolute path or relative to where this ant target is run from.</td></tr>
+<tr><td>failedsuite</td><td>Relative path to the failed suite. It is relative to scriptDir. It is of the form <code>&lt;suitename&gt;_failed_&lt;browser&gt;.suite</code></td></tr>
+<tr><td>tags</td><td>Tags should be specified only for dd.csv and .csv suites. Tags are specified so that it is easy to choose which scripts/testcases to run.<br/>
+eg. in the target above, all the scripts which have 'medium' tag and 'admin' or 'user' (or both) tag will be run.<br/>
+<tr><td>userdefinedid</td><td>The unique id that the user can pass to differentiate a suite from others. This is an optional attribute.</td></tr>
+<tr><td>customfield</td><td>Custom fields can be passed to the scripts using the customfield attribute. More than one custom field can be passed, by specifying additional customfield entries. Replace the custom field keys and values as appropriate.<br/>
+This is an optional attribute.</td></tr>
+<tr><td>report</td><td>Sahi can set offline logs to be generated in <code>xml</code>, <code>html</code>, <code>junit</code>, <code>tm6</code> and <code>excel</code> types. The default type is <code>html</code>. Add separate entries for each report type as required. This is an optional attribute.</td></tr>
+</table>
+<h4><a href="#Command to execute the above ANT target" name="Command to execute the above ANT target" class="headinganchor2" hideFocus="hideFocus">Command to execute the above ANT target</a></h4>
+<pre><code>ant -f demo.xml</code></pre>
+<br/>
+<h4><a href="#Distributed playback via ANT" name="Distributed playback via ANT" class="headinganchor2" hideFocus="hideFocus">Distributed playback via ANT</a></h4>
+Distributed playback can be achieved through ANT targets as well.<br/>
+<br/>
+These targets can be used from Jenkins to distribute the scripts of a suite on multiple machines.<br/>
+<br/>
+The machine which distributes the scripts and manages the distributed run is referred to as the <code>Master</code>. All logs are visible from the <code>Master</code>. The other machines are called <code>Slaves</code>. Any machine in the distributed environment can serve as the <code>Master</code>. The machine which launches the distributed run is referred to as the <code>Initiator</code>.<br/>
+<br/>
+<h4><a href="#Distributed run on the same Master" name="Distributed run on the same Master" class="headinganchor2" hideFocus="hideFocus">Distributed run on the same Master</a></h4>
+Use the Editor Playback UI to generate the ANT xml content.<br/>
+<br/>
+In the Editor Playback UI,<br/>
+<ul>
+<li>Choose <code>Run distributed (multiple machines)</code> option.</li>
+<li>Leave the <code>Use Different Master</code> checkbox unchecked.</li>
+<li>Click on <code>Create Ant Target</code> button.</li>
+</ul>
+<img src="../assets/images/using-sahi/playbackdesktop/antdistributed.png"/>
+<br/>
+This will generate the contents of an ANT xml file. If you wish to add a Retry target as well, click on the <code>Show Retry Target</code> button on the next window.<br/>
+<br/>
+Once the ANT xml content is generated, copy the content to an empty file and save the file as an xml, say <code>demo.xml</code> in your <code>&lt;SAHI_INSTALLATION_FOLDER&gt;</code>.<br/>
+You can now run the default ANT target in the xml file as<br/>
+<pre><code>ant -f demo.xml</code></pre>
+<br/>
+NOTE: The main target is the default target, so you do not need to specify the target when running the xml.<br/>
+<br/>
+The above UI would generate an ANT xml that looks like the following.<br/>
+<pre><code>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;!--
+/**
+ * Copyright Tyto Software Pvt. Ltd.
+ */
+--&gt;
+&lt;project name="demo" default="drunie"&gt;
+    &lt;taskdef name="sahi" classname="net.sf.sahi.ant.RunSahiTask" <span class='code-highlight'>classpath="lib/ant-sahi.jar"</span>/&gt;
+    &lt;taskdef name="sahid" classname="in.co.sahi.ant.DAntRunner" <span class='code-highlight'>classpath="lib/ant-sahi.jar"</span>/&gt;
+
+	&lt;target name="set_timestamp"&gt;
+        &lt;tstamp&gt;
+            &lt;format property="ts" pattern="yyyy_MM_dd_HH_mm_ss" locale="en, IN"/&gt;
+        &lt;/tstamp&gt;
+	&lt;/target&gt;
+
+	&lt;target name="set_properties_common"&gt;
+    		<span class='code-highlight'>&lt;property name="scriptDir" value="D:/sahi/userdata/scripts/"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="host" value="localhost"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="port" value="9999"/&gt;</span>
+		&lt;property name="runId" value="${ts}"/&gt;
+	&lt;/target&gt;
+
+
+
+	&lt;target name="set_properties_ie" depends="set_properties_common"&gt;
+    	<span class='code-highlight'>&lt;property name="scriptName" value="demo/ddcsv/test.dd.csv"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="browser" value="ie"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="sendemail" value="true"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="emailtrigger" value="success,failure"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="emailproperties" value="D:\sahi\userdata\config\email.properties"/&gt;</span>
+		&lt;property name="emailPasswordHidden" value="true"/&gt;
+		<span class='code-highlight'>&lt;property name="baseURL" value="http://sahi.co.in/demo/"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="failedSuite" value="demo/ddcsv/test_failed_${browser}.dd.csv"/&gt;</span>
+	&lt;/target&gt;
+
+    &lt;target name="drunie" depends="set_properties_ie, set_timestamp"&gt;
+    	&lt;sahid suite="temp/scripts/copied/${scriptName}"
+			sendEmail="${sendemail}"
+			emailtrigger="${emailtrigger}"
+			emailProperties="${emailproperties}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			baseurl="${baseURL}"
+			sahihost="${host}"
+			sahiport="${port}"
+			failureproperty="sahi.failed.${browser}"
+			haltonfailure="false"
+			originalSuitePath="${scriptDir}${scriptName}"
+			browsertype="${browser}"
+			origScriptsPath="${scriptDir}"
+			copiedScriptsPath="temp/scripts/copied"
+			runId="${runId}"
+			ignorePattern=".*(svn|copied).*"
+			<span class='code-highlight'>tags="(user||admin)&amp;&amp;medium"</span>
+			<span class='code-highlight'>userDefinedId="IETestRun1"</span>&gt;
+			<span class='code-highlight'>
+			&lt;!-- Custom fields - add, edit or remove as required --&gt;
+			&lt;customfield key="user" value="test"/&gt;
+			&lt;customfield key="mask_password" value="secret"/&gt;
+			&lt;!-- Scripts will be distributed across all the nodes. The nodes may or may not include the Master machine --&gt;
+			&lt;node host="localhost" port="9999"/&gt;
+			&lt;node host="192.168.1.29" port="9999"/&gt;
+			&lt;!-- Offline reports --&gt;
+			&lt;report type="html" logdir="d:/temp/html"/&gt;
+			&lt;report type="xml"/&gt;
+			</span>
+    	&lt;/sahid&gt;
+	&lt;antcall target="failsahiie"/&gt;
+    &lt;/target&gt;
+
+    &lt;target name="failsahiie" depends="set_properties_ie" if="sahi.failed.${browser}"&gt;
+        &lt;fail message="Sahi tests failed on browser ${browser}!"/&gt;
+    &lt;/target&gt;
+&lt;/project&gt;</code></pre>
+<br/>
+<div class="danger"><strong class='heading'>danger</strong>
+Please NOTE:<br/>
+The above XML content is for illustration purposes only. Use the <a href="sahi-script-editor.html#Playback">Editor UI</a> to generate the ANT xml content and create an xml with that content in your <code>&lt;SAHI_INSTALLATION_FOLDER&gt;</code>.<br/>
+</div>
+<br/>
+Let us look at the important attributes used in the ANT xml target (specified in <strong>bold</strong> above).<br/>
+<br/>
+<h4><a href="#Attributes and their description" name="Attributes and their description" class="headinganchor2" hideFocus="hideFocus">Attributes and their description</a></h4>
+<div class="info"><strong class='heading'>info</strong>
+taskdef classpath is relative to where ant is run from.<br/>
+</div>
+<table>
+<tr><td>scriptDir</td><td>Specifies the path to the scripts folder. Can be the absolute path or a path relative to the userdata folder</td></tr>
+<tr><td>host</td><td>Hostname of the server where Sahi is running (Can be IP as well). Leave this as localhost</td></tr>
+<tr><td>port</td><td>Port on which Sahi is running</td></tr>
+<tr><td>scriptName</td><td>Relative path to the script/suite/data driven suite. It is relative to scriptDir.</td></tr>
+<tr><td>browser</td><td>The browser on which the suite file plays back</td></tr>
+<tr><td>baseurl</td><td>Specifies URL which is the starting URL for all the scripts in the suite</td></tr>
+<tr><td>sendemail</td><td>Takes "true" or "false". If "true", Sahi sends an email summarizing the playback.</td></tr>
+<tr><td>emailtrigger</td><td>Takes "success" or "failure" or "success,failure". Triggers email in case of SUCCESS, FAILURE and both cases respectively.</td></tr>
+<tr><td>emailproperties</td><td>Path to the properties file that contains details about the mail viz. information about the sender, receiver, host, port, subject, content etc. Path can be the absolute path or relative to where this ant target is run from.</td></tr>
+<tr><td>failedsuite</td><td>Path to the failed suite file. It is relative to scriptDir. It is of the form <code>&lt;suitename&gt;_failed_&lt;browser&gt;.suite</code></td></tr>
+<tr><td>tags</td><td>Tags should be specified only for dd.csv and .csv suites. Tags are specified so that it is easy to choose which scripts/testcases to run.<br/>
+eg. in the target above, all the scripts which have 'medium' tag and 'admin' or 'user' (or both) tag will be run.<br/>
+<tr><td>userdefinedid</td><td>The unique id that the user can pass to differentiate a suite from others. This is an optional attribute.</td></tr>
+<tr><td>node</td><td>Each node attribute specifies a machine on which the tests should run. Add as many node entries as there are machines to run. The nodes may or may not include the <code>Master</code> machine (localhost). If the <code>Master</code> machine is not included, scripts will not be run on the <code>Master</code>.  There can be 1 or more nodes.<br/>
+<tr><td>customfield</td><td>Custom fields can be passed to the scripts using the customfield attribute. More than one custom field can be passed, by specifying additional customfield entries. Replace the custom field keys and values as appropriate.<br/>
+This is an optional attribute.</td></tr>
+<tr><td>report</td><td>Sahi can set offline logs to be generated in <code>xml</code>, <code>html</code>, <code>junit</code>, <code>tm6</code> and <code>excel</code> types. The default type is <code>html</code>. Add separate entries for each report type as required. This is an optional attribute.</td></tr>
+</table>
+<br/>
+<h4><a href="#Command to execute the above ANT target" name="Command to execute the above ANT target" class="headinganchor2" hideFocus="hideFocus">Command to execute the above ANT target</a></h4>
+<pre><code>ant -f demo.xml</code></pre>
+<br/>
+<h4><a href="#Distributed run on a different Master" name="Distributed run on a different Master" class="headinganchor2" hideFocus="hideFocus">Distributed run on a different Master</a></h4>
+Use the Editor Playback UI to generate the ANT xml content.<br/>
+<br/>
+In the Editor Playback UI,<br/>
+<ul>
+<li>Choose <code>Run distributed (multiple machines)</code> option.</li>
+<li>Check the <code>Use Different Master</code> checkbox and choose the Master details.</li>
+<li>Click on <code>Create Ant Target</code> button.</li>
+</ul>
+<img src="../assets/images/using-sahi/playbackdesktop/antdistributeddiffmaster.png"/>
+<br/>
+This will generate the contents of an ANT xml file. If you wish to add a Retry target as well, click on the <code>Show Retry Target</code> button on the next window.<br/>
+<br/>
+Once the ANT xml content is generated, copy the content to an empty file and save the file as an xml, say <code>demo.xml</code> in your <code>&lt;SAHI_INSTALLATION_FOLDER&gt;</code>.<br/>
+You can now run the default ANT target in the xml file as<br/>
+<pre><code>ant -f demo.xml</code></pre>
+<br/>
+NOTE: The main target is the default target, so you do not need to specify the target when running the xml.<br/>
+<br/>
+The above UI would generate an ANT xml that looks like the following.<br/>
+<pre><code>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;!--
+/**
+ * Copyright Tyto Software Pvt. Ltd.
+ */
+--&gt;
+&lt;project name="demo" default="drun_different_master"&gt;
+    &lt;taskdef name="sahi" classname="net.sf.sahi.ant.RunSahiTask" <span class='code-highlight'>classpath="lib/ant-sahi.jar"</span>/&gt;
+    &lt;taskdef name="sahid" classname="in.co.sahi.ant.DAntRunner" <span class='code-highlight'>classpath="lib/ant-sahi.jar"</span>/&gt;
+    &lt;taskdef name="sahisync" classname="in.co.sahi.ant.DAntSync" <span class='code-highlight'>classpath="lib/ant-sahi.jar"</span>/&gt;
+	&lt;taskdef name="sahipull" classname="in.co.sahi.ant.DAntPull" <span class='code-highlight'>classpath="lib/ant-sahi.jar"</span>/&gt;
+
+	&lt;target name="set_timestamp"&gt;
+        &lt;tstamp&gt;
+            &lt;format property="ts" pattern="yyyy_MM_dd_HH_mm_ss" locale="en, IN"/&gt;
+        &lt;/tstamp&gt;
+	&lt;/target&gt;
+
+	&lt;target name="set_properties_common"&gt;
+    		<span class='code-highlight'>&lt;property name="scriptDir" value="D:/sahi/userdata/scripts/"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="masterhost" value="192.168.1.30"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="masterport" value="9999"/&gt;</span>
+		&lt;property name="runId" value="${ts}"/&gt;
+	&lt;/target&gt;
+
+    &lt;target name="drun_different_master" depends="set_properties_common, set_timestamp"&gt;
+        &lt;sequential&gt;
+			&lt;sahisync originFolder="${scriptDir}" destFolder="temp/scripts/staging" ignorePattern=".*(svn|copied).*"&gt;
+		    	&lt;node host="${masterhost}" port="${masterport}"/&gt;
+			&lt;/sahisync&gt;
+
+			&lt;antcall target="drunie"/&gt;
+        &lt;/sequential&gt;
+    &lt;/target&gt;
+
+	&lt;target name="set_properties_ie" depends="set_properties_common"&gt;
+    		<span class='code-highlight'>&lt;property name="scriptName" value="demo/ddcsv/test.dd.csv"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="browser" value="ie"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="sendemail" value="true"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="emailtrigger" value="success,failure"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="emailproperties" value="D:\sahi\userdata\config\email.properties"/&gt;</span>
+		&lt;property name="emailPasswordHidden" value="true"/&gt;
+		<span class='code-highlight'>&lt;property name="baseURL" value="http://sahi.co.in/demo/"/&gt;</span>
+		<span class='code-highlight'>&lt;property name="failedSuite" value="demo/ddcsv/test_failed_${browser}.dd.csv"/&gt;</span>
+	&lt;/target&gt;
+
+    &lt;target name="drunie" depends="set_properties_ie, set_timestamp"&gt;
+    	&lt;sahid suite="temp/scripts/copied/${scriptName}"
+			sendEmail="${sendemail}"
+			emailtrigger="${emailtrigger}"
+			emailProperties="${emailproperties}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			baseurl="${baseURL}"
+			sahihost="${masterhost}"
+			sahiport="${masterport}"
+			failureproperty="sahi.failed.${browser}"
+			haltonfailure="false"
+			originalSuitePath="temp/scripts/staging/${scriptName}"
+			browsertype="${browser}"
+			origScriptsPath="temp/scripts/staging/"
+			copiedScriptsPath="temp/scripts/copied"
+			runId="${runId}"
+			ignorePattern=".*(svn|copied).*"
+			<span class='code-highlight'>tags="(user||admin)&amp;&amp;medium"</span>
+			<span class='code-highlight'>userDefinedId="IETestRun1"</span>&gt;
+			<span class='code-highlight'>
+			&lt;!-- Custom fields - add, edit or remove as required --&gt;
+			&lt;customfield key="user" value="test"/&gt;
+			&lt;customfield key="mask_password" value="secret"/&gt;
+			&lt;!-- Scripts will be distributed across all the nodes. The nodes may or may not include the Master machine --&gt;
+			&lt;node host="192.168.1.28" port="9999"/&gt;
+			&lt;node host="192.168.1.29" port="9999"/&gt;
+			</span>
+			&lt;!-- Offline reports --&gt;
+			&lt;report type="html" logdir="logs/temp/html/${ts}"/&gt;
+			&lt;report type="xml" logdir="logs/temp/xml/${ts}"/&gt;
+    	&lt;/sahid&gt;
+		&lt;!-- Pull the logs from the Master onto the Initiator machine --&gt;
+		&lt;sahipull sourceHost="192.168.1.30" sourcePort="9999" originFolder="logs/temp/html/${ts}" destFolder="d:/temp/html" ignorePattern=".*(svn|copied).*"/&gt;
+		&lt;sahipull sourceHost="192.168.1.30" sourcePort="9999" originFolder="logs/temp/xml/${ts}" destFolder="logs/xml" ignorePattern=".*(svn|copied).*"/&gt;
+    	&lt;antcall target="failsahiie"/&gt;
+    &lt;/target&gt;
+
+    &lt;target name="failsahiie" depends="set_properties_ie" if="sahi.failed.${browser}"&gt;
+        &lt;fail message="Sahi tests failed on browser ${browser}!"/&gt;
+    &lt;/target&gt;
+&lt;/project&gt;</code></pre>
+<br/>
+<div class="danger"><strong class='heading'>danger</strong>
+Please NOTE:<br/>
+The above XML content is for illustration purposes only. Use the <a href="sahi-script-editor.html#Playback">Editor UI</a> to generate the ANT xml content and create an xml with that content.<br/>
+</div>
+<br/>
+Let us look at the important attributes used in the ANT xml target (specified in <strong>bold</strong> above).<br/>
+<br/>
+<h4><a href="#Attributes and their description" name="Attributes and their description" class="headinganchor2" hideFocus="hideFocus">Attributes and their description</a></h4>
+<div class="info"><strong class='heading'>info</strong>
+taskdef classpath is relative to where ant is run from.<br/>
+</div>
+<table>
+<tr><td>scriptDir</td><td>Specifies the path to the scripts folder on the Initiator machine. This can be an absolute path or a path relative to where Ant is run from</td></tr>
+<tr><td>masterhost</td><td>Hostname of the different Master server where Sahi is running (Can be IP as well)</td></tr>
+<tr><td>masterport</td><td>Port on which Sahi is running</td></tr>
+<tr><td>scriptName</td><td>Relative path to the script/suite/data driven suite. It is relative to scriptDir.</td></tr>
+<tr><td>browser</td><td>The browser on which the suite file plays back</td></tr>
+<tr><td>baseurl</td><td>Specifies URL which is the starting URL for all the scripts in the suite</td></tr>
+<tr><td>sendemail</td><td>Takes "true" or "false". If "true", Sahi sends an email summarizing the playback.</td></tr>
+<tr><td>emailtrigger</td><td>Takes "success" or "failure" or "success,failure". Triggers email in case of SUCCESS, FAILURE and both cases respectively.</td></tr>
+<tr><td>emailproperties</td><td>Path to the properties file that contains details about the mail viz. information about the sender, receiver, host, port, subject, content etc. Path can be the absolute path or relative to where this ant target is run from.</td></tr>
+<tr><td>failedsuite</td><td>Path to the failed suite file. It is relative to scriptDir. It is of the form <code>&lt;suitename&gt;_failed_&lt;browser&gt;.suite</code></td></tr>
+<tr><td>tags</td><td>Tags should be specified only for dd.csv and .csv suites. Tags are specified so that it is easy to choose which scripts/testcases to run.<br/>
+eg. in the target above, all the scripts which have 'medium' tag and 'admin' or 'user' (or both) tag will be run.<br/>
+<tr><td>userdefinedid</td><td>The unique id that the user can pass to differentiate a suite from others. This is an optional attribute.</td></tr>
+<tr><td>node</td><td>Each node attribute specifies a machine on which the tests should run. Add as many node entries as there are machines to run. The nodes may or may not include the <code>Master</code> machine. If the <code>Master</code> machine is not included, scripts will not be run on the <code>Master</code>.  There can be 1 or more nodes.<br/>
+<tr><td>customfield</td><td>Custom fields can be passed to the scripts using the customfield attribute. More than one custom field can be passed, by specifying additional customfield entries. Replace the custom field keys and values as appropriate.<br/>
+This is an optional attribute.</td></tr>
+</table>
+<br/>
+<h4><a href="#Command to execute the above ANT target" name="Command to execute the above ANT target" class="headinganchor2" hideFocus="hideFocus">Command to execute the above ANT target</a></h4>
+<pre><code>ant -f demo.xml</code></pre>
+<br/>
+<h3><a href="#Email.properties file explained" name="Email.properties file explained" class="headinganchor2" hideFocus="hideFocus">Email.properties file explained</a></h3>
+<h4><a href="#Configuration file for javax.mail" name="Configuration file for javax.mail" class="headinganchor2" hideFocus="hideFocus">Configuration file for javax.mail</a></h4>
+If a value for an item is not provided, then system defaults will be used.<br/>
+<br/>
+<table>
+<tr><td>mail.smtp.starttls.enable</td><td>boolean</td><td>If true, enables the use of the STARTTLS command (if supported by the server) to switch the connection to a TLS-protected connection before issuing any login commands. Note that an appropriate trust store must configured so that the client will trust the server's certificate.</td></tr>
+<tr><td>mail.host</td><td>String</td><td>The server to connect to.</td></tr>
+<tr><td>mail.port</td><td>int</td><td>The server port to connect to.</td></tr>
+<tr><td>mail.user</td><td>String</td><td>Default user name.</td></tr>
+<tr><td>mail.password</td><td>String</td><td>Password</td></tr>
+<tr><td>mail.smtp.auth</td><td>boolean</td><td>If true, attempt to authenticate the user using the AUTH command.</td></tr>
+<tr><td>mail.isSSL</td><td>boolean</td><td>If true, uses SSL to connect and use the SSL port by default.</td></tr>
+<tr><td>mail.from</td><td>String</td><td>Email address of the sender</td></tr>
+<tr><td>mail.to</td><td>String</td><td>Email address of the sender's To field. For multiple address separate by comma(,).</td></tr>
+<tr><td>mail.cc</td><td>String</td><td>Email address of the sender's CC field, for multiple address separate by comma(,).</td></tr>
+<tr><td>mail.bcc</td><td>String</td><td>Email address of the sender's BCC field. for multiple address separate by comma(,).</td></tr>
+<tr><td>mail.subject.prefix</td><td>String</td><td>The subject for the email.</td></tr>
+<tr><td>mail.content.prefix</td><td>String</td><td>The body content for the email.</td></tr>
+</table>
+<h4><a href="#Sample properties file" name="Sample properties file" class="headinganchor2" hideFocus="hideFocus">Sample properties file</a></h4>
+<pre><code>mail.smtp.starttls.enable=true
+mail.host=smtp.gmail.com
+mail.port=25
+mail.user=your_email@gmail.com
+mail.password=your_password
+mail.smtp.auth=true
+mail.isSSL=true
+mail.from=your_email@gmail.com
+mail.to=recepient1@gmail.com,recepient2@gmail.com,recepient3@gmail.com
+mail.cc=recepient4@gmail.com,recepient5@gmail.com
+mail.bcc=recepient6@gmail.com,recepient7@gmail.com
+mail.subject.prefix=my subject
+mail.content.prefix=my body</code></pre>
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

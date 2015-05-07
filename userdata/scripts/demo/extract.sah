@@ -1,0 +1,16 @@
+//_alert(_extract("My name is Anthony Gonzalves", /.* is ([^ ]*) ([^ ]*)/, true));
+_assertEqual(["is Anthony Gonzalves", "Anthony", "Gonzalves"], _extract("My name is Anthony Gonzalves", "/is (.*) (.*)/"));
+_assertEqual(["Anthony", "Gonzalves"], _extract("My name is Anthony Gonzalves", "/is (.*) (.*)/", true));
+
+var $expected = ["from red to green", "red", "green"];
+var $str = "The traffic light changed from red to green";
+var $pattern = "/from (.*) to (.*)/";
+var $extracted = _extract($str, $pattern);
+_assertEqual($expected, $extracted);
+
+
+var $expected = ["red", "green"];
+var $str = "The traffic light changed from red to green";
+var $pattern = "/from (.*) to (.*)/";
+var $extracted = _extract($str, $pattern, true);
+_assertEqual($expected, $extracted);

@@ -1,0 +1,2 @@
+testFormElement,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\strict_visible.sah,3
+testDiv,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\strict_visible.sah,21

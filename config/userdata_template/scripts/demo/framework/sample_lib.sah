@@ -1,0 +1,29 @@
+_navigateTo("/demo/training/");
+_include("sample_lib_included.sah");
+
+function verifyTotal($total){
+	_assertEqual($total, _textbox("total").value);	
+}
+
+function logout(){
+	_click(_button("Logout"));
+}
+
+/**
+ * Verify not logged in
+ * @returns {undefined}
+ */
+function verifyNotLoggedIn(){
+	_assertExists(_textbox("user"));
+}
+
+/**
+ * Verifies error message
+ * 
+ * @param {type} $msg
+ * @returns {undefined}
+ */
+function verifyErrorMessage($msg){
+	_assert(_isVisible(_div("errorMessage")));
+	_assertEqual($msg, _getText(_div("errorMessage")));
+}

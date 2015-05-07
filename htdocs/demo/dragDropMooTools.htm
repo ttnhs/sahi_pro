@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<title>Mootools Drag and Drop Example</title>
+
+<style type="text/css">
+body {color:#000;background-color:#FFF; font-family:Arial, Helvetica, sans-serif;}
+
+#dragger {width:100px;height:100px;border:1px solid pink;position:relative;z-index:50;padding:4px;}
+.item {width:100px;height:100px;border:3px solid blue;position:relative;float:left;margin:5px;padding:4px;}
+.drag {background-color:#EFE;}
+.dragover {border:3px solid #900;background-color:#FEE;color:#000;}
+.dropped {border:3px solid #009;background-color:#339;color:#FFF;}
+</style>
+<script type="text/javascript" src="mootools.release.51.js"></script>
+
+<script type="text/javascript">
+
+  var draggableOptions = {
+      onStart:function()
+      {
+        this.el.setOpacity(.5);
+      },
+      onComplete:function()
+      {
+        // put the element back where it belongs
+        this.el.setOpacity(1);
+        this.el.style.left = 0;
+        this.el.style.top = 0;
+      }
+  };
+
+  var droppableOptions = {
+      onOver:function(){
+          this.addClassName('dragover');
+      },
+      onLeave:function(){
+        this.removeClassName('dragover');
+      },
+      onDrop:function(){
+        this.addClassName('dropped');
+        this.innerHTML = 'dropped';
+      }
+  }
+
+  window.onload=function()
+  {
+    var dropitems = document.getElementsBySelector('.item');
+    dropitems.each(function(drop){ drop.extend(droppableOptions)   });
+    draggableOptions.droppables = dropitems;
+    $('dragger').addClassName('drag').makeDraggable(draggableOptions);
+
+  }
+  </script>
+</head>
+<body>
+  <h1>Mootools Drag and Drop example</h1>
+  <p><a href="http://web.archive.org/web/20100820130300/http://www.snook.ca/archives/javascript/mootools_drag_a/">See related post &raquo;</a></p>
+
+  <div id="dragger">Drag me</div>
+  <div class="item">Item 1</div><div class="item">Item 2</div><div class="item">Item 3</div><div class="item">Item 4</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+/**
+ * Copyright Tyto Software Pvt. Ltd.
+ */
+-->
+<project name="demo" default="runtestssafari">
+	<taskdef name="sahi" classname="net.sf.sahi.ant.RunSahiTask" classpath="lib/ant-sahi.jar"/>
+	
+	
+	<target name="set_properties_safari">
+    	<property name="scriptDir" value="C:/Users/ntumy/sahi_pro/userdata/scripts/"/>
+    	<property name="scriptName" value="browse_list_of_users.sah"/>
+		<property name="browser" value="safari"/>
+		<property name="sendemail" value="false"/>
+		<property name="emailtrigger" value="success,failure"/>
+		<property name="emailproperties" value="C:\Users\ntumy\sahi_pro\userdata\config\email.properties"/>
+		<property name="emailPasswordHidden" value="true"/>
+		<property name="baseURL" value="http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox"/>
+		<property name="host" value="localhost"/>
+		<property name="port" value="9999"/>
+		<property name="singlesession" value="false"/>
+		<property name="threads" value="1"/>
+		<property name="failedSuite" value="browse_list_of_users.sah"/>
+	</target>
+
+	<target name="runtestssafari" depends="set_properties_safari">
+		<sahi suite="${scriptDir}${scriptName}"
+			browsertype="${browser}"
+			sendemail="${sendemail}"
+	        emailtrigger="${emailtrigger}"
+	        emailproperties="${emailproperties}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			baseurl="${baseURL}"
+			sahihost="${host}"
+			sahiport="${port}"
+			failureproperty="sahi.failed.${browser}"
+			haltonfailure="false"
+			singlesession="${singlesession}"
+			threads="${threads}">
+		</sahi>
+		<antcall target="retryfailedsafari"/>
+	</target>
+
+	<target name="retryfailedsafari" depends="set_properties_safari" if="sahi.failed.${browser}">
+		<sahi suite="${scriptDir}${failedSuite}"
+			browsertype="${browser}"
+			baseurl="${baseURL}"
+			sahihost="${host}"
+			sahiport="${port}"
+			failureproperty="sahi.retry.failed.${browser}"
+			haltonfailure="false"
+			sendemail="${sendemail}"
+	        emailtrigger="${emailtrigger}"
+	        emailproperties="${emailproperties}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			singlesession="${singlesession}"
+			threads="1">
+		</sahi>
+		<antcall target="failsahisafari"/>
+	</target>
+
+    <target name="failsahisafari" depends="set_properties_safari" if="sahi.retry.failed.${browser}">
+        <fail message="Sahi tests failed on browser ${browser}!"/>
+    </target>		
+</project>

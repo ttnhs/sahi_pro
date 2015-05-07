@@ -1,0 +1,1 @@
+onScriptFailure,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\createSnapShot.sah,1

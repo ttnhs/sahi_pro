@@ -1,0 +1,1 @@
+addAndVerify,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\8_ddcsv_datadrive.sah,10,$nJava,$nRuby,$nPython,$total

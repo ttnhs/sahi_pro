@@ -1,0 +1,42 @@
+body {
+    background-color: #ffffff;
+}
+
+div.fullDialog {
+   font-family: Lucida Sans Unicode;
+   font-size: 13px;
+   background-color: #ffffff;
+   padding-top: 5px;
+   padding-left: 5px;
+   padding-right: 5px;
+   padding-bottom: 0px;
+   margin: 0px;
+   height: 48px;
+   -moz-user-select: none;
+   -webkit-user-select: none;
+}
+
+input {
+    vertical-align: middle;
+    top: -1px;
+}
+
+label.highlightingOptionLabel {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+div.helpOption {
+    padding-left: 3px;
+    padding-top: 7px;
+}
+
+a {
+    text-decoration:none;
+    color: #00aff0;
+}
+
+a:hover {
+    color: #00aff0;
+    text-decoration:underline;
+}

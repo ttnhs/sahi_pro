@@ -1,0 +1,135 @@
+<html xmlns:util="in.co.sahi.util.XSLUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+					div#navbar {border:1px solid white;border-bottom:1px solid gray;padding:1px}
+					a{text-decoration:none;color:white;}
+					a.INFO{color:black}
+					a.START,a.STOP{color:black;font-weight:bold;}
+					div.INFO{background-color:white}
+					div.SUCCESS{background-color:green;color:white}
+					div.FAILURE,div.ERROR{background-color:red;color:white}
+					a.CUSTOM,
+					a.CUSTOM2, a.CUSTOM4{color:black}
+					div.CUSTOM{background-color:yellow;}
+					div.CUSTOM1{background-color:orange;}
+					div.CUSTOM2{background-color:#EFEFEF;}
+					div.CUSTOM3{background-color:green;}
+					div.CUSTOM4{background-color:violet;}
+					div.CUSTOM5{background-color:indigo;}
+					a.SCRIPT{text-decoration:underline;}
+					span.extra{color:#CCC;}
+					div.SKIPPED{background-color:#eed;}
+					a.SKIPPED{color:gray;}
+
+					table.scriptSummaries{border-top:1px solid gray;border-right:1px solid gray;border-spacing:0px;border-collapse:collapse;}
+					table.scriptSummaries td{border-bottom:1px solid gray;border-left:1px solid gray;padding:5px;text-align:right;}
+					td a.SCRIPT{float:left;}
+					tr.FAILURE{background-color:red;color:white;}
+					tr.SUCCESS{background-color:green;color:white;}
+					tr.RUNNING{background-color:orange;color:black;}
+					a{color:white;}
+					tr.RUNNING a {color:black;}
+
+					table.suite_summary {border:1px solid orange; margin-bottom:30px;background-color:#fff;width:600px;}
+					table.suite_summary td {vertical-align:top;padding:3px;text-align:left;}
+					table.suite_summary_part {border:0px;}
+					table.suite_summary_part *{border:0px;spacing:0px;}
+					
+					body *{font-family:verdana;font-size:10pt;}
+					body {margin:10px; background-color:lightyellow;
+					
+					#navbar a{color: blue;}
+</style>
+</head>
+<body>
+<div id="navbar">
+<a href="/_s_/dyn/Log_viewLogs" style="color:black">Root</a> | <a href="index.html" style="color:black">Script Report</a> | <a href="testcase_summary.html" style="color:black">Test Cases Report</a> | <a href="results.csv" style="color:black">Test Cases Report Summary</a>
+</div>
+<h2>
+			Suite Name:
+			<a style="color:black" href="/_s_/dyn/Log_highlight?href=C:\Users\ntumy\sahi_pro\userdata\scripts\add_a_new_user.sah">add_a_new_user.sah</a>
+</h2>
+<table class="suite_summary">
+<tr>
+<td>
+<table class="suite_summary_part">
+<tr>
+<td>Browser Type</td><td>firefox</td>
+</tr>
+<tr>
+<td>Start Time</td><td>May 05, 2015 03:56:20 PM</td>
+</tr>
+<tr>
+<td>End Time</td><td>May 05, 2015 03:56:58 PM</td>
+</tr>
+<tr>
+<td>Time Taken (ms)</td><td>37269</td>
+</tr>
+</table>
+</td><td>
+<table class="suite_summary_part">
+<tr>
+<td>Total testcases run</td><td>0</td>
+</tr>
+<tr>
+<td>Testcases passed</td><td>0</td>
+</tr>
+<tr>
+<td>Testcases failed</td><td>0</td>
+</tr>
+<tr class="SUCCESS" id="status">
+<td>Status</td><td>SUCCESS</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="padding:7px;"><a style="color:blue;text-decoration:underline" href="#" onclick="showHide('suiteInfo');return false;">Suite Info</a>
+<br>
+<div id="suiteInfo" style="display:none;">
+<pre>
+baseURL=http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox#
+browserType=firefox
+logsInfo=html
+suiteId=sahi_64937f9a0b38204ffe0b42503a488ddc3948
+suiteName=add_a_new_user.sah
+suitePath=C:\Users\ntumy\sahi_pro\userdata\scripts\add_a_new_user.sah
+suiteReportId=add_a_new_user_firefox__05May2015__15_56_20_973</pre>
+</div>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="padding:7px;"><a style="color:blue;text-decoration:underline" href="#" onclick="showHide('nodesInfo');return false;">Nodes Info</a>
+<br>
+<div id="nodesInfo" style="display:none;">
+<table style="width:550px;">
+<tr>
+<td>Host</td><td>Port</td><td>Tests executed</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+<script>
+			
+			function refreshPage(){
+				var el = document.getElementById("status");
+				if (el && (el.className == "SUCCESS" || el.className == "FAILURE")){
+					return;
+				}
+				window.setTimeout("window.location.reload();", 2000);
+			}
+			refreshPage();
+			function showHide(s){var el=document.getElementById(s);el.style.display = (el.style.display == 'block') ? 'none' : 'block'; }; 
+			
+			</script>
+<table class="scriptSummaries" style="margin-top:20px;background:white;width:800px;">
+<tr>
+<td>Test Case Id</td><td>Description</td><td>Status</td><td>Time Taken</td><td>Script Name</td>
+</tr>
+</table>
+</body>
+</html>

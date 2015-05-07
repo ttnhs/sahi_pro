@@ -1,0 +1,6 @@
+_navigateTo("/demo/formTest.htm");
+_assertNotTrue(_checkbox("cv2").checked);
+_check(_checkbox("cv2"));
+_assert(_checkbox("cv2").checked);
+_uncheck(_checkbox("cv2"));
+_assertNotTrue(_checkbox("cv2").checked);

@@ -1,0 +1,18 @@
+function onScriptError(){
+	_focusWindow();
+	_takeScreenShot();	
+} 
+onScriptFailure = onScriptError;
+
+_navigateTo("/demo/training");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+_setValue(_textbox("q"), "2");
+_setValue(_textbox("q[1]"), "1");
+_setValue(_textbox("q[2]"), "1");
+_click(_button("Add"));
+_assertEqual("1130", _textbox("total").value);
+_setValue(_textbox("total"), "8888");
+_takeScreenShot();
+_click(_button("Logout"));

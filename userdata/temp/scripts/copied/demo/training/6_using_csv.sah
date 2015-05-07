@@ -1,0 +1,12 @@
+_include("5_included.sah");
+
+function addAndVerify($numJava, $numRuby, $numPython, $total){
+	login("test", "secret");
+	addBooks($numJava, $numRuby, $numPython);
+	verifyTotal($total);
+	_click(_button("Logout"));
+}
+
+var $data = _readCSVFile("data.csv");
+
+_dataDrive(addAndVerify, $data);

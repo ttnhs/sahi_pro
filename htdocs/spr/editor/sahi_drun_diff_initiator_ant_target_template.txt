@@ -1,0 +1,31 @@
+	<target name="set_properties_$browser" depends="set_properties_common">
+    	<property name="scriptName" value="$scriptName"/>
+		<property name="browser" value="$browser"/>
+		<property name="sendemail" value="$sendemail"/>
+		<property name="emailtrigger" value="$emailtrigger"/>
+		<property name="emailproperties" value="$emailproperties"/>
+		<property name="emailPasswordHidden" value="$emailPasswordHidden"/>
+		<property name="baseURL" value="$baseURL"/>
+		<property name="failedSuite" value="$failedSuite"/>
+	</target>
+
+    <target name="$drun" depends="set_properties_$browser, set_timestamp">
+    	<sahid suite="temp/scripts/copied/${scriptName}"
+			sendEmail="${sendemail}"
+			emailtrigger="${emailtrigger}"
+			emailProperties="${emailproperties}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			baseurl="${baseURL}"
+			sahihost="${masterhost}"
+			sahiport="${masterport}"
+			failureproperty="sahi.failed.${browser}"
+			haltonfailure="false"
+			originalSuitePath="temp/scripts/staging/${scriptName}"
+			browsertype="${browser}"
+			origScriptsPath="temp/scripts/staging/"
+			copiedScriptsPath="temp/scripts/copied"
+			runId="${runId}"
+			ignorePattern=".*(svn|copied).*"$tags$userDefinedId>$extraParam
+			<!-- Scripts will be distributed across all the nodes. The nodes may or may not include the Master machine -->$nodesInfo$reportsInfo
+    	</sahid>$pullLogs$retryOrFailCall
+    </target>$retryTarget$failTarget

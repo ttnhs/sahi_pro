@@ -1,0 +1,632 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Sahi Spread Sheet Editor</title>
+<link rel="shortcut icon" href="../../favicon.ico" type="image/png">
+<script src="../../ext/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../ext/easyui/jquery.easyui.min.js"></script>
+<script src="../../ext/md5/jquery.md5.js"></script>
+<link rel="stylesheet" type="text/css" href="../../ext/easyui/themes/gray/easyui.css">
+<link rel="stylesheet" type="text/css" href="../../ext/easyui/themes/icon.css">
+<link rel="stylesheet" href="spreadsheet.css" />
+<link rel="stylesheet" href="../../ext/jquery/jquery-ui.css" />
+<script src="../../ext/handsontable/jquery.handsontable.full.js"></script>
+<script type="text/javascript" src="/_s_/spr/util.js"></script>
+<script src="spreadsheet2.js"></script>
+<link rel="stylesheet" media="screen" href="../../ext/handsontable/jquery.handsontable.full.css">
+<script>
+g_savedHash = jQuery.md5("");
+function getHash() {
+	try {
+		return jQuery.md5(ss.getDataAsCSV());
+	} catch (e) {return "";}
+}
+function saveHash(){
+	g_savedHash = getHash();
+    removeModifiedTag();
+}
+function isDirty() {
+	return (g_savedHash != getHash())
+}
+
+function removeModifiedTag(){
+  if(firstLoadOnContainer){
+    parent.removeModifiedSymbolOnTabHeader(_scriptDir, _scriptName);
+  }
+  else{
+    parent.removeModifiedSymbolOnTabHeader(_scriptDir, _scriptName);
+  }
+}
+
+onkeydown = function(e){
+	  e = !e ? window.event : e;
+	     var ctrlS = e.ctrlKey && e.keyCode == 'S'.charCodeAt(0);
+	     var ctrlDelete = e.ctrlKey && e.keyCode == '46';
+	     var ctrlSlash = e.ctrlKey && e.keyCode == '191';
+		 var altN = e.altKey && e.keyCode == 'N'.charCodeAt(0);
+		 var altInsert = e.altKey && e.keyCode == '45';
+		 var altS = e.altKey && e.keyCode == 'S'.charCodeAt(0);
+		 var altO = e.altKey && e.keyCode == 'O'.charCodeAt(0);
+		 var altF2 = e.altKey && e.keyCode == '113';
+		 var alt1 = e.altKey && e.keyCode == '49';
+		 var alt2 = e.altKey && e.keyCode == '50';
+		 var altShiftE = e.altKey && e.shiftKey && e.keyCode =='E'.charCodeAt(0);
+		 var shiftF10 = e.shiftKey && e.keyCode =='121';
+	     if(document.getElementById('mask').style.display != "block"){
+	    	 if(ctrlS){
+	 			if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			window.setTimeout("saveCSVAtSameLocation();", 1);
+	 			//window.setTimeout("document.getElementById(\"save\").onclick();", 1);
+	 		}
+	    	else if(ctrlSlash){
+	    		if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			ss.commentUncomment();
+	    	}
+	    	else if(ctrlDelete){
+	    		if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			ss.deleterow();
+	    	}
+	 	    else if(altN){
+	 			if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			window.setTimeout("parent.createNewFile('scsv');", 1);
+	 		}
+	 	    else if(altInsert){
+	 	    	if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			ss.addTestCase();
+	 	    }
+	 	   else if(altS){
+	 	    	if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			ss.LoadSahiLib();
+	 	    }
+	 	    else if(altO){
+	 			if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			window.setTimeout("parent.openLoadModal();", 1);
+	 		}
+	 	    else if(altF2){
+	 			if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			window.setTimeout("parent.openSaveAsModal();", 1);
+	 		}
+	 	   else if(alt1){
+	 			if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			window.setTimeout("ss.addRowAbove();", 1);
+	 		}
+	 	  else if(alt2){
+	 			if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			window.setTimeout("ss.addRowBelow();", 1);
+	 		}
+	 	    else if(shiftF10){
+	 			if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			window.setTimeout("shortcutMenu();", 1);
+	 		}
+	 	    else if(altShiftE){
+	 			if (e.preventDefault) e.preventDefault();
+	 			if (e.stopPropogation) e.stopPropogation();
+	 			window.setTimeout("featureDeveloper()", 1);
+	 		} 
+	     }
+	    if (e.keyCode == 27) {
+	    	if(parent.isLoadDialogOpened()){
+				parent.closeWindow('loadDialog');
+			}
+			if(parent.isSaveAsDialogOpened()){
+				parent.closeWindow('saveAsDialog');
+			}
+			if (document.getElementById("featureDeveloper").style.display != "none"){
+				closeModal('featureDeveloper');
+			}
+    	}
+}
+</script>
+</head>
+
+<body onresize="maskresize()">
+    <script type="text/javascript" src="/_s_/spr/exception.js"></script>
+    <script type="text/javascript" src="/_s_/spr/scriptOpener.js"></script>
+    <script type="text/javascript" src="/_s_/spr/suggest.js"></script>
+<div id="boxes">	
+	<div id="loadDialog" class="dialog">
+      <script>
+      
+      function maskresize() {
+    	var maskHeight = jQuery(document).height();
+  		var maskWidth = jQuery(window).width();
+  		jQuery('#mask').css({
+  			'width' : maskWidth,
+  			'height' : maskHeight
+  		});
+  		if (ss) ss.expandToFit();
+      }
+      
+      function URLParser(url){
+    		this.unparsed = url;
+    		this.parse();
+    	}
+    	URLParser.prototype.getParameter = function(k){
+    		return this.parameters[k];
+    	}
+      URLParser.prototype.parse = function(){
+    		this.parameters = new Object();
+    		var qIx = this.unparsed.indexOf("?");
+    		if (qIx == -1) {
+    			this.url = this.unparsed;
+    			return;
+    		}
+    		this.url = this.unparsed.substring(0, qIx);
+    		this.qs = this.unparsed.substring(qIx+1);
+    		var tokens = this.qs.split("&");
+    		for (var i=0; i<tokens.length; i++){
+    			var kv = tokens[i].split("=");
+    			this.parameters[kv[0]] = unescape(kv[1]);
+    		}
+    	}
+    	var so = null;
+    	so = new ScriptOpener();
+    	var so2 = null;
+    	so2 = new ScriptOpener();
+        var firstLoadOnContainer = true;
+    	function init() {
+    		var href = window.location.href;
+    		var u = new URLParser(href);
+    		var file = u.getParameter("file");
+    		var dir = u.getParameter("dir");
+    		_scriptDirList = so.refreshScriptListDir();
+    		_scriptDirList2 = so2.refreshScriptListDir();
+    		if (dir) {
+    			dir = dir.replace(/\\/g, '/');
+    			_selectedScriptDir = dir;
+    			so.populateOptions($("pbdir"), _scriptDirList, dir);
+    		   	so.setSelectedScriptDir($("pbdir").value);
+    			_scriptFileList = so.refreshScriptListFile($("pbdir").value);
+    			so.populateScenarios($("pbdir").options[$("pbdir").selectedIndex].value);
+    			so2.populateOptions($("pbdir2"), _scriptDirList2, dir);
+    			if (file) {
+    				if (file.indexOf(".") == -1) file = file + ".s.csv";
+    				$("filebox").value = file;
+    			}
+    			file = file.replace(/\\/g, "/");
+    			loadCsv(dir, file);
+    		} else {
+                so.populateOptions($("pbdir"), _scriptDirList);
+                so.populateScenarios($("pbdir").options[$("pbdir").selectedIndex].value);
+                so2.populateOptions($("pbdir2"), _scriptDirList2);
+                so2.populateScenarios($("pbdir2").options[$("pbdir2").selectedIndex].value);
+                //openSaveAsModalWithStartTitle();
+    		}
+    	}
+          
+          _showSuites = true;
+          window.onload = init;
+        </script>
+        <form name='f1' onsubmit="setURL(); return false;">
+        <table>
+             <tr>
+                <th colspan='2' style="padding-bottom:20px;text-align:left;">
+                  Load Existing Scenario
+                </th>
+             </tr>
+             <tr>
+              <td>Script Directory: </td>
+              <td>
+                 <select id="pbdir" name="dir" onchange="so.populateScripts(this.options[this.selectedIndex].value)" onblur="ss.scanFullAndGetUpdatedFunctionAndParam(); return false" style="width:300px">
+                   <option value="../scripts">../scripts</option>
+                 </select>
+               </td>
+               </tr>
+               <tr>
+               <td bgcolor="">File:</td>
+               <td>
+                  <input type="text" id="filebox" name="file" style="width:300px" autocomplete="off">
+                <select id="fileboxDD" class="suggestDD" style="width:300px"></select>
+                <script>
+                  so.attachSuggestionBox("filebox", "fileboxDD");
+                </script>
+               </td> 
+               </tr>
+               <tr>
+                <td colspan='2' style="padding-top:15px;">
+                 <input type="submit" value="Load"/>
+                 <input name="closeLoad" id="closeLoad" type="button" value="Close" onclick="closeModal('loadDialog'); return false;"/>
+               </td>
+              </tr>
+          </table>
+          </form>
+  </div>
+	
+  <div id="saveAsDialog" class="dialog">
+      <form name='f2' method="post" onsubmit="saveCsv(); return false;">
+      <table>
+             <tr>
+                <th id='saveAsTitle' colspan='2' style="padding-bottom:20px;text-align:left;">
+                  Save the Scenario
+                </th>
+             </tr>
+             <tr>
+              <td>Script Directory: </td>
+              <td>
+                 <select id="pbdir2" name="dir" onchange="so2.populateScripts(this.options[this.selectedIndex].value)" style="width:300px">
+                   <option value="../scripts">../scripts</option>
+                 </select>
+               </td>
+               </tr>
+               <tr>
+               <td bgcolor="">File:</td>
+               <td>
+                  <input type="text" id="filebox2" name="filebox2" style="width:300px" autocomplete="off">
+               </td> 
+               </tr>
+               <tr>
+                <td colspan='2' style="padding-top:15px;">
+                 <input name="Save" type="submit" value="Save"/>
+                 <input name="closeSaveAs" id="closeSaveAs" type="button" value="Close" onclick="closeModal('saveAsDialog'); return false;"/>
+               </td>
+              </tr>
+          </table>
+          </form>
+  </div>
+  
+  <div id="featureDeveloper" class="dialog" style="left:28%;">
+      Sahi Spread Sheet Editor is developed by Kshitij Gupta and Pratyush Jha.
+      <input type="button" style="display:block; margin-left: 210px;margin-top: 15px;" value="OK" onclick="closeModal('featureDeveloper'); return false"/>
+  </div>
+<div id="main" style='padding-top: 2px;'>
+  <div id="menuBar" style="position:fixed;top:0px;left:0px;background-color:#eee;z-index:10;width:100%;border:0px;border-bottom:1px solid #ccc;">
+  <a id="addTC" onClick="ss.addTestCase(); return false;" title="Insert testcase  (Alt + Insert)" class="easyui-linkbutton" data-options="plain:true" style="font-family: verdana;">
+      Insert testcase
+  </a>
+  <a id="loadLib" onClick="ss.LoadSahiLib(); return false;" title="Load Sahi Library  (Alt + S)" class="easyui-linkbutton" data-options="plain:true" style="font-family: verdana;">
+      Load Sahi Library
+  </a>
+  <a id="showFnInfo" onClick="ss.showFnInfoDiv();" title="Show Function Details" class="easyui-linkbutton" data-options="plain:true" style="font-family: verdana;">
+      Function Details
+  </a>
+  <a id="importCSV" onClick="ss.showImportCSVDiv();" title="Import as CSV" class="easyui-linkbutton" data-options="plain:true" style="font-family: verdana;">
+      Import
+  </a>
+  <img title="Script Information" id="scriptInfo" onclick="openScriptInfo()" style="float:right;margin:5px 10px;" src="../images/info.png"/>
+  <img class="menu" src="../../images/Shortcut-Icon.gif" id="shortcutIcon" title="Shortcut info (SHIFT + F10)" style="padding:0px;margin:5px 3px;border:0px;float:right;position:relative;" onclick="shortcutMenu(); return false;">
+  <a href="#" style="float: right;margin:4px 10px;" class="plainlink" id='s_scn'>Sample scenario</a>
+  <a href="#" style="float: right;margin:4px;"  class="plainlink" id='s_excel'>Sample excel</a>
+  
+  <script type="text/javascript">
+    		openScriptInfo = function(){
+    			jQuery('#script_info').window('open');
+    			jQuery('#script_info').window('center');
+    		}
+    		selectFull = function(id){
+    			$(id).setSelectionRange(0, $(id).value.length)
+    		}
+    		jQuery('#scriptInfo').mouseover(function() {
+    			this.style.boxShadow = "2px 2px 1em gray";
+    		})
+    		jQuery('#scriptInfo').mouseout(function() {
+    			this.style.removeProperty('box-shadow'); //not working till IE8
+    		})
+  </script>
+    <div id="script_info" class="easyui-window" title="Script Information" closed="true" style="padding:10px;" 
+    			data-options="modal:true,closed:true,maximizable:false,minimizable:false,draggable:true,resizable:false,collapsible:false">
+    	<table>
+			<tr>
+				<td><font face="verdana" size="2">Path:</font></td>
+				<td><input id="usefile" onClick="selectFull(this.id)" title="File in use" type="text" style="border:0px;" readonly size="56"></td>
+			</tr>
+			<tr>
+				<td><font face="verdana" size="2">Time taken:</font></td>
+				<td><input id="avgRunTime" onClick="selectFull(this.id)" title="Average of last 3 runs" type="text" style="border:0px" readonly size="56"></td>
+			</tr>
+		</table>
+    </div>
+
+  <span id="loadArea" style="display:none;">
+    <img id='loading' class='loading' src='loading.gif' style="margin-top:2px; margin-left:10px;height:16px"></img>
+  </span>
+   <span id="alert-area" style="margin-left:10px; margin-top:2px;"></span>
+  </div>
+  <div style="width:900px;margin-top:25px;">
+	<div id="container">
+		<div id='centerLayout' class="centerLayout">
+			<div id="datagrid" style="width:1500px;"></div>
+			<br/>
+		</div>
+	</div>
+  </div>
+  <div id="importCSVDiv" title="Import as CSV" style="padding:10px;" class="easyui-window" data-options="maximizable:false,modal:false,collapsible:false,minimizable:false,closed:true">
+  	<textarea id='importText' class="easyui-textbox" data-options="multiline:true" style="width:350px;height:150px"></textarea>
+  	<div style="margin-top:5px;font-family:verdana;"><a onClick="ss.importAsCSV();" class="easyui-linkbutton" data-options="iconCls:'icon-add'">Import</a></div>
+  </div>
+    <div id="fnInfoDiv" title="Function Details" style="padding:10px;" class="easyui-window" data-options="maximizable:false,modal:false,collapsible:false,minimizable:false,closed:true">
+  		<div id="fnViewDiv" style="width:360px;font-size:12px;"></div>
+  	</div>
+  </div>
+  <div id="mask"></div>
+</div>
+<div style="clear:both;"></div>
+</body>
+<script>
+	var path = "";
+	var currentPath;
+	var ss = null;
+	function initializeSpreadSheet() {
+		jQuery(document).ready(function() {
+			ss = new SpreadSheet("datagrid");
+			ss.init();
+			document.getElementById("datagrid").onclick = function(){window.focus();} // needed for copy paste in iframe
+		})
+	}
+	
+	var __queuedSaveTimer = null;
+	function saveCSVAtSameLocation() {
+		var filePath = currentPath;
+        if(!filePath) return;
+		var saveErrorMessage = 'Save failed! Please copy data into an Excel Sheet.';
+		var data = ss.getDataAsCSV();
+		jQuery.ajax({
+			url : "/_s_/dyn/pro/TestCaseUI_save?filePath="
+					+ encodeURIComponent(filePath),
+			data : {
+				"contents" : data
+			}, 
+			type : 'POST',
+			success : function(res) {
+				if (res == 'SAHI_ERROR') {
+					successAlert('Data not saved!', 'error');
+				}
+				var res = eval("(" + res+ ")");
+				if (res.result === 'ok') {
+					successAlert('Data saved!', 'success');
+					saveHash();
+				} else {
+					alert(res.result);
+					alert(saveErrorMessage);
+				}
+			},
+			error : function() {
+				console.log(saveErrorMessage);
+				}
+			});	
+		if (__queuedSaveTimer)	window.clearTimeout(__queuedSaveTimer);
+		__queuedSaveTimer = window.setTimeout("ss.refreshFunctionsData()", 200);
+	}
+	
+	function returnSaveCSVAtSameLocation() {
+		return function(){
+			saveCSVAtSameLocation();
+		}
+	}
+
+	function loadCsv(fileDir, fileName) {
+        _scriptDir = fileDir;
+        _scriptName = fileName;
+		$("loadArea").style.display = 'inline';
+		if (fileDir == null && fileName == null) {
+			var fileDir = $("pbdir").options[$("pbdir").selectedIndex].value;
+			var fileName = $("filebox").value;
+		}
+		var filePath = fileDir + fileName;
+		path = fileDir + fileName.substring(0, fileName.lastIndexOf("/") + 1);
+		var span = document.createElement('span');
+		if ($("topSpan")) {
+			$("menuBar").removeChild($("topSpan"));
+		}
+		$('usefile').value = filePath;
+		currentPath = filePath;
+		jQuery
+				.ajax({
+					url : ("/_s_/dyn/pro/TestCaseUI_readFileAsJSON?filePath=" + encodeURIComponent(filePath)),
+					dataType : 'json',
+					type : 'GET',
+					success : function(res) {
+						ss.updateData(res.data);
+						saveHash();
+                        firstLoadOnContainer = false;
+						$("loadArea").style.display = 'none';
+					},
+    				error : function() {
+    					div.innerHTML = "Can not load the file";
+    					div.title = "See the Sahi console for error";
+    					$("loadArea").style.display = 'none';
+    				}
+				});
+		$('loadDialog').style.display = 'none';
+		jQuery('#mask').fadeOut(1000);
+	}
+
+	function saveCsv(fileDir, fileName) {
+		//var fileDir = $("pbdir2").options[$("pbdir2").selectedIndex].value;
+		//var fileName = $("filebox2").value;
+		if (fileName == "" || fileName == null || fileName === undefined) {
+			alert("Please enter file name!");
+			return false;
+		}
+		if (fileName.indexOf(".") == -1) fileName = fileName + ".s.csv";
+		var filePath = fileDir + fileName;
+		var saveErrorMessage = 'Save failed! Please copy data into an Excel Sheet.';
+		var data = ss.getDataAsCSV();
+		jQuery.ajax({
+			url : "/_s_/dyn/pro/TestCaseUI_save?filePath="
+					+ encodeURIComponent(filePath),
+			data : {
+				"contents" : data
+			},
+			type : 'POST',
+			success : function(res) {
+				var res = eval("(" + res + ")");
+				if (res.result === 'ok') {
+					//alert('Data saved');
+					//setURL2();
+				} else {
+					alert(res.result);
+					alert(saveErrorMessage);
+				}
+			},
+			error : function() {
+                console.log(saveErrorMessage);
+				//alert(saveErrorMessage);
+			}
+		});
+		//loadCsv(fileDir, fileName);
+		//$('saveAsDialog').style.display = "none";
+		//jQuery('#mask').fadeOut(1000);
+	}
+
+	function masking() {
+		var maskHeight = jQuery(document).height();
+		var maskWidth = jQuery(window).width();
+		jQuery('#mask').css({
+			'width' : maskWidth,
+			'height' : maskHeight
+		});
+		jQuery('#mask').fadeTo("fast", 0.2);
+	}
+
+	function closeModal(id) {
+		$(id).style.display = 'none';
+		jQuery('#mask').fadeOut(1000);
+	}
+
+	function openLoadModal() {
+		$('loadDialog').style.display = "inline";
+		$("filebox").value = "";
+		masking();
+		ss.data.deselectCell();
+	}
+	
+	function featureDeveloper() {
+		$('featureDeveloper').style.display = "inline";
+		masking();
+		ss.data.deselectCell();
+	}
+	
+	function shortcutMenu() {
+		window.open("/_s_/spr/editor/spreadsheet/spreadsheet_shortcut.txt");
+	}
+	
+	function openSaveAsModal() {
+		$('saveAsDialog').style.display = "inline";
+		$("filebox2").value = "";
+		masking();
+		if((ss.data!=undefined)&&(ss.data!=null)){
+			ss.data.deselectCell();
+		}
+		$('saveAsTitle').innerHTML = "Save the Scenario";
+	}
+	
+	function openSaveAsModalWithStartTitle() {
+		openSaveAsModal(); 
+		$('saveAsTitle').innerHTML = "Please save the scenario, before you start."
+	}
+	
+	function arraysIdentical(a, b) {
+	    var i = a.length;
+	    if (i != b.length) return false;
+	    while (i--) {
+	        if (a[i].toString() !== b[i].toString()){
+	        	return false;	        	
+	        }
+	    }
+	    return true;
+	}
+	
+	function successAlert (message, info) {
+		if(!($('alert'))){
+    		jQuery("#alert-area").append(jQuery("<span id='alert' class='alert alert-"+ info +" alert-message fade in' data-alert> " + message + "</span>"));
+    		jQuery(".alert-message").delay(2000).fadeOut("slow", function () { jQuery(this).remove(); });
+		}
+	}
+
+	jQuery('.menu').mouseover(function() {
+		this.style.boxShadow = "2px 2px 1em gray";
+		//this.style.cursor = "pointer";
+	})
+
+	jQuery('.menu').mouseout(function() {
+		//this.style.boxShadow = null; //not working in IE
+		this.style.removeProperty('box-shadow'); //not working till IE8
+	})
+	
+	function setURL() {
+		var scriptDirBox = document.getElementById("pbdir");
+		var filePath = scriptDirBox.options[scriptDirBox.selectedIndex].value;
+		var fileName = document.getElementById("filebox").value;
+		if(fileName == ""){
+			alert("Please enter the file name to open");
+			return;
+		}
+		location.href = "spreadsheet.html?dir=" + encodeURIComponent(filePath) + "&file=" + encodeURIComponent(fileName);
+	}
+	
+	function setURL2() {
+		var scriptDirBox = document.getElementById("pbdir2");
+		var filePath = scriptDirBox.options[scriptDirBox.selectedIndex].value;
+		var fileName = document.getElementById("filebox2").value;
+		location.href = "spreadsheet.html?dir=" + encodeURIComponent(filePath) + "&file=" + encodeURIComponent(fileName);
+	}
+	
+	setSampleExcelAndScenarioHref();
+	
+	function setSampleExcelAndScenarioHref() {
+		var scriptRoots = sahiSendToServer("/_s_/dyn/pro/TestCaseUI_getScriptDirs");
+		scriptRoots = eval(scriptRoots);
+		var sampleExcelFile = "demo/framework/sample.xls";
+		var sampleScenarioFile = "demo/framework/scenario1.s.csv";
+		var sampleExcel = $('s_excel');
+		var sampleScn = $('s_scn');
+		for(var i=0; i<scriptRoots.length; i++){
+            scriptRoots[i] = scriptRoots[i].replace(/\\/g, "/");
+			breakmeForExcel: if(isFileExists(scriptRoots[i]+sampleExcelFile)){
+				sampleExcel.onclick = returnAddFileTabOnParent(scriptRoots[i], sampleExcelFile);
+				break breakmeForExcel;
+			}
+			breakmeForScenario: if(isFileExists(scriptRoots[i]+sampleScenarioFile)){
+				sampleScn.onclick = returnAddFileTabOnParent(scriptRoots[i], sampleScenarioFile);
+    			break breakmeForScenario;
+			}
+		}
+	}
+	
+	function isFileExists(filePath){
+		isFileExisting = sahiSendToServer("/_s_/dyn/Driver_isFileExists?filePath=" + encodeURIComponent(filePath));
+		if (isFileExisting == "true")
+			return true;
+		else
+			return false;
+	}
+	
+	initializeSpreadSheet();
+  
+  function returnAddFileTabOnParent(dir, file){
+    return function(){
+      addFileTabOnParent(dir, file);
+    }
+  }
+  
+  function addFileTabOnParent(dir, file){
+    if(!inIframe()) return;
+    if(!file && dir.indexOf('http') == 0){
+      window.open(dir);
+    }
+    else{
+      parent.openNewTab(dir, file);
+    }
+  }
+  
+  function inIframe(){
+    try {
+          return window.self !== window.top;
+      } catch (e) {
+          return true;
+      }
+  }
+</script>
+</html>

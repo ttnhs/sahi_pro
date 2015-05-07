@@ -1,0 +1,110 @@
+.editor{
+	display: none;
+}
+body {
+	margin:0px;
+}
+
+.plainlink {
+	font-family: verdana;
+	font-size:12px;
+}
+
+.handsontable .currentRow {
+  background-color: #E7E8EF;
+}
+
+.handsontable .currentCol {
+  background-color: #F9F9FB;
+}
+
+#fnViewDiv * {
+  font-family:verdana;
+}
+#fnViewDiv table {
+  width:360px;
+  border-top: 0px;
+  table-layout: fixed;
+  background-color: white;
+  font-size:12px;
+}
+
+#fnViewDiv table td {
+  padding:5px;
+  word-wrap: break-word;
+  vertical-align:top;
+  border-collapse: collapse;
+}
+
+#fileTitleDiv {
+	font-family: verdana;
+	font-size: 12px;
+}
+
+#boxes .dialog{
+  font-size: 12px;
+  font-family: verdana;
+  border:1px solid;
+  display:none;
+  position:fixed;
+  top:35%; 
+  left:35%;
+  background-color:#eee;
+  z-index:9999;
+  padding:20px;
+  padding-bottom:15px;
+}
+  
+#boxes .window {
+  z-index:10;
+}
+  
+#mask {
+  position:fixed;
+  top: 0;
+  left: 0;
+  z-index:9000;
+  background-color:#A0A0A0;
+  display:none;
+}
+  
+.menu {
+  margin-left:10px; 
+  margin-top:2px;
+  width:15px;
+  height:16px;
+}
+
+.alert-success {
+  font-family: verdana;
+  font-size:13px;
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-error {
+  font-family: verdana;
+  font-size:13px;
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+.suggestDD{
+	display:none;
+	border:1px solid grey;
+}
+.urlDD{
+	display:none;
+	border:1px solid grey;
+}
+tr.comment td {
+	color: #ccc;
+}
+tr.normal td {
+	color: #000 !important;
+}
+.panel-title {
+	font-family:verdana;
+}

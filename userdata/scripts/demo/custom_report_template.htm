@@ -1,0 +1,52 @@
+<html>
+<head><title>$suiteName</title></head>
+<style>
+body * {font-family: verdana;font-size:10pt;margin:10px;}
+td{padding:3px;}
+a{text-decoration:none;color:inherit;}
+div.SUCCESS{background-color:green;color:white}
+div.FAILURE,div.ERROR{background-color:red;color:white}
+tr.step_SUCCESS{background-color:lightgreen;color:black;}
+tr.step_FAILURE{background-color:red;color:white;}
+</style>
+<body>
+<table id="results">
+<!--$contents-->
+</table>
+<script>
+function getData(t){
+	var data2D = [];
+	var rows = t.rows;
+	for (var i=0; i<rows.length; i++){
+		var row = rows[i];
+		var cells = row.cells;
+		data2D[i] = [cells[0].innerHTML, cells[1].innerHTML, cells[2].innerHTML, row.className];
+	}	
+	return data2D;
+}
+function setData(data2D, t){
+	var s = "";
+	for (var i=0; i<data2D.length; i++) {
+		var row = data2D[i];
+		s += "<tr class='" + row[3] + "'><td>" + row[0] + "</td><td>" + row[1] + "</td><td>" + row[2] + "</td></tr>";
+	}
+	t.innerHTML = s;
+}
+var t = document.getElementById("results");
+var data2D = getData(t);
+data2D.sort(function(a,b){
+	var x = a[0].split(".");
+	var y = b[0].split(".");
+	for (var i=0; i<10; i++) {
+		var xi = parseInt(x[i]); 
+		if ("" + xi == "NaN") xi = x[i];
+		var yi = parseInt(y[i]);
+		if ("" + yi == "NaN") yi = y[i];
+		if (xi == yi) continue;
+		return xi > yi
+	}
+});
+setData(data2D, t);
+</script>
+</body>
+</html>

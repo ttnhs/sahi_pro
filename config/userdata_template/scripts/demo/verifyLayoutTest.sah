@@ -1,0 +1,3 @@
+_navigateTo("/demo/training/login.htm");
+//_verifyLayout([[_cell("Password"), _textbox("user")]],4)
+_verifyLayout([[_bold("Sahi Training Site")],[_cell("Username"),_textbox("user")],[_cell("Password"),_password("password")],[_submit("Login")]],4);

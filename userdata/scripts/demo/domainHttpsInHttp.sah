@@ -1,0 +1,16 @@
+_navigateTo("http://sahipro.com/demo/domainHttpsInHttp.htm", true);
+_assertEqual("verify me", _getValue(_textbox("checkRecord")));
+_click(_button("Click me"));
+_assertEqual("1111", _getValue(_textbox("checkRecord")));
+_click(_link("Link Test"));
+_click(_link("Back"));
+_selectDomain("https://sahipro.com");
+_click(_link("Link Test"));
+_assertEqual("https://sahipro.com/demo/linkTest.htm", location.href)
+_click(_link("Back"));
+_selectDomain();
+_click(_link("Link Test"));
+_click(_link("Back"));
+_selectDomain();
+_assertEqual("/demo/domainHttpsInHttp.htm", location.pathname);
+

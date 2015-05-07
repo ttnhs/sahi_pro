@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Script Execution Control APIs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='index.html'>Overview</a>
+<ul><li><a href='index.html#Browser Accessor APIs'>Browser Accessor APIs</a>
+</li><li><a href='index.html#Browser Action APIs'>Browser Action APIs</a>
+</li><li><a href='index.html#Miscellaneous APIs'>Miscellaneous APIs</a>
+</li></ul></li><li><a href='accessor-api-basics.html'>Accessor API Basics</a>
+<ul><li><a href='accessor-api-basics.html#Overview'>Overview</a>
+</li><li><a href='accessor-api-basics.html#Identifying unique element'>Identifying unique element</a>
+</li><li><a href='accessor-api-basics.html#Identifying element among similar elements'>Identifying element among similar elements</a>
+</li><li><a href='accessor-api-basics.html#Use of DOM Relation APIs'>Use of DOM Relation APIs</a>
+</li><li><a href='accessor-api-basics.html#Use of Positional Relation APIs'>Use of Positional Relation APIs</a>
+</li><li><a href='accessor-api-basics.html#_near vs _rightOf or_leftOf'>_near vs _rightOf or_leftOf</a>
+</li><li><a href='accessor-api-basics.html#Forcing Sahi Pro to ignore case when identifying elements'>Forcing Sahi Pro to ignore case when identifying elements</a>
+<ul><li><a href='accessor-api-basics.html#_setAccessorIgnoreCase'>_setAccessorIgnoreCase</a>
+</li></ul></li></ul></li><li><a href='accessor-apis.html'>Accessor APIs</a>
+<ul><li><a href='accessor-apis.html#Form Input Elements'>Form Input Elements</a>
+<ul><li><a href='accessor-apis.html#_password'>_password</a>
+</li><li><a href='accessor-apis.html#_textbox'>_textbox</a>
+</li><li><a href='accessor-apis.html#_hidden'>_hidden</a>
+</li><li><a href='accessor-apis.html#_datebox'>_datebox</a>
+</li><li><a href='accessor-apis.html#_datetimebox'>_datetimebox</a>
+</li><li><a href='accessor-apis.html#_datetimelocalbox'>_datetimelocalbox</a>
+</li><li><a href='accessor-apis.html#_emailbox'>_emailbox</a>
+</li><li><a href='accessor-apis.html#_monthbox'>_monthbox</a>
+</li><li><a href='accessor-apis.html#_numberbox'>_numberbox</a>
+</li><li><a href='accessor-apis.html#_rangebox'>_rangebox</a>
+</li><li><a href='accessor-apis.html#_searchbox'>_searchbox</a>
+</li><li><a href='accessor-apis.html#_telephonebox'>_telephonebox</a>
+</li><li><a href='accessor-apis.html#_timebox'>_timebox</a>
+</li><li><a href='accessor-apis.html#_urlbox'>_urlbox</a>
+</li><li><a href='accessor-apis.html#_weekbox'>_weekbox</a>
+</li><li><a href='accessor-apis.html#_textarea'>_textarea</a>
+</li></ul></li><li><a href='accessor-apis.html#Button Like Elements'>Button Like Elements</a>
+<ul><li><a href='accessor-apis.html#_button'>_button</a>
+</li><li><a href='accessor-apis.html#_button'>_button</a>
+</li><li><a href='accessor-apis.html#_checkbox'>_checkbox</a>
+</li><li><a href='accessor-apis.html#_radio'>_radio</a>
+</li><li><a href='accessor-apis.html#_submit'>_submit</a>
+</li><li><a href='accessor-apis.html#_submit'>_submit</a>
+</li><li><a href='accessor-apis.html#_reset'>_reset</a>
+</li><li><a href='accessor-apis.html#_reset'>_reset</a>
+</li><li><a href='accessor-apis.html#_imageSubmitButton'>_imageSubmitButton</a>
+</li></ul></li><li><a href='accessor-apis.html#Dropdowns'>Dropdowns</a>
+<ul><li><a href='accessor-apis.html#_select'>_select</a>
+</li><li><a href='accessor-apis.html#_option'>_option</a>
+</li></ul></li><li><a href='accessor-apis.html#File Uploads'>File Uploads</a>
+<ul><li><a href='accessor-apis.html#_file'>_file</a>
+</li></ul></li><li><a href='accessor-apis.html#Table Elements'>Table Elements</a>
+<ul><li><a href='accessor-apis.html#_table'>_table</a>
+</li><li><a href='accessor-apis.html#_row'>_row</a>
+</li><li><a href='accessor-apis.html#_cell'>_cell</a>
+</li><li><a href='accessor-apis.html#_tableHeader'>_tableHeader</a>
+</li></ul></li><li><a href='accessor-apis.html#Other HTML Tags'>Other HTML Tags</a>
+<ul><li><a href='accessor-apis.html#_link'>_link</a>
+</li><li><a href='accessor-apis.html#_image'>_image</a>
+</li><li><a href='accessor-apis.html#_label'>_label</a>
+</li><li><a href='accessor-apis.html#_listItem'>_listItem</a>
+</li><li><a href='accessor-apis.html#_list'>_list</a>
+</li><li><a href='accessor-apis.html#_list'>_list</a>
+</li><li><a href='accessor-apis.html#_div'>_div</a>
+</li><li><a href='accessor-apis.html#_span'>_span</a>
+</li><li><a href='accessor-apis.html#_fieldset'>_fieldset</a>
+</li><li><a href='accessor-apis.html#_heading1'>_heading1</a>
+</li><li><a href='accessor-apis.html#_heading2'>_heading2</a>
+</li><li><a href='accessor-apis.html#_heading3'>_heading3</a>
+</li><li><a href='accessor-apis.html#_heading4'>_heading4</a>
+</li><li><a href='accessor-apis.html#_heading5'>_heading5</a>
+</li><li><a href='accessor-apis.html#_heading6'>_heading6</a>
+</li><li><a href='accessor-apis.html#_area'>_area</a>
+</li><li><a href='accessor-apis.html#_map'>_map</a>
+</li><li><a href='accessor-apis.html#_paragraph'>_paragraph</a>
+</li><li><a href='accessor-apis.html#_italic'>_italic</a>
+</li><li><a href='accessor-apis.html#_emphasis'>_emphasis</a>
+</li><li><a href='accessor-apis.html#_bold'>_bold</a>
+</li><li><a href='accessor-apis.html#_strong'>_strong</a>
+</li><li><a href='accessor-apis.html#_preformatted'>_preformatted</a>
+</li><li><a href='accessor-apis.html#_code'>_code</a>
+</li><li><a href='accessor-apis.html#_blockquote'>_blockquote</a>
+</li><li><a href='accessor-apis.html#_canvas'>_canvas</a>
+</li><li><a href='accessor-apis.html#_abbr'>_abbr</a>
+</li><li><a href='accessor-apis.html#_hr'>_hr</a>
+</li><li><a href='accessor-apis.html#_iframe'>_iframe</a>
+</li><li><a href='accessor-apis.html#_frame'>_frame</a>
+</li><li><a href='accessor-apis.html#_object'>_object</a>
+</li><li><a href='accessor-apis.html#_embed'>_embed</a>
+</li><li><a href='accessor-apis.html#_dList'>_dList</a>
+</li><li><a href='accessor-apis.html#_dTerm'>_dTerm</a>
+</li><li><a href='accessor-apis.html#_dDesc'>_dDesc</a>
+</li><li><a href='accessor-apis.html#_font'>_font</a>
+</li><li><a href='accessor-apis.html#_svg_rect'>_svg_rect</a>
+</li><li><a href='accessor-apis.html#_svg_tspan'>_svg_tspan</a>
+</li><li><a href='accessor-apis.html#_svg_circle'>_svg_circle</a>
+</li><li><a href='accessor-apis.html#_svg_ellipse'>_svg_ellipse</a>
+</li><li><a href='accessor-apis.html#_svg_line'>_svg_line</a>
+</li><li><a href='accessor-apis.html#_svg_polygon'>_svg_polygon</a>
+</li><li><a href='accessor-apis.html#_svg_polyline'>_svg_polyline</a>
+</li><li><a href='accessor-apis.html#_svg_path'>_svg_path</a>
+</li><li><a href='accessor-apis.html#_svg_text'>_svg_text</a>
+</li></ul></li><li><a href='generic-accessor-apis.html'>Generic Accessor APIs</a>
+<ul><li><a href='generic-accessor-apis.html#_activeElement'>_activeElement</a>
+</li><li><a href='generic-accessor-apis.html#_byId'>_byId</a>
+</li><li><a href='generic-accessor-apis.html#_byText'>_byText</a>
+</li><li><a href='generic-accessor-apis.html#_byClassName'>_byClassName</a>
+</li><li><a href='generic-accessor-apis.html#_byXPath'>_byXPath</a>
+</li><li><a href='generic-accessor-apis.html#_accessor'>_accessor</a>
+</li><li><a href='generic-accessor-apis.html#_bySeleniumLocator'>_bySeleniumLocator</a>
+</li></ul></li></ul></li><li><a href='relation-apis.html'>Relation APIs</a>
+<ul><li><a href='relation-apis.html#DOM Relation APIs'>DOM Relation APIs</a>
+<ul><li><a href='relation-apis.html#_near'>_near</a>
+</li><li><a href='relation-apis.html#_in'>_in</a>
+</li><li><a href='relation-apis.html#_startLookInside'>_startLookInside</a>
+</li><li><a href='relation-apis.html#_stopLookInside'>_stopLookInside</a>
+</li></ul></li><li><a href='relation-apis.html#Positional Relation APIs'>Positional Relation APIs</a>
+<ul><li><a href='relation-apis.html#_rightOf'>_rightOf</a>
+</li><li><a href='relation-apis.html#_leftOf'>_leftOf</a>
+</li><li><a href='relation-apis.html#_leftOrRightOf'>_leftOrRightOf</a>
+</li><li><a href='relation-apis.html#_under'>_under</a>
+</li><li><a href='relation-apis.html#_above'>_above</a>
+</li><li><a href='relation-apis.html#_aboveOrUnder'>_aboveOrUnder</a>
+</li></ul></li><li><a href='relation-apis.html#Parent APIs'>Parent APIs</a>
+<ul><li><a href='relation-apis.html#_parentNode'>_parentNode</a>
+</li><li><a href='relation-apis.html#_parentCell'>_parentCell</a>
+</li><li><a href='relation-apis.html#_parentRow'>_parentRow</a>
+</li><li><a href='relation-apis.html#_parentTable'>_parentTable</a>
+</li></ul></li></ul></li><li><a href='action-apis.html'>Action APIs</a>
+<ul><li><a href='action-apis.html#Mouse Events'>Mouse Events</a>
+<ul><li><a href='action-apis.html#_xy'>_xy</a>
+</li><li><a href='action-apis.html#_click'>_click</a>
+</li><li><a href='action-apis.html#_doubleClick'>_doubleClick</a>
+</li><li><a href='action-apis.html#_rightClick'>_rightClick</a>
+</li><li><a href='action-apis.html#_mouseDown'>_mouseDown</a>
+</li><li><a href='action-apis.html#_mouseUp'>_mouseUp</a>
+</li><li><a href='action-apis.html#_mouseOver'>_mouseOver</a>
+</li><li><a href='action-apis.html#_check'>_check</a>
+</li><li><a href='action-apis.html#_uncheck'>_uncheck</a>
+</li><li><a href='action-apis.html#_setSelected'>_setSelected</a>
+</li><li><a href='action-apis.html#_dragDrop'>_dragDrop</a>
+</li><li><a href='action-apis.html#_dragDropXY'>_dragDropXY</a>
+</li></ul></li><li><a href='action-apis.html#Touch Events'>Touch Events</a>
+<ul><li><a href='action-apis.html#_tap'>_tap</a>
+</li><li><a href='action-apis.html#_touch'>_touch</a>
+</li><li><a href='action-apis.html#_touchStart'>_touchStart</a>
+</li><li><a href='action-apis.html#_touchEnd'>_touchEnd</a>
+</li><li><a href='action-apis.html#_touchCancel'>_touchCancel</a>
+</li><li><a href='action-apis.html#_touchMove'>_touchMove</a>
+</li><li><a href='action-apis.html#_swipe'>_swipe</a>
+</li></ul></li><li><a href='action-apis.html#Keyboard Events'>Keyboard Events</a>
+<ul><li><a href='action-apis.html#_setValue'>_setValue</a>
+</li><li><a href='action-apis.html#_keyDown'>_keyDown</a>
+</li><li><a href='action-apis.html#_keyUp'>_keyUp</a>
+</li><li><a href='action-apis.html#_keyPress'>_keyPress</a>
+</li><li><a href='action-apis.html#_type'>_type</a>
+</li></ul></li><li><a href='action-apis.html#Focus Events'>Focus Events</a>
+<ul><li><a href='action-apis.html#_focus'>_focus</a>
+</li><li><a href='action-apis.html#_removeFocus'>_removeFocus</a>
+</li><li><a href='action-apis.html#_blur'>_blur</a>
+</li></ul></li><li><a href='action-apis.html#Text Selection'>Text Selection</a>
+<ul><li><a href='action-apis.html#_selectRange'>_selectRange</a>
+</li><li><a href='action-apis.html#_selectTextRange'>_selectTextRange</a>
+</li></ul></li><li><a href='action-apis.html#Page Navigation'>Page Navigation</a>
+<ul><li><a href='action-apis.html#_navigateTo'>_navigateTo</a>
+</li></ul></li><li><a href='action-apis.html#Waits'>Waits</a>
+<ul><li><a href='action-apis.html#_wait'>_wait</a>
+</li></ul></li><li><a href='action-apis.html#Native Events'>Native Events</a>
+<ul><li><a href='action-apis.html#_typeNative'>_typeNative</a>
+</li><li><a href='action-apis.html#_typeKeyCodeNative'>_typeKeyCodeNative</a>
+</li><li><a href='action-apis.html#_focusWindow'>_focusWindow</a>
+</li><li><a href='action-apis.html#_windowAction'>_windowAction</a>
+</li><li><a href='action-apis.html#_clickNative'>_clickNative</a>
+</li><li><a href='action-apis.html#_rightClickNative'>_rightClickNative</a>
+</li><li><a href='action-apis.html#_doubleClickNative'>_doubleClickNative</a>
+</li><li><a href='action-apis.html#_clickNativeXY'>_clickNativeXY</a>
+</li><li><a href='action-apis.html#_mouseOverNative'>_mouseOverNative</a>
+</li><li><a href='action-apis.html#_dragDropNative'>_dragDropNative</a>
+</li><li><a href='action-apis.html#_dragDropNativeXY'>_dragDropNativeXY</a>
+</li></ul></li><li><a href='action-apis.html#File Upload'>File Upload</a>
+<ul><li><a href='action-apis.html#_setFile'>_setFile</a>
+</li><li><a href='action-apis.html#_setFile2'>_setFile2</a>
+</li><li><a href='action-apis.html#Troubleshooting'>Troubleshooting</a>
+</li><li><a href='action-apis.html#Identifying action url for _setFile/_setFile2'>Identifying action url for _setFile/_setFile2</a>
+</li><li><a href='action-apis.html#File upload using native events'>File upload using native events</a>
+</li></ul></li><li><a href='action-apis.html#File Download'>File Download</a>
+<ul><li><a href='action-apis.html#File download overview'>File download overview</a>
+</li><li><a href='action-apis.html#_lastDownloadedFileName'>_lastDownloadedFileName</a>
+</li><li><a href='action-apis.html#_saveDownloadedAs'>_saveDownloadedAs</a>
+</li><li><a href='action-apis.html#_clearLastDownloadedFileName'>_clearLastDownloadedFileName</a>
+</li><li><a href='action-apis.html#File download APIs example'>File download APIs example</a>
+</li><li><a href='action-apis.html#File download troubleshooting'>File download troubleshooting</a>
+</li><li><a href='action-apis.html#Handling file downloads triggered in a new window'>Handling file downloads triggered in a new window</a>
+</li><li><a href='action-apis.html#_sendHTMLResponseAfterFileDownload'>_sendHTMLResponseAfterFileDownload</a>
+</li><li><a href='action-apis.html#File download from a different domain'>File download from a different domain</a>
+</li><li><a href='action-apis.html#_addToSession'>_addToSession</a>
+</li></ul></li><li><a href='action-apis.html#Window open/close APIs'>Window open/close APIs</a>
+<ul><li><a href='action-apis.html#_closeWindow'>_closeWindow</a>
+</li><li><a href='action-apis.html#_closeBrowser'>_closeBrowser</a>
+</li><li><a href='action-apis.html#_openBrowser'>_openBrowser</a>
+</li></ul></li><li><a href='action-apis.html#Calling Generic Code'>Calling Generic Code</a>
+<ul><li><a href='action-apis.html#_call'>_call</a>
+</li><li><a href='action-apis.html#_eval'>_eval</a>
+</li></ul></li></ul></li><li><a href='screenshot-apis.html'>Screenshot APIs</a>
+<ul><li><a href='screenshot-apis.html#_takeScreenShot'>_takeScreenShot</a>
+</li><li><a href='screenshot-apis.html#_takeScreenShots'>_takeScreenShots</a>
+</li><li><a href='screenshot-apis.html#_takePageScreenShot'>_takePageScreenShot</a>
+</li><li><a href='screenshot-apis.html#_assertSnapShot'>_assertSnapShot</a>
+</li><li><a href='screenshot-apis.html#_compareImages'>_compareImages</a>
+</li><li><a href='screenshot-apis.html#Configuring GraphicsMagick'>Configuring GraphicsMagick</a>
+<ul><li><a href='screenshot-apis.html#Configure GM on Windows'>Configure GM on Windows</a>
+</li><li><a href='screenshot-apis.html#Configure GM on Linux/Mac'>Configure GM on Linux/Mac</a>
+</li></ul></li><li><a href='screenshot-apis.html#Skip the Screenshot APIs'>Skip the Screenshot APIs</a>
+</li><li><a href='screenshot-apis.html#Notes'>Notes</a>
+</li></ul></li><li><a href='include-apis.html'>Include APIs</a>
+<ul><li><a href='include-apis.html#_include'>_include</a>
+</li><li><a href='include-apis.html#_includeOnce'>_includeOnce</a>
+</li><li><a href='include-apis.html#_dynamicInclude'>_dynamicInclude</a>
+</li></ul></li><li><a href='fetch-apis.html'>Fetch APIs</a>
+<ul><li><a href='fetch-apis.html#_getValue'>_getValue</a>
+</li><li><a href='fetch-apis.html#_getText'>_getText</a>
+</li><li><a href='fetch-apis.html#_getOptions'>_getOptions</a>
+</li><li><a href='fetch-apis.html#_getCellText'>_getCellText</a>
+</li><li><a href='fetch-apis.html#_getSelectedText'>_getSelectedText</a>
+</li><li><a href='fetch-apis.html#_getAttribute'>_getAttribute</a>
+</li><li><a href='fetch-apis.html#_exists'>_exists</a>
+</li><li><a href='fetch-apis.html#_areEqual'>_areEqual</a>
+</li><li><a href='fetch-apis.html#_isVisible'>_isVisible</a>
+</li><li><a href='fetch-apis.html#_containsText'>_containsText</a>
+</li><li><a href='fetch-apis.html#_containsHTML'>_containsHTML</a>
+</li><li><a href='fetch-apis.html#_contains'>_contains</a>
+</li><li><a href='fetch-apis.html#_title'>_title</a>
+</li><li><a href='fetch-apis.html#_getTableContents'>_getTableContents</a>
+</li><li><a href='fetch-apis.html#_style'>_style</a>
+</li><li><a href='fetch-apis.html#_position'>_position</a>
+</li><li><a href='fetch-apis.html#_getSelectionText'>_getSelectionText</a>
+<li><a href='fetch-apis.html#Browser Detection APIs'>Browser Detection APIs</a>
+<ul><li><a href='fetch-apis.html#_userAgent'>_userAgent</a>
+</li><li><a href='fetch-apis.html#_getScreenSize'>_getScreenSize</a>
+</li><li><a href='fetch-apis.html#_isIE'>_isIE</a>
+</li><li><a href='fetch-apis.html#_isIE9'>_isIE9</a>
+</li><li><a href='fetch-apis.html#_isIE10'>_isIE10</a>
+</li><li><a href='fetch-apis.html#_isFF'>_isFF</a>
+</li><li><a href='fetch-apis.html#_isFF3'>_isFF3</a>
+</li><li><a href='fetch-apis.html#_isFF4'>_isFF4</a>
+</li><li><a href='fetch-apis.html#_isChrome'>_isChrome</a>
+</li><li><a href='fetch-apis.html#_isSafari'>_isSafari</a>
+</li><li><a href='fetch-apis.html#_isOpera'>_isOpera</a>
+</li><li><a href='fetch-apis.html#_isPhantomJS'>_isPhantomJS</a>
+</li><li><a href='fetch-apis.html#_isHTMLUnit'>_isHTMLUnit</a>
+</li></ul></li><li><a href='fetch-apis.html#Rich Text Editors (Content Editable elements)'>Rich Text Editors (Content Editable elements)</a>
+</li><li><a href='fetch-apis.html#Generic attribute fetching mechanism'>Generic attribute fetching mechanism</a>
+<ul><li><a href='fetch-apis.html#_fetch'>_fetch</a>
+</li><li><a href='fetch-apis.html#_set'>_set</a>
+</li><li><a href='fetch-apis.html#_condition'>_condition</a>
+</li></ul></li><li><a href='fetch-apis.html#Multiple Elements'>Multiple Elements</a>
+<ul><li><a href='fetch-apis.html#_collect'>_collect</a>
+</li><li><a href='fetch-apis.html#_count'>_count</a>
+</li><li><a href='fetch-apis.html#_collectAttributes'>_collectAttributes</a>
+</li></ul></li></ul></li><li><a href='assertions.html'>Assertion APIs</a>
+<ul><li><a href='assertions.html#_assert'>_assert</a>
+</li><li><a href='assertions.html#_assertTrue'>_assertTrue</a>
+</li><li><a href='assertions.html#_assertNotTrue'>_assertNotTrue</a>
+</li><li><a href='assertions.html#_assertFalse'>_assertFalse</a>
+</li><li><a href='assertions.html#_assertNull'>_assertNull</a>
+</li><li><a href='assertions.html#_assertNotNull'>_assertNotNull</a>
+</li><li><a href='assertions.html#_assertExists'>_assertExists</a>
+</li><li><a href='assertions.html#_assertVisible'>_assertVisible</a>
+</li><li><a href='assertions.html#_assertNotVisible'>_assertNotVisible</a>
+</li><li><a href='assertions.html#_assertNotExists'>_assertNotExists</a>
+</li><li><a href='assertions.html#_assertEqual'>_assertEqual</a>
+</li><li><a href='assertions.html#_assertEqualArrays'>_assertEqualArrays</a>
+</li><li><a href='assertions.html#_assertNotEqual'>_assertNotEqual</a>
+</li><li><a href='assertions.html#_assertContainsText'>_assertContainsText</a>
+</li><li><a href='assertions.html#_assertNotContainsText'>_assertNotContainsText</a>
+</li><li><a href='assertions.html#_assertEqualImages'>_assertEqualImages</a>
+</li></ul></li><li><a href='logging-apis.html'>Logging APIs</a>
+<ul><li><a href='logging-apis.html#_log'>_log</a>
+</li><li><a href='logging-apis.html#_logException'>_logException</a>
+</li><li><a href='logging-apis.html#_logExceptionAsFailure'>_logExceptionAsFailure</a>
+</li><li><a href='logging-apis.html#_logImage'>_logImage</a>
+<li><a href='logging-apis.html#Masking logs'>Masking logs</a>
+<ul><li><a href='logging-apis.html#_maskLogs'>_maskLogs</a>
+</li><li><a href='logging-apis.html#_unmaskLogs'>_unmaskLogs</a>
+</li><li><a href='logging-apis.html#Example of _maskLogs _unmaskLogs'>Example of _maskLogs _unmaskLogs</a>
+</li></ul></li><li><a href='logging-apis.html#Disable/Enable INFO logging'>Disable/Enable INFO logging</a>
+<ul><li><a href='logging-apis.html#_disableInfoLogging'>_disableInfoLogging</a>
+</li><li><a href='logging-apis.html#_enableInfoLogging'>_enableInfoLogging</a>
+</li></ul></li><li><a href='logging-apis.html#Demarcating Test Cases'>Demarcating Test Cases</a>
+<ul><li><a href='logging-apis.html#_testcase'>_testcase</a>
+</li></ul></li><li><a href='logging-apis.html#HAR Logging'>HAR Logging</a>
+<ul><li><a href='logging-apis.html#Globally enable HAR Logging'>Globally enable HAR Logging</a>
+</li><li><a href='logging-apis.html#Locally enable HAR Logging'>Locally enable HAR Logging</a>
+</li><li><a href='logging-apis.html#_startHarLogging'>_startHarLogging</a>
+</li><li><a href='logging-apis.html#_stopHarLogging'>_stopHarLogging</a>
+</li></ul></li></ul></li><li><a href='debug-helper-apis.html'>Debug Helper APIs</a>
+<ul><li><a href='debug-helper-apis.html#_debug'>_debug</a>
+</li><li><a href='debug-helper-apis.html#_debugToErr'>_debugToErr</a>
+</li><li><a href='debug-helper-apis.html#_debugToFile'>_debugToFile</a>
+</li><li><a href='debug-helper-apis.html#_pause'>_pause</a>
+</li><li><a href='debug-helper-apis.html#_alert'>_alert</a>
+</li><li><a href='debug-helper-apis.html#_confirm'>_confirm</a>
+</li><li><a href='debug-helper-apis.html#_prompt'>_prompt</a>
+</li><li><a href='debug-helper-apis.html#_highlight'>_highlight</a>
+</li></ul></li><li><a href='file-apis.html'>File APIs</a>
+<ul><li><a href='file-apis.html#Text Files'>Text Files</a>
+<ul><li><a href='file-apis.html#_readFile'>_readFile</a>
+</li><li><a href='file-apis.html#_writeFile'>_writeFile</a>
+</li><li><a href='file-apis.html#_writeToFile'>_writeToFile</a>
+</li><li><a href='file-apis.html#_deleteFile'>_deleteFile</a>
+</li><li><a href='file-apis.html#_renameFile'>_renameFile</a>
+</li><li><a href='file-apis.html#_copyFile'>_copyFile</a>
+</li></ul></li><li><a href='file-apis.html#CSV Files'>CSV Files</a>
+<ul><li><a href='file-apis.html#_readCSVFile'>_readCSVFile</a>
+</li><li><a href='file-apis.html#_writeCSVFile'>_writeCSVFile</a>
+</li></ul></li></ul></li><li><a href='excel-apis.html'>Excel APIs</a>
+<ul><li><a href='excel-apis.html#_readExcelFile'>_readExcelFile</a>
+</li><li><a href='excel-apis.html#_getExcel'>_getExcel</a>
+</li></ul></li><li><a href='database-apis.html'>Database APIs</a>
+<ul><li><a href='database-apis.html#_getDB'>_getDB</a>
+</li><li><a href='database-apis.html#_getDB'>_getDB</a>
+</li><li><a href='database-apis.html#Using the SahiDB object'>Using the SahiDB object</a>
+</li><li><a href='database-apis.html#SahiDB.select'>SahiDB.select</a>
+</li><li><a href='database-apis.html#SahiDB.selectWithHeader'>SahiDB.selectWithHeader</a>
+</li><li><a href='database-apis.html#SahiDB.update'>SahiDB.update</a>
+</li><li><a href='database-apis.html#Accessing databases directly'>Accessing databases directly</a>
+</li></ul></li><li><a href='data-drive-apis.html'>Data Drive APIs</a>
+<ul><li><a href='data-drive-apis.html#_dataDrive'>_dataDrive</a>
+<li><a href='data-drive-apis.html#Using with various data source APIs'>Using with various data source APIs</a>
+<ul><li><a href='data-drive-apis.html#Simple 2D array'>Simple 2D array</a>
+</li><li><a href='data-drive-apis.html#CSV'>CSV</a>
+</li><li><a href='data-drive-apis.html#Excel Sheet'>Excel Sheet</a>
+</li><li><a href='data-drive-apis.html#Database'>Database</a>
+</li></ul></li></ul></li><li><a href='url-apis.html'>URL APIs</a>
+<ul><li><a href='url-apis.html#_readURL'>_readURL</a>
+</li></ul></li><li><a href='script-suite-info-apis.html'>Script/Suite Info APIs</a>
+<ul><li><a href='script-suite-info-apis.html#_scriptName'>_scriptName</a>
+</li><li><a href='script-suite-info-apis.html#_scriptPath'>_scriptPath</a>
+</li><li><a href='script-suite-info-apis.html#_scriptStartTime'>_scriptStartTime</a>
+</li><li><a href='script-suite-info-apis.html#_scriptStatus'>_scriptStatus</a>
+</li><li><a href='script-suite-info-apis.html#_userDataDir'>_userDataDir</a>
+</li><li><a href='script-suite-info-apis.html#_userDataPath'>_userDataPath</a>
+</li><li><a href='script-suite-info-apis.html#_resolvePath'>_resolvePath</a>
+</li><li><a href='script-suite-info-apis.html#_sessionInfo'>_sessionInfo</a>
+</li><li><a href='script-suite-info-apis.html#_suiteInfo'>_suiteInfo</a>
+</li><li><a href='script-suite-info-apis.html#_isDataPassed'>_isDataPassed</a>
+</li></ul></li><li><a href='script-execution-control-apis.html'>Script Execution Control APIs</a>
+<ul><li><a href='script-execution-control-apis.html#_wait'>_wait</a>
+</li><li><a href='script-execution-control-apis.html#_setXHRReadyStatesToWaitFor'>_setXHRReadyStatesToWaitFor</a>
+</li><li><a href='script-execution-control-apis.html#_setStrictVisibilityCheck'>_setStrictVisibilityCheck</a>
+</li><li><a href='script-execution-control-apis.html#_setSpeed'>_setSpeed</a>
+</li><li><a href='script-execution-control-apis.html#_stopOnError'>_stopOnError</a>
+</li><li><a href='script-execution-control-apis.html#_continueOnError'>_continueOnError</a>
+</li><li><a href='script-execution-control-apis.html#_runUnitTests'>_runUnitTests</a>
+</li><li><a href='script-execution-control-apis.html#_fail'>_fail</a>
+</li><li><a href='script-execution-control-apis.html#_stop'>_stop</a>
+<li><a href='script-execution-control-apis.html#Script Synchronization'>Script Synchronization</a>
+<ul><li><a href='script-execution-control-apis.html#_lock'>_lock</a>
+</li><li><a href='script-execution-control-apis.html#_unlock'>_unlock</a>
+</li><li><a href='script-execution-control-apis.html#_lockWindow'>_lockWindow</a>
+</li><li><a href='script-execution-control-apis.html#_unlockWindow'>_unlockWindow</a>
+</li></ul></li><li><a href='script-execution-control-apis.html#Callback functions'>Callback functions</a>
+<ul><li><a href='script-execution-control-apis.html#onScriptFailure'>onScriptFailure</a>
+</li><li><a href='script-execution-control-apis.html#onScriptError'>onScriptError</a>
+</li><li><a href='script-execution-control-apis.html#onScriptEnd'>onScriptEnd</a>
+</li><li><a href='script-execution-control-apis.html#Callback example'>Callback example</a>
+</li><li><a href='script-execution-control-apis.html#Taking screenshots on error/failure'>Taking screenshots on error/failure</a>
+</li><li><a href='script-execution-control-apis.html#Force Sahi to continue on error after screenshots and logging.'>Force Sahi to continue on error after screenshots and logging.</a>
+</li><li><a href='script-execution-control-apis.html#onBeforeStep'>onBeforeStep</a>
+</li><li><a href='script-execution-control-apis.html#onAfterStep'>onAfterStep</a>
+</li></ul></li><li><a href='script-execution-control-apis.html#Recovery Functions (DEPRECATED)'>Recovery Functions (DEPRECATED)</a>
+<ul><li><a href='script-execution-control-apis.html#_setRecovery'>_setRecovery</a>
+</li><li><a href='script-execution-control-apis.html#_removeRecovery'>_removeRecovery</a>
+</li></ul></li></ul></li><li><a href='http-header-manipulation-apis.html'>HTTP Header Manipulation APIs</a>
+<ul><li><a href='http-header-manipulation-apis.html#_setHttpHeader'>_setHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_addHttpHeader'>_addHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_removeHttpHeader'>_removeHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_resetHttpHeader'>_resetHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_mapDomainToIP'>_mapDomainToIP</a>
+<li><a href='http-header-manipulation-apis.html#Keep-Alive'>Keep-Alive</a>
+<ul><li><a href='http-header-manipulation-apis.html#_disableKeepAlive'>_disableKeepAlive</a>
+</li><li><a href='http-header-manipulation-apis.html#_enableKeepAlive'>_enableKeepAlive</a>
+</li></ul></li><li><a href='http-header-manipulation-apis.html#Cookie APIs'>Cookie APIs</a>
+<ul><li><a href='http-header-manipulation-apis.html#_cookie'>_cookie</a>
+</li><li><a href='http-header-manipulation-apis.html#_createCookie'>_createCookie</a>
+</li><li><a href='http-header-manipulation-apis.html#_deleteCookie'>_deleteCookie</a>
+</li><li><a href='http-header-manipulation-apis.html#Cookie Manager'>Cookie Manager</a>
+</li></ul></li></ul></li><li><a href='url-mock-apis.html'>URL Mock APIs</a>
+<ul><li><a href='url-mock-apis.html#_addMock'>_addMock</a>
+</li><li><a href='url-mock-apis.html#_mockImage'>_mockImage</a>
+</li><li><a href='url-mock-apis.html#_removeMock'>_removeMock</a>
+</li></ul></li><li><a href='javascript-dialogs.html'>Javascript Dialogs</a>
+<ul><li><a href='javascript-dialogs.html#Alert'>Alert</a>
+<ul><li><a href='javascript-dialogs.html#_lastAlert'>_lastAlert</a>
+</li><li><a href='javascript-dialogs.html#_clearLastAlert'>_clearLastAlert</a>
+</li><li><a href='javascript-dialogs.html#Alert Example'>Alert Example</a>
+</li></ul></li><li><a href='javascript-dialogs.html#Confirm'>Confirm</a>
+<ul><li><a href='javascript-dialogs.html#_lastConfirm'>_lastConfirm</a>
+</li><li><a href='javascript-dialogs.html#_expectConfirm'>_expectConfirm</a>
+</li><li><a href='javascript-dialogs.html#_clearLastConfirm'>_clearLastConfirm</a>
+</li><li><a href='javascript-dialogs.html#Confirm Example'>Confirm Example</a>
+</li></ul></li><li><a href='javascript-dialogs.html#Prompt'>Prompt</a>
+<ul><li><a href='javascript-dialogs.html#_lastPrompt'>_lastPrompt</a>
+</li><li><a href='javascript-dialogs.html#_expectPrompt'>_expectPrompt</a>
+</li><li><a href='javascript-dialogs.html#_clearLastPrompt'>_clearLastPrompt</a>
+</li><li><a href='javascript-dialogs.html#Prompt Example'>Prompt Example</a>
+</li></ul></li><li><a href='javascript-dialogs.html#Print dialog'>Print dialog</a>
+<ul><li><a href='javascript-dialogs.html#_printCalled'>_printCalled</a>
+</li><li><a href='javascript-dialogs.html#_clearPrintCalled'>_clearPrintCalled</a>
+</li></ul></li></ul></li><li><a href='rte-apis.html'>Rich Text Editors</a>
+<ul><li><a href='rte-apis.html#Identification'>Identification</a>
+<ul><li><a href='rte-apis.html#_rte'>_rte</a>
+</li></ul></li><li><a href='rte-apis.html#RTE Fetch APIs'>RTE Fetch APIs</a>
+<ul><li><a href='rte-apis.html#_rteText'>_rteText</a>
+</li><li><a href='rte-apis.html#_rteHTML'>_rteHTML</a>
+</li></ul></li><li><a href='rte-apis.html#RTE Action APIs'>RTE Action APIs</a>
+<ul><li><a href='rte-apis.html#_rteWrite'>_rteWrite</a>
+</li></ul></li><li><a href='rte-apis.html#RTE Text Selection APIs'>RTE Text Selection APIs</a>
+</li></ul></li><li><a href='popup-windows.html'>Popup Windows</a>
+<ul><li><a href='popup-windows.html#_selectWindow'>_selectWindow</a>
+</li><li><a href='popup-windows.html#_popup'>_popup</a>
+</li><li><a href='popup-windows.html#_getWindows'>_getWindows</a>
+</li><li><a href='popup-windows.html#_windowExists'>_windowExists</a>
+</li><li><a href='popup-windows.html#_getRecentWindow'>_getRecentWindow</a>
+</li></ul></li><li><a href='multiple-domains.html'>Multiple Domains</a>
+<ul><li><a href='multiple-domains.html#_selectDomain'>_selectDomain</a>
+</li><li><a href='multiple-domains.html#_domain'>_domain</a>
+</li></ul></li><li><a href='frames-domains.html'>Frames and Domains</a>
+<ul><li><a href='frames-domains.html#Frames from same domain'>Frames from same domain</a>
+</li><li><a href='frames-domains.html#Frames from different domains'>Frames from different domains</a>
+</li><li><a href='frames-domains.html#Subdomains with document.domain'>Subdomains with document.domain</a>
+</li></ul></li><li><a href='multiple-browsers.html'>Multiple Browsers</a>
+<ul><li><a href='multiple-browsers.html#_launchNewBrowser'>_launchNewBrowser</a>
+</li><li><a href='multiple-browsers.html#_selectBrowser'>_selectBrowser</a>
+</li><li><a href='multiple-browsers.html#Sample code'>Sample code</a>
+</li></ul></li><li><a href='execute-external-programs.html'>Execute External Programs</a>
+<ul><li><a href='execute-external-programs.html#_execute'>_execute</a>
+</li></ul></li><li><a href='util-apis.html'>Utility APIs</a>
+<ul><li><a href='util-apis.html#_random'>_random</a>
+</li><li><a href='util-apis.html#_extract'>_extract</a>
+</li><li><a href='util-apis.html#_trim'>_trim</a>
+</li><li><a href='util-apis.html#_toJSON'>_toJSON</a>
+</li></ul></li><li><a href='rest-apis.html'>Rest APIs</a>
+<ul><li><a href='rest-apis.html#RESTRequest'>RESTRequest</a>
+</li><li><a href='rest-apis.html#RESTRequest.addToQueryString'>RESTRequest.addToQueryString</a>
+</li><li><a href='rest-apis.html#RESTRequest.addToBody'>RESTRequest.addToBody</a>
+</li><li><a href='rest-apis.html#RESTRequest.setHeader'>RESTRequest.setHeader</a>
+</li><li><a href='rest-apis.html#RESTRequest.setURL'>RESTRequest.setURL</a>
+</li><li><a href='rest-apis.html#RESTRequest.setBody'>RESTRequest.setBody</a>
+</li><li><a href='rest-apis.html#RESTRequest.setCredentials'>RESTRequest.setCredentials</a>
+</li><li><a href='rest-apis.html#RESTRequest.submit'>RESTRequest.submit</a>
+</li><li><a href='rest-apis.html#RESTResponse'>RESTResponse</a>
+</li><li><a href='rest-apis.html#RESTResponse.getResponseCode'>RESTResponse.getResponseCode</a>
+</li><li><a href='rest-apis.html#RESTResponse.getHeader'>RESTResponse.getHeader</a>
+</li><li><a href='rest-apis.html#RESTResponse.getBodyAsString'>RESTResponse.getBodyAsString</a>
+</li><li><a href='rest-apis.html#RESTResponse.getBody'>RESTResponse.getBody</a>
+</li><li><a href='rest-apis.html#Parameter'>Parameter</a>
+</li><li><a href='rest-apis.html#Parameter.add'>Parameter.add</a>
+</li><li><a href='rest-apis.html#Parameter.remove'>Parameter.remove</a>
+</li><li><a href='rest-apis.html#Parameter.getQueryString'>Parameter.getQueryString</a>
+</li></ul></li><li><span>---</span>
+</li><li><a href='applet-apis.html'>Applet APIs</a>
+<ul><li><a href='applet-apis.html#_applet'>_applet</a>
+</li><li><a href='applet-apis.html#_a'>_a</a>
+<li><a href='applet-apis.html#Applet Accessors'>Applet Accessors</a>
+</li><li><a href='applet-apis.html#Applet Actions'>Applet Actions</a>
+</li><li><a href='applet-apis.html#Applet Fetch APIs'>Applet Fetch APIs</a>
+</li></ul></li><li><a href='flex-apis.html'>Flex APIs</a>
+<ul><li><a href='flex-apis.html#_flex'>_flex</a>
+</li><li><a href='flex-apis.html#_f'>_f</a>
+</li><li><a href='flex-apis.html#_setFlexReadyCondition'>_setFlexReadyCondition</a>
+</li></ul></li><li><a href='layout-verification.html'>Layout APIs</a>
+<ul><li><a href='layout-verification.html#_readLayoutFile'>_readLayoutFile</a>
+</li><li><a href='layout-verification.html#_verifyLayout'>_verifyLayout</a>
+</li><li><a href='layout-verification.html#Layout verification example'>Layout verification example</a>
+</li></ul></li><li><a href='document-creation.html'>Documentation APIs</a>
+<ul><li><a href='document-creation.html#_startDocumentation'>_startDocumentation</a>
+</li><li><a href='document-creation.html#_stopDocumentation'>_stopDocumentation</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Script Execution Control APIs</h2>
+      <!-- Script Execution Control APIs -->
+<div class="abstract"><strong class='heading'>abstract</strong>
+These APIs control the way a script executes<br/>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_wait" name="_wait" class="headinganchor2" hideFocus="hideFocus">_wait</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_wait($timeout[, $condition])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$timeout</td><td width="20%">integer </td><td> time in milliseconds to wait for</td></tr><tr><td width="15%">$condition</td><td width="20%">Sahi expression optional</td><td> condition to wait for.<br/>If specified, _wait will return if either the condition is met<br/>or if the time elapsed has exceeded timeout, whichever comes first.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Forces script to wait for given time or given condition to  be true, which ever comes first<br/>
+<pre><code>_wait(1000); // Will stop execution for a second
+
+// Wait till div by id "ajaxConfirm" is populated for max 5 seconds.
+_wait(5000, _getText(_div("ajaxConfirm"))!="");
+
+// Wait till button becomes visible
+_wait(5000, _isVisible(_button("Confirm")));
+
+// Wait till "Loading ..." message disappears
+_wait(1000); // may take a second before that message appears.
+_wait(5000, !_isVisible(_div("Loading ..."))); // wait max 5 seconds for it to disappear.</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_setXHRReadyStatesToWaitFor" name="_setXHRReadyStatesToWaitFor" class="headinganchor2" hideFocus="hideFocus">_setXHRReadyStatesToWaitFor</a></h3>
+Since Sahi Pro: 4.3.2<br/>
+Since Sahi OS: 4.3<br/>
+<br/>
+<pre><code>_setXHRReadyStatesToWaitFor($readyStates)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$readyStates</td><td width="20%">string </td><td>A string with some of 1,2,3 in a string; like "1,2,3"</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Sets what readyStates of an XMLHttpRequest (XHR) Sahi should wait for.<br/>
+Sahi normally monitors all AJAX requests and proceeds only if the XHR readyState is 4.<br/>
+In some applications which use long polling or comet requests, there may be XHRs in readyState 1.<br/>
+Sahi would wait for a long time and then timeout in such cases.<br/>
+Setting _setXHRReadyStatesToWaitFor to "2,3" will allow Sahi to proceed if the readyStates are either 1 or 4.<br/>
+<pre><code>_setXHRReadyStatesToWaitFor("2,3");</code></pre>
+<div class="info"><strong class='heading'>info</strong>
+The default XHR ready states to wait for is specified by the property<br/>
+<pre><code>xhr.wait_ready_states=1,2,3</code></pre>
+in sahi.properties. It can be overridden in <code>sahi/userdata/config/userdata.properties</code> file.<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_setStrictVisibilityCheck" name="_setStrictVisibilityCheck" class="headinganchor2" hideFocus="hideFocus">_setStrictVisibilityCheck</a></h3>
+Since Sahi Pro: 3.5.2<br/>
+Since Sahi OS: 3.5<br/>
+<br/>
+<pre><code>_setStrictVisibilityCheck($doCheck)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$doCheck</td><td width="20%">boolean </td><td>set to true to enable strict visibility check.</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+If $doCheck is true, forces Sahi to strictly look for only visible elements and ignore elements which are not visible.<br/>
+<pre><code>// make Sahi ignore elements which are not visible.
+_setStrictVisibilityCheck(true);
+
+// do operations on visible elements ...
+
+// make sahi revert to original behavior of considering all elements in the DOM.
+_setStrictVisibilityCheck(false);</code></pre>
+<br/>
+This API is useful in cases where widgets are dynamically created at multiple locations but only one of them is visible at any given time.<br/>
+<br/>
+During recording Sahi can be forced into either mode by choosing "Strict Visibility On" or "Strict Visibility Off" from the<br/>
+"Other Actions:" dropdown. Make sure you "Append to Script" to add it to the recorded script<br/>
+<br/>
+<div class="warning"><strong class='heading'>warning</strong>
+Setting _setStrictVisibilityCheck(true) can be slightly expensive as each probable element needs to be checked for visibility.<br/>
+However, some applications may be automatable only if _setStrictVisibilityCheck is true. Use judiciously.<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_setSpeed" name="_setSpeed" class="headinganchor2" hideFocus="hideFocus">_setSpeed</a></h3>
+Since Sahi Pro: 4.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_setSpeed($speed)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$speed</td><td width="20%">integer </td><td>speed in milliseconds</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Sets the speed of execution of steps.<br/>
+<pre><code>_setSpeed(2000);
+//Each step will execute with a gap of 2000 milliseconds (2 seconds).
+//Default execution speed is 100ms;</code></pre>
+<div class="warning"><strong class='heading'>warning</strong>DO NOT modify this unless absolutely necessary. Use _wait if and where needed.</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_stopOnError" name="_stopOnError" class="headinganchor2" hideFocus="hideFocus">_stopOnError</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_stopOnError()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Forces script to fail and abort on any error. Further steps will not be executed.<br/>
+This is the default behaviour of Sahi.<br/>
+<pre><code>_stopOnError();</code></pre>
+<div class="info"><strong class='heading'>info</strong>
+We differentiate between errors and failures.<br/>
+Error: Occurs when an element on which an action is to be performed is missing.<br/>
+Eg. In <code>_click(_link("Link Test"))</code>, if <code>_link("Link test")</code> does not exist, it will be an error<br/>
+Failure: Assertion failures are considered failures. Sahi does not stop execution on failures.<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_continueOnError" name="_continueOnError" class="headinganchor2" hideFocus="hideFocus">_continueOnError</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 2<br/>
+<br/>
+<pre><code>_continueOnError()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Forces script to continue inspite of error. Further steps will be executed.<br/>
+<pre><code>_continueOnError();</code></pre>
+<div class="danger"><strong class='heading'>danger</strong>
+Using this can be a waste of time. If button or link is missing, it is quite likely that all<br/>
+further steps will also fail. We do not recommend this.<br/>
+</div>
+<div class="info"><strong class='heading'>info</strong>
+It may be better to use the Script Callback Function onScriptError instead.<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_runUnitTests" name="_runUnitTests" class="headinganchor2" hideFocus="hideFocus">_runUnitTests</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_runUnitTests([$testsArray])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$testsArray</td><td width="20%">array of strings optional</td><td> Array of test function names which should be executed</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Executes all functions whose name starts with "test".<br/>
+If testsArray is specified, runs only tests in that array.<br/>
+If functions setUp() and tearDown() are defined,<br/>
+they are executed before and after each test, irrespective of errors in the test functions.<br/>
+<pre><code>function setUp(){
+  _log("In setUp");
+}
+function tearDown(){
+  _log("In tearDown");
+}
+function testAddition() {
+  _assertEqual(3, 1+2);
+}
+function testSubtraction() {
+  _assertEqual(3, 5-2);
+}
+function testMultiplication() {
+  _assertEqual(8, 2*4);
+}
+// Invoke all tests:
+_runUnitTests();
+
+// Invoke only testAddition and testMultiplication
+// Use this for debugging when you are fixing just one test
+// and don't want to run all the tests.
+_runUnitTests(["testAddition", "testMultiplication"]);</code></pre>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_fail" name="_fail" class="headinganchor2" hideFocus="hideFocus">_fail</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_fail([$message])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$message</td><td width="20%">string optional</td><td> Message to be logged in playback logs</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Causes a script to stop as a failure and log the given message. Can be used in the middle of a script.<br/>
+<div class="info"><strong class='heading'>info</strong>
+<ol>
+<li>When called from inside a testcase, only that testcase will fail and other testcases will not be impacted.</li>
+<li>When called from inside try block, execution will proceed to catch block.</li>
+<li>onScriptFailure and onScriptError callback functions will NOT be called.</li>
+</ol>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_stop" name="_stop" class="headinganchor2" hideFocus="hideFocus">_stop</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_stop()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Causes a script to stop execution.<br/>
+<div class="info"><strong class='heading'>info</strong>
+<ol>
+<li>When called from inside a _testcase, the whole script execution will be stopped. Execution will not proceed to next testcase</li>
+<li>When called from inside try block, execution will terminate without entering the catch block.</li>
+<li>onScriptFailure and onScriptError callback functions will NOT be called.</li>
+</ol>
+</div>
+
+</div>
+</div>
+<br/>
+<h2><a href="#Script Synchronization" name="Script Synchronization" class="headinganchor2" hideFocus="hideFocus">Script Synchronization</a></h2>
+Scripts can be forced to synchonize with each other by acquiring locks.<br/>
+<div class="api">
+<h3><a href="#_lock" name="_lock" class="headinganchor2" hideFocus="hideFocus">_lock</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_lock($name[, $timeout])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$name</td><td width="20%">string </td><td>Lock name</td></tr><tr><td width="15%">$timeout</td><td width="20%">long optional</td><td> timeout</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Acquires a lock with given name. If another script calls _lock with the same name, that script will wait till<br/>
+this lock is unlocked or till timeout happens.<br/>
+If timeout is not specified, the default timeout defined by <code>sahi.lock.timeout</code> property in <code>sahi.properties</code> is used.<br/>
+(Default is 60 seconds. Can be overridden in userdata.properties)<br/>
+<br/>
+<strong>
+If you wish to lock a portion of code that deals with browser windows, example: focusing a window and taking a screenshot or focusing a window and doing file uploads, use <a href="#_lockWindow">_lockWindow</a> instead of _lock.<br/>
+</strong><br/>
+For example usage, refer to the <a href="#_lockWindow">_lockWindow</a> example below. Use _lock and _unlock for functionality other than dealing with windows.<br/>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_unlock" name="_unlock" class="headinganchor2" hideFocus="hideFocus">_unlock</a></h3>
+Since Sahi Pro: 5.1.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_unlock($name)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$name</td><td width="20%">string </td><td>Lock name</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Unlocks or releases the lock of given name, acquired through the _lock API.<br/>
+
+</div>
+</div>
+<div class="api">
+<h3><a href="#_lockWindow" name="_lockWindow" class="headinganchor2" hideFocus="hideFocus">_lockWindow</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_lockWindow([$timeout])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$timeout</td><td width="20%">long optional</td><td> timeout</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+<br/>
+This is a more specific version of the _lock API.<br/>
+<br/>
+Acquires a lock with a name internal to Sahi. The same lock is used by Sahi when launching new browser windows.<br/>
+<br/>
+If another script calls _lockWindow, that script will wait till this _lockWindow is unlocked or till timeout happens.<br/>
+If timeout is not specified, the default timeout defined by <code>sahi.lock.timeout</code> property in <code>sahi.properties</code> is used.<br/>
+(Default is 60 seconds. Can be overridden in userdata.properties)<br/>
+<br/>
+<div class="info"><strong class='heading'>info</strong>
+In 5.1.0, _lock API was introduced.<br/>
+<br/>
+As part of taking screenshots, one would first need to call _focusWindow. The user could use _lock to lock a portion of code that called _focusWindow and then a Screenshot API. This is to ensure that while one script takes the screenshot of its browser, other scripts will wait before taking screenshots.<br/>
+<br/>
+However, Sahi itself launches browser windows to run scripts of a suite. Since this is not controlled through _lock, a Sahi browser window may get opened while a script is attempting to take a screenshot. This would end up affecting the screenshot.<br/>
+<br/>
+To avoid this problem, we have introduced the _lockWindow API. Whenever Sahi internally opens/manages browser windows, it calls _lockWindow to lock the window related code.<br/>
+<br/>
+<strong>Users should always use _lockWindow when managing any code related to windows, example: focusing the window and taking screenshots, focusing the window and do a native file upload, etc.</strong><br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_unlockWindow" name="_unlockWindow" class="headinganchor2" hideFocus="hideFocus">_unlockWindow</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>_unlockWindow()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Unlocks or releases the lock acquired by calling _lockWindow.<br/>
+<br/>
+Used in conjunction with _lockWindow.<br/>
+
+</div>
+</div>
+<strong>Example</strong><br/>
+<br/>
+Suppose we have 2 scripts: one for taking a screenshot and another for fileupload via native events.<br/>
+<pre><code>// Script 1
+
+_focusWindow();
+_takeScreenShot();</code></pre>
+<br/>
+<pre><code>// Script 2
+
+_focusWindow();
+// file upload via native events</code></pre>
+<br/>
+Both these scripts need their browsers to be in focus. How ever when run in a suite, the sequence may become like this:<br/>
+<br/>
+<pre><code>_focusWindow(); // script 1
+_focusWindow(); // script 2:  brings second window in focus
+_takeScreenShot(); // script 1: will take screenshot of window 2 which is WRONG</code></pre>
+<br/>
+To synchronize these, whenever focus is being sought, we may acquire a lock and then release the lock<br/>
+only when our operation is complete.<br/>
+<br/>
+<strong>Since we are dealing with windows, call _lockWindow instead of _lock so that windows opened by Sahi internally are also managed correctly.</strong><br/>
+<br/>
+<pre><code>//Script 1
+
+_lockWindow();
+_focusWindow();
+_takeScreenShot();
+_unlockWindow();</code></pre>
+<br/>
+<pre><code>//Script 2
+
+_lockWindow();
+_focusWindow();
+// do file upload stuff
+_unlockWindow();</code></pre>
+<br/>
+Now the sequence would be:<br/>
+<br/>
+<pre><code>_lockWindow(); // script 1
+_focusWindow(); // script 1
+_lockWindow(); // script 2: will block here.
+_takeScreenShot(); // script 1
+_unlockWindow(); // script 1
+_focusWindow(); // script 2
+// do file upload stuff // script 2
+_unlockWindow(); // script 2</code></pre>
+<br/>
+<h2><a href="#Callback functions" name="Callback functions" class="headinganchor2" hideFocus="hideFocus">Callback functions</a></h2>
+Sahi provides a few hooks or callback functions which are automatically executed at various points of the script life cycle.<br/>
+These functions need to be defined at the start of the script.<br/>
+<br/>
+The various functions are:<br/>
+<div class="api">
+<h3><a href="#onScriptFailure" name="onScriptFailure" class="headinganchor2" hideFocus="hideFocus">onScriptFailure</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>onScriptFailure($exception)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$exception</td><td width="20%">exception </td><td> Javascript Exception object</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+This is a callback function. It needs to be implemented by the tester.<br/>
+It is called whenever an assertion failure occurs in the script. $exception is the actual exception that Sahi threw.<br/>
+Can be used with _logException and _logExceptionAsFailure. $exception added since Sahi Pro V4.3<br/>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#onScriptError" name="onScriptError" class="headinganchor2" hideFocus="hideFocus">onScriptError</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>onScriptError($exception)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$exception</td><td width="20%">exception </td><td> Javascript Exception object</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+This is a callback function. It needs to be implemented by the tester.<br/>
+It is called whenever an error occurs in the script.<br/>
+$exception is the actual exception that Sahi threw. Can be used with _logException and _logExceptionAsFailure.<br/>
+If the function returns true, the script will continue to execute. Default is false.<br/>
+
+</div>
+</div>
+<div class="warning"><strong class='heading'>warning</strong>
+If you have handled onScriptError in the script, Sahi will not treat it as a failure unless you specifically indicate it.<br/>
+<br/>
+To indicate that the script has failed, you can use one of the following approaches.<br/>
+<pre><code>function onScriptError($e) {
+	// Handle whatever you want to do, first.
+
+	// Use either of the following. Prefer the former.
+	_logExceptionAsFailure($e); // Explicitly log the exception as failure.
+	_log("In onScriptError", "FAILURE"); // Log with a Failure tag.
+	return false;
+}</code></pre>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#onScriptEnd" name="onScriptEnd" class="headinganchor2" hideFocus="hideFocus">onScriptEnd</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>onScriptEnd()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+This is a callback function. It needs to be implemented by the tester.<br/>
+It is called at the end of a script (even if there are errors in the script and the script stops in the middle).<br/>
+
+</div>
+</div>
+<h3><a href="#Callback example" name="Callback example" class="headinganchor2" hideFocus="hideFocus">Callback example</a></h3>
+<pre><code>function onBeforeStep($step, $debugInfo){
+  _log("onBeforeStep executed for step : " +$step);
+}
+function onAfterStep($step, $debugInfo, $status){
+  _log("step executed successfully with status : "+$status);
+}
+function onScriptEnd(){
+  _click(_button("Logout"));
+}
+function onScriptError(){
+  _alert("&gt;&gt; In onScriptError");
+}
+function onScriptFailure(){
+  _alert("&gt;&gt; In onScriptFailure");
+}
+_navigateTo("http://sahi.co.in/demo/training/");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+_assertExists(_submit("Login")); // cause SCRIPT ASSERTION FAILURE - triggers onScriptFailure
+_setValue(_textbox("q11"), "2"); // causes SCRIPT ERROR - triggers onScriptError
+// Script aborts here, but executes onScriptEnd() to logout
+_setValue(_textbox("q[1]"), "1");
+_setValue(_textbox("q[2]"), "1");
+_click(_button("Add"));
+_assertEqual("1150", _textbox("total").value); // cause SCRIPT FAILURE
+// If not aborted earlier, automatically calls onScriptEnd() to logout.</code></pre>
+<br/>
+<h3><a href="#Taking screenshots on error/failure" name="Taking screenshots on error/failure" class="headinganchor2" hideFocus="hideFocus">Taking screenshots on error/failure</a></h3>
+<pre><code>function onScriptError($e){
+  _focusWindow();
+  _takeScreenShot();
+}
+onScriptFailure = onScriptError;
+_navigateTo("http://sahi.co.in/demo/training/");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));</code></pre>
+<br/>
+<h3><a href="#Force Sahi to continue on error after screenshots and logging." name="Force Sahi to continue on error after screenshots and logging." class="headinganchor2" hideFocus="hideFocus">Force Sahi to continue on error after screenshots and logging.</a></h3>
+<pre><code>function onScriptError($e){
+  _logExceptionAsFailure($e);
+  _focusWindow();
+  _takeScreenShot();
+  return true; // Forces Sahi to continue execution and not stop at error. Since Sahi Pro V4.3
+}
+_navigateTo("http://sahi.co.in/demo/training/");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));</code></pre>
+<br/>
+<div class="api">
+<h3><a href="#onBeforeStep" name="onBeforeStep" class="headinganchor2" hideFocus="hideFocus">onBeforeStep</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>onBeforeStep($step, $debugInfo)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$step</td><td width="20%">String </td><td> which step is about to execute.</td></tr><tr><td width="15%">$debugInfo</td><td width="20%">String </td><td> debug information of the step(example : file name, lineNumber)</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+This is a callback function. It needs to be implemented by the tester.<br/>
+It is called before every step in the script.<br/>
+<div class="danger"><strong class='heading'>danger</strong>
+Use this sparingly since it will be executed for every step in the script<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#onAfterStep" name="onAfterStep" class="headinganchor2" hideFocus="hideFocus">onAfterStep</a></h3>
+Since Sahi Pro: 6.0.0<br/>
+Since Sahi OS: NA<br/>
+<br/>
+<pre><code>onAfterStep($step, $debugInfo, $status)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$step</td><td width="20%">String </td><td> which step is about to execute.</td></tr><tr><td width="15%">$debugInfo</td><td width="20%">String </td><td> debug information of the step(example : file name, lineNumber)</td></tr><tr><td width="15%">$status</td><td width="20%"> String </td><td> status of function which got executed.(example : SUCCESS, FAILURE, ERROR, WAIT, UNRESPONSIVE_EXCEPTION)</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+This is a callback function. It needs to be implemented by the tester.<br/>
+It is called after every step in the script.<br/>
+<div class="danger"><strong class='heading'>danger</strong>
+Use this sparingly since it will be executed for every step in the script<br/>
+</div>
+
+</div>
+</div>
+<br/>
+<h2><a href="#Recovery Functions (DEPRECATED)" name="Recovery Functions (DEPRECATED)" class="headinganchor2" hideFocus="hideFocus">Recovery Functions (DEPRECATED)</a></h2>
+<div class="api">
+<h3><a href="#_setRecovery" name="_setRecovery" class="headinganchor2" hideFocus="hideFocus">_setRecovery</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_setRecovery($fn)</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$fn</td><td width="20%">function </td><td>Function that will get called on failure or error</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Sets a recovery function which will be called on failure or error.<br/>
+<div class="danger"><strong class='heading'>danger</strong>DEPRECATED: Do not use. Use callback functions as specified above</div>
+
+</div>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_removeRecovery" name="_removeRecovery" class="headinganchor2" hideFocus="hideFocus">_removeRecovery</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_removeRecovery()</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td>None</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Removes previously set recovery function.<br/>
+<div class="danger"><strong class='heading'>danger</strong>DEPRECATED: Do not use. Use callback functions as specified above</div>
+
+</div>
+</div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

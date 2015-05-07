@@ -1,0 +1,22 @@
+_navigateTo("http://non.existant.doma.in/demo/", true);
+_assertNotTrue(_isVisible(_link("Link Test")));
+
+// add mapping
+_mapDomainToIP("http://non.existant.doma.in", "127.0.0.1");
+_navigateTo("http://non.existant.doma.in/demo/", true);
+_assert(_isVisible(_link("Link Test")));
+
+// Remove mapping
+_mapDomainToIP("http://non.existant.doma.in");
+_navigateTo("http://non.existant.doma.in/demo/", true);
+_assertNotTrue(_isVisible(_link("Link Test")));
+
+//add mapping
+_mapDomainToIP("non.existant.doma.in", "127.0.0.1");
+_navigateTo("http://non.existant.doma.in/demo/", true);
+_assert(_isVisible(_link("Link Test")));
+
+// Remove mapping
+_mapDomainToIP("non.existant.doma.in");
+_navigateTo("http://non.existant.doma.in/demo/", true);
+_assertNotTrue(_isVisible(_link("Link Test")));

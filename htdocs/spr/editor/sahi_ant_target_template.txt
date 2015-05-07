@@ -1,0 +1,32 @@
+	<target name="set_properties_$browser">
+    	<property name="scriptDir" value="$scriptDir"/>
+    	<property name="scriptName" value="$scriptName"/>
+		<property name="browser" value="$browser"/>
+		<property name="sendemail" value="$sendemail"/>
+		<property name="emailtrigger" value="$emailtrigger"/>
+		<property name="emailproperties" value="$emailproperties"/>
+		<property name="emailPasswordHidden" value="$emailPasswordHidden"/>
+		<property name="baseURL" value="$baseURL"/>
+		<property name="host" value="$host"/>
+		<property name="port" value="$port"/>
+		<property name="singlesession" value="$singlesession"/>
+		<property name="threads" value="$threads"/>
+		<property name="failedSuite" value="$failedSuite"/>
+	</target>
+
+	<target name="$runtarget" depends="set_properties_$browser">
+		<sahi suite="${scriptDir}${scriptName}"
+			browsertype="${browser}"
+			sendemail="${sendemail}"
+	        emailtrigger="${emailtrigger}"
+	        emailproperties="${emailproperties}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			baseurl="${baseURL}"
+			sahihost="${host}"
+			sahiport="${port}"
+			failureproperty="sahi.failed.${browser}"
+			haltonfailure="false"
+			singlesession="${singlesession}"
+			threads="${threads}"$tags$userDefinedId>$extraParam$reportsInfo
+		</sahi>$retryOrFailCall
+	</target>$retryTarget$failTarget	

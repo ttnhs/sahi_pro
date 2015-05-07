@@ -1,0 +1,6 @@
+onScriptError=null;
+onScriptFailure=null;
+_log("Statement before")
+_assertEqualImages("../snapshot_login_short.png", "../snapshot_totaled.png", 10, true, "Oh no! Image assertion 2 failed!");
+_log("Done");
+_logImage("../assert_log_tiger.jpg");

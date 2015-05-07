@@ -1,0 +1,31 @@
+_include("commonFeatures.sah");
+_navigateTo("http://qa.moodle.net");
+login("manager","test");
+navigateToUserAccount();
+_click(_span("Bulk user actions"));
+_setSelected(_select("ausers[][0]"), ["my nguyen"]);
+_setSelected(_select("ausers[][0]"), ["my1 nguyen1"], true);
+_setSelected(_select("ausers[][0]"), ["my2 nguyen2"], true);
+_setSelected(_select("ausers[][0]"), ["my7 nguyen7"], true);
+_click(_submit("Add to selection"));
+_wait(2000);
+_setSelected(_select("action"), "Delete");
+_wait(2000);
+_click(_submit("Go"));
+
+elementShouldContains(_paragraph("/Are you absolutely sure you want to completely delete/"),"delete my nguyen, my1 nguyen1, my2 nguyen2, my7 nguyen7");
+_wait(6000);
+
+_click(_submit("Yes"));
+_wait(4000);
+elementShouldContains(_div("Changes saved"),"Changes saved");
+_wait(4000);
+_click(_submit("Continue"));
+_wait(4000);
+_click(_link("Browse list of users"));
+tableShouldNotContain("my nguyen");
+tableShouldNotContain("my1 nguyen1");
+tableShouldNotContain("my2 nguyen2");
+tableShouldNotContain("my7 nguyen7");
+_wait(6000);
+logoutQAMoodle();

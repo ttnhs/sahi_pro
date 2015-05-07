@@ -1,0 +1,6 @@
+_include("commonFeatures.sah");
+_navigateTo("http://qa.moodle.net");
+login("manager","test");
+compareImages("D:\\training document\\before1.png", "D:\\training document\\after1.png");
+wait(6000);
+logoutQAMoodle();

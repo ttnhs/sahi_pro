@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>
+
+    </title>
+</head>
+
+<body>
+
+<style>
+    span {
+        background-color: red;
+    }
+
+    a:hover {
+        background-color: green;
+    }
+
+    a:hover span {
+        background-color: green;
+    }
+</style>
+
+<a href="x"><span>
+Hi Kamlesh
+</span></a>
+<br>
+<script type="text/javascript">
+    function overme(b) {
+        var t1 = document.f1.t1;
+        t1.value = b?"Mouse moved":"";
+    }
+    
+function showMouseOver(e){
+	if (!e) e = window.event;
+	var el = document.getElementById("result");
+	var s = "";
+	if (e.ctrlKey) s += "<ctrl>";
+	if (e.altKey) s += "<alt>";
+	if (e.shiftKey) s += "<shift>";
+	if (e.metaKey) s += "<meta>";
+	el.value = s + "mouseOver";
+}
+</script>
+
+<form name="f1">
+    <input type="button" name="b1" value="Write on hover" onmouseover="overme(true)"><br><br>
+    <input type="button" name="b1" value="Blank on hover" onmouseover="overme(false)"><br><br>
+    <input type="text" name="t1">
+</form>
+
+<div onmouseover="showMouseOver(event)" style="height:100px;width:300px;border:1px solid gray;">
+<div style=";padding:35px;text-align:center">Experiment Zone MouseOver</div>
+</div>
+<br>
+<input type="text" id="result">
+<br>
+<a href="index.htm">Back</a>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+testSelectOneByText,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,3
+testSelectOneById,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,8
+testSelectOneByValue,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,13
+testSelectOneIgnoresIsMultiple,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,18
+testSelectMultipleWithArrayOneElement,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,25
+testSelectMultipleWithArrayTwoElements,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,32
+testSelectMultipleWithIsMultiple,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,42
+testSelectMultipleWithIsMultipleAndArrays,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,48
+testSelectMultipleWithRegExpArray,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,54
+testOption,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,60
+testInvalidOption,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,67
+setUp,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,71
+testGetOptionValues,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,76
+testGetOptionTextsThroughDefault,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,84
+testGetOptionTexts,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,92
+testGetOptionAssertionWithArray,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\select.sah,104

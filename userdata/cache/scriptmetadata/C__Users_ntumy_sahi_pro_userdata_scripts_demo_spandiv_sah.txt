@@ -1,0 +1,6 @@
+testNewLineIsIgnored,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\spandiv.sah,3
+test_nbsp_IsIgnored,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\spandiv.sah,8
+testGetTextWorksForInvisibleElements,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\spandiv.sah,14
+testBRTagReplacedWithSpace,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\spandiv.sah,21
+testInnermostElementWithRegExpLikeIdentifier,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\spandiv.sah,32
+testInnermostElementReturned,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\spandiv.sah,37

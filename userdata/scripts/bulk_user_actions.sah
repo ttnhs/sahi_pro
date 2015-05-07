@@ -1,0 +1,31 @@
+_include("commonFeatures.sah");
+_navigateTo("http://qa.moodle.net");
+login("manager","test");
+navigateToUserAccount();
+_click(_span("Bulk user actions"));
+_setSelected($availableList, ["my nguyen"]);
+_setSelected($availableList, ["my1 nguyen1"], true);
+_setSelected($availableList, ["my2 nguyen2"], true);
+_setSelected($availableList, ["my7 nguyen7"], true);
+_click($btnAddToSelection);
+_wait(2000);
+_setSelected($actionsList, "Delete");
+_wait(2000);
+_click($btnGo);
+
+elementShouldContains(_paragraph(0),"my nguyen, my1 nguyen1, my2 nguyen2, my7 nguyen7");
+_wait(6000);
+
+_click($btnYes);
+_wait(4000);
+elementShouldContains($changesSave,"Changes saved");
+_wait(4000);
+_click($btnContinue);
+_wait(4000);
+_click($browseListOfUsers);
+tableShouldNotContain("my nguyen");
+tableShouldNotContain("my1 nguyen1");
+tableShouldNotContain("my2 nguyen2");
+tableShouldNotContain("my7 nguyen7");
+_wait(6000);
+logoutQAMoodle();

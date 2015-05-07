@@ -1,0 +1,3 @@
+onScriptError = null;
+onScriptFailure = null;
+_click(_link("does not exist"));

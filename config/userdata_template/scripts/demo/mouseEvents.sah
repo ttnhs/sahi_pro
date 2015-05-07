@@ -1,0 +1,12 @@
+_navigateTo("/demo/mouseEvents.htm");
+_mouseDown(_button("Capture mouse down"));
+_assertEqual("[MOUSE_DOWN]",_textarea("t2").value);
+_click(_button("Clear"));
+
+_mouseUp(_button("Capture mouse up"));
+_assertEqual("[MOUSE_UP]",_textarea("t2").value);
+_click(_button("Clear"));
+
+_mouseOver(_button("Capture mouse over"));
+_assertEqual("[MOUSE_OVER]",_textarea("t2").value);
+_click(_button("Clear"));

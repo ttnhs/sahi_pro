@@ -1,0 +1,11 @@
+setUp,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,15
+testLinkWithReturnTrue,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,20
+testLinkWithReturnFalse,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,26
+testLinkWithReturnValueFalse,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,34
+testLinkWithHandlerAddedViaJS,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,40
+testImageWithLink,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,46
+testImageWithLinkNoClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,51
+testLinkByTitle,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,57
+testLinkWithImageOnclickReturningFalse,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,63
+testImageOnclickCanChangeHref,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,68
+testIframeLoadedViaLinkClickDoesNotStopTest,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\link_test.sah,73

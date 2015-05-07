@@ -1,0 +1,13 @@
+_include("commonFeatures.sah");
+_include("objects.sah");
+_navigateTo($url);
+login($userName, $password);
+_assertExists($userInfor);
+_assertVisible($userInfor);
+_assertEqual("Max Manager", _getText($userInfor));
+_assertContainsText("Max Manager", $userInfor);
+logoutQAMoodle();
+_assertExists($login);
+_assertVisible($login);
+_assertEqual("Log in", _getText($login));
+_assertContainsText("Log in", $login);

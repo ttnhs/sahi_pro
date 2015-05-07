@@ -1,0 +1,8 @@
+_navigateTo("http://localhost.sahipro.com/demo/training/login.htm");
+function login($user, $password){
+	_setValue(_textbox("user"), $user);
+	_setValue(_password("password"), $password);
+	_click(_submit("Login"));
+}
+login("test", "secret")
+_assertNotExists(_button("Logout"));

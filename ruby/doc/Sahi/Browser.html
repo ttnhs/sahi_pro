@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Sahi::Browser - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>sahi.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-add_url_mock">#add_url_mock</a>
+    
+    <li ><a href="#method-i-browser_js-3D">#browser_js=</a>
+    
+    <li ><a href="#method-i-check_nil">#check_nil</a>
+    
+    <li ><a href="#method-i-check_proxy">#check_proxy</a>
+    
+    <li ><a href="#method-i-chrome-3F">#chrome?</a>
+    
+    <li ><a href="#method-i-clear_last_alert">#clear_last_alert</a>
+    
+    <li ><a href="#method-i-clear_last_confirm">#clear_last_confirm</a>
+    
+    <li ><a href="#method-i-clear_last_downloaded_filename">#clear_last_downloaded_filename</a>
+    
+    <li ><a href="#method-i-clear_last_prompt">#clear_last_prompt</a>
+    
+    <li ><a href="#method-i-close">#close</a>
+    
+    <li ><a href="#method-i-collect">#collect</a>
+    
+    <li ><a href="#method-i-domain">#domain</a>
+    
+    <li ><a href="#method-i-domain-3F">#domain?</a>
+    
+    <li ><a href="#method-i-exec_command">#exec_command</a>
+    
+    <li ><a href="#method-i-execute_sahi">#execute_sahi</a>
+    
+    <li ><a href="#method-i-execute_step">#execute_step</a>
+    
+    <li ><a href="#method-i-expect_confirm">#expect_confirm</a>
+    
+    <li ><a href="#method-i-expect_prompt">#expect_prompt</a>
+    
+    <li ><a href="#method-i-fetch">#fetch</a>
+    
+    <li ><a href="#method-i-fetch_boolean">#fetch_boolean</a>
+    
+    <li ><a href="#method-i-firefox-3F">#firefox?</a>
+    
+    <li ><a href="#method-i-ie-3F">#ie?</a>
+    
+    <li ><a href="#method-i-is_ready-3F">#is_ready?</a>
+    
+    <li ><a href="#method-i-last_alert">#last_alert</a>
+    
+    <li ><a href="#method-i-last_confirm">#last_confirm</a>
+    
+    <li ><a href="#method-i-last_downloaded_filename">#last_downloaded_filename</a>
+    
+    <li ><a href="#method-i-last_prompt">#last_prompt</a>
+    
+    <li ><a href="#method-i-method_missing">#method_missing</a>
+    
+    <li ><a href="#method-i-navigate_to">#navigate_to</a>
+    
+    <li ><a href="#method-i-open">#open</a>
+    
+    <li ><a href="#method-i-opera-3F">#opera?</a>
+    
+    <li ><a href="#method-i-popup">#popup</a>
+    
+    <li ><a href="#method-i-popup-3F">#popup?</a>
+    
+    <li ><a href="#method-i-remove_url_mock">#remove_url_mock</a>
+    
+    <li ><a href="#method-i-response">#response</a>
+    
+    <li ><a href="#method-i-safari-3F">#safari?</a>
+    
+    <li ><a href="#method-i-save_downloaded">#save_downloaded</a>
+    
+    <li ><a href="#method-i-selection_text">#selection_text</a>
+    
+    <li ><a href="#method-i-speed-3D">#speed=</a>
+    
+    <li ><a href="#method-i-strict_visibility_check-3D">#strict_visibility_check=</a>
+    
+    <li ><a href="#method-i-title">#title</a>
+    
+    <li ><a href="#method-i-wait">#wait</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../doc/created_rid.html">created.rid</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Sahi.html">Sahi</a>
+  
+    <li><a href="../Sahi/Browser.html">Sahi::Browser</a>
+  
+    <li><a href="../Sahi/ElementStub.html">Sahi::ElementStub</a>
+  
+    <li><a href="../Sahi/Utils.html">Sahi::Utils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Sahi::Browser</h1>
+
+  <div id="description" class="description">
+    
+<p>The <a href="Browser.html">Browser</a> class controls different browsers
+via Sahi&#39;s proxy.</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Narayan Raman (<a href="mailto:narayan@sahi.co.in">narayan@sahi.co.in</a>)</p>
+</dd><dt>Copyright
+<dd>
+<p>Copyright © 2006  V Narayan Raman</p>
+</dd></dl>
+
+<p>Download <a href="../Sahi.html">Sahi</a> from <a
+href="http://sahi.co.in">sahi.co.in</a>/ . Java 1.5 or greater is needed to
+run <a href="../Sahi.html">Sahi</a>.</p>
+
+<p>Start Sahi: cd sahiuserdatabin; start_sahi.bat;</p>
+
+<p>or</p>
+
+<p>cd sahi/userdata/bin; start_sahi.sh;</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-domain_name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">domain_name</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-popup_name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">popup_name</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-print_steps" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">print_steps</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-proxy_host" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">proxy_host</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-proxy_port" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">proxy_port</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-sahisid" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">sahisid</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Takes browser_type as specified in sahi/userdata/config/browser_types.xml
+(name of browserType) - RECOMMENDED</p>
+
+<p>OR</p>
+
+<p>Takes browser_path, browser_options and browser_executable - NOT
+RECOMMENDED Various browser options needed to initialize the <a
+href="Browser.html">Browser</a> object are:</p>
+
+<p>Internet Explorer 6&amp;7:</p>
+
+<pre>browser_path = &quot;C:\\Program Files\\Internet Explorer\\iexplore.exe&quot;
+browser_options = &quot;&quot;
+browser_executable = &quot;iexplore.exe&quot;</pre>
+
+<p>Internet Explorer 8:</p>
+
+<pre>browser_path = &quot;C:\\Program Files\\Internet Explorer\\iexplore.exe&quot;
+browser_options = &quot;-nomerge&quot;
+browser_executable = &quot;iexplore.exe&quot;</pre>
+
+<p>Firefox:</p>
+
+<pre>browser_path = &quot;C:\\Program Files\\Mozilla Firefox\\firefox.exe&quot;
+browser_options = &quot;-profile $userDir/browser/ff/profiles/sahi0 -no-remote&quot;
+browser_executable = &quot;firefox.exe&quot;</pre>
+
+<p>Chrome:</p>
+
+<pre>userdata_dir = &quot;D:/sahi/sf/sahi_993/userdata&quot; #  path to Sahi&#39;s userdata directory.
+browser_path = &quot;C:\\Documents and Settings\\YOU_THE_USER\\Local Settings\\Application Data\\Google\\Chrome\\Application\\chrome.exe&quot;
+browser_options = &quot;--user-data-dir=# {userdata_dir}\browser\chrome\profiles\sahi$threadNo&quot;
+browser_executable = &quot;chrome.exe&quot;</pre>
+
+<p>Safari:</p>
+
+<pre>browser_path = &quot;C:\\Program Files\\Safari\Safari.exe&quot;
+browser_options = &quot;&quot;
+browser_executable = &quot;safari.exe&quot;</pre>
+
+<p>Opera:</p>
+
+<pre>browser_path = &quot;C:\\Program Files\\Opera\\opera.exe&quot;
+browser_options = &quot;&quot;     
+browser_executable = &quot;opera.exe&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-ivar">@proxy_host</span> = <span class="ruby-string">&quot;localhost&quot;</span>
+  <span class="ruby-ivar">@proxy_port</span> = <span class="ruby-value">9999</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span>
+    <span class="ruby-ivar">@browser_path</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-ivar">@browser_options</span> = <span class="ruby-identifier">ars</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-ivar">@browser_executable</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">2</span>]
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@browser_type</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@popup_name</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@domain_name</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@sahisid</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@print_steps</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-add_url_mock" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_url_mock</span><span
+            class="method-args">(url_pattern, clazz=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>make specific url patterns return dummy responses. Look at _addMock
+documentation.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="add_url_mock-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 327</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_url_mock</span>(<span class="ruby-identifier">url_pattern</span>, <span class="ruby-identifier">clazz</span>=<span class="ruby-keyword">nil</span>) 
+  <span class="ruby-identifier">clazz</span> = <span class="ruby-string">&quot;MockResponder_simple&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">clazz</span>
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._addMock(#{Utils.quoted(url_pattern)}, #{Utils.quoted(clazz)})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add_url_mock-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_url_mock-method -->
+
+    
+      <div id="method-i-browser_js-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">browser_js=</span><span
+            class="method-args">(js)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="browser_js-3D-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">browser_js=</span>(<span class="ruby-identifier">js</span>)
+  <span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;setBrowserJS&quot;</span>, {<span class="ruby-string">&quot;browserJS&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">js</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- browser_js-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- browser_js-3D-method -->
+
+    
+      <div id="method-i-check_nil" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_nil</span><span
+            class="method-args">(s)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="check_nil-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 204</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_nil</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-keyword">return</span> (<span class="ruby-identifier">s</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;null&quot;</span>)  <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- check_nil-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- check_nil-method -->
+
+    
+      <div id="method-i-check_proxy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_proxy</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="check_proxy-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_proxy</span>()
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">response</span>(<span class="ruby-node">&quot;http://#{@proxy_host}:#{@proxy_port}/_s_/spr/blank.htm&quot;</span>)
+  <span class="ruby-keyword">rescue</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Sahi proxy is not available. Please start the Sahi proxy.&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- check_proxy-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- check_proxy-method -->
+
+    
+      <div id="method-i-chrome-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chrome?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns true if browser is Google Chrome</p>
+          
+          
+
+          
+          <div class="method-source-code" id="chrome-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 363</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chrome?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch_boolean</span>(<span class="ruby-string">&quot;_sahi._isChrome()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- chrome-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- chrome-3F-method -->
+
+    
+      <div id="method-i-clear_last_alert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clear_last_alert</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>resets the last alerted message</p>
+          
+          
+
+          
+          <div class="method-source-code" id="clear_last_alert-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 277</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clear_last_alert</span>()
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-string">&quot;_sahi._clearLastAlert()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- clear_last_alert-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- clear_last_alert-method -->
+
+    
+      <div id="method-i-clear_last_confirm" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clear_last_confirm</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>resets the last confirm message</p>
+          
+          
+
+          
+          <div class="method-source-code" id="clear_last_confirm-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 287</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clear_last_confirm</span>()
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-string">&quot;_sahi._clearLastConfirm()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- clear_last_confirm-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- clear_last_confirm-method -->
+
+    
+      <div id="method-i-clear_last_downloaded_filename" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clear_last_downloaded_filename</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>clear last downloaded file&#39;s name</p>
+          
+          
+
+          
+          <div class="method-source-code" id="clear_last_downloaded_filename-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 317</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clear_last_downloaded_filename</span>()
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-string">&quot;_sahi._clearLastDownloadedFileName()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- clear_last_downloaded_filename-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- clear_last_downloaded_filename-method -->
+
+    
+      <div id="method-i-clear_last_prompt" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clear_last_prompt</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>clears the last prompted message</p>
+          
+          
+
+          
+          <div class="method-source-code" id="clear_last_prompt-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 302</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clear_last_prompt</span>()
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-string">&quot;_sahi._clearLastPrompt()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- clear_last_prompt-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- clear_last_prompt-method -->
+
+    
+      <div id="method-i-close" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">close</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>closes the browser</p>
+          
+          
+
+          
+          <div class="method-source-code" id="close-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 209</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">close</span>()
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">popup?</span>()
+    <span class="ruby-identifier">execute_step</span>(<span class="ruby-string">&quot;_sahi._closeWindow()&quot;</span>);
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;kill&quot;</span>);
+    <span class="ruby-comment">#Process.kill(9, @pid) if @pid</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- close-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- close-method -->
+
+    
+      <div id="method-i-collect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">collect</span><span
+            class="method-args">(els, attr=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns element attributes of all elements of type attr matching the
+identifier within relations</p>
+          
+          
+
+          
+          <div class="method-source-code" id="collect-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 191</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">collect</span>(<span class="ruby-identifier">els</span>, <span class="ruby-identifier">attr</span>=<span class="ruby-keyword">nil</span>)
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">attr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">els</span>.<span class="ruby-identifier">collect_similar</span>()
+  <span class="ruby-keyword">else</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi.collectAttributes(#{Utils.quoted(attr)}, #{Utils.quoted(els.to_type())}, #{els.to_identifiers()})&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,___sahi___&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- collect-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- collect-method -->
+
+    
+      <div id="method-i-domain" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">domain</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>represents a domain section of window.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="domain-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 247</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">domain</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@browser_type</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">null</span>)
+    <span class="ruby-identifier">win</span> = <span class="ruby-constant">Browser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser_type</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">win</span> = <span class="ruby-constant">Browser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser_path</span>, <span class="ruby-ivar">@browser_options</span>, <span class="ruby-ivar">@browser_executable</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">proxy_host</span> = <span class="ruby-ivar">@proxy_host</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">proxy_port</span> = <span class="ruby-ivar">@proxy_port</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">sahisid</span> = <span class="ruby-ivar">@sahisid</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">print_steps</span> = <span class="ruby-ivar">@print_steps</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">popup_name</span> = <span class="ruby-ivar">@popup_name</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">domain_name</span> = <span class="ruby-identifier">name</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">win</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- domain-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- domain-method -->
+
+    
+      <div id="method-i-domain-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">domain?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="domain-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 267</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">domain?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@domain_name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- domain-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- domain-3F-method -->
+
+    
+      <div id="method-i-exec_command" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">exec_command</span><span
+            class="method-args">(cmd, qs={})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="exec_command-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exec_command</span>(<span class="ruby-identifier">cmd</span>, <span class="ruby-identifier">qs</span>={})
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">response</span>(<span class="ruby-node">&quot;http://#{@proxy_host}:#{@proxy_port}/_s_/dyn/Driver_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">cmd</span>, {<span class="ruby-string">&quot;sahisid&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-ivar">@sahisid</span>}.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">qs</span>))
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- exec_command-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- exec_command-method -->
+
+    
+      <div id="method-i-execute_sahi" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute_sahi</span><span
+            class="method-args">(step)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="execute_sahi-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 150</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute_sahi</span>(<span class="ruby-identifier">step</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">popup?</span>() 
+    <span class="ruby-identifier">step</span> = <span class="ruby-node">&quot;_sahi._popup(#{Utils.quoted(@popup_name)}).&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">step</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">domain?</span>() 
+    <span class="ruby-identifier">step</span> = <span class="ruby-node">&quot;_sahi._domain(#{Utils.quoted(@domain_name)}).&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">step</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment">#puts step</span>
+  <span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;setStep&quot;</span>, {<span class="ruby-string">&quot;step&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">step</span>, <span class="ruby-string">&#39;addSahi&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>})
+  <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">while</span> (<span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">500</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0.1</span>)
+    <span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+    <span class="ruby-identifier">check_done</span> = <span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;doneStep&quot;</span>)
+    <span class="ruby-identifier">done</span> = <span class="ruby-string">&quot;true&quot;</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">check_done</span>)
+    
+    <span class="ruby-identifier">error</span> = <span class="ruby-identifier">check_done</span>.<span class="ruby-identifier">index</span>(<span class="ruby-string">&quot;error:&quot;</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">done</span>
+            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">error</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-identifier">check_done</span>
+            <span class="ruby-keyword">end</span>        
+  <span class="ruby-keyword">end</span>      
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- execute_sahi-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- execute_sahi-method -->
+
+    
+      <div id="method-i-execute_step" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute_step</span><span
+            class="method-args">(step)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="execute_step-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 126</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">execute_step</span>(<span class="ruby-identifier">step</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">popup?</span>() 
+    <span class="ruby-identifier">step</span> = <span class="ruby-node">&quot;_sahi._popup(#{Utils.quoted(@popup_name)}).&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">step</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">domain?</span>() 
+    <span class="ruby-identifier">step</span> = <span class="ruby-node">&quot;_sahi._domain(#{Utils.quoted(@domain_name)}).&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">step</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment">#puts step</span>
+  <span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;setStep&quot;</span>, {<span class="ruby-string">&quot;step&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">step</span>})
+  <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">while</span> (<span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">500</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0.1</span>)
+    <span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+    <span class="ruby-identifier">check_done</span> = <span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;doneStep&quot;</span>)
+    <span class="ruby-identifier">done</span> = <span class="ruby-string">&quot;true&quot;</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">check_done</span>)
+    
+    <span class="ruby-identifier">error</span> = <span class="ruby-identifier">check_done</span>.<span class="ruby-identifier">index</span>(<span class="ruby-string">&quot;error:&quot;</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">done</span>
+            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">error</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-identifier">check_done</span>
+            <span class="ruby-keyword">end</span>        
+  <span class="ruby-keyword">end</span>      
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- execute_step-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- execute_step-method -->
+
+    
+      <div id="method-i-expect_confirm" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">expect_confirm</span><span
+            class="method-args">(message, input)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>set an expectation to press OK (true) or Cancel (false) for specific
+confirm message</p>
+          
+          
+
+          
+          <div class="method-source-code" id="expect_confirm-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 292</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">expect_confirm</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">input</span>)
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._expectConfirm(#{Utils.quoted(message) }, #{input})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- expect_confirm-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- expect_confirm-method -->
+
+    
+      <div id="method-i-expect_prompt" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">expect_prompt</span><span
+            class="method-args">(message, input)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>set an expectation to set given value for specific prompt message</p>
+          
+          
+
+          
+          <div class="method-source-code" id="expect_prompt-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 307</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">expect_prompt</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">input</span>)
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._expectPrompt(#{Utils.quoted(message)}, #{Utils.quoted(input) })&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- expect_prompt-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- expect_prompt-method -->
+
+    
+      <div id="method-i-fetch" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetch</span><span
+            class="method-args">(expression)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>evaluates a javascript expression on the browser and fetches its value</p>
+          
+          
+
+          
+          <div class="method-source-code" id="fetch-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 179</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">expression</span>) 
+<span class="ruby-identifier">key</span> = <span class="ruby-string">&quot;___lastValue___&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">getutc</span>.<span class="ruby-identifier">to_s</span>;
+<span class="ruby-identifier">execute_step</span>(<span class="ruby-string">&quot;_sahi.setServerVarPlain(&#39;&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">key</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;&#39;, &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">expression</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;)&quot;</span>)
+<span class="ruby-keyword">return</span> <span class="ruby-identifier">check_nil</span>(<span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;getVariable&quot;</span>, {<span class="ruby-string">&quot;key&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">key</span>}))
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- fetch-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- fetch-method -->
+
+    
+      <div id="method-i-fetch_boolean" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetch_boolean</span><span
+            class="method-args">(expression)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>evaluates a javascript expression on the browser and returns true if value
+is true or “true”</p>
+          
+          
+
+          
+          <div class="method-source-code" id="fetch_boolean-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetch_boolean</span>(<span class="ruby-identifier">expression</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">expression</span>) <span class="ruby-operator">==</span> <span class="ruby-string">&quot;true&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- fetch_boolean-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- fetch_boolean-method -->
+
+    
+      <div id="method-i-firefox-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">firefox?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns true if browser is Firefox</p>
+          
+          
+
+          
+          <div class="method-source-code" id="firefox-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 358</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">firefox?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch_boolean</span>(<span class="ruby-string">&quot;_sahi._isFF()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- firefox-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- firefox-3F-method -->
+
+    
+      <div id="method-i-ie-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ie?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns true if browser is Internet Explorer</p>
+          
+          
+
+          
+          <div class="method-source-code" id="ie-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 353</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ie?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch_boolean</span>(<span class="ruby-string">&quot;_sahi._isIE()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ie-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ie-3F-method -->
+
+    
+      <div id="method-i-is_ready-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">is_ready?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="is_ready-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">is_ready?</span>
+  <span class="ruby-keyword">return</span>  <span class="ruby-string">&quot;true&quot;</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;isReady&quot;</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- is_ready-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- is_ready-3F-method -->
+
+    
+      <div id="method-i-last_alert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">last_alert</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns the message last alerted on the browser</p>
+          
+          
+
+          
+          <div class="method-source-code" id="last_alert-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 272</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">last_alert</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;_sahi._lastAlert()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- last_alert-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- last_alert-method -->
+
+    
+      <div id="method-i-last_confirm" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">last_confirm</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns the last confirm message</p>
+          
+          
+
+          
+          <div class="method-source-code" id="last_confirm-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 282</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">last_confirm</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;_sahi._lastConfirm()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- last_confirm-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- last_confirm-method -->
+
+    
+      <div id="method-i-last_downloaded_filename" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">last_downloaded_filename</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>get last downloaded file&#39;s name</p>
+          
+          
+
+          
+          <div class="method-source-code" id="last_downloaded_filename-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 312</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">last_downloaded_filename</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;_sahi._lastDownloadedFileName()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- last_downloaded_filename-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- last_downloaded_filename-method -->
+
+    
+      <div id="method-i-last_prompt" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">last_prompt</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns the last prompted message</p>
+          
+          
+
+          
+          <div class="method-source-code" id="last_prompt-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 297</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">last_prompt</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;_sahi._lastPrompt()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- last_prompt-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- last_prompt-method -->
+
+    
+      <div id="method-i-method_missing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_missing</span><span
+            class="method-args">(m, *args, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="method_missing-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 174</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">m</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)  
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">ElementStub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- method_missing-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- method_missing-method -->
+
+    
+      <div id="method-i-navigate_to" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">navigate_to</span><span
+            class="method-args">(url, force_reload=false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>navigates to the given url</p>
+          
+          
+
+          
+          <div class="method-source-code" id="navigate_to-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">navigate_to</span>(<span class="ruby-identifier">url</span>, <span class="ruby-identifier">force_reload</span>=<span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-string">&quot;_sahi._navigateTo(\&quot;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">url</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;\&quot;, &quot;</span><span class="ruby-operator">+</span> (<span class="ruby-identifier">force_reload</span>.<span class="ruby-identifier">to_s</span>()) <span class="ruby-operator">+</span><span class="ruby-string">&quot;)&quot;</span>);
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- navigate_to-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- navigate_to-method -->
+
+    
+      <div id="method-i-open" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">open</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>opens the browser</p>
+          
+          
+
+          
+          <div class="method-source-code" id="open-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">open</span>()
+  <span class="ruby-identifier">check_proxy</span>()
+  <span class="ruby-ivar">@sahisid</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">start_url</span> = <span class="ruby-string">&quot;http://sahi.example.com/_s_/dyn/Driver_initialized&quot;</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@browser_type</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">null</span>)
+    <span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;launchPreconfiguredBrowser&quot;</span>, {<span class="ruby-string">&quot;browserType&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@browser_type</span>, <span class="ruby-string">&quot;startUrl&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">start_url</span>})
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;launchAndPlayback&quot;</span>, {<span class="ruby-string">&quot;browser&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@browser</span>, <span class="ruby-string">&quot;browserOptions&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@browser_options</span>, <span class="ruby-string">&quot;browserExecutable&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@browser_executable</span>, <span class="ruby-string">&quot;startUrl&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">start_url</span>})
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">while</span> (<span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">500</span>)
+    <span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+    <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_ready?</span>
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">0.1</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- open-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- open-method -->
+
+    
+      <div id="method-i-opera-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">opera?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns true if browser is Opera</p>
+          
+          
+
+          
+          <div class="method-source-code" id="opera-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 373</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">opera?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch_boolean</span>(<span class="ruby-string">&quot;_sahi._isOpera()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- opera-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- opera-3F-method -->
+
+    
+      <div id="method-i-popup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">popup</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>represents a popup window. The name is either the window name or its title.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="popup-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 230</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">popup</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@browser_type</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">null</span>)
+    <span class="ruby-identifier">win</span> = <span class="ruby-constant">Browser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser_type</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">win</span> = <span class="ruby-constant">Browser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@browser_path</span>, <span class="ruby-ivar">@browser_options</span>, <span class="ruby-ivar">@browser_executable</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">proxy_host</span> = <span class="ruby-ivar">@proxy_host</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">proxy_port</span> = <span class="ruby-ivar">@proxy_port</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">sahisid</span> = <span class="ruby-ivar">@sahisid</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">print_steps</span> = <span class="ruby-ivar">@print_steps</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">popup_name</span> = <span class="ruby-identifier">name</span>
+  <span class="ruby-identifier">win</span>.<span class="ruby-identifier">domain_name</span> = <span class="ruby-ivar">@domain_name</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">win</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- popup-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- popup-method -->
+
+    
+      <div id="method-i-popup-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">popup?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="popup-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 263</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">popup?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@popup_name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- popup-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- popup-3F-method -->
+
+    
+      <div id="method-i-remove_url_mock" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_url_mock</span><span
+            class="method-args">(url_pattern)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>reverse effect of <a
+href="Browser.html#method-i-add_url_mock">#add_url_mock</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="remove_url_mock-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 333</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_url_mock</span>(<span class="ruby-identifier">url_pattern</span>) 
+<span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._removeMock(#{Utils.quoted(url_pattern)})&quot;</span>)
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_url_mock-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_url_mock-method -->
+
+    
+      <div id="method-i-response" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">response</span><span
+            class="method-args">(url, qs={})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="response-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">response</span>(<span class="ruby-identifier">url</span>, <span class="ruby-identifier">qs</span>={})
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">post_form</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">url</span>), <span class="ruby-identifier">qs</span>).<span class="ruby-identifier">body</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- response-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- response-method -->
+
+    
+      <div id="method-i-safari-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">safari?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns true if browser is Safari</p>
+          
+          
+
+          
+          <div class="method-source-code" id="safari-3F-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 368</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">safari?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch_boolean</span>(<span class="ruby-string">&quot;_sahi._isSafari()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- safari-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- safari-3F-method -->
+
+    
+      <div id="method-i-save_downloaded" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">save_downloaded</span><span
+            class="method-args">(file_path)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Save the last downloaded file to specified path</p>
+          
+          
+
+          
+          <div class="method-source-code" id="save_downloaded-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 322</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save_downloaded</span>(<span class="ruby-identifier">file_path</span>)
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._saveDownloadedAs(#{Utils.quoted(file_path)})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- save_downloaded-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- save_downloaded-method -->
+
+    
+      <div id="method-i-selection_text" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">selection_text</span><span
+            class="method-args">(win = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>return selection text</p>
+          
+          
+
+          
+          <div class="method-source-code" id="selection_text-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 344</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">selection_text</span>(<span class="ruby-identifier">win</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">win</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;_sahi._getSelectionText(#{win.to_s()})&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;_sahi._getSelectionText()&quot;</span>)
+  <span class="ruby-keyword">end</span>  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- selection_text-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- selection_text-method -->
+
+    
+      <div id="method-i-speed-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">speed=</span><span
+            class="method-args">(ms)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>sets the speed of execution. The speed is specified in milli seconds</p>
+          
+          
+
+          
+          <div class="method-source-code" id="speed-3D-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 219</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">speed=</span>(<span class="ruby-identifier">ms</span>)
+  <span class="ruby-identifier">exec_command</span>(<span class="ruby-string">&quot;setSpeed&quot;</span>, {<span class="ruby-string">&quot;speed&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">ms</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- speed-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- speed-3D-method -->
+
+    
+      <div id="method-i-strict_visibility_check-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">strict_visibility_check=</span><span
+            class="method-args">(check)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>sets strict visibility check. If true, <a href="../Sahi.html">Sahi</a> APIs
+ignores elements which are not visible</p>
+          
+          
+
+          
+          <div class="method-source-code" id="strict_visibility_check-3D-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 224</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">strict_visibility_check=</span>(<span class="ruby-identifier">check</span>)
+  <span class="ruby-identifier">execute_step</span>(<span class="ruby-node">&quot;_sahi._setStrictVisibilityCheck(#{check})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- strict_visibility_check-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- strict_visibility_check-3D-method -->
+
+    
+      <div id="method-i-title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">title</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>return window title</p>
+          
+          
+
+          
+          <div class="method-source-code" id="title-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 338</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">title</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;_sahi._title()&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- title-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- title-method -->
+
+    
+      <div id="method-i-wait" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">wait</span><span
+            class="method-args">(timeout) { || ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>waits for specified time (in seconds).  if a block is passed, it will wait
+till the block evaluates to true or till the specified timeout, which ever
+is earlier.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="wait-source">
+            <pre><span class="ruby-comment"># File sahi.rb, line 379</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">wait</span>(<span class="ruby-identifier">timeout</span>) 
+  <span class="ruby-identifier">total</span> = <span class="ruby-value">0</span>;
+  <span class="ruby-identifier">interval</span> = <span class="ruby-value">0.2</span>;
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">timeout</span>)
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">while</span> (<span class="ruby-identifier">total</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">timeout</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">interval</span>);
+    <span class="ruby-identifier">total</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">interval</span>;
+    <span class="ruby-keyword">begin</span> 
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">yield</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">e</span> 
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>          
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- wait-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- wait-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,0 +1,52 @@
+<HTML>
+<head>
+<title>Temp</title>
+<style>
+html { 
+    -ms-touch-action: none;
+}
+</style>
+</head>
+<body onload="startup()">
+<script>
+startup = function(){
+var el = document.getElementById("b1");
+el.addEventListener("MSPointerDown", handleStart, false);
+el.addEventListener("touchstart", handleStart, false);
+el.addEventListener("MSPointerUp", handleEnd, false);
+el.addEventListener("touchend", handleEnd, false);
+el.addEventListener("MSPointerCancel", handleCancel, false);
+el.addEventListener("touchcancel", handleCancel, false);
+el.addEventListener("MSPointerMove", handleMove, false);
+el.addEventListener("MSGestureChange", handleMove, false);
+el.addEventListener("gestureChange", handleMove, false);
+el.addEventListener("touchmove", handleMove, false);
+}
+function handleStart(evt) {
+  evt.preventDefault();
+  document.getElementById("t2").value = evt.touches.length;
+  document.getElementById("t1").value = document.getElementById("t1").value + "touchstart\n";
+}
+function handleEnd(evt) {
+  evt.preventDefault();
+  document.getElementById("t1").value = document.getElementById("t1").value + "touchend\n";
+}
+function handleCancel(evt) {
+  evt.preventDefault();
+  document.getElementById("t1").value = document.getElementById("t1").value + "touchcancel\n";
+}
+function handleMove(evt) {
+  evt.preventDefault();
+  console.log(evt.clientX + "," + evt.clientY);
+  document.getElementById("t1").value = document.getElementById("t1").value + "touchmove\n";
+}
+</script>
+<textarea id="t1" style="width:200px;height:300px">
+</textarea>
+<input type="button" id="b1" value="touch me!" style="width:200px;display:block">
+<label> evt.length:
+<textarea id="t2" style="width:135px;height:20px">
+</textarea>
+</label>
+</body>
+</HTML>

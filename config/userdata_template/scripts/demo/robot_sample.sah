@@ -1,0 +1,20 @@
+function login($user, $pass){
+	_setValue(_textbox("user"), $user);
+	_setValue(_password("password"), $pass);
+	_click(_submit("Login"));
+}
+function addBooks($qJava, $qRuby, $qPython){
+	_setValue(_textbox("q"), $qJava);
+	_setValue(_textbox("q[1]"), $qRuby);
+	_setValue(_textbox("q[2]"), $qPython);
+	_click(_button("Add"));
+}
+function verifyTotal($total){
+	_assertEqual(455, _getValue(_textbox("total")));
+	
+	
+}
+function logout(){
+	_click(_button("Logout1"));
+}
+_navigateTo("/demo/training/");

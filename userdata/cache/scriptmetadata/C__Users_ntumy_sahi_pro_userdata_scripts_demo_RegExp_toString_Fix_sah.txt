@@ -1,0 +1,4 @@
+testDirect,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\RegExp_toString_Fix.sah,5
+testRegExpParam,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\RegExp_toString_Fix.sah,9
+testRegExpStub,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\RegExp_toString_Fix.sah,14
+testRegExpShortHandStub,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\RegExp_toString_Fix.sah,19

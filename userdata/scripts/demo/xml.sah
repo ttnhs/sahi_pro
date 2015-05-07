@@ -1,0 +1,44 @@
+var xmlStr = '' +
+'<people>' +
+'   <person gender="male">' +
+'      <name>Ant</name>' +
+'      <nickname>Erumbu</nickname>' +
+'      <hair>Shaggy</hair>' +
+'      <eyes>Blue</eyes>' +
+'      <height measure="metric">176</height>' +
+'   </person>' +
+'   <person gender="male">' +
+'      <name>Paul</name>' +
+'      <hair>Spiky</hair>' +
+'      <eyes>Grey</eyes>' +
+'      <height measure="metric">178</height>' +
+'   </person>' +
+'</people>';
+
+var $x = new XML(xmlStr);
+_assertEqual("Erumbu", $x..nickname.toString());
+_assertEqual("Ant", $x.person[0].name.toString());
+_assertEqual("Grey", $x.person[1].eyes.toString());
+// Needs fixing
+var $name = $x.person.(nickname == "Erumbu").name.toString();
+_assertEqual("Ant", $name);
+
+
+//_alert($x.toXMLString());
+
+for each (var $p in $x.person){
+    var $measure = $p.height.@measure.toString();
+    _assert($measure == "metric");
+    var $h = $p.height.toString();
+    _assert($h > 170);
+    $p.height.* = 100 + parseInt($h);
+}
+
+var $yStr = $x.toXMLString();
+var $y = new XML($yStr);
+
+var $height = $y.person.(nickname == "Erumbu").height.toString();
+_assertEqual(276, $height);
+
+//_alert($x.toXMLString());
+//_writeFile($x.toXMLString(), _resolvePath("out.xml"));

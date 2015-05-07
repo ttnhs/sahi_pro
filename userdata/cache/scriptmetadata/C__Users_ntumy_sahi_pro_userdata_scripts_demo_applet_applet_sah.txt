@@ -1,0 +1,14 @@
+testButton,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,4
+testCheckBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,14
+testComboBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,22
+testSlider,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,32
+testToggleButton,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,41
+testNearInsideUnder,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,49
+testLabelRadioButton,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,59
+testFrameButton,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,69
+testFrameCheckBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,79
+testFrameComboBox,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,87
+testFrameSlider,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,97
+testFrameToggleButton,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,106
+testFrameNearInsideUnder,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,114
+testFrameLabelRadioButton,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\applet\applet.sah,124

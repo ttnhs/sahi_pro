@@ -1,0 +1,3 @@
+    <target name="failsahi$browser" depends="set_properties_$browser" if="sahi.failed.${browser}">
+        <fail message="Sahi tests failed on browser ${browser}!"/>
+    </target>

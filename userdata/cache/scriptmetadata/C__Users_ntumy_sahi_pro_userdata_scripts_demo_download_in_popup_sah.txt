@@ -1,0 +1,2 @@
+saveOnPopup,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\download_in_popup.sah,1
+saveOnBaseWindow,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\download_in_popup.sah,10

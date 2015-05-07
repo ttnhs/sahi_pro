@@ -1,0 +1,44 @@
+function testAddQueryStringToURL() {
+	var $request = new RESTRequest();
+	$request.setURL("http://sahipro.com");
+	$request.addToQueryString("q", "sahi");
+	$request.addQueryStringToUrl(); 
+	_assertEqual("http://sahipro.com?q=sahi", $request.$url);
+	$request.setURL("http://sahipro.com?r=pro");
+	$request.addToQueryString("v", "tyto is = awesome");
+	$request.addQueryStringToUrl(); 
+	_assertEqual("http://sahipro.com?q=sahi&v=tyto%20is%20%3D%20awesome&r=pro", $request.$url);
+	$request.setURL("");
+	$request.addToQueryString("v", "tyto");
+	$request.addQueryStringToUrl(); 
+	_assertEqual("", $request.$url);
+}
+
+function testAddToQueryString() {
+	var $request = new RESTRequest();
+	$request.addToQueryString("Place", "Banga;lore");
+	_assertEqual("Place=Banga%3Blore", $request.$queryString);
+	var $p = new Parameter();
+	$p.add("Name", "Ja&ne");
+	$p.add("Age", "25");
+	$request.addToQueryString($p);
+	_assertEqual("Place=Banga%3Blore&Name=Ja%26ne&Age=25", $request.$queryString);
+	$request.addToQueryString("Job=SE&BloodGroup=O%2B");
+	_assertEqual("Place=Banga%3Blore&Name=Ja%26ne&Age=25&Job=SE&BloodGroup=O%2B", $request.$queryString);
+}
+
+function testAddToBody() {
+	var $request = new RESTRequest();
+	$request.addToBody("Place", "Banga;lore");
+	_assertEqual("Place=Banga%3Blore", $request.$body);
+	var $p = new Parameter();
+	$p.add("Name", "Ja ne");
+	$p.add("Age", "25");
+	$request.addToBody($p);
+	_assertEqual("Place=Banga%3Blore&Name=Ja%20ne&Age=25", $request.$body);
+	$request.addToBody("Job=SE&BloodGroup=O%2B");
+	_assertEqual("Place=Banga%3Blore&Name=Ja%20ne&Age=25&Job=SE&BloodGroup=O%2B", $request.$body);
+}
+
+
+_runUnitTests();

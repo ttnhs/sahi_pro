@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Miscellaneous Issues</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='index.html'>Trouble Shooting</a>
+</li><li><a href='startup-issues.html'>Startup Issues</a>
+<ul><li><a href='startup-issues.html#Browsers do not show up on the Sahi Dashboard'>Browsers do not show up on the Sahi Dashboard</a>
+</li><li><a href='startup-issues.html#Browser does not load Application page'>Browser does not load Application page</a>
+</li><li><a href='startup-issues.html#Browser does not load page in local network when fixed external proxy is configured'>Browser does not load page in local network when fixed external proxy is configured</a>
+</li><li><a href='startup-issues.html#Elements on a page are not recognized on an IE browser'>Elements on a page are not recognized on an IE browser</a>
+</li></ul></li><li><a href='page-rendering.html'>Page Loading or Rendering</a>
+</li><li><a href='drag-drop-issues.html'>Drag and drop issues</a>
+<ul><li><a href='drag-drop-issues.html#Drag and drop does not seem to work'>Drag and drop does not seem to work</a>
+</li></ul></li><li><a href='eclipse-integration-issues.html'>Eclipse integration issues</a>
+<ul><li><a href='eclipse-integration-issues.html#Syntax highlighting does not work'>Syntax highlighting does not work</a>
+</li><li><a href='eclipse-integration-issues.html#Syntax highlighting works but intellisense does not seem to work'>Syntax highlighting works but intellisense does not seem to work</a>
+</li></ul></li><li><a href='send-email-issues.html'>Email related issues</a>
+<ul><li><a href='send-email-issues.html#sendEmail fails for Microsoft Outlook with Permission denied: connect error'>sendEmail fails for Microsoft Outlook with Permission denied: connect error</a>
+</li></ul></li><li><a href='flex-issues.html'>Flex Issues</a>
+<ul><li><a href='flex-issues.html#Flex controls show up as _object or _embed'>Flex controls show up as _object or _embed</a>
+</li></ul></li><li><a href='calling-custom-java-code.html'>Calling custom Java code</a>
+<ul><li><a href='calling-custom-java-code.html#TypeError: Cannot call property ... in object'>TypeError: Cannot call property ... in object</a>
+</li></ul></li><li><a href='oracle-forms-issues.html'>Oracle Forms Issues</a>
+<ul><li><a href='oracle-forms-issues.html#Oracle forms is unable to connect'>Oracle forms is unable to connect</a>
+</li></ul></li><li><a href='proxy-issues.html'>Proxy Issues</a>
+<ul><li><a href='proxy-issues.html#Cannot connect to internet when Sahi is not running'>Cannot connect to internet when Sahi is not running</a>
+</li></ul></li><li><a href='ssl-issues.html'>SSL Issues</a>
+<ul><li><a href='ssl-issues.html#Handshake failure'>Handshake failure</a>
+</li></ul></li><li><a href='misc-issues.html'>Miscellaneous Issues</a>
+<ul><li><a href='misc-issues.html#Content blocked from being loaded'>Content blocked from being loaded</a>
+</li><li><a href='misc-issues.html#Element's class identified incorrectly'>Element's class identified incorrectly</a>
+</li><li><a href='misc-issues.html#Controller does not open in Linux'>Controller does not open in Linux</a>
+</li><li><a href='misc-issues.html#Multiple Chrome instances'>Multiple Chrome instances</a>
+</li><li><a href='misc-issues.html#Elements not getting identified on Safari browser'>Elements not getting identified on Safari browser</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Miscellaneous Issues</h2>
+      <!-- Miscellaneous Issues -->
+<h3><a href="#Content blocked from being loaded" name="Content blocked from being loaded" class="headinganchor2" hideFocus="hideFocus">Content blocked from being loaded</a></h3>
+<br/>
+<div class="symptom"><strong class='heading'>symptom</strong>
+Sahi proxy seems to block content from being loaded<br/>
+</div>
+<br/>
+<div class="cause"><strong class='heading'>cause</strong>
+The blocked content is probably of content type <code>application/octet-stream</code>. This content type is part of download_contenttypes.txt which causes the content to get downloaded instead of being displayed on the page.<br/>
+</div>
+<br/>
+<div class="resolution"><strong class='heading'>resolution</strong>
+<ol>
+<li>
+Take a backup of <code>userdata\config\download_contenttypes.txt</code>.<br/>
+</li>
+<li>
+Edit <code>download_contenttypes.txt</code>. Remove the following line<br/>
+<pre><code>application/octet-stream</code></pre>
+</li>
+<li>
+Save <code>download_contenttypes.txt</code>. Restart Sahi server and clear browser cache, and try your application again.<br/>
+</li>
+</ol>
+</div>
+<br/>
+<h3><a href="#Element's class identified incorrectly" name="Element's class identified incorrectly" class="headinganchor2" hideFocus="hideFocus">Element's class identified incorrectly</a></h3>
+<br/>
+<div class="symptom"><strong class='heading'>symptom</strong>
+Sahi seems to identify an element by an incorrect class name. This causes the script to fail. On doing an <code>Inspect element</code>, we can see that the class is different.<br/>
+</div>
+<br/>
+<div class="cause"><strong class='heading'>cause</strong>
+Sometimes when you do mouse over an element, its class will change. Since elements are identified by doing a <code>Ctrl + Mouse Over</code>, the class will be wrongly identified.<br/>
+</div>
+<br/>
+<div class="resolution"><strong class='heading'>resolution</strong>
+In such cases, you may need to do a <code>View Source</code> or <code>Inspect Element</code> to find out the original class and use that to identify the element.<br/>
+</div>
+<br/>
+<h3><a href="#Controller does not open in Linux" name="Controller does not open in Linux" class="headinganchor2" hideFocus="hideFocus">Controller does not open in Linux</a></h3>
+<div class="symptom"><strong class='heading'>symptom</strong>
+Clicking <code>Alt + DoubleClick</code> does not bring up the controller on Linux. I have tried this on Firefox and Chrome.<br/>
+<br/>
+This does not work on Ubuntu 12.04 as well as on CentOS.<br/>
+</div>
+<br/>
+<div class="resolution"><strong class='heading'>resolution</strong>
+Please try the following steps<br/>
+<ol>
+<li>
+Check that the Popup blocker has not been turned ON by some update. If it has been, turn it OFF.<br/>
+</li>
+<li>
+If it still doesn't work, please try accessing the controller by <code>Ctrl + Alt + Double Click</code>. Usually, we do it by <code>Alt + Double Click</code>. Try pressing the <code>Ctrl</code> key as well.<br/>
+</li>
+</ol>
+</div>
+<h3><a href="#Multiple Chrome instances" name="Multiple Chrome instances" class="headinganchor2" hideFocus="hideFocus">Multiple Chrome instances</a></h3>
+<br/>
+<div class="symptom"><strong class='heading'>symptom</strong>
+Whenever Chrome browser is launched from the Dashboard, multiple instances of the Chrome browser are opened.<br/>
+</div>
+<br/>
+<div class="resolution"><strong class='heading'>resolution</strong>
+Install Sahi to a folder that does NOT contain spaces.<br/>
+<br/>
+OR<br/>
+<br/>
+Do the following.<br/>
+<ol>
+<li>
+In browser_types.xml, search for chrome and replace<br/>
+[code<br/>
+<options>--user-data-dir=$userDir\browser\chrome\profiles\sahi$threadNo --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins</options>
+[/code]<br/>
+with<br/>
+<pre><code>&lt;options&gt;--user-data-dir=c:\ChromeProfiles\browser\chrome\profiles\sahi$threadNo --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins&lt;/options&gt;</code></pre>
+</li>
+<li>
+Create c:\ChromeProfiles.<br/>
+</li>
+<li>
+Restart Sahi server and clear browser cache.<br/>
+<br/>
+Now launching Chrome browser will launch only one instance.<br/>
+</li>
+</ol>
+</div>
+<br/>
+<h3><a href="#Elements not getting identified on Safari browser" name="Elements not getting identified on Safari browser" class="headinganchor2" hideFocus="hideFocus">Elements not getting identified on Safari browser</a></h3>
+For identifying elements on the Safari browser, Sahi needs the browser window to be in focus while hovering over the element to be identified. Suggested way of doing this would be my minimizing the browser window and placing the window and the controller side by side as shown below. Now click on the browser window, before trying to identify an element.<br/>
+<br/>
+<img src="../assets/images/troubleshooting/misc/safari.png" height="400px" alt="Firefox Redirect Loop"/>
+<br/>
+
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

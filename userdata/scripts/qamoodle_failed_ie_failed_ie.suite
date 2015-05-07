@@ -1,0 +1,5 @@
+C:/Users/ntumy/sahi_pro/userdata/scripts/browse_list_of_users.sah http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox
+C:/Users/ntumy/sahi_pro/userdata/scripts/upload_invalid_users.sah http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox
+C:/Users/ntumy/sahi_pro/userdata/scripts/upload_valid_users.sah http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox
+C:/Users/ntumy/sahi_pro/userdata/scripts/add_a_new_users.sah http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox
+C:/Users/ntumy/sahi_pro/userdata/scripts/bulk_user_actions.sah http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=firefox

@@ -1,0 +1,17 @@
+	<target name="retryfailed$browser" depends="set_properties_$browser" if="sahi.failed.${browser}">
+		<sahi suite="${scriptDir}${failedSuite}"
+			browsertype="${browser}"
+			baseurl="${baseURL}"
+			sahihost="${host}"
+			sahiport="${port}"
+			failureproperty="sahi.retry.failed.${browser}"
+			haltonfailure="false"
+			sendemail="${sendemail}"
+	        emailtrigger="${emailtrigger}"
+	        emailproperties="${emailproperties}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			singlesession="${singlesession}"
+			threads="1"$tags$userDefinedId>$extraParam$reportsRetryInfo
+		</sahi>
+		<antcall target="failsahi$browser"/>
+	</target>

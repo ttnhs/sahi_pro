@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html  dir="ltr" lang="en" xml:lang="en">
+<head><!--SAHI_INJECT_START--><script>/*<![CDATA[*//*---->*/__sahiDebugStr__="";__sahiDebug__=function(s){__sahiDebugStr__+=(s+"\n");};/*--*//*]]>*/</script><script src="/_s_/dyn/SessionState_domainfix/domainfix.js"></script><script src='/_s_/spr/concat.js' id='_sahi_concat'></script><script src='/_s_/spr/actions.js'></script><script src='/_s_/spr/touch.js'></script><script src='/_s_/spr/sfl.js'></script><script src='http://sahi.example.com/_s_/dyn/SessionState/state.js'></script>                                          
+
+                                        
+
+<script src='/_s_/spr/language_pack.js' id='langpack'></script><script>/*<![CDATA[*//*---->*/_sahi.createSahiCookie();_sahi.loadXPathScript()/*--*//*]]>*/</script><script>/*<![CDATA[*//*---->*/eval(_sahi.sendToServer("/_s_/dyn/Player_script/script.js"));/*--*//*]]>*/</script><script src='/_s_/spr/applet2.js'></script><script src="/_s_/dyn/SessionState_userExtensions/user_extensions.js"></script><script src='/_s_/spr/playback.js'></script><!--SAHI_INJECT_END-->
+    <title>Moodle QA Testing Site: Administration: Users: Accounts: Bulk user actions</title>
+    <link rel="shortcut icon" href="http://qa.moodle.net/theme/image.php/clean/theme/1430909899/favicon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="moodle, Moodle QA Testing Site: Administration: Users: Accounts: Bulk user actions" />
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"http:\/\/qa.moodle.net","sesskey":"j73EdZW5lg","loadingicon":"http:\/\/qa.moodle.net\/theme\/image.php\/clean\/core\/1430909899\/i\/loading_small","themerev":"1430909899","slasharguments":1,"theme":"clean","jsrev":"1430909899","admin":"admin","svgicons":true,"developerdebug":true};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''};if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else me.path=component+'/'+component+'.'+me.type};
+YUI_config = {"debug":true,"base":"http:\/\/qa.moodle.net\/lib\/yuilib\/3.17.2\/","comboBase":"http:\/\/qa.moodle.net\/theme\/yui_combo.php?","combine":true,"filter":"RAW","insertBefore":"firstthemesheet","groups":{"yui2":{"base":"http:\/\/qa.moodle.net\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"http:\/\/qa.moodle.net\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"http:\/\/qa.moodle.net\/theme\/yui_combo.php?m\/1430909899\/","combine":true,"comboBase":"http:\/\/qa.moodle.net\/theme\/yui_combo.php?","ext":false,"root":"m\/1430909899\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":"DEBUG","modules":{"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-checknet":{"requires":["base-base","moodle-core-notification-alert","io-base"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-formautosubmit":{"requires":["base","event-key"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-dock":{"requires":["base","node","event-custom","event-mouseenter","event-resize","escape","moodle-core-dock-loader"]},"moodle-core-dock-loader":{"requires":["escape"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-formchangechecker":{"requires":["base","event-focus"]},"moodle-core_availability-form":{"requires":["base","node","event","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-calendar-info":{"requires":["base","node","event-mouseenter","event-key","overlay","moodle-calendar-info-skin"]},"moodle-course-toolboxes":{"requires":["node","base","event-key","node","io","moodle-course-coursebase","moodle-course-util"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-form-shortforms":{"requires":["node","base","selector-css3"]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-passwordunmask":{"requires":["node","base"]},"moodle-form-showadvanced":{"requires":["node","base","selector-css3"]},"moodle-core_message-messenger":{"requires":["escape","handlebars","io-base","moodle-core-notification-ajaxexception","moodle-core-notification-alert","moodle-core-notification-dialogue","moodle-core-notification-exception"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-question-qbankmanager":{"requires":["node","selector-css3"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_forum-subscriptiontoggle":{"requires":["base-base","io-base"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-repaginate":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_quiz-randomquestion":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_quiz-util":{"requires":["node"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_quiz-quizquestionbank":{"requires":["base","event","node","io","io-form","yui-later","moodle-question-qbankmanager","moodle-core-notification-dialogue"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-block_navigation-navigation":{"requires":["base","io-base","node","event-synthetic","event-delegate","json-parse"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_html-button":{"requires":["moodle-editor_atto-plugin","event-valuechange"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]}}},"gallery":{"name":"gallery","base":"http:\/\/qa.moodle.net\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"http:\/\/qa.moodle.net\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1430909899\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"http:\/\/qa.moodle.net\/lib\/javascript.php\/1430909899\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker"]},"mathjax":{"name":"mathjax","fullpath":"http:\/\/cdn.mathjax.org\/mathjax\/2.5-latest\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+<link rel="stylesheet" type="text/css" href="http://qa.moodle.net/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple.css" /><script type="text/javascript" src="http://qa.moodle.net/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple.js&amp;rollup/1430909899/mcore-debug.js"></script><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="http://qa.moodle.net/theme/styles.php/clean/1430909899/all" />
+<script type="text/javascript" src="http://qa.moodle.net/lib/javascript.php/1430909899/lib/javascript-static.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body  id="page-admin-user-user_bulk" class="format-site admin path-admin path-admin-user gecko dir-ltr lang-en yui-skin-sam yui3-skin-sam qa-moodle-net pagelayout-admin course-1 context-1 two-column has-region-side-pre used-region-side-pre side-pre-only">
+
+<div class="skiplinks"><a class="skip" href="#maincontent">Skip to main content</a></div>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+<header role="banner" class="navbar navbar-fixed-top moodle-has-zindex">
+    <nav role="navigation" class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" href="http://qa.moodle.net">Moodle QA Testing Site</a>
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="usermenu"><div id="action-menu-0" class="moodle-actionmenu nowrap-items" data-enhance="moodle-core-actionmenu"><ul id="action-menu-0-menubar" class="menubar" role="menubar"><li role="presentation"><a class="toggle-display textmenu" title="" id="action-menu-toggle-0" role="menuitem" href="#"><span class="userbutton"><span class="usertext">Max Manager</span><span class="avatars"><span class="avatar current"><img src="http://qa.moodle.net/pluginfile.php/31/user/icon/clean/f2?rev=1" alt="Picture of Max Manager" title="Picture of Max Manager" class="userpicture" width="35" height="35" role="presentation" /></span></span></span><b class="caret"></b></a></li></ul><ul id="action-menu-0-menu" class="menu  align-tr-br" data-rel="menu-content" aria-labelledby="action-menu-toggle-0" role="menu" data-align="tr-br"><li role="presentation"><a class="icon menu-action" role="menuitem" href="http://qa.moodle.net/my/" aria-labelledby="actionmenuaction-1"><img class="iconsmall" alt="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/course" /><span class="menu-action-text" id="actionmenuaction-1">Dashboard</span></a></li><li role="presentation"><span class="filler">&nbsp;</span></li><li role="presentation"><a class="icon menu-action" role="menuitem" href="http://qa.moodle.net/user/profile.php?id=6" aria-labelledby="actionmenuaction-2"><img class="iconsmall" alt="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/user" /><span class="menu-action-text" id="actionmenuaction-2">Profile</span></a></li><li role="presentation"><a class="icon menu-action" role="menuitem" href="http://qa.moodle.net/grade/report/overview/index.php" aria-labelledby="actionmenuaction-3"><img class="iconsmall" alt="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/t/grades" /><span class="menu-action-text" id="actionmenuaction-3">Grades</span></a></li><li role="presentation"><a class="icon menu-action" role="menuitem" href="http://qa.moodle.net/message/index.php" aria-labelledby="actionmenuaction-4"><img class="iconsmall" alt="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/t/message" /><span class="menu-action-text" id="actionmenuaction-4">Messages</span></a></li><li role="presentation"><a class="icon menu-action" role="menuitem" href="http://qa.moodle.net/user/preferences.php" aria-labelledby="actionmenuaction-5"><img class="iconsmall" alt="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/t/preferences" /><span class="menu-action-text" id="actionmenuaction-5">Preferences</span></a></li><li role="presentation"><span class="filler">&nbsp;</span></li><li role="presentation"><a class="icon menu-action" role="menuitem" href="http://qa.moodle.net/login/logout.php?sesskey=j73EdZW5lg" aria-labelledby="actionmenuaction-6"><img class="iconsmall" alt="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/a/logout" /><span class="menu-action-text" id="actionmenuaction-6">Log out</span></a></li></ul></div></div>            <div class="nav-collapse collapse">
+                <ul class="nav"><li class="dropdown langmenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Language">English (en)<b class="caret"></b></a><ul class="dropdown-menu"><li><a title=" አማርኛ (am)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=am"> አማርኛ (am)</a></li><li><a title="Afrikaans (af)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=af">Afrikaans (af)</a></li><li><a title="Aragonés (an)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=an">Aragonés (an)</a></li><li><a title="Aranés (oc_es)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=oc_es">Aranés (oc_es)</a></li><li><a title="Asturianu (ast)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ast">Asturianu (ast)</a></li><li><a title="Azərbaycanca (az)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=az">Azərbaycanca (az)</a></li><li><a title="Bahasa Melayu (ms)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ms">Bahasa Melayu (ms)</a></li><li><a title="Bosanski (bs)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=bs">Bosanski (bs)</a></li><li><a title="Català (ca)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ca">Català (ca)</a></li><li><a title="Català (Valencià) (ca_valencia)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ca_valencia">Català (Valencià) (ca_valencia)</a></li><li><a title="Čeština (cs)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=cs">Čeština (cs)</a></li><li><a title="Cymraeg (cy)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=cy">Cymraeg (cy)</a></li><li><a title="Dansk (da)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=da">Dansk (da)</a></li><li><a title="Davvisámegiella (se)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=se">Davvisámegiella (se)</a></li><li><a title="Deutsch - Du (de_du)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=de_du">Deutsch - Du (de_du)</a></li><li><a title="Deutsch - Kids (de_kids)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=de_kids">Deutsch - Kids (de_kids)</a></li><li><a title="Deutsch (de)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=de">Deutsch (de)</a></li><li><a title="Deutsch community (de_comm)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=de_comm">Deutsch community (de_comm)</a></li><li><a title="Ebon (mh)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=mh">Ebon (mh)</a></li><li><a title="Eesti (et)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=et">Eesti (et)</a></li><li><a title="English - Pirate (en_ar)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=en_ar">English - Pirate (en_ar)</a></li><li><a title="English - United States (en_us)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=en_us">English - United States (en_us)</a></li><li><a title="English (en)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=en">English (en)</a></li><li><a title="English for kids (en_kids)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=en_kids">English for kids (en_kids)</a></li><li><a title="Español - Internacional (es)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=es">Español - Internacional (es)</a></li><li><a title="Español - México (es_mx)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=es_mx">Español - México (es_mx)</a></li><li><a title="Español Venezuela (es_ve)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=es_ve">Español Venezuela (es_ve)</a></li><li><a title="Esperanto (eo)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=eo">Esperanto (eo)</a></li><li><a title="Euskara (eu)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=eu">Euskara (eu)</a></li><li><a title="Filipino (fil)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=fil">Filipino (fil)</a></li><li><a title="Finlandssvenska (sv_fi)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sv_fi">Finlandssvenska (sv_fi)</a></li><li><a title="Føroyskt (fo)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=fo">Føroyskt (fo)</a></li><li><a title="Français - Canada (fr_ca)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=fr_ca">Français - Canada (fr_ca)</a></li><li><a title="Français (fr)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=fr">Français (fr)</a></li><li><a title="Gaeilge (ga)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ga">Gaeilge (ga)</a></li><li><a title="Gàidhlig (gd)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=gd">Gàidhlig (gd)</a></li><li><a title="Galego (gl)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=gl">Galego (gl)</a></li><li><a title="Hausa (ha)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ha">Hausa (ha)</a></li><li><a title="Hrvatski (hr)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=hr">Hrvatski (hr)</a></li><li><a title="Indonesian (id)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=id">Indonesian (id)</a></li><li><a title="isiZulu (zu)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=zu">isiZulu (zu)</a></li><li><a title="Íslenska (is)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=is">Íslenska (is)</a></li><li><a title="Italiano (it)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=it">Italiano (it)</a></li><li><a title="Japanese - kids (ja_kids)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ja_kids">Japanese - kids (ja_kids)</a></li><li><a title="Kalaallisut (kl)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=kl">Kalaallisut (kl)</a></li><li><a title="Kiswahili (sw)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sw">Kiswahili (sw)</a></li><li><a title="Kreyòl Ayisyen (hat)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=hat">Kreyòl Ayisyen (hat)</a></li><li><a title="Kurmanji (kmr)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=kmr">Kurmanji (kmr)</a></li><li><a title="Laotian (lo)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=lo">Laotian (lo)</a></li><li><a title="Latin (la)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=la">Latin (la)</a></li><li><a title="Latviešu (lv)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=lv">Latviešu (lv)</a></li><li><a title="Lengadocian (oc_lnc)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=oc_lnc">Lengadocian (oc_lnc)</a></li><li><a title="Lëtzebuergesch (lb)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=lb">Lëtzebuergesch (lb)</a></li><li><a title="Lietuvių (lt)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=lt">Lietuvių (lt)</a></li><li><a title="Lithuanian (university) (lt_uni)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=lt_uni">Lithuanian (university) (lt_uni)</a></li><li><a title="magyar (hu)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=hu">magyar (hu)</a></li><li><a title="Māori - Tainui (mi_tn)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=mi_tn">Māori - Tainui (mi_tn)</a></li><li><a title="Māori - Waikato (mi_wwow)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=mi_wwow">Māori - Waikato (mi_wwow)</a></li><li><a title="Mongolian (mn_mong)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=mn_mong">Mongolian (mn_mong)</a></li><li><a title="myanma bhasa (my)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=my">myanma bhasa (my)</a></li><li><a title="Nederlands (nl)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=nl">Nederlands (nl)</a></li><li><a title="Norsk - bokmål (no)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=no">Norsk - bokmål (no)</a></li><li><a title="Norsk - nynorsk (nn)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=nn">Norsk - nynorsk (nn)</a></li><li><a title="Norsk (no_gr)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=no_gr">Norsk (no_gr)</a></li><li><a title="O&#039;zbekcha (uz)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=uz">O'zbekcha (uz)</a></li><li><a title="Polski (pl)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=pl">Polski (pl)</a></li><li><a title="Português - Brasil (pt_br)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=pt_br">Português - Brasil (pt_br)</a></li><li><a title="Português - Portugal (pt)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=pt">Português - Portugal (pt)</a></li><li><a title="Română (ro)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ro">Română (ro)</a></li><li><a title="Romansh Sursilvan (rm_surs)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=rm_surs">Romansh Sursilvan (rm_surs)</a></li><li><a title="Samoan (sm)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sm">Samoan (sm)</a></li><li><a title="Shqip (sq)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sq">Shqip (sq)</a></li><li><a title="Sloven&#353;&#269;ina (sl)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sl">Sloven&#353;&#269;ina (sl)</a></li><li><a title="Slovenčina (sk)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sk">Slovenčina (sk)</a></li><li><a title="Soomaali (so)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=so">Soomaali (so)</a></li><li><a title="Srpski (sr_lt)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sr_lt">Srpski (sr_lt)</a></li><li><a title="Suomi (fi)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=fi">Suomi (fi)</a></li><li><a title="Suomi+ (fi_co)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=fi_co">Suomi+ (fi_co)</a></li><li><a title="Svenska (sv)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sv">Svenska (sv)</a></li><li><a title="Tagalog (tl)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=tl">Tagalog (tl)</a></li><li><a title="Tamil (ta)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ta">Tamil (ta)</a></li><li><a title="Thai (th)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=th">Thai (th)</a></li><li><a title="Tongan (to)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=to">Tongan (to)</a></li><li><a title="Türkçe (tr)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=tr">Türkçe (tr)</a></li><li><a title="Turkmen (tk)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=tk">Turkmen (tk)</a></li><li><a title="VakaViti (fj)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=fj">VakaViti (fj)</a></li><li><a title="Vietnamese (vi)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=vi">Vietnamese (vi)</a></li><li><a title="Wolof (wo)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=wo">Wolof (wo)</a></li><li><a title="Ελληνικά (el)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=el">Ελληνικά (el)</a></li><li><a title="Беларуская (be)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=be">Беларуская (be)</a></li><li><a title="Български (bg)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=bg">Български (bg)</a></li><li><a title="Кыргызча (ky)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ky">Кыргызча (ky)</a></li><li><a title="Қазақша (kk)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=kk">Қазақша (kk)</a></li><li><a title="Македонски (mk)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=mk">Македонски (mk)</a></li><li><a title="Монгол (mn)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=mn">Монгол (mn)</a></li><li><a title="Русский (ru)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ru">Русский (ru)</a></li><li><a title="Српски (sr_cr_bo)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sr_cr_bo">Српски (sr_cr_bo)</a></li><li><a title="Српски (sr_cr)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sr_cr">Српски (sr_cr)</a></li><li><a title="Српски (sr)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=sr">Српски (sr)</a></li><li><a title="татар теле (tt)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=tt">татар теле (tt)</a></li><li><a title="Тоҷикӣ (tg)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=tg">Тоҷикӣ (tg)</a></li><li><a title="Українська (uk)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=uk">Українська (uk)</a></li><li><a title="ქართული (ka)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ka">ქართული (ka)</a></li><li><a title="Հայերեն (hy)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=hy">Հայերեն (hy)</a></li><li><a title="עברית (he)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=he">עברית (he)</a></li><li><a title="עברית בתי־ספר (he_kids)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=he_kids">עברית בתי־ספר (he_kids)</a></li><li><a title="اردو (ur)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ur">اردو (ur)</a></li><li><a title="پښتو (ps)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ps">پښتو (ps)</a></li><li><a title="سۆرانی (ckb)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ckb">سۆرانی (ckb)</a></li><li><a title="عربي (ar)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ar">عربي (ar)</a></li><li><a title="فارسی (fa)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=fa">فارسی (fa)</a></li><li><a title="ދިވެހި (dv)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=dv">ދިވެހި (dv)</a></li><li><a title="ⵜⴰⵎⴰⵣⵉⵖⵜ (zgh)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=zgh">ⵜⴰⵎⴰⵣⵉⵖⵜ (zgh)</a></li><li><a title="ትግርኛ (ti)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ti">ትግርኛ (ti)</a></li><li><a title="नेपाली (ne)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ne">नेपाली (ne)</a></li><li><a title="मराठी (mr)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=mr">मराठी (mr)</a></li><li><a title="िहन्दी (hi)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=hi">िहन्दी (hi)</a></li><li><a title="বাংলা (bn)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=bn">বাংলা (bn)</a></li><li><a title="ਪੰਜਾਬੀ (pan)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=pan">ਪੰਜਾਬੀ (pan)</a></li><li><a title="ગુજરાતી (gu)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=gu">ગુજરાતી (gu)</a></li><li><a title="தமிழ் (ta_lk)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ta_lk">தமிழ் (ta_lk)</a></li><li><a title="తెలుగు  (te)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=te">తెలుగు  (te)</a></li><li><a title="ಕನ್ನಡ (kn)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=kn">ಕನ್ನಡ (kn)</a></li><li><a title="മലയാളം (ml)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ml">മലയാളം (ml)</a></li><li><a title="සිංහල (si)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=si">සිංහල (si)</a></li><li><a title="རྫོང་ཁ (dz)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=dz">རྫོང་ཁ (dz)</a></li><li><a title="ខ្មែរ (km)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=km">ខ្មែរ (km)</a></li><li><a title="한국어 (ko)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ko">한국어 (ko)</a></li><li><a title="日本語 (ja)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=ja">日本語 (ja)</a></li><li><a title="正體中文 (zh_tw)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=zh_tw">正體中文 (zh_tw)</a></li><li><a title="简体中文 (zh_cn)" href="http://qa.moodle.net/admin/user/user_bulk.php?lang=zh_cn">简体中文 (zh_cn)</a></li></ul></ul>                <ul class="nav pull-right">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div id="page" class="container-fluid">
+    <header id="page-header" class="clearfix"><div class="page-context-header"><div class="page-header-headings"><h1>Moodle QA Testing Site</h1></div></div><div class="clearfix" id="page-navbar"><nav class="breadcrumb-nav"><span class="accesshide">Page path</span><ul class="breadcrumb"><li><a href="http://qa.moodle.net/my/">Dashboard</a> <span class="divider"> <span class="accesshide " ><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">&#x25BA;</span> </span></li><li><span tabindex="0">Site administration</span> <span class="divider"> <span class="accesshide " ><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">&#x25BA;</span> </span></li><li><span tabindex="0">Users</span> <span class="divider"> <span class="accesshide " ><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">&#x25BA;</span> </span></li><li><span tabindex="0">Accounts</span> <span class="divider"> <span class="accesshide " ><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">&#x25BA;</span> </span></li><li><a href="http://qa.moodle.net/admin/user/user_bulk.php">Bulk user actions</a></li></ul></nav><div class="breadcrumb-button"><div class="singlebutton"><form method="get" action="http://qa.moodle.net/admin/user/user_bulk.php"><div><input type="submit" value="Blocks editing on" /><input type="hidden" name="adminedit" value="1" /><input type="hidden" name="sesskey" value="j73EdZW5lg" /></div></form></div></div></div><div id="course-header"></div></header>    <div id="page-content" class="row-fluid">
+        <section id="region-main" class="span9 pull-right">
+            <div role="main"><span id="maincontent"></span>
+<form autocomplete="off" action="http://qa.moodle.net/admin/user/user_bulk.php" method="post" accept-charset="utf-8" id="mform1" class="mform">
+	<div style="display: none;"><input name="sesskey" type="hidden" value="j73EdZW5lg" />
+<input name="_qf__user_add_filter_form" type="hidden" value="1" />
+<input name="mform_showmore_id_newfilter" type="hidden" value="0" />
+<input name="mform_isexpanded_id_newfilter" type="hidden" value="1" />
+</div>
+
+
+	<fieldset class="clearfix collapsible containsadvancedelements"  id="id_newfilter">
+		<legend class="ftoggler">New filter</legend>
+		<div class="fcontainer clearfix">
+		
+		<div id="fgroup_id_realname_grp" class="fitem fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>User full name </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_realname_op" >User full name field limiter</label><select name="realname_op" id="id_realname_op">
+	<option value="0">contains</option>
+	<option value="1">doesn't contain</option>
+	<option value="2">is equal to</option>
+	<option value="3">starts with</option>
+	<option value="4">ends with</option>
+	<option value="5">is empty</option>
+</select><label class="accesshide" for="id_realname" >User full name value</label><input name="realname" type="text" id="id_realname" /></fieldset></div>
+		<div id="fgroup_id_lastname_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>Surname<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_lastname_op" >Surname field limiter</label><select name="lastname_op" id="id_lastname_op">
+	<option value="0">contains</option>
+	<option value="1">doesn't contain</option>
+	<option value="2">is equal to</option>
+	<option value="3">starts with</option>
+	<option value="4">ends with</option>
+	<option value="5">is empty</option>
+</select><label class="accesshide" for="id_lastname" >Surname value</label><input name="lastname" type="text" id="id_lastname" /></fieldset></div>
+		<div id="fgroup_id_firstname_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>First name<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_firstname_op" >First name field limiter</label><select name="firstname_op" id="id_firstname_op">
+	<option value="0">contains</option>
+	<option value="1">doesn't contain</option>
+	<option value="2">is equal to</option>
+	<option value="3">starts with</option>
+	<option value="4">ends with</option>
+	<option value="5">is empty</option>
+</select><label class="accesshide" for="id_firstname" >First name value</label><input name="firstname" type="text" id="id_firstname" /></fieldset></div>
+		<div id="fgroup_id_username_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>Username<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_username_op" >Username field limiter</label><select name="username_op" id="id_username_op">
+	<option value="0">contains</option>
+	<option value="1">doesn't contain</option>
+	<option value="2">is equal to</option>
+	<option value="3">starts with</option>
+	<option value="4">ends with</option>
+	<option value="5">is empty</option>
+</select><label class="accesshide" for="id_username" >Username value</label><input name="username" type="text" id="id_username" /></fieldset></div>
+		<div id="fgroup_id_email_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>Email address<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_email_op" >Email address field limiter</label><select name="email_op" id="id_email_op">
+	<option value="0">contains</option>
+	<option value="1">doesn't contain</option>
+	<option value="2">is equal to</option>
+	<option value="3">starts with</option>
+	<option value="4">ends with</option>
+	<option value="5">is empty</option>
+</select><label class="accesshide" for="id_email" >Email address value</label><input name="email" type="text" id="id_email" /></fieldset></div>
+		<div id="fgroup_id_city_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>City/town<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_city_op" >City/town field limiter</label><select name="city_op" id="id_city_op">
+	<option value="0">contains</option>
+	<option value="1">doesn't contain</option>
+	<option value="2">is equal to</option>
+	<option value="3">starts with</option>
+	<option value="4">ends with</option>
+	<option value="5">is empty</option>
+</select><label class="accesshide" for="id_city" >City/town value</label><input name="city" type="text" id="id_city" /></fieldset></div>
+		<div id="fgroup_id_country_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>Country<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_country_op" >Country field limiter</label><select name="country_op" id="id_country_op">
+	<option value="0">is any value</option>
+	<option value="1">is equal to</option>
+	<option value="2">isn't equal to</option>
+</select><label class="accesshide" for="id_country" >Country value</label><select name="country" id="id_country">
+	<option value="AF">Afghanistan</option>
+	<option value="AX">Åland Islands</option>
+	<option value="AL">Albania</option>
+	<option value="DZ">Algeria</option>
+	<option value="AS">American Samoa</option>
+	<option value="AD">Andorra</option>
+	<option value="AO">Angola</option>
+	<option value="AI">Anguilla</option>
+	<option value="AQ">Antarctica</option>
+	<option value="AG">Antigua And Barbuda</option>
+	<option value="AR">Argentina</option>
+	<option value="AM">Armenia</option>
+	<option value="AW">Aruba</option>
+	<option value="AU" selected="selected">Australia</option>
+	<option value="AT">Austria</option>
+	<option value="AZ">Azerbaijan</option>
+	<option value="BS">Bahamas</option>
+	<option value="BH">Bahrain</option>
+	<option value="BD">Bangladesh</option>
+	<option value="BB">Barbados</option>
+	<option value="BY">Belarus</option>
+	<option value="BE">Belgium</option>
+	<option value="BZ">Belize</option>
+	<option value="BJ">Benin</option>
+	<option value="BM">Bermuda</option>
+	<option value="BT">Bhutan</option>
+	<option value="BO">Bolivia, Plurinational State Of</option>
+	<option value="BQ">Bonaire, Sint Eustatius And Saba</option>
+	<option value="BA">Bosnia And Herzegovina</option>
+	<option value="BW">Botswana</option>
+	<option value="BV">Bouvet Island</option>
+	<option value="BR">Brazil</option>
+	<option value="IO">British Indian Ocean Territory</option>
+	<option value="BN">Brunei Darussalam</option>
+	<option value="BG">Bulgaria</option>
+	<option value="BF">Burkina Faso</option>
+	<option value="BI">Burundi</option>
+	<option value="CV">Cabo Verde</option>
+	<option value="KH">Cambodia</option>
+	<option value="CM">Cameroon</option>
+	<option value="CA">Canada</option>
+	<option value="KY">Cayman Islands</option>
+	<option value="CF">Central African Republic</option>
+	<option value="TD">Chad</option>
+	<option value="CL">Chile</option>
+	<option value="CN">China</option>
+	<option value="CX">Christmas Island</option>
+	<option value="CC">Cocos (Keeling) Islands</option>
+	<option value="CO">Colombia</option>
+	<option value="KM">Comoros</option>
+	<option value="CG">Congo</option>
+	<option value="CD">Congo, The Democratic Republic Of The</option>
+	<option value="CK">Cook Islands</option>
+	<option value="CR">Costa Rica</option>
+	<option value="CI">Côte D'Ivoire</option>
+	<option value="HR">Croatia</option>
+	<option value="CU">Cuba</option>
+	<option value="CW">Curaçao</option>
+	<option value="CY">Cyprus</option>
+	<option value="CZ">Czech Republic</option>
+	<option value="DK">Denmark</option>
+	<option value="DJ">Djibouti</option>
+	<option value="DM">Dominica</option>
+	<option value="DO">Dominican Republic</option>
+	<option value="EC">Ecuador</option>
+	<option value="EG">Egypt</option>
+	<option value="SV">El Salvador</option>
+	<option value="GQ">Equatorial Guinea</option>
+	<option value="ER">Eritrea</option>
+	<option value="EE">Estonia</option>
+	<option value="ET">Ethiopia</option>
+	<option value="FK">Falkland Islands (Malvinas)</option>
+	<option value="FO">Faroe Islands</option>
+	<option value="FJ">Fiji</option>
+	<option value="FI">Finland</option>
+	<option value="FR">France</option>
+	<option value="GF">French Guiana</option>
+	<option value="PF">French Polynesia</option>
+	<option value="TF">French Southern Territories</option>
+	<option value="GA">Gabon</option>
+	<option value="GM">Gambia</option>
+	<option value="GE">Georgia</option>
+	<option value="DE">Germany</option>
+	<option value="GH">Ghana</option>
+	<option value="GI">Gibraltar</option>
+	<option value="GR">Greece</option>
+	<option value="GL">Greenland</option>
+	<option value="GD">Grenada</option>
+	<option value="GP">Guadeloupe</option>
+	<option value="GU">Guam</option>
+	<option value="GT">Guatemala</option>
+	<option value="GG">Guernsey</option>
+	<option value="GN">Guinea</option>
+	<option value="GW">Guinea-Bissau</option>
+	<option value="GY">Guyana</option>
+	<option value="HT">Haiti</option>
+	<option value="HM">Heard Island And Mcdonald Islands</option>
+	<option value="VA">Holy See (Vatican City State)</option>
+	<option value="HN">Honduras</option>
+	<option value="HK">Hong Kong</option>
+	<option value="HU">Hungary</option>
+	<option value="IS">Iceland</option>
+	<option value="IN">India</option>
+	<option value="ID">Indonesia</option>
+	<option value="IR">Iran, Islamic Republic Of</option>
+	<option value="IQ">Iraq</option>
+	<option value="IE">Ireland</option>
+	<option value="IM">Isle Of Man</option>
+	<option value="IL">Israel</option>
+	<option value="IT">Italy</option>
+	<option value="JM">Jamaica</option>
+	<option value="JP">Japan</option>
+	<option value="JE">Jersey</option>
+	<option value="JO">Jordan</option>
+	<option value="KZ">Kazakhstan</option>
+	<option value="KE">Kenya</option>
+	<option value="KI">Kiribati</option>
+	<option value="KP">Korea, Democratic People's Republic Of</option>
+	<option value="KR">Korea, Republic Of</option>
+	<option value="KW">Kuwait</option>
+	<option value="KG">Kyrgyzstan</option>
+	<option value="LA">Lao People's Democratic Republic</option>
+	<option value="LV">Latvia</option>
+	<option value="LB">Lebanon</option>
+	<option value="LS">Lesotho</option>
+	<option value="LR">Liberia</option>
+	<option value="LY">Libya</option>
+	<option value="LI">Liechtenstein</option>
+	<option value="LT">Lithuania</option>
+	<option value="LU">Luxembourg</option>
+	<option value="MO">Macao</option>
+	<option value="MK">Macedonia, The Former Yugoslav Republic Of</option>
+	<option value="MG">Madagascar</option>
+	<option value="MW">Malawi</option>
+	<option value="MY">Malaysia</option>
+	<option value="MV">Maldives</option>
+	<option value="ML">Mali</option>
+	<option value="MT">Malta</option>
+	<option value="MH">Marshall Islands</option>
+	<option value="MQ">Martinique</option>
+	<option value="MR">Mauritania</option>
+	<option value="MU">Mauritius</option>
+	<option value="YT">Mayotte</option>
+	<option value="MX">Mexico</option>
+	<option value="FM">Micronesia, Federated States Of</option>
+	<option value="MD">Moldova, Republic Of</option>
+	<option value="MC">Monaco</option>
+	<option value="MN">Mongolia</option>
+	<option value="ME">Montenegro</option>
+	<option value="MS">Montserrat</option>
+	<option value="MA">Morocco</option>
+	<option value="MZ">Mozambique</option>
+	<option value="MM">Myanmar</option>
+	<option value="NA">Namibia</option>
+	<option value="NR">Nauru</option>
+	<option value="NP">Nepal</option>
+	<option value="NL">Netherlands</option>
+	<option value="NC">New Caledonia</option>
+	<option value="NZ">New Zealand</option>
+	<option value="NI">Nicaragua</option>
+	<option value="NE">Niger</option>
+	<option value="NG">Nigeria</option>
+	<option value="NU">Niue</option>
+	<option value="NF">Norfolk Island</option>
+	<option value="MP">Northern Mariana Islands</option>
+	<option value="NO">Norway</option>
+	<option value="OM">Oman</option>
+	<option value="PK">Pakistan</option>
+	<option value="PW">Palau</option>
+	<option value="PS">Palestine, State Of</option>
+	<option value="PA">Panama</option>
+	<option value="PG">Papua New Guinea</option>
+	<option value="PY">Paraguay</option>
+	<option value="PE">Peru</option>
+	<option value="PH">Philippines</option>
+	<option value="PN">Pitcairn</option>
+	<option value="PL">Poland</option>
+	<option value="PT">Portugal</option>
+	<option value="PR">Puerto Rico</option>
+	<option value="QA">Qatar</option>
+	<option value="RE">Réunion</option>
+	<option value="RO">Romania</option>
+	<option value="RU">Russian Federation</option>
+	<option value="RW">Rwanda</option>
+	<option value="BL">Saint Barthélemy</option>
+	<option value="SH">Saint Helena, Ascension And Tristan Da Cunha</option>
+	<option value="KN">Saint Kitts And Nevis</option>
+	<option value="LC">Saint Lucia</option>
+	<option value="MF">Saint Martin (French Part)</option>
+	<option value="PM">Saint Pierre And Miquelon</option>
+	<option value="VC">Saint Vincent And The Grenadines</option>
+	<option value="WS">Samoa</option>
+	<option value="SM">San Marino</option>
+	<option value="ST">Sao Tome And Principe</option>
+	<option value="SA">Saudi Arabia</option>
+	<option value="SN">Senegal</option>
+	<option value="RS">Serbia</option>
+	<option value="SC">Seychelles</option>
+	<option value="SL">Sierra Leone</option>
+	<option value="SG">Singapore</option>
+	<option value="SX">Sint Maarten (Dutch Part)</option>
+	<option value="SK">Slovakia</option>
+	<option value="SI">Slovenia</option>
+	<option value="SB">Solomon Islands</option>
+	<option value="SO">Somalia</option>
+	<option value="ZA">South Africa</option>
+	<option value="GS">South Georgia And The South Sandwich Islands</option>
+	<option value="SS">South Sudan</option>
+	<option value="ES">Spain</option>
+	<option value="LK">Sri Lanka</option>
+	<option value="SD">Sudan</option>
+	<option value="SR">Suriname</option>
+	<option value="SJ">Svalbard And Jan Mayen</option>
+	<option value="SZ">Swaziland</option>
+	<option value="SE">Sweden</option>
+	<option value="CH">Switzerland</option>
+	<option value="SY">Syrian Arab Republic</option>
+	<option value="TW">Taiwan</option>
+	<option value="TJ">Tajikistan</option>
+	<option value="TZ">Tanzania, United Republic Of</option>
+	<option value="TH">Thailand</option>
+	<option value="TL">Timor-Leste</option>
+	<option value="TG">Togo</option>
+	<option value="TK">Tokelau</option>
+	<option value="TO">Tonga</option>
+	<option value="TT">Trinidad And Tobago</option>
+	<option value="TN">Tunisia</option>
+	<option value="TR">Turkey</option>
+	<option value="TM">Turkmenistan</option>
+	<option value="TC">Turks And Caicos Islands</option>
+	<option value="TV">Tuvalu</option>
+	<option value="UG">Uganda</option>
+	<option value="UA">Ukraine</option>
+	<option value="AE">United Arab Emirates</option>
+	<option value="GB">United Kingdom</option>
+	<option value="US">United States</option>
+	<option value="UM">United States Minor Outlying Islands</option>
+	<option value="UY">Uruguay</option>
+	<option value="UZ">Uzbekistan</option>
+	<option value="VU">Vanuatu</option>
+	<option value="VE">Venezuela, Bolivarian Republic Of</option>
+	<option value="VN">Viet Nam</option>
+	<option value="VG">Virgin Islands, British</option>
+	<option value="VI">Virgin Islands, U.S.</option>
+	<option value="WF">Wallis And Futuna</option>
+	<option value="EH">Western Sahara</option>
+	<option value="YE">Yemen</option>
+	<option value="ZM">Zambia</option>
+	<option value="ZW">Zimbabwe</option>
+</select></fieldset></div>
+		<div id="fitem_id_confirmed" class="fitem advanced fitem_fselect " aria-live="polite"><div class="fitemtitle"><label for="id_confirmed">Confirmed<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div><div class="felement fselect"><select name="confirmed" id="id_confirmed">
+	<option value="">any value</option>
+	<option value="0">No</option>
+	<option value="1">Yes</option>
+</select></div></div>
+		<div id="fitem_id_suspended" class="fitem advanced fitem_fselect " aria-live="polite"><div class="fitemtitle"><label for="id_suspended">Suspended account<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div><div class="felement fselect"><select name="suspended" id="id_suspended">
+	<option value="">any value</option>
+	<option value="0">No</option>
+	<option value="1">Yes</option>
+</select></div></div>
+		<div id="fgroup_id_courserole_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>Course role<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_courserole_rl" >Course role</label><select name="courserole_rl" id="id_courserole_rl">
+	<option value="0">any role</option>
+	<option value="5">Student</option>
+	<option value="4">Non-editing teacher</option>
+	<option value="3">Teacher</option>
+	<option value="1">Manager</option>
+</select><label class="accesshide" for="id_courserole_ct" >course category</label><select name="courserole_ct" id="id_courserole_ct">
+	<option value="0">any category</option>
+	<option value="1">Miscellaneous</option>
+</select><label class="accesshide" for="id_courserole" >course value</label><input name="courserole" type="text" id="id_courserole" /></fieldset></div>
+		<div id="fitem_id_systemrole" class="fitem advanced fitem_fselect " aria-live="polite"><div class="fitemtitle"><label for="id_systemrole">System role<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div><div class="felement fselect"><select name="systemrole" id="id_systemrole">
+	<option value="0" selected="selected">any role</option>
+	<option value="1">Manager</option>
+	<option value="2">Course creator</option>
+</select></div></div>
+		<div id="fgroup_id_cohort_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>Cohort ID<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_cohort_op" >Cohort ID field limiter</label><select name="cohort_op" id="id_cohort_op">
+	<option value="0">contains</option>
+	<option value="1">doesn't contain</option>
+	<option value="2" selected="selected">is equal to</option>
+	<option value="3">starts with</option>
+	<option value="4">ends with</option>
+	<option value="5">is empty</option>
+</select><label class="accesshide" for="id_cohort" >Cohort ID value</label><input name="cohort" type="text" id="id_cohort" /></fieldset></div>
+		<div id="fgroup_id_firstaccess_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>First access<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup">is after<span class="fdate_selector"><label class="accesshide" for="id_firstaccess_sdt_day" >Day</label><select name="firstaccess_sdt[day]" id="id_firstaccess_sdt_day">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6" selected="selected">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+	<option value="24">24</option>
+	<option value="25">25</option>
+	<option value="26">26</option>
+	<option value="27">27</option>
+	<option value="28">28</option>
+	<option value="29">29</option>
+	<option value="30">30</option>
+	<option value="31">31</option>
+</select>&nbsp;<label class="accesshide" for="id_firstaccess_sdt_month" >Month</label><select name="firstaccess_sdt[month]" id="id_firstaccess_sdt_month">
+	<option value="1">January</option>
+	<option value="2">February</option>
+	<option value="3">March</option>
+	<option value="4">April</option>
+	<option value="5" selected="selected">May</option>
+	<option value="6">June</option>
+	<option value="7">July</option>
+	<option value="8">August</option>
+	<option value="9">September</option>
+	<option value="10">October</option>
+	<option value="11">November</option>
+	<option value="12">December</option>
+</select>&nbsp;<label class="accesshide" for="id_firstaccess_sdt_year" >Year</label><select name="firstaccess_sdt[year]" id="id_firstaccess_sdt_year">
+	<option value="1900">1900</option>
+	<option value="1901">1901</option>
+	<option value="1902">1902</option>
+	<option value="1903">1903</option>
+	<option value="1904">1904</option>
+	<option value="1905">1905</option>
+	<option value="1906">1906</option>
+	<option value="1907">1907</option>
+	<option value="1908">1908</option>
+	<option value="1909">1909</option>
+	<option value="1910">1910</option>
+	<option value="1911">1911</option>
+	<option value="1912">1912</option>
+	<option value="1913">1913</option>
+	<option value="1914">1914</option>
+	<option value="1915">1915</option>
+	<option value="1916">1916</option>
+	<option value="1917">1917</option>
+	<option value="1918">1918</option>
+	<option value="1919">1919</option>
+	<option value="1920">1920</option>
+	<option value="1921">1921</option>
+	<option value="1922">1922</option>
+	<option value="1923">1923</option>
+	<option value="1924">1924</option>
+	<option value="1925">1925</option>
+	<option value="1926">1926</option>
+	<option value="1927">1927</option>
+	<option value="1928">1928</option>
+	<option value="1929">1929</option>
+	<option value="1930">1930</option>
+	<option value="1931">1931</option>
+	<option value="1932">1932</option>
+	<option value="1933">1933</option>
+	<option value="1934">1934</option>
+	<option value="1935">1935</option>
+	<option value="1936">1936</option>
+	<option value="1937">1937</option>
+	<option value="1938">1938</option>
+	<option value="1939">1939</option>
+	<option value="1940">1940</option>
+	<option value="1941">1941</option>
+	<option value="1942">1942</option>
+	<option value="1943">1943</option>
+	<option value="1944">1944</option>
+	<option value="1945">1945</option>
+	<option value="1946">1946</option>
+	<option value="1947">1947</option>
+	<option value="1948">1948</option>
+	<option value="1949">1949</option>
+	<option value="1950">1950</option>
+	<option value="1951">1951</option>
+	<option value="1952">1952</option>
+	<option value="1953">1953</option>
+	<option value="1954">1954</option>
+	<option value="1955">1955</option>
+	<option value="1956">1956</option>
+	<option value="1957">1957</option>
+	<option value="1958">1958</option>
+	<option value="1959">1959</option>
+	<option value="1960">1960</option>
+	<option value="1961">1961</option>
+	<option value="1962">1962</option>
+	<option value="1963">1963</option>
+	<option value="1964">1964</option>
+	<option value="1965">1965</option>
+	<option value="1966">1966</option>
+	<option value="1967">1967</option>
+	<option value="1968">1968</option>
+	<option value="1969">1969</option>
+	<option value="1970">1970</option>
+	<option value="1971">1971</option>
+	<option value="1972">1972</option>
+	<option value="1973">1973</option>
+	<option value="1974">1974</option>
+	<option value="1975">1975</option>
+	<option value="1976">1976</option>
+	<option value="1977">1977</option>
+	<option value="1978">1978</option>
+	<option value="1979">1979</option>
+	<option value="1980">1980</option>
+	<option value="1981">1981</option>
+	<option value="1982">1982</option>
+	<option value="1983">1983</option>
+	<option value="1984">1984</option>
+	<option value="1985">1985</option>
+	<option value="1986">1986</option>
+	<option value="1987">1987</option>
+	<option value="1988">1988</option>
+	<option value="1989">1989</option>
+	<option value="1990">1990</option>
+	<option value="1991">1991</option>
+	<option value="1992">1992</option>
+	<option value="1993">1993</option>
+	<option value="1994">1994</option>
+	<option value="1995">1995</option>
+	<option value="1996">1996</option>
+	<option value="1997">1997</option>
+	<option value="1998">1998</option>
+	<option value="1999">1999</option>
+	<option value="2000">2000</option>
+	<option value="2001">2001</option>
+	<option value="2002">2002</option>
+	<option value="2003">2003</option>
+	<option value="2004">2004</option>
+	<option value="2005">2005</option>
+	<option value="2006">2006</option>
+	<option value="2007">2007</option>
+	<option value="2008">2008</option>
+	<option value="2009">2009</option>
+	<option value="2010">2010</option>
+	<option value="2011">2011</option>
+	<option value="2012">2012</option>
+	<option value="2013">2013</option>
+	<option value="2014">2014</option>
+	<option value="2015" selected="selected">2015</option>
+	<option value="2016">2016</option>
+	<option value="2017">2017</option>
+	<option value="2018">2018</option>
+	<option value="2019">2019</option>
+	<option value="2020">2020</option>
+	<option value="2021">2021</option>
+	<option value="2022">2022</option>
+	<option value="2023">2023</option>
+	<option value="2024">2024</option>
+	<option value="2025">2025</option>
+	<option value="2026">2026</option>
+	<option value="2027">2027</option>
+	<option value="2028">2028</option>
+	<option value="2029">2029</option>
+	<option value="2030">2030</option>
+	<option value="2031">2031</option>
+	<option value="2032">2032</option>
+	<option value="2033">2033</option>
+	<option value="2034">2034</option>
+	<option value="2035">2035</option>
+	<option value="2036">2036</option>
+	<option value="2037">2037</option>
+	<option value="2038">2038</option>
+	<option value="2039">2039</option>
+	<option value="2040">2040</option>
+	<option value="2041">2041</option>
+	<option value="2042">2042</option>
+	<option value="2043">2043</option>
+	<option value="2044">2044</option>
+	<option value="2045">2045</option>
+	<option value="2046">2046</option>
+	<option value="2047">2047</option>
+	<option value="2048">2048</option>
+	<option value="2049">2049</option>
+	<option value="2050">2050</option>
+</select>&nbsp;<a class="visibleifjs" name="firstaccess_sdt[calendar]" href="#"><img alt="Calendar" class="smallicon" title="Calendar" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/calendar" /></a>&nbsp;<span><input name="firstaccess_sdt[enabled]" type="checkbox" value="1" id="id_firstaccess_sdt_enabled" /><label for="id_firstaccess_sdt_enabled">Enable</label></span></span><br/>is before<span class="fdate_selector"><label class="accesshide" for="id_firstaccess_edt_day" >Day</label><select name="firstaccess_edt[day]" id="id_firstaccess_edt_day">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6" selected="selected">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+	<option value="24">24</option>
+	<option value="25">25</option>
+	<option value="26">26</option>
+	<option value="27">27</option>
+	<option value="28">28</option>
+	<option value="29">29</option>
+	<option value="30">30</option>
+	<option value="31">31</option>
+</select>&nbsp;<label class="accesshide" for="id_firstaccess_edt_month" >Month</label><select name="firstaccess_edt[month]" id="id_firstaccess_edt_month">
+	<option value="1">January</option>
+	<option value="2">February</option>
+	<option value="3">March</option>
+	<option value="4">April</option>
+	<option value="5" selected="selected">May</option>
+	<option value="6">June</option>
+	<option value="7">July</option>
+	<option value="8">August</option>
+	<option value="9">September</option>
+	<option value="10">October</option>
+	<option value="11">November</option>
+	<option value="12">December</option>
+</select>&nbsp;<label class="accesshide" for="id_firstaccess_edt_year" >Year</label><select name="firstaccess_edt[year]" id="id_firstaccess_edt_year">
+	<option value="1900">1900</option>
+	<option value="1901">1901</option>
+	<option value="1902">1902</option>
+	<option value="1903">1903</option>
+	<option value="1904">1904</option>
+	<option value="1905">1905</option>
+	<option value="1906">1906</option>
+	<option value="1907">1907</option>
+	<option value="1908">1908</option>
+	<option value="1909">1909</option>
+	<option value="1910">1910</option>
+	<option value="1911">1911</option>
+	<option value="1912">1912</option>
+	<option value="1913">1913</option>
+	<option value="1914">1914</option>
+	<option value="1915">1915</option>
+	<option value="1916">1916</option>
+	<option value="1917">1917</option>
+	<option value="1918">1918</option>
+	<option value="1919">1919</option>
+	<option value="1920">1920</option>
+	<option value="1921">1921</option>
+	<option value="1922">1922</option>
+	<option value="1923">1923</option>
+	<option value="1924">1924</option>
+	<option value="1925">1925</option>
+	<option value="1926">1926</option>
+	<option value="1927">1927</option>
+	<option value="1928">1928</option>
+	<option value="1929">1929</option>
+	<option value="1930">1930</option>
+	<option value="1931">1931</option>
+	<option value="1932">1932</option>
+	<option value="1933">1933</option>
+	<option value="1934">1934</option>
+	<option value="1935">1935</option>
+	<option value="1936">1936</option>
+	<option value="1937">1937</option>
+	<option value="1938">1938</option>
+	<option value="1939">1939</option>
+	<option value="1940">1940</option>
+	<option value="1941">1941</option>
+	<option value="1942">1942</option>
+	<option value="1943">1943</option>
+	<option value="1944">1944</option>
+	<option value="1945">1945</option>
+	<option value="1946">1946</option>
+	<option value="1947">1947</option>
+	<option value="1948">1948</option>
+	<option value="1949">1949</option>
+	<option value="1950">1950</option>
+	<option value="1951">1951</option>
+	<option value="1952">1952</option>
+	<option value="1953">1953</option>
+	<option value="1954">1954</option>
+	<option value="1955">1955</option>
+	<option value="1956">1956</option>
+	<option value="1957">1957</option>
+	<option value="1958">1958</option>
+	<option value="1959">1959</option>
+	<option value="1960">1960</option>
+	<option value="1961">1961</option>
+	<option value="1962">1962</option>
+	<option value="1963">1963</option>
+	<option value="1964">1964</option>
+	<option value="1965">1965</option>
+	<option value="1966">1966</option>
+	<option value="1967">1967</option>
+	<option value="1968">1968</option>
+	<option value="1969">1969</option>
+	<option value="1970">1970</option>
+	<option value="1971">1971</option>
+	<option value="1972">1972</option>
+	<option value="1973">1973</option>
+	<option value="1974">1974</option>
+	<option value="1975">1975</option>
+	<option value="1976">1976</option>
+	<option value="1977">1977</option>
+	<option value="1978">1978</option>
+	<option value="1979">1979</option>
+	<option value="1980">1980</option>
+	<option value="1981">1981</option>
+	<option value="1982">1982</option>
+	<option value="1983">1983</option>
+	<option value="1984">1984</option>
+	<option value="1985">1985</option>
+	<option value="1986">1986</option>
+	<option value="1987">1987</option>
+	<option value="1988">1988</option>
+	<option value="1989">1989</option>
+	<option value="1990">1990</option>
+	<option value="1991">1991</option>
+	<option value="1992">1992</option>
+	<option value="1993">1993</option>
+	<option value="1994">1994</option>
+	<option value="1995">1995</option>
+	<option value="1996">1996</option>
+	<option value="1997">1997</option>
+	<option value="1998">1998</option>
+	<option value="1999">1999</option>
+	<option value="2000">2000</option>
+	<option value="2001">2001</option>
+	<option value="2002">2002</option>
+	<option value="2003">2003</option>
+	<option value="2004">2004</option>
+	<option value="2005">2005</option>
+	<option value="2006">2006</option>
+	<option value="2007">2007</option>
+	<option value="2008">2008</option>
+	<option value="2009">2009</option>
+	<option value="2010">2010</option>
+	<option value="2011">2011</option>
+	<option value="2012">2012</option>
+	<option value="2013">2013</option>
+	<option value="2014">2014</option>
+	<option value="2015" selected="selected">2015</option>
+	<option value="2016">2016</option>
+	<option value="2017">2017</option>
+	<option value="2018">2018</option>
+	<option value="2019">2019</option>
+	<option value="2020">2020</option>
+	<option value="2021">2021</option>
+	<option value="2022">2022</option>
+	<option value="2023">2023</option>
+	<option value="2024">2024</option>
+	<option value="2025">2025</option>
+	<option value="2026">2026</option>
+	<option value="2027">2027</option>
+	<option value="2028">2028</option>
+	<option value="2029">2029</option>
+	<option value="2030">2030</option>
+	<option value="2031">2031</option>
+	<option value="2032">2032</option>
+	<option value="2033">2033</option>
+	<option value="2034">2034</option>
+	<option value="2035">2035</option>
+	<option value="2036">2036</option>
+	<option value="2037">2037</option>
+	<option value="2038">2038</option>
+	<option value="2039">2039</option>
+	<option value="2040">2040</option>
+	<option value="2041">2041</option>
+	<option value="2042">2042</option>
+	<option value="2043">2043</option>
+	<option value="2044">2044</option>
+	<option value="2045">2045</option>
+	<option value="2046">2046</option>
+	<option value="2047">2047</option>
+	<option value="2048">2048</option>
+	<option value="2049">2049</option>
+	<option value="2050">2050</option>
+</select>&nbsp;<a class="visibleifjs" name="firstaccess_edt[calendar]" href="#"><img alt="Calendar" class="smallicon" title="Calendar" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/calendar" /></a>&nbsp;<span><input name="firstaccess_edt[enabled]" type="checkbox" value="1" id="id_firstaccess_edt_enabled" /><label for="id_firstaccess_edt_enabled">Enable</label></span></span></fieldset></div>
+		<div id="fgroup_id_lastaccess_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>Last access<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup">is after<span class="fdate_selector"><label class="accesshide" for="id_lastaccess_sdt_day" >Day</label><select name="lastaccess_sdt[day]" id="id_lastaccess_sdt_day">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6" selected="selected">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+	<option value="24">24</option>
+	<option value="25">25</option>
+	<option value="26">26</option>
+	<option value="27">27</option>
+	<option value="28">28</option>
+	<option value="29">29</option>
+	<option value="30">30</option>
+	<option value="31">31</option>
+</select>&nbsp;<label class="accesshide" for="id_lastaccess_sdt_month" >Month</label><select name="lastaccess_sdt[month]" id="id_lastaccess_sdt_month">
+	<option value="1">January</option>
+	<option value="2">February</option>
+	<option value="3">March</option>
+	<option value="4">April</option>
+	<option value="5" selected="selected">May</option>
+	<option value="6">June</option>
+	<option value="7">July</option>
+	<option value="8">August</option>
+	<option value="9">September</option>
+	<option value="10">October</option>
+	<option value="11">November</option>
+	<option value="12">December</option>
+</select>&nbsp;<label class="accesshide" for="id_lastaccess_sdt_year" >Year</label><select name="lastaccess_sdt[year]" id="id_lastaccess_sdt_year">
+	<option value="1900">1900</option>
+	<option value="1901">1901</option>
+	<option value="1902">1902</option>
+	<option value="1903">1903</option>
+	<option value="1904">1904</option>
+	<option value="1905">1905</option>
+	<option value="1906">1906</option>
+	<option value="1907">1907</option>
+	<option value="1908">1908</option>
+	<option value="1909">1909</option>
+	<option value="1910">1910</option>
+	<option value="1911">1911</option>
+	<option value="1912">1912</option>
+	<option value="1913">1913</option>
+	<option value="1914">1914</option>
+	<option value="1915">1915</option>
+	<option value="1916">1916</option>
+	<option value="1917">1917</option>
+	<option value="1918">1918</option>
+	<option value="1919">1919</option>
+	<option value="1920">1920</option>
+	<option value="1921">1921</option>
+	<option value="1922">1922</option>
+	<option value="1923">1923</option>
+	<option value="1924">1924</option>
+	<option value="1925">1925</option>
+	<option value="1926">1926</option>
+	<option value="1927">1927</option>
+	<option value="1928">1928</option>
+	<option value="1929">1929</option>
+	<option value="1930">1930</option>
+	<option value="1931">1931</option>
+	<option value="1932">1932</option>
+	<option value="1933">1933</option>
+	<option value="1934">1934</option>
+	<option value="1935">1935</option>
+	<option value="1936">1936</option>
+	<option value="1937">1937</option>
+	<option value="1938">1938</option>
+	<option value="1939">1939</option>
+	<option value="1940">1940</option>
+	<option value="1941">1941</option>
+	<option value="1942">1942</option>
+	<option value="1943">1943</option>
+	<option value="1944">1944</option>
+	<option value="1945">1945</option>
+	<option value="1946">1946</option>
+	<option value="1947">1947</option>
+	<option value="1948">1948</option>
+	<option value="1949">1949</option>
+	<option value="1950">1950</option>
+	<option value="1951">1951</option>
+	<option value="1952">1952</option>
+	<option value="1953">1953</option>
+	<option value="1954">1954</option>
+	<option value="1955">1955</option>
+	<option value="1956">1956</option>
+	<option value="1957">1957</option>
+	<option value="1958">1958</option>
+	<option value="1959">1959</option>
+	<option value="1960">1960</option>
+	<option value="1961">1961</option>
+	<option value="1962">1962</option>
+	<option value="1963">1963</option>
+	<option value="1964">1964</option>
+	<option value="1965">1965</option>
+	<option value="1966">1966</option>
+	<option value="1967">1967</option>
+	<option value="1968">1968</option>
+	<option value="1969">1969</option>
+	<option value="1970">1970</option>
+	<option value="1971">1971</option>
+	<option value="1972">1972</option>
+	<option value="1973">1973</option>
+	<option value="1974">1974</option>
+	<option value="1975">1975</option>
+	<option value="1976">1976</option>
+	<option value="1977">1977</option>
+	<option value="1978">1978</option>
+	<option value="1979">1979</option>
+	<option value="1980">1980</option>
+	<option value="1981">1981</option>
+	<option value="1982">1982</option>
+	<option value="1983">1983</option>
+	<option value="1984">1984</option>
+	<option value="1985">1985</option>
+	<option value="1986">1986</option>
+	<option value="1987">1987</option>
+	<option value="1988">1988</option>
+	<option value="1989">1989</option>
+	<option value="1990">1990</option>
+	<option value="1991">1991</option>
+	<option value="1992">1992</option>
+	<option value="1993">1993</option>
+	<option value="1994">1994</option>
+	<option value="1995">1995</option>
+	<option value="1996">1996</option>
+	<option value="1997">1997</option>
+	<option value="1998">1998</option>
+	<option value="1999">1999</option>
+	<option value="2000">2000</option>
+	<option value="2001">2001</option>
+	<option value="2002">2002</option>
+	<option value="2003">2003</option>
+	<option value="2004">2004</option>
+	<option value="2005">2005</option>
+	<option value="2006">2006</option>
+	<option value="2007">2007</option>
+	<option value="2008">2008</option>
+	<option value="2009">2009</option>
+	<option value="2010">2010</option>
+	<option value="2011">2011</option>
+	<option value="2012">2012</option>
+	<option value="2013">2013</option>
+	<option value="2014">2014</option>
+	<option value="2015" selected="selected">2015</option>
+	<option value="2016">2016</option>
+	<option value="2017">2017</option>
+	<option value="2018">2018</option>
+	<option value="2019">2019</option>
+	<option value="2020">2020</option>
+	<option value="2021">2021</option>
+	<option value="2022">2022</option>
+	<option value="2023">2023</option>
+	<option value="2024">2024</option>
+	<option value="2025">2025</option>
+	<option value="2026">2026</option>
+	<option value="2027">2027</option>
+	<option value="2028">2028</option>
+	<option value="2029">2029</option>
+	<option value="2030">2030</option>
+	<option value="2031">2031</option>
+	<option value="2032">2032</option>
+	<option value="2033">2033</option>
+	<option value="2034">2034</option>
+	<option value="2035">2035</option>
+	<option value="2036">2036</option>
+	<option value="2037">2037</option>
+	<option value="2038">2038</option>
+	<option value="2039">2039</option>
+	<option value="2040">2040</option>
+	<option value="2041">2041</option>
+	<option value="2042">2042</option>
+	<option value="2043">2043</option>
+	<option value="2044">2044</option>
+	<option value="2045">2045</option>
+	<option value="2046">2046</option>
+	<option value="2047">2047</option>
+	<option value="2048">2048</option>
+	<option value="2049">2049</option>
+	<option value="2050">2050</option>
+</select>&nbsp;<a class="visibleifjs" name="lastaccess_sdt[calendar]" href="#"><img alt="Calendar" class="smallicon" title="Calendar" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/calendar" /></a>&nbsp;<span><input name="lastaccess_sdt[enabled]" type="checkbox" value="1" id="id_lastaccess_sdt_enabled" /><label for="id_lastaccess_sdt_enabled">Enable</label></span></span><br/>is before<span class="fdate_selector"><label class="accesshide" for="id_lastaccess_edt_day" >Day</label><select name="lastaccess_edt[day]" id="id_lastaccess_edt_day">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6" selected="selected">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+	<option value="24">24</option>
+	<option value="25">25</option>
+	<option value="26">26</option>
+	<option value="27">27</option>
+	<option value="28">28</option>
+	<option value="29">29</option>
+	<option value="30">30</option>
+	<option value="31">31</option>
+</select>&nbsp;<label class="accesshide" for="id_lastaccess_edt_month" >Month</label><select name="lastaccess_edt[month]" id="id_lastaccess_edt_month">
+	<option value="1">January</option>
+	<option value="2">February</option>
+	<option value="3">March</option>
+	<option value="4">April</option>
+	<option value="5" selected="selected">May</option>
+	<option value="6">June</option>
+	<option value="7">July</option>
+	<option value="8">August</option>
+	<option value="9">September</option>
+	<option value="10">October</option>
+	<option value="11">November</option>
+	<option value="12">December</option>
+</select>&nbsp;<label class="accesshide" for="id_lastaccess_edt_year" >Year</label><select name="lastaccess_edt[year]" id="id_lastaccess_edt_year">
+	<option value="1900">1900</option>
+	<option value="1901">1901</option>
+	<option value="1902">1902</option>
+	<option value="1903">1903</option>
+	<option value="1904">1904</option>
+	<option value="1905">1905</option>
+	<option value="1906">1906</option>
+	<option value="1907">1907</option>
+	<option value="1908">1908</option>
+	<option value="1909">1909</option>
+	<option value="1910">1910</option>
+	<option value="1911">1911</option>
+	<option value="1912">1912</option>
+	<option value="1913">1913</option>
+	<option value="1914">1914</option>
+	<option value="1915">1915</option>
+	<option value="1916">1916</option>
+	<option value="1917">1917</option>
+	<option value="1918">1918</option>
+	<option value="1919">1919</option>
+	<option value="1920">1920</option>
+	<option value="1921">1921</option>
+	<option value="1922">1922</option>
+	<option value="1923">1923</option>
+	<option value="1924">1924</option>
+	<option value="1925">1925</option>
+	<option value="1926">1926</option>
+	<option value="1927">1927</option>
+	<option value="1928">1928</option>
+	<option value="1929">1929</option>
+	<option value="1930">1930</option>
+	<option value="1931">1931</option>
+	<option value="1932">1932</option>
+	<option value="1933">1933</option>
+	<option value="1934">1934</option>
+	<option value="1935">1935</option>
+	<option value="1936">1936</option>
+	<option value="1937">1937</option>
+	<option value="1938">1938</option>
+	<option value="1939">1939</option>
+	<option value="1940">1940</option>
+	<option value="1941">1941</option>
+	<option value="1942">1942</option>
+	<option value="1943">1943</option>
+	<option value="1944">1944</option>
+	<option value="1945">1945</option>
+	<option value="1946">1946</option>
+	<option value="1947">1947</option>
+	<option value="1948">1948</option>
+	<option value="1949">1949</option>
+	<option value="1950">1950</option>
+	<option value="1951">1951</option>
+	<option value="1952">1952</option>
+	<option value="1953">1953</option>
+	<option value="1954">1954</option>
+	<option value="1955">1955</option>
+	<option value="1956">1956</option>
+	<option value="1957">1957</option>
+	<option value="1958">1958</option>
+	<option value="1959">1959</option>
+	<option value="1960">1960</option>
+	<option value="1961">1961</option>
+	<option value="1962">1962</option>
+	<option value="1963">1963</option>
+	<option value="1964">1964</option>
+	<option value="1965">1965</option>
+	<option value="1966">1966</option>
+	<option value="1967">1967</option>
+	<option value="1968">1968</option>
+	<option value="1969">1969</option>
+	<option value="1970">1970</option>
+	<option value="1971">1971</option>
+	<option value="1972">1972</option>
+	<option value="1973">1973</option>
+	<option value="1974">1974</option>
+	<option value="1975">1975</option>
+	<option value="1976">1976</option>
+	<option value="1977">1977</option>
+	<option value="1978">1978</option>
+	<option value="1979">1979</option>
+	<option value="1980">1980</option>
+	<option value="1981">1981</option>
+	<option value="1982">1982</option>
+	<option value="1983">1983</option>
+	<option value="1984">1984</option>
+	<option value="1985">1985</option>
+	<option value="1986">1986</option>
+	<option value="1987">1987</option>
+	<option value="1988">1988</option>
+	<option value="1989">1989</option>
+	<option value="1990">1990</option>
+	<option value="1991">1991</option>
+	<option value="1992">1992</option>
+	<option value="1993">1993</option>
+	<option value="1994">1994</option>
+	<option value="1995">1995</option>
+	<option value="1996">1996</option>
+	<option value="1997">1997</option>
+	<option value="1998">1998</option>
+	<option value="1999">1999</option>
+	<option value="2000">2000</option>
+	<option value="2001">2001</option>
+	<option value="2002">2002</option>
+	<option value="2003">2003</option>
+	<option value="2004">2004</option>
+	<option value="2005">2005</option>
+	<option value="2006">2006</option>
+	<option value="2007">2007</option>
+	<option value="2008">2008</option>
+	<option value="2009">2009</option>
+	<option value="2010">2010</option>
+	<option value="2011">2011</option>
+	<option value="2012">2012</option>
+	<option value="2013">2013</option>
+	<option value="2014">2014</option>
+	<option value="2015" selected="selected">2015</option>
+	<option value="2016">2016</option>
+	<option value="2017">2017</option>
+	<option value="2018">2018</option>
+	<option value="2019">2019</option>
+	<option value="2020">2020</option>
+	<option value="2021">2021</option>
+	<option value="2022">2022</option>
+	<option value="2023">2023</option>
+	<option value="2024">2024</option>
+	<option value="2025">2025</option>
+	<option value="2026">2026</option>
+	<option value="2027">2027</option>
+	<option value="2028">2028</option>
+	<option value="2029">2029</option>
+	<option value="2030">2030</option>
+	<option value="2031">2031</option>
+	<option value="2032">2032</option>
+	<option value="2033">2033</option>
+	<option value="2034">2034</option>
+	<option value="2035">2035</option>
+	<option value="2036">2036</option>
+	<option value="2037">2037</option>
+	<option value="2038">2038</option>
+	<option value="2039">2039</option>
+	<option value="2040">2040</option>
+	<option value="2041">2041</option>
+	<option value="2042">2042</option>
+	<option value="2043">2043</option>
+	<option value="2044">2044</option>
+	<option value="2045">2045</option>
+	<option value="2046">2046</option>
+	<option value="2047">2047</option>
+	<option value="2048">2048</option>
+	<option value="2049">2049</option>
+	<option value="2050">2050</option>
+</select>&nbsp;<a class="visibleifjs" name="lastaccess_edt[calendar]" href="#"><img alt="Calendar" class="smallicon" title="Calendar" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/calendar" /></a>&nbsp;<span><input name="lastaccess_edt[enabled]" type="checkbox" value="1" id="id_lastaccess_edt_enabled" /><label for="id_lastaccess_edt_enabled">Enable</label></span></span></fieldset></div>
+		<div id="fitem_id_neveraccessed" class="fitem advanced fitem_fcheckbox " aria-live="polite"><div class="fitemtitle"><label for="id_neveraccessed">Never accessed<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div><div class="felement fcheckbox"><span><input name="neveraccessed" type="checkbox" value="1" id="id_neveraccessed" /></span></div></div>
+		<div id="fgroup_id_timemodified_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>Last modified<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup">is after<span class="fdate_selector"><label class="accesshide" for="id_timemodified_sdt_day" >Day</label><select name="timemodified_sdt[day]" id="id_timemodified_sdt_day">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6" selected="selected">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+	<option value="24">24</option>
+	<option value="25">25</option>
+	<option value="26">26</option>
+	<option value="27">27</option>
+	<option value="28">28</option>
+	<option value="29">29</option>
+	<option value="30">30</option>
+	<option value="31">31</option>
+</select>&nbsp;<label class="accesshide" for="id_timemodified_sdt_month" >Month</label><select name="timemodified_sdt[month]" id="id_timemodified_sdt_month">
+	<option value="1">January</option>
+	<option value="2">February</option>
+	<option value="3">March</option>
+	<option value="4">April</option>
+	<option value="5" selected="selected">May</option>
+	<option value="6">June</option>
+	<option value="7">July</option>
+	<option value="8">August</option>
+	<option value="9">September</option>
+	<option value="10">October</option>
+	<option value="11">November</option>
+	<option value="12">December</option>
+</select>&nbsp;<label class="accesshide" for="id_timemodified_sdt_year" >Year</label><select name="timemodified_sdt[year]" id="id_timemodified_sdt_year">
+	<option value="1900">1900</option>
+	<option value="1901">1901</option>
+	<option value="1902">1902</option>
+	<option value="1903">1903</option>
+	<option value="1904">1904</option>
+	<option value="1905">1905</option>
+	<option value="1906">1906</option>
+	<option value="1907">1907</option>
+	<option value="1908">1908</option>
+	<option value="1909">1909</option>
+	<option value="1910">1910</option>
+	<option value="1911">1911</option>
+	<option value="1912">1912</option>
+	<option value="1913">1913</option>
+	<option value="1914">1914</option>
+	<option value="1915">1915</option>
+	<option value="1916">1916</option>
+	<option value="1917">1917</option>
+	<option value="1918">1918</option>
+	<option value="1919">1919</option>
+	<option value="1920">1920</option>
+	<option value="1921">1921</option>
+	<option value="1922">1922</option>
+	<option value="1923">1923</option>
+	<option value="1924">1924</option>
+	<option value="1925">1925</option>
+	<option value="1926">1926</option>
+	<option value="1927">1927</option>
+	<option value="1928">1928</option>
+	<option value="1929">1929</option>
+	<option value="1930">1930</option>
+	<option value="1931">1931</option>
+	<option value="1932">1932</option>
+	<option value="1933">1933</option>
+	<option value="1934">1934</option>
+	<option value="1935">1935</option>
+	<option value="1936">1936</option>
+	<option value="1937">1937</option>
+	<option value="1938">1938</option>
+	<option value="1939">1939</option>
+	<option value="1940">1940</option>
+	<option value="1941">1941</option>
+	<option value="1942">1942</option>
+	<option value="1943">1943</option>
+	<option value="1944">1944</option>
+	<option value="1945">1945</option>
+	<option value="1946">1946</option>
+	<option value="1947">1947</option>
+	<option value="1948">1948</option>
+	<option value="1949">1949</option>
+	<option value="1950">1950</option>
+	<option value="1951">1951</option>
+	<option value="1952">1952</option>
+	<option value="1953">1953</option>
+	<option value="1954">1954</option>
+	<option value="1955">1955</option>
+	<option value="1956">1956</option>
+	<option value="1957">1957</option>
+	<option value="1958">1958</option>
+	<option value="1959">1959</option>
+	<option value="1960">1960</option>
+	<option value="1961">1961</option>
+	<option value="1962">1962</option>
+	<option value="1963">1963</option>
+	<option value="1964">1964</option>
+	<option value="1965">1965</option>
+	<option value="1966">1966</option>
+	<option value="1967">1967</option>
+	<option value="1968">1968</option>
+	<option value="1969">1969</option>
+	<option value="1970">1970</option>
+	<option value="1971">1971</option>
+	<option value="1972">1972</option>
+	<option value="1973">1973</option>
+	<option value="1974">1974</option>
+	<option value="1975">1975</option>
+	<option value="1976">1976</option>
+	<option value="1977">1977</option>
+	<option value="1978">1978</option>
+	<option value="1979">1979</option>
+	<option value="1980">1980</option>
+	<option value="1981">1981</option>
+	<option value="1982">1982</option>
+	<option value="1983">1983</option>
+	<option value="1984">1984</option>
+	<option value="1985">1985</option>
+	<option value="1986">1986</option>
+	<option value="1987">1987</option>
+	<option value="1988">1988</option>
+	<option value="1989">1989</option>
+	<option value="1990">1990</option>
+	<option value="1991">1991</option>
+	<option value="1992">1992</option>
+	<option value="1993">1993</option>
+	<option value="1994">1994</option>
+	<option value="1995">1995</option>
+	<option value="1996">1996</option>
+	<option value="1997">1997</option>
+	<option value="1998">1998</option>
+	<option value="1999">1999</option>
+	<option value="2000">2000</option>
+	<option value="2001">2001</option>
+	<option value="2002">2002</option>
+	<option value="2003">2003</option>
+	<option value="2004">2004</option>
+	<option value="2005">2005</option>
+	<option value="2006">2006</option>
+	<option value="2007">2007</option>
+	<option value="2008">2008</option>
+	<option value="2009">2009</option>
+	<option value="2010">2010</option>
+	<option value="2011">2011</option>
+	<option value="2012">2012</option>
+	<option value="2013">2013</option>
+	<option value="2014">2014</option>
+	<option value="2015" selected="selected">2015</option>
+	<option value="2016">2016</option>
+	<option value="2017">2017</option>
+	<option value="2018">2018</option>
+	<option value="2019">2019</option>
+	<option value="2020">2020</option>
+	<option value="2021">2021</option>
+	<option value="2022">2022</option>
+	<option value="2023">2023</option>
+	<option value="2024">2024</option>
+	<option value="2025">2025</option>
+	<option value="2026">2026</option>
+	<option value="2027">2027</option>
+	<option value="2028">2028</option>
+	<option value="2029">2029</option>
+	<option value="2030">2030</option>
+	<option value="2031">2031</option>
+	<option value="2032">2032</option>
+	<option value="2033">2033</option>
+	<option value="2034">2034</option>
+	<option value="2035">2035</option>
+	<option value="2036">2036</option>
+	<option value="2037">2037</option>
+	<option value="2038">2038</option>
+	<option value="2039">2039</option>
+	<option value="2040">2040</option>
+	<option value="2041">2041</option>
+	<option value="2042">2042</option>
+	<option value="2043">2043</option>
+	<option value="2044">2044</option>
+	<option value="2045">2045</option>
+	<option value="2046">2046</option>
+	<option value="2047">2047</option>
+	<option value="2048">2048</option>
+	<option value="2049">2049</option>
+	<option value="2050">2050</option>
+</select>&nbsp;<a class="visibleifjs" name="timemodified_sdt[calendar]" href="#"><img alt="Calendar" class="smallicon" title="Calendar" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/calendar" /></a>&nbsp;<span><input name="timemodified_sdt[enabled]" type="checkbox" value="1" id="id_timemodified_sdt_enabled" /><label for="id_timemodified_sdt_enabled">Enable</label></span></span><br/>is before<span class="fdate_selector"><label class="accesshide" for="id_timemodified_edt_day" >Day</label><select name="timemodified_edt[day]" id="id_timemodified_edt_day">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6" selected="selected">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+	<option value="24">24</option>
+	<option value="25">25</option>
+	<option value="26">26</option>
+	<option value="27">27</option>
+	<option value="28">28</option>
+	<option value="29">29</option>
+	<option value="30">30</option>
+	<option value="31">31</option>
+</select>&nbsp;<label class="accesshide" for="id_timemodified_edt_month" >Month</label><select name="timemodified_edt[month]" id="id_timemodified_edt_month">
+	<option value="1">January</option>
+	<option value="2">February</option>
+	<option value="3">March</option>
+	<option value="4">April</option>
+	<option value="5" selected="selected">May</option>
+	<option value="6">June</option>
+	<option value="7">July</option>
+	<option value="8">August</option>
+	<option value="9">September</option>
+	<option value="10">October</option>
+	<option value="11">November</option>
+	<option value="12">December</option>
+</select>&nbsp;<label class="accesshide" for="id_timemodified_edt_year" >Year</label><select name="timemodified_edt[year]" id="id_timemodified_edt_year">
+	<option value="1900">1900</option>
+	<option value="1901">1901</option>
+	<option value="1902">1902</option>
+	<option value="1903">1903</option>
+	<option value="1904">1904</option>
+	<option value="1905">1905</option>
+	<option value="1906">1906</option>
+	<option value="1907">1907</option>
+	<option value="1908">1908</option>
+	<option value="1909">1909</option>
+	<option value="1910">1910</option>
+	<option value="1911">1911</option>
+	<option value="1912">1912</option>
+	<option value="1913">1913</option>
+	<option value="1914">1914</option>
+	<option value="1915">1915</option>
+	<option value="1916">1916</option>
+	<option value="1917">1917</option>
+	<option value="1918">1918</option>
+	<option value="1919">1919</option>
+	<option value="1920">1920</option>
+	<option value="1921">1921</option>
+	<option value="1922">1922</option>
+	<option value="1923">1923</option>
+	<option value="1924">1924</option>
+	<option value="1925">1925</option>
+	<option value="1926">1926</option>
+	<option value="1927">1927</option>
+	<option value="1928">1928</option>
+	<option value="1929">1929</option>
+	<option value="1930">1930</option>
+	<option value="1931">1931</option>
+	<option value="1932">1932</option>
+	<option value="1933">1933</option>
+	<option value="1934">1934</option>
+	<option value="1935">1935</option>
+	<option value="1936">1936</option>
+	<option value="1937">1937</option>
+	<option value="1938">1938</option>
+	<option value="1939">1939</option>
+	<option value="1940">1940</option>
+	<option value="1941">1941</option>
+	<option value="1942">1942</option>
+	<option value="1943">1943</option>
+	<option value="1944">1944</option>
+	<option value="1945">1945</option>
+	<option value="1946">1946</option>
+	<option value="1947">1947</option>
+	<option value="1948">1948</option>
+	<option value="1949">1949</option>
+	<option value="1950">1950</option>
+	<option value="1951">1951</option>
+	<option value="1952">1952</option>
+	<option value="1953">1953</option>
+	<option value="1954">1954</option>
+	<option value="1955">1955</option>
+	<option value="1956">1956</option>
+	<option value="1957">1957</option>
+	<option value="1958">1958</option>
+	<option value="1959">1959</option>
+	<option value="1960">1960</option>
+	<option value="1961">1961</option>
+	<option value="1962">1962</option>
+	<option value="1963">1963</option>
+	<option value="1964">1964</option>
+	<option value="1965">1965</option>
+	<option value="1966">1966</option>
+	<option value="1967">1967</option>
+	<option value="1968">1968</option>
+	<option value="1969">1969</option>
+	<option value="1970">1970</option>
+	<option value="1971">1971</option>
+	<option value="1972">1972</option>
+	<option value="1973">1973</option>
+	<option value="1974">1974</option>
+	<option value="1975">1975</option>
+	<option value="1976">1976</option>
+	<option value="1977">1977</option>
+	<option value="1978">1978</option>
+	<option value="1979">1979</option>
+	<option value="1980">1980</option>
+	<option value="1981">1981</option>
+	<option value="1982">1982</option>
+	<option value="1983">1983</option>
+	<option value="1984">1984</option>
+	<option value="1985">1985</option>
+	<option value="1986">1986</option>
+	<option value="1987">1987</option>
+	<option value="1988">1988</option>
+	<option value="1989">1989</option>
+	<option value="1990">1990</option>
+	<option value="1991">1991</option>
+	<option value="1992">1992</option>
+	<option value="1993">1993</option>
+	<option value="1994">1994</option>
+	<option value="1995">1995</option>
+	<option value="1996">1996</option>
+	<option value="1997">1997</option>
+	<option value="1998">1998</option>
+	<option value="1999">1999</option>
+	<option value="2000">2000</option>
+	<option value="2001">2001</option>
+	<option value="2002">2002</option>
+	<option value="2003">2003</option>
+	<option value="2004">2004</option>
+	<option value="2005">2005</option>
+	<option value="2006">2006</option>
+	<option value="2007">2007</option>
+	<option value="2008">2008</option>
+	<option value="2009">2009</option>
+	<option value="2010">2010</option>
+	<option value="2011">2011</option>
+	<option value="2012">2012</option>
+	<option value="2013">2013</option>
+	<option value="2014">2014</option>
+	<option value="2015" selected="selected">2015</option>
+	<option value="2016">2016</option>
+	<option value="2017">2017</option>
+	<option value="2018">2018</option>
+	<option value="2019">2019</option>
+	<option value="2020">2020</option>
+	<option value="2021">2021</option>
+	<option value="2022">2022</option>
+	<option value="2023">2023</option>
+	<option value="2024">2024</option>
+	<option value="2025">2025</option>
+	<option value="2026">2026</option>
+	<option value="2027">2027</option>
+	<option value="2028">2028</option>
+	<option value="2029">2029</option>
+	<option value="2030">2030</option>
+	<option value="2031">2031</option>
+	<option value="2032">2032</option>
+	<option value="2033">2033</option>
+	<option value="2034">2034</option>
+	<option value="2035">2035</option>
+	<option value="2036">2036</option>
+	<option value="2037">2037</option>
+	<option value="2038">2038</option>
+	<option value="2039">2039</option>
+	<option value="2040">2040</option>
+	<option value="2041">2041</option>
+	<option value="2042">2042</option>
+	<option value="2043">2043</option>
+	<option value="2044">2044</option>
+	<option value="2045">2045</option>
+	<option value="2046">2046</option>
+	<option value="2047">2047</option>
+	<option value="2048">2048</option>
+	<option value="2049">2049</option>
+	<option value="2050">2050</option>
+</select>&nbsp;<a class="visibleifjs" name="timemodified_edt[calendar]" href="#"><img alt="Calendar" class="smallicon" title="Calendar" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/calendar" /></a>&nbsp;<span><input name="timemodified_edt[enabled]" type="checkbox" value="1" id="id_timemodified_edt_enabled" /><label for="id_timemodified_edt_enabled">Enable</label></span></span></fieldset></div>
+		<div id="fitem_id_nevermodified" class="fitem advanced fitem_fcheckbox " aria-live="polite"><div class="fitemtitle"><label for="id_nevermodified">Never modified<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div><div class="felement fcheckbox"><span><input name="nevermodified" type="checkbox" value="1" id="id_nevermodified" /></span></div></div>
+		<div id="fitem_id_auth" class="fitem advanced fitem_fselect " aria-live="polite"><div class="fitemtitle"><label for="id_auth">Authentication<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div><div class="felement fselect"><select name="auth" id="id_auth">
+	<option value="">any value</option>
+	<option value="cas">CAS server (SSO)</option>
+	<option value="db">External database</option>
+	<option value="email">Email-based self-registration</option>
+	<option value="fc">FirstClass server</option>
+	<option value="imap">IMAP server</option>
+	<option value="ldap">LDAP server</option>
+	<option value="manual">Manual accounts</option>
+	<option value="mnet">MNet authentication</option>
+	<option value="nntp">NNTP server</option>
+	<option value="nologin">No login</option>
+	<option value="none">No authentication</option>
+	<option value="pam">PAM (Pluggable Authentication Modules)</option>
+	<option value="pop3">POP3 server</option>
+	<option value="radius">RADIUS server</option>
+	<option value="shibboleth">Shibboleth</option>
+	<option value="webservice">Web services authentication</option>
+</select></div></div>
+		<div id="fgroup_id_idnumber_grp" class="fitem advanced fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>ID number<img class="adv" title="Advanced element" alt="Advanced element" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/adv" /> </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_idnumber_op" >ID number field limiter</label><select name="idnumber_op" id="id_idnumber_op">
+	<option value="0">contains</option>
+	<option value="1">doesn't contain</option>
+	<option value="2">is equal to</option>
+	<option value="3">starts with</option>
+	<option value="4">ends with</option>
+	<option value="5">is empty</option>
+</select><label class="accesshide" for="id_idnumber" >ID number value</label><input name="idnumber" type="text" id="id_idnumber" /></fieldset></div>
+		<div id="fitem_id_addfilter" class="fitem fitem_actionbuttons fitem_fsubmit"><div class="felement fsubmit"><input name="addfilter" value="Add filter" type="submit" id="id_addfilter" /></div></div>
+		</div></fieldset>
+</form>
+<form autocomplete="off" action="http://qa.moodle.net/admin/user/user_bulk.php" method="post" accept-charset="utf-8" id="mform2" class="mform">
+	<div style="display: none;"><input name="sesskey" type="hidden" value="j73EdZW5lg" />
+<input name="_qf__user_active_filter_form" type="hidden" value="1" />
+</div>
+
+
+</form>
+<form autocomplete="off" action="http://qa.moodle.net/admin/user/user_bulk.php" method="post" accept-charset="utf-8" id="mform4" class="mform">
+	<div style="display: none;"><input name="sesskey" type="hidden" value="j73EdZW5lg" />
+<input name="_qf__user_bulk_form" type="hidden" value="1" />
+<input name="mform_isexpanded_id_users" type="hidden" value="1" />
+</div>
+
+
+	<fieldset class="clearfix collapsible"  id="id_users">
+		<legend class="ftoggler">Users in list</legend>
+		<div class="fcontainer clearfix">
+		
+		<div id="fgroup_id_usersgrp" class="fitem fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>Users </label><span class="helptooltip"><a href="http://qa.moodle.net/help.php?component=bulkusers&amp;identifier=users&amp;lang=en" title="Help with Users" aria-haspopup="true" target="_blank"><img src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/help" alt="Help with Users" class="iconhelp" /></a></span></div></div><fieldset class="felement fgroup"><label class="qflabel" style="vertical-align:top">Available</label> <input type="hidden" name="ausers" value="_qf__force_multiselect_submission"><label class="accesshide" for="id_ausers" >Available</label><select size="15" name="ausers[]" multiple="multiple" id="id_ausers">
+	<option value="0">All users (262)</option>
+	<option value="2">Admin User</option>
+	<option value="13">Joe Student</option>
+	<option value="263">Mary Learner</option>
+	<option value="6">Max Manager</option>
+	<option value="12">Non-editing Teacher</option>
+	<option value="5">Sally Student</option>
+	<option value="4">Sam Student</option>
+	<option value="16">Student 10</option>
+	<option value="106">Student 100</option>
+	<option value="107">Student 101</option>
+	<option value="108">Student 102</option>
+	<option value="109">Student 103</option>
+	<option value="110">Student 104</option>
+	<option value="111">Student 105</option>
+	<option value="112">Student 106</option>
+	<option value="113">Student 107</option>
+	<option value="114">Student 108</option>
+	<option value="115">Student 109</option>
+	<option value="17">Student 11</option>
+	<option value="116">Student 110</option>
+	<option value="117">Student 111</option>
+	<option value="118">Student 112</option>
+	<option value="119">Student 113</option>
+	<option value="120">Student 114</option>
+	<option value="121">Student 115</option>
+	<option value="122">Student 116</option>
+	<option value="123">Student 117</option>
+	<option value="124">Student 118</option>
+	<option value="125">Student 119</option>
+	<option value="18">Student 12</option>
+	<option value="126">Student 120</option>
+	<option value="127">Student 121</option>
+	<option value="128">Student 122</option>
+	<option value="129">Student 123</option>
+	<option value="130">Student 124</option>
+	<option value="131">Student 125</option>
+	<option value="132">Student 126</option>
+	<option value="133">Student 127</option>
+	<option value="134">Student 128</option>
+	<option value="135">Student 129</option>
+	<option value="19">Student 13</option>
+	<option value="136">Student 130</option>
+	<option value="137">Student 131</option>
+	<option value="138">Student 132</option>
+	<option value="139">Student 133</option>
+	<option value="140">Student 134</option>
+	<option value="141">Student 135</option>
+	<option value="142">Student 136</option>
+	<option value="143">Student 137</option>
+	<option value="144">Student 138</option>
+	<option value="145">Student 139</option>
+	<option value="20">Student 14</option>
+	<option value="146">Student 140</option>
+	<option value="147">Student 141</option>
+	<option value="148">Student 142</option>
+	<option value="149">Student 143</option>
+	<option value="150">Student 144</option>
+	<option value="151">Student 145</option>
+	<option value="152">Student 146</option>
+	<option value="153">Student 147</option>
+	<option value="154">Student 148</option>
+	<option value="155">Student 149</option>
+	<option value="21">Student 15</option>
+	<option value="156">Student 150</option>
+	<option value="157">Student 151</option>
+	<option value="158">Student 152</option>
+	<option value="159">Student 153</option>
+	<option value="160">Student 154</option>
+	<option value="161">Student 155</option>
+	<option value="162">Student 156</option>
+	<option value="163">Student 157</option>
+	<option value="164">Student 158</option>
+	<option value="165">Student 159</option>
+	<option value="22">Student 16</option>
+	<option value="166">Student 160</option>
+	<option value="167">Student 161</option>
+	<option value="168">Student 162</option>
+	<option value="169">Student 163</option>
+	<option value="170">Student 164</option>
+	<option value="171">Student 165</option>
+	<option value="172">Student 166</option>
+	<option value="173">Student 167</option>
+	<option value="174">Student 168</option>
+	<option value="175">Student 169</option>
+	<option value="23">Student 17</option>
+	<option value="176">Student 170</option>
+	<option value="177">Student 171</option>
+	<option value="178">Student 172</option>
+	<option value="179">Student 173</option>
+	<option value="180">Student 174</option>
+	<option value="181">Student 175</option>
+	<option value="182">Student 176</option>
+	<option value="183">Student 177</option>
+	<option value="184">Student 178</option>
+	<option value="185">Student 179</option>
+	<option value="24">Student 18</option>
+	<option value="186">Student 180</option>
+	<option value="187">Student 181</option>
+	<option value="188">Student 182</option>
+	<option value="189">Student 183</option>
+	<option value="190">Student 184</option>
+	<option value="191">Student 185</option>
+	<option value="192">Student 186</option>
+	<option value="193">Student 187</option>
+	<option value="194">Student 188</option>
+	<option value="195">Student 189</option>
+	<option value="25">Student 19</option>
+	<option value="196">Student 190</option>
+	<option value="197">Student 191</option>
+	<option value="198">Student 192</option>
+	<option value="199">Student 193</option>
+	<option value="200">Student 194</option>
+	<option value="201">Student 195</option>
+	<option value="202">Student 196</option>
+	<option value="203">Student 197</option>
+	<option value="204">Student 198</option>
+	<option value="205">Student 199</option>
+	<option value="26">Student 20</option>
+	<option value="206">Student 200</option>
+	<option value="207">Student 201</option>
+	<option value="208">Student 202</option>
+	<option value="209">Student 203</option>
+	<option value="210">Student 204</option>
+	<option value="211">Student 205</option>
+	<option value="212">Student 206</option>
+	<option value="213">Student 207</option>
+	<option value="214">Student 208</option>
+	<option value="215">Student 209</option>
+	<option value="27">Student 21</option>
+	<option value="216">Student 210</option>
+	<option value="217">Student 211</option>
+	<option value="218">Student 212</option>
+	<option value="219">Student 213</option>
+	<option value="220">Student 214</option>
+	<option value="221">Student 215</option>
+	<option value="222">Student 216</option>
+	<option value="223">Student 217</option>
+	<option value="224">Student 218</option>
+	<option value="225">Student 219</option>
+	<option value="28">Student 22</option>
+	<option value="226">Student 220</option>
+	<option value="227">Student 221</option>
+	<option value="228">Student 222</option>
+	<option value="229">Student 223</option>
+	<option value="230">Student 224</option>
+	<option value="231">Student 225</option>
+	<option value="232">Student 226</option>
+	<option value="233">Student 227</option>
+	<option value="234">Student 228</option>
+	<option value="235">Student 229</option>
+	<option value="29">Student 23</option>
+	<option value="236">Student 230</option>
+	<option value="237">Student 231</option>
+	<option value="238">Student 232</option>
+	<option value="239">Student 233</option>
+	<option value="240">Student 234</option>
+	<option value="241">Student 235</option>
+	<option value="242">Student 236</option>
+	<option value="243">Student 237</option>
+	<option value="244">Student 238</option>
+	<option value="245">Student 239</option>
+	<option value="30">Student 24</option>
+	<option value="246">Student 240</option>
+	<option value="247">Student 241</option>
+	<option value="248">Student 242</option>
+	<option value="249">Student 243</option>
+	<option value="250">Student 244</option>
+	<option value="251">Student 245</option>
+	<option value="252">Student 246</option>
+	<option value="253">Student 247</option>
+	<option value="254">Student 248</option>
+	<option value="255">Student 249</option>
+	<option value="31">Student 25</option>
+	<option value="256">Student 250</option>
+	<option value="257">Student 251</option>
+	<option value="258">Student 252</option>
+	<option value="259">Student 253</option>
+	<option value="260">Student 254</option>
+	<option value="261">Student 255</option>
+	<option value="262">Student 256</option>
+	<option value="32">Student 26</option>
+	<option value="33">Student 27</option>
+	<option value="34">Student 28</option>
+	<option value="35">Student 29</option>
+	<option value="7">Student 3</option>
+	<option value="36">Student 30</option>
+	<option value="37">Student 31</option>
+	<option value="38">Student 32</option>
+	<option value="39">Student 33</option>
+	<option value="40">Student 34</option>
+	<option value="41">Student 35</option>
+	<option value="42">Student 36</option>
+	<option value="43">Student 37</option>
+	<option value="44">Student 38</option>
+	<option value="45">Student 39</option>
+	<option value="8">Student 4</option>
+	<option value="46">Student 40</option>
+	<option value="47">Student 41</option>
+	<option value="48">Student 42</option>
+	<option value="49">Student 43</option>
+	<option value="50">Student 44</option>
+	<option value="51">Student 45</option>
+	<option value="52">Student 46</option>
+	<option value="53">Student 47</option>
+	<option value="54">Student 48</option>
+	<option value="55">Student 49</option>
+	<option value="9">Student 5</option>
+	<option value="56">Student 50</option>
+	<option value="57">Student 51</option>
+	<option value="58">Student 52</option>
+	<option value="59">Student 53</option>
+	<option value="60">Student 54</option>
+	<option value="61">Student 55</option>
+	<option value="62">Student 56</option>
+	<option value="63">Student 57</option>
+	<option value="64">Student 58</option>
+	<option value="65">Student 59</option>
+	<option value="10">Student 6</option>
+	<option value="66">Student 60</option>
+	<option value="67">Student 61</option>
+	<option value="68">Student 62</option>
+	<option value="69">Student 63</option>
+	<option value="70">Student 64</option>
+	<option value="71">Student 65</option>
+	<option value="72">Student 66</option>
+	<option value="73">Student 67</option>
+	<option value="74">Student 68</option>
+	<option value="75">Student 69</option>
+	<option value="11">Student 7</option>
+	<option value="76">Student 70</option>
+	<option value="77">Student 71</option>
+	<option value="78">Student 72</option>
+	<option value="79">Student 73</option>
+	<option value="80">Student 74</option>
+	<option value="81">Student 75</option>
+	<option value="82">Student 76</option>
+	<option value="83">Student 77</option>
+	<option value="84">Student 78</option>
+	<option value="85">Student 79</option>
+	<option value="14">Student 8</option>
+	<option value="86">Student 80</option>
+	<option value="87">Student 81</option>
+	<option value="88">Student 82</option>
+	<option value="89">Student 83</option>
+	<option value="90">Student 84</option>
+	<option value="91">Student 85</option>
+	<option value="92">Student 86</option>
+	<option value="93">Student 87</option>
+	<option value="94">Student 88</option>
+	<option value="95">Student 89</option>
+	<option value="15">Student 9</option>
+	<option value="96">Student 90</option>
+	<option value="97">Student 91</option>
+	<option value="98">Student 92</option>
+	<option value="99">Student 93</option>
+	<option value="100">Student 94</option>
+	<option value="101">Student 95</option>
+	<option value="102">Student 96</option>
+	<option value="103">Student 97</option>
+	<option value="104">Student 98</option>
+	<option value="105">Student 99</option>
+	<option value="3">Terri Teacher</option>
+</select> <label class="qflabel" style="vertical-align:top">Selected</label> <input type="hidden" name="susers" value="_qf__force_multiselect_submission"><label class="accesshide" for="id_susers" >Selected</label><select size="15" name="susers[]" multiple="multiple" id="id_susers">
+	<option value="-1">No users selected</option>
+</select></fieldset></div>
+		<div class="fitem femptylabel"><div class="fitemtitle"><div class="fstaticlabel"> </div></div><div class="felement fstatic"></div></div>
+		<div id="fgroup_id_buttonsgrp" class="fitem fitem_actionbuttons fitem_fgroup"><div class="felement fgroup"><input name="addsel" value="Add to selection" type="submit" id="id_addsel" /> <input name="removesel" value="Remove from selection" type="submit" id="id_removesel" /><br /><input name="addall" value="Add all" type="submit" id="id_addall" /> <input name="removeall" value="Remove all" type="submit" id="id_removeall" /></div></div>
+		</div></fieldset>
+</form>
+<form autocomplete="off" action="http://qa.moodle.net/admin/user/user_bulk.php" method="post" accept-charset="utf-8" id="mform3" class="mform">
+	<div style="display: none;"><input name="sesskey" type="hidden" value="j73EdZW5lg" />
+<input name="_qf__user_bulk_action_form" type="hidden" value="1" />
+</div>
+
+
+	<fieldset class="hidden"><div>
+		<div id="fgroup_id_actionsgrp" class="fitem fitem_fgroup "><div class="fitemtitle"><div class="fgrouplabel"><label>With selected users... </label></div></div><fieldset class="felement fgroup"><label class="accesshide" for="id_action" >&nbsp;</label><select name="action" id="id_action">
+	<option value="0">Choose...</option>
+	<option value="1">Confirm</option>
+	<option value="2">Send a message</option>
+	<option value="3">Delete</option>
+	<option value="4">Display on page</option>
+	<option value="5">Download</option>
+	<option value="7">Force password change</option>
+	<option value="8">Add to cohort</option>
+</select> <input name="doaction" value="Go" type="submit" id="id_doaction" /></fieldset></div>
+		</div></fieldset>
+</form></div>        </section>
+        <aside id="block-region-side-pre" class="span3 desktop-first-column block-region" data-blockregion="side-pre" data-droptarget="1"><a href="#sb-1" class="skip-block">Skip Navigation</a><div id="inst4" class="block_navigation  block" role="navigation" data-block="navigation" data-instanceid="4" aria-labelledby="instance-4-header" data-dockable="1"><div class="header"><div class="title"><div class="block_action"></div><h2 id="instance-4-header">Navigation</h2></div></div><div class="content"><ul class="block_tree list"><li class="type_unknown depth_1 contains_branch" aria-expanded="true"><p class="tree_item branch canexpand navigation_node"><a href="http://qa.moodle.net/my/">Dashboard</a></p><ul><li class="type_setting depth_2 item_with_icon"><p class="tree_item leaf hasicon"><a href="http://qa.moodle.net/?redirect=0"><img alt="" class="smallicon navicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/navigationitem" /><span class="item-content-wrap">Site home</span></a></p></li><li class="type_course depth_2 collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span title="Moodle QA Testing Site" tabindex="0">Site pages</span></p><ul><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="http://qa.moodle.net/user/index.php?id=1"><img alt="" class="smallicon navicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/navigationitem" /><span class="item-content-wrap">Participants</span></a></p></li><li class="type_unknown depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="http://qa.moodle.net/blog/index.php"><img alt="" class="smallicon navicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/navigationitem" /><span class="item-content-wrap">Site blogs</span></a></p></li><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="http://qa.moodle.net/badges/view.php?type=1"><img alt="" class="smallicon navicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/navigationitem" /><span class="item-content-wrap">Site badges</span></a></p></li><li class="type_setting depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="http://qa.moodle.net/notes/index.php?filtertype=course&amp;filterselect=0"><img alt="" class="smallicon navicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/navigationitem" /><span class="item-content-wrap">Notes</span></a></p></li><li class="type_setting depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="http://qa.moodle.net/tag/search.php"><img alt="" class="smallicon navicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/navigationitem" /><span class="item-content-wrap">Tags</span></a></p></li><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a href="http://qa.moodle.net/calendar/view.php?view=month"><img alt="" class="smallicon navicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/navigationitem" /><span class="item-content-wrap">Calendar</span></a></p></li><li class="type_activity depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="Forum" href="http://qa.moodle.net/mod/forum/view.php?id=1"><img alt="Forum" class="smallicon navicon" title="Forum" src="http://qa.moodle.net/theme/image.php/clean/forum/1430909899/icon" /><span class="item-content-wrap">Site news</span></a></p></li></ul></li><li class="type_system depth_2 collapsed contains_branch" aria-expanded="false"><p class="tree_item branch" id="expandable_branch_0_courses"><a href="http://qa.moodle.net/course/index.php">Courses</a></p></li></ul></li></ul></div></div><span id="sb-1" class="skip-block-to"></span><a href="#sb-2" class="skip-block">Skip Administration</a><div id="inst5" class="block_settings  block" role="navigation" data-block="settings" data-instanceid="5" aria-labelledby="instance-5-header" data-dockable="1"><div class="header"><div class="title"><div class="block_action"></div><h2 id="instance-5-header">Administration</h2></div></div><div class="content"><div id="settingsnav" class="box block_tree_box"><ul class="block_tree list"><li class="type_siteadmin contains_branch" aria-expanded="true"><p class="tree_item branch root_node"><span tabindex="0">Site administration</span></p><ul><li class="type_setting contains_branch" aria-expanded="true"><p class="tree_item branch"><span tabindex="0">Users</span></p><ul><li class="type_setting contains_branch" aria-expanded="true"><p class="tree_item branch"><span tabindex="0">Accounts</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/user.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Browse list of users</a></p></li>
+<li class="type_setting item_with_icon current_branch"><p class="tree_item leaf active_tree_node"><a href="http://qa.moodle.net/admin/user/user_bulk.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Bulk user actions</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/user/editadvanced.php?id=-1"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Add a new user</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/cohort/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Cohorts</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/tool/uploaduser/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Upload users</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/tool/uploaduser/picture.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Upload user pictures</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Permissions</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/roles/manage.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Define roles</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/roles/assign.php?contextid=1"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Assign system roles</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/roles/check.php?contextid=1"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Check system permissions</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/tool/capability/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Capability overview</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Courses</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/course/management.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Manage courses and categories</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/course/editcategory.php?parent=0"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Add a category</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/backup/restorefile.php?contextid=1"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Restore course</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Backups</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=backupgeneralsettings"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />General backup defaults</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=importgeneralsettings"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />General import defaults</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=automated"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Automated backup setup</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Grades</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=gradessettings"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />General settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=gradecategorysettings"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Grade category settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=gradeitemsettings"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Grade item settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/grade/edit/scale/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Scales</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/grade/edit/outcome/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Outcomes</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/grade/edit/letter/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Letters</a></p></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Report settings</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=gradereportgrader"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Grader report</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=gradereporthistory"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Grade history</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=gradereportoverview"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Overview report</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=gradereportuser"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />User report</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Badges</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=badgesettings"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Badges settings</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/badges/index.php?type=1"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Manage badges</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/badges/newbadge.php?type=1"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Add a new badge</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Language</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/tool/customlang/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Language customisation</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Plugins</span></p><ul><li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Question types</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=qdefaultsetting"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Question preview defaults</a></p></li></ul></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Appearance</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/my/indexsys.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Default Dashboard page</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/user/profilesys.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Default profile page</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/tag/manage.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Manage tags</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Front page</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/settings.php?section=frontpagesettings"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Front page settings</a></p></li></ul></li>
+<li class="type_setting collapsed contains_branch" aria-expanded="false"><p class="tree_item branch"><span tabindex="0">Reports</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/comment/"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Comments</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/report/backups/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Backups</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/report/log/index.php?id=0"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Logs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/report/loglive/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Live logs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/report/performance/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Performance overview</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/report/security/index.php"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Security overview</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a href="http://qa.moodle.net/admin/tool/monitor/managerules.php?courseid=0"><img alt="" class="smallicon" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/i/settings" />Event monitoring rules</a></p></li></ul></li></ul></li></ul></div></div></div><span id="sb-2" class="skip-block-to"></span><a href="#sb-3" class="skip-block">Skip Admin bookmarks</a><div id="inst6" class="block_admin_bookmarks  block" role="navigation" data-block="admin_bookmarks" data-instanceid="6" aria-labelledby="instance-6-header" data-dockable="1"><div class="header"><div class="title"><div class="block_action"></div><h2 id="instance-6-header">Admin bookmarks</h2></div></div><div class="content"><div class="footer"><a href="http://qa.moodle.net/blocks/admin_bookmarks/create.php?section=userbulk&amp;sesskey=j73EdZW5lg">Bookmark this page</a></div></div></div><span id="sb-3" class="skip-block-to"></span></aside>    </div>
+
+    <footer id="page-footer">
+        <div id="course-footer"></div>
+        <p class="helplink"><a href="http://docs.moodle.org/29/en/admin/user/user_bulk"><img class="iconhelp icon-pre" role="presentation" alt="" title="" src="http://qa.moodle.net/theme/image.php/clean/core/1430909899/docs" />Moodle Docs for this page</a></p>
+        <div class="logininfo">You are logged in as <a href="http://qa.moodle.net/user/profile.php?id=6" title="View profile">Max Manager</a> (<a href="http://qa.moodle.net/login/logout.php?sesskey=j73EdZW5lg">Log out</a>)</div><div class="homelink"><a href="http://qa.moodle.net/">Home</a></div><div class="performanceinfo siteinfo"><span class="timeused">0.211113 secs</span> <span class="memoryused">RAM: 36.8MB</span> <span class="memoryused">RAM peak: 37.7MB</span> <span class="included">Included 293 files</span> <span class='langcountgetstring'>get_string calls: 518 </span> <span class="dbqueries">DB reads/writes: 29/1</span> <span class="dbtime">DB queries time: 0.00353 secs</span> <span class="posixtimes">ticks: 21 user: 20 sys: 1 cuser: 0 csys: 0</span> <span class="serverload">Load average: 1.06</span> <span class="sessionsize">Session (core\session\file): 22.7KB</span> <span class="cachesused"><span class="cache-stats-heading">Caches used (hits/misses/sets)</span><span class="cache-definition-stats cache-mode-application"><span class="cache-definition-stats-heading">core/string <span title="application cache">[a]</span></span><span class="cache-store-stats hihits">** static acceleration **: 1 / 0 / 0</span><span class="cache-store-stats hihits">cachestore_file: 1 / 0 / 0</span></span><span class="cache-definition-stats cache-mode-application"><span class="cache-definition-stats-heading">core/yuimodules <span title="application cache">[a]</span></span><span class="cache-store-stats hihits">cachestore_file: 1 / 0 / 0</span></span><span class="cache-definition-stats cache-mode-application"><span class="cache-definition-stats-heading">core/langmenu <span title="application cache">[a]</span></span><span class="cache-store-stats hihits">** static acceleration **: 1 / 0 / 0</span><span class="cache-store-stats hihits">cachestore_file: 1 / 0 / 0</span></span><span class="cache-definition-stats cache-mode-application"><span class="cache-definition-stats-heading">core/plugin_manager <span title="application cache">[a]</span></span><span class="cache-store-stats hihits">cachestore_file: 1 / 0 / 0</span></span><span class="cache-definition-stats cache-mode-application"><span class="cache-definition-stats-heading">core/coursemodinfo <span title="application cache">[a]</span></span><span class="cache-store-stats hihits">cachestore_file: 1 / 0 / 0</span></span><span class="cache-definition-stats cache-mode-session"><span class="cache-definition-stats-heading">core/coursecat <span title="session cache">[s]</span></span><span class="cache-store-stats hihits">cachestore_session: 0 / 0 / 1</span></span><span class='cache-total-stats'>Total: 7 / 0 / 1</span></span> </div>    </footer>
+
+    
+<div id="resetcountdown" style="padding:3px 1em;text-aling:center;position:fixed;bottom:0;right:0;overflow: hidden;" />
+
+<script>
+Y.use('node', function (Y) {
+
+    // The number of seconds after the whole hour we want to count down to.
+    var countdown = 3600;
+
+    var updateTimer = function () {
+        var now = Math.floor(new Date().getTime() / 1000),
+            last = now - (now % countdown),
+            next = last + countdown;
+
+        displayRemainingTime(next - now);
+
+        setTimeout(updateTimer, 1000);
+    };
+
+    var displayRemainingTime = function (seconds) {
+        var timer = Y.one('#resetcountdown'),
+            display, hours, mins, secs,
+            text = 'This site will be reset in ';
+
+        display = new Date(1970, 0, 1);
+        display.setSeconds(seconds);
+
+        secs = display.getSeconds();
+        mins = display.getMinutes();
+        hours = Math.floor((seconds - mins * 3600 - secs * 60) / 60 / 60);
+
+        if (hours > 0) {
+            text += ('0' + hours).slice(-2) + ' hours ';
+        }
+
+        text += ('0' + mins).slice(-2) + ' mins ' + ('0' + secs).slice(-2) + ' secs';
+
+        timer.set('text', text);
+
+        if (seconds < 300) {
+            timer.setStyle('backgroundColor', 'red')
+                 .setStyle('fontWeight', 'bold');
+        } else {
+            timer.setStyle('backgroundColor', '#ffd3d9')
+                 .setStyle('fontWeight', 'normal');
+        }
+    };
+
+    updateTimer();
+});
+</script><script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'http://qa.moodle.net/lib/requirejs.php/1430909899/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+
+    paths: {
+        jquery: 'http://qa.moodle.net/lib/javascript.php/1430909899/lib/jquery/jquery-1.11.2.min',
+        jqueryui: 'http://qa.moodle.net/lib/javascript.php/1430909899/lib/jquery/ui-1.11.4/jquery-ui.min',
+        jqueryprivate: 'http://qa.moodle.net/lib/javascript.php/1430909899/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+<script type="text/javascript" src="http://qa.moodle.net/lib/javascript.php/1430909899/lib/requirejs/require.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+require(['core/first'], function() {
+;
+require(["core/log"], function(amd) { amd.setConfig({"level":"trace"}); });
+});
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+M.yui.add_module({"mform":{"name":"mform","fullpath":"http:\/\/qa.moodle.net\/lib\/javascript.php\/1430909899\/lib\/form\/form.js","requires":["base","node"]}});
+
+//]]>
+</script>
+<script type="text/javascript" src="http://qa.moodle.net/theme/javascript.php/clean/1430909899/footer"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Last modified","name":"Name","error":"Error","info":"Information","viewallcourses":"View all courses","morehelp":"More help","loadinghelp":"Loading...","cancel":"Cancel","yes":"Yes","changesmadereallygoaway":"You have made changes. Are you sure you want to navigate away and lose your changes?","confirm":"Confirm","no":"No","areyousure":"Are you sure?","closebuttontitle":"Close","unknownerror":"Unknown error"},"repository":{"type":"Type","size":"Size","invalidjson":"Invalid JSON string","nofilesattached":"No files attached","filepicker":"File picker","logout":"Logout","nofilesavailable":"No files available","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","fileexistsdialogheader":"File exists","fileexistsdialog_editor":"A file with that name has already been attached to the text you are editing.","fileexistsdialog_filemanager":"A file with that name has already been attached","renameto":"Rename to \"{$a}\"","referencesexist":"There are {$a} alias\/shortcut files that use this file as their source","select":"Select"},"block":{"addtodock":"Move this to the dock","undockitem":"Undock this item","dockblock":"Dock {$a} block","undockblock":"Undock {$a} block","undockall":"Undock all","hidedockpanel":"Hide the dock panel","hidepanel":"Hide panel"},"langconfig":{"thisdirectionvertical":"btt"},"admin":{"confirmation":"Confirmation"},"form":{"showmore":"Show more...","showless":"Show less..."}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var navtreeexpansions4 = [{"id":"expandable_branch_0_courses","key":"courses","type":0}];
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+YUI().use('node', function(Y) {
+M.util.load_flowplayer();
+setTimeout("fix_column_widths()", 20);
+Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"en"});
+});
+Y.use("moodle-core-dock-loader",function() {M.core.dock.loader.initLoader();
+});
+Y.use("moodle-form-dateselector",function() {M.form.dateselector.init_date_selectors({"firstdayofweek":"0","mon":"Mon","tue":"Tue","wed":"Wed","thu":"Thu","fri":"Fri","sat":"Sat","sun":"Sun","january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December"});
+});
+Y.use("moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"4","instance":"4","candock":true,"courselimit":"20","expansionlimit":0});
+});
+Y.use("moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"5","instance":"5","candock":true});
+});
+M.util.help_popups.setup(Y);
+Y.use("moodle-core-popuphelp",function() {M.core.init_popuphelp();
+});
+Y.use("moodle-core-actionmenu",function() {M.core.actionmenu.init();
+});
+M.util.init_block_hider(Y, {"id":"inst4","title":"Navigation","preference":"block4hidden","tooltipVisible":"Hide Navigation block","tooltipHidden":"Show Navigation block"});
+M.util.init_block_hider(Y, {"id":"inst5","title":"Administration","preference":"block5hidden","tooltipVisible":"Hide Administration block","tooltipHidden":"Show Administration block"});
+M.util.init_block_hider(Y, {"id":"inst6","title":"Admin bookmarks","preference":"block6hidden","tooltipVisible":"Hide Admin bookmarks block","tooltipHidden":"Show Admin bookmarks block"});
+Y.use("moodle-core-formchangechecker",function() {M.core_formchangechecker.init({"formid":"mform1"});
+});
+Y.use("moodle-form-shortforms",function() {M.form.shortforms({"formid":"mform1"});
+});
+Y.use("moodle-form-showadvanced",function() {M.form.showadvanced({"formid":"mform1"});
+});
+ M.util.js_pending('random5549f540e13515'); Y.on('domready', function() {  M.util.js_pending('random5549f540e13515'); Y.use('mform', function(Y) { M.form.initFormDependencies(Y, "mform1", {"realname_op":{"eq":{"5":["realname"]}},"lastname_op":{"eq":{"5":["lastname"]}},"firstname_op":{"eq":{"5":["firstname"]}},"username_op":{"eq":{"5":["username"]}},"email_op":{"eq":{"5":["email"]}},"city_op":{"eq":{"5":["city"]}},"country_op":{"eq":[["country"]]},"cohort_op":{"eq":{"5":["cohort"]}},"firstaccess_sdt[enabled]":{"notchecked":{"1":["firstaccess_sdt[day]","firstaccess_sdt[month]","firstaccess_sdt[year]"]}},"firstaccess_edt[enabled]":{"notchecked":{"1":["firstaccess_edt[day]","firstaccess_edt[month]","firstaccess_edt[year]"]}},"lastaccess_sdt[enabled]":{"notchecked":{"1":["lastaccess_sdt[day]","lastaccess_sdt[month]","lastaccess_sdt[year]"]}},"lastaccess_edt[enabled]":{"notchecked":{"1":["lastaccess_edt[day]","lastaccess_edt[month]","lastaccess_edt[year]"]}},"neveraccessed":{"checked":{"1":["lastaccess_sck","lastaccess_eck","firstaccess_eck","firstaccess_sck"]}},"timemodified_sdt[enabled]":{"notchecked":{"1":["timemodified_sdt[day]","timemodified_sdt[month]","timemodified_sdt[year]"]}},"timemodified_edt[enabled]":{"notchecked":{"1":["timemodified_edt[day]","timemodified_edt[month]","timemodified_edt[year]"]}},"nevermodified":{"checked":{"1":["timemodified_sck","timemodified_eck"]}},"idnumber_op":{"eq":{"5":["idnumber"]}}});  M.util.js_complete('random5549f540e13515'); });  M.util.js_complete('random5549f540e13515'); });
+Y.use("moodle-core-formchangechecker",function() {M.core_formchangechecker.init({"formid":"mform2"});
+});
+Y.use("moodle-core-formchangechecker",function() {M.core_formchangechecker.init({"formid":"mform4"});
+});
+Y.use("moodle-form-shortforms",function() {M.form.shortforms({"formid":"mform4"});
+});
+Y.use("moodle-core-formchangechecker",function() {M.core_formchangechecker.init({"formid":"mform3"});
+});
+ M.util.js_pending('random5549f540e13516'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random5549f540e13516'); });
+
+});
+//]]>
+</script>
+
+</div>
+</body>
+</html>
+��k�      UI�&UI�';%j       .:http://qa.moodle.net/admin/user/user_bulk.php request-method GET request-Accept-Encoding gzip, deflate request-User-Agent Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0 response-head HTTP/1.1 200 OK
+Date: Wed, 06 May 2015 11:04:33 GMT
+Content-Type: text/html; charset=utf-8
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Language: en
+Content-Script-Type: text/javascript
+content-style-type: text/css
+X-UA-Compatible: IE=edge
+CF-RAY: 1e2434740018067f-LAX
+Vary: Accept-Encoding,User-Agent
+Server: cloudflare-nginx
+Accept-Ranges: none
+Content-Length: 154386
+ charset UTF-8 uncompressed-len 0  [

@@ -1,0 +1,2 @@
+chooseState,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\sencha_combobox.sah,5,$textboxId,$state,$displayValue
+chooseLight,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\sencha_combobox.sah,17,$plant,$light

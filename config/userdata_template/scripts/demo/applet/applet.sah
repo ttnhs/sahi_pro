@@ -1,0 +1,136 @@
+_navigateTo("/demo/applet/simple.htm");
+
+//Button
+function testButton() {
+  	 _setSelected(_a("SampleApplet").jtabbedpane("TabbedPane"),"Button Test Frame")
+	 _assertExists(_a("SampleApplet").jbutton("Test Button"));
+	 _assertExists(_a("SampleApplet").jtextfield("resultTextField"));
+     _click(_a("SampleApplet").jbutton("Test Button"))
+	 _assertEqual("Test Button Clicked", _getValue(_a("SampleApplet").jtextfield("resultTextField")));
+	//getValue Need to be implemented.
+}
+
+//CheckBox
+function testCheckBox() {
+	_setSelected(_a("SampleApplet").jtabbedpane("TabbedPane"),"ComboBox Test Frame");
+	_assertExists(_a("SampleApplet").jcheckbox("Select Me"));
+	_click(_a("SampleApplet").jcheckbox("Select Me"));
+	_assertExists(_a("SampleApplet").jtextfield("resultTextField"));
+	_assertEqual("Check Box is checked", _getValue(_a("SampleApplet").jtextfield("resultTextField")));
+}
+//ComboBox
+function testComboBox() {
+	_setSelected(_a("SampleApplet").jtabbedpane("TabbedPane"),"ComboBox Test Frame");
+	_assertExists(_a("SampleApplet").jcombobox("ComboBox"));
+	_assertExists(_a("SampleApplet").jtextfield("resultTextField"));
+	_setSelected(_a("SampleApplet").jcombobox("ComboBox"),"Delhi");
+	_assertEqual("Delhi", _getValue(_a("SampleApplet").jtextfield("resultTextField")));
+	_setSelected(_a("SampleApplet").jcombobox("ComboBox"),0);
+	_assertEqual("Bangalore", _getValue(_a("SampleApplet").jtextfield("resultTextField")));
+}
+//Slider
+function testSlider() {
+	_setSelected(_a("SampleApplet").jtabbedpane("TabbedPane"),"Button Test Frame");
+	_assertExists(_a("SampleApplet").jslider(0));
+	_assertExists(_a("SampleApplet").jtextfield("resultTextField"));
+	_setValue(_a("SampleApplet").jslider(0),"90")
+	_assertEqual("90", _getValue(_a("SampleApplet").jslider(0)));
+	_assertEqual("90", _getValue(_a("SampleApplet").jtextfield("resultTextField")));
+}
+//ToggleButton
+function testToggleButton() {
+	_setSelected(_a("SampleApplet").jtabbedpane("TabbedPane"),"Button Test Frame");
+	_assertExists(_a("SampleApplet").jtogglebutton("Toggle Button"));
+	_assertExists(_a("SampleApplet").jtextfield("resultTextField"));
+	_click(_a("SampleApplet").jtogglebutton("Toggle Button"));
+	_assertEqual("Toggle Button is Selected",_getValue(_a("SampleApplet").jtextfield("resultTextField")));
+}
+//NearInsideUnder
+function testNearInsideUnder() {
+	_setSelected(_a("SampleApplet").jtabbedpane("TabbedPane"),"Button Test Frame");
+	_assertExists(_a("SampleApplet").jbutton("Test Text Area"));
+	_click(_a("SampleApplet").jbutton("Test Text Area"));
+	_assertEqual("Test Text Area Button Clicked", _getValue(_a("SampleApplet").jtextarea().inside(_a("SampleApplet").jpanel("TextArea Button Panel"))));
+	_assertEqual("Test Text Area Button Clicked", _getValue(_a("SampleApplet").jtextarea().near(_a("SampleApplet").jbutton("Test Text Area"))));
+	_setValue(_a("SampleApplet").jtextarea("smallTA"), "true");
+	_assertEqual("true", _getValue(_a("SampleApplet").jtextarea().under(_a("SampleApplet").jbutton("Test Button"))));
+}
+//Label&RadioButton
+function testLabelRadioButton() {
+	_setSelected(_a("SampleApplet").jtabbedpane("TabbedPane"),"Button Test Frame");
+	_assertExists(_a("SampleApplet").jradiobutton("Red"));
+	_assertExists(_a("SampleApplet").jtextfield("resultTextField"));
+	_click(_a("SampleApplet").jradiobutton("Red"));
+	_assertEqual("Red is Clicked", _getValue(_a("SampleApplet").jtextfield("resultTextField")));
+	_assertExists(_a("SampleApplet").jlabel("I am a Label"));	
+}
+
+//Button
+function testFrameButton() {
+  	 _setSelected(_a("Sample Frame Title").jtabbedpane("TabbedPane"),"Button Test Frame")
+	 _assertExists(_a("Sample Frame Title").jbutton("Test Button"));
+	 _assertExists(_a("Sample Frame Title").jtextfield("resultTextField"));
+     _click(_a("Sample Frame Title").jbutton("Test Button"))
+	 _assertEqual("Test Button Clicked", _getValue(_a("Sample Frame Title").jtextfield("resultTextField")));
+	//getValue Need to be implemented.
+}
+
+//CheckBox
+function testFrameCheckBox() {
+	_setSelected(_a("Sample Frame Title").jtabbedpane("TabbedPane"),"ComboBox Test Frame");
+	_assertExists(_a("Sample Frame Title").jcheckbox("Select Me"));
+	_click(_a("Sample Frame Title").jcheckbox("Select Me"));
+	_assertExists(_a("Sample Frame Title").jtextfield("resultTextField"));
+	_assertEqual("Check Box is checked", _getValue(_a("Sample Frame Title").jtextfield("resultTextField")));
+}
+//ComboBox
+function testFrameComboBox() {
+	_setSelected(_a("Sample Frame Title").jtabbedpane("TabbedPane"),"ComboBox Test Frame");
+	_assertExists(_a("Sample Frame Title").jcombobox("ComboBox"));
+	_assertExists(_a("Sample Frame Title").jtextfield("resultTextField"));
+	_setSelected(_a("Sample Frame Title").jcombobox("ComboBox"),"Delhi");
+	_assertEqual("Delhi", _getValue(_a("Sample Frame Title").jtextfield("resultTextField")));
+	_setSelected(_a("Sample Frame Title").jcombobox("ComboBox"),0);
+	_assertEqual("Bangalore", _getValue(_a("Sample Frame Title").jtextfield("resultTextField")));
+}
+//Slider
+function testFrameSlider() {
+	_setSelected(_a("Sample Frame Title").jtabbedpane("TabbedPane"),"Button Test Frame");
+	_assertExists(_a("Sample Frame Title").jslider(0));
+	_assertExists(_a("Sample Frame Title").jtextfield("resultTextField"));
+	_setValue(_a("Sample Frame Title").jslider(0),"90")
+	_assertEqual("90", _getValue(_a("Sample Frame Title").jslider(0)));
+	_assertEqual("90", _getValue(_a("Sample Frame Title").jtextfield("resultTextField")));
+}
+//ToggleButton
+function testFrameToggleButton() {
+	_setSelected(_a("Sample Frame Title").jtabbedpane("TabbedPane"),"Button Test Frame");
+	_assertExists(_a("Sample Frame Title").jtogglebutton("Toggle Button"));
+	_assertExists(_a("Sample Frame Title").jtextfield("resultTextField"));
+	_click(_a("Sample Frame Title").jtogglebutton("Toggle Button"));
+	_assertEqual("Toggle Button is Selected",_getValue(_a("Sample Frame Title").jtextfield("resultTextField")));
+}
+//NearInsideUnder
+function testFrameNearInsideUnder() {
+	_setSelected(_a("Sample Frame Title").jtabbedpane("TabbedPane"),"Button Test Frame");
+	_assertExists(_a("Sample Frame Title").jbutton("Test Text Area"));
+	_click(_a("Sample Frame Title").jbutton("Test Text Area"));
+	_assertEqual("Test Text Area Button Clicked", _getValue(_a("Sample Frame Title").jtextarea().inside(_a("Sample Frame Title").jpanel("TextArea Button Panel"))));
+	_assertEqual("Test Text Area Button Clicked", _getValue(_a("Sample Frame Title").jtextarea().near(_a("Sample Frame Title").jbutton("Test Text Area"))));
+	_setValue(_a("Sample Frame Title").jtextarea("smallTA"), "true");
+	_assertEqual("true", _getValue(_a("Sample Frame Title").jtextarea().under(_a("Sample Frame Title").jbutton("Test Button"))));
+}
+//Label&RadioButton
+function testFrameLabelRadioButton() {
+	_setSelected(_a("Sample Frame Title").jtabbedpane("TabbedPane"),"Button Test Frame");
+	_assertExists(_a("Sample Frame Title").jradiobutton("Red"));
+	_assertExists(_a("Sample Frame Title").jtextfield("resultTextField"));
+	_click(_a("Sample Frame Title").jradiobutton("Red"));
+	_assertEqual("Red is Clicked", _getValue(_a("Sample Frame Title").jtextfield("resultTextField")));
+	_assertExists(_a("Sample Frame Title").jlabel("I am a Label"));	
+}
+
+_runUnitTests();
+
+
+

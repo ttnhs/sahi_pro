@@ -1,0 +1,131 @@
+var $drugNameArray = [["AcipHex"],
+                    ["Diphendryl"],
+                    ["glycerin"],
+                    ["ibuprofen"],
+                    ["Methadex"],
+                    ["morphine"],
+                    ["Sudafed"],
+                    ["warfarin"]];
+
+function getObject() {
+	var $o = new Object();
+	$o.name = "A";
+	$o.self = $o;
+	$o.parent = "Not Set";
+	return $o;
+}
+
+//<browser>
+var arrayOnBrowser = [["AcipHex"],
+                      ["Diphendryl"],
+                      ["glycerin"],
+                      ["ibuprofen"],
+                      ["Methadex"],
+                      ["morphine"],
+                      ["Sudafed"],
+                      ["warfarin"]];
+
+
+function getBrowserObject() {
+	var $o = new Object();
+	$o.name = "A";
+	$o.self = $o;
+	$o.parent = "Not Set";
+	return $o;
+}
+function getBrowserObjectJSON() {
+	var $o = getBrowserObject();
+	var $s = _sahi.toJSON($o);
+	return $s;
+}
+function getBrowserObjectJSON2() {
+	var $o = getBrowserObject();
+	var $s = _sahi.toJSON([$o, $o]);
+	return $s;
+}
+//</browser>
+
+
+function test2DArray() {
+	_assertEqual(arrayOnBrowser, $drugNameArray);	
+	var $ix = 1;
+	_assertEqual(["Diphendryl"], $drugNameArray[$ix]);
+	_assertEqual("Diphendryl", $drugNameArray[$ix][0]);
+}
+
+function testRegExp(){
+	var $randomDrugName = "morphine";
+	var $regex = new RegExp("morphine");
+	var $s = $regex.toString();
+	_assert("/morphine/" == $s);
+}
+
+function testRegExpWithModifier(){
+	var $regex = new RegExp("morphine","i");
+	var $s = $regex.toString();
+	_assert("/morphine/i" == $s);
+	_assertEqual($regex, "morphine");
+	_assertEqual($regex, "morPHine");
+	_assertEqual($regex, "Morphine");
+}
+
+function testRegExpWithModifiersIG(){
+	var $regex = new RegExp("morphine","ig");
+	var $s = $regex.toString();
+	_assert("/morphine/gi" == $s);
+}
+
+function testRegExpWithModifiersIM(){
+	var $regex = new RegExp("morphine","im");
+	var $s = $regex.toString();
+	_assert("/morphine/im" == $s);
+	
+	var $regex = new RegExp("morph.*ine","i");
+	_assertEqual($regex, "morph\nine");
+	
+	var $regex = new RegExp("morph.*ine","im");
+	_assertEqual($regex, "morph\nine");
+}
+
+function testRegExpWithModifiersIGM(){
+	var $regex = new RegExp("morphine","igm");
+	var $s = $regex.toString();
+	_assert("/morphine/gim" == $s);
+}
+
+function testFromBrowserSide() {
+	var $fromBrowser = null;
+	_set($fromBrowser, arrayOnBrowser);
+	_assertEqual($drugNameArray, $fromBrowser);
+}
+
+
+function testObjectRecursion() {
+	var $o = getObject();
+	var $s = _sahi.toJSON($o);
+	_assertEqual("{\"name\":\"A\",\"self\":\"recursive_access\",\"parent\":\"Not Set\"}", $s);
+}
+
+function testObjectRecursionOnBrowser() {
+	_assertEqual("{\"name\":\"A\",\"self\":\"recursive_access\",\"parent\":\"Not Set\"}", getBrowserObjectJSON());
+}
+
+
+function testObjectWithDuplicates() {
+	var $o = getObject();
+	var $ar = [$o, $o]
+	var $s = _sahi.toJSON($ar);
+	_assertEqual("[{\"name\":\"A\",\"self\":\"recursive_access\",\"parent\":\"Not Set\"},{\"name\":\"A\",\"self\":\"recursive_access\",\"parent\":\"Not Set\"}]", $s);
+}
+
+function testObjectEquals() {
+	var $o = getObject();
+	// Current behaviour: are not equal.
+	// Objects even though similar in all attributes, are not considered equal by js. 
+	_assertNotEqual($o, getBrowserObject());
+}
+
+function testObjectWithDuplicatesOnBrowser() {
+	_assertEqual("[{\"name\":\"A\",\"self\":\"recursive_access\",\"parent\":\"Not Set\"},{\"name\":\"A\",\"self\":\"recursive_access\",\"parent\":\"Not Set\"}]", getBrowserObjectJSON2());
+}
+_runUnitTests();

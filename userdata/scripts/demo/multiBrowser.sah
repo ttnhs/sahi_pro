@@ -1,0 +1,25 @@
+_navigateTo("/demo/createCookie.htm");
+var $href = _fetch(window.top.location.href);
+_click(_button("Create Cookie"));
+var $baseBrowserCookieValue = _getValue(_textbox("tb"));
+var $href = _fetch(window.top.location.href);
+
+// launch a new browser instance. This will have its own cookies isolated
+// so that multiple users can login into the application simulatenously.
+var $secondBrowserInstance = _launchNewBrowser($href);
+_wait(5000);
+_log($secondBrowserInstance);
+_selectBrowser($secondBrowserInstance); // send further steps to secondBrowser
+_click(_button("Create Cookie"));
+var $newBrowserCookieValue = _getValue(_textbox("tb"));
+_assertNotEqual($baseBrowserCookieValue, $newBrowserCookieValue);
+
+// Select the base browser. Further steps are sent to base browser.
+_selectBrowser();
+_navigateTo("/demo/createCookie.htm");
+_click(_button("Get Cookie"));
+_assertEqual($baseBrowserCookieValue, _getValue(_textbox("tb")));
+_selectBrowser($secondBrowserInstance);
+_navigateTo("/demo/createCookie.htm");
+_click(_button("Get Cookie"));
+_assertEqual($newBrowserCookieValue, _getValue(_textbox("tb")));

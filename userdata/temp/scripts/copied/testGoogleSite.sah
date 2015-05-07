@@ -1,0 +1,31 @@
+var $element = 
+
+/* --Objects Definitions Above-- */
+
+function login($Email, $Passwd){
+	_setValue(_emailbox("Email"), $Email);
+	_setValue(_password("Passwd"), $Passwd);
+	_click(_submit("Sign in"));
+}
+
+function navigateToMoreGoogleApps(){
+	_click(_link("Apps"));
+	_click(_link("More"));
+	_click(_link("Even more from Google"));
+}
+
+/* --Functions Above-- */
+
+_navigateTo("http://google.com");
+_click(_link("Sign in"));
+login("phuongmynguyentran", "Chuagiugincon");
+
+navigateToMoreGoogleApps();
+
+_assertExists(_link("Web Search"));
+_assertVisible(_link("Web Search"));
+_assertEqual("Web Search", _getText(_link("Web Search")));
+_assertContainsText("Web Search", _link("Web Search"));
+_navigateTo("http://google.com");
+_click(_span("gb_ea gbii"));
+_click(_link("Sign out"));

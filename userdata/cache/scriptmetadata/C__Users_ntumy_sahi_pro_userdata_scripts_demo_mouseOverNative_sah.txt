@@ -1,0 +1,8 @@
+mouseOver,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\mouseOverNative.sah,1,$combo,$expected
+tearDown,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\mouseOverNative.sah,6
+testNormalClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\mouseOverNative.sah,9
+testCtrlClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\mouseOverNative.sah,13
+testAltClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\mouseOverNative.sah,17
+testShiftClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\mouseOverNative.sah,23
+xtestMetaClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\mouseOverNative.sah,27
+testCombinationClicks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\mouseOverNative.sah,31

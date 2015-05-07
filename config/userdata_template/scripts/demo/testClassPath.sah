@@ -1,0 +1,3 @@
+$class = new Packages.com.example.sahi.TestClass();
+$str = $class.testMethod();
+_assertEqual("Test Jar is added", $str);

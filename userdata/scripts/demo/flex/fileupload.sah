@@ -1,0 +1,20 @@
+var $fileToUpload = "test.doc";
+
+var $uploadPath = _resolvePath($fileToUpload);
+
+_navigateTo("/demo/flex/mx/fileUpload41.html");
+
+_focusWindow();
+_wait(2000); // Required.
+
+_clickNative(_f("fileUpload").button("Upload File"));
+_wait(2000); // Required.
+
+// Type the file path
+_typeNative($uploadPath);
+_wait(2000); // Required.
+
+// Press enter
+_typeKeyCodeNative(java.awt.event.KeyEvent.VK_ENTER);
+
+_assertEqual("File Uploaded: " + $fileToUpload, _getText(_f("fileUpload").uitextfield(1)));

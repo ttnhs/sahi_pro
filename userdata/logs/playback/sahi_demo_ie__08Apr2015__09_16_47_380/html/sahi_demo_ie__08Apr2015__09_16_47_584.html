@@ -1,0 +1,1197 @@
+<html xmlns:util="in.co.sahi.util.XSLUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+		
+		var openedElement = new Array();
+		var cookieHashMap = {};
+		function hideImage(i){i.style.display='none';}
+        function attachFn(d){ d.getElementsByTagName('DIV')[0].onclick = function () {showHideDiv(d);}	} 
+        function getInnerDiv(d){var els = d.getElementsByTagName('DIV'); for (var i=0; i<els.length;i++) {if (els[i].className == 'GROUP_INNER') return els[i];}}
+        function showHideDiv(groupDiv){
+        	var stepsDiv = getInnerDiv(groupDiv);
+        	var els = document.getElementsByTagName('DIV');
+        	for(var i = 0; i < els.length; i++){
+        		if (els[i] == stepsDiv){
+        			if(stepsDiv.style.display == 'block'){
+        				removeFromCookieArray(i);
+        				stepsDiv.style.display = 'none';
+        				changeIconToPlus(groupDiv);
+        				break;
+        			}else{
+        				stepsDiv.style.display = 'block';
+        				addToCookieArray(i);
+        				changeIconToMinus(groupDiv);
+        				break;
+        			}
+        		}	
+        	}
+        }; 
+        
+        function changeIconToMinus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[+]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        }
+        
+        function changeIconToPlus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[-]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        }
+        
+        function getGroupLabelDiv(groupDiv){
+        	var div = groupDiv.getElementsByTagName("DIV");
+        	for(var i=0;i<div.length;i++){
+        		if(div[i].className.indexOf("GROUP_LABEL") == 0){
+        			return div[i];
+        		}
+        	}
+        }
+        
+        function showHideNetworkActivity(el, scriptId, stepId){
+        	if(document.getElementById('harInfo' + stepId).innerHTML == ""){
+        		var html = "<iframe onload=\"setAutoHeight('harIFrame" + stepId +"')\" id=\"harIFrame" + stepId +"\" src=\"/_s_/dyn/pro/HARViewer_viewHARLogs?scriptReportId=" + scriptId + "&stepId=" + stepId + "\" style=\"width:100%;\"  frameborder=\"0\" />";
+        		document.getElementById('harInfo' + stepId).innerHTML = html;
+        	}
+        	var plus = "Show Network Activity";
+        	var minus = "Hide Network Activity";
+        	if(el.innerHTML == plus){
+        		el.innerHTML = minus;
+        		document.getElementById('harInfo' + stepId).style.display = "block";
+        	} else {
+        		el.innerHTML = plus;
+        		document.getElementById('harInfo' + stepId).style.display = "none";
+        	}
+        }
+        
+        function expandAll(isExcel){
+	        if(isExcel == "true"){
+	        	ignoregroup_showHideAll(true);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "block";
+	        			addToCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function collapseAll(isExcel){
+        	if(isExcel == "true"){
+	        	ignoregroup_showHideAll(false);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "none";
+	        			removeFromCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[-]", "[+]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function setNetworkActivityLinks(){
+			var xmlhttp;
+			if (window.XMLHttpRequest){ // code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			} else {// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  			}
+  			xmlhttp.onreadystatechange = function() {
+				if (this.readyState==4 && this.status==200) {
+			    	var steps = xmlhttp.responseText;
+			    	steps = steps.substring(1,steps.lastIndexOf("]"));
+			    	steps = steps.split(", ");
+			    	for(i = 0; i < steps.length; i++){
+			    		try{
+			    			document.getElementById('networkActivityLink' + steps[i]).style.display = 'block';
+			    		}catch(err){
+			    		}
+			    	}
+			    }
+			}
+  			xmlhttp.open("GET","/_s_/dyn/pro/HARViewer_getStepsWithNetworkActivity?scriptReportId=" + scriptReportID ,true);
+			xmlhttp.send();
+		}
+        function setAutoHeight(id){
+        	return;
+			var newheight;
+			if(document.getElementById(id)){
+				newheight=document.getElementById(id).contentWindow.document.body.scrollHeight;
+			}
+			document.getElementById(id).style.height= (newheight) + "px";
+		}
+		
+		
+        
+		function markStatus(d) {d.getElementsByTagName('DIV')[0].className += (d.innerHTML.indexOf('<!--SAHI_TESTCASE_FAIL_MARKER-->') == -1) ? ' SUCCESS' : ' FAILURE'};
+		function addToCookieArray(element){
+			openedElement.push(element)
+		}
+		function removeFromCookieArray(element){
+			removeByValue(openedElement,element)
+		}
+		function removeByValue(arr, val) {
+			for ( var i = 0; i < arr.length; i++) {
+				if (arr[i] == val) {
+					arr.splice(i, 1);
+					break;
+				}
+			}
+		}
+		function getUrlQueryString(name){
+		   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+		      return decodeURIComponent(name[1]);
+		}
+		function highlightUrl(url){
+			expandAll(false);
+			var scriptReportId = getUrlQueryString("id");
+			var stepId = getUrlQueryString("stepId");
+			var networkActivityLinkId = "networkActivityLink"+stepId;
+			showHideNetworkActivity(document.getElementById(networkActivityLinkId),scriptReportId,stepId);
+			
+			var iframe =document.getElementById("harInfo"+stepId).getElementsByTagName("iframe")[0];
+			iframe.onload = function() {
+ 				  var doc = iframe.contentDocument || iframe.contentWindow.document;
+			  var row = doc.getElementById(encodeURIComponent("netAct_"+url));	
+			  row.className = 'HIGHLIGHT';								
+			 	
+ 				};					
+			location.href = "#toScrollTo_" + stepId;
+		}
+		
+		function highlightStep(stepId){
+			var scriptReportId = getUrlQueryString("id");
+			var stepId = getUrlQueryString("stepId");
+			var el = document.getElementById("toScrollTo_" + stepId);
+			if (el) el.className = 'HIGHLIGHT';	
+			location.href = "#toScrollTo_" + stepId;
+		}
+		function onLoad(){
+	        var divs = document.getElementsByTagName('DIV'); 
+	        for (var i=0; i<divs.length; i++){
+	        	var d = divs[i]; 
+	        	if (d.className == 'GROUP') { attachFn(d); markStatus(d);} 
+	        }
+	        fixImagePaths();
+			var cookieValue = readCookie("OpenedElement");
+			if(cookieValue){
+				cookieHashMap = eval("("+cookieValue+")");
+				openedElement=cookieHashMap[scriptReportID];
+				if (!openedElement) openedElement = [];
+				delete cookieHashMap[scriptReportID];
+				var els = document.getElementsByTagName('DIV');
+				for(var i = 0; i < openedElement.length; i++){
+					els[openedElement[i]].style.display = 'block';
+					var iconDiv = els[openedElement[i]].parentNode.children[0];
+					if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+						iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+					}
+        		}
+			}
+			try {
+				setNetworkActivityLinks();
+			} catch (e) {}
+			showStackTraceMessages();
+
+			var url = getUrlQueryString("url");
+			if(url){
+				highlightUrl(url);
+			}  else {
+				var stepId = getUrlQueryString("stepId"); 
+				if(stepId!=undefined) highlightStep(stepId);
+			}
+		}
+		
+		function onUnload(){
+	
+			var count = 0;
+			var firstElement;
+			for(firstElement in cookieHashMap){
+				break;
+			}
+			for(var j in cookieHashMap){
+				count++;
+			}
+			if(count == 10){
+				delete cookieHashMap[firstElement];
+			}
+			cookieHashMap[scriptReportID] = openedElement;
+			var cookieValue = getJSON(cookieHashMap);
+			createCookie("OpenedElement", cookieValue, 1);
+		}
+		function getJSON(o) {
+			var s = "{";
+			for (var i in o) {
+				s += "'" + i + "':[" + o[i] + "],"
+			}
+			s += "}";
+			return s;
+		}
+		function createCookie(name,value,days)
+		{
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime()+(days*24*60*60*1000));
+				var expires = "; expires="+date.toGMTString();
+			}
+			else var expires = "";
+			document.cookie = name+"="+value+expires+"; path=/";
+		}
+		
+		function readCookie(name)
+		{
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0;i < ca.length;i++)
+			{
+				var c = ca[i];
+				c = c.replace(/[,][}]$/,'}');
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		}
+		function fixImagePaths(){
+			if (location.href.indexOf("_s_") != -1) return;
+			var imgs = document.getElementsByTagName('IMG'); 
+	        for (var i=0; i<imgs.length; i++){
+	        	var img = imgs[i]; 	        	
+ 				if (img.src.indexOf("Log_viewLogs/images") != -1) {
+ 					img.src = makeRelative(img.src);
+ 					if (img.parentNode.tagName.toLowerCase() == "a") {
+ 						img.parentNode.href = makeRelative(img.parentNode.href);
+ 					}
+ 				}
+	        }
+		}
+		function makeRelative(s){
+			var ix = s.indexOf("/images/"); 
+			if (ix != -1) {
+				s = s.substring(ix+1);
+			}
+			return s;
+		}
+		function showStackTraceMessages() { 
+			var els = document.getElementsByClassName("FAILURE_ST");
+			for (var i=0; i<els.length; i++) {
+				if (els[i].tagName == "DIV") {
+					try {
+						els[i].innerHTML = showStackTraceMessage(els[i].innerHTML);
+					} catch (e){}
+				}
+			}
+		}
+		function trim(s) {
+			return s.replace(/^\s*/, '').replace(/\s*$/, '')
+		} 
+		function showStackTraceMessage(message) {
+			var hasStackTrace = false;
+			message = message.replace("_STACKTRACE_", "\n");
+			var noparse = false;
+			if (message.indexOf("_NOPARSE_") != -1) {
+				noparse = true;
+				message = message.replace("_NOPARSE_", "");
+			}
+			var paths = message.split("\n");
+			var length = paths.length;
+			var s = "";
+			for (var i=0;i<length;i++) {
+				var path = trim(paths[i]);
+				if (path == "") continue;
+				var re = /^\s*at /;
+				if (path.match(re)) {
+					hasStackTrace = true;
+					var path = paths[i].replace(re, "").replace('/\s*$/', '').replace(/\\\\/g, "\\");
+					var fnName = path.substring(path.indexOf(" "), path.length);
+					path = path.substring(0, path.length - fnName.length);
+					var onClick = "/_s_/dyn/Log_highlight?href=" + path + (noparse ? "" : "&parsed=true") + "#selected";
+					var link = "at: <a style='text-decoration:underline' href=" + onClick + "> (" + path.replace(/&n=/g, ' ') + ")</a> <b>" + fnName + "</b>";
+					s += link;
+				} else {
+					s += path;
+				}
+				if (i != length-1) {
+					s += "</br>";
+				}
+			}
+			if (hasStackTrace) {
+				s = "<div style='background-color:#222;color:white'>" + s + "</div>";
+			}
+			return s;
+		}
+		function addImages(screenShots){
+			var images = screenShots.split(",");
+			var msg =  "<table class='imgcompare'><tr><td>Expected</td><td>Actual</td><td>Difference</td></tr><tr>" +
+						"<td class='imgcell'><img width='300px' src='/_s_/dyn/Log_viewLogs/images/" + images[0] + "' style='cursor:pointer' onclick='window.open(this.src)'></td>" + 
+						"<td class='imgcell'><img width='300px' src='/_s_/dyn/Log_viewLogs/images/"+images[1]+"' style='cursor:pointer' onclick='window.open(this.src)'></td>" +
+						"<td class='imgcell'><img width='300px' src='/_s_/dyn/Log_viewLogs/images/"+images[2]+"' style='cursor:pointer' onclick='window.open(this.src)'></td>" +
+						"</tr></table>";
+			document.write(msg);
+		}
+        
+        </script>
+<style>
+					div{padding:3px;}
+					a{text-decoration:none;color:white;}
+					a.INFO{color:black;}
+					a.START,a.STOP{color:black;font-weight:bold;}
+					div.INFO{background-color:white;}
+					div.SUCCESS{background-color:green;color:white}
+					div.FAILURE,div.ERROR{background-color:red;color:white}
+					a.CUSTOM, a.CUSTOM2, a.CUSTOM4{color:black}
+					div.CUSTOM{background-color:yellow;}
+					div.CUSTOM1{background-color:orange;}
+					div.CUSTOM2{background-color:#EFEFEF;}
+					div.CUSTOM3{background-color:green;}
+					div.CUSTOM4{background-color:violet;}
+					div.CUSTOM5{background-color:indigo;}
+					div.networkActivity{float:right;width:200px;color:#ccc;cursor:pointer;display:none;padding:0px;}
+					a.SCRIPT{text-decoration:underline;}
+					span.extra{color:#CCC;margin-left:20px;}
+					div.SKIPPED{background-color:#eed;}
+					a.SKIPPED{color:gray;}
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					div.GROUP {padding:0px;}
+					div.GROUP_LABEL {font-weight: bold;cursor:pointer; padding:5px;border-top:5px solid white}
+					div.GROUP_INNER{padding:10px;display:none;border:1px solid gray;}
+				
+					table.summary {border-top:1px solid gray;border-right:1px solid
+					gray;border-spacing:0px;border-collapse:collapse;}
+					table.summary td{border-bottom:1px solid gray;border-left:1px solid
+					gray;padding:5px;text-align:right;}
+					td a.SCRIPT{float:left;}
+					tr.FAILURE{background-color:red;color:white;}
+					tr.SUCCESS{background-color:green;color:white;}
+					a{color:white;}
+					
+					body *{font-family:verdana;font-size:10pt;}
+					body {margin:10px; background-color:lightyellow;}
+					
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					
+					#navbar a{color: blue;}
+					#navbar {padding:2px;border:1px solid white;border-bottom:1px solid gray;padding:1px}
+					
+					.HIGHLIGHT{background-color:brown;}
+					.HIGHLIGHT a{color:white;}
+					#stepsDiv {margin:0px; padding:0px;}
+					#stepsDiv A IMG {box-shadow: 10px 10px 5px #888888;padding:10px;border: 1px solid #ccc;}
+					table.imgcompare {border:1px solid #ccc;margin-top:15px;background-color:#efefef}
+					.imgcompare td{vertical-align:top;xcolor:white;padding:10px 20px;}
+					td.imgcell {vertical-align:top;padding-bottom:30px;}
+					td.imgcell img{mxargin:20px;border: 1px solid #ccc;box-shadow: 10px 10px 5px #888888}
+				</style>
+</head>
+<body onunload="onUnload()" onload="onLoad()">
+<script type="text/javascript">var scriptReportID = 'sahi_demo_ie__08Apr2015__09_16_47_584'; var currentTimestamp = null;</script><span>
+<h2>
+				Script Name: sahi_demo.sah</h2>
+</span>
+<table class="summary" style="background-color:white;margin-top:20px;width:800px;">
+<tr>
+<td>Test</td><td>Total Steps</td><td>Failures</td><td>Errors</td><td>Success Rate</td><td>Time Taken (ms)</td><td>Node</td><td>Load</td><td>Browser</td>
+</tr>
+<tr class="SUCCESS">
+<td>sahi_demo.sah</td><td>83</td><td>0</td><td>0</td><td>100
+							%
+						</td><td>15006</td><td>localhost:9999</td><td>0</td><td>ie</td>
+</tr>
+<tr>
+<td colspan="9" style="text-align:left">Report Id: sahi_demo_ie__08Apr2015__09_16_47_380 | </td>
+</tr>
+</table>
+<table id="testCaseSummaryTable" class="summary" style="background-color:white;margin-top:20px;width:350px;">
+<tr>
+<td>Total Test Cases</td><td>Passed</td><td>Failed</td><td>Success Rate</td>
+</tr>
+<tr class="SUCCESS">
+<td>1</td><td>1</td><td>0</td><td>100
+							%
+						</td>
+</tr>
+</table>
+<table class="summary" style="background-color:white;margin-top:20px;width:700px;">
+<tr>
+<td>Test Case Id</td><td>Description</td><td>Status</td><td>Time Taken</td>
+</tr>
+<tr class="SUCCESS">
+<td>1</td><td>Test Accessors</td><td>SUCCESS</td><td>6382</td>
+</tr>
+</table>
+<div id="stepsDiv">
+<br>
+<div style="padding:10px;background-color:white;border:1px solid #ddd;">
+<div class="START">
+<a class="START">Starting script</a><a style="padding:10px; font-size:11px; color:black; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:expandAll('false'); return false;">Expand All</a><a style="color:black; font-size:11px; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:collapseAll('false'); return false;">Collapse All</a>
+</div>
+<script>
+		scriptReportId = "sahi_demo_ie__08Apr2015__09_16_47_584";
+		var preTimestampString = scriptReportId.substring(scriptReportId.length-23, scriptReportId.length);
+		function getMonthFromString(mon){
+   			var d = Date.parse(mon + "1, 2012");
+ 			if(!isNaN(d)){
+      		return new Date(d).getMonth();
+   			}
+   			return -1;
+ 		}
+		var prevTimestamp = new Date();
+		prevTimestamp.setDate(preTimestampString.substring(0,2));
+		prevTimestamp.setMonth(getMonthFromString(preTimestampString.substring(2,5)));
+		prevTimestamp.setFullYear(preTimestampString.substring(5,9));
+		prevTimestamp.setHours(preTimestampString.substring(11,13));
+		prevTimestamp.setMinutes(preTimestampString.substring(14,16));
+		prevTimestamp.setSeconds(preTimestampString.substring(17,19));
+		prevTimestamp.setMilliseconds(preTimestampString.substring(20,23));
+		</script>
+<div id="toScrollTo_1" class="INFO">
+<div id="networkActivityLink1" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '1')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=2">0</span><script>var currentTimestamp = '1428459409660';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:49.660]
+						</span>
+<div id="harInfo1" style="display:none"></div>
+</div>
+<div id="toScrollTo_2" class="CUSTOM">
+<div id="networkActivityLink2" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '2')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=4">UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; rv:11.0) like Gecko
+Browser Name: Netscape
+Browser Version: 5.0 (Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; rv:11.0)
+Native XMLHttpRequest: true
+Java Enabled: true
+Cookie Enabled: true
+osname: Windows 7
+osversion: 6.1
+osarch: x86
+istasklistavailable: true
+iscertutilavailable: true
+javadir: C:\Program Files (x86)\Java\jre7
+javaversion: 1.7.0_25
+iskeytoolavailable: true
+isjarsigneravailable: false
+</span><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:50.192]
+						</span>
+<div id="harInfo2" style="display:none"></div>
+</div>
+<div id="toScrollTo_3" class="INFO">
+<div id="networkActivityLink3" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '3')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=7">_click(_link("Link Test"))</span><script>var currentTimestamp = '1428459410334';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:50.334]
+						</span>
+<div id="harInfo3" style="display:none"></div>
+</div>
+<div id="toScrollTo_4" class="SUCCESS">
+<div id="networkActivityLink4" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '4')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/includes/sahi_demo_include.sah&amp;n=1">_assertNotNull(_link("linkByHtml"))</span><script>var currentTimestamp = '1428459412192';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:52.192]
+						</span>
+<div id="harInfo4" style="display:none"></div>
+</div>
+<div id="toScrollTo_5" class="SUCCESS">
+<div id="networkActivityLink5" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '5')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/includes/sahi_demo_include.sah&amp;n=2">_assertNotNull(_link("linkById"))</span><script>var currentTimestamp = '1428459412318';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:52.318]
+						</span>
+<div id="harInfo5" style="display:none"></div>
+</div>
+<div id="toScrollTo_6" class="SUCCESS">
+<div id="networkActivityLink6" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '6')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/includes/sahi_demo_include.sah&amp;n=3">_assertEqual(_link("linkById"), _link("linkByContent"))</span><script>var currentTimestamp = '1428459412459';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:52.459]
+						</span>
+<div id="harInfo6" style="display:none"></div>
+</div>
+<div id="toScrollTo_7" class="INFO">
+<div id="networkActivityLink7" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '7')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/includes/sahi_demo_include.sah&amp;n=4">_click(_link("Back"))</span><script>var currentTimestamp = '1428459412585';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:52.585]
+						</span>
+<div id="harInfo7" style="display:none"></div>
+</div>
+<div id="toScrollTo_8" class="SUCCESS">
+<div id="networkActivityLink8" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '8')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/includes/sahi_demo_include.sah&amp;n=5">_assertTrue(_containsHTML(document.body, "Sahi Tests"))</span><script>var currentTimestamp = '1428459413054';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:53.054]
+						</span>
+<div id="harInfo8" style="display:none"></div>
+</div>
+<div id="toScrollTo_9" class="INFO">
+<div id="networkActivityLink9" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '9')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=11">_click(_link("Form Test"))</span><script>var currentTimestamp = '1428459413180';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:53.180]
+						</span>
+<div id="harInfo9" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[1] Test Accessors</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] testAccessors()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">Create Admin</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_11" class="SUCCESS">
+<div id="networkActivityLink11" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '11')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=20">_assertEqual('', _textbox("t1").value)</span><script>var currentTimestamp = '1428459413777';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:53.777]
+						</span>
+<div id="harInfo11" style="display:none"></div>
+</div>
+<div id="toScrollTo_12" class="SUCCESS">
+<div id="networkActivityLink12" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '12')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=21">_assertNotNull(_textbox(1))</span><script>var currentTimestamp = '1428459413919';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:53.919]
+						</span>
+<div id="harInfo12" style="display:none"></div>
+</div>
+<div id="toScrollTo_13" class="SUCCESS">
+<div id="networkActivityLink13" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '13')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=22">_assertEqual('', _textbox(1).value)</span><script>var currentTimestamp = '1428459414045';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:54.045]
+						</span>
+<div id="harInfo13" style="display:none"></div>
+</div>
+<div id="toScrollTo_14" class="SUCCESS">
+<div id="networkActivityLink14" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '14')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=23">_assertNotNull(_textarea("ta1"))</span><script>var currentTimestamp = '1428459414186';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:54.186]
+						</span>
+<div id="harInfo14" style="display:none"></div>
+</div>
+<div id="toScrollTo_15" class="SUCCESS">
+<div id="networkActivityLink15" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '15')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=24">_assertEqual('', _textarea("ta1").value)</span><script>var currentTimestamp = '1428459414312';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:54.312]
+						</span>
+<div id="harInfo15" style="display:none"></div>
+</div>
+<div id="toScrollTo_16" class="SUCCESS">
+<div id="networkActivityLink16" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '16')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=25">_assertNotNull(_textarea(1))</span><script>var currentTimestamp = '1428459414453';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:54.453]
+						</span>
+<div id="harInfo16" style="display:none"></div>
+</div>
+<div id="toScrollTo_17" class="SUCCESS">
+<div id="networkActivityLink17" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '17')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=26">_assertEqual('', _textarea(1).value)</span><script>var currentTimestamp = '1428459414579';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:54.579]
+						</span>
+<div id="harInfo17" style="display:none"></div>
+</div>
+<div id="toScrollTo_18" class="SUCCESS">
+<div id="networkActivityLink18" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '18')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=27">_assertNotNull(_checkbox("c1"))</span><script>var currentTimestamp = '1428459414720';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:54.720]
+						</span>
+<div id="harInfo18" style="display:none"></div>
+</div>
+<div id="toScrollTo_19" class="SUCCESS">
+<div id="networkActivityLink19" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '19')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=28">_assertEqual('cv1', _checkbox("c1").value)</span><script>var currentTimestamp = '1428459414862';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:54.862]
+						</span>
+<div id="harInfo19" style="display:none"></div>
+</div>
+<div id="toScrollTo_20" class="SUCCESS">
+<div id="networkActivityLink20" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '20')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=29">_assertNotNull(_checkbox(1))</span><script>var currentTimestamp = '1428459415003';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:55.003]
+						</span>
+<div id="harInfo20" style="display:none"></div>
+</div>
+<div id="toScrollTo_21" class="SUCCESS">
+<div id="networkActivityLink21" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '21')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=30">_assertEqual('cv2', _checkbox(1).value)</span><script>var currentTimestamp = '1428459415129';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:55.129]
+						</span>
+<div id="harInfo21" style="display:none"></div>
+</div>
+<div id="toScrollTo_22" class="SUCCESS">
+<div id="networkActivityLink22" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '22')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=31">_assertNotNull(_checkbox("c1[1]"))</span><script>var currentTimestamp = '1428459415270';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:55.270]
+						</span>
+<div id="harInfo22" style="display:none"></div>
+</div>
+<div id="toScrollTo_23" class="SUCCESS">
+<div id="networkActivityLink23" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '23')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=32">_assertEqual('cv3', _checkbox("c1[1]").value)</span><script>var currentTimestamp = '1428459415412';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:55.412]
+						</span>
+<div id="harInfo23" style="display:none"></div>
+</div>
+<div id="toScrollTo_24" class="SUCCESS">
+<div id="networkActivityLink24" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '24')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=33">_assertNotNull(_checkbox(3))</span><script>var currentTimestamp = '1428459415553';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:55.553]
+						</span>
+<div id="harInfo24" style="display:none"></div>
+</div>
+<div id="toScrollTo_25" class="SUCCESS">
+<div id="networkActivityLink25" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '25')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=34">_assertEqual('', _checkbox(3).value)</span><script>var currentTimestamp = '1428459415695';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:55.695]
+						</span>
+<div id="harInfo25" style="display:none"></div>
+</div>
+<div id="toScrollTo_26" class="SUCCESS">
+<div id="networkActivityLink26" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '26')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=35">_assertNotNull(_radio("r1"))</span><script>var currentTimestamp = '1428459415836';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:55.836]
+						</span>
+<div id="harInfo26" style="display:none"></div>
+</div>
+<div id="toScrollTo_27" class="SUCCESS">
+<div id="networkActivityLink27" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '27')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=36">_assertEqual('rv1', _radio("r1").value)</span><script>var currentTimestamp = '1428459415977';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:55.977]
+						</span>
+<div id="harInfo27" style="display:none"></div>
+</div>
+<div id="toScrollTo_28" class="SUCCESS">
+<div id="networkActivityLink28" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '28')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=37">_assertNotNull(_password("p1"))</span><script>var currentTimestamp = '1428459416103';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:56.103]
+						</span>
+<div id="harInfo28" style="display:none"></div>
+</div>
+<div id="toScrollTo_29" class="SUCCESS">
+<div id="networkActivityLink29" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '29')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=38">_assertEqual('', _password("p1").value)</span><script>var currentTimestamp = '1428459416245';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:56.245]
+						</span>
+<div id="harInfo29" style="display:none"></div>
+</div>
+<div id="toScrollTo_30" class="SUCCESS">
+<div id="networkActivityLink30" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '30')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=39">_assertNotNull(_password(1))</span><script>var currentTimestamp = '1428459416386';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:56.386]
+						</span>
+<div id="harInfo30" style="display:none"></div>
+</div>
+<div id="toScrollTo_31" class="SUCCESS">
+<div id="networkActivityLink31" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '31')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=40">_assertEqual('', _password(1).value)</span><script>var currentTimestamp = '1428459416574';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:56.574]
+						</span>
+<div id="harInfo31" style="display:none"></div>
+</div>
+<div id="toScrollTo_32" class="SUCCESS">
+<div id="networkActivityLink32" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '32')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=41">_assertNotNull(_select("s1"))</span><script>var currentTimestamp = '1428459416716';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:56.716]
+						</span>
+<div id="harInfo32" style="display:none"></div>
+</div>
+<div id="toScrollTo_33" class="SUCCESS">
+<div id="networkActivityLink33" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '33')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=42">_assertEqual('o1', _getSelectedText(_select("s1")))</span><script>var currentTimestamp = '1428459416857';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:56.857]
+						</span>
+<div id="harInfo33" style="display:none"></div>
+</div>
+<div id="toScrollTo_34" class="SUCCESS">
+<div id="networkActivityLink34" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '34')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=43">_assertNotNull(_select("s1Id[1]"))</span><script>var currentTimestamp = '1428459416998';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:56.998]
+						</span>
+<div id="harInfo34" style="display:none"></div>
+</div>
+<div id="toScrollTo_35" class="SUCCESS">
+<div id="networkActivityLink35" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '35')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=44">_assertEqual('o1', _getSelectedText(_select("s1Id[1]")))</span><script>var currentTimestamp = '1428459417124';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:57.124]
+						</span>
+<div id="harInfo35" style="display:none"></div>
+</div>
+<div id="toScrollTo_36" class="SUCCESS">
+<div id="networkActivityLink36" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '36')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=45">_assertNotNull(_select(2))</span><script>var currentTimestamp = '1428459417266';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:57.266]
+						</span>
+<div id="harInfo36" style="display:none"></div>
+</div>
+<div id="toScrollTo_37" class="SUCCESS">
+<div id="networkActivityLink37" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '37')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=46">_assertEqual('o1', _getSelectedText(_select(2)))</span><script>var currentTimestamp = '1428459417407';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:57.407]
+						</span>
+<div id="harInfo37" style="display:none"></div>
+</div>
+<div id="toScrollTo_38" class="SUCCESS">
+<div id="networkActivityLink38" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '38')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=47">_assertNotNull(_button("button value"))</span><script>var currentTimestamp = '1428459417533';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:57.533]
+						</span>
+<div id="harInfo38" style="display:none"></div>
+</div>
+<div id="toScrollTo_39" class="SUCCESS">
+<div id="networkActivityLink39" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '39')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=48">_assertNotNull(_button("btnName[1]"))</span><script>var currentTimestamp = '1428459417659';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:57.659]
+						</span>
+<div id="harInfo39" style="display:none"></div>
+</div>
+<div id="toScrollTo_40" class="SUCCESS">
+<div id="networkActivityLink40" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '40')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=49">_assertNotNull(_button("btnId[2]"))</span><script>var currentTimestamp = '1428459417800';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:57.800]
+						</span>
+<div id="harInfo40" style="display:none"></div>
+</div>
+<div id="toScrollTo_41" class="SUCCESS">
+<div id="networkActivityLink41" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '41')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=50">_assertNotNull(_button(3))</span><script>var currentTimestamp = '1428459417941';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:57.941]
+						</span>
+<div id="harInfo41" style="display:none"></div>
+</div>
+<div id="toScrollTo_42" class="SUCCESS">
+<div id="networkActivityLink42" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '42')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=51">_assertNotNull(_submit("Add"))</span><script>var currentTimestamp = '1428459418083';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:58.083]
+						</span>
+<div id="harInfo42" style="display:none"></div>
+</div>
+<div id="toScrollTo_43" class="SUCCESS">
+<div id="networkActivityLink43" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '43')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=52">_assertNotNull(_submit("submitBtnName[1]"))</span><script>var currentTimestamp = '1428459418209';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:58.209]
+						</span>
+<div id="harInfo43" style="display:none"></div>
+</div>
+<div id="toScrollTo_44" class="SUCCESS">
+<div id="networkActivityLink44" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '44')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=53">_assertNotNull(_submit("submitBtnId[2]"))</span><script>var currentTimestamp = '1428459418334';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:58.334]
+						</span>
+<div id="harInfo44" style="display:none"></div>
+</div>
+<div id="toScrollTo_45" class="SUCCESS">
+<div id="networkActivityLink45" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '45')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=54">_assertNotNull(_submit(3))</span><script>var currentTimestamp = '1428459418460';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:58.460]
+						</span>
+<div id="harInfo45" style="display:none"></div>
+</div>
+<div id="toScrollTo_46" class="SUCCESS">
+<div id="networkActivityLink46" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '46')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=55">_assertNotNull(_image("imageAlt1"))</span><script>var currentTimestamp = '1428459418602';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:58.602]
+						</span>
+<div id="harInfo46" style="display:none"></div>
+</div>
+<div id="toScrollTo_47" class="SUCCESS">
+<div id="networkActivityLink47" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '47')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=56">_assertNotNull(_image("imageId1[1]"))</span><script>var currentTimestamp = '1428459418727';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:58.727]
+						</span>
+<div id="harInfo47" style="display:none"></div>
+</div>
+<div id="toScrollTo_48" class="SUCCESS">
+<div id="networkActivityLink48" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '48')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=57">_assertNotNull(_image(2))</span><script>var currentTimestamp = '1428459418838';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:58.838]
+						</span>
+<div id="harInfo48" style="display:none"></div>
+</div>
+<div id="toScrollTo_49" class="SUCCESS">
+<div id="networkActivityLink49" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '49')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=58">_assertNotNull(_link("Back"))</span><script>var currentTimestamp = '1428459418963';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:58.963]
+						</span>
+<div id="harInfo49" style="display:none"></div>
+</div>
+<div id="toScrollTo_50" class="SUCCESS">
+<div id="networkActivityLink50" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '50')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=59">_assertEqual(_byId("isb1"), _imageSubmitButton("Search[1]"))</span><script>var currentTimestamp = '1428459419089';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:59.089]
+						</span>
+<div id="harInfo50" style="display:none"></div>
+</div>
+<div id="toScrollTo_51" class="SUCCESS">
+<div id="networkActivityLink51" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '51')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=60">_assertEqual(_byId("isb2"), _imageSubmitButton("Search[2]"))</span><script>var currentTimestamp = '1428459419215';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:59.215]
+						</span>
+<div id="harInfo51" style="display:none"></div>
+</div>
+<div id="toScrollTo_52" class="SUCCESS">
+<div id="networkActivityLink52" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '52')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=61">_assertEqual(_byId("isb3"), _imageSubmitButton("Search[3]"))</span><script>var currentTimestamp = '1428459419325';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:59.325]
+						</span>
+<div id="harInfo52" style="display:none"></div>
+</div>
+<div id="toScrollTo_53" class="SUCCESS">
+<div id="networkActivityLink53" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '53')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=62">_assertEqual(_byId("isb4"), _imageSubmitButton("Search[4]"))</span><script>var currentTimestamp = '1428459419451';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:59.451]
+						</span>
+<div id="harInfo53" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] testClicks()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">Create Customer</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_56" class="CUSTOM">
+<div id="networkActivityLink56" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '56')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=68">custom</span><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:59.833]
+						</span>
+<div id="harInfo56" style="display:none"></div>
+</div>
+<div id="toScrollTo_57" class="CUSTOM1">
+<div id="networkActivityLink57" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '57')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=69">custom1</span><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:16:59.976]
+						</span>
+<div id="harInfo57" style="display:none"></div>
+</div>
+<div id="toScrollTo_58" class="CUSTOM2">
+<div id="networkActivityLink58" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '58')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=70">custom2</span><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:00.118]
+						</span>
+<div id="harInfo58" style="display:none"></div>
+</div>
+<div id="toScrollTo_59" class="CUSTOM3">
+<div id="networkActivityLink59" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '59')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=71">custom3</span><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:00.276]
+						</span>
+<div id="harInfo59" style="display:none"></div>
+</div>
+<div id="toScrollTo_60" class="CUSTOM4">
+<div id="networkActivityLink60" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '60')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=72">custom4</span><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:00.419]
+						</span>
+<div id="harInfo60" style="display:none"></div>
+</div>
+<div id="toScrollTo_61" class="CUSTOM5">
+<div id="networkActivityLink61" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '61')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=73">custom5</span><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:00.561]
+						</span>
+<div id="harInfo61" style="display:none"></div>
+</div>
+<div id="toScrollTo_62" class="INFO">
+<div id="networkActivityLink62" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '62')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=74">_click(_checkbox("c1"))</span><script>var currentTimestamp = '1428459420719';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:00.719]
+						</span>
+<div id="harInfo62" style="display:none"></div>
+</div>
+<div id="toScrollTo_63" class="SUCCESS">
+<div id="networkActivityLink63" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '63')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=75">_assertNotNull(_checkbox("c1"))</span><script>var currentTimestamp = '1428459420860';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:00.860]
+						</span>
+<div id="harInfo63" style="display:none"></div>
+</div>
+<div id="toScrollTo_64" class="SUCCESS">
+<div id="networkActivityLink64" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '64')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=76">_assertTrue(_checkbox("c1").checked)</span><script>var currentTimestamp = '1428459421002';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:01.002]
+						</span>
+<div id="harInfo64" style="display:none"></div>
+</div>
+<div id="toScrollTo_65" class="INFO">
+<div id="networkActivityLink65" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '65')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=77">_click(_checkbox("c1"))</span><script>var currentTimestamp = '1428459421159';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:01.159]
+						</span>
+<div id="harInfo65" style="display:none"></div>
+</div>
+<div id="toScrollTo_66" class="SUCCESS">
+<div id="networkActivityLink66" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '66')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=78">_assertNotNull(_checkbox("c1"))</span><script>var currentTimestamp = '1428459421300';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:01.300]
+						</span>
+<div id="harInfo66" style="display:none"></div>
+</div>
+<div id="toScrollTo_67" class="SUCCESS">
+<div id="networkActivityLink67" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '67')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=79">_assertNotTrue(_checkbox("c1").checked)</span><script>var currentTimestamp = '1428459421442';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:01.442]
+						</span>
+<div id="harInfo67" style="display:none"></div>
+</div>
+<div id="toScrollTo_68" class="INFO">
+<div id="networkActivityLink68" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '68')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=80">_click(_radio("r1"))</span><script>var currentTimestamp = '1428459421614';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:01.614]
+						</span>
+<div id="harInfo68" style="display:none"></div>
+</div>
+<div id="toScrollTo_69" class="SUCCESS">
+<div id="networkActivityLink69" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '69')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=81">_assertNotNull(_radio("r1"))</span><script>var currentTimestamp = '1428459421756';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:01.756]
+						</span>
+<div id="harInfo69" style="display:none"></div>
+</div>
+<div id="toScrollTo_70" class="SUCCESS">
+<div id="networkActivityLink70" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '70')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=82">_assertTrue(_radio("r1").checked)</span><script>var currentTimestamp = '1428459421897';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:01.897]
+						</span>
+<div id="harInfo70" style="display:none"></div>
+</div>
+<div id="toScrollTo_71" class="INFO">
+<div id="networkActivityLink71" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '71')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=83">_click(_radio("r1[1]"))</span><script>var currentTimestamp = '1428459422054';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:02.054]
+						</span>
+<div id="harInfo71" style="display:none"></div>
+</div>
+<div id="toScrollTo_72" class="SUCCESS">
+<div id="networkActivityLink72" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '72')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=84">_assertNotNull(_radio("r1"))</span><script>var currentTimestamp = '1428459422195';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:02.195]
+						</span>
+<div id="harInfo72" style="display:none"></div>
+</div>
+<div id="toScrollTo_73" class="SUCCESS">
+<div id="networkActivityLink73" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '73')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=85">_assertNotTrue(_radio("r1").checked)</span><script>var currentTimestamp = '1428459422337';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:02.337]
+						</span>
+<div id="harInfo73" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					<div id="toScrollTo_75" class="INFO">
+<div id="networkActivityLink75" class="networkActivity" onclick="showHideNetworkActivity(this, 'sahi_demo_ie__08Apr2015__09_16_47_584', '75')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/demo/sahi_demo.sah&amp;n=94">_click(_link("Back"))</span><script>var currentTimestamp = '1428459422637';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[09:17:02.637]
+						</span>
+<div id="harInfo75" style="display:none"></div>
+</div>
+<div class="STOP">
+<a class="STOP">Stopping script</a>
+</div>
+</div>
+<style>div.GROUP_LABEL {display:block;}</style>
+</div>
+</body>
+</html>

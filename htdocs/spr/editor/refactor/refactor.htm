@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+<title>Refactor Code</title>
+
+<script src="../../ext/codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="../../ext/codemirror/lib/codemirror.css">
+<script src="../../ext/codemirror/mode/javascript/javascript.js"></script>
+<link rel="stylesheet" type="text/css" href="../../ext/easyui/themes/gray/easyui.css">
+<link rel="stylesheet" type="text/css" href="../../ext/easyui/themes/icon.css">
+<script src="../../ext/codemirror/lib/util/simple-hint.js"></script>
+<link rel="stylesheet" href="../../ext/codemirror/lib/util/simple-hint.css">
+<script src="../../ext/codemirror/lib/util/javascript-hint.js"></script>
+<script src="../../ext/codemirror/lib/util/foldcode.js"></script>
+<script src="../../ext/codemirror/lib/util/matchbrackets.js"></script>
+<script src="../../ext/codemirror/lib/util/search.js"></script>
+<script src="../../ext/codemirror/lib/util/dialog.js"></script>
+<script src="../../ext/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../ext/easyui/jquery.easyui.min.js"></script>
+<script src="../../ext/md5/jquery.md5.js"></script>
+<script type="text/javascript" src="../easyui.override.js"></script>
+<link rel="stylesheet" href="../../ext/codemirror/lib/util/dialog.css">
+<script src="../../ext/codemirror/lib/util/searchcursor.js"></script>
+<link rel="stylesheet" href="../../ext/codemirror/theme/eclipse.css">
+<link rel="stylesheet" href="../../ext/codemirror/theme/neat.css">
+<link rel="stylesheet" href="../../ext/jquery/jquery-ui.css" />
+<link rel="stylesheet" href="refactor.css" />
+<script type="text/javascript" src="../../codemirror_wrapper.js"></script>
+<script type="text/javascript" src="/_s_/spr/exception.js"></script>
+<script type="text/javascript" src="/_s_/spr/scriptOpener.js"></script>
+<script type="text/javascript" src="/_s_/spr/suggest.js"></script>
+<script type="text/javascript" src="refactor.js"></script>
+<script type="text/javascript" src="../../util.js"></script>
+<script type="text/javascript" src="../../suggest.js"></script>
+</head>
+
+<body onload="init()" onclick="Suggest.hideAll()" onresize="maskresize()" onkeydown="shortcuts(event)">
+<div id="hidden_dialogs" style="display:none">
+    <div id="create_function" class="easyui-window" title="Create Function"
+    			data-options="modal:true,closed:true,maximizable:false,minimizable:false,draggable:false,resizable:false,collapsible:false" style="width:460px;height:330px;padding:10px; background: #eee">
+    
+    <table>
+	<tr>
+		<td style="vertical-align: top;" id="fn-window">
+
+			<fieldset id="rp1" class="rightPane">
+				<legend>Function Name</legend>
+				<input id="fnNameBox" class="easyui-combobox" data-options="valueField:'id',textField:'text',data:_functionNameList,width:'400px'">
+				<script>
+				_functionNameList = getFunctionsNameJson();
+				</script>
+			</fieldset>
+
+			<fieldset id="rp2" class="rightPane">
+				<legend>
+					<input type="checkbox" onclick="toggleAllParams(this)"
+						checked="checked" id="param_all"> Function Parameters
+				</legend>
+				<div id="params" class="replaceDivs">
+					<br />
+					<br />
+					<br />
+				</div>
+			</fieldset>
+
+			
+
+			<div margin-top: 5px;' id="rp4" class="rightPane">
+				<button onclick="replaceContent(); closeRefactor();">Continue</button>
+			</div>
+
+
+		</td>
+	</tr>
+	</table>	    
+    </div>
+</div>
+<div id="main" data-options="fit:true" class="easyui-layout">
+<div id='titlebox' style='display:none;'></div>
+<div style="background-color:#eee;z-index:1000;left: 0;width:100%;">
+    <a id="resize" onClick="openRefactor()" title="Create Function" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-open_file'">
+      			Create Function
+    </a>
+    <a id="resize" onClick="showHideContextPane(); return false;" title="Show Context" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-insert_function'">
+      Show Context
+    </a>
+    <a onClick="findInCME('input')" title="Start searching: Ctrl-F/Cmd-F; Find next: Ctrl-G/Cmd-G; Find previous: Shift-Ctrl-G/Shift-Cmd-G; Replace: Shift-Ctrl-R" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'">
+    </a>
+    <img title="Script Information" id="scriptInfo" onclick="openScriptInfo()" style="margin:5px;float:right" src="../images/info.png"/> 
+    <div style="float:right;">
+        <a onClick="addDocTabOnParent()" title="View Doc" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-new_view_doc'">View Doc</a>
+    </div>
+    <div id="script_info" class="easyui-window" title="Script Information" style="left:300px;top:30px;padding:10px;" 
+    			data-options="modal:true,closed:true,maximizable:false,minimizable:false,draggable:true,resizable:false,collapsible:false">
+    	<table>
+			<tr>
+				<td width="150px">Path:</td>
+				<td><input id="usefile" onClick="selectFull(this.id)" title="File in use" type="text" readonly size="56"></td>
+			</tr>
+			<tr>
+				<td>Time taken:</td>
+				<td><input id="avgRunTime" onClick="selectFull(this.id)" title="Average of last 3 runs" type="text" readonly size="56"></td>
+			</tr>
+			<tr id='estTimeTD' style='display:none'>
+				<td>Estimated time:</td>
+				<td><input id="estRunTime" onClick="selectFull(this.id)" title="Estimated run time" type="text" readonly size="56"></td>
+			</tr>
+		</table>
+    </div>
+    <div id="saveAlertDiv" style="background: none repeat scroll 0% 0% rgb(248, 255, 161); border: 1px solid brown; padding: 3px 5px 5px 5px; width:135px; margin-top:10px; margin-left:35px; display:none;">
+    </div>
+</div>
+
+<div id="mask"></div>
+<div id="reload"><a class="icon-reload" onclick="refreshFuncData()"></a></div>
+
+<div id="container" data-options="fit:true" class="easyui-layout"> <!-- container start -->
+<div data-options="region:'center'"> <!-- center start -->
+
+<div id="id1" onmouseup="queuedShowContext()" style="vertical-align:top;height:100%;width:100%; padding-right:0px">
+<textarea style="width:auto;min-width:500px;height:370px;overflow:auto;border:0px" id="input" spellcheck="false" wrap="off"></textarea>
+</div>
+
+</div> <!-- center end -->
+
+<div data-options="tools:'#reload',region:'east',title: 'Context',split:true, collapsed:true, onCollapse:onEastPanelCollapse" 
+	style="width:430px;padding:10px"> <!-- east start -->
+
+<div style='border:0px;' id="r_p1" class="rightPane">
+	<table style="width:100%">
+	<tr><td colspan="2">File Path:</td></tr>
+	<tr>
+	<td><input id='funcFilePath' onClick='selectFull(this.id)' type='text' style='width:100%;' readonly/></td>
+	<td width="140px" title="The file to which the function belongs. If not included, the file is shown in red. Click to open file.">
+	<div style="float:right;">
+	<button title="Click to open file" onclick="openIncludeFile()">Open</button>
+	<button title="Click to include file in the script" onclick="includeFile()">Include</button>
+	</div>
+	</td>
+	</tr>
+	<tr><td colspan="2">Function Name:</td></tr>
+	<tr><td colspan="2" title="Click on or select any function call in Editor or type a Function Name to populate function details."><input id="funcBox" class="easyui-combobox" 
+			data-options="valueField:'id',textField:'label',onSelect:onFunctionNameSelect"></td></tr>
+	<tr><td colspan="2">Arguments:</td></tr>
+	<tr><td colspan="2"><div id="funcArgs" class="argDivs"></div></td></tr>
+	<tr>
+		<td colspan="2">
+		<div style='float:right;margin-top:5px;'>
+		<button title="Insert function at cursor position" onclick="insertFunction()">Insert</button>
+		<button title="Update function call" onclick="updateFunction()">Update</button> 
+		</div>
+		</td>
+	</tr>
+	</table>
+</div>
+<div style="clear:both;padding:5px;">
+<hr style="border:solid 1px #ccc;line-height:0px;">
+</div>
+<div style='border:0px;padding:5px;' id="r_p2" class="rightPane">
+	<div style="margin-top:5px;margin-bottom:10px;">Accessor Repository Parameters</div>
+	<table style="width:100%">
+	<tr><td width="70px">File Path:</td><td><input id='orFilePath' type='text' style='width:100%;' /></td></tr>
+	<tr><td>Key:</td><td><input id='orKey' type='text' style='width:100%;' /></td></tr>
+	<tr><td>Value:</td><td><input id='orValue' type='text' style='width:100%;' /></td></tr>
+	<tr><td></td><td><button style='float:right;margin:5px;margin-right:0px;' onclick="saveOR()">Save AR</button></td></tr>
+	</table>
+	<div id='orError' style="display:none;margin-top:10px;"></div>
+</div>
+
+</div> <!-- east end -->
+</div><!-- ./layout -->
+</div>
+<script type="text/javascript">
+jQuery('#scriptInfo').mouseover(function() {
+	try{
+	this.style.boxShadow = "2px 2px 1em gray";
+	} catch(e){}
+})
+
+jQuery('#scriptInfo').mouseout(function() {
+	try{
+	this.style.removeProperty('box-shadow'); //not working till IE8
+	} catch(e){}
+})
+</script>
+</body>
+</html>

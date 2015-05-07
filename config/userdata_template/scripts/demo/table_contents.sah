@@ -1,0 +1,121 @@
+function testTable(){
+	var $twodarray = _getTableContents(_table(0));
+	_assertEqual("0-0",$twodarray[0][0]);
+	_assertEqual("0-1",$twodarray[0][1]);
+	_assertEqual("Cell with id",$twodarray[0][2]);
+	_assertEqual("0-3",$twodarray[0][3]);
+	_assertEqual("1-0",$twodarray[1][0]);
+	_assertEqual("1-1",$twodarray[1][1]);
+	_assertEqual("1-2",$twodarray[1][2]);
+	_assertEqual("1-3",$twodarray[1][3]);
+	_assertEqual("2-0",$twodarray[2][0]);
+	_assertEqual("2-1",$twodarray[2][1]);
+	_assertEqual("2-2",$twodarray[2][2]);
+	_assertEqual("2-3",$twodarray[2][3]);
+}
+function testRegexLimitCombination(){
+	$twodarray = _getTableContents(_table("t4"),[0,1],"/.*E10.*/",10);
+	_assertEqual("E101",$twodarray[0][0]);
+	_assertEqual("Steven",$twodarray[0][1]);
+	_assertEqual("E102",$twodarray[1][0]);
+	_assertEqual("Neena",$twodarray[1][1]);
+	_assertEqual("E103",$twodarray[2][0]);
+	_assertEqual("Allan",$twodarray[2][1]);
+	_assertEqual("E101",$twodarray[3][0]);
+	_assertEqual("Bob",$twodarray[3][1]);
+}
+
+function testRangeCombination(){
+	$twodarray = _getTableContents(_table("t4"),[1,2,"EMAIL"],5,10);
+	_assertEqual("Avdesh",$twodarray[0][0]);
+	_assertEqual("Baghel",$twodarray[0][1]);
+	_assertEqual("avdesh.baghel",$twodarray[0][2]);
+	_assertEqual("Harish",$twodarray[1][0]);
+	_assertEqual("Kumar",$twodarray[1][1]);
+	_assertEqual("harish.kumar@gmail.com",$twodarray[1][2]);
+	_assertEqual("Bob",$twodarray[2][0]);
+	_assertEqual("Wattson",$twodarray[2][1]);
+	_assertEqual("bob.wattson@gmail.com",$twodarray[2][2]);
+}
+function testHeaderRegexRangeCombination(){
+	$twodarray = _getTableContents(_table("t4"),[0,1,"/.*_NA.*/","JOB_ID"],1,5);
+	_assertEqual("E101",$twodarray[0][0]);
+	_assertEqual("Steven",$twodarray[0][1]);
+	_assertEqual("King",$twodarray[0][2]);
+	_assertEqual("Dev12",$twodarray[0][3]);
+	_assertEqual("E102",$twodarray[1][0]);
+	_assertEqual("Neena",$twodarray[1][1]);
+	_assertEqual("Kochhar",$twodarray[1][2]);
+	_assertEqual("Dev14",$twodarray[1][3]);
+	_assertEqual("E103",$twodarray[2][0]);
+	_assertEqual("Allan",$twodarray[2][1]);
+	_assertEqual("Ackyard",$twodarray[2][2]);
+	_assertEqual("Dev18",$twodarray[2][3]);
+	_assertEqual("E201",$twodarray[3][0]);
+	_assertEqual("Ashutosh",$twodarray[3][1]);
+	_assertEqual("Sharma",$twodarray[3][2]);
+	_assertEqual("Dev14",$twodarray[3][3]);
+
+	$twodarray = _getTableContents(_table("t4"),[0,"/.*_ID.*/","/.*_NU.*/"],1,5);
+	_assertEqual("E101",$twodarray[0][0]);
+	_assertEqual("Dev12",$twodarray[0][1]);
+	_assertEqual("987123",$twodarray[0][2]);
+	_assertEqual("E102",$twodarray[1][0]);
+	_assertEqual("Dev14",$twodarray[1][1]);
+	_assertEqual("425323",$twodarray[1][2]);
+	_assertEqual("E103",$twodarray[2][0]);
+	_assertEqual("Dev18",$twodarray[2][1]);
+	_assertEqual("654124",$twodarray[2][2]);
+	_assertEqual("E201",$twodarray[3][0]);
+	_assertEqual("Dev14",$twodarray[3][1]);
+	_assertEqual("562452",$twodarray[3][2]);
+}
+function testRegexLimitCombination(){
+	$twodarray = _getTableContents(_table("t4"),[0,1],"/.*E10.*/",2);
+	_assertEqual("E101",$twodarray[0][0]);
+	_assertEqual("Steven",$twodarray[0][1]);
+	_assertEqual("E102",$twodarray[1][0]);
+	_assertEqual("Neena",$twodarray[1][1]);
+	$twodarray = _sahi._getTableContents(_table("t4"),[0,1],"/.*E10.*/",10);
+	_assertEqual("E101",$twodarray[0][0]);
+	_assertEqual("Steven",$twodarray[0][1]);
+	_assertEqual("E102",$twodarray[1][0]);
+	_assertEqual("Neena",$twodarray[1][1]);
+	_assertEqual("E103",$twodarray[2][0]);
+	_assertEqual("Allan",$twodarray[2][1]);
+	_assertEqual("E101",$twodarray[3][0]);
+	_assertEqual("Bob",$twodarray[3][1]);
+}
+
+function testRegexCombination(){
+	$twodarray = _getTableContents(_table("t4"),[0,1],"/.*E10.*/");
+	_assertEqual("E101",$twodarray[0][0]);
+	_assertEqual("Steven",$twodarray[0][1]);
+	_assertEqual("E102",$twodarray[1][0]);
+	_assertEqual("Neena",$twodarray[1][1]);
+	_assertEqual("E103",$twodarray[2][0]);
+	_assertEqual("Allan",$twodarray[2][1]);
+	_assertEqual("E101",$twodarray[3][0]);
+	_assertEqual("Bob",$twodarray[3][1]);
+}
+function testRegexAllCombination(){
+	$twodarray = _getTableContents(_table("t4"),[0,1,"/.*_ID.*/","/.*_NU.*/"],"/A.*/",5);
+	_assertEqual("EMPLOYEE_ID",$twodarray[0][0]);
+	_assertEqual("FIRST_NAME",$twodarray[0][1]);
+	_assertEqual("JOB_ID",$twodarray[0][2]);
+	_assertEqual("PHONE_NUMBER",$twodarray[0][3]);
+	_assertEqual("E103",$twodarray[1][0]);
+	_assertEqual("Allan",$twodarray[1][1]);
+	_assertEqual("Dev18",$twodarray[1][2]);
+	_assertEqual("654124",$twodarray[1][3]);
+	_assertEqual("E201",$twodarray[2][0]);
+	_assertEqual("Ashutosh",$twodarray[2][1]);
+	_assertEqual("Dev14",$twodarray[2][2]);
+	_assertEqual("562452",$twodarray[2][3]);
+	_assertEqual("E202",$twodarray[3][0]);
+	_assertEqual("Avdesh",$twodarray[3][1]);
+	_assertEqual("Dev14",$twodarray[3][2]);
+	_assertEqual("452243",$twodarray[3][3]);
+}
+_navigateTo("tableTest.htm");
+_runUnitTests();

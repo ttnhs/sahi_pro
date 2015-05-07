@@ -1,0 +1,24 @@
+function onScriptEnd(){
+  _click(_button("Logout"));
+}
+function onScriptError(){
+  _log(">> In onScriptError");
+}
+function onScriptFailure(){
+  _log(">> In onScriptFailure");
+}
+
+_navigateTo("http://sahi.co.in/demo/training/");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+_assertExists(_submit("Login")); // cause SCRIPT ASSERTION FAILURE - triggers onScriptFailure
+_setValue(_textbox("q11"), "2"); // causes SCRIPT ERROR - triggers onScriptError
+// Script aborts here, but executes onScriptEnd() to logout
+
+_setValue(_textbox("q[1]"), "1");
+_setValue(_textbox("q[2]"), "1");
+_click(_button("Add"));
+_assertEqual("1150", _textbox("total").value); // cause SCRIPT FAILURE
+
+// If not aborted earlier, automatically calls onScriptEnd() to logout.

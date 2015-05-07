@@ -1,0 +1,1 @@
+testDragDropXY,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\dragDropXY.sah,1,$draggable,$droppable,$isRelative

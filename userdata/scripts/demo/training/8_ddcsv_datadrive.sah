@@ -1,0 +1,17 @@
+_include("5_included.sah");
+
+if (!_isDataPassed()) {
+	$numJava = "2";
+	$numRuby = "1";
+	$numPython = "1";
+	$totalCost = "1150";
+}
+
+function addAndVerify($nJava, $nRuby, $nPython, $total){
+	login("test", "secret");
+	addBooks($nJava, $nRuby, $nPython);
+	verifyTotal($total);
+	_click(_button("Logout"));
+}
+
+addAndVerify($numJava, $numRuby, $numPython, $totalCost);

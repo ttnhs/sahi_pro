@@ -1,0 +1,3 @@
+_navigateTo("/demo/basehref.htm");
+_assertEqual("with base href", _getText(_textbox("t")));
+_setValue(_textbox("t"), "abcd");

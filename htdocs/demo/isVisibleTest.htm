@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<style type="text/css">
+.suppressed {
+    display: none;
+}
+</style>
+</head>
+<body>
+<br>
+<h1>This is Sahi Page for isVisible Test.</h1>
+<p id="first">First Paragraph.</p>
+
+<p id="second" style="visibility: hidden">Second Paragraph</p>
+
+<p id="third" style="display: none">Third paragraph</p>
+
+<p style="visibility: hidden">A <b id="thirdsub">sub-element</b> Third Sub Paragraph</p>
+
+<p style="visibility: hidden">A<b id="fourth" style="visibility: visible">Fourth Paragraph</p>
+
+<p style="display: none">A <b id="fifth">Fifth Paragraph</p>
+
+<p id="sixth">Sixth Paragraph</p>
+
+<p id="seventh" class="suppressed">Seventh Paragraph </p>
+
+<p id="eighth">Eighth Paragraph</p>
+
+<script type="text/javascript">
+document.getElementById('sixth').style.visibility = "hidden";
+document.getElementById('eighth').className = "suppressed";
+</script>
+
+<input id="hiddenInput" type="hidden"></input>
+
+</body>
+</html>

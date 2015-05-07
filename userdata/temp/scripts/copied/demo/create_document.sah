@@ -1,0 +1,13 @@
+_include("file_exists.sah");
+_startDocumentation("doc1.sah", true);
+_navigateTo("http://sahipro.com/demo/training/");
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+_stopDocumentation();
+var $path = _resolvePath("doc1.sah");
+var $exists = fileExists($path);
+_assert($exists);
+var $path2 = _resolvePath("doc1.sah_images")
+var $exists2 = fileExists($path2);
+_assert($exists2);

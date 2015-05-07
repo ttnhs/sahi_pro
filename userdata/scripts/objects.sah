@@ -1,0 +1,51 @@
+$txtuserName = _textbox("username");
+$txtPassword = _password("password");
+$userName = "manager";
+$password = "test";
+$btnLogin = _submit("Log in");
+$url = "http://qa.moodle.net";
+$userInfor = _span("Max Manager");
+$image_Logout_Max_Manager = _image("Picture of Max Manager");
+$login = _link("Log in");
+$logout = _span("Log out");
+
+$siteAdministration = _span("Site administration");
+$users = _span("Users");
+$account = _span("Accounts");
+
+$browseListOfUsers = _link("Browse list of users");
+$adminTable = _table("admintable generaltable");
+
+$uploadUsers = _link("Upload users");
+$btnChooseAFile = _button("Choose a file...");
+$uploadAFile = _span("Upload a file");
+$browse = _file("repo_upload_file");
+$txtTitle = _textbox("title");
+$btnUploadThisFile = _submit("Upload this file");
+$dropFile = _div("filepicker-filename");
+$btnUploadUsers = _submit("Upload users");
+$errorMessage = _paragraph("errormessage");
+$debugInfor = _div("alert alert-error");
+$alertError = _div("alert alert-error[1]");
+$btnContinue = _submit("Continue");
+
+$bulkUserActions = _span("Bulk user actions");
+$availableList = _select("ausers[][0]");
+$btnAddToSelection = _submit("Add to selection");
+$actionsList = _select("action");
+$btnGo = _submit("Go");
+$btnYes = _submit("Yes");
+$changesSave = _div("Changes saved");
+
+$addANewUser = _span("Add a new user");
+$newPassword = _password("newpassword");
+$firstName = _textbox("firstname");
+$lastName = _textbox("lastname");
+$email = _textbox("email");
+$authentication = _select("auth");
+$emailDisplay = _select("maildisplay");
+$txtCity = _textbox("city");
+$country = _select("country");
+$timezone = _select("timezone");
+$description = _div("id_description_editoreditable");
+$btnCreateUser = _submit("Create user");

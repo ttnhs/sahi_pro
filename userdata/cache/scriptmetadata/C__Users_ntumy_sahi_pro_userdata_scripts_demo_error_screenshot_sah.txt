@@ -1,0 +1,1 @@
+onScriptError,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\error_screenshot.sah,1

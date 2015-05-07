@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+    Doc Viewer
+</title>
+<style>
+body{background-color:lightyellow;margin:0px;}
+body *{font-family:verdana;font-size:12px;}
+#maindiv{background-color:lightyellow;padding:20px;padding-top:25px;}
+div.code{xborder-bottom:1px dotted gray;margin-bottom:60px;display:inline;width:370px;}
+code {font-family:monospace;font-weight:bold;font-size:16px;padding:0;display:inline;color:black;}
+img {margin-top:15px;margin-bottom:10px;display:inline;height:337;border-style: none}
+td {padding-left:20px;}
+.description{width:382px;height:215px;vertical-align:bottom;margin-top:0px;}
+.codearea{width:378px;height:48px;vertical-align:top;margin-bottom:10px;font-family:verdana;}
+.suggestDD{display:none;border:1px solid grey;}
+.del_i{margin-left:18px;}
+.urlDD1{display:none;border:1px solid grey;}
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+
+.alert-success {
+  font-family: verdana;
+  font-size:13px;
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-error {
+  font-family: verdana;
+  font-size:13px;
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+.editor {
+  display:none;
+}
+</style>
+<script>
+onkeydown = function(e){
+    e = !e ? window.event : e;
+       var ctrlS = e.ctrlKey && e.keyCode == 'S'.charCodeAt(0);
+       if(ctrlS){
+         if (e.preventDefault) e.preventDefault();
+      if (e.stopPropogation) e.stopPropogation();
+      saveDescriptions();
+       }
+}
+       
+</script>
+</head>
+
+<body onclick="Suggest.hideAll()">
+<script src="../../ext/jquery/jquery.min.js"></script>
+
+<script type="text/javascript" src="/_s_/spr/translate_en.js"></script>
+<script type="text/javascript" src="/_s_/dyn/ConfigureUI_readFile?fileName=config/translate_custom.js"></script>
+<script type="text/javascript" src="/_s_/spr/exception.js"></script>
+<script type="text/javascript" src="/_s_/spr/controller7.js"></script>
+<script type="text/javascript" src="/_s_/spr/util.js"></script>
+<script type="text/javascript" src="/_s_/spr/cookie.js"></script>
+<script type="text/javascript" src="/_s_/spr/suggest.js"></script>
+<script>
+function URLParser(url){
+	this.unparsed = url;
+	this.parse();
+}
+URLParser.prototype.getParameter = function(k){
+	return this.parameters[k];
+}
+URLParser.prototype.parse = function(){
+	this.parameters = new Object();
+	var qIx = this.unparsed.indexOf("?");
+	if (qIx == -1) {
+		this.url = this.unparsed;
+		return;
+	}
+	this.url = this.unparsed.substring(0, qIx);
+	this.qs = this.unparsed.substring(qIx+1);
+	var tokens = this.qs.split("&");
+	for (var i=0; i<tokens.length; i++){
+		var kv = tokens[i].split("=");
+		this.parameters[kv[0]] = unescape(kv[1]);
+	}
+}
+function init() {
+	var href = window.location.href;
+	var u = new URLParser(href);
+	var file = u.getParameter("file");
+	var dir = u.getParameter("dir");
+	if (dir) {
+		dir = dir.replace(/\\/g, '/');
+		_scriptDirList = refreshScriptListDir();
+	    populateOptions($("pbdir"), _scriptDirList, dir);
+	   	setSelectedScriptDir($("pbdir").value);
+		_scriptFileList = refreshScriptListFile($("pbdir").value);
+		if (file) {
+			if (file.indexOf(".") == -1) file = file + ".sah";
+			$("filebox").value = file;
+		}
+		parseAndCreateView();
+	} else {
+		_scriptDirList = refreshScriptListDir();
+	    populateOptions($("pbdir"), _scriptDirList);
+	    populateScripts($("pbdir").options[$("pbdir").selectedIndex].value);
+	}
+    nicEditors.allEnableTextAreas();
+}
+_showSuites = true;
+window.onload = init;
+</script>
+<script type="text/javascript" src="../../ext/NiceEdit/custom-nicEdit-latest.js"></script>
+<script type="text/javascript">
+	function saveDescriptions(){
+		var descriptionBoxArea = document.getElementsByName("description");
+		var hiddenFileds = document.getElementsByName("hidden");
+		var descriptionBoxText = [];
+		for(var i=0;i<descriptionBoxArea.length;i++){
+			var nicE = new nicEditors.findEditor(descriptionBoxArea[i]);
+			descriptionBoxText[i] = nicE.getContent();
+		}
+		var scriptDirBox = document.getElementById("pbdir");
+		var filePath = scriptDirBox.options[scriptDirBox.selectedIndex].value;
+		var fileName = document.getElementById("filebox").value;
+		var data = sahiSendToServer("/_s_/dyn/pro/TestCaseUI_load?filePath=" + encodeURIComponent(filePath + fileName));
+		
+		var lines = data.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split("\n");
+		for (var i=0; i<lines.length; i++){
+			lines[i] = lines[i].replace(/^\s*|\s*$/g, '');
+		}
+		var codeLine = [];
+		var code = false;
+		var commentS = false;
+		for (var i=0; i<lines.length; i++){
+			var blankLine = false;
+			if(lines[i].indexOf("/*") == 0){
+				code = false;
+				commentS = true;
+			}
+			else if(commentS == true){
+				if(lines[i].indexOf("*/") == 0){
+					commentS = false;
+				}
+			}
+			else if(lines[i].length == 0){
+				blankLine = true
+			}
+			else{
+				code = true;
+			}
+			if(commentS==false && code==true && blankLine == false){
+				codeLine.push(i);
+			} 
+		}
+		if(codeLine.length != descriptionBoxText.length){
+			successAlert('Comments Not Saved!', 'error');
+			return;
+		}
+		for(var i=0; i<codeLine.length; i++){
+            if(translateLine(lines[codeLine[i]]) == descriptionBoxText[i]){
+              descriptionBoxText[i] = "";
+            }
+			var commentBegin = null;
+			var isDescriptionTag = false;
+			var startLoop;
+			var temp = null;
+			if(i==0){
+				startLoop = 0;
+			}
+			else{
+				startLoop = codeLine[i-1] + 1;
+			}
+			for(var p=startLoop; p<codeLine[i]; p++){
+				if(lines[p].indexOf("/*") == 0){
+					commentBegin = p;
+				}
+				else{
+					temp = p;
+				}
+				if(lines[p].indexOf("<description>") != -1){
+					isDescriptionTag = true;
+					var myregexp2 = new RegExp("<description>[\\S\\s]*?</description>"); 
+					lines[p] = lines[p].replace(myregexp2, "<description>"+descriptionBoxText[i]+"</description>");
+					break;
+				}
+			}
+			if(isDescriptionTag == false && commentBegin != null){
+				if(hiddenFileds[i].value != descriptionBoxText[i]){
+					lines[commentBegin] = lines[commentBegin] + "\n*<description>"+descriptionBoxText[i]+"</description>";
+				}
+			}
+			else if(isDescriptionTag == false && commentBegin == null && temp != null){
+				lines[temp] = "/** \n*<description>" + descriptionBoxText[i] + "</description>\n*/";
+			}
+		}
+		data = lines.join("\n");
+		sahiSendToServer("/_s_/dyn/pro/TestCaseUI_save?filePath=" + encodeURIComponent(filePath+fileName) + "&contents=" + encodeURIComponent(data));
+		successAlert('Comments saved!', 'success');
+	}
+	
+	function setURL() {
+		var scriptDirBox = document.getElementById("pbdir");
+		var filePath = scriptDirBox.options[scriptDirBox.selectedIndex].value;
+		var fileName = document.getElementById("filebox").value;
+		location.href = "docviewer.htm?dir=" + encodeURIComponent(filePath) + "&file=" + encodeURIComponent(fileName);
+	}
+	
+	function parseAndCreateView(){
+		var scriptDirBox = document.getElementById("pbdir");
+		var filePath = scriptDirBox.options[scriptDirBox.selectedIndex].value;
+		var fileName = document.getElementById("filebox").value;
+		var data = sahiSendToServer("/_s_/dyn/pro/TestCaseUI_load?filePath=" + encodeURIComponent(filePath + fileName));
+		parseFile(data);
+	}
+	
+	function translateLine(line) {
+	var t = new Translator();
+	try
+	  {
+		line = t.translate(line);
+	  }
+	catch(err)
+	  {}
+	return line;
+	}
+	
+	function getRawParseFile(contents, forExport){
+		LineData.docData = [];
+		var lines = contents.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split("\n");
+		for (var i=0; i<lines.length; i++){
+			LineData.docData.push(new LineData(lines[i], i));
+		}
+		var docHTML = [];
+		for (var i=0; i<LineData.docData.length; i++){
+			var ld = LineData.docData[i];
+			if (ld.isStep() && !ld.isBlank()) {
+				docHTML.push(getLineDataHTML(ld, forExport));
+			}
+		}
+		return docHTML.join('\n');
+	}
+	function getDescription(description, line){
+		if(description == "<br>" || description == null || description == "" || typeof description == 'undefined') return translateLine(line);
+		else return description;
+	}
+	
+	function getLineDataHTML(ld, forExport) {
+		var htmlRender = "<table><tr>"
+		if(ld.screenShot != ''){
+			if(forExport){
+				htmlRender = htmlRender + "<td><a href='"+ld.screenShot+"'><img height='337' src='"+ld.screenShot+"' title='"+ld.screenShot+"'/></a></td>";
+			}
+			else{
+				htmlRender = htmlRender + "<td><a href='"+fixImagesAndLinksPath(ld.screenShot)+"'><img height='337' src='"+fixImagesAndLinksPath(ld.screenShot)+"' title='"+fixImagesAndLinksPath(ld.screenShot)+"'/></a></td>";
+			}
+		}
+		htmlRender = htmlRender + "<td><textarea class='codearea' disabled>"+ld.line+"</textarea><br/>\n";
+		htmlRender = htmlRender + "<input type='hidden' name='hidden' value='"+translateLine(ld.line)+ "'>";
+		htmlRender = htmlRender + "<textarea class='description' title='Description Box' name='description'>"+getDescription(ld.description, ld.line)+"</textarea>";
+		htmlRender = htmlRender + "</td></tr></table>\n";
+		if(ld.screenShot != ''){
+			htmlRender = htmlRender + "<input type='button' class='del_i' name='del_i' value='Delete Image' onclick='deleleImage(this); return false'/>";
+		}
+		htmlRender = htmlRender + "<hr style='border-top:1px solid #eeeeee'/>";
+		return htmlRender;
+	}
+	
+	function LineData(line, lineNo) {
+		this.lineNo = lineNo;
+		this.line = line.replace(/^\s*|\s*$/g, '');
+		this.screenShot = "";
+		this.description = "";
+		this._isCommentMid = false;
+		
+		this.isCommentStart = function (){
+			return this.line.indexOf("/*") == 0;
+		};
+		this.isCommentEnd = function (){
+			return this.line.indexOf("*/") == 0;
+		};
+		this.isCommentMid = function (){
+			return this._isCommentMid;
+		};
+		this.isBlank = function (){
+			return this.line.length == 0;
+		};
+		this.isStep = function (){
+			return !this.isCommentStart() && !this.isCommentMid() && !this.isCommentEnd();
+		};
+		
+		this.init = function() {
+			if (this.isCommentStart()) {
+				LineData.isInComment = true;
+				LineData.lastCommentStartIx = this.lineNo;
+			} else if (this.isCommentEnd()) {
+				LineData.lastCommentEndIx = this.lineNo;
+				LineData.isInComment = false;
+			} else if (LineData.isInComment) {
+				this._isCommentMid = true;
+				this.description = this.line.replace(/^[*]/, '');
+			} else if (this.isStep() && !this.isBlank()) {
+				var data = "";
+				if (LineData.lastCommentStartIx != null) {
+					for (var i=LineData.lastCommentStartIx; i<LineData.lastCommentEndIx; i++) {
+						data += LineData.docData[i].description;  
+					}
+					this.setDescriptionAndScreenShot(data);
+				}
+				LineData.lastCommentStartIx = null;
+				LineData.lastCommentEndIx = null;
+			}
+		};
+		
+		this.getDescription = function (){
+			return this.description;
+		};
+		
+		this.setDescriptionAndScreenShot = function (s) {
+			var screenShotStart = s.indexOf("<screenshot>");
+			var screenShotEnd = s.indexOf("</screenshot>");
+			
+			var descriptionStart = s.indexOf("<description");
+			var descriptionEnd = s.indexOf("</description>");
+			
+			var screenShot = "";
+			var description = "";
+			
+			if (screenShotStart != -1 && screenShotEnd != -1) {
+				screenShot = s.substring(screenShotStart + "<screenshot>".length, screenShotEnd);
+			}		
+			
+			if (descriptionStart != -1 && descriptionEnd != -1) {
+				description = s.substring(descriptionStart + "<description>".length, descriptionEnd);
+			}
+			
+			this.description = description;
+			this.screenShot = screenShot;
+		}
+		this.init();
+	}
+	
+	LineData.lastCommentStartIx = 0;
+	LineData.lastCommentEndIx = 0;
+	LineData.isInComment = false;
+	LineData.docData = [];
+	
+	function xgetRawParseFile(contents){
+		var isComment = false;
+		var endComment;
+		var docHTML = [];
+		var stepDocData = [];
+		var codeFragment = [];
+		var lines = contents.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split("\n");
+		for (var i=0; i<lines.length; i++){
+			var line = lines[i];
+			line = line.replace(/^\s*|\s*$/g, ''); // trim
+			if (isComment) {
+				if (line.indexOf("*/") == 0) { // comment ended
+					isComment = false;
+				} else {
+					stepDocData.push(line.replace(/^[*]/, '')); // comment line
+				}
+			} else if (line.indexOf("/**") == 0){
+				if(i !=0){
+
+				}
+				codeFragment = [];
+				isComment = true;
+				stepDocData.push(line.substring("/**".length));  // comment starting line
+			} else {
+				codeFragment.push(line); // script code
+			}
+		}
+		if (codeFragment.length > 0) {
+			_docData.push(getStepHTML(stepDocData.join("\n"), codeFragment.join("\n")))
+		}
+		return docHTML.join('\n');
+	}
+	
+	function fixImagesAndLinksPath(relUrl){
+		var header = document.getElementById("maindiv");
+		var images = header.getElementsByTagName("img");
+		var scriptDirBox = document.getElementById("pbdir");
+		var filePath = scriptDirBox.options[scriptDirBox.selectedIndex].value;
+		var fileName = document.getElementById("filebox").value;
+		var userdataDir = sahiSendToServer("/_s_/dyn/pro/TestCaseUI_getUserDir").replace(/\\/g, '/');
+		var scriptPath = "/" + filePath.split("/")[filePath.split("/").length-2] + "/";
+        //var scriptPath = filePath.substring(filePath.indexOf(userdataDir)+userdataDir.length);
+		var recordedScriptPath = fileName.substring(0, fileName.lastIndexOf("/")+1);
+		if (relUrl.indexOf("docview/") != -1) {
+			relUrl = relUrl.substring(relUrl.indexOf("docview/") + "docview/".length);
+		}
+		//images[p].src = "/_s_/dyn/pro/TestCaseUI_viewImage?scriptPath=" + encodeURIComponent(filePath + fileName) + "&imagePath=" + encodeURIComponent(relUrl);
+		relUrl = "log= /_s_/spr" + scriptPath + recordedScriptPath + relUrl;
+		return relUrl;
+		
+	}
+	
+	function xfixImagesAndLinksPath(){
+		var header = document.getElementById("maindiv");
+		var images = header.getElementsByTagName("img");
+		var scriptDirBox = document.getElementById("pbdir");
+		var filePath = scriptDirBox.options[scriptDirBox.selectedIndex].value;
+		var fileName = document.getElementById("filebox").value;
+		var userdataDir = sahiSendToServer("/_s_/dyn/pro/TestCaseUI_getUserDir").replace(/\\/g, '/');
+		var scriptPath = filePath.substring(filePath.indexOf(userdataDir)+userdataDir.length);
+		var recordedScriptPath = fileName.substring(0, fileName.lastIndexOf("/")+1);
+		for (var p=0; p<images.length; p++){
+			var relUrl = images[p].src;//.replace("http://localhost:9999/_s_/spr/docview/","");
+			if (relUrl.indexOf("docview/") != -1) {
+				relUrl = relUrl.substring(relUrl.indexOf("docview/") + "docview/".length);
+			}
+			//images[p].src = "/_s_/dyn/pro/TestCaseUI_viewImage?scriptPath=" + encodeURIComponent(filePath + fileName) + "&imagePath=" + encodeURIComponent(relUrl);
+			images[p].src = "log= /_s_/spr" + scriptPath + recordedScriptPath + relUrl;
+		}
+		var links = header.getElementsByTagName("a");
+		for (var p=0; p<links.length; p++){
+			var relUrl = links[p].href;
+			if (relUrl.indexOf("docview/") != -1) {
+				relUrl = relUrl.substring(relUrl.indexOf("docview/") + "docview/".length);
+			}			
+			links[p].href = "log= /_s_/spr" + scriptPath + recordedScriptPath + relUrl;
+		}
+	}
+	
+	function parseFile(contents){
+		var docHTML = getRawParseFile(contents);
+		document.getElementById("maindiv").innerHTML = docHTML;
+		//fixImagesAndLinksPath();
+	}
+	function exportHtml(){
+		var exportPath = document.getElementsByName("pathtoexport")[0].value;
+		if(exportPath==""){
+			alert("Please enter directory path to export testcase as html");
+			return;
+		}
+		var scriptDirBox = document.getElementById("pbdir");
+		var filePath = scriptDirBox.options[scriptDirBox.selectedIndex].value;
+		var fileName = document.getElementById("filebox").value;
+		var data = sahiSendToServer("/_s_/dyn/pro/TestCaseUI_load?filePath=" + encodeURIComponent(filePath + fileName));
+		var body = getRawParseFile(data, true);
+		document.getElementById("sourceimg").value = filePath + fileName + "_images";
+		fileName = fileName.substring(fileName.indexOf("/")+1) + ".htm";
+		document.getElementById("fileName").value = fileName;
+		document.getElementById("publishContent").value = body;
+		document.f2.submit();
+	}
+	
+	function successAlert (message, info) {
+		if(!($('alert'))){
+    		jQuery("#alert-area").append(jQuery("<span id='alert' class='alert alert-"+ info +" alert-message fade in' data-alert> " + message + "</span>"));
+    		jQuery(".alert-message").delay(2000).fadeOut("slow", function () { jQuery(this).remove(); });
+		}	
+	}
+	
+	function deleleImage(el){
+		var imageDelete_message=confirm("Do you really want to delete the image?")
+		if (imageDelete_message==false){
+			return;
+		}
+		var parentTable = jQuery(el).prev();
+		var imageTitle = jQuery(parentTable).find('img')[0].title;
+		var firstTd = jQuery(parentTable).find('td')[0];
+		jQuery(firstTd).remove();
+		jQuery(el).remove();
+		var scriptDirBox = document.getElementById("pbdir");
+		var filePath = scriptDirBox.options[scriptDirBox.selectedIndex].value;
+		var fileName = document.getElementById("filebox").value;
+		var data = sahiSendToServer("/_s_/dyn/pro/TestCaseUI_load?filePath=" + encodeURIComponent(filePath + fileName));
+        var imageFilePath = (filePath + fileName + "_images/") + imageTitle.substring(imageTitle.lastIndexOf("/")+1);
+        var s = fileName.substring(fileName.lastIndexOf("/")+1) + "_images/" + imageTitle.substring(imageTitle.lastIndexOf("/")+1);
+		data = data.replace("<screenshot>"+s+"</screenshot>", "");
+		sahiSendToServer("/_s_/dyn/pro/TestCaseUI_save?filePath=" + encodeURIComponent(filePath+fileName) + "&contents=" + encodeURIComponent(data));
+		sahiSendToServer("/_s_/dyn/pro/TestCaseUI_deleteFile?filePath=" + encodeURIComponent(imageFilePath));
+	}
+</script>
+<div style="position:fixed;top:0px;background-color:#eee;z-index:10;width:100%">
+<div class="editor" id="togglediv">
+
+	
+	<form name="f1" onSubmit="setURL(); return false" style="margin:10px 10px 0px 10px;xborder:1px solid green;float:left;">
+	<table>
+	   <tr>
+	     <td>Script Directory: </td>
+	     <td>
+	       <select id="pbdir" name="dir" onchange="populateScripts(this.options[this.selectedIndex].value)" style="width:300px">
+	         <option value="../scripts">../scripts</option>
+	       </select>
+	     </td>
+	   </tr>
+	
+	   <tr>
+	     <td bgcolor="">File:</td>
+	     <td>
+	     	  <input id="filebox" name="filebox" style="width:300px" autocomplete="off"> <input type="button" value="Load" onclick="setURL(); return false">
+	   	  <select id="fileboxDD" name="suggestScriptFile" class="suggestDD" style="width:300px"></select>
+	   	  <script>
+	   	  	attachSuggestionBox("filebox", "fileboxDD");
+	   	  </script>
+	     </td>  
+	   </tr>
+	</table>
+	<br/>
+	</form>
+	<hr style="border:1px solid #ccc;clear:both;"/>
+</div>	
+
+  <div id="postdiv" style="display:inline;float:left;margin:0px 10px;">
+  <form name='f2' action="/_s_/dyn/pro/TestCaseUI_exportHtml" method="post" onsubmit="exportHtml(); return false;" target="_blank" style="margin:0px;padding:0px;xborder:1px solid red;">
+    <input type="hidden" name="publishContent" id="publishContent">
+    <input type="hidden" name='fileName' id="fileName">
+    <input type='hidden' name='sourceimg' id="sourceimg">
+    <input title='Relative path will be resolve with userdata directory' type="submit" value="Export As Html">
+    <input type="text" title='Enter directory path(relative path will be resolve with userdata directory) to export testcase as html' value='export/docs' name="pathtoexport" style="width:400px"><br/>
+    <span class="editor" style="margin-left:116px">Enter directory path to export testcase as html</span>
+  </form>
+  </div>
+	<div style="display:inline;float:right;margin:0px 10px; font-family:verdana;">
+	<span id="alert-area"></span>
+	<input class="editor" type="button" value="Save Comments" title='Save (Ctrl + S)' id="saveDescription" onclick="saveDescriptions(); return false">
+	</div>
+</div>
+
+	<div id="maindiv"></div>
+
+<script>
+	function toggle () {
+		var toggledivDisplay = jQuery('#togglediv').css('display');
+		jQuery("#togglediv").slideToggle("slow");
+		if(toggledivDisplay == "block"){
+	    	jQuery("#maindiv").animate({paddingTop:"20px"});
+	    }
+	    else{
+	    	jQuery("#maindiv").animate({paddingTop:"120px"});
+	    }
+		
+	}
+	
+	
+   // jQuery("#toggle").click(function () {
+    //	jQuery("#togglediv").slideToggle("slow");
+   // }
+</script>
+
+</body>
+
+</html>

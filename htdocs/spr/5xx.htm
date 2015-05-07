@@ -1,0 +1,41 @@
+<!--
+/**
+ * Copyright Tyto Software Pvt. Ltd.
+ */
+-->
+
+<html>
+
+<head>
+<title>
+	Sahi - $responseCode Error
+</title>
+<link href="/_s_/spr/css/error.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body style="background-color:#909090;">
+	<script>
+	function $(x){return document.getElementById(x);}
+	function hide(el){el.style.display = "none";}
+	function show(el){el.style.display = "block";}
+	</script>
+	<center>
+	<div style="border:1px solid gray;background-color:white;width:80%;text-align:left;margin-top:40px;">
+	<div style="padding:1px 20px 20px 20px;">
+	<h3>Sahi 5xx Error</h3>
+	The web server threw a $responseCode Internal Server Error at $time.
+	<br/><br/>
+	<div style="display:none;cursor:pointer;" id="minus" onclick="hide($('exc'));hide($('minus'));show($('plus'));">- hide server message</div>
+	<div style="display:block;cursor:pointer;" id="plus" onclick="show($('exc'));hide($('plus'));show($('minus'));">+ show server message</div>
+	<div id="exc">$message</div>	
+	<script>
+	if (_sahi && _sahi.isPlaying){
+		_sahi._log("The web server threw a $responseCode Internal Server Error at $time.", "custom1");
+	}
+	</script>
+	</div>
+	</div>
+	</center>
+</body>
+
+</html>

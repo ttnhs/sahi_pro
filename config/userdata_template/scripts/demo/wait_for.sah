@@ -1,0 +1,77 @@
+function testDollarVariable() {
+	_navigateTo("/demo/waitFor.htm");
+	_click(_button("Click me"));
+	_assertNotNull(_textbox("t1"));
+	var $a = "id2";
+	_wait(5000,  _byId($a));
+	_assertEqual("populated", _textbox("t1").value);
+}
+
+function testWaitDoesNotReleaseEarly() {
+	_navigateTo("/demo/waitFor.htm");
+	_wait('1000');
+	
+	_click(_button("Click me"));
+	_assertNotNull(_textbox("t1"));
+	var $time = "990";
+	_wait($time, _byId("id2"));
+	_assertEqual("", _textbox("t1").value);
+}
+
+function testWaitFor() {
+	_navigateTo("/demo/waitFor.htm");
+	_wait("1000");
+	_click(_button("Click me"));
+	_assertNotNull(_textbox("t1"));
+	_wait('5000', _textbox("t1").value == "populated");
+	_assertEqual("populated", _textbox("t1").value);
+}
+
+//<browser>
+function isTextboxPopulated() {
+	return _textbox("t1").value == "populated";
+}
+//</browser>
+
+function testWaitForWithFunction() {
+	_navigateTo("/demo/waitFor.htm");
+	_assertNotNull(_textbox("t1"));
+	var $timer = new Date();
+	_click(_button("Click me"));
+	_wait(5000, isTextboxPopulated());
+	var $timer2 = new Date();
+	var $diff = $timer2 - $timer;
+	_assert($diff < 3000, "Should have returned within 2000 ms!");
+	_assertEqual("populated", _textbox("t1").value);
+}
+
+function testConditionalWaitOnDomain() {
+	_navigateTo("/demo/");
+	_click(_link("Iframe Different Domains"));
+	_selectDomain("/sahipro/");
+	_click(_link("Link Test"));
+	_log("Ensuring page load via _log", "CUSTOM");
+	var $start = new Date();
+	_wait(60000,_isVisible(_link("linkByContent")));
+	var $diff = (new Date()) - $start;
+	_assert($diff < 2000, "Time taken was " + $diff);
+	_assert(_isVisible(_link("linkByContent")));
+}
+
+function testConditionalWaitOnWindow() {
+	_navigateTo("/demo/");
+	_click(_link("Window Open Test"));
+	_selectWindow("popWin");
+	_click(_link("Form Test"));
+	_assertExists(_heading2("Form Test"));
+	var $start = new Date();
+	_wait(60000,_isVisible(_heading2("Form Test")));
+	var $diff = (new Date()) - $start;
+	_assert($diff < 2000, "Time taken was " + $diff);
+	_assert(_isVisible(_heading2("Form Test")));
+}
+function setUp() {
+	_selectWindow();
+	_selectDomain();
+}
+_runUnitTests();

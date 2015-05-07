@@ -1,0 +1,979 @@
+<html xmlns:util="in.co.sahi.util.XSLUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+		
+		var openedElement = new Array();
+		var cookieHashMap = {};
+		function hideImage(i){i.style.display='none';}
+        function attachFn(d){ d.getElementsByTagName('DIV')[0].onclick = function () {showHideDiv(d);}	} 
+        function getInnerDiv(d){var els = d.getElementsByTagName('DIV'); for (var i=0; i<els.length;i++) {if (els[i].className == 'GROUP_INNER') return els[i];}}
+        function showHideDiv(groupDiv){
+        	var stepsDiv = getInnerDiv(groupDiv);
+        	var els = document.getElementsByTagName('DIV');
+        	for(var i = 0; i < els.length; i++){
+        		if (els[i] == stepsDiv){
+        			if(stepsDiv.style.display == 'block'){
+        				removeFromCookieArray(i);
+        				stepsDiv.style.display = 'none';
+        				changeIconToPlus(groupDiv);
+        				break;
+        			}else{
+        				stepsDiv.style.display = 'block';
+        				addToCookieArray(i);
+        				changeIconToMinus(groupDiv);
+        				break;
+        			}
+        		}	
+        	}
+        }; 
+        
+        function changeIconToMinus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[+]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        }
+        
+        function changeIconToPlus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[-]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        }
+        
+        function getGroupLabelDiv(groupDiv){
+        	var div = groupDiv.getElementsByTagName("DIV");
+        	for(var i=0;i<div.length;i++){
+        		if(div[i].className.indexOf("GROUP_LABEL") == 0){
+        			return div[i];
+        		}
+        	}
+        }
+        
+        function showHideNetworkActivity(el, scriptId, stepId){
+        	if(document.getElementById('harInfo' + stepId).innerHTML == ""){
+        		var html = "<iframe onload=\"setAutoHeight('harIFrame" + stepId +"')\" id=\"harIFrame" + stepId +"\" src=\"/_s_/dyn/pro/HARViewer_viewHARLogs?scriptReportId=" + scriptId + "&stepId=" + stepId + "\" style=\"width:100%;\"  frameborder=\"0\" />";
+        		document.getElementById('harInfo' + stepId).innerHTML = html;
+        	}
+        	var plus = "Show Network Activity";
+        	var minus = "Hide Network Activity";
+        	if(el.innerHTML == plus){
+        		el.innerHTML = minus;
+        		document.getElementById('harInfo' + stepId).style.display = "block";
+        	} else {
+        		el.innerHTML = plus;
+        		document.getElementById('harInfo' + stepId).style.display = "none";
+        	}
+        }
+        
+        function expandAll(isExcel){
+	        if(isExcel == "true"){
+	        	ignoregroup_showHideAll(true);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "block";
+	        			addToCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function collapseAll(isExcel){
+        	if(isExcel == "true"){
+	        	ignoregroup_showHideAll(false);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "none";
+	        			removeFromCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[-]", "[+]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function setNetworkActivityLinks(){
+			var xmlhttp;
+			if (window.XMLHttpRequest){ // code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			} else {// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  			}
+  			xmlhttp.onreadystatechange = function() {
+				if (this.readyState==4 && this.status==200) {
+			    	var steps = xmlhttp.responseText;
+			    	steps = steps.substring(1,steps.lastIndexOf("]"));
+			    	steps = steps.split(", ");
+			    	for(i = 0; i < steps.length; i++){
+			    		try{
+			    			document.getElementById('networkActivityLink' + steps[i]).style.display = 'block';
+			    		}catch(err){
+			    		}
+			    	}
+			    }
+			}
+  			xmlhttp.open("GET","/_s_/dyn/pro/HARViewer_getStepsWithNetworkActivity?scriptReportId=" + scriptReportID ,true);
+			xmlhttp.send();
+		}
+        function setAutoHeight(id){
+        	return;
+			var newheight;
+			if(document.getElementById(id)){
+				newheight=document.getElementById(id).contentWindow.document.body.scrollHeight;
+			}
+			document.getElementById(id).style.height= (newheight) + "px";
+		}
+		
+		
+        
+		function markStatus(d) {d.getElementsByTagName('DIV')[0].className += (d.innerHTML.indexOf('<!--SAHI_TESTCASE_FAIL_MARKER-->') == -1) ? ' SUCCESS' : ' FAILURE'};
+		function addToCookieArray(element){
+			openedElement.push(element)
+		}
+		function removeFromCookieArray(element){
+			removeByValue(openedElement,element)
+		}
+		function removeByValue(arr, val) {
+			for ( var i = 0; i < arr.length; i++) {
+				if (arr[i] == val) {
+					arr.splice(i, 1);
+					break;
+				}
+			}
+		}
+		function getUrlQueryString(name){
+		   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+		      return decodeURIComponent(name[1]);
+		}
+		function highlightUrl(url){
+			expandAll(false);
+			var scriptReportId = getUrlQueryString("id");
+			var stepId = getUrlQueryString("stepId");
+			var networkActivityLinkId = "networkActivityLink"+stepId;
+			showHideNetworkActivity(document.getElementById(networkActivityLinkId),scriptReportId,stepId);
+			
+			var iframe =document.getElementById("harInfo"+stepId).getElementsByTagName("iframe")[0];
+			iframe.onload = function() {
+ 				  var doc = iframe.contentDocument || iframe.contentWindow.document;
+			  var row = doc.getElementById(encodeURIComponent("netAct_"+url));	
+			  row.className = 'HIGHLIGHT';								
+			 	
+ 				};					
+			location.href = "#toScrollTo_" + stepId;
+		}
+		
+		function highlightStep(stepId){
+			var scriptReportId = getUrlQueryString("id");
+			var stepId = getUrlQueryString("stepId");
+			var el = document.getElementById("toScrollTo_" + stepId);
+			if (el) el.className = 'HIGHLIGHT';	
+			location.href = "#toScrollTo_" + stepId;
+		}
+		function onLoad(){
+	        var divs = document.getElementsByTagName('DIV'); 
+	        for (var i=0; i<divs.length; i++){
+	        	var d = divs[i]; 
+	        	if (d.className == 'GROUP') { attachFn(d); markStatus(d);} 
+	        }
+	        fixImagePaths();
+			var cookieValue = readCookie("OpenedElement");
+			if(cookieValue){
+				cookieHashMap = eval("("+cookieValue+")");
+				openedElement=cookieHashMap[scriptReportID];
+				if (!openedElement) openedElement = [];
+				delete cookieHashMap[scriptReportID];
+				var els = document.getElementsByTagName('DIV');
+				for(var i = 0; i < openedElement.length; i++){
+					els[openedElement[i]].style.display = 'block';
+					var iconDiv = els[openedElement[i]].parentNode.children[0];
+					if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+						iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+					}
+        		}
+			}
+			try {
+				setNetworkActivityLinks();
+			} catch (e) {}
+			showStackTraceMessages();
+
+			var url = getUrlQueryString("url");
+			if(url){
+				highlightUrl(url);
+			}  else {
+				var stepId = getUrlQueryString("stepId"); 
+				if(stepId!=undefined) highlightStep(stepId);
+			}
+		}
+		
+		function onUnload(){
+	
+			var count = 0;
+			var firstElement;
+			for(firstElement in cookieHashMap){
+				break;
+			}
+			for(var j in cookieHashMap){
+				count++;
+			}
+			if(count == 10){
+				delete cookieHashMap[firstElement];
+			}
+			cookieHashMap[scriptReportID] = openedElement;
+			var cookieValue = getJSON(cookieHashMap);
+			createCookie("OpenedElement", cookieValue, 1);
+		}
+		function getJSON(o) {
+			var s = "{";
+			for (var i in o) {
+				s += "'" + i + "':[" + o[i] + "],"
+			}
+			s += "}";
+			return s;
+		}
+		function createCookie(name,value,days)
+		{
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime()+(days*24*60*60*1000));
+				var expires = "; expires="+date.toGMTString();
+			}
+			else var expires = "";
+			document.cookie = name+"="+value+expires+"; path=/";
+		}
+		
+		function readCookie(name)
+		{
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0;i < ca.length;i++)
+			{
+				var c = ca[i];
+				c = c.replace(/[,][}]$/,'}');
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		}
+		function fixImagePaths(){
+			if (location.href.indexOf("_s_") != -1) return;
+			var imgs = document.getElementsByTagName('IMG'); 
+	        for (var i=0; i<imgs.length; i++){
+	        	var img = imgs[i]; 	        	
+ 				if (img.src.indexOf("Log_viewLogs/images") != -1) {
+ 					img.src = makeRelative(img.src);
+ 					if (img.parentNode.tagName.toLowerCase() == "a") {
+ 						img.parentNode.href = makeRelative(img.parentNode.href);
+ 					}
+ 				}
+	        }
+		}
+		function makeRelative(s){
+			var ix = s.indexOf("/images/"); 
+			if (ix != -1) {
+				s = s.substring(ix+1);
+			}
+			return s;
+		}
+		function showStackTraceMessages() { 
+			var els = document.getElementsByClassName("FAILURE_ST");
+			for (var i=0; i<els.length; i++) {
+				if (els[i].tagName == "DIV") {
+					try {
+						els[i].innerHTML = showStackTraceMessage(els[i].innerHTML);
+					} catch (e){}
+				}
+			}
+		}
+		function trim(s) {
+			return s.replace(/^\s*/, '').replace(/\s*$/, '')
+		} 
+		function showStackTraceMessage(message) {
+			var hasStackTrace = false;
+			message = message.replace("_STACKTRACE_", "\n");
+			var noparse = false;
+			if (message.indexOf("_NOPARSE_") != -1) {
+				noparse = true;
+				message = message.replace("_NOPARSE_", "");
+			}
+			var paths = message.split("\n");
+			var length = paths.length;
+			var s = "";
+			for (var i=0;i<length;i++) {
+				var path = trim(paths[i]);
+				if (path == "") continue;
+				var re = /^\s*at /;
+				if (path.match(re)) {
+					hasStackTrace = true;
+					var path = paths[i].replace(re, "").replace('/\s*$/', '').replace(/\\\\/g, "\\");
+					var fnName = path.substring(path.indexOf(" "), path.length);
+					path = path.substring(0, path.length - fnName.length);
+					var onClick = "/_s_/dyn/Log_highlight?href=" + path + (noparse ? "" : "&parsed=true") + "#selected";
+					var link = "at: <a style='text-decoration:underline' href=" + onClick + "> (" + path.replace(/&n=/g, ' ') + ")</a> <b>" + fnName + "</b>";
+					s += link;
+				} else {
+					s += path;
+				}
+				if (i != length-1) {
+					s += "</br>";
+				}
+			}
+			if (hasStackTrace) {
+				s = "<div style='background-color:#222;color:white'>" + s + "</div>";
+			}
+			return s;
+		}
+		function addImages(screenShots){
+			var images = screenShots.split(",");
+			var msg =  "<table class='imgcompare'><tr><td>Expected</td><td>Actual</td><td>Difference</td></tr><tr>" +
+						"<td class='imgcell'><img width='300px' src='/_s_/dyn/Log_viewLogs/images/" + images[0] + "' style='cursor:pointer' onclick='window.open(this.src)'></td>" + 
+						"<td class='imgcell'><img width='300px' src='/_s_/dyn/Log_viewLogs/images/"+images[1]+"' style='cursor:pointer' onclick='window.open(this.src)'></td>" +
+						"<td class='imgcell'><img width='300px' src='/_s_/dyn/Log_viewLogs/images/"+images[2]+"' style='cursor:pointer' onclick='window.open(this.src)'></td>" +
+						"</tr></table>";
+			document.write(msg);
+		}
+        
+        </script>
+<style>
+					div{padding:3px;}
+					a{text-decoration:none;color:white;}
+					a.INFO{color:black;}
+					a.START,a.STOP{color:black;font-weight:bold;}
+					div.INFO{background-color:white;}
+					div.SUCCESS{background-color:green;color:white}
+					div.FAILURE,div.ERROR{background-color:red;color:white}
+					a.CUSTOM, a.CUSTOM2, a.CUSTOM4{color:black}
+					div.CUSTOM{background-color:yellow;}
+					div.CUSTOM1{background-color:orange;}
+					div.CUSTOM2{background-color:#EFEFEF;}
+					div.CUSTOM3{background-color:green;}
+					div.CUSTOM4{background-color:violet;}
+					div.CUSTOM5{background-color:indigo;}
+					div.networkActivity{float:right;width:200px;color:#ccc;cursor:pointer;display:none;padding:0px;}
+					a.SCRIPT{text-decoration:underline;}
+					span.extra{color:#CCC;margin-left:20px;}
+					div.SKIPPED{background-color:#eed;}
+					a.SKIPPED{color:gray;}
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					div.GROUP {padding:0px;}
+					div.GROUP_LABEL {font-weight: bold;cursor:pointer; padding:5px;border-top:5px solid white}
+					div.GROUP_INNER{padding:10px;display:none;border:1px solid gray;}
+				
+					table.summary {border-top:1px solid gray;border-right:1px solid
+					gray;border-spacing:0px;border-collapse:collapse;}
+					table.summary td{border-bottom:1px solid gray;border-left:1px solid
+					gray;padding:5px;text-align:right;}
+					td a.SCRIPT{float:left;}
+					tr.FAILURE{background-color:red;color:white;}
+					tr.SUCCESS{background-color:green;color:white;}
+					a{color:white;}
+					
+					body *{font-family:verdana;font-size:10pt;}
+					body {margin:10px; background-color:lightyellow;}
+					
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					
+					#navbar a{color: blue;}
+					#navbar {padding:2px;border:1px solid white;border-bottom:1px solid gray;padding:1px}
+					
+					.HIGHLIGHT{background-color:brown;}
+					.HIGHLIGHT a{color:white;}
+					#stepsDiv {margin:0px; padding:0px;}
+					#stepsDiv A IMG {box-shadow: 10px 10px 5px #888888;padding:10px;border: 1px solid #ccc;}
+					table.imgcompare {border:1px solid #ccc;margin-top:15px;background-color:#efefef}
+					.imgcompare td{vertical-align:top;xcolor:white;padding:10px 20px;}
+					td.imgcell {vertical-align:top;padding-bottom:30px;}
+					td.imgcell img{mxargin:20px;border: 1px solid #ccc;box-shadow: 10px 10px 5px #888888}
+				</style>
+</head>
+<body onunload="onUnload()" onload="onLoad()">
+<script type="text/javascript">var scriptReportID = 'test_table_moodle_firefox__16Apr2015__14_03_27_020'; var currentTimestamp = null;</script><span>
+<h2>
+				Script Name: test_table_moodle.sah</h2>
+</span>
+<table class="summary" style="background-color:white;margin-top:20px;width:800px;">
+<tr>
+<td>Test</td><td>Total Steps</td><td>Failures</td><td>Errors</td><td>Success Rate</td><td>Time Taken (ms)</td><td>Node</td><td>Load</td><td>Browser</td>
+</tr>
+<tr class="FAILURE">
+<td>test_table_moodle.sah</td><td>41</td><td>2</td><td>0</td><td>95
+							%
+						</td><td>44300</td><td>localhost:9999</td><td>0</td><td>firefox</td>
+</tr>
+<tr>
+<td colspan="9" style="text-align:left">Report Id: test_table_moodle_firefox__16Apr2015__14_03_27_021 | </td>
+</tr>
+</table>
+<table id="testCaseSummaryTable" class="summary" style="background-color:white;margin-top:20px;width:350px;">
+<tr>
+<td>Total Test Cases</td><td>Passed</td><td>Failed</td><td>Success Rate</td>
+</tr>
+<tr class="FAILURE">
+<td>0</td><td>0</td><td>0</td><td>
+							0%
+						</td>
+</tr>
+</table>
+<table class="summary" style="background-color:white;margin-top:20px;width:700px;"></table>
+<div id="stepsDiv">
+<br>
+<div style="padding:10px;background-color:white;border:1px solid #ddd;">
+<div class="START">
+<a class="START">Starting script</a><a style="padding:10px; font-size:11px; color:black; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:expandAll('false'); return false;">Expand All</a><a style="color:black; font-size:11px; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:collapseAll('false'); return false;">Collapse All</a>
+</div>
+<script>
+		scriptReportId = "test_table_moodle_firefox__16Apr2015__14_03_27_020";
+		var preTimestampString = scriptReportId.substring(scriptReportId.length-23, scriptReportId.length);
+		function getMonthFromString(mon){
+   			var d = Date.parse(mon + "1, 2012");
+ 			if(!isNaN(d)){
+      		return new Date(d).getMonth();
+   			}
+   			return -1;
+ 		}
+		var prevTimestamp = new Date();
+		prevTimestamp.setDate(preTimestampString.substring(0,2));
+		prevTimestamp.setMonth(getMonthFromString(preTimestampString.substring(2,5)));
+		prevTimestamp.setFullYear(preTimestampString.substring(5,9));
+		prevTimestamp.setHours(preTimestampString.substring(11,13));
+		prevTimestamp.setMinutes(preTimestampString.substring(14,16));
+		prevTimestamp.setSeconds(preTimestampString.substring(17,19));
+		prevTimestamp.setMilliseconds(preTimestampString.substring(20,23));
+		</script>
+<div id="toScrollTo_1" class="INFO">
+<div id="networkActivityLink1" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '1')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/test_table_moodle.sah&amp;n=2">_navigateTo("http://qa.moodle.net")</span><script>var currentTimestamp = '1429167808442';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:28.442]
+						</span>
+<div id="harInfo1" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] login("manager", "test")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_2" class="INFO">
+<div id="networkActivityLink2" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '2')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=5">_setValue(_textbox("username"), "manager")</span><script>var currentTimestamp = '1429167811798';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:31.798]
+						</span>
+<div id="harInfo2" style="display:none"></div>
+</div>
+<div id="toScrollTo_3" class="INFO">
+<div id="networkActivityLink3" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '3')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=6">_setValue(_password("password"), "test")</span><script>var currentTimestamp = '1429167811924';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:31.924]
+						</span>
+<div id="harInfo3" style="display:none"></div>
+</div>
+<div id="toScrollTo_4" class="INFO">
+<div id="networkActivityLink4" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '4')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=7">_click(_submit("Log in"))</span><script>var currentTimestamp = '1429167812049';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:32.049]
+						</span>
+<div id="harInfo4" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_5" class="INFO">
+<div id="networkActivityLink5" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '5')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/test_table_moodle.sah&amp;n=4">_click(_span("Site administration"))</span><script>var currentTimestamp = '1429167816061';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:36.061]
+						</span>
+<div id="harInfo5" style="display:none"></div>
+</div>
+<div id="toScrollTo_6" class="INFO">
+<div id="networkActivityLink6" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '6')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/test_table_moodle.sah&amp;n=5">_click(_span("Users"))</span><script>var currentTimestamp = '1429167817062';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:37.062]
+						</span>
+<div id="harInfo6" style="display:none"></div>
+</div>
+<div id="toScrollTo_7" class="INFO">
+<div id="networkActivityLink7" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '7')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/test_table_moodle.sah&amp;n=6">_click(_span("Accounts"))</span><script>var currentTimestamp = '1429167817203';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:37.203]
+						</span>
+<div id="harInfo7" style="display:none"></div>
+</div>
+<div id="toScrollTo_8" class="INFO">
+<div id="networkActivityLink8" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '8')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/test_table_moodle.sah&amp;n=7">_click(_link("Browse list of users"))</span><script>var currentTimestamp = '1429167817345';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:37.345]
+						</span>
+<div id="harInfo8" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableHeaderShouldBe("/First name/")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_9" class="SUCCESS">
+<div id="networkActivityLink9" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '9')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=75">_assertExists(_row(0))</span><script>var currentTimestamp = '1429167819531';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:39.531]
+						</span>
+<div id="harInfo9" style="display:none"></div>
+</div>
+<div id="toScrollTo_10" class="SUCCESS">
+<div id="networkActivityLink10" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '10')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=76">_assertContainsText("/First name/", _row(0))</span><script>var currentTimestamp = '1429167819672';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:39.672]
+						</span>
+<div id="harInfo10" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableCellShouldBe("admintable generaltable", 1, 2, "admin@example.com")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_12" class="SUCCESS">
+<div id="networkActivityLink12" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '12')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=28">_assertEqual("admin@example.com", "admin@example.com")</span><script>var currentTimestamp = '1429167819925';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:39.925]
+						</span>
+<div id="harInfo12" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableCellShouldNotBe("admintable generaltable", 2, 3, "Perth")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_14" class="SUCCESS">
+<div id="networkActivityLink14" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '14')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=35">_assertNotEqual("Perth", "Wellington")</span><script>var currentTimestamp = '1429167820193';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:40.193]
+						</span>
+<div id="harInfo14" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldContain(3, "marylearner@example.com")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_15" class="SUCCESS">
+<div id="networkActivityLink15" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '15')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=63">_assertExists(_row(3))</span><script>var currentTimestamp = '1429167820321';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:40.321]
+						</span>
+<div id="harInfo15" style="display:none"></div>
+</div>
+<div id="toScrollTo_16" class="SUCCESS">
+<div id="networkActivityLink16" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '16')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=64">_assertContainsText("marylearner@example.com", _row(3))</span><script>var currentTimestamp = '1429167820447';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:40.447]
+						</span>
+<div id="harInfo16" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableRowShouldNotContain(4, "New Zealand")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_17" class="SUCCESS">
+<div id="networkActivityLink17" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '17')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=69">_assertExists(_row(4))</span><script>var currentTimestamp = '1429167820686';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:40.686]
+						</span>
+<div id="harInfo17" style="display:none"></div>
+</div>
+<div id="toScrollTo_18" class="SUCCESS">
+<div id="networkActivityLink18" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '18')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=70">_assertNotContainsText("New Zealand", _row(4))</span><script>var currentTimestamp = '1429167820827';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:40.827]
+						</span>
+<div id="harInfo18" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableShouldContain("Student 7")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_19" class="SUCCESS">
+<div id="networkActivityLink19" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '19')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=81">_assertExists(_parentTable(_row(0)))</span><script>var currentTimestamp = '1429167821064';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:41.064]
+						</span>
+<div id="harInfo19" style="display:none"></div>
+</div>
+<div id="toScrollTo_20" class="SUCCESS">
+<div id="networkActivityLink20" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '20')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=82">_assertContainsText("Student 7", _parentTable(_row(0)))</span><script>var currentTimestamp = '1429167821190';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:41.190]
+						</span>
+<div id="harInfo20" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableShouldNotContain("England")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_21" class="SUCCESS">
+<div id="networkActivityLink21" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '21')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=87">_assertExists(_parentTable(_row(0)))</span><script>var currentTimestamp = '1429167821442';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:41.442]
+						</span>
+<div id="harInfo21" style="display:none"></div>
+</div>
+<div id="toScrollTo_22" class="SUCCESS">
+<div id="networkActivityLink22" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '22')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=88">_assertNotContainsText("England", _parentTable(_row(0)))</span><script>var currentTimestamp = '1429167821584';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:41.584]
+						</span>
+<div id="harInfo22" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] elementShouldContains([object], "@example.com")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_23" class="SUCCESS">
+<div id="networkActivityLink23" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '23')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=93">_assertExists(_cell("student2@example.com"))</span><script>var currentTimestamp = '1429167821712';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:41.712]
+						</span>
+<div id="harInfo23" style="display:none"></div>
+</div>
+<div id="toScrollTo_24" class="SUCCESS">
+<div id="networkActivityLink24" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '24')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=94">_assertContainsText("@example.com", _cell("student2@example.com"))</span><script>var currentTimestamp = '1429167821837';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:41.837]
+						</span>
+<div id="harInfo24" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] elementShouldBe([object], "Belgium")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_25" class="SUCCESS">
+<div id="networkActivityLink25" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '25')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=99">_assertExists(_cell("Belgium[1]"))</span><script>var currentTimestamp = '1429167821965';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:41.965]
+						</span>
+<div id="harInfo25" style="display:none"></div>
+</div>
+<div id="toScrollTo_26" class="SUCCESS">
+<div id="networkActivityLink26" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '26')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=100">_assertVisible(_cell("Belgium[1]"))</span><script>var currentTimestamp = '1429167822091';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:42.091]
+						</span>
+<div id="harInfo26" style="display:none"></div>
+</div>
+<div id="toScrollTo_27" class="SUCCESS">
+<div id="networkActivityLink27" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '27')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=101">_assertEqual("Belgium", _getText(_cell("Belgium[1]")))</span><script>var currentTimestamp = '1429167822217';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:42.217]
+						</span>
+<div id="harInfo27" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] tableColumnShouldContain("admintable generaltable", 3, "Perth")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<!--SAHI_TESTCASE_FAIL_MARKER--><!--FAILURE--><div id="toScrollTo_29" class="FAILURE">
+<div id="networkActivityLink29" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '29')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=55">_assert(false)</span><script>var currentTimestamp = '1429167832532';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:52.532]
+						</span>
+<div class="FAILURE_ST">[Assertion Failed]
+at C:\\Users\\ntumy\\sahi_pro\\userdata\\scripts\\commonFeatures.sah&n=44 tableColumnShouldContain
+at C:\\Users\\ntumy\\sahi_pro\\userdata\\scripts\\test_table_moodle.sah&n=17 
+</div>
+<div id="harInfo29" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] onScriptFailureDefault([object])</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_29" class="INFO">
+<div id="networkActivityLink29" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '29')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=33">_lockWindow()</span><script>var currentTimestamp = '1429167832628';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:52.628]
+						</span>
+<div id="harInfo29" style="display:none"></div>
+</div>
+<div id="toScrollTo_32" class="INFO">
+<div id="networkActivityLink32" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '32')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=34">_focusWindow()</span><script>var currentTimestamp = '1429167834407';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:54.407]
+						</span>
+<div id="harInfo32" style="display:none"></div>
+</div>
+<div id="toScrollTo_33" class="INFO">
+<div id="networkActivityLink33" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '33')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=35">_takePageScreenShot()</span><script>var currentTimestamp = '1429167837638';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:57.638]
+						</span><a href="/_s_/dyn/Log_viewLogs/images/test_table_moodle_firefox__16Apr2015__14_03_27_020_33.png" style="margin:0px;padding:0px" target="_blank"><img style="margin-top:15px;margin-bottom:30px;display:block;max-width:600px" src="/_s_/dyn/Log_viewLogs/images/test_table_moodle_firefox__16Apr2015__14_03_27_020_33.png"></a>
+<div id="harInfo33" style="display:none"></div>
+</div>
+<div id="toScrollTo_33" class="INFO">
+<div id="networkActivityLink33" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '33')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=36">_unlockWindow()</span><script>var currentTimestamp = '1429167837685';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:03:57.685]
+						</span>
+<div id="harInfo33" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<!--SAHI_TESTCASE_FAIL_MARKER--><!--FAILURE--><div id="toScrollTo_34" class="FAILURE">
+<div id="networkActivityLink34" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '34')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=55">_assert(false)</span><script>var currentTimestamp = '1429167847782';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:04:07.782]
+						</span>
+<div class="FAILURE_ST">[Assertion Failed]
+at C:\\Users\\ntumy\\sahi_pro\\userdata\\scripts\\commonFeatures.sah&n=44 tableColumnShouldContain
+at C:\\Users\\ntumy\\sahi_pro\\userdata\\scripts\\test_table_moodle.sah&n=17 
+</div>
+<div id="harInfo34" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] onScriptFailureDefault([object])</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_34" class="INFO">
+<div id="networkActivityLink34" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '34')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=33">_lockWindow()</span><script>var currentTimestamp = '1429167847877';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:04:07.877]
+						</span>
+<div id="harInfo34" style="display:none"></div>
+</div>
+<div id="toScrollTo_37" class="INFO">
+<div id="networkActivityLink37" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '37')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=34">_focusWindow()</span><script>var currentTimestamp = '1429167848955';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:04:08.955]
+						</span>
+<div id="harInfo37" style="display:none"></div>
+</div>
+<div id="toScrollTo_38" class="INFO">
+<div id="networkActivityLink38" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '38')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=35">_takePageScreenShot()</span><script>var currentTimestamp = '1429167850906';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:04:10.906]
+						</span><a href="/_s_/dyn/Log_viewLogs/images/test_table_moodle_firefox__16Apr2015__14_03_27_020_38.png" style="margin:0px;padding:0px" target="_blank"><img style="margin-top:15px;margin-bottom:30px;display:block;max-width:600px" src="/_s_/dyn/Log_viewLogs/images/test_table_moodle_firefox__16Apr2015__14_03_27_020_38.png"></a>
+<div id="harInfo38" style="display:none"></div>
+</div>
+<div id="toScrollTo_38" class="INFO">
+<div id="networkActivityLink38" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '38')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/global_include.sah&amp;n=36">_unlockWindow()</span><script>var currentTimestamp = '1429167850922';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:04:10.922]
+						</span>
+<div id="harInfo38" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div id="toScrollTo_39" class="SUCCESS">
+<div id="networkActivityLink39" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '39')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=58">_assert(true)</span><script>var currentTimestamp = '1429167851018';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:04:11.018]
+						</span>
+<div id="harInfo39" style="display:none"></div>
+</div><!--SAHI_TESTCASE_FAIL_MARKER--><!--TESTCASE_END-->
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] logoutQAMoodle()</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div id="toScrollTo_40" class="INFO">
+<div id="networkActivityLink40" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '40')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=12">_click(_image("Picture of Max Manager"))</span><script>var currentTimestamp = '1429167851147';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:04:11.147]
+						</span>
+<div id="harInfo40" style="display:none"></div>
+</div>
+<div id="toScrollTo_41" class="INFO">
+<div id="networkActivityLink41" class="networkActivity" onclick="showHideNetworkActivity(this, 'test_table_moodle_firefox__16Apr2015__14_03_27_020', '41')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/commonFeatures.sah&amp;n=13">_click(_span("Log out"))</span><script>var currentTimestamp = '1429167851272';</script><span class="extra">
+								[<script>document.write(currentTimestamp - prevTimestamp);
+								prevTimestamp = currentTimestamp;</script> ms]  
+								[02:04:11.272]
+						</span>
+<div id="harInfo41" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div class="STOP">
+<a class="STOP">Stopping script</a>
+</div>
+</div>
+<style>div.GROUP_LABEL {display:block;}</style>
+</div>
+</body>
+</html>

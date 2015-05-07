@@ -1,0 +1,40 @@
+<html>
+<head><title>Time Zones</title></head>
+<body>
+<script>
+
+function $(id){return document.getElementById(id);}
+function calcMy(){
+	var myTime = fromMinutes(toMinutes($('theirtime').value) - toMinutes($('theirtz').value) + toMinutes($('mytz').value)); 
+	$('mytime').value = myTime;
+}
+
+function calcTheir(){
+	var theirTime = fromMinutes(toMinutes($('mytime').value) - toMinutes($('mytz').value) + toMinutes($('theirtz').value)); 
+	$('theirtime').value = theirTime;
+}
+function fromMinutes(m){
+	var s = Math.floor(m/60, 0) + ":" + pad(m%60);
+	return s;
+}
+function pad(m){
+	return m < 10 ? ("0"+m) : m;
+}
+function toMinutes(s){
+	s = "" + s;
+	var negative = s.indexOf("-") == 0;
+	s = s.replace("-", "");
+	var ar = s.split(":");
+	var min = parseInt(ar[0])*60 + parseInt(ar[1] ? ar[1] : 0);
+	return negative ? -min : min;
+}
+</script>
+<table>
+<tr><td></td><td>Time</td><td>Time Zone</td></tr>
+<tr><td>Their Time</td><td><input type="text" id="theirtime" value="8:30"></td><td><input type="text" id="theirtz" value="-4:00"></td><td><input type="button" onclick="calcMy()" value="To My Time"/></td></tr>
+<tr><td>My Time</td><td><input type="text" id="mytime"></td><td><input type="text" id="mytz" value="+5:30"></td><td><input type="button" onclick="calcTheir()" value="To Their Time"/></td></tr>
+<tr><td></td></tr>
+</table>
+
+</body>
+</html>

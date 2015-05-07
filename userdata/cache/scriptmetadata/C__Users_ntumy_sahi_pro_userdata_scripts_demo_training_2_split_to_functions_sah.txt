@@ -1,0 +1,3 @@
+login,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\2_split_to_functions.sah,1,$username,$password
+addBooks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\2_split_to_functions.sah,7,$numJava,$numRuby,$numPython
+verifyTotal,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\2_split_to_functions.sah,14,$total

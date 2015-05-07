@@ -1,0 +1,65 @@
+May 06, 2015 9:05:19 AM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi properties file = C:\Users\ntumy\sahi_pro\config\sahi.properties
+May 06, 2015 9:05:19 AM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi user properties file = C:\Users\ntumy\sahi_pro\userdata\config\userdata.properties
+May 06, 2015 9:05:28 AM net.sf.sahi.util.BrowserTypesLoader loadAvailableBrowserTypes
+INFO: 
+-----
+Reading browser types from: C:\Users\ntumy\sahi_pro\userdata\config\browser_types.xml
+Opera was not found at C:\Program Files (x86)\Opera\opera.exe
+-----
+
+May 06, 2015 9:05:36 AM net.sf.sahi.util.Utils setUrlConnectionFollowRedirectsInternal
+INFO: urlConnectionFollowRedirectsInternal = false
+May 06, 2015 9:05:36 AM in.co.sahi.datastore.SahiDB <clinit>
+INFO: Using Database:
+driverName=org.h2.Driver
+jdbcurl=jdbc:h2:C:/Users/ntumy/sahi_pro/userdata/database/db0;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1;IGNORECASE=TRUE
+userName=sa
+May 06, 2015 9:05:37 AM in.co.sahi.datastore.SahiDB createTables
+INFO: Check tables version
+May 06, 2015 9:05:39 AM in.co.sahi.datastore.SahiDB createTables
+INFO: versionFromDB=2014-11-17 17:12:19
+May 06, 2015 9:05:39 AM in.co.sahi.datastore.SahiDB createTables
+INFO: version=2014-11-17 17:12:19
+May 06, 2015 9:05:39 AM in.co.sahi.datastore.SahiDB createTables
+INFO: At current version. No changes were done.
+May 06, 2015 9:05:39 AM in.co.sahi.datastore.SahiDB createTables
+INFO: {result: [["KEY","VALUE"],["versionNo","2014-11-17 17:12:19"]]}
+May 06, 2015 9:05:39 AM in.co.sahi.datastore.SahiDB createTables
+INFO: Finished preparing report tables: 1983ms
+May 06, 2015 9:05:44 AM in.co.sahi.distributed.BrowserType launchInstanceCommon
+INFO: Acquired available browser instance after retries:0  threadNo:0
+sessionId:sahi_818bde7f0d45e04bf80b85303f463f5c1d6c
+May 06, 2015 9:05:44 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Driver_initialized?browserType=chrome"
+May 06, 2015 9:05:54 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5492, 5860, 5604]; 10185 ms
+May 06, 2015 9:31:53 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5492, 5860, 5604]
+May 06, 2015 11:27:20 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/first_script.sah
+May 06, 2015 11:27:21 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi0" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_0c25b760082b4043830b0b70c4129c1dc6e8sahix3374dbcb0f2bd0435509f4c010beb1bcb825x__SahiAmpersandSahi__isSingleSession=false"
+May 06, 2015 11:27:21 AM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/invalid_login.sah
+May 06, 2015 11:27:24 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6280]; 3904 ms
+May 06, 2015 11:27:24 AM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -profile "C:/Users/ntumy/sahi_pro/userdata/browser/ff/profiles/sahi1" -no-remote "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_0c25b760082b4043830b0b70c4129c1dc6e8sahixaac5c64707f8904dde0bbf505f79d2ffe610x__SahiAmpersandSahi__isSingleSession=false"
+May 06, 2015 11:27:26 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6280]
+May 06, 2015 11:27:26 AM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts//tutorial_failed_firefox.suite
+May 06, 2015 11:27:26 AM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5412]; 2078 ms
+May 06, 2015 11:27:37 AM net.sf.sahi.RemoteRequestProcessor processHttp
+WARNING: Returning CannotConnectResponse for: https://self-repair.mozilla.org/en-US/repair
+May 06, 2015 11:28:40 AM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5412]
+May 06, 2015 11:28:40 AM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts//tutorial_failed_firefox.suite
+May 06, 2015 1:37:15 PM net.sf.sahi.Proxy startProxy
+INFO: socket closed
+May 06, 2015 1:37:15 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy

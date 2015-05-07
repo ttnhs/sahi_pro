@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>What is new in Sahi Pro v6.0.0</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='whats-new-index.html'>Sahi Pro - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.1.html'>Sahi Pro v6.0.1 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.1.html#Bug Fixes'>Bug Fixes</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.1.html#Features'>Features</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v6.0.0.html'>Sahi Pro v6.0.0 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Key features'>Key features</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Editor'>Editor</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Triggering Sahi Pro from Jenkins'>Triggering Sahi Pro from Jenkins</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Object Repository'>Object Repository</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Better Reporting'>Better Reporting</a>
+<ul><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Browser Page and Element Screenshots via _takePageScreenShot'>Browser Page and Element Screenshots via _takePageScreenShot</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Better error stacktraces'>Better error stacktraces</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Script locking for synchronization'>Script locking for synchronization</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Globally included global_include.sah file'>Globally included global_include.sah file</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Searching scripts within suites in Sahi's logs'>Searching scripts within suites in Sahi's logs</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Improved Graphs'>Improved Graphs</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Compare images'>Compare images</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Native events'>Native events</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#New APIs'>New APIs</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Modified API's'>Modified API's</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Other Features and Enhancements'>Other Features and Enhancements</a>
+</li><li><a href='whats-new-in-sahi-pro-v6.0.0.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v5.1.2.html'>Sahi Pro v5.1.2 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v5.1.2.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v5.1.1.html'>Sahi Pro v5.1.1 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v5.1.1.html#Features'>Features</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.1.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v5.1.0.html'>Sahi Pro v5.1.0 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Key features'>Key features</a>
+<ul><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Internet Explorer 11 Support'>Internet Explorer 11 Support</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#CORS support'>CORS support</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Data Driven Suites'>Data Driven Suites</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Brand new documentation'>Brand new documentation</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Scenario Editor for Excel Framework'>Scenario Editor for Excel Framework</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Sahi as a Documentation Tool'>Sahi as a Documentation Tool</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Script specific object repository files'>Script specific object repository files</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Upgrading Sahi becomes easier'>Upgrading Sahi becomes easier</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Multiple browser sessions in single script'>Multiple browser sessions in single script</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#REST APIs for WebServices'>REST APIs for WebServices</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Email notification on Suite execution'>Email notification on Suite execution</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Lots of optimizations'>Lots of optimizations</a>
+</li></ul></li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#New APIs'>New APIs</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Other features'>Other features</a>
+</li><li><a href='whats-new-in-sahi-pro-v5.1.0.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li></ul></li><li><a href='whats-new-os-index.html'>Sahi OS - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-os-v5.0.html'>Sahi OS v5.0 - What's new?</a>
+<ul><li><a href='whats-new-in-sahi-os-v5.0.html#New Features'>New Features</a>
+</li><li><a href='whats-new-in-sahi-os-v5.0.html#New APIs'>New APIs</a>
+</li><li><a href='whats-new-in-sahi-os-v5.0.html#Bug Fixes'>Bug Fixes</a>
+</li></ul></li></ul></li><li><a href='index.html'>Sahi - Introduction</a>
+<ul><li><a href='index.html#Main differentiating features'>Main differentiating features</a>
+</li><li><a href='index.html#Full feature list'>Full feature list</a>
+</li><li><a href='index.html#Browser Support'>Browser Support</a>
+</li><li><a href='index.html#Sahi Name'>Sahi Name</a>
+</li></ul></li><li><a href='architecture.html'>Architecture</a>
+<ul><li><a href='architecture.html#User Goals'>User Goals</a>
+</li><li><a href='architecture.html#Technical Goals'>Technical Goals</a>
+<ul><li><a href='architecture.html#Handling new browsers and operating systems'>Handling new browsers and operating systems</a>
+</li><li><a href='architecture.html#Object Identification'>Object Identification</a>
+</li><li><a href='architecture.html#Event simulation'>Event simulation</a>
+</li><li><a href='architecture.html#Scripting'>Scripting</a>
+</li><li><a href='architecture.html#Agile'>Agile</a>
+</li></ul></li><li><a href='architecture.html#Architecture'>Architecture</a>
+</li></ul></li><li><a href='sahi-script.html'>Sahi Script</a>
+<ul><li><a href='sahi-script.html#Sample Code'>Sample Code</a>
+</li><li><a href='sahi-script.html#Parsing and Execution'>Parsing and Execution</a>
+</li><li><a href='sahi-script.html#Rhino Engine'>Rhino Engine</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - What is new in Sahi Pro v6.0.0</h2>
+      <!-- What is new in Sahi Pro v6.0.0-->
+<div class="abstract"><strong class='heading'>abstract</strong>
+Sahi Pro v6.0.0 is a major release and contains many new features and fixes.<br/>
+The focus of this release is tester productivity enhancement.<br/>
+</div>
+<br/>
+<div class="warning"><strong class='heading'>warning</strong>
+This release has significant changes in userdata folder.<br/>
+Please do not upgrade on an existing installation.<br/>
+<br/>
+Please do a fresh installation of Sahi Pro 6.0.0. in another folder and copy over your older userdata/scripts folder to the new installation.<br/>
+Also selectively copy changes from userdata/config files to the new installation.<br/>
+</div>
+<br/>
+<h3><a href="#Key features" name="Key features" class="headinganchor2" hideFocus="hideFocus">Key features</a></h3>
+<h4><a href="#Editor" name="Editor" class="headinganchor2" hideFocus="hideFocus">Editor</a></h4>
+<br/>
+<img src="../assets/images/releases/editor_overview.png" style="width: 800px;" />
+<b>Script and Suites Editor</b><br/>
+The Sahi Script Editor has been completely revamped. The editor allows you to view all the scripts<br/>
+in the scripts directories and edit them from the browser based editor. The editor supports normal Sahi scripts,<br/>
+Scenario files (.s.csv) and Data-driven Suite files (.dd.csv).<br/>
+<br/>
+<b>Editor Context Pane</b><br/>
+The Context pane of the editor lists all known functions in the script directories, making discovery of functions very easy.<br/>
+One can view the details of functions used in scripts, discover and call functions from any other script<br/>
+and also create new functions through the "Create Function" dialog.<br/>
+This prevents testers from writing duplicate functions or making mistakes in function names or parameters passed.<br/>
+<br/>
+Object repository entries are also visible and editable via the Context pane.<br/>
+<br/>
+<b>Playback from editor</b><br/>
+<img src="../assets/images/releases/playback.png" />
+Scripts and suites can be executed directly from the Editor.<br/>
+Functionality of the older Web based testrunner (available upto v5.1.2) has been integrated into the Editor.<br/>
+One can choose single or multiple browsers for playback. Suites can be played back sequentially in a single browser session,<br/>
+or run in parallel on a single machine or run distributed across multiple machines with parallel instances running on each machine.<br/>
+Simple or data-driven suites can also be created on the fly using the Create Suite functionality.<br/>
+<br/>
+<b>Ant targets and Jenkins support</b><br/>
+Ant targets for running with builds can now be created from the Script Editor itself via the "Create Ant Target" functionality.<br/>
+Read more in "Triggering Sahi Pro from Jenkins" section.<br/>
+<br/>
+<h4><a href="#Triggering Sahi Pro from Jenkins" name="Triggering Sahi Pro from Jenkins" class="headinganchor2" hideFocus="hideFocus">Triggering Sahi Pro from Jenkins</a></h4>
+<img src="../assets/images/releases/jenkins.png" />
+Sahi Pro needs real browsers to playback test scenarios. But most Jenkins/build machines run in server mode and do not have a GUI.<br/>
+This forces end users to either try with headless browsers or to execute Sahi scripts remotely.<br/>
+With the new changes this is what you can do:<br/>
+Jenkins machine (J): Run Jenkins on server. No Sahi installed.<br/>
+Sahi Master machine (SM): Sahi Pro runs on this machine and behaves as Master<br/>
+Sahi slave machines (SL1, SL2, SL3): These are slave machines with Sahi Pro running on them.<br/>
+<br/>
+During the build process:<br/>
+Jenkins pulls the latest scripts from the Source Control Management (SCM) system.<br/>
+It calls the Sahi ant target. Sahi target copies over the scripts from Jenkins (J) to master (SM).<br/>
+SM then copies scripts to SL1, SL2, SL3, distributes the execution and collects all reports.<br/>
+Sahi ant target then pulls reports from SM to Jenkins.<br/>
+This allows Jenkins to remain a headless server and does not need Sahi installed on it.<br/>
+Also all distribution of scripts and pulling of reports happens through Sahi's ant target itself.<br/>
+<br/>
+<h4><a href="#Object Repository" name="Object Repository" class="headinganchor2" hideFocus="hideFocus">Object Repository</a></h4>
+Object repository is now tightly integrated in Controller itself.<br/>
+<ul>
+<li>
+Once a Object Repository file is chosen, an element will always be identified first by its OR entry, even when not in recording mode. This prevents the same element from being identified in multiple ways in different scripts.<br/>
+</li>
+<li>
+When elements have been smartly identified using Relational APIs like _near or _under once, newer recordings on those pages will simply use the OR entry, so other users do not need to worry about doing it again or wrongfully using a different identification mechanism.<br/>
+</li>
+<li>
+There is also provision to modify existing OR entries.<br/>
+</li>
+</ul>
+<br/>
+<h4><a href="#Better Reporting" name="Better Reporting" class="headinganchor2" hideFocus="hideFocus">Better Reporting</a></h4>
+<h5><a href="#Browser Page and Element Screenshots via _takePageScreenShot" name="Browser Page and Element Screenshots via _takePageScreenShot" class="headinganchor2" hideFocus="hideFocus">Browser Page and Element Screenshots via _takePageScreenShot</a></h5>
+Screenshots are a useful way to get more information in case of script failures. Sahi now has the ability to take<br/>
+screenshots of just the browser content and not the full desktop. One can even take screenshots of specific elements like<br/>
+a table or a div containing a graph. Have a look at _takePageScreenShot API for usage.<br/>
+<br/>
+<h5><a href="#Better error stacktraces" name="Better error stacktraces" class="headinganchor2" hideFocus="hideFocus">Better error stacktraces</a></h5>
+<img src="../assets/images/releases/failure_stacktrace.png" style="width: 800px" />
+On script failure or error, Sahi logs now shows the stacktrace of function calls, allowing easy navigation to calling functions.<br/>
+<br/>
+<h5><a href="#Script locking for synchronization" name="Script locking for synchronization" class="headinganchor2" hideFocus="hideFocus">Script locking for synchronization</a></h5>
+API _lock allows synchronization between scripts.<br/>
+When a lock on one label is obtained another script cannot obtain the lock on the same label and will wait till _unlock is called.<br/>
+Similarly _lockWindow API can be used to exclusively work on a particular window. This is useful in taking screenshots<br/>
+during parallel playback. This is already used in global_include.sah<br/>
+<br/>
+<h5><a href="#Globally included global_include.sah file" name="Globally included global_include.sah file" class="headinganchor2" hideFocus="hideFocus">Globally included global_include.sah file</a></h5>
+All scripts now automatically include global_include.sah file during playback.<br/>
+Common error handling functions like onScriptError and onScriptFailure can be defined here.<br/>
+Sahi Pro 6.0.0 ships with a default global_include.sah with default implementations of error callback functions.<br/>
+<br/>
+<h5><a href="#Searching scripts within suites in Sahi's logs" name="Searching scripts within suites in Sahi's logs" class="headinganchor2" hideFocus="hideFocus">Searching scripts within suites in Sahi's logs</a></h5>
+It is now possible to search both by suite and script name and also see scripts executed as part of suite runs.<br/>
+<br/>
+<h5><a href="#Improved Graphs" name="Improved Graphs" class="headinganchor2" hideFocus="hideFocus">Improved Graphs</a></h5>
+Graphs on suites reports page have been improved to present information better.<br/>
+<br/>
+<h4><a href="#Compare images" name="Compare images" class="headinganchor2" hideFocus="hideFocus">Compare images</a></h4>
+<img src="../assets/images/releases/compare_screenshots.png"  style="width: 800px"/>
+APIs for comparing two images and asserting on images has been added. Combined with the ability to take screenshots of<br/>
+individual elements, you can now add assertions of graphs or specific UI elements which are to be<br/>
+asserted for their visual correctness.<br/>
+<br/>
+<h4><a href="#Native events" name="Native events" class="headinganchor2" hideFocus="hideFocus">Native events</a></h4>
+Sahi Pro so far had support for native keyboard events. From 6.0.0 native mouse events are also supported.<br/>
+This allows complex functionality like dragdrop across multi domain iframes, complex file upload controls etc.<br/>
+<br/>
+<h3><a href="#New APIs" name="New APIs" class="headinganchor2" hideFocus="hideFocus">New APIs</a></h3>
+<strong>Fetch related APIs</strong><br/>
+<ul>
+<li><a href="../sahi-apis/fetch-apis.html#_getTableContents">_getTableContents</a>: Gets contents from an html table</li>
+<li><a href="../sahi-apis/fetch-apis.html#_getOptions">_getOptions</a>: Gets the values or texts of all options of the select element</li>
+<li><a href="../sahi-apis/fetch-apis.html#_getScreenSize">_getScreenSize</a>: Returns the inner width and inner height of the browser window</li>
+<li><a href="../sahi-apis/fetch-apis.html#_userAgent">_userAgent</a>: Returns the UserAgent string of the browser</li>
+<li><a href="../sahi-apis/fetch-apis.html#_areEqual">_areEqual</a>: Compares two JavaScript types or arrays</li>
+<li><a href="../sahi-apis/fetch-apis.html#_isPhantomJS">_isPhantomJS</a>: Returns if the current browser is a PhantomJS browser</li>
+</ul>
+<strong>Native click related APIs</strong><br/>
+<ul>
+<li><a href="../sahi-apis/action-apis.html#_clickNative">_clickNative</a>: Performs a native click on an element</li>
+<li><a href="../sahi-apis/action-apis.html#_clickNativeXY">_clickNativeXY</a>: Performs a native click at the given coordinates</li>
+<li><a href="../sahi-apis/action-apis.html#_doubleClickNative">_doubleClickNative</a>: Performs a native double click on an element</li>
+<li><a href="../sahi-apis/action-apis.html#_rightClickNative">_rightClickNative</a>: Performs a native right click on an element</li>
+<li><a href="../sahi-apis/action-apis.html#_dragDropNative">_dragDropNative</a>: Simulates a dragdrop event from element 1 to element 2 using native events</li>
+<li><a href="../sahi-apis/action-apis.html#_dragDropNativeXY">_dragDropNativeXY</a>: Simulates a dragdrop event from element at first set of coordinates to element at second set of coordinates, using native events</li>
+</ul>
+<strong>Assertion APIs</strong><br/>
+<ul>
+<li><a href="../sahi-apis/assertions.html#_assertVisible">_assertVisible</a>: Use this instead of _assert(_isVisible)</li>
+<li><a href="../sahi-apis/assertions.html#_assertNotVisible">_assertNotVisible</a>: Use this instead of _assert(!_isVisible)</li>
+<li><a href="../sahi-apis/assertions.html#_assertEqualImages">_assertEqualImages</a>: Asserts that two images are similar</li>
+<li><a href="../sahi-apis/screenshot-apis.html#_assertSnapShot">_assertSnapShot</a>: Takes a page screenshot of the webpage or requested element and asserts its similarity to a reference image</li>
+</ul>
+<strong>Images related APIs</strong><br/>
+<ul>
+<li><a href="../sahi-apis/screenshot-apis.html#_takePageScreenShot">_takePageScreenShot</a>: Take a full page screenshot of a browser element or the web page</li>
+<li><a href="../sahi-apis/screenshot-apis.html#_compareImages">_compareImages</a>: Allows comparison of two images</li>
+<li><a href="../sahi-apis/logging-apis.html#_logImage">_logImage</a>: Logs an image to the Report logs</li>
+</ul>
+<strong>Popup window related APIs</strong><br/>
+<ul>
+<li><a href="../sahi-apis/popup-windows.html#_windowExists">_windowExists</a>: Use this to check if a window is open</li>
+<li><a href="../sahi-apis/popup-windows.html#_getRecentWindow">_getRecentWindow</a>: Returns the most recently opened window</li>
+</ul>
+<strong>Lock related APIs</strong><br/>
+<ul>
+<li><a href="../sahi-apis/script-execution-control-apis.html#_lockWindow">_lockWindow</a>: Use this instead of _lock when dealing with window related APIs</li>
+<li><a href="../sahi-apis/script-execution-control-apis.html#_unlockWindow">_unlockWindow</a>: Use this when using _lockWindow</li>
+</ul>
+<strong>Documentation APIs</strong><br/>
+<ul>
+<li><a href="../sahi-apis/document-creation.html#_startDocumentation">_startDocumentation</a>: Use this to document an existing script</li>
+<li><a href="../sahi-apis/document-creation.html#_stopDocumentation">_stopDocumentation</a>: Stops the documentation</li>
+</ul>
+<strong>Misc APIs</strong><br/>
+<ul>
+<li><a href="../sahi-apis/util-apis.html#_toJSON">_toJSON</a>: Converts a JSON object to a string</li>
+</ul>
+<strong>Callback APIs</strong><br/>
+<ul>
+<li><a href="../sahi-apis/script-execution-control-apis.html#onBeforeStep">onBeforeStep</a>: Called before every step in the script</li>
+<li><a href="../sahi-apis/script-execution-control-apis.html#onAfterStep">onAfterStep</a>: Called after every step in the script</li>
+</ul>
+<h3><a href="#Modified API's" name="Modified API's" class="headinganchor2" hideFocus="hideFocus">Modified API's</a></h3>
+<ul>
+<li><a href="../sahi-apis/fetch-apis.html#_isVisible">_isVisible</a>: $checkZIndex and $doScroll have been newly added. Scripts written before 6.0.0 do NOT need changes.</li>
+<li><a href="../sahi-apis/screenshot-apis.html#_takeScreenShot">_takeScreenShot</a>: $format and $resizePercentage have been moved into a $props parameter. <strong>Scripts written before 6.0.0 will need changes.</strong></li>
+<li><a href="../sahi-apis/script-suite-info-apis.html#_scriptStartTime">_scriptStartTime</a>: Returns a Date object. Previous versions returned a String. <strong>Scripts written before 6.0.0 will need changes.</strong></li>
+<li><a href="../sahi-apis/javascript-dialogs.html#_lastAlert">_lastAlert</a>: _lastAlert now takes an optional parameter $allalerts. If $allalerts is true it will return all alerts encountered in that session, as an array. Scripts written before 6.0.0 do NOT need changes.</li>
+<li><a href="../sahi-apis/javascript-dialogs.html#_lastConfirm">_lastConfirm</a>: _lastConfirm now takes an optional parameter $allconfirms. If $allconfirms is true it will return all confirmation  messages encountered in that session, as an array. Scripts written before 6.0.0 do NOT need changes.</li>
+</ul>
+<br/>
+<h3><a href="#Other Features and Enhancements" name="Other Features and Enhancements" class="headinganchor2" hideFocus="hideFocus">Other Features and Enhancements</a></h3>
+<ul>
+<li>Set button has been removed from Playback tab in controller. You can directly Play a script.</li>
+<li>Configure screens can only be accessed from local machine, so one cannot access another Sahi server and look at its properties. One can reset this behaviour by setting <code>configuration.allow_remote_access=true</code> in userdata.properties.</li>
+<li>DRun works with multiple browsers</li>
+<li>If a node does not have the browser available, DRun will automatically distribute the scripts to other nodes on which the browser is available.</li>
+<li>Logs can be viewed in English if "&lang=en" is added to the logs URL.</li>
+<li>Suite Name and Script Name have been added to the Filter criteria. One can filter reports using either of these fields. If Suite Name is chosen, suite reports that match the suite name will be displayed. If Script Name is chosen, all scripts and suites containing the script would be displayed.</li>
+<li>One can configure whether attachment should be sent along with email, at the end of a run. By default, attachment would be sent. To disallow it, set <code>mail.send_attachment=false</code> in userdata.properties</li>
+<li>One can configure the maximum size of attachment sent with email after a run. By default, there is no limit on the size. To change this, add <code>mail.max_allowed_attachment_size=&lt;size&gt;</code> in userdata.properties. <code>&lt;size&gt;</code> is to be specified in bytes. 0 means no limit.</li>
+<li>Added a new window property sahiWindowId which is returned as part of window objects from _getWindows. sahiWindowId is an id autogenerated by Sahi and can be used in <a href="../sahi-apis/popup-windows.html#_selectWindow">_selectWindow</a> and <a href="../sahi-apis/popup-windows.html#_windowExists">_windowExists</a> APIs</li>
+<li>One can configure the CSV separator to be used when dealing with Data driven suites(.dd.csv), .csv and Scenario files(.s.csv). By default, this is a comma (","). But this can be changed, say to a semi-colon(";") by setting <code>csv.word_separator=;</code> in userdata.properties.<br/>
+This csv separator will be used when running a data driven suite. It will also be used when loading and saving a scenario file or data driven suite from the Editor.</li>
+<li>Reports Export to Excel functionality enhanced.<br/>
+<ul>
+<li>Screenshot images now appear in the Excel file exported from a Script report</li>
+<li>Export to Excel functionality added in Testcase report page</li>
+</ul>
+</li>
+<li>Accessor metadata information has now been externalized. This is modifiable via userdata/config/accessors_metadata.txt (HTML), accessors_applet_metadata.txt (Applets) and accessors_flex_metadata.txt(Flex). So if one wants to change the order of attributes appearing in the Alternatives dropdown in the Controller or add a new attribute, etc, they can modify these text files directly instead of having to touch JavaScript source files. Restart Sahi for the changes to take effect.</li>
+<li>Added ability to specify downloadable content in content_detection.txt. The pattern to add looks like <code>download:.*abc.*</code>. If a page's initial content matches this pattern, it will be downloaded. This is useful when one cannot use download_urls.txt for this purpose.<br/>
+Example: Assume a webpage that displays some HTML content and a Submit button. On pressing the Submit button, the server returns an XML response. Assume that the url does not change in the response. Since the response is XML, Sahi cannot process this page. Hence it has to be downloaded. But putting the url in download_urls.txt will cause the first page also to be downloaded. So instead, find a pattern in the starting content of the second webpage and add that pattern in content_detection.txt.</li>
+<li>Enhanced stacktraces in logs</li>
+<li><a href="../sahi-apis/excel-apis.html#_getExcel">_getExcel</a> changes:<br/>
+<ul>
+<li>If a cell has a formula, <code>getData</code> and <code>get</code> functions return value instead of formula. Added a method <code>getCellFormula</code> that returns formula.</li></li>
+<li>Added <code>getSheetNames</code> that returns all the sheet names as a String array</li>
+<li>Added <code>getRawWorkbook</code> which returns a Workbook POI object. This gives the user the flexibility to deal with the Workbook object directly</li>
+<li>Added <code>getCellObject</code> that returns a Cell POI object.</li>
+<li>Added <code>getCellFont</code> that returns a Font POI object. </li>
+</ul>
+<li>Handling domains with protocols in _selectDomain. </li>
+<li>Made NTLM transparent authentication configurable.</li>
+<li>Added AccessControlAllowAllResponse for crossDomain Access of Sahi urls. </li>
+<li>Added a <a href="../using-sahi/sahi-integration.html">document</a> that explains how Sahi can be integrated with external tools. It provides a step by step list of all URL calls that might be required for a complete integration with Sahi.</li>
+<li>Users can specify a list of function names that appear as autocompletion suggestions in the <code>Function Name</code> textbox when creating a function from the Editor. This list of functions can be specified in function_names.txt from the Configure UI</li>
+<li>XHR ready state 1 default wait time added.</li>
+<li>Applet automation has been reimplemented to need less interference from end user.</li>
+<li>Added exclude_inject_applet.txt to exclude specific applets from being injected by Sahi.</li>
+<li>Support for signed applets</li>
+<li>New Applet automation implementation</li>
+<li>Fixed _takeScreenShot and _takeScreenShots for phantomjs.</li>
+<li>Updated graphs for dload reports. Added Step-vs-Time and URL-vs-Time graph for dload tests.</li>
+<li>Dload now runs the subject script 3 times at each noise level, and shows average time. The number can be changed by setting <code>dload.number_of_time_subject_execute=&lt;number&gt;</code> in userdata.properties.</li>
+<li>Added Pro and OS versions to documented APIs.</li>
+<li>_log can also take an image</li>
+<li>Added _assertEqual() statement while recording Alert / Confirm / Prompt</li>
+<li>_checkbox and _radio are now recorded with _check and _uncheck instead of _click.</li>
+<li>Attribute type (ID, Name etc) can be displayed for Attributes in the Controller Alternatives dropdown. This is configurable through <code>"controller.display_attribute_type.enabled"</code> in userdata.properties. By default, attribute type is not displayed.</li>
+<li>if strictvisibility is true, recurseInFrames ignores invisible frames and iframes.</li>
+<li>Added clickNative for Flex.</li>
+<li>APIs _enableDefaultErrorLogging and _disableDefaultErrorLogging added</li>
+<li>Added line information for script parsing errors.</li>
+<li>Added implementation for _sahi.SKIP_SCREENSHOTS and _sahi.SKIP_ASSERT_SNAPSHOTS. If _sahi.SKIP_SCREENSHOTS is true, APIs that take screenshots will be skipped. If _sahi.SKIP_ASSERT_SNAPSHOTS is true, APIs that assert screenshots will be skipped.</li>
+</ul>
+<br/>
+<h3><a href="#Bug Fixes" name="Bug Fixes" class="headinganchor2" hideFocus="hideFocus">Bug Fixes</a></h3>
+<ul>
+<li>If email send fails, the last script's status did not get updated in the offline reports</li>
+<li>Wait for offline logs to be written before returning SUCCESS or FAILURE status</li>
+<li>In drun, only available browsers are now used.</li>
+<li>Time taken for drun was updated twice - once before and once after log creation.</li>
+<li>readCSV for mac (\r\n) fixed</li>
+<li>Corrected total steps count in logs.</li>
+<li>Simple optimization to try inject in sample first. Fixes bug of Out of Memory Error in html-head-script-20mb-/script-/html</li>
+<li>Fix for drun offline logs not showing images. Copying only if image exists.</li>
+<li>imageDirectory is now created, if it does not exist while creating offline logs.</li>
+<li>Fix for testcases reporting. Once a sript failed with an error, further testcases were not being logged. Also fixes duplicate error logging in Excel framework.</li>
+<li>Sometimes a blank line with timestamp was visible in logs.</li>
+<li>ERROR log now comes inside function folding</li>
+<li>Handle window titles with quotes in _popup</li>
+<li>Takes care of unicode in logs and controller playback tab. Fixed Log_highlight to show unicode characters properly.</li>
+<li>_readCSV fixed for handling empty rows.</li>
+<li>Fixed saving script bug with extra new line on top.</li>
+<li>DRUN Throws Exception if the nodes string has space after a comma</li>
+<li>XHR monitoring in IE fixed.</li>
+<li>Default lock timeout increased to 1 minute from 5 seconds.</li>
+<li>Added configurable delay time for typeNative Safari bug. Default time is 10 ms.</li>
+<li>Changes made for showing NaN for time taken in Log in IE and firefox Browser.</li>
+<li>Added Confirmation message in Controller Record functionality, if file already exists.</li>
+<li>Fix to show "is key tool available" and "is jar signer available" in Controller info tab</li>
+<li>Fixed "SSLProtocolException: handshake alert: unrecognized_name" by setting jsse.enableSNIExtension=false.</li>
+<li>Prevent NTLM auto login and prevent caching of NTLM credentials.</li>
+<li>Noise data is no longer stored in the database for dload.</li>
+<li>_windowAction() will now fail gracefully upon call in Linux.</li>
+<li>_collectAttributes() was returning null if the collection array is huge.</li>
+<li>Now HARViewer works in H2 db as well as MySql.</li>
+<li>Alerts did not appear when recording script.</li>
+<li>Fixed broken XUA injection</li>
+<li>email properties changed for prefix in subject and content</li>
+<li>SSL root certificate acceptance fails if there is a space in path of sahi</li>
+<li>Fixed bug - When running a suite in Opera 24, the log incorrectly shows Chrome.</li>
+<li>Fixed wrong message in assertExists failure.</li>
+<li>domainfix.txt file no longer needed. Sahi automatically handles this.</li>
+<li>_assert statements fixed to always cause failure, not error. This means that when evaluating the _assert, if an element is not found, it will be handled as a failure and not as an error. Thus the script will continue to execute.</li>
+<li>Fixed browser stacktrace in case of failure.</li>
+<li>Removed console.log statements and also added a dummy console.log for older browsers.</li>
+<li>Removed exception for java and ruby driver while recording confirm and prompt.</li>
+<li>Changed displayInfo to fix accessor.value for java/ruby controller mode.</li>
+<li>Fixed issue - if an element identifier has slashes, it was not identified correctly</li>
+<li>Assertions when recorded, should not double escape newlines. "a\nb" should not become "a\\nb"</li>
+<li>Fixing flakiness due to race conditions in fetch functionality. Fixes collect and count related random failures.</li>
+<li>Fix for _setStrictVisibility not working on iframes unless page is reloaded.</li>
+<li>Fixing build recurseInIframes handles different domains.</li>
+<li>Added a 2nd parameter - "relative" in _position API</li>
+<li>Fixed toLowerCase error if sahi.accessor.ignore_case=true.</li>
+<li>Identification of <code>&lt;object&gt;</code> tag in Opera, IE9 and IE10.</li>
+<li>Truncating long strings in logs of function arguments</li>
+<li>Excel framework null, blank behavior fixes: If blank cell, treat as null in excelfw. Handle null in function logging (was [object])</li>
+<li>Now _wait works for time given as String</li>
+<li>setselected now works with selectbox with size > 0. conversion added for java keycodes to phantomjs keycodes.</li>
+<li>Changes in _writeCSVFile API For Extra line in start of a CSV file while overwriting. and changes accordingly in csv.sah</li>
+<li>Added other characters (like '$', "@', etc) to be written using native events</li>
+</ul>
+<br/>
+
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

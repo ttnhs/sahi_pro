@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta name="generator" content="HTML Tidy, see www.w3.org">
+    <title>Sahi Tests</title>
+    <script type="text/javascript">
+        function abc() {
+        }
+    </script>
+</head>
+<body>
+<h2>Sahi onJSError Test</h2>
+
+<script>
+function causeError() {
+	a.x = 10;
+}
+
+window.onerror = function() {
+	alert("Hi there!");
+}
+
+</script>
+
+<input type="button" value="Cause Error" onclick="causeError()"/>
+<br/><br/>
+<a href="index.htm">Back</a>
+<br/>
+<br/>
+</body>
+</html>

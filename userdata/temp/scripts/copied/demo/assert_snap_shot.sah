@@ -1,0 +1,26 @@
+_navigateTo("/demo/training");
+_setValue(_textbox("user"), "test");
+//_assertSnapShot("snapshot_login_short.png", 20, true);
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+_setValue(_textbox("q"), "2");
+_setValue(_textbox("q[1]"), "1");
+_setValue(_textbox("q[2]"), "1");
+_click(_button("Add"));
+_assertEqual("1150", _textbox("total").value);
+_setValue(_textbox("total"), "8811188");
+_lockWindow(20000);
+_focusWindow();
+_assertSnapShot("snapshot_totaled.png");
+_assertSnapShot("snapshot_totaled.png", null, 20, true);
+_assertSnapShot("snapshot_totaled.png", null, 20, true, {delay:200});
+_unlockWindow();
+_click(_button("Logout"));
+
+_navigateTo("http://en.wikipedia.org/wiki/Tytonidae");
+_lockWindow(20000);
+_focusWindow();
+_takePageScreenShot(_table("infobox biota"), "reference.png");
+_assertSnapShot("reference.png", _table("infobox biota"), 0, true);
+_assertSnapShot("reference.png", _table("infobox biota"), 0, true, {delay:200});
+_unlockWindow();

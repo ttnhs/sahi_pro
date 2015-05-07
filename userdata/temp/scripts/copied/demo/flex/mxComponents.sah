@@ -1,0 +1,702 @@
+//Charts
+//ColumnChart
+function testColumnChart() {
+	_assertExists(_f("mxComponents").button("ColumnChart"));
+	_assertEqual("ColumnChart", _getValue(_f("mxComponents").button("ColumnChart")));
+	_click(_f("mxComponents").button("ColumnChart"));
+	_assertExists(_f("mxComponents").columnchart("clmnchrt"));
+	_assertEqual("", _getValue(_f("mxComponents").columnchart("clmnchrt")));
+	_assertExists(_f("mxComponents").columnchart("ColumnChart"));
+	_assertEqual("", _getValue(_f("mxComponents").columnchart("ColumnChart")));
+	_assertExists(_f("mxComponents").columnseries("colsrs"));
+	_assertEqual("", _getValue(_f("mxComponents").columnseries("colsrs")));
+}
+
+//Piechart
+function testPieChart() {
+	_assertExists(_f("mxComponents").button("PieChart"));
+	_assertEqual("PieChart", _getValue(_f("mxComponents").button("PieChart")));
+	_click(_f("mxComponents").button("PieChart"));
+	_assertExists(_f("mxComponents").piechart("chart"));
+	_assertEqual("", _getValue(_f("mxComponents").piechart("chart")));
+}
+
+
+//Containers
+
+//Box
+//TitleWindow
+function testTitleWindow() {
+	_click(_f("mxComponents").button("Common"));
+	_click(_f("mxComponents").button("Box"));
+	_assertExists(_f("mxComponents").popupbutton("titleWindowPopUpButton"));
+	_assertEqual("Select", _getValue(_f("mxComponents").popupbutton("titleWindowPopUpButton")));
+	_click(_f("mxComponents").popupbutton("titleWindowPopUpButton"));
+	_assertEqual("The quick brown fox jumped", _getValue(_f("mxComponents").uitextfield("The quick brown fox jumped")));
+	_assertExists(_f("mxComponents").textarea("textarea"));
+	_assertEqual("Selected", _getValue(_f("mxComponents").textarea("textarea")));
+	_assertExists(_f("mxComponents").textarea("textarea"));
+	_assertEqual("Selected", _getValue(_f("mxComponents").textarea("textarea")));
+}
+
+//Tile
+function testTile() {
+	_assertExists(_f("mxComponents").tile("tile"));
+	_assertEqual("", _getValue(_f("mxComponents").tile("tile")));
+	_assertExists(_f("mxComponents").tile("Tile"));
+	_assertEqual("", _getValue(_f("mxComponents").tile("Tile")));
+	_click(_f("mxComponents").s_button("2"));
+	_click(_f("mxComponents").s_button("4"));
+}
+
+
+//Vertical Divided Box
+function testVerticalDividedBox() {
+	_assertExists(_f("mxComponents").vdividedbox("vdvidedbox"));
+	_assertEqual("", _getValue(_f("mxComponents").vdividedbox("vdvidedbox")));
+	_assertExists(_f("mxComponents").vdividedbox("VDividedBox"));
+	_assertEqual("", _getValue(_f("mxComponents").vdividedbox("VDividedBox")));
+}
+
+//Horizontal Divided Box
+function testHorizontalDividedBox() {
+	_assertExists(_f("mxComponents").hdividedbox("hdvidedbox"));
+	_assertEqual("", _getValue(_f("mxComponents").hdividedbox("hdvidedbox")));
+	_assertExists(_f("mxComponents").hdividedbox("HDividedBox"));
+	_assertEqual("", _getValue(_f("mxComponents").hdividedbox("HDividedBox")));
+}
+
+//Vertical Box
+function testVerticalBox() {
+	_assertExists(_f("mxComponents").vbox("VerticalBox"));
+	_assertEqual("", _getValue(_f("mxComponents").vbox("VerticalBox")));
+	_assertExists(_f("mxComponents").vbox("vbox"));
+	_assertEqual("", _getValue(_f("mxComponents").vbox("vbox")));
+	_click(_f("mxComponents").s_button("Button 2[1]"));
+	_click(_f("mxComponents").s_button("Button 3[1]"));
+}
+
+//Horizontal Box
+function testHorizontalBox() {
+	_assertExists(_f("mxComponents").button("Box"));
+	_assertEqual("Box", _getValue(_f("mxComponents").button("Box")));
+	_click(_f("mxComponents").button("Box"));
+	_assertExists(_f("mxComponents").hbox("HorizontalBox"));
+	_assertEqual("", _getValue(_f("mxComponents").hbox("HorizontalBox")));
+	_assertExists(_f("mxComponents").hbox("hbox"));
+	_assertEqual("", _getValue(_f("mxComponents").hbox("hbox")));
+	_click(_f("mxComponents").s_button("Button 1"));
+	_click(_f("mxComponents").s_button("Button 2"));
+}
+
+//Form
+//Grid
+function testGrid() {
+	_assertExists(_f("mxComponents").grid("languageGrid"));
+	_assertEqual("", _getValue(_f("mxComponents").grid("languageGrid")));
+	_assertExists(_f("mxComponents").grid("LanguageGrid"));
+	_assertEqual("", _getValue(_f("mxComponents").grid("LanguageGrid")));
+	_setValue(_f("mxComponents").textinput("txt1"), "English");
+	_click(_f("mxComponents").checkbox("Read"));
+	_click(_f("mxComponents").checkbox("Write"));
+	_click(_f("mxComponents").checkbox("Speak"));
+	_click(_f("mxComponents").button("Submit"));
+}
+
+//formItem
+function testFormItem() {
+	_assertExists(_f("mxComponents").formitem("email"));
+	_assertEqual("E-mail address", _getValue(_f("mxComponents").formitem("email")));
+	_setValue(_f("mxComponents").textinput("fname"), "hari");
+	_assertEqual("hari", _getValue(_f("mxComponents").textinput("fname")));
+	_setValue(_f("mxComponents").textinput("dob"), "11/11/2001");
+	_assertEqual("11/11/2001", _getValue(_f("mxComponents").textinput("dob")));
+	_setValue(_f("mxComponents").textinput("email"), "hari@gmail.com");
+	_assertEqual("hari@gmail.com", _getValue(_f("mxComponents").textinput("email")));
+	_setValue(_f("mxComponents").textinput("age"), "25");
+	_assertEqual("25", _getValue(_f("mxComponents").textinput("age")));
+	_setValue(_f("mxComponents").textinput("phone"), "9999900000");
+	_assertEqual("9999900000", _getValue(_f("mxComponents").textinput("phone")));
+}
+
+//FormHeading
+function testFormHeading() {
+	_assertExists(_f("mxComponents").button("Form"));
+	_assertEqual("Form", _getValue(_f("mxComponents").button("Form")));
+	_click(_f("mxComponents").button("Form"));
+	_assertExists(_f("mxComponents").formheading("formHeading"));
+	_assertEqual("Enter values into the form.", _getValue(_f("mxComponents").formheading("formHeading")));
+	_assertExists(_f("mxComponents").formheading("frmHdng"));
+	_assertEqual("Enter values into the form.", _getValue(_f("mxComponents").formheading("frmHdng")));
+}
+
+
+//Align
+//Canvas
+function testCanvas() {
+	_assertExists(_f("mxComponents").button("Align"));
+	_assertEqual("Align", _getValue(_f("mxComponents").button("Align")));
+	_click(_f("mxComponents").button("Align"));
+	_assertExists(_f("mxComponents").canvas("cnvs"));
+	_assertEqual("", _getValue(_f("mxComponents").canvas("cnvs")));
+	_assertExists(_f("mxComponents").canvas("Canvas"));
+	_assertEqual("", _getValue(_f("mxComponents").canvas("Canvas")));
+	_setValue(_f("mxComponents").s_textinput("txtI2"), "hello");
+	_assertEqual("hello", _getValue(_f("mxComponents").s_textinput("txtI2")));
+}
+
+
+
+//Common
+//ApplicationControlbar
+function testApplicationControlBar() {
+	_assertExists(_f("mxComponents").applicationcontrolbar("dockedApplicationControlbar"));
+	_assertEqual("", _getValue(_f("mxComponents").applicationcontrolbar("dockedApplicationControlbar")));
+	_assertExists(_f("mxComponents").applicationcontrolbar("dockedAppCtrlbar"));
+	_assertEqual("", _getValue(_f("mxComponents").applicationcontrolbar("dockedAppCtrlbar")));
+	_assertExists(_f("mxComponents").applicationcontrolbar("normalApplicationControlbar"));
+	_assertEqual("", _getValue(_f("mxComponents").applicationcontrolbar("normalApplicationControlbar")));
+	_assertExists(_f("mxComponents").applicationcontrolbar("normalAppCtrlbar"));
+	_assertEqual("", _getValue(_f("mxComponents").applicationcontrolbar("normalAppCtrlbar")));
+	_setValue(_f("mxComponents").s_textinput("textInput"), "flex4");
+	_click(_f("mxComponents").s_button("Go adobe.com"));
+}
+
+//Accordin
+function testAccordin() {
+	_assertExists(_f("mxComponents").button("Common"));
+	_assertEqual("Common", _getValue(_f("mxComponents").button("Common")));
+	_click(_f("mxComponents").button("Common"));
+	_assertExists(_f("mxComponents").accordion("MXAccordion"));
+	_assertEqual("", _getValue(_f("mxComponents").accordion("MXAccordion")));
+	_click(_f("mxComponents").s_button("Select Panel 2"));
+	_click(_f("mxComponents").s_button("Select Panel 3"));
+}
+
+
+//Video
+function testVideoRun() {
+	_assertExists(_f("mxComponents").button("Video"));
+	_assertEqual("Video", _getValue(_f("mxComponents").button("Video")));
+	_click(_f("mxComponents").button("Video"));
+	_assertExists(_f("mxComponents").videodisplay("mxVideoDisplay"));
+	_assertEqual("", _getValue(_f("mxComponents").videodisplay("mxVideoDisplay")));
+	_assertExists(_f("mxComponents").videodisplay("mxVid"));
+	_assertEqual("", _getValue(_f("mxComponents").videodisplay("mxVid")));
+	_click(_f("mxComponents").s_button("Play"));
+	_wait(1000);
+	_click(_f("mxComponents").s_button("Pause"));
+	_wait(1000);
+	_click(_f("mxComponents").s_button("Stop"));
+}
+
+//Menu
+//Tooltip
+function testToolTip() {
+	var $tooltip=_f("mxComponents").togglebuttonbar("toggleButton").get("toolTip");
+	_setValue(_f("mxComponents").s_textarea("myTA"),$tooltip);
+	_assertEqual("This is ToggleButtonBar", _getValue(_f("mxComponents").s_textarea("myTA")));
+}
+
+
+//ToggleButtonBar
+function testToggleButtonBar() {
+	_assertExists(_f("mxComponents").togglebuttonbar("toggleButton"));
+	_assertEqual("", _getValue(_f("mxComponents").togglebuttonbar("toggleButton")));
+	_assertExists(_f("mxComponents").togglebuttonbar("tglbtn"));
+	_assertEqual("", _getValue(_f("mxComponents").togglebuttonbar("tglbtn")));
+	_assertExists(_f("mxComponents").s_textarea("myTA"));
+	_assertEqual("", _getValue(_f("mxComponents").s_textarea("myTA")));
+	_click(_f("mxComponents").uitextfield("Coldfusion"));
+	_assertEqual("Selected button label: Coldfusion", _getValue(_f("mxComponents").s_textarea("myTA")));
+}
+
+//MenuBar
+function testMenuBar() {
+	_assertExists(_f("mxComponents").menubar("mBar"));
+	_assertEqual("", _getValue(_f("mxComponents").menubar("mBar")));
+	_assertExists(_f("mxComponents").menubar("mBar"));
+	_assertEqual("", _getValue(_f("mxComponents").menubar("mBar")));
+	_assertExists(_f("mxComponents").s_textarea("menuBarMessage"));
+	_assertEqual("Selected Menu: ", _getValue(_f("mxComponents").s_textarea("menuBarMessage")));
+	_click(_f("mxComponents").menubaritem(0));
+	_click(_f("mxComponents").uitextfield("MenuItem 1-A"));
+	_assertEqual("MenuItem 1-A,1A", _getValue(_f("mxComponents").s_textarea("menuBarMessage")));
+	_click(_f("mxComponents").menubaritem(1));
+	_mouseDown(_f("mxComponents").menubaritem(1));
+	_mouseOver(_f("mxComponents").uitextfield("MenuItem 2-B[1]"));
+	_click(_f("mxComponents").uitextfield("SubMenuItem 3-A"));
+	_assertEqual("SubMenuItem 3-A,3A", _getValue(_f("mxComponents").s_textarea("menuBarMessage")));
+}
+
+//FlexNativeMenu
+function testFlexNativeMenu() {
+	_assertExists(_f("mxComponents").button("Menu"));
+	_assertEqual("Menu", _getValue(_f("mxComponents").button("Menu")));
+	_click(_f("mxComponents").button("Menu"));
+	_click(_f("mxComponents").s_button("myButton"));
+	_assertExists(_f("mxComponents").menu(0));
+	_assertEqual("", _getValue(_f("mxComponents").menu(0)));
+	_click(_f("mxComponents").uitextfield("MenuItem 1"));
+	_assertExists(_f("mxComponents").alert("Label: MenuItem 1"));
+	_assertEqual("", _getValue(_f("mxComponents").alert("Label: MenuItem 1")));
+	_click(_f("mxComponents").button("OK"));
+	_click(_f("mxComponents").s_button("Open Menu"));
+	_click(_f("mxComponents").uitextfield("MenuItem 2[1]"));
+	_assertExists(_f("mxComponents").alert("Label: MenuItem 2"));
+	_assertEqual("", _getValue(_f("mxComponents").alert("Label: MenuItem 2")));
+	_click(_f("mxComponents").button("OK"));
+}
+
+
+//Button
+//ButtonBar
+function testButtonBar() {
+	_assertExists(_f("mxComponents").buttonbarbutton("Button"));
+	_assertEqual("Button", _getValue(_f("mxComponents").buttonbarbutton("Button")));
+	_assertExists(_f("mxComponents").buttonbarbutton("ButtonBar"));
+	_assertEqual("ButtonBar", _getValue(_f("mxComponents").buttonbarbutton("ButtonBar")));
+	_assertExists(_f("mxComponents").buttonbarbutton("CheckBox"));
+	_assertEqual("CheckBox", _getValue(_f("mxComponents").buttonbarbutton("CheckBox")));
+	_assertExists(_f("mxComponents").buttonbarbutton("ColorPicker"));
+	_assertEqual("ColorPicker", _getValue(_f("mxComponents").buttonbarbutton("ColorPicker")));
+	_assertExists(_f("mxComponents").uitextfield("Button..."));
+	_assertEqual("Button...", _getValue(_f("mxComponents").uitextfield("Button...")));
+	_click(_f("mxComponents").buttonbarbutton("Button"));
+	_assertEqual("Button...", _getValue(_f("mxComponents").uitextfield("Button...")));
+	_click(_f("mxComponents").buttonbarbutton("ButtonBar"));
+	_assertEqual("ButtonBar...", _getValue(_f("mxComponents").uitextfield("ButtonBar...")));
+	_click(_f("mxComponents").buttonbarbutton("CheckBox"));
+	_assertEqual("CheckBox...", _getValue(_f("mxComponents").uitextfield("CheckBox...")));
+	_click(_f("mxComponents").buttonbarbutton("ColorPicker"));
+	_assertEqual("ColorPicker...", _getValue(_f("mxComponents").uitextfield("ColorPicker...")));
+}
+
+//Button
+function testButtons() {
+	_assertExists(_f("mxComponents").button("Button"));
+	_assertEqual("Button", _getValue(_f("mxComponents").button("Button")));
+	_click(_f("mxComponents").button("Button"));
+	_assertExists(_f("mxComponents").button("iconButton"));
+	_assertEqual("Button with Icon", _getValue(_f("mxComponents").button("iconButton")));
+	_assertExists(_f("mxComponents").button("customizedButton"));
+	_assertEqual("Customized Button", _getValue(_f("mxComponents").button("customizedButton")));
+	_assertExists(_f("mxComponents").button("dfltButton"));
+	_assertEqual("Default Button", _getValue(_f("mxComponents").button("dfltButton")));
+	_assertExists(_f("mxComponents").s_textarea("buttonMessage"));
+	_assertEqual("", _getValue(_f("mxComponents").s_textarea("buttonMessage")));
+	_click(_f("mxComponents").button("Button with Icon"));
+	_assertEqual("Button with Icon pressed", _getValue(_f("mxComponents").s_textarea("buttonMessage")));
+	_click(_f("mxComponents").button("Customized Button"));
+	_assertEqual("Customized Button pressed", _getValue(_f("mxComponents").s_textarea("buttonMessage")));
+	_click(_f("mxComponents").button("dfltButton"));
+	_assertEqual("Default Button pressed", _getValue(_f("mxComponents").s_textarea("buttonMessage")));
+}
+
+
+//AdvancedDataGrid
+//OLAP DataGrid
+function testOLAPDataGrid(){
+	_assertExists(_f("mxComponents").olapdatagrid("mxOLAPDataGrid"));
+	_assertEqual("", _getValue(_f("mxComponents").olapdatagrid("mxOLAPDataGrid")));
+	_assertExists(_f("mxComponents").olapdatagrid("mxOLAPDG"));
+	_assertEqual("", _getValue(_f("mxComponents").olapdatagrid("mxOLAPDG")));
+}
+
+function testAdvancedDataGrid() {
+	_assertExists(_f("mxComponents").button("AdvancedDataGrid"));
+	_assertEqual("AdvancedDataGrid", _getValue(_f("mxComponents").button("AdvancedDataGrid")));
+	_click(_f("mxComponents").button("AdvancedDataGrid"));
+	_assertExists(_f("mxComponents").advanceddatagrid("adg1"));
+	_assertEqual("", _getValue(_f("mxComponents").advanceddatagrid("adg1")));
+	var $jsonObj = _fetch(_f("mxComponents").advanceddatagrid("adg1").fetch("dataProvider.source.source"));
+	_assertEqual("World",$jsonObj[0].Region)
+	_assertEqual("Europe",$jsonObj[0].children[1].children[0].Region)
+	_assertEqual("10180000",$jsonObj[0].children[1].children[0].Area)
+	_call(_f("mxComponents").advanceddatagrid("adg1").set("displayItemsExpanded", "true"));
+	var $dataArray = _f("mxComponents").advanceddatagrid("adg1").getGridData();
+	_assertEqual("10",$dataArray.length);
+	_assertEqual("Americas", $dataArray[1][0]);
+	_assertEqual("Oceania", $dataArray[9][0]);
+	var $jsonObj2 = _fetch(_f("mxComponents").advanceddatagrid("adg1").fetch("dataProvider"));
+	_assertEqual("World",$jsonObj2.source.source[0].Region)
+	_assertEqual("Europe",$jsonObj2.source.source[0].children[1].children[0].Region)
+	
+}
+
+//DataGrid
+function testDataGrid() {
+	_assertExists(_f("mxComponents").button("DataGrid"));
+	_assertEqual("DataGrid", _getValue(_f("mxComponents").button("DataGrid")));
+	_click(_f("mxComponents").button("DataGrid"));
+	_assertExists(_f("mxComponents").datagrid("dg"));
+	_assertEqual("", _getValue(_f("mxComponents").datagrid("dg")));
+	_assertExists(_f("mxComponents").datagridheader(0));
+	_assertEqual("", _getValue(_f("mxComponents").datagridheader(0)));
+	_assertExists(_f("mxComponents").datagriditemrenderer("Joanne Wall"));
+	_assertEqual("Joanne Wall", _getValue(_f("mxComponents").datagriditemrenderer("Joanne Wall")));
+	_assertExists(_f("mxComponents").datagriditemrenderer("555-219-2000"));
+	_assertEqual("555-219-2000", _getValue(_f("mxComponents").datagriditemrenderer("555-219-2000")));
+	_assertExists(_f("mxComponents").datagriditemrenderer("maurice@fictitious.com"));
+	_assertEqual("maurice@fictitious.com", _getValue(_f("mxComponents").datagriditemrenderer("maurice@fictitious.com")));
+	_click(_f("mxComponents").datagriditemrenderer("Joanne Wall"));
+	_assertEqual("Joanne Wall", _getValue(_f("mxComponents").uitextfield("Joanne Wall")));
+	_assertEqual("jwall@fictitious.com", _getValue(_f("mxComponents").uitextfield("jwall@fictitious.com")));
+	_assertEqual("555-219-2012", _getValue(_f("mxComponents").uitextfield("555-219-2012")));
+}
+
+//Tree
+function testTree() {
+	_assertExists(_f("mxComponents").button("Tree"));
+	_assertEqual("Tree", _getValue(_f("mxComponents").button("Tree")));
+	_click(_f("mxComponents").button("Tree"));
+	_assertExists(_f("mxComponents").tree("myTree"));
+	_assertEqual("", _getValue(_f("mxComponents").tree("myTree")));
+	_assertExists(_f("mxComponents").s_textarea("_mxComponents_TextArea6"));
+	_assertEqual("", _getValue(_f("mxComponents").s_textarea("_mxComponents_TextArea6")));
+	_click(_f("mxComponents").uitextfield("Inbox"));
+	_assertEqual("Selected Item: Inbox", _getValue(_f("mxComponents").s_textarea("_mxComponents_TextArea6")));
+}
+
+//List
+//VScrollbar
+function testVScrollBar() {
+	_assertExists(_f("mxComponents").vscrollbar(1));
+	_assertEqual("", _getValue(_f("mxComponents").vscrollbar(1)));
+}
+
+//Tile List
+function testTileList() {
+	_assertExists(_f("mxComponents").tilelist("tileList1"));
+	_assertEqual("", _getValue(_f("mxComponents").tilelist("tileList1")));
+}
+
+//HScrollbar
+function testHScrollBar() {
+	_assertExists(_f("mxComponents").hscrollbar(0));
+	_assertEqual("", _getValue(_f("mxComponents").hscrollbar(0)));
+}
+
+//Horizontal List
+function testHorizontalList() {
+	_assertExists(_f("mxComponents").horizontallist("hList1"));
+	_assertEqual("", _getValue(_f("mxComponents").horizontallist("hList1")));
+}
+
+function testList() {
+	_assertExists(_f("mxComponents").button("List"));
+	_assertEqual("List", _getValue(_f("mxComponents").button("List")));
+	_click(_f("mxComponents").button("List"));
+	_assertExists(_f("mxComponents").list("MxList"));
+	_assertEqual("", _getValue(_f("mxComponents").list("MxList")));
+	_assertExists(_f("mxComponents").list("mxList"));
+	_assertEqual("", _getValue(_f("mxComponents").list("mxList")));
+	_assertEqual("Selected State: ", _getValue(_f("mxComponents").s_textarea("message")));
+	_setSelected(_f("mxComponents").list("MxList"),"California");
+	_assertEqual("California", _getValue(_f("mxComponents").s_textarea("message")));
+	_setSelected(_f("mxComponents").list("MxList"),"Alaska");
+	_assertEqual("Alaska", _getValue(_f("mxComponents").s_textarea("message")));
+}
+
+//Text
+//RichTextEditor
+function testRichTextEditor() {
+	_assertEqual("Text", _getValue(_f("mxComponents").button("Text")));
+	_click(_f("mxComponents").button("Text"));
+	_assertExists(_f("mxComponents").richtexteditor("richText"));
+	_assertEqual("", _getValue(_f("mxComponents").richtexteditor("richText")));
+	_setValue(_f("mxComponents").textarea("textArea"),"hai, hello");
+}
+
+//TextArea
+function testTextArea() {
+	_assertExists(_f("mxComponents").textarea("multineTextArea"));
+	_assertEqual("First Line", _getValue(_f("mxComponents").textarea("multineTextArea")));
+	_setValue(_f("mxComponents").textarea("multineTextArea"),"The Brown Fox jumped over the Cat");
+	_assertEqual("The Brown Fox jumped over the Cat", _getValue(_f("mxComponents").textarea("multineTextArea")));
+}
+
+//Textinput
+function testTextInput() {
+	_assertExists(_f("mxComponents").textinput("sourceInput"));
+	_assertEqual("", _getValue(_f("mxComponents").textinput("sourceInput")));
+	_setValue(_f("mxComponents").textinput("sourceInput"),"hai");
+	_assertExists(_f("mxComponents").textinput("destInput"));
+	_assertEqual("", _getValue(_f("mxComponents").textinput("destInput")));
+	_click(_f("mxComponents").button("Copy Text"));
+	_assertEqual("hai", _getValue(_f("mxComponents").textinput("destInput")));
+}
+
+//Text-Multiline Text
+function testMultilineText() {
+	_click(_f("mxComponents").button("Text"));
+	_assertExists(_f("mxComponents").uitextfield("Multi line"));
+	_assertEqual("Multi line", _getValue(_f("mxComponents").uitextfield("Multi line")));
+}
+//Simple
+//HSlider
+function testsliderProgressBar(){
+	HSlider();
+	VSlider();
+	ProgressBar();
+}
+
+function HSlider() {
+	_assertExists(_f("mxComponents").hslider("hSlider"));
+	_assertEqual("0", _getValue(_f("mxComponents").hslider("hSlider")));
+	_setValue(_f("mxComponents").hslider("hSlider"),"5");
+}
+
+//VSlider
+function VSlider() {
+	_assertExists(_f("mxComponents").vslider("vSlider"));
+	_assertEqual("5", _getValue(_f("mxComponents").vslider("vSlider")));
+	_setValue(_f("mxComponents").vslider("vSlider"),"7");
+}
+
+//Progressbar
+function ProgressBar() {
+	_assertExists(_f("mxComponents").progressbar("progressBar"));
+}
+
+//DateField
+function testDate(){
+	DateField();
+	EditableDateField();
+	DateChooser();
+}
+function DateField() {
+	_assertExists(_f("mxComponents").datefield("dateField"));
+	_assertExists(_f("mxComponents").uitextfield("Date selected:"));
+	_assertEqual("Date selected:", _getValue(_f("mxComponents").uitextfield("Date selected:")));
+	_setValue(_f("mxComponents").datefield("dateField"), "2012-12-12");
+	_assertEqual("Date selected: 2012/12/12", _getValue(_f("mxComponents").uitextfield("Date selected: 2012/12/12")));
+	_setValue(_f("mxComponents").datefield("dateField"), "2010-10-10");
+	_assertEqual("Date selected: 2010/10/10", _getValue(_f("mxComponents").uitextfield("Date selected: 2010/10/10")));
+	_setValue(_f("mxComponents").datefield("dateField"), "2011-11-11");
+	_assertEqual("Date selected: 2011/11/11", _getValue(_f("mxComponents").uitextfield("Date selected: 2011/11/11")));
+}
+
+//Editable DateField
+function EditableDateField() {
+	_assertExists(_f("mxComponents").datefield("editableDateField"));
+	_assertEqual("Date selected: 2011/11/11", _getValue(_f("mxComponents").uitextfield("Date selected: 2011/11/11")));
+	_setValue(_f("mxComponents").datefield("editableDateField"), "2012-10-10");
+	_assertEqual("Date selected: 2012/10/10", _getValue(_f("mxComponents").uitextfield("Date selected: 2012/10/10")));
+	_setValue(_f("mxComponents").datefield("editableDateField"), "2009-09-09");
+	_assertEqual("Date selected: 2009/9/9", _getValue(_f("mxComponents").uitextfield("Date selected: 2009/9/9")));
+	_setValue(_f("mxComponents").datefield("editableDateField"), "2011-11-11");
+	_assertEqual("Date selected: 2011/11/11", _getValue(_f("mxComponents").uitextfield("Date selected: 2011/11/11")));
+}
+
+//Date Chooser
+function DateChooser() {
+	_assertExists(_f("mxComponents").datechooser("mxDateChooser"));
+	_assertEqual("Date selected: 2011/11/11", _getValue(_f("mxComponents").uitextfield("Date selected: 2011/11/11")));
+	_setValue(_f("mxComponents").datechooser("mxDateChooser"), "2012-4-26");
+	_assertEqual("Date selected: 2012/4/26", _getValue(_f("mxComponents").uitextfield("Date selected: 2012/4/26")));
+	_setValue(_f("mxComponents").datechooser("mxDateChooser"), "2010-10-6");
+	_assertEqual("Date selected: 2010/10/6", _getValue(_f("mxComponents").uitextfield("Date selected: 2010/10/6")));
+	_setValue(_f("mxComponents").datechooser("mxDateChooser"), "2011-11-11");
+	_assertEqual("Date selected: 2011/11/11", _getValue(_f("mxComponents").uitextfield("Date selected: 2011/11/11")));
+}
+
+//Label
+function testLabel() {
+	_assertExists(_f("mxComponents").uitextfield("Label"));
+	_assertEqual("Label", _getValue(_f("mxComponents").uitextfield("Label")));
+	_mouseOver(_f("mxComponents").uitextfield("Label"));
+	_assertExists(_f("mxComponents").alert("mouseOver on label."));
+	_assertEqual("", _getValue(_f("mxComponents").alert("mouseOver on label.")));
+	_click(_f("mxComponents").button("OK"));
+}
+
+//Numeric Stepper
+function testNumericStepper() {
+	_assertExists(_f("mxComponents").numericstepper("numStep"));
+	_assertEqual("0", _getValue(_f("mxComponents").numericstepper("numStep")));
+	_assertEqual("0", _getValue(_f("mxComponents").textinput(0).inside(_f("mxComponents").numericstepper("numStep"))));
+	_setValue(_f("mxComponents").numericstepper("numStep"), "8");
+	_assertEqual("8", _getValue(_f("mxComponents").textinput(0).inside(_f("mxComponents").numericstepper("numStep"))));
+}
+
+
+//linkBar
+function testLinkBar() {
+	_assertExists(_f("mxComponents").linkbar("mxLinkBar"));
+	_assertExists(_f("mxComponents").linkbutton("Search"));
+	_assertEqual("Search", _getValue(_f("mxComponents").linkbutton("Search")));
+	_assertExists(_f("mxComponents").linkbutton("Customer Info"));
+	_assertEqual("Customer Info", _getValue(_f("mxComponents").linkbutton("Customer Info")));
+	_assertExists(_f("mxComponents").linkbutton("Account Info"));
+	_assertEqual("Account Info", _getValue(_f("mxComponents").linkbutton("Account Info")));
+	_assertExists(_f("mxComponents").uitextfield("Search Screen"));
+	_assertEqual("Search Screen", _getValue(_f("mxComponents").uitextfield("Search Screen")));
+	_click(_f("mxComponents").linkbutton("Customer Info"));
+	_assertEqual("Customer Info", _getValue(_f("mxComponents").canvas("custInfo")));
+	_click(_f("mxComponents").linkbutton("Account Info"));
+	_assertEqual("Account Info", _getValue(_f("mxComponents").canvas("accountInfo")));
+	_click(_f("mxComponents").linkbutton("Search"));
+	_assertEqual("Search", _getValue(_f("mxComponents").canvas("search")));
+}
+
+//Link Button
+function testLinkButton() {
+	_assertExists(_f("mxComponents").linkbutton("LinkButton"));
+	_assertEqual("LinkButton", _getValue(_f("mxComponents").linkbutton("LinkButton")));
+	_assertExists(_f("mxComponents").image("linkedImg"));
+	_click(_f("mxComponents").linkbutton("LinkButton"));
+	_assertExists(_f("mxComponents").image("linkedImg"));
+}
+
+//PopupMenu Button
+function testPopUpMenuButton() {
+	_assertExists(_f("mxComponents").popupmenubutton("popUpMenuButton"));
+	_assertEqual("popUpMenuButton", _getValue(_f("mxComponents").popupmenubutton("popUpMenuButton")));
+	_click(_f("mxComponents").popupmenubutton("popUpMenuButton"));
+	_assertExists(_f("mxComponents").popupmenubutton("New"));
+	_assertEqual("New", _getValue(_f("mxComponents").popupmenubutton("New")));
+}
+
+//PopupButton
+function testPopUpButton() {
+	_assertExists(_f("mxComponents").popupbutton("mxPopUpButton"));
+	_assertEqual("Select", _getValue(_f("mxComponents").popupbutton("mxPopUpButton")));
+	_assertExists(_f("mxComponents").popupbutton("popUpButton"));
+	_assertEqual("Select", _getValue(_f("mxComponents").popupbutton("Select")));
+	_click(_f("mxComponents").popupbutton("mxPopUpButton"));
+	_click(_f("mxComponents").checkbox("CheckBox"));
+	_assertEqual("true", _getValue(_f("mxComponents").checkbox("CheckBox")));
+	_click(_f("mxComponents").popupbutton("mxPopUpButton"));
+	_click(_f("mxComponents").checkbox("HSlider"));
+	_assertEqual("true", _getValue(_f("mxComponents").checkbox("HSlider")));
+	_click(_f("mxComponents").popupbutton("mxPopUpButton"));
+	_click(_f("mxComponents").checkbox("Label"));
+	_assertEqual("true", _getValue(_f("mxComponents").checkbox("Label")));
+}
+
+//Editable Combobox
+function EditableCombobox() {
+	_assertExists(_f("mxComponents").combobox("editableCB"));
+	_assertEqual("Visa", _getValue(_f("mxComponents").combobox("editableCB")));
+	_assertEqual("You selected: American Express", _getValue(_f("mxComponents").textarea("myLabel")));
+	_setSelected(_f("mxComponents").combobox("selectCB"),"MasterCard");
+	_assertEqual("You selected: MasterCard", _getValue(_f("mxComponents").textarea("myLabel")));
+	_setSelected(_f("mxComponents").combobox("selectCB"),"Visa");
+	_assertEqual("You selected: Visa", _getValue(_f("mxComponents").textarea("myLabel")));
+	_setValue(_f("mxComponents").textinput(2), "Visa");
+	_assertEqual("Visa", _getValue(_f("mxComponents").textinput(2)));
+}
+
+function Combobox() {
+	_assertExists(_f("mxComponents").combobox("selectCB"));
+	_assertEqual("Visa", _getValue(_f("mxComponents").combobox("selectCB")));
+	_assertExists(_f("mxComponents").textarea("myLabel"));
+	_assertEqual("You selected:", _getValue(_f("mxComponents").textarea("myLabel")));
+	_setSelected(_f("mxComponents").combobox("selectCB"),"MasterCard");
+	_assertEqual("You selected: MasterCard", _getValue(_f("mxComponents").textarea("myLabel")));
+	_setSelected(_f("mxComponents").combobox("selectCB"),"American Express");
+	_assertEqual("You selected: American Express", _getValue(_f("mxComponents").textarea("myLabel")));
+}
+
+//Combobox
+function testCombobox(){
+	 Combobox();
+	 EditableCombobox();
+}
+
+//ColorPicker
+function testColorPicker() {
+	_assertExists(_f("mxComponents").colorpicker("colorPicker"));
+	_assertEqual("0x000000", _getValue(_f("mxComponents").colorpicker("colorPicker")));
+	_setValue(_f("mxComponents").hslider("slider"), "72");
+	_setValue(_f("mxComponents").textinput("inset"), "00FF99");
+	_click(_f("mxComponents").tabnavigator("tn"));
+}
+
+//Checkbox
+function testCheckbox() {
+	_assertExists(_f("mxComponents").textarea("enablableTextarea"));
+	_assertEqual("enablerCB.selected", _getValue(_f("mxComponents").textarea("enablableTextarea")));
+	_assertExists(_f("mxComponents").checkbox("Enabler"));
+	_assertEqual("true", _getValue(_f("mxComponents").checkbox("Enabler")));
+	_click(_f("mxComponents").checkbox("Enabler"));
+	_assertEqual("Checkbox Unchecked", _getValue(_f("mxComponents").textarea("enablableTextarea")));
+	_click(_f("mxComponents").checkbox("Enabler"));
+	_assertEqual("Checkbox checked", _getValue(_f("mxComponents").textarea("enablableTextarea")));
+}
+
+//Radio button
+function testRadioButton() {
+	_assertExists(_f("mxComponents").radiobutton("Button A"));
+	_assertEqual("Button A", _getValue(_f("mxComponents").radiobutton("Button A")));
+	_assertExists(_f("mxComponents").radiobutton("Button B"));
+	_assertEqual("Button B", _getValue(_f("mxComponents").radiobutton("Button B")));
+	_assertExists(_f("mxComponents").textarea("radioSelection"));
+	_assertEqual("You selected:", _getValue(_f("mxComponents").textarea("radioSelection")));
+	_click(_f("mxComponents").radiobutton("Button A"));
+	_assertEqual("Selected: Radio Button A", _getValue(_f("mxComponents").textarea("radioSelection")));
+	_click(_f("mxComponents").radiobutton("Button B"));
+	_assertEqual("Selected: Radio Button B", _getValue(_f("mxComponents").textarea("radioSelection")));
+}
+
+function testRowColumnNumber() {
+	_click(_f("mxComponents").button("DataGrid"));
+	_assertEqual("3", _f("mxComponents").datagrid("dg").getRowNo("555-219-2000"));
+	_assertEqual("1", _f("mxComponents").datagrid("dg").getColumnNo("555-219-2000"));
+	_assertEqual("2", _f("mxComponents").datagrid("dg").getColumnNo("Email"));
+}
+
+function testGetGridData() {
+	_click(_f("mxComponents").button("DataGrid"));
+	_setSpeed(2000);
+	_set($data, _f("mxComponents").datagrid("dg").getGridData());
+	_setSpeed(100);
+	_assertEqual($data[3][1], "555-219-2000");
+}
+
+function testGetDataProviderData() {
+	_click(_f("mxComponents").button("DataGrid"));
+	_setSpeed(2000);
+	_set($data, _f("mxComponents").datagrid("dg").getDataProviderData());
+	_setSpeed(100);
+	$data = "<root>" + $data + "</root>";
+	var $x = new XML($data);
+	_assertEqual("Christina Coenraets", $x.employee[0].name.toString());
+	_assertEqual("jwall@fictitious.com", $x.employee[1].email.toString());
+}
+
+function testSet() {
+_f("mxComponents").textinput("destInput").set("text", "Text Property Set to This Text")
+	_click(_f("mxComponents").button("Text"));
+	_assertEqual("", _getValue(_f("mxComponents").textinput("destInput")));
+	_setSpeed(2000);
+	_call(_f("mxComponents").textinput("destInput").set("text", "Text Property Set to This Text"));
+	_setSpeed(100);
+	_assertEqual("Text Property Set to This Text", _getText(_f("mxComponents").textinput("destInput")));
+	_setValue(_f("mxComponents").textinput("destInput"), "");
+	_assertEqual("", _getValue(_f("mxComponents").textinput("destInput")));
+}
+function testGetText() {
+	_click(_f("mxComponents").button("Text"));
+	_assertEqual("Simple  Text  List  Tree  DataGrid  AdvancedDataGrid  Button  Menu  Video    mx.controls", _getText(_f("mxComponents").panel("mx.controls")));
+	_setValue(_f("mxComponents").textarea("multineTextArea"), "First Line\nSecond Line\nThird Line");
+	_assertEqual("First Line\r\nSecond Line\r\nThird Line", _getText(_f("mxComponents").textarea("multineTextArea")));
+	_setValue(_f("mxComponents").textarea("multineTextArea"), "First Line");
+}
+
+function testPositionalAPIs() {
+	_click(_f("mxComponents").button("DataGrid"));
+	_assertEqual("555-219-2000", _getValue(_f("mxComponents").datagriditemrenderer(0).rightOf(_f("mxComponents").datagriditemrenderer("Mary Jones"))));
+	_assertEqual("mjones@fictitious.com", _getValue(_f("mxComponents").datagriditemrenderer(1).rightOf(_f("mxComponents").datagriditemrenderer("Mary Jones"))));
+	_assertEqual("Mary Jones", _getValue(_f("mxComponents").datagriditemrenderer(0).leftOf(_f("mxComponents").datagriditemrenderer("mjones@fictitious.com"))));
+	_assertEqual("555-219-2000", _getValue(_f("mxComponents").datagriditemrenderer(1).leftOf(_f("mxComponents").datagriditemrenderer("mjones@fictitious.com"))));
+	_assertEqual("jwall@fictitious.com", _getValue(_f("mxComponents").datagriditemrenderer(1).under(_f("mxComponents").datagriditemrenderer("Email"))));
+	_assertEqual("maurice@fictitious.com", _getValue(_f("mxComponents").datagriditemrenderer(2).under(_f("mxComponents").datagriditemrenderer("Email"))));
+	_assertEqual("mjones@fictitious.com", _getValue(_f("mxComponents").datagriditemrenderer("").rightOf(_f("mxComponents").datagriditemrenderer("Mary Jones")).under(_f("mxComponents").datagriditemrenderer("Email"))))
+	_assertEqual("Mary Jones", _getValue(_f("mxComponents").datagriditemrenderer(0).leftOf(_f("mxComponents").datagriditemrenderer("mjones@fictitious.com")).under(_f("mxComponents").datagriditemrenderer("Name"))));
+}
+_navigateTo("flex/mx/mxComponents.html");
+//Simple
+_click(_f("mxComponents").button("Simple"));
+_runUnitTests();

@@ -1,0 +1,136 @@
+body * {
+	font-family: verdana;
+	font-size: 10pt;
+}
+
+body {
+	margin:0;
+	background-color: #eee;
+	border:0px;
+}
+.combo{
+	width: 100% !important;
+}
+.combo input {
+	width: 98% !important;
+}
+textarea {
+	padding: 5px;
+}
+
+fieldset.rightPane {
+	width:400px;
+	padding: 5px;
+	border: 1px solid #ddd;
+}
+
+.rightPane input {
+	border: 1px solid #ccc;
+}
+
+div.originalTD {
+	width: 170px;
+	overflow: hidden;
+	height: 18px;
+	white-space: nowrap;
+	margin: 1px 3px;
+	color: gray;
+}
+
+div.centerDiv
+{
+    xwidth: 50%;
+    margin: 0 auto;
+}
+
+div.replacementTD {
+	overflow: hidden;
+	height: 22px;
+}
+
+div.replacementTD input {
+ 	border: 1px solid #ddd;
+}
+.replaceDivs {
+	height: 148px;
+	overflow: auto;
+	background-color: #fffffe;
+	border: 1px solid #ddd;
+}
+.argDivs {
+	height: 150px;
+	overflow: auto;
+	background-color: #fffffe;
+	border: 1px solid #ddd;
+}
+ .editor {
+    display:none;  
+}
+
+.bar_text {
+    vertical-align:top;
+    margin-left:4px;
+    font-size: 9pt;
+}
+
+.ui-buttonset .ui-button {
+    margin-right: -.28em;
+}
+
+#funcFilePath {
+    border:solid 1px #D8D8D8;
+    padding:3px;
+    background-color:white;
+}
+
+#usefile
+  {
+  	width :350px;
+    border:0px;
+    padding:4px;
+    background-color:white; 
+  }
+
+#avgRunTime {
+	width :350px;
+    border:0px;
+    padding:4px;
+    background-color:white;
+}
+
+#estRunTime {
+	width :350px;
+    border:0px;
+    padding:4px;
+    background-color:white;
+}
+
+.ui-autocomplete {
+    max-height: 115px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+
+#mask {
+  position:fixed;
+  top: 0;
+  left: 0;
+  z-index:9000;
+  background-color:#A0A0A0;
+  display:none;
+}
+.CodeMirror{background-color:#fff;border:0px solid #ddd;} 
+.CodeMirror-scroll{height:550px;width:100%;} 
+.CodeMirror-gutter {cursor: pointer;}
+
+.icon-new_view_doc{
+		background:url('view-details.ico') no-repeat center center;
+}
+.icon-open_file{
+		background:url('function.ico') no-repeat center center;
+}
+.icon-insert_function{
+		background:url('insert_function.png') no-repeat center center;
+	
+}

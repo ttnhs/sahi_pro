@@ -1,0 +1,13 @@
+function testStrictVisibility() {
+	_click(_f("sampleId1").tab("Second Tab"));
+	_click(_f("sampleId1").button("Submit"));
+	_assertExists(_f("sampleId1").textarea("sTTextArea"));
+	_assertEqual("", _getValue(_f("sampleId1").textarea("sTTextArea")));
+	_setStrictVisibilityCheck(true, _f("sampleId1"));
+	_click(_f("sampleId1").button("Submit"));
+	_assertEqual("Secend Tab Submit Button Clicked", _getValue(_f("sampleId1").textarea("sTTextArea")));
+	_setStrictVisibilityCheck(false, _f("sampleId1"));
+}
+
+_navigateTo("/sfl/TestApplication.html");
+testStrictVisibility();

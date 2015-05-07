@@ -1,0 +1,12 @@
+onScriptError = null;
+onScriptFailure = null;
+function fn1(){
+	var $a = 1;
+
+
+	$a = 2;
+
+	$a = $xx;	
+}
+
+fn1();

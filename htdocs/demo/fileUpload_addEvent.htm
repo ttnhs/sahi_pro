@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Fiel upload Event Listener</title>
+</head>
+<body onload="onloadMethod()">
+	<script>
+		function onloadMethod() {
+			var fileInput = document.getElementById('pt1:hd_if01::content');
+			var inputFileValueChange = function(event) {
+				var targetObject = event.target || event.srcElement;
+				var tValue = targetObject.value;
+				if (!tValue || "" === tValue) {
+					_sahi._alert("disabled");
+				} else {
+					_sahi._alert("enabled");
+				}
+			};
+			if (fileInput.addEventListener) {
+				fileInput.addEventListener('change', inputFileValueChange, true);
+			} else if (fileInput.attachEvent) {
+				fileInput.attachEvent("onchange", inputFileValueChange);
+			} else {
+				alert('Nothing_done');
+			}
+		}
+	</script>
+	<label for="pt1:hd_if01::content">App package:</label>
+	<input id="pt1:hd_if01::content" name="pt1:hd_if01"
+		class="af_inputFile_content" size="30" type="file">
+</body>
+</html>

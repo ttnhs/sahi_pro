@@ -1,0 +1,10 @@
+function ft1($i) {
+	_log("ft1 inside function:" + $i);
+}
+
+for (var $i=0; $i<30; $i++) {
+	var $t1 = _testcase("x"+$i, "Desc" + $i);
+	$t1.start();
+	ft1($i);
+	$t1.end();
+}

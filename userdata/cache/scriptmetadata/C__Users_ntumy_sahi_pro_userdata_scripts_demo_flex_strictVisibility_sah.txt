@@ -1,0 +1,1 @@
+testStrictVisibility,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\flex\strictVisibility.sah,1

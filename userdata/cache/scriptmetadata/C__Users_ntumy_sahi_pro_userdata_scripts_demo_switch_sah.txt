@@ -1,0 +1,1 @@
+getExample,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\switch.sah,3,$color

@@ -1,0 +1,14 @@
+onScriptError = null;
+onScriptFailure = null;
+_navigateTo("/demo/training/");
+
+var $t = _testcase("TC_1", "Login");
+$t.start();
+_setValue(_textbox("user"),"test");
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+$t.end();
+
+var $t2 = _testcase("TC_2", "Add books").start(); // can be in one line also
+_setValue(_textbox("qf"), "2");
+$t2.end();

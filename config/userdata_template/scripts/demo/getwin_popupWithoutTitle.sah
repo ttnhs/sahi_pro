@@ -1,0 +1,7 @@
+_navigateTo("/demo/");
+_click(_link("Window Open Test"));
+_wait(2000);
+var $windows = _getWindows();
+_assertEqual(2, $windows.length);
+_assertEqual('', $windows[1].windowTitle);
+_assertEqual("1", $windows[1].wasOpened);

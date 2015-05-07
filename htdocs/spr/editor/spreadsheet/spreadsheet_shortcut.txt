@@ -1,0 +1,65 @@
+This application is not supported on IE versions lower than IE9.
+
+-CTRL combination shortcut keys
+Ctrl + A	Select all contents of the worksheet.
+Ctrl + Home	Move to column header cell.
+CTRL + C	Copies the selected cells.
+CTRL + X	Cuts the selected cells.
+CTRL + Y	Repeats the last command or action, if possible.
+CTRL + Z	Uses the Undo command to reverse the last command or to delete the last entry you typed.
+CTRL + /	Comment/ Un-comment the selected row/s.
+CTRL + DELETE	Deletes the selected row/s.
+
+-Alt combination shortcut keys
+Alt + Enter	While typing text in a cell pressing Alt + Enter will move to the next line allowing for multiple lines of text in one cell.
+Alt + N		Loads the new worksheet.
+Alt + O		Opens the dialog to load existing scenario.
+Alt + F2	Displays the Save As dialog box.
+Alt + SHIFT + E	Displays the names of the feature developers.
+Alt + Insert	Insert Testcase shortcut.
+Alt + S		Load Sahi library shortcut.
+Alt + 1		Insert new row above the current row.
+Alt + 2		Insert new row below the current row  
+
+-Function keys
+F2		Edit the selected cell.
+Alt + F2	Displays the Save As dialog box.
+SHIFT + F10	Displays the shortcut information pop-up.
+
+-Other useful shortcut keys
+ARROW KEYS	Move one cell up, down, left, or right in a worksheet.
+		SHIFT+ARROW KEY extends the selection of cells by one cell.
+		DOWN ARROW or UP ARROW selects the next or previous command when a context menu or Auto-complete option is open.
+			
+BACKSPACE	Deletes one character to the left in the Formula Bar.
+		Also clears the content of the active cell.
+		
+DELETE		Removes the cell contents from selected cells.
+		In cell editing mode, it deletes the character to the right of the insertion point.
+CTRL + DELETE	Deletes the selected row/s.
+			
+END		Moves to the last cell in the same row.
+		Also selects the last command on the menu when a menu is visible.
+		CTRL+END moves to the last cell in same column.
+		CTRL+SHIFT+END extends the selection of cells to the last used cell on the worksheet (lower-right corner).
+			
+ENTER		Completes a cell entry from the cell, and selects the cell below (by default).
+		Edit the selected cell.
+		Selects the selected command when a context menu or Auto-complete option is open.
+		In a dialog box, it performs the action for the default command button in the dialog box (the button with the bold outline, often the OK button).
+Alt + Enter	While typing text in a cell pressing Alt + Enter will move to the next line allowing for multiple lines of text in one cell.
+
+ESC		Cancels an entry in the cell or Formula Bar.
+		It also closes an open menu dialog box, or message window.
+			
+HOME		Moves to the beginning of a row in a worksheet.
+		Selects the first command on the menu when a context menu is visible.
+		CTRL+HOME Move to column header cell.
+
+PAGE DOWN	Moves to the last cell in the same column.
+
+PAGE UP		Moves to the first cell in the same column.
+
+TAB		Moves one cell to the right in a worksheet.
+		Moves to the next option in the context menu.
+SHIFT + TAB	Moves to the previous cell in a worksheet.

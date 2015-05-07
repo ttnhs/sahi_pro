@@ -1,0 +1,7 @@
+_navigateTo("/demo/");
+_click(_link("Window Open Test"));
+_click(_link("Window Open Test With Title"));
+_wait(2000);
+var $recentWindow = _getRecentWindow();
+_assertEqual('With Title', $recentWindow.windowTitle);
+_assertEqual("1", $recentWindow.wasOpened);

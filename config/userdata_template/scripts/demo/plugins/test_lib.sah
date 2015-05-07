@@ -1,0 +1,21 @@
+function login($user, $password){
+	_navigateTo("http://sahipro.com/demo/training/");
+	_setValue(_textbox("user"), $user);
+	_setValue(_password("password"), $password);
+	_click(_submit("Login"));
+}
+
+function addBooks($java, $ruby, $python){
+	_setValue(_textbox("q", _near(_cell("/Java/"))), $java);
+	_setValue(_textbox("q", _near(_cell("Ruby for Rails"))), $ruby);
+	_setValue(_textbox("q", _near(_cell("/Python/"))), $python);
+	_click(_button("Add"));
+}
+
+function verifyTotal($total){
+	_assertEqual($total, _getValue(_textbox("total")));
+}
+
+function logout(){
+	_click(_button("Logout"));
+}

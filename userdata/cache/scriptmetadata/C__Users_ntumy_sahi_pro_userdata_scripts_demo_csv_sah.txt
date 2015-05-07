@@ -1,0 +1,13 @@
+testWithComma,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,7
+testWithIgnoreEmptyRows,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,10
+checkWithIgnoreEmptyRows,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,13,$separator,$ignoreEmptyRows
+testWithoutIgnoreEmptyRows,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,18
+checkWithoutIgnoreEmptyRows,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,21,$separator,$ignoreEmptyRows
+testWithDefaultIgnoreEmptyRows,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,26
+checkWithDefaultIgnoreEmptyRows,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,29,$separator
+testWithPipe,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,35
+checkWithXXX,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,38,$separator
+checkWithDefault,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,49
+checkDefaultUsesComma,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,60
+testCSVArrayEquals,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,71
+testReadCSVWithoutHeaderWithDuplicates,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\csv.sah,81

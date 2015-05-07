@@ -1,0 +1,20 @@
+﻿<HTML>
+<head>
+<title>Temp</title>
+</head>
+<body>
+f1/f2/f3/d.htm
+<input type="button" id="test" value="Click" onclick="parent.location='../../abc.htm'">
+<input type="button" id="testFn" value="ClickFn" onclick="setLocation()">
+<input type="button" id="test2" value="Click the button" onclick="clickButton()">
+<script>
+function setLocation() {
+	parent.location='../../abc.htm';
+}
+
+clickButton = function() {
+	document.getElementById("testFn").click();
+}
+</script>
+</body>
+</HTML>

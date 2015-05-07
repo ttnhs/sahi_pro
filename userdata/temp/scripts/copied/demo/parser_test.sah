@@ -1,0 +1,30 @@
+_navigateTo("/demo/training/");
+
+$st = function(){}
+
+$st.getVariableConventions = function($scriptPath) {
+	(function() {
+	_set($st.baseDir, document.location.href);
+	_set($st.baseURL, document.location.href);
+	var $str = $st.baseDir.split('//');
+	var $str1 = $str[1].split('/');
+	_set($st.baseHost, $str[0] + "//" + $str1[0]);
+	_set($st.baseHostName, $str1[0]);
+	var $basePath = $str[1].slice($str[1].search('/'));
+	_set($st.basePath, $basePath);
+	var $hostName = $st.baseHostName.split('.');
+	$st.affiliate = $hostName[1];
+	if ($st.verbose == true)
+	{
+	_debug("$st.baseDir: " + $st.baseDir);
+	_debug("$st.baseURL: " + $st.baseURL);
+	_debug("$st.baseHost: " + $st.baseHost);
+	_debug("$st.baseHostName: " + $st.baseHostName);
+	_debug("$st.basePath: " + $st.basePath);
+	_debug("$st.affiliate: " + $st.affiliate);
+	}
+	})();
+}()
+
+_setValue(_textbox("user"), "test");
+_setValue(_password("password"), "secret");

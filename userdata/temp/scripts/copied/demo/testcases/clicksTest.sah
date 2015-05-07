@@ -1,0 +1,26 @@
+_navigateTo("/demo/clicks.htm");
+
+var $t = _testcase("TC_3", "Textarea double click should work");
+$t.start();
+_doubleClick(_div("dbl click me"));
+_assertEqual("[DOUBLE_CLICK]", _textarea("t2").value);
+_click(_button("Clear"));
+$t.end();
+
+_doubleClick(_button("dbl click me"));
+_assertEqual("[DOUBLE_CLICK]", _textarea("t2").value);
+_click(_button("Clear"));
+
+_click(_button("click me"));
+_assertEqual("[CLICK]", _textarea("t2").value);
+_click(_button("Clear"));
+
+_rightClick(_div("right click me"));
+_assertEqual("[RIGHT_CLICK]", _textarea("t2").value);
+_click(_button("Clear"));
+
+_rightClick(_button("right click me"));
+_assertEqual("[RIGHT_CLICK]", _textarea("t2").value);
+_click(_button("Clear"));
+
+

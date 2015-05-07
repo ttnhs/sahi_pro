@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sahi Script Editor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='index.html'>Using Sahi</a>
+</li><li><a href='quick-tutorial.html'>Quick Tutorial</a>
+<ul><li><a href='quick-tutorial.html#Prerequisites'>Prerequisites</a>
+</li><li><a href='quick-tutorial.html#Download Sahi Pro'>Download Sahi Pro</a>
+</li><li><a href='quick-tutorial.html#Install Sahi'>Install Sahi</a>
+</li><li><a href='quick-tutorial.html#Upgrade Sahi'>Upgrade Sahi</a>
+</li><li><a href='quick-tutorial.html#Start Sahi Dashboard'>Start Sahi Dashboard</a>
+</li><li><a href='quick-tutorial.html#Recording through Sahi'>Recording through Sahi</a>
+</li><li><a href='quick-tutorial.html#Add assertions'>Add assertions</a>
+</li><li><a href='quick-tutorial.html#Playing back'>Playing back</a>
+</li><li><a href='quick-tutorial.html#View Logs'>View Logs</a>
+</li><li><a href='quick-tutorial.html#Edit the recorded script'>Edit the recorded script</a>
+</li><li><a href='quick-tutorial.html#Running a test from command line'>Running a test from command line</a>
+</li><li><a href='quick-tutorial.html#Suites - Automating playback of multiple scripts'>Suites - Automating playback of multiple scripts</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html'>Configuring Sahi (Basic)</a>
+<ul><li><a href='sahi-configuration-basic.html#Configure Browsers in Dashboard'>Configure Browsers in Dashboard</a>
+<ul><li><a href='sahi-configuration-basic.html#browserType Node'>browserType Node</a>
+</li><li><a href='sahi-configuration-basic.html#Variables used in browser_types.xml'>Variables used in browser_types.xml</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html#Other browser modifications needed'>Other browser modifications needed</a>
+<ul><li><a href='sahi-configuration-basic.html#Internet Explorer 11'>Internet Explorer 11</a>
+</li><li><a href='sahi-configuration-basic.html#Internet Explorer 10'>Internet Explorer 10</a>
+</li><li><a href='sahi-configuration-basic.html#Opera'>Opera</a>
+</li><li><a href='sahi-configuration-basic.html#Safari'>Safari</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html#Configure SSL'>Configure SSL</a>
+<ul><li><a href='sahi-configuration-basic.html#Enabling weaker algorithms on Java 1.7 and later'>Enabling weaker algorithms on Java 1.7 and later</a>
+</li><li><a href='sahi-configuration-basic.html#For Linux'>For Linux</a>
+</li><li><a href='sahi-configuration-basic.html#For Mac'>For Mac</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html#External Proxy'>External Proxy</a>
+<ul><li><a href='sahi-configuration-basic.html#Proxy AutoConfig Script'>Proxy AutoConfig Script</a>
+</li><li><a href='sahi-configuration-basic.html#Fixed Proxy'>Fixed Proxy</a>
+</li></ul></li><li><a href='sahi-configuration-basic.html#Configuring Proxy on Mac'>Configuring Proxy on Mac</a>
+</li></ul></li><li><a href='sahi-controller.html'>Using Sahi Controller</a>
+<ul><li><a href='sahi-controller.html#Record Tab'>Record Tab</a>
+</li><li><a href='sahi-controller.html#Identify Elements'>Identify Elements</a>
+</li><li><a href='sahi-controller.html#Action Buttons'>Action Buttons</a>
+</li><li><a href='sahi-controller.html#Assertions'>Assertions</a>
+</li><li><a href='sahi-controller.html#Evaluate Expression'>Evaluate Expression</a>
+</li><li><a href='sahi-controller.html#Use . to get attributes'>Use . to get attributes</a>
+</li><li><a href='sahi-controller.html#Up and Down arrows'>Up and Down arrows</a>
+</li><li><a href='sahi-controller.html#Anchor button'>Anchor button</a>
+</li><li><a href='sahi-controller.html#Directly copy the Accessor to Evaluate Expression'>Directly copy the Accessor to Evaluate Expression</a>
+</li><li><a href='sahi-controller.html#Smart Dropdown for Evaluate Expression'>Smart Dropdown for Evaluate Expression</a>
+</li><li><a href='sahi-controller.html#APIs List Box'>APIs List Box</a>
+</li><li><a href='sahi-controller.html#Retrieve Coordinates of a point'>Retrieve Coordinates of a point</a>
+</li><li><a href='sahi-controller.html#History of Evaluate Expression'>History of Evaluate Expression</a>
+</li><li><a href='sahi-controller.html#Record a script'>Record a script</a>
+</li><li><a href='sahi-controller.html#Record with Accessor Repository'>Record with Accessor Repository</a>
+</li><li><a href='sahi-controller.html#Record Documentation'>Record Documentation</a>
+</li><li><a href='sahi-controller.html#Playback Tab'>Playback Tab</a>
+<ul><li><a href='sahi-controller.html#With page refresh'>With page refresh</a>
+</li><li><a href='sahi-controller.html#Without page refresh'>Without page refresh</a>
+</li><li><a href='sahi-controller.html#View logs'>View logs</a>
+</li></ul></li><li><a href='sahi-controller.html#Debug during Playback'>Debug during Playback</a>
+</li><li><a href='sahi-controller.html#Play Scripts from a URL'>Play Scripts from a URL</a>
+</li><li><a href='sahi-controller.html#Clipboard Tab'>Clipboard Tab</a>
+</li><li><a href='sahi-controller.html#Info Tab'>Info Tab</a>
+</li></ul></li><li><a href='sahi-script-editor.html'>Sahi Script Editor</a>
+<ul><li><a href='sahi-script-editor.html#Launching the Editor'>Launching the Editor</a>
+</li><li><a href='sahi-script-editor.html#Navigator'>Navigator</a>
+</li><li><a href='sahi-script-editor.html#Script Editor'>Script Editor</a>
+</li><li><a href='sahi-script-editor.html#Context Panel'>Context Panel</a>
+</li><li><a href='sahi-script-editor.html#Function Creator'>Function Creator</a>
+</li><li><a href='sahi-script-editor.html#Search'>Search</a>
+</li><li><a href='sahi-script-editor.html#Scenario Editor'>Scenario Editor</a>
+</li><li><a href='sahi-script-editor.html#Documentation tool'>Documentation tool</a>
+</li><li><a href='sahi-script-editor.html#Playback'>Playback</a>
+<ul><li><a href='sahi-script-editor.html#Distributed Playback'>Distributed Playback</a>
+</li><li><a href='sahi-script-editor.html#Advanced Playback Settings'>Advanced Playback Settings</a>
+</li><li><a href='sahi-script-editor.html#Scheduling a Test'>Scheduling a Test</a>
+</li></ul></li><li><a href='sahi-script-editor.html#Creating suites'>Creating suites</a>
+</li></ul></li><li><a href='excel-framework.html'>Excel Framework</a>
+<ul><li><a href='excel-framework.html#Sample Excel Sheet'>Sample Excel Sheet</a>
+</li><li><a href='excel-framework.html#Loading Sahi script libraries'>Loading Sahi script libraries</a>
+</li><li><a href='excel-framework.html#Executing the Excel Sheet'>Executing the Excel Sheet</a>
+</li><li><a href='excel-framework.html#Play back reports/logs'>Play back reports/logs</a>
+</li><li><a href='excel-framework.html#Syntax'>Syntax</a>
+</li><li><a href='excel-framework.html#Variables'>Variables</a>
+</li><li><a href='excel-framework.html#SetUp and TearDown'>SetUp and TearDown</a>
+</li><li><a href='excel-framework.html#Creating Keywords on the fly in Excel'>Creating Keywords on the fly in Excel</a>
+</li><li><a href='excel-framework.html#Data driven testing'>Data driven testing</a>
+</li><li><a href='excel-framework-web-ui.html'>Excel Framework Web UI</a>
+<ul><li><a href='excel-framework-web-ui.html#Launching the Scenario Editor'>Launching the Scenario Editor</a>
+</li><li><a href='excel-framework-web-ui.html#Introduction to the Web UI'>Introduction to the Web UI</a>
+</li><li><a href='excel-framework-web-ui.html#Key features'>Key features</a>
+<ul><li><a href='excel-framework-web-ui.html#loadSahi'>loadSahi</a>
+</li><li><a href='excel-framework-web-ui.html#Detail box'>Detail box</a>
+</li><li><a href='excel-framework-web-ui.html#Red colored notification'>Red colored notification</a>
+</li></ul></li><li><a href='excel-framework-web-ui.html#List of shortcuts'>List of shortcuts</a>
+<ul><li><a href='excel-framework-web-ui.html#CTRL combination shortcut keys'>CTRL combination shortcut keys</a>
+</li><li><a href='excel-framework-web-ui.html#ALT combination shortcut keys'>ALT combination shortcut keys</a>
+</li><li><a href='excel-framework-web-ui.html#Function keys'>Function keys</a>
+</li><li><a href='excel-framework-web-ui.html#Other useful shortcut keys'>Other useful shortcut keys</a>
+</li></ul></li></ul></li></ul></li><li><a href='sahi-suite.html'>Sahi Suites</a>
+<ul><li><a href='plain-suites.html'>Plain Suites</a>
+</li><li><a href='data-driven-suites.html'>Data Driven Suites</a>
+<ul><li><a href='data-driven-suites.html#Introduction'>Introduction</a>
+</li><li><a href='data-driven-suites.html#Structure'>Structure</a>
+</li><li><a href='data-driven-suites.html#Structure Explained'>Structure Explained</a>
+</li><li><a href='data-driven-suites.html#Running Data Driven Suites'>Running Data Driven Suites</a>
+</li><li><a href='data-driven-suites.html#Variable $isDataPassed and _isDataPassed()'>Variable $isDataPassed and _isDataPassed()</a>
+</li></ul></li><li><a href='csv-files-as-suites-with-tags.html'>CSV Files as Suites with Tags</a>
+<ul><li><a href='csv-files-as-suites-with-tags.html#Demarcating multiple test case boundaries in single script'>Demarcating multiple test case boundaries in single script</a>
+</li><li><a href='csv-files-as-suites-with-tags.html#Reports and Summary'>Reports and Summary</a>
+</li></ul></li></ul></li><li><a href='playback-desktop.html'>Playback on Desktop</a>
+<ul><li><a href='playback-desktop.html#Playback via Editor (new in 6.0.0)'>Playback via Editor (new in 6.0.0)</a>
+</li><li><a href='playback-desktop.html#Playback via Sahi Controller'>Playback via Sahi Controller</a>
+</li><li><a href='playback-desktop.html#Playback via testrunner'>Playback via testrunner</a>
+</li><li><a href='playback-desktop.html#Distributed playback via drun'>Distributed playback via drun</a>
+<ul><li><a href='playback-desktop.html#drun'>drun</a>
+</li><li><a href='playback-desktop.html#drun_different_master'>drun_different_master</a>
+</li></ul></li><li><a href='playback-desktop.html#Playback via ANT'>Playback via ANT</a>
+<ul><li><a href='playback-desktop.html#Playback on a single machine'>Playback on a single machine</a>
+</li><li><a href='playback-desktop.html#Attributes and their description'>Attributes and their description</a>
+</li><li><a href='playback-desktop.html#Command to execute the above ANT target'>Command to execute the above ANT target</a>
+</li><li><a href='playback-desktop.html#Distributed playback via ANT'>Distributed playback via ANT</a>
+</li><li><a href='playback-desktop.html#Distributed run on the same Master'>Distributed run on the same Master</a>
+</li><li><a href='playback-desktop.html#Attributes and their description'>Attributes and their description</a>
+</li><li><a href='playback-desktop.html#Command to execute the above ANT target'>Command to execute the above ANT target</a>
+</li><li><a href='playback-desktop.html#Distributed run on a different Master'>Distributed run on a different Master</a>
+</li><li><a href='playback-desktop.html#Attributes and their description'>Attributes and their description</a>
+</li><li><a href='playback-desktop.html#Command to execute the above ANT target'>Command to execute the above ANT target</a>
+</li></ul></li><li><a href='playback-desktop.html#Email.properties file explained'>Email.properties file explained</a>
+<ul><li><a href='playback-desktop.html#Configuration file for javax.mail'>Configuration file for javax.mail</a>
+</li><li><a href='playback-desktop.html#Sample properties file'>Sample properties file</a>
+</li></ul></li><li><a href='web-based-testrunner.html'>Web based Testrunner</a>
+</li></ul></li><li><a href='playback-mobile.html'>Playback on Mobile</a>
+<ul><li><a href='recording-for-mobile-devices.html'>Recording for mobile devices</a>
+</li><li><a href='run-sahi-on-ipad.html'>Sahi on iPad</a>
+</li><li><a href='run-sahi-on-android.html'>Sahi on Android</a>
+<ul><li><a href='run-sahi-on-android.html#Start the Emulator'>Start the Emulator</a>
+</li><li><a href='run-sahi-on-android.html#Configure the proxy on the Emulator's browser (for 2.3.3):'>Configure the proxy on the Emulator's browser (for 2.3.3):</a>
+</li><li><a href='run-sahi-on-android.html#Configure Sahi browser_types.xml'>Configure Sahi browser_types.xml</a>
+</li><li><a href='run-sahi-on-android.html#Run the test using testrunner.bat'>Run the test using testrunner.bat</a>
+</li></ul></li></ul></li><li><a href='sahi-reports.html'>Reports</a>
+<ul><li><a href='sahi-reports.html#Reports - Architecture and Flow'>Reports - Architecture and Flow</a>
+</li><li><a href='sahi-reports.html#logsInfo attribute'>logsInfo attribute</a>
+</li><li><a href='sahi-reports.html#Understanding reports and report types'>Understanding reports and report types</a>
+</li><li><a href='sahi-reports.html#Adding logsInfo in testrunner.bat'>Adding logsInfo in testrunner.bat</a>
+</li><li><a href='sahi-reports.html#Adding logsInfo in drun.bat'>Adding logsInfo in drun.bat</a>
+</li><li><a href='sahi-reports.html#Adding a new custom reporting type'>Adding a new custom reporting type</a>
+<li><a href='storing-reports-in-mysql.html'>Storing Reports in MySQL</a>
+<ul><li><a href='storing-reports-in-mysql.html#Create a Database'>Create a Database</a>
+</li><li><a href='storing-reports-in-mysql.html#Create Tables'>Create Tables</a>
+</li><li><a href='storing-reports-in-mysql.html#Add MySQL Driver Jars to Sahi Classpath'>Add MySQL Driver Jars to Sahi Classpath</a>
+</li><li><a href='storing-reports-in-mysql.html#Point Sahi to use the MySQL Database'>Point Sahi to use the MySQL Database</a>
+</li><li><a href='storing-reports-in-mysql.html#Restart and Run'>Restart and Run</a>
+</li><li><a href='storing-reports-in-mysql.html#Trouble-shooting'>Trouble-shooting</a>
+</li></ul></li><li><a href='storing-reports-in-mssql.html'>Storing Reports in MSSQL</a>
+<ul><li><a href='storing-reports-in-mssql.html#Create a Database'>Create a Database</a>
+</li><li><a href='storing-reports-in-mssql.html#Create Tables'>Create Tables</a>
+</li><li><a href='storing-reports-in-mssql.html#Add MSSQL Driver Jars to Sahi Classpath'>Add MSSQL Driver Jars to Sahi Classpath</a>
+</li><li><a href='storing-reports-in-mssql.html#Point Sahi to use the MSSQL Database'>Point Sahi to use the MSSQL Database</a>
+</li><li><a href='storing-reports-in-mssql.html#Restart and Run'>Restart and Run</a>
+</li></ul></li></ul></li><li><a href='adding-jars-to-sahis-classpath.html'>Adding Jars to Sahi Classpath</a>
+<ul><li><a href='adding-jars-to-sahis-classpath.html#From command-line'>From command-line</a>
+</li><li><a href='adding-jars-to-sahis-classpath.html#From ant'>From ant</a>
+</li></ul></li><li><a href='including-sahi-script-globally.html'>Including Sahi script globally</a>
+</li><li><a href='flex.html'>Flex</a>
+<ul><li><a href='flex.html#Introduction'>Introduction</a>
+</li><li><a href='flex.html#Compile with sfl.swc using command line'>Compile with sfl.swc using command line</a>
+</li><li><a href='flex.html#Compile using Ant'>Compile using Ant</a>
+</li><li><a href='flex.html#Compile using Adobe Flash Builder (Add SWC files to Flex Builder projects)'>Compile using Adobe Flash Builder (Add SWC files to Flex Builder projects)</a>
+</li><li><a href='flex.html#Recording a flex application'>Recording a flex application</a>
+</li><li><a href='flex.html#Identification of Flex Components'>Identification of Flex Components</a>
+</li><li><a href='flex.html#Recognizing Custom Components'>Recognizing Custom Components</a>
+</li><li><a href='flex.html#Performing actions on Flex elements'>Performing actions on Flex elements</a>
+</li><li><a href='flex.html#Relational operators in SFL'>Relational operators in SFL</a>
+</li><li><a href='flex.html#Known Issues'>Known Issues</a>
+</li><li><a href='flex.html#Tips on usage'>Tips on usage</a>
+</li><li><a href='flex.html#Flex app and SahiPro version'>Flex app and SahiPro version</a>
+</li></ul></li><li><a href='applet.html'>Applet</a>
+<ul><li><a href='applet.html#Introduction'>Introduction</a>
+</li><li><a href='applet.html# Automating Oracle Forms'>Automating Oracle Forms</a>
+</li><li><a href='applet.html# Recording an Applet'>Recording an Applet</a>
+</li><li><a href='applet.html#Applet APIs'>Applet APIs</a>
+</li><li><a href='applet.html#Trouble Shooting'>Trouble Shooting</a>
+<ul><li><a href='applet.html#Java security error while loading applets with Sahi'>Java security error while loading applets with Sahi</a>
+</li><li><a href='applet.html#Page hangs or Sahi does not recognize any element'>Page hangs or Sahi does not recognize any element</a>
+</li><li><a href='applet.html#Applet: Delete Java Cache'>Applet: Delete Java Cache</a>
+</li></ul></li><li><a href='applet.html#Sample applet'>Sample applet</a>
+</li></ul></li><li><a href='401-authentication.html'>401 Authentication</a>
+</li><li><a href='securing-sahi-for-enterprise.html'>Securing Sahi for Enterprises</a>
+<ul><li><a href='securing-sahi-for-enterprise.html#Using custom domain instead of sahi.example.com'>Using custom domain instead of sahi.example.com</a>
+</li><li><a href='securing-sahi-for-enterprise.html#Creating Custom SSL Root Certificates'>Creating Custom SSL Root Certificates</a>
+<ul><li><a href='securing-sahi-for-enterprise.html#Create the root certificate'>Create the root certificate</a>
+</li><li><a href='securing-sahi-for-enterprise.html#Accept the root certificate on browsers'>Accept the root certificate on browsers</a>
+<ul><li><a href='securing-sahi-for-enterprise.html#Configuring Firefox template for new root certificate'>Configuring Firefox template for new root certificate</a>
+</li></ul></li><li><a href='securing-sahi-for-enterprise.html#Deploying the root certificate changes on other Sahi Pro installations'>Deploying the root certificate changes on other Sahi Pro installations</a>
+</li></ul></li></ul></li><li><a href='complex-usecases.html'>Complex Use Cases</a>
+<ul><li><a href='calling-java.html'>Calling Java</a>
+<ul><li><a href='calling-java.html#Calling inbuilt Java classes'>Calling inbuilt Java classes</a>
+</li><li><a href='calling-java.html#Working with Java object directly in Sahi Script'>Working with Java object directly in Sahi Script</a>
+</li><li><a href='calling-java.html#Calling Java classes in Custom Packages'>Calling Java classes in Custom Packages</a>
+</li><li><a href='calling-java.html#Accessing Your Own Custom Classes from Sahi'>Accessing Your Own Custom Classes from Sahi</a>
+<ul><li><a href='calling-java.html#Sample Custom Class'>Sample Custom Class</a>
+</li></ul></li><li><a href='calling-java.html#Add to Classpath'>Add to Classpath</a>
+</li><li><a href='calling-java.html#Call loadProperties Method from Sahi Script'>Call loadProperties Method from Sahi Script</a>
+</li></ul></li><li><a href='parsing-xml.html'>Parsing XML in Sahi</a>
+<ul><li><a href='parsing-xml.html#Parsing XML containing namespaces'>Parsing XML containing namespaces</a>
+</li></ul></li><li><a href='working-with-ssh-from-sahi.html'>Working with SSH</a>
+<ul><li><a href='working-with-ssh-from-sahi.html#Prerequisites'>Prerequisites</a>
+</li><li><a href='working-with-ssh-from-sahi.html#Add to classpath'>Add to classpath</a>
+</li><li><a href='working-with-ssh-from-sahi.html#The Sahi Script'>The Sahi Script</a>
+</li><li><a href='working-with-ssh-from-sahi.html#NOTES'>NOTES</a>
+</li></ul></li><li><a href='reading-pdf-files.html'>Reading PDF Files</a>
+<ul><li><a href='reading-pdf-files.html#Prerequisites'>Prerequisites</a>
+</li><li><a href='reading-pdf-files.html#Code'>Code</a>
+</li><li><a href='reading-pdf-files.html#Reading values of editable fields from pdf'>Reading values of editable fields from pdf</a>
+</li></ul></li><li><a href='running-sahi-scripts-from-java.html'>Run Sahi Scripts from Java</a>
+<ul><li><a href='running-sahi-scripts-from-java.html#Problem'>Problem</a>
+</li><li><a href='running-sahi-scripts-from-java.html#Java code invoking TestRunner'>Java code invoking TestRunner</a>
+</li><li><a href='running-sahi-scripts-from-java.html#The Sahi script being invoked'>The Sahi script being invoked</a>
+</li><li><a href='running-sahi-scripts-from-java.html#Passing parameters into Sahi script from Java'>Passing parameters into Sahi script from Java</a>
+</li><li><a href='running-sahi-scripts-from-java.html#Passing data values from the Script back to Java'>Passing data values from the Script back to Java</a>
+</li></ul></li><li><a href='sending-emails.html'>Sending Emails</a>
+</li><li><a href='sahi-gui-less-installation.html'>Sahi GUI Less Installation</a>
+</li><li><a href='sahi-headless-execution-with-phantomjs.html'>Sahi headless with PhantomJS</a>
+<ul><li><a href='sahi-headless-execution-with-phantomjs.html#Documentation since Sahi Pro V4.3.2'>Documentation since Sahi Pro V4.3.2</a>
+<ul><li><a href='sahi-headless-execution-with-phantomjs.html#For Windows:'>For Windows:</a>
+</li><li><a href='sahi-headless-execution-with-phantomjs.html#For Linux:'>For Linux:</a>
+</li></ul></li><li><a href='sahi-headless-execution-with-phantomjs.html#Older Documentation (before Sahi Pro V4.3.2)'>Older Documentation (before Sahi Pro V4.3.2)</a>
+</li></ul></li><li><a href='configuring-sahi-with-xvbf.html'>Sahi headless with Xvfb</a>
+<ul><li><a href='configuring-sahi-with-xvbf.html#What is xvfb?'>What is xvfb?</a>
+</li><li><a href='configuring-sahi-with-xvbf.html#Installing Xvfb'>Installing Xvfb</a>
+<ul><li><a href='configuring-sahi-with-xvbf.html#Ubuntu'>Ubuntu</a>
+</li><li><a href='configuring-sahi-with-xvbf.html#For Fedora'>For Fedora</a>
+</li><li><a href='configuring-sahi-with-xvbf.html#For other linux'>For other linux</a>
+</li></ul></li><li><a href='configuring-sahi-with-xvbf.html#Setting up Xvfb on display 1'>Setting up Xvfb on display 1</a>
+</li><li><a href='configuring-sahi-with-xvbf.html#Running test in Xvfb headless browser through Sahi'>Running test in Xvfb headless browser through Sahi</a>
+</li></ul></li></ul></li><li><a href='tweaking-sahi-apis.html'>Tweaking Sahi APIs</a>
+<ul><li><a href='tweaking-sahi-apis.html#Identifying elements by an attribute not available with Sahi'>Identifying elements by an attribute not available with Sahi</a>
+</li></ul></li><li><a href='integrate-with-jenkins.html'>Jenkins Integration</a>
+<ul><li><a href='integrate-with-jenkins.html#Building the new jenkins software project'>Building the new jenkins software project</a>
+</li><li><a href='integrate-with-jenkins.html#Prerequisites'>Prerequisites</a>
+</li><li><a href='integrate-with-jenkins.html#Configure Jenkins'>Configure Jenkins</a>
+</li><li><a href='integrate-with-jenkins.html#View Sahi Pro HTML Logs in Jenkins'>View Sahi Pro HTML Logs in Jenkins</a>
+</li></ul></li><li><a href='sahi-as-a-documentation-tool.html'>Sahi As Documentation Tool</a>
+<ul><li><a href='sahi-as-a-documentation-tool.html#Recording in Documentation Mode'>Recording in Documentation Mode</a>
+</li><li><a href='sahi-as-a-documentation-tool.html#Viewing and Editing Document'>Viewing and Editing Document</a>
+</li></ul></li><li><a href='other-language-drivers.html'>Other Language Drivers</a>
+<ul><li><a href='java.html'>Java Driver</a>
+<ul><li><a href='java.html#Recording Java code'>Recording Java code</a>
+</li></ul></li><li><a href='ruby.html'>Ruby Driver</a>
+<ul><li><a href='ruby.html#Recording Ruby code'>Recording Ruby code</a>
+</li></ul></li></ul></li><li><a href='robot-sahi.html'>Sahi Robot Driver</a>
+<ul><li><a href='robot-sahi.html#Installation'>Installation</a>
+</li><li><a href='robot-sahi.html#Keywords'>Keywords</a>
+</li></ul></li><li><a href='mtm-sahi-integration.html'>Sahi MTM Integration</a>
+<ul><li><a href='mtm-sahi-integration.html#Installation'>Installation</a>
+</li><li><a href='mtm-sahi-integration.html#MTM Bridge'>MTM Bridge</a>
+</li></ul></li><li><a href='load-testing.html'>Load Testing with Sahi Pro</a>
+<ul><li><a href='load-testing.html#Setting up'>Setting up</a>
+</li><li><a href='load-testing.html#Reporting'>Reporting</a>
+</li><li><a href='load-testing.html#Running load tests through ANT'>Running load tests through ANT</a>
+<ul><li><a href='load-testing.html#Attributes and their description'>Attributes and their description</a>
+</li><li><a href='load-testing.html#Command to execute the above ANT target'>Command to execute the above ANT target</a>
+</li></ul></li></ul></li><li><a href='sahi-integration.html'>Sahi Integration</a>
+<ul><li><a href='sahi-integration.html#Set Sahi Server'>Set Sahi Server</a>
+</li><li><a href='sahi-integration.html#Get Script Directory'>Get Script Directory</a>
+</li><li><a href='sahi-integration.html#Get All Scripts Path In The Given Directory'>Get All Scripts Path In The Given Directory</a>
+</li><li><a href='sahi-integration.html#Get All Available Browsers'>Get All Available Browsers</a>
+</li><li><a href='sahi-integration.html#Running the Script/Suite'>Running the Script/Suite</a>
+</li><li><a href='sahi-integration.html#Check the status of Script/Suite'>Check the status of Script/Suite</a>
+</li><li><a href='sahi-integration.html#Get the Suite logs'>Get the Suite logs</a>
+</li><li><a href='sahi-integration.html#Get the Script Log'>Get the Script Log</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Sahi Script Editor</h2>
+      <!-- Sahi Script Editor -->
+<div class="abstract"><strong class='heading'>abstract</strong>
+The enhanced Sahi Script Editor (available from v6.0) is used to create, edit, refactor and run Sahi scripts, Scenarios, Suites and Data Driven Suites.<br/>
+It allows conversion of steps into parameterized functions and extraction of constants.<br/>
+</div>
+<br/>
+<h2><a href="#Launching the Editor" name="Launching the Editor" class="headinganchor2" hideFocus="hideFocus">Launching the Editor</a></h2>
+Editor can be launched by clicking on the Editor link from Sahi dashboard.<br/>
+<br/>
+<img src="../assets/images/using-sahi/editor/launch_editor.png"/>
+<br/>
+It can also be launched from the Sahi controller to edit the currently recorded script.<br/>
+<img src="../assets/images/using-sahi/controller/script-editor.png"/>
+A typical editor window will look like this.<br/>
+<img src="../assets/images/using-sahi/editor/editor_overview.png" style="width:100%"/>
+<br/>
+<h2><a href="#Navigator" name="Navigator" class="headinganchor2" hideFocus="hideFocus">Navigator</a></h2>
+<p>This is the left-most panel in the editor and shows all the scripts, suites and other files in the scripts directory. </p>
+<img src="../assets/images/using-sahi/editor/navigator.png"/>
+<p>At the top of Navigator, there are three buttons. You can use them as follows:<br/>
+<br/>
+<img src="../assets/images/using-sahi/editor/refresh.png" style="margin:0px; display: inline; margin-right: 10px;"/>
+<strong>Refresh:</strong> This button is used to refresh the directory so that newly added scripts are visible.<br/>
+<img src="../assets/images/using-sahi/editor/link.png" style="margin: 0px; display: inline; margin-right: 10px;"/>
+<strong>Link to Editor:</strong> If active, the name of script being edited will be scrolled to in the navigator menu.<br/>
+<img src="../assets/images/using-sahi/editor/collapse.png" style="margin: 0px; display: inline; margin-right: 10px;"/>
+<strong>Collapse: </strong>This will collapse the navigator and provide some additional space for the script editor.<br/>
+<br/>
+The filter at the top of navigator is used to filter scripts based on the entered text. It can also be used to filter all suites and scripts.</p>
+<img src="../assets/images/using-sahi/editor/navigator_filter.png"/>
+<br/>
+<p>All the scripts and suites are listed in a tree menu in the navigator.<br/>
+If you click on the name of a script or suite, it will open up for editing in the script editor.<br/>
+Also, if you right click on the name of script or suite, following menu is available.</p>
+<img src="../assets/images/using-sahi/editor/right_click_menu.png"/>
+<p><strong>Run:</strong> If playback properties are configured, it will start script execution. If not, it opens up the playback properties window. Once executed, scripts can be stopped by clicking on the "Stop All" button in the top menu.<br/>
+<strong>Open:</strong> Opens the current file.<br/>
+<strong>Logs:</strong> Opens the HTML logs for the current script.<br/>
+<strong>Docs:</strong> Opens the script in documentation mode.<br/>
+<strong>Rename:</strong> Makes the filename editable.<br/>
+<strong>Delete:</strong> Deletes the file.<br/>
+</p>
+<br/>
+<h2><a href="#Script Editor" name="Script Editor" class="headinganchor2" hideFocus="hideFocus">Script Editor</a></h2>
+<p>Script editor provides an interface to edit the Sahi scripts within a browser window.<br/>
+The editor integrates with function creator and context editor to provide an easy interface to refactor the scripts. To edit a script, simply select the script from the navigator and start editing in the editor. Editor provides different interfaces for scripts, scenario and suites. </p>
+<img src="../assets/images/using-sahi/editor/script_editor.png"/>
+<br/>
+<h2><a href="#Context Panel" name="Context Panel" class="headinganchor2" hideFocus="hideFocus">Context Panel</a></h2>
+Context editor provides the ability to include any function from the scritps directory to the current script and include the file containing the function. It also allows changing the Accessor Repository parameters.<br/>
+<br/>
+Open context editor by clicking on the show context button. To include a function, search for the function in the function name. If the file containing the function is not included, the file path will be shown in red. After selecting a function, pass in the values for the arguments shown in the Arguments box. Click insert to call the function in present script. Click on Include button to include the file containing the function. The function will be added where the mouse pointer was before clicking on insert.<br/>
+<img src="../assets/images/using-sahi/editor/context_insert_function.png"/>
+Click on the Open button next to File path to open the script containing function.<br/>
+If the script is using an Accessor Repository, the Accessor Repository parameters can be modified by double clicking the line of code with object. This populates the Accessor Repository parameters and then these can be edited.<br/>
+<img src="../assets/images/using-sahi/editor/or_edit.png"/>
+<br/>
+Click <a href="../using-sahi/sahi-controller.html#Record with Accessor Repository">here </a>to know more about recording with Accessor Repository.<br/>
+<h2><a href="#Function Creator" name="Function Creator" class="headinganchor2" hideFocus="hideFocus">Function Creator</a></h2>
+To create a function out of the statements in a script, select the statements and then click on create function button.<br/>
+<img src="../assets/images/using-sahi/editor/create_function_1.png"/>
+<br/>
+The following window will pop up. Provide a function name and click on continue.<br/>
+<br/>
+<img src="../assets/images/using-sahi/editor/create_function_2.png"/>
+<br/>
+You can also provide function names in <code>userdata/config/function_names.txt</code> file and select one of these while creating functions. This file can be edited using the Configure link on Dashboard and then selecting the file name from left navigation.<br/>
+<h2><a href="#Search" name="Search" class="headinganchor2" hideFocus="hideFocus">Search</a></h2>
+To search within a script, click inside the editor and then use either the search icon in the menu or CTRL + F to bring up the search bar.<br/>
+<img src="../assets/images/using-sahi/editor/search.png"/>
+<br/>
+<h2><a href="#Scenario Editor" name="Scenario Editor" class="headinganchor2" hideFocus="hideFocus">Scenario Editor</a></h2>
+To edit a scenario file, just click on the file name from navigator. The CSV file is displayed in an excel like grid where it can be edited with the help of tools available to this view.<br/>
+<img src="../assets/images/using-sahi/editor/scenario_editor.png"/>
+<br/>
+Following tools are available while editing a scenario file.<br/>
+<br/>
+1. Insert Testcase: Inserts a blank test case<br/>
+<img src="../assets/images/using-sahi/editor/insert_testcase.png"/>
+<br/>
+2. Load Sahi library: Inserts the syntax to include a function library.<br/>
+<img src="../assets/images/using-sahi/editor/load_sahi.png"/>
+<br/>
+3. Function details: Shows all the details about the function that was selected before cliking the button. If the file containing the function is not included, you can click on the include button to include the file.<br/>
+<img src="../assets/images/using-sahi/editor/function_details.png"/>
+<br/>
+4. Import: Imports functions to the csv. Enter the functions that you want to import in the text area with proper arguments. Click on the import button to insert the functions in the scenario file.<br/>
+<img src="../assets/images/using-sahi/editor/import_in_csv.png"/>
+<br/>
+<h2><a href="#Documentation tool" name="Documentation tool" class="headinganchor2" hideFocus="hideFocus">Documentation tool</a></h2>
+Sahi can be used as a documentation tool as well. While scripts can be recorded in documentation mode, documentation for already existing scripts can be generated by clicking on View Doc button. A new tab will open where the documentation can be edited and exported as HTML<br/>
+<img src="../assets/images/using-sahi/editor/docs.png"/>
+<h2><a href="#Playback" name="Playback" class="headinganchor2" hideFocus="hideFocus">Playback</a></h2>
+Script Editor enables playback of scripts/suites/data driven suites. Scripts can be played back on a single machine or distributed across machines.<br/>
+<br/>
+To configure playback properties, click on the Playback  button in the top menu. It opens up the basic configurations required for the script execution.<br/>
+<br/>
+<ul>
+<li>
+If the user has selected some scripts/suites in the Navigator, and clicked on Playback, Sahi will automatically create a suite (selectedScripts.suite) containing the selected scripts/suites, and selectedScripts.suite will be chosen for playback.<br/>
+</li>
+<li>
+If the user has selected one script/suite in the Navigator, that individual script/suite will be chosen for play back.<br/>
+</li>
+<li>
+If no scripts have been selected in the Navigator, the script or suite file that is currently open (in focus) in the Editor will be chosen for playback.<br/>
+</li>
+</ul>
+<br/>
+Based on the playback properties set by the user, Sahi will execute the appropriate script or suite.<br/>
+<br/>
+<img src="../assets/images/using-sahi/editor/playback_prop_basic.png"/>
+<br/>
+At the very minimum, you need to provide a start URL and browser name to execute the script. Script directory and script file fields show the file for which play button was clicked.<br/>
+<br/>
+1. You can select the browser from the dropdown. This lists all the browsers configured on your machine. In case you are providing multiple nodes for <a href="#Distributed Playback">distributed playback</a>, this will list browsers from all nodes. One can choose more than one browser to run the script/suite in.<br/>
+2. Provide a start URL for the script.<br/>
+3. Click on the Play button to play the script. The default setup (Run in parallel with Threads as 5) lets you run the scripts in parallel with 5 simultaneous instances.<br/>
+4. If you wish to run the scripts in the suite one after another within the same session, select "Run sequentially in single browser session".<br/>
+5. If you wish to run the scripts in the suite one after another but in different browser sessions, select "Run in parallel" with Threads as 1.<br/>
+<br/>
+<h3><a href="#Distributed Playback" name="Distributed Playback" class="headinganchor2" hideFocus="hideFocus">Distributed Playback</a></h3>
+Playback properties can be configured to distribute script execution across multiple machines.<br/>
+<img src="../assets/images/using-sahi/editor/playback_prop_dist.png"/>
+<br/>
+1. To distribute the playback across multiple machines, check the Distribute checkbox.<br/>
+2. Click on the button to configure nodes for playback.<br/>
+3. Provide the machine name and port number.<br/>
+4. If you want to use the node for execution, check the "Use" checkbox for the node.<br/>
+5. Click on Update button. This updates the node information for execution.<br/>
+6. Click on Close button to close the node configuration window.<br/>
+7. This allows you to add more space for additional nodes.<br/>
+<br/>
+After configuring the nodes, you can click on play to execute the script or suite across machines.<br/>
+<img src="../assets/images/using-sahi/editor/playback_prop_dist_mastert.png"/>
+<br/>
+1. By default Sahi will consider the localhost as the master node. If you want to use a different master, click the checkbox for Use Different Master.<br/>
+2. Provide the machine name to be used as the host.<br/>
+3. A default value of 9999 is present for port. If you are using a different port, you can update it here.<br/>
+<h3><a href="#Advanced Playback Settings" name="Advanced Playback Settings" class="headinganchor2" hideFocus="hideFocus">Advanced Playback Settings</a></h3>
+While setting playback properties, following advanced settings can be configured by clicking on the "Show Advanced Settings" link.<br/>
+<br/>
+<img src="../assets/images/using-sahi/editor/playback_prop_adv.png"/>
+<br/>
+<ol>
+<li><strong>Offline Reports</strong>: You can configure the storage of offline logs by setting the paths for various types of reports.<br/>
+<ol>
+<li>
+Click on the button to bring up the Logs Info Editor.<br/>
+<img src="../assets/images/using-sahi/editor/logs_info_editor_1.png"/>
+</li>
+<li>
+Provide the location for storing the logs.<br/>
+<img src="../assets/images/using-sahi/editor/logs_info_editor.png"/>
+</li>
+<li>Unless you click on Use, the settings won't be considered. Click the Use checkbox for the type of logs that you want.</li>
+<li>Click on update to update the Offline logs settings.</li>
+<li>Once updated, you can close the Logs Info Editor.</li>
+</ol>
+</li>
+<li><strong>Send Email Reports</strong>:<br/>
+You can enable sending email reports after script run on Success, Failure or both.<br/>
+<img src="../assets/images/using-sahi/editor/email_reports.png"/>
+<ol><li>
+Click on the checkbox to enable sending email reports.<br/>
+</li>
+<li>Select the trigger for sending email reports. It can be either success or failure or both.</li>
+<li>Sahi uses the properties file present at <code>userdata/config/email.properties</code> to send the emails. You can click on this button to edit the email.properties file. You can change the properties file using other text editor as well. </li>
+<div class="danger"><strong class='heading'>danger</strong>
+The user needs to edit the email.properties and set the various properties. By default, none of the properties are set.<br/>
+</div>
+<br/>
+</ol>
+</li>
+<li><strong>Extra Parameters</strong>: You can pass extra parameters to script or suite before playback in form of key value pairs. These values can then be used within the scripts.<br/>
+<img src="../assets/images/using-sahi/editor/playback_prop_extra_param.png"/>
+<ol>
+	<li>Click on the button to open Extra Param Editor.</li>
+	<li>Provide the name and value for the parameters.</li>
+	<li>Click on Mask checkbox to hide the values of parameters from logs. This is useful for masking information like passwords.</li>
+	<li>Update button populates the parameters and their values in Extra Parameters text box. This will be then passed on to the script.</li>
+	<li>Click on close to close the Extra Param Editor.</li>
+	<li>If you would like extra space for parameters, you can click the button to add an extra row.</li>
+</ol>
+</li>
+<li><strong>User Defined Id</strong>: You can provide a unique ID to be used as User Defined Id for the script//suite run.<br/>
+This can be displayed in any type of log by changing <pre><code>&lt;xsl:param name="showUserDefinedId" select="'false'" /&gt;</code></pre> to <pre><code>&lt;xsl:param name="showUserDefinedId" select="'true'" /&gt;</code></pre> in the suites_list.xsl of userdata\config\reports\<reporttype>. <reporttype> can be html, xml etc</li>
+</ol>
+<h3><a href="#Scheduling a Test" name="Scheduling a Test" class="headinganchor2" hideFocus="hideFocus">Scheduling a Test</a></h3>
+Tests can be scheduled to be executed on a future date using the Editor. To schedule the a script, open playback properties for the script and hover on the Run button. Click <code>Schedule</code> button from the dropdown.<br/>
+<img src="../assets/images/using-sahi/editor/schedule_button.png"/>
+<br/>
+<img src="../assets/images/using-sahi/editor/schedule.png"/>
+<ol>
+<li>Choose a date and time from the dropdown. Click OK to set the date. </li>
+<li>Provide a description(optional) for the test.</li>
+<li>Click on Schedule to schedule the test.</li>
+</ol>
+<img src="../assets/images/using-sahi/editor/scheduled_info.png"/>
+Once scheduled, you will receive the above confirmation on the editor at the bottom right corner.<br/>
+<h2><a href="#Creating suites" name="Creating suites" class="headinganchor2" hideFocus="hideFocus">Creating suites</a></h2>
+You can select scripts from the navigator and select Suite or Data driven suite from the Create Suite Dropdown at top. This will create a new suite which consists of the selected scripts.<br/>
+<img src="../assets/images/using-sahi/editor/create_suite.png"/>
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

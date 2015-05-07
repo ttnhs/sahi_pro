@@ -1,0 +1,5 @@
+function fileExists($path){
+	var $file = new java.io.File($path);
+	var $e = $file.exists();
+	return $e;
+}

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data Drive APIs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='index.html'>Overview</a>
+<ul><li><a href='index.html#Browser Accessor APIs'>Browser Accessor APIs</a>
+</li><li><a href='index.html#Browser Action APIs'>Browser Action APIs</a>
+</li><li><a href='index.html#Miscellaneous APIs'>Miscellaneous APIs</a>
+</li></ul></li><li><a href='accessor-api-basics.html'>Accessor API Basics</a>
+<ul><li><a href='accessor-api-basics.html#Overview'>Overview</a>
+</li><li><a href='accessor-api-basics.html#Identifying unique element'>Identifying unique element</a>
+</li><li><a href='accessor-api-basics.html#Identifying element among similar elements'>Identifying element among similar elements</a>
+</li><li><a href='accessor-api-basics.html#Use of DOM Relation APIs'>Use of DOM Relation APIs</a>
+</li><li><a href='accessor-api-basics.html#Use of Positional Relation APIs'>Use of Positional Relation APIs</a>
+</li><li><a href='accessor-api-basics.html#_near vs _rightOf or_leftOf'>_near vs _rightOf or_leftOf</a>
+</li><li><a href='accessor-api-basics.html#Forcing Sahi Pro to ignore case when identifying elements'>Forcing Sahi Pro to ignore case when identifying elements</a>
+<ul><li><a href='accessor-api-basics.html#_setAccessorIgnoreCase'>_setAccessorIgnoreCase</a>
+</li></ul></li></ul></li><li><a href='accessor-apis.html'>Accessor APIs</a>
+<ul><li><a href='accessor-apis.html#Form Input Elements'>Form Input Elements</a>
+<ul><li><a href='accessor-apis.html#_password'>_password</a>
+</li><li><a href='accessor-apis.html#_textbox'>_textbox</a>
+</li><li><a href='accessor-apis.html#_hidden'>_hidden</a>
+</li><li><a href='accessor-apis.html#_datebox'>_datebox</a>
+</li><li><a href='accessor-apis.html#_datetimebox'>_datetimebox</a>
+</li><li><a href='accessor-apis.html#_datetimelocalbox'>_datetimelocalbox</a>
+</li><li><a href='accessor-apis.html#_emailbox'>_emailbox</a>
+</li><li><a href='accessor-apis.html#_monthbox'>_monthbox</a>
+</li><li><a href='accessor-apis.html#_numberbox'>_numberbox</a>
+</li><li><a href='accessor-apis.html#_rangebox'>_rangebox</a>
+</li><li><a href='accessor-apis.html#_searchbox'>_searchbox</a>
+</li><li><a href='accessor-apis.html#_telephonebox'>_telephonebox</a>
+</li><li><a href='accessor-apis.html#_timebox'>_timebox</a>
+</li><li><a href='accessor-apis.html#_urlbox'>_urlbox</a>
+</li><li><a href='accessor-apis.html#_weekbox'>_weekbox</a>
+</li><li><a href='accessor-apis.html#_textarea'>_textarea</a>
+</li></ul></li><li><a href='accessor-apis.html#Button Like Elements'>Button Like Elements</a>
+<ul><li><a href='accessor-apis.html#_button'>_button</a>
+</li><li><a href='accessor-apis.html#_button'>_button</a>
+</li><li><a href='accessor-apis.html#_checkbox'>_checkbox</a>
+</li><li><a href='accessor-apis.html#_radio'>_radio</a>
+</li><li><a href='accessor-apis.html#_submit'>_submit</a>
+</li><li><a href='accessor-apis.html#_submit'>_submit</a>
+</li><li><a href='accessor-apis.html#_reset'>_reset</a>
+</li><li><a href='accessor-apis.html#_reset'>_reset</a>
+</li><li><a href='accessor-apis.html#_imageSubmitButton'>_imageSubmitButton</a>
+</li></ul></li><li><a href='accessor-apis.html#Dropdowns'>Dropdowns</a>
+<ul><li><a href='accessor-apis.html#_select'>_select</a>
+</li><li><a href='accessor-apis.html#_option'>_option</a>
+</li></ul></li><li><a href='accessor-apis.html#File Uploads'>File Uploads</a>
+<ul><li><a href='accessor-apis.html#_file'>_file</a>
+</li></ul></li><li><a href='accessor-apis.html#Table Elements'>Table Elements</a>
+<ul><li><a href='accessor-apis.html#_table'>_table</a>
+</li><li><a href='accessor-apis.html#_row'>_row</a>
+</li><li><a href='accessor-apis.html#_cell'>_cell</a>
+</li><li><a href='accessor-apis.html#_tableHeader'>_tableHeader</a>
+</li></ul></li><li><a href='accessor-apis.html#Other HTML Tags'>Other HTML Tags</a>
+<ul><li><a href='accessor-apis.html#_link'>_link</a>
+</li><li><a href='accessor-apis.html#_image'>_image</a>
+</li><li><a href='accessor-apis.html#_label'>_label</a>
+</li><li><a href='accessor-apis.html#_listItem'>_listItem</a>
+</li><li><a href='accessor-apis.html#_list'>_list</a>
+</li><li><a href='accessor-apis.html#_list'>_list</a>
+</li><li><a href='accessor-apis.html#_div'>_div</a>
+</li><li><a href='accessor-apis.html#_span'>_span</a>
+</li><li><a href='accessor-apis.html#_fieldset'>_fieldset</a>
+</li><li><a href='accessor-apis.html#_heading1'>_heading1</a>
+</li><li><a href='accessor-apis.html#_heading2'>_heading2</a>
+</li><li><a href='accessor-apis.html#_heading3'>_heading3</a>
+</li><li><a href='accessor-apis.html#_heading4'>_heading4</a>
+</li><li><a href='accessor-apis.html#_heading5'>_heading5</a>
+</li><li><a href='accessor-apis.html#_heading6'>_heading6</a>
+</li><li><a href='accessor-apis.html#_area'>_area</a>
+</li><li><a href='accessor-apis.html#_map'>_map</a>
+</li><li><a href='accessor-apis.html#_paragraph'>_paragraph</a>
+</li><li><a href='accessor-apis.html#_italic'>_italic</a>
+</li><li><a href='accessor-apis.html#_emphasis'>_emphasis</a>
+</li><li><a href='accessor-apis.html#_bold'>_bold</a>
+</li><li><a href='accessor-apis.html#_strong'>_strong</a>
+</li><li><a href='accessor-apis.html#_preformatted'>_preformatted</a>
+</li><li><a href='accessor-apis.html#_code'>_code</a>
+</li><li><a href='accessor-apis.html#_blockquote'>_blockquote</a>
+</li><li><a href='accessor-apis.html#_canvas'>_canvas</a>
+</li><li><a href='accessor-apis.html#_abbr'>_abbr</a>
+</li><li><a href='accessor-apis.html#_hr'>_hr</a>
+</li><li><a href='accessor-apis.html#_iframe'>_iframe</a>
+</li><li><a href='accessor-apis.html#_frame'>_frame</a>
+</li><li><a href='accessor-apis.html#_object'>_object</a>
+</li><li><a href='accessor-apis.html#_embed'>_embed</a>
+</li><li><a href='accessor-apis.html#_dList'>_dList</a>
+</li><li><a href='accessor-apis.html#_dTerm'>_dTerm</a>
+</li><li><a href='accessor-apis.html#_dDesc'>_dDesc</a>
+</li><li><a href='accessor-apis.html#_font'>_font</a>
+</li><li><a href='accessor-apis.html#_svg_rect'>_svg_rect</a>
+</li><li><a href='accessor-apis.html#_svg_tspan'>_svg_tspan</a>
+</li><li><a href='accessor-apis.html#_svg_circle'>_svg_circle</a>
+</li><li><a href='accessor-apis.html#_svg_ellipse'>_svg_ellipse</a>
+</li><li><a href='accessor-apis.html#_svg_line'>_svg_line</a>
+</li><li><a href='accessor-apis.html#_svg_polygon'>_svg_polygon</a>
+</li><li><a href='accessor-apis.html#_svg_polyline'>_svg_polyline</a>
+</li><li><a href='accessor-apis.html#_svg_path'>_svg_path</a>
+</li><li><a href='accessor-apis.html#_svg_text'>_svg_text</a>
+</li></ul></li><li><a href='generic-accessor-apis.html'>Generic Accessor APIs</a>
+<ul><li><a href='generic-accessor-apis.html#_activeElement'>_activeElement</a>
+</li><li><a href='generic-accessor-apis.html#_byId'>_byId</a>
+</li><li><a href='generic-accessor-apis.html#_byText'>_byText</a>
+</li><li><a href='generic-accessor-apis.html#_byClassName'>_byClassName</a>
+</li><li><a href='generic-accessor-apis.html#_byXPath'>_byXPath</a>
+</li><li><a href='generic-accessor-apis.html#_accessor'>_accessor</a>
+</li><li><a href='generic-accessor-apis.html#_bySeleniumLocator'>_bySeleniumLocator</a>
+</li></ul></li></ul></li><li><a href='relation-apis.html'>Relation APIs</a>
+<ul><li><a href='relation-apis.html#DOM Relation APIs'>DOM Relation APIs</a>
+<ul><li><a href='relation-apis.html#_near'>_near</a>
+</li><li><a href='relation-apis.html#_in'>_in</a>
+</li><li><a href='relation-apis.html#_startLookInside'>_startLookInside</a>
+</li><li><a href='relation-apis.html#_stopLookInside'>_stopLookInside</a>
+</li></ul></li><li><a href='relation-apis.html#Positional Relation APIs'>Positional Relation APIs</a>
+<ul><li><a href='relation-apis.html#_rightOf'>_rightOf</a>
+</li><li><a href='relation-apis.html#_leftOf'>_leftOf</a>
+</li><li><a href='relation-apis.html#_leftOrRightOf'>_leftOrRightOf</a>
+</li><li><a href='relation-apis.html#_under'>_under</a>
+</li><li><a href='relation-apis.html#_above'>_above</a>
+</li><li><a href='relation-apis.html#_aboveOrUnder'>_aboveOrUnder</a>
+</li></ul></li><li><a href='relation-apis.html#Parent APIs'>Parent APIs</a>
+<ul><li><a href='relation-apis.html#_parentNode'>_parentNode</a>
+</li><li><a href='relation-apis.html#_parentCell'>_parentCell</a>
+</li><li><a href='relation-apis.html#_parentRow'>_parentRow</a>
+</li><li><a href='relation-apis.html#_parentTable'>_parentTable</a>
+</li></ul></li></ul></li><li><a href='action-apis.html'>Action APIs</a>
+<ul><li><a href='action-apis.html#Mouse Events'>Mouse Events</a>
+<ul><li><a href='action-apis.html#_xy'>_xy</a>
+</li><li><a href='action-apis.html#_click'>_click</a>
+</li><li><a href='action-apis.html#_doubleClick'>_doubleClick</a>
+</li><li><a href='action-apis.html#_rightClick'>_rightClick</a>
+</li><li><a href='action-apis.html#_mouseDown'>_mouseDown</a>
+</li><li><a href='action-apis.html#_mouseUp'>_mouseUp</a>
+</li><li><a href='action-apis.html#_mouseOver'>_mouseOver</a>
+</li><li><a href='action-apis.html#_check'>_check</a>
+</li><li><a href='action-apis.html#_uncheck'>_uncheck</a>
+</li><li><a href='action-apis.html#_setSelected'>_setSelected</a>
+</li><li><a href='action-apis.html#_dragDrop'>_dragDrop</a>
+</li><li><a href='action-apis.html#_dragDropXY'>_dragDropXY</a>
+</li></ul></li><li><a href='action-apis.html#Touch Events'>Touch Events</a>
+<ul><li><a href='action-apis.html#_tap'>_tap</a>
+</li><li><a href='action-apis.html#_touch'>_touch</a>
+</li><li><a href='action-apis.html#_touchStart'>_touchStart</a>
+</li><li><a href='action-apis.html#_touchEnd'>_touchEnd</a>
+</li><li><a href='action-apis.html#_touchCancel'>_touchCancel</a>
+</li><li><a href='action-apis.html#_touchMove'>_touchMove</a>
+</li><li><a href='action-apis.html#_swipe'>_swipe</a>
+</li></ul></li><li><a href='action-apis.html#Keyboard Events'>Keyboard Events</a>
+<ul><li><a href='action-apis.html#_setValue'>_setValue</a>
+</li><li><a href='action-apis.html#_keyDown'>_keyDown</a>
+</li><li><a href='action-apis.html#_keyUp'>_keyUp</a>
+</li><li><a href='action-apis.html#_keyPress'>_keyPress</a>
+</li><li><a href='action-apis.html#_type'>_type</a>
+</li></ul></li><li><a href='action-apis.html#Focus Events'>Focus Events</a>
+<ul><li><a href='action-apis.html#_focus'>_focus</a>
+</li><li><a href='action-apis.html#_removeFocus'>_removeFocus</a>
+</li><li><a href='action-apis.html#_blur'>_blur</a>
+</li></ul></li><li><a href='action-apis.html#Text Selection'>Text Selection</a>
+<ul><li><a href='action-apis.html#_selectRange'>_selectRange</a>
+</li><li><a href='action-apis.html#_selectTextRange'>_selectTextRange</a>
+</li></ul></li><li><a href='action-apis.html#Page Navigation'>Page Navigation</a>
+<ul><li><a href='action-apis.html#_navigateTo'>_navigateTo</a>
+</li></ul></li><li><a href='action-apis.html#Waits'>Waits</a>
+<ul><li><a href='action-apis.html#_wait'>_wait</a>
+</li></ul></li><li><a href='action-apis.html#Native Events'>Native Events</a>
+<ul><li><a href='action-apis.html#_typeNative'>_typeNative</a>
+</li><li><a href='action-apis.html#_typeKeyCodeNative'>_typeKeyCodeNative</a>
+</li><li><a href='action-apis.html#_focusWindow'>_focusWindow</a>
+</li><li><a href='action-apis.html#_windowAction'>_windowAction</a>
+</li><li><a href='action-apis.html#_clickNative'>_clickNative</a>
+</li><li><a href='action-apis.html#_rightClickNative'>_rightClickNative</a>
+</li><li><a href='action-apis.html#_doubleClickNative'>_doubleClickNative</a>
+</li><li><a href='action-apis.html#_clickNativeXY'>_clickNativeXY</a>
+</li><li><a href='action-apis.html#_mouseOverNative'>_mouseOverNative</a>
+</li><li><a href='action-apis.html#_dragDropNative'>_dragDropNative</a>
+</li><li><a href='action-apis.html#_dragDropNativeXY'>_dragDropNativeXY</a>
+</li></ul></li><li><a href='action-apis.html#File Upload'>File Upload</a>
+<ul><li><a href='action-apis.html#_setFile'>_setFile</a>
+</li><li><a href='action-apis.html#_setFile2'>_setFile2</a>
+</li><li><a href='action-apis.html#Troubleshooting'>Troubleshooting</a>
+</li><li><a href='action-apis.html#Identifying action url for _setFile/_setFile2'>Identifying action url for _setFile/_setFile2</a>
+</li><li><a href='action-apis.html#File upload using native events'>File upload using native events</a>
+</li></ul></li><li><a href='action-apis.html#File Download'>File Download</a>
+<ul><li><a href='action-apis.html#File download overview'>File download overview</a>
+</li><li><a href='action-apis.html#_lastDownloadedFileName'>_lastDownloadedFileName</a>
+</li><li><a href='action-apis.html#_saveDownloadedAs'>_saveDownloadedAs</a>
+</li><li><a href='action-apis.html#_clearLastDownloadedFileName'>_clearLastDownloadedFileName</a>
+</li><li><a href='action-apis.html#File download APIs example'>File download APIs example</a>
+</li><li><a href='action-apis.html#File download troubleshooting'>File download troubleshooting</a>
+</li><li><a href='action-apis.html#Handling file downloads triggered in a new window'>Handling file downloads triggered in a new window</a>
+</li><li><a href='action-apis.html#_sendHTMLResponseAfterFileDownload'>_sendHTMLResponseAfterFileDownload</a>
+</li><li><a href='action-apis.html#File download from a different domain'>File download from a different domain</a>
+</li><li><a href='action-apis.html#_addToSession'>_addToSession</a>
+</li></ul></li><li><a href='action-apis.html#Window open/close APIs'>Window open/close APIs</a>
+<ul><li><a href='action-apis.html#_closeWindow'>_closeWindow</a>
+</li><li><a href='action-apis.html#_closeBrowser'>_closeBrowser</a>
+</li><li><a href='action-apis.html#_openBrowser'>_openBrowser</a>
+</li></ul></li><li><a href='action-apis.html#Calling Generic Code'>Calling Generic Code</a>
+<ul><li><a href='action-apis.html#_call'>_call</a>
+</li><li><a href='action-apis.html#_eval'>_eval</a>
+</li></ul></li></ul></li><li><a href='screenshot-apis.html'>Screenshot APIs</a>
+<ul><li><a href='screenshot-apis.html#_takeScreenShot'>_takeScreenShot</a>
+</li><li><a href='screenshot-apis.html#_takeScreenShots'>_takeScreenShots</a>
+</li><li><a href='screenshot-apis.html#_takePageScreenShot'>_takePageScreenShot</a>
+</li><li><a href='screenshot-apis.html#_assertSnapShot'>_assertSnapShot</a>
+</li><li><a href='screenshot-apis.html#_compareImages'>_compareImages</a>
+</li><li><a href='screenshot-apis.html#Configuring GraphicsMagick'>Configuring GraphicsMagick</a>
+<ul><li><a href='screenshot-apis.html#Configure GM on Windows'>Configure GM on Windows</a>
+</li><li><a href='screenshot-apis.html#Configure GM on Linux/Mac'>Configure GM on Linux/Mac</a>
+</li></ul></li><li><a href='screenshot-apis.html#Skip the Screenshot APIs'>Skip the Screenshot APIs</a>
+</li><li><a href='screenshot-apis.html#Notes'>Notes</a>
+</li></ul></li><li><a href='include-apis.html'>Include APIs</a>
+<ul><li><a href='include-apis.html#_include'>_include</a>
+</li><li><a href='include-apis.html#_includeOnce'>_includeOnce</a>
+</li><li><a href='include-apis.html#_dynamicInclude'>_dynamicInclude</a>
+</li></ul></li><li><a href='fetch-apis.html'>Fetch APIs</a>
+<ul><li><a href='fetch-apis.html#_getValue'>_getValue</a>
+</li><li><a href='fetch-apis.html#_getText'>_getText</a>
+</li><li><a href='fetch-apis.html#_getOptions'>_getOptions</a>
+</li><li><a href='fetch-apis.html#_getCellText'>_getCellText</a>
+</li><li><a href='fetch-apis.html#_getSelectedText'>_getSelectedText</a>
+</li><li><a href='fetch-apis.html#_getAttribute'>_getAttribute</a>
+</li><li><a href='fetch-apis.html#_exists'>_exists</a>
+</li><li><a href='fetch-apis.html#_areEqual'>_areEqual</a>
+</li><li><a href='fetch-apis.html#_isVisible'>_isVisible</a>
+</li><li><a href='fetch-apis.html#_containsText'>_containsText</a>
+</li><li><a href='fetch-apis.html#_containsHTML'>_containsHTML</a>
+</li><li><a href='fetch-apis.html#_contains'>_contains</a>
+</li><li><a href='fetch-apis.html#_title'>_title</a>
+</li><li><a href='fetch-apis.html#_getTableContents'>_getTableContents</a>
+</li><li><a href='fetch-apis.html#_style'>_style</a>
+</li><li><a href='fetch-apis.html#_position'>_position</a>
+</li><li><a href='fetch-apis.html#_getSelectionText'>_getSelectionText</a>
+<li><a href='fetch-apis.html#Browser Detection APIs'>Browser Detection APIs</a>
+<ul><li><a href='fetch-apis.html#_userAgent'>_userAgent</a>
+</li><li><a href='fetch-apis.html#_getScreenSize'>_getScreenSize</a>
+</li><li><a href='fetch-apis.html#_isIE'>_isIE</a>
+</li><li><a href='fetch-apis.html#_isIE9'>_isIE9</a>
+</li><li><a href='fetch-apis.html#_isIE10'>_isIE10</a>
+</li><li><a href='fetch-apis.html#_isFF'>_isFF</a>
+</li><li><a href='fetch-apis.html#_isFF3'>_isFF3</a>
+</li><li><a href='fetch-apis.html#_isFF4'>_isFF4</a>
+</li><li><a href='fetch-apis.html#_isChrome'>_isChrome</a>
+</li><li><a href='fetch-apis.html#_isSafari'>_isSafari</a>
+</li><li><a href='fetch-apis.html#_isOpera'>_isOpera</a>
+</li><li><a href='fetch-apis.html#_isPhantomJS'>_isPhantomJS</a>
+</li><li><a href='fetch-apis.html#_isHTMLUnit'>_isHTMLUnit</a>
+</li></ul></li><li><a href='fetch-apis.html#Rich Text Editors (Content Editable elements)'>Rich Text Editors (Content Editable elements)</a>
+</li><li><a href='fetch-apis.html#Generic attribute fetching mechanism'>Generic attribute fetching mechanism</a>
+<ul><li><a href='fetch-apis.html#_fetch'>_fetch</a>
+</li><li><a href='fetch-apis.html#_set'>_set</a>
+</li><li><a href='fetch-apis.html#_condition'>_condition</a>
+</li></ul></li><li><a href='fetch-apis.html#Multiple Elements'>Multiple Elements</a>
+<ul><li><a href='fetch-apis.html#_collect'>_collect</a>
+</li><li><a href='fetch-apis.html#_count'>_count</a>
+</li><li><a href='fetch-apis.html#_collectAttributes'>_collectAttributes</a>
+</li></ul></li></ul></li><li><a href='assertions.html'>Assertion APIs</a>
+<ul><li><a href='assertions.html#_assert'>_assert</a>
+</li><li><a href='assertions.html#_assertTrue'>_assertTrue</a>
+</li><li><a href='assertions.html#_assertNotTrue'>_assertNotTrue</a>
+</li><li><a href='assertions.html#_assertFalse'>_assertFalse</a>
+</li><li><a href='assertions.html#_assertNull'>_assertNull</a>
+</li><li><a href='assertions.html#_assertNotNull'>_assertNotNull</a>
+</li><li><a href='assertions.html#_assertExists'>_assertExists</a>
+</li><li><a href='assertions.html#_assertVisible'>_assertVisible</a>
+</li><li><a href='assertions.html#_assertNotVisible'>_assertNotVisible</a>
+</li><li><a href='assertions.html#_assertNotExists'>_assertNotExists</a>
+</li><li><a href='assertions.html#_assertEqual'>_assertEqual</a>
+</li><li><a href='assertions.html#_assertEqualArrays'>_assertEqualArrays</a>
+</li><li><a href='assertions.html#_assertNotEqual'>_assertNotEqual</a>
+</li><li><a href='assertions.html#_assertContainsText'>_assertContainsText</a>
+</li><li><a href='assertions.html#_assertNotContainsText'>_assertNotContainsText</a>
+</li><li><a href='assertions.html#_assertEqualImages'>_assertEqualImages</a>
+</li></ul></li><li><a href='logging-apis.html'>Logging APIs</a>
+<ul><li><a href='logging-apis.html#_log'>_log</a>
+</li><li><a href='logging-apis.html#_logException'>_logException</a>
+</li><li><a href='logging-apis.html#_logExceptionAsFailure'>_logExceptionAsFailure</a>
+</li><li><a href='logging-apis.html#_logImage'>_logImage</a>
+<li><a href='logging-apis.html#Masking logs'>Masking logs</a>
+<ul><li><a href='logging-apis.html#_maskLogs'>_maskLogs</a>
+</li><li><a href='logging-apis.html#_unmaskLogs'>_unmaskLogs</a>
+</li><li><a href='logging-apis.html#Example of _maskLogs _unmaskLogs'>Example of _maskLogs _unmaskLogs</a>
+</li></ul></li><li><a href='logging-apis.html#Disable/Enable INFO logging'>Disable/Enable INFO logging</a>
+<ul><li><a href='logging-apis.html#_disableInfoLogging'>_disableInfoLogging</a>
+</li><li><a href='logging-apis.html#_enableInfoLogging'>_enableInfoLogging</a>
+</li></ul></li><li><a href='logging-apis.html#Demarcating Test Cases'>Demarcating Test Cases</a>
+<ul><li><a href='logging-apis.html#_testcase'>_testcase</a>
+</li></ul></li><li><a href='logging-apis.html#HAR Logging'>HAR Logging</a>
+<ul><li><a href='logging-apis.html#Globally enable HAR Logging'>Globally enable HAR Logging</a>
+</li><li><a href='logging-apis.html#Locally enable HAR Logging'>Locally enable HAR Logging</a>
+</li><li><a href='logging-apis.html#_startHarLogging'>_startHarLogging</a>
+</li><li><a href='logging-apis.html#_stopHarLogging'>_stopHarLogging</a>
+</li></ul></li></ul></li><li><a href='debug-helper-apis.html'>Debug Helper APIs</a>
+<ul><li><a href='debug-helper-apis.html#_debug'>_debug</a>
+</li><li><a href='debug-helper-apis.html#_debugToErr'>_debugToErr</a>
+</li><li><a href='debug-helper-apis.html#_debugToFile'>_debugToFile</a>
+</li><li><a href='debug-helper-apis.html#_pause'>_pause</a>
+</li><li><a href='debug-helper-apis.html#_alert'>_alert</a>
+</li><li><a href='debug-helper-apis.html#_confirm'>_confirm</a>
+</li><li><a href='debug-helper-apis.html#_prompt'>_prompt</a>
+</li><li><a href='debug-helper-apis.html#_highlight'>_highlight</a>
+</li></ul></li><li><a href='file-apis.html'>File APIs</a>
+<ul><li><a href='file-apis.html#Text Files'>Text Files</a>
+<ul><li><a href='file-apis.html#_readFile'>_readFile</a>
+</li><li><a href='file-apis.html#_writeFile'>_writeFile</a>
+</li><li><a href='file-apis.html#_writeToFile'>_writeToFile</a>
+</li><li><a href='file-apis.html#_deleteFile'>_deleteFile</a>
+</li><li><a href='file-apis.html#_renameFile'>_renameFile</a>
+</li><li><a href='file-apis.html#_copyFile'>_copyFile</a>
+</li></ul></li><li><a href='file-apis.html#CSV Files'>CSV Files</a>
+<ul><li><a href='file-apis.html#_readCSVFile'>_readCSVFile</a>
+</li><li><a href='file-apis.html#_writeCSVFile'>_writeCSVFile</a>
+</li></ul></li></ul></li><li><a href='excel-apis.html'>Excel APIs</a>
+<ul><li><a href='excel-apis.html#_readExcelFile'>_readExcelFile</a>
+</li><li><a href='excel-apis.html#_getExcel'>_getExcel</a>
+</li></ul></li><li><a href='database-apis.html'>Database APIs</a>
+<ul><li><a href='database-apis.html#_getDB'>_getDB</a>
+</li><li><a href='database-apis.html#_getDB'>_getDB</a>
+</li><li><a href='database-apis.html#Using the SahiDB object'>Using the SahiDB object</a>
+</li><li><a href='database-apis.html#SahiDB.select'>SahiDB.select</a>
+</li><li><a href='database-apis.html#SahiDB.selectWithHeader'>SahiDB.selectWithHeader</a>
+</li><li><a href='database-apis.html#SahiDB.update'>SahiDB.update</a>
+</li><li><a href='database-apis.html#Accessing databases directly'>Accessing databases directly</a>
+</li></ul></li><li><a href='data-drive-apis.html'>Data Drive APIs</a>
+<ul><li><a href='data-drive-apis.html#_dataDrive'>_dataDrive</a>
+<li><a href='data-drive-apis.html#Using with various data source APIs'>Using with various data source APIs</a>
+<ul><li><a href='data-drive-apis.html#Simple 2D array'>Simple 2D array</a>
+</li><li><a href='data-drive-apis.html#CSV'>CSV</a>
+</li><li><a href='data-drive-apis.html#Excel Sheet'>Excel Sheet</a>
+</li><li><a href='data-drive-apis.html#Database'>Database</a>
+</li></ul></li></ul></li><li><a href='url-apis.html'>URL APIs</a>
+<ul><li><a href='url-apis.html#_readURL'>_readURL</a>
+</li></ul></li><li><a href='script-suite-info-apis.html'>Script/Suite Info APIs</a>
+<ul><li><a href='script-suite-info-apis.html#_scriptName'>_scriptName</a>
+</li><li><a href='script-suite-info-apis.html#_scriptPath'>_scriptPath</a>
+</li><li><a href='script-suite-info-apis.html#_scriptStartTime'>_scriptStartTime</a>
+</li><li><a href='script-suite-info-apis.html#_scriptStatus'>_scriptStatus</a>
+</li><li><a href='script-suite-info-apis.html#_userDataDir'>_userDataDir</a>
+</li><li><a href='script-suite-info-apis.html#_userDataPath'>_userDataPath</a>
+</li><li><a href='script-suite-info-apis.html#_resolvePath'>_resolvePath</a>
+</li><li><a href='script-suite-info-apis.html#_sessionInfo'>_sessionInfo</a>
+</li><li><a href='script-suite-info-apis.html#_suiteInfo'>_suiteInfo</a>
+</li><li><a href='script-suite-info-apis.html#_isDataPassed'>_isDataPassed</a>
+</li></ul></li><li><a href='script-execution-control-apis.html'>Script Execution Control APIs</a>
+<ul><li><a href='script-execution-control-apis.html#_wait'>_wait</a>
+</li><li><a href='script-execution-control-apis.html#_setXHRReadyStatesToWaitFor'>_setXHRReadyStatesToWaitFor</a>
+</li><li><a href='script-execution-control-apis.html#_setStrictVisibilityCheck'>_setStrictVisibilityCheck</a>
+</li><li><a href='script-execution-control-apis.html#_setSpeed'>_setSpeed</a>
+</li><li><a href='script-execution-control-apis.html#_stopOnError'>_stopOnError</a>
+</li><li><a href='script-execution-control-apis.html#_continueOnError'>_continueOnError</a>
+</li><li><a href='script-execution-control-apis.html#_runUnitTests'>_runUnitTests</a>
+</li><li><a href='script-execution-control-apis.html#_fail'>_fail</a>
+</li><li><a href='script-execution-control-apis.html#_stop'>_stop</a>
+<li><a href='script-execution-control-apis.html#Script Synchronization'>Script Synchronization</a>
+<ul><li><a href='script-execution-control-apis.html#_lock'>_lock</a>
+</li><li><a href='script-execution-control-apis.html#_unlock'>_unlock</a>
+</li><li><a href='script-execution-control-apis.html#_lockWindow'>_lockWindow</a>
+</li><li><a href='script-execution-control-apis.html#_unlockWindow'>_unlockWindow</a>
+</li></ul></li><li><a href='script-execution-control-apis.html#Callback functions'>Callback functions</a>
+<ul><li><a href='script-execution-control-apis.html#onScriptFailure'>onScriptFailure</a>
+</li><li><a href='script-execution-control-apis.html#onScriptError'>onScriptError</a>
+</li><li><a href='script-execution-control-apis.html#onScriptEnd'>onScriptEnd</a>
+</li><li><a href='script-execution-control-apis.html#Callback example'>Callback example</a>
+</li><li><a href='script-execution-control-apis.html#Taking screenshots on error/failure'>Taking screenshots on error/failure</a>
+</li><li><a href='script-execution-control-apis.html#Force Sahi to continue on error after screenshots and logging.'>Force Sahi to continue on error after screenshots and logging.</a>
+</li><li><a href='script-execution-control-apis.html#onBeforeStep'>onBeforeStep</a>
+</li><li><a href='script-execution-control-apis.html#onAfterStep'>onAfterStep</a>
+</li></ul></li><li><a href='script-execution-control-apis.html#Recovery Functions (DEPRECATED)'>Recovery Functions (DEPRECATED)</a>
+<ul><li><a href='script-execution-control-apis.html#_setRecovery'>_setRecovery</a>
+</li><li><a href='script-execution-control-apis.html#_removeRecovery'>_removeRecovery</a>
+</li></ul></li></ul></li><li><a href='http-header-manipulation-apis.html'>HTTP Header Manipulation APIs</a>
+<ul><li><a href='http-header-manipulation-apis.html#_setHttpHeader'>_setHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_addHttpHeader'>_addHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_removeHttpHeader'>_removeHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_resetHttpHeader'>_resetHttpHeader</a>
+</li><li><a href='http-header-manipulation-apis.html#_mapDomainToIP'>_mapDomainToIP</a>
+<li><a href='http-header-manipulation-apis.html#Keep-Alive'>Keep-Alive</a>
+<ul><li><a href='http-header-manipulation-apis.html#_disableKeepAlive'>_disableKeepAlive</a>
+</li><li><a href='http-header-manipulation-apis.html#_enableKeepAlive'>_enableKeepAlive</a>
+</li></ul></li><li><a href='http-header-manipulation-apis.html#Cookie APIs'>Cookie APIs</a>
+<ul><li><a href='http-header-manipulation-apis.html#_cookie'>_cookie</a>
+</li><li><a href='http-header-manipulation-apis.html#_createCookie'>_createCookie</a>
+</li><li><a href='http-header-manipulation-apis.html#_deleteCookie'>_deleteCookie</a>
+</li><li><a href='http-header-manipulation-apis.html#Cookie Manager'>Cookie Manager</a>
+</li></ul></li></ul></li><li><a href='url-mock-apis.html'>URL Mock APIs</a>
+<ul><li><a href='url-mock-apis.html#_addMock'>_addMock</a>
+</li><li><a href='url-mock-apis.html#_mockImage'>_mockImage</a>
+</li><li><a href='url-mock-apis.html#_removeMock'>_removeMock</a>
+</li></ul></li><li><a href='javascript-dialogs.html'>Javascript Dialogs</a>
+<ul><li><a href='javascript-dialogs.html#Alert'>Alert</a>
+<ul><li><a href='javascript-dialogs.html#_lastAlert'>_lastAlert</a>
+</li><li><a href='javascript-dialogs.html#_clearLastAlert'>_clearLastAlert</a>
+</li><li><a href='javascript-dialogs.html#Alert Example'>Alert Example</a>
+</li></ul></li><li><a href='javascript-dialogs.html#Confirm'>Confirm</a>
+<ul><li><a href='javascript-dialogs.html#_lastConfirm'>_lastConfirm</a>
+</li><li><a href='javascript-dialogs.html#_expectConfirm'>_expectConfirm</a>
+</li><li><a href='javascript-dialogs.html#_clearLastConfirm'>_clearLastConfirm</a>
+</li><li><a href='javascript-dialogs.html#Confirm Example'>Confirm Example</a>
+</li></ul></li><li><a href='javascript-dialogs.html#Prompt'>Prompt</a>
+<ul><li><a href='javascript-dialogs.html#_lastPrompt'>_lastPrompt</a>
+</li><li><a href='javascript-dialogs.html#_expectPrompt'>_expectPrompt</a>
+</li><li><a href='javascript-dialogs.html#_clearLastPrompt'>_clearLastPrompt</a>
+</li><li><a href='javascript-dialogs.html#Prompt Example'>Prompt Example</a>
+</li></ul></li><li><a href='javascript-dialogs.html#Print dialog'>Print dialog</a>
+<ul><li><a href='javascript-dialogs.html#_printCalled'>_printCalled</a>
+</li><li><a href='javascript-dialogs.html#_clearPrintCalled'>_clearPrintCalled</a>
+</li></ul></li></ul></li><li><a href='rte-apis.html'>Rich Text Editors</a>
+<ul><li><a href='rte-apis.html#Identification'>Identification</a>
+<ul><li><a href='rte-apis.html#_rte'>_rte</a>
+</li></ul></li><li><a href='rte-apis.html#RTE Fetch APIs'>RTE Fetch APIs</a>
+<ul><li><a href='rte-apis.html#_rteText'>_rteText</a>
+</li><li><a href='rte-apis.html#_rteHTML'>_rteHTML</a>
+</li></ul></li><li><a href='rte-apis.html#RTE Action APIs'>RTE Action APIs</a>
+<ul><li><a href='rte-apis.html#_rteWrite'>_rteWrite</a>
+</li></ul></li><li><a href='rte-apis.html#RTE Text Selection APIs'>RTE Text Selection APIs</a>
+</li></ul></li><li><a href='popup-windows.html'>Popup Windows</a>
+<ul><li><a href='popup-windows.html#_selectWindow'>_selectWindow</a>
+</li><li><a href='popup-windows.html#_popup'>_popup</a>
+</li><li><a href='popup-windows.html#_getWindows'>_getWindows</a>
+</li><li><a href='popup-windows.html#_windowExists'>_windowExists</a>
+</li><li><a href='popup-windows.html#_getRecentWindow'>_getRecentWindow</a>
+</li></ul></li><li><a href='multiple-domains.html'>Multiple Domains</a>
+<ul><li><a href='multiple-domains.html#_selectDomain'>_selectDomain</a>
+</li><li><a href='multiple-domains.html#_domain'>_domain</a>
+</li></ul></li><li><a href='frames-domains.html'>Frames and Domains</a>
+<ul><li><a href='frames-domains.html#Frames from same domain'>Frames from same domain</a>
+</li><li><a href='frames-domains.html#Frames from different domains'>Frames from different domains</a>
+</li><li><a href='frames-domains.html#Subdomains with document.domain'>Subdomains with document.domain</a>
+</li></ul></li><li><a href='multiple-browsers.html'>Multiple Browsers</a>
+<ul><li><a href='multiple-browsers.html#_launchNewBrowser'>_launchNewBrowser</a>
+</li><li><a href='multiple-browsers.html#_selectBrowser'>_selectBrowser</a>
+</li><li><a href='multiple-browsers.html#Sample code'>Sample code</a>
+</li></ul></li><li><a href='execute-external-programs.html'>Execute External Programs</a>
+<ul><li><a href='execute-external-programs.html#_execute'>_execute</a>
+</li></ul></li><li><a href='util-apis.html'>Utility APIs</a>
+<ul><li><a href='util-apis.html#_random'>_random</a>
+</li><li><a href='util-apis.html#_extract'>_extract</a>
+</li><li><a href='util-apis.html#_trim'>_trim</a>
+</li><li><a href='util-apis.html#_toJSON'>_toJSON</a>
+</li></ul></li><li><a href='rest-apis.html'>Rest APIs</a>
+<ul><li><a href='rest-apis.html#RESTRequest'>RESTRequest</a>
+</li><li><a href='rest-apis.html#RESTRequest.addToQueryString'>RESTRequest.addToQueryString</a>
+</li><li><a href='rest-apis.html#RESTRequest.addToBody'>RESTRequest.addToBody</a>
+</li><li><a href='rest-apis.html#RESTRequest.setHeader'>RESTRequest.setHeader</a>
+</li><li><a href='rest-apis.html#RESTRequest.setURL'>RESTRequest.setURL</a>
+</li><li><a href='rest-apis.html#RESTRequest.setBody'>RESTRequest.setBody</a>
+</li><li><a href='rest-apis.html#RESTRequest.setCredentials'>RESTRequest.setCredentials</a>
+</li><li><a href='rest-apis.html#RESTRequest.submit'>RESTRequest.submit</a>
+</li><li><a href='rest-apis.html#RESTResponse'>RESTResponse</a>
+</li><li><a href='rest-apis.html#RESTResponse.getResponseCode'>RESTResponse.getResponseCode</a>
+</li><li><a href='rest-apis.html#RESTResponse.getHeader'>RESTResponse.getHeader</a>
+</li><li><a href='rest-apis.html#RESTResponse.getBodyAsString'>RESTResponse.getBodyAsString</a>
+</li><li><a href='rest-apis.html#RESTResponse.getBody'>RESTResponse.getBody</a>
+</li><li><a href='rest-apis.html#Parameter'>Parameter</a>
+</li><li><a href='rest-apis.html#Parameter.add'>Parameter.add</a>
+</li><li><a href='rest-apis.html#Parameter.remove'>Parameter.remove</a>
+</li><li><a href='rest-apis.html#Parameter.getQueryString'>Parameter.getQueryString</a>
+</li></ul></li><li><span>---</span>
+</li><li><a href='applet-apis.html'>Applet APIs</a>
+<ul><li><a href='applet-apis.html#_applet'>_applet</a>
+</li><li><a href='applet-apis.html#_a'>_a</a>
+<li><a href='applet-apis.html#Applet Accessors'>Applet Accessors</a>
+</li><li><a href='applet-apis.html#Applet Actions'>Applet Actions</a>
+</li><li><a href='applet-apis.html#Applet Fetch APIs'>Applet Fetch APIs</a>
+</li></ul></li><li><a href='flex-apis.html'>Flex APIs</a>
+<ul><li><a href='flex-apis.html#_flex'>_flex</a>
+</li><li><a href='flex-apis.html#_f'>_f</a>
+</li><li><a href='flex-apis.html#_setFlexReadyCondition'>_setFlexReadyCondition</a>
+</li></ul></li><li><a href='layout-verification.html'>Layout APIs</a>
+<ul><li><a href='layout-verification.html#_readLayoutFile'>_readLayoutFile</a>
+</li><li><a href='layout-verification.html#_verifyLayout'>_verifyLayout</a>
+</li><li><a href='layout-verification.html#Layout verification example'>Layout verification example</a>
+</li></ul></li><li><a href='document-creation.html'>Documentation APIs</a>
+<ul><li><a href='document-creation.html#_startDocumentation'>_startDocumentation</a>
+</li><li><a href='document-creation.html#_stopDocumentation'>_stopDocumentation</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Data Drive APIs</h2>
+      <!-- Data Drive APIs -->
+<div class="abstract"><strong class='heading'>abstract</strong>
+Data driver refers to running a series of steps repeated with multiple sets of data<br/>
+This can be accomplished using the api _dataDrive.<br/>
+</div>
+<br/>
+<div class="api">
+<h3><a href="#_dataDrive" name="_dataDrive" class="headinganchor2" hideFocus="hideFocus">_dataDrive</a></h3>
+Since Sahi Pro: 3.5<br/>
+Since Sahi OS: 3<br/>
+<br/>
+<pre><code>_dataDrive($fn, $data[, $preFn[, $postFn]])</code></pre>
+
+<br/>
+<span class="heading">Arguments</span>
+<table style="margin-top:20px">
+<tr><td width="15%">$fn</td><td width="20%">function </td><td> Javascript function to be executed repeatedly</td></tr><tr><td width="15%">$data</td><td width="20%">2D Array </td><td> Data on which fn should be called iteratively</td></tr><tr><td width="15%">$preFn</td><td width="20%">function optional</td><td> Javascript function to be executed at each iteration BEFORE fn</td></tr><tr><td width="15%">$postFn</td><td width="20%">function optional</td><td> Javascript function to be executed at each iteration AFTER fn</td></tr>
+</table>
+
+<br/>
+<div style="margin-top:20px">
+<span class="heading">Details</span><br/><br/>
+
+Iterates over the data and calls fn for each row of data.<br/>
+preFn and postFn if specified, are called before and after fn for each row.<br/>
+preFn and postFn are guaranteed to be called even if fn fails or returns midway.<br/>
+<br/>
+Example:<br/>
+We will create a function doAdd and call it over multiple sets of data.<br/>
+<br/>
+<pre><code>// function to be called
+function doAdd($first, $second, $total){
+  _setValue(_textbox("first"), $first);
+  _setValue(_textbox("second"), $second);
+  _click(_button("Add"));
+  _assertEqual($total, _textbox("total").value);
+}
+
+// data
+var $data = [
+[2, 3, 5],
+[1, 2, 4],
+[4, 3, 7]
+]
+
+// Pass doAdd and $data to _dataDrive.
+_dataDrive(doAdd, $data); // will call doAdd for each row
+
+// Note how doAdd is passed as a function (without quotes or brackets)
+// _dataDrive(doAdd, $data); // CORRECT
+// _dataDrive(doAdd(), $data); // WRONG to call with brackets
+// _dataDrive("doAdd", $data); // WRONG to use a string
+
+// Call with preFn and postFn
+function logBefore() {
+  _log("Before");
+}
+function logAfter() {
+  _log("After");
+}
+_dataDrive(doAdd, $data, logBefore, logAfter);</code></pre>
+
+</div>
+</div>
+<br/>
+<h2><a href="#Using with various data source APIs" name="Using with various data source APIs" class="headinganchor2" hideFocus="hideFocus">Using with various data source APIs</a></h2>
+<h3><a href="#Simple 2D array" name="Simple 2D array" class="headinganchor2" hideFocus="hideFocus">Simple 2D array</a></h3>
+<pre><code>var $data = [
+[2, 3, 5],
+[1, 2, 4],
+[4, 3, 7]
+]
+_dataDrive(doAdd, $data)</code></pre>
+<br/>
+<h3><a href="#CSV" name="CSV" class="headinganchor2" hideFocus="hideFocus">CSV</a></h3>
+<pre><code>var $data = _readCSVFile("data.csv");
+_dataDrive(doAdd, $data)</code></pre>
+<br/>
+<h3><a href="#Excel Sheet" name="Excel Sheet" class="headinganchor2" hideFocus="hideFocus">Excel Sheet</a></h3>
+<pre><code>var $data = _readExcelFile("data.xls", "Sheet1");
+_dataDrive(doAdd, $data);</code></pre>
+<br/>
+<h3><a href="#Database" name="Database" class="headinganchor2" hideFocus="hideFocus">Database</a></h3>
+<pre><code>var $db = _getDB("com.mysql.jdbc.Driver",
+          "jdbc:mysql://localhost/sahitest?user=user&password=password",
+          "user", "password");
+var $data = $db.select("select num1, num2 from addData");
+_dataDrive(doAdd, $data);</code></pre>
+<br/>
+
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

@@ -1,0 +1,4 @@
+_log("testScript2","success");
+_assertEqual("low,admin,high",$tags);
+_assertEqual("1000",$empid);
+_log("Employee Id = " + $empid);

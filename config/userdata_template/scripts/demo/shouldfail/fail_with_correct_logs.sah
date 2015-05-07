@@ -1,0 +1,5 @@
+onScriptError = null;
+onScriptFailure = null;
+_wait(2000);
+_fail("Log should display _fail only once");
+_wait(2000); // This should not be executed

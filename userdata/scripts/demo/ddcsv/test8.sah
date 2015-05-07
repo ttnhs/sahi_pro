@@ -1,0 +1,3 @@
+_log("test8","success");
+_assertEqual("admin,high",$tags);
+_assertEqual("3000",$empid);

@@ -1,0 +1,60 @@
+var SahiFrameWork_PDFFields = function(){};
+SahiFrameWork_PDFFields.prototype.load = function(fileName) {
+	_sahi.print("In load");
+	var input = new java.io.File(fileName);  // The PDF file from where you would like to extract
+	var pd = Packages.org.apache.pdfbox.pdmodel.PDDocument.load(input);
+	var docCatalog = pd.getDocumentCatalog(); 
+	var acroForm = docCatalog.getAcroForm(); 
+	this.fields = acroForm.getFields();
+}
+SahiFrameWork_PDFFields.prototype.setKeyAttribute = function($keyAttribute) {
+	this.keyAttribute = $keyAttribute;
+}
+SahiFrameWork_PDFFields.prototype.getKeyAttribute = function() {
+	return this.keyAttribute || "getPartialName";
+}
+
+// Prints all the editable fields  and it's value that are available in the pdf.
+SahiFrameWork_PDFFields.prototype.printAll = function() {
+	for (var i=0; i<this.fields.size(); i++) {
+		var s = "";
+		var field = this.fields.get(i);
+		var $json = _sahi.toJSON(field);
+		s += "\n---";
+		s += ("\nFullyQualifiedName : " + field.getFullyQualifiedName());
+		s += ("\nPartialName : " + field.getPartialName());
+		s += ("\nAlternateFieldName : " + field.getAlternateFieldName());
+		s += ("\nFieldType : " + field.getFieldType());
+		s += ("\nValue : " + field.getValue());
+		if (field.isChecked) s += ("\nChecked : " + field.isChecked());
+		var $s = s.replace(/\n/g, '<br/>');
+		_log($s);
+	}
+}
+SahiFrameWork_PDFFields.prototype.getField = function($name) {
+	for (var i=0; i<this.fields.size(); i++) {
+		var field = this.fields.get(i);
+		var attr = field[this.getKeyAttribute()]();
+		if (attr == $name) return field;
+	}
+	return null;
+}
+
+// Gets the value of editable fields in pdf.
+
+// $name: By default PartialName of the field.
+// Can be changed by calling setKeyAttribute() method  and passing the attribute.
+// setKeyAttribute("getAlternateFieldName")
+// getValue("Please enter your address here")
+SahiFrameWork_PDFFields.prototype.getValue = function($name) {
+	var $field = this.getField($name);
+	if ($field == null) return null;
+	return $field.getValue();
+}
+
+// Returns true if checkbox is checked. 
+SahiFrameWork_PDFFields.prototype.isChecked = function($name) {
+	var $field = this.getField($name);
+	if ($field == null) return null;
+	return $field.isChecked();	
+}

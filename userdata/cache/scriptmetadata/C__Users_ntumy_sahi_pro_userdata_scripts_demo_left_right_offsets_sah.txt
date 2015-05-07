@@ -1,0 +1,3 @@
+testRightOfCases,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\left_right_offsets.sah,5
+testLeftOfCases,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\left_right_offsets.sah,15
+testLeftOrRightOfCases,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\left_right_offsets.sah,26

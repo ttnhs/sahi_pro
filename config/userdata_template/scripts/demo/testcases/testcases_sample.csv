@@ -1,0 +1,5 @@
+Test Case Id,Description,Priority,Functionality,Release,Script,Tags,Start URL
+TC_1,Login should work,H,Admin,1,training.sah," 'release one',medium,user",
+TC_2,Add Books,M,User,1,training.sah,"low,user",
+TC_3,Textarea double click should work,L,Reports,3,clicksTest.sah,"medium,admin",
+TC_4,Events for IE work,H,User,2,checkbox_onchange.sah,"admin,low",

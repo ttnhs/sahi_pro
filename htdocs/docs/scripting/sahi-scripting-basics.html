@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sahi Scripting Basics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='sahi-scripting-basics.html'>Sahi Scripting Basics</a>
+<ul><li><a href='sahi-scripting-basics.html#Statements'>Statements</a>
+</li><li><a href='sahi-scripting-basics.html#Variable declaration'>Variable declaration</a>
+</li><li><a href='sahi-scripting-basics.html#Comments'>Comments</a>
+</li><li><a href='sahi-scripting-basics.html#if statements'>if statements</a>
+</li><li><a href='sahi-scripting-basics.html#for loops'>for loops</a>
+</li><li><a href='sahi-scripting-basics.html#while loops'>while loops</a>
+<li><a href='sahi-scripting-basics.html#Structuring Sahi Code'>Structuring Sahi Code</a>
+<ul><li><a href='sahi-scripting-basics.html#Functions'>Functions</a>
+</li><li><a href='sahi-scripting-basics.html#Including another Sahi script file'>Including another Sahi script file</a>
+</li></ul></li></ul></li><li><a href='data-types.html'>Some Basic Data Types</a>
+<ul><li><a href='data-types.html#Data Types'>Data Types</a>
+</li><li><a href='data-types.html#Data Structures'>Data Structures</a>
+<ul><li><a href='data-types.html#Single dimensional array'>Single dimensional array</a>
+</li><li><a href='data-types.html#Two dimensional array'>Two dimensional array</a>
+</li><li><a href='data-types.html#Associative Array'>Associative Array</a>
+</li></ul></li></ul></li><li><a href='exception-handling.html'>Exception Handling</a>
+<ul><li><a href='exception-handling.html#Try Catch'>Try Catch</a>
+<ul><li><a href='exception-handling.html#Corrective Action'>Corrective Action</a>
+</li><li><a href='exception-handling.html#Corrective Action and Log the Exception Message'>Corrective Action and Log the Exception Message</a>
+</li><li><a href='Log and then Fail'>Corrective Action</a>
+</li></ul></li><li><a href='exception-handling.html#Script Callback Functions'>Script Callback Functions</a>
+<ul><li><a href='exception-handling.html#Taking screenshots'>Taking screenshots</a>
+</li><li><a href='exception-handling.html#Force Sahi to continue on error after screenshots and logging.'>Force Sahi to continue on error after screenshots and logging.</a>
+</li></ul></li><li><a href='exception-handling.html#_setRecovery'>_setRecovery</a>
+</li></ul></li></li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Sahi Scripting Basics</h2>
+      <!-- Sahi Scripting Basics -->
+Sahi script is based on javascript. Sahi script is parsed by Sahi and the parsed script is fully valid<br/>
+javascript which is executed by the rhino javascript engine. Below are the normal constructs used in Sahi script.<br/>
+They are the same as javascript except for the mandatory $ used in variables.<br/>
+<br/>
+<h3><a href="#Statements" name="Statements" class="headinganchor2" hideFocus="hideFocus">Statements</a></h3>
+Statements are normal lines of code. They end with a semi-colon.<br/>
+<br/>
+Eg.<br/>
+<pre><code>_click(_link("Login"));</code></pre>
+<br/>
+<h3><a href="#Variable declaration" name="Variable declaration" class="headinganchor2" hideFocus="hideFocus">Variable declaration</a></h3>
+<pre><code>var $variableName = value;</code></pre>
+or<br/>
+<pre><code>var $variableName; // declaration
+$variableName = value; // assignment</code></pre>
+All variables start with a $. The keyword var is used for local variables.<br/>
+<br/>
+Eg.<br/>
+<pre><code>var $username = "SahiTestUser";
+var $password; // declaration;
+$password = $username + "_password"; //  "SahiTestUser_password"</code></pre>
+<br/>
+<h3><a href="#Comments" name="Comments" class="headinganchor2" hideFocus="hideFocus">Comments</a></h3>
+<pre><code>// This is a single line comment
+
+/*
+This is a multiline comment.
+This has two lines
+*/</code></pre>
+<br/>
+<h3><a href="#if statements" name="if statements" class="headinganchor2" hideFocus="hideFocus">if statements</a></h3>
+<pre><code>if (condition) {
+// statements
+}</code></pre>
+<br/>
+Eg.<br/>
+<pre><code>// Comparing normal values
+if ($username == "PartnerUser"){
+  _click(_link("Partner Login"));
+}
+
+// Comparing with browser attributes exposed by Sahi
+if (_getText(_div("page_type")) == "Partner Page"){
+  _click(_link("Partner Login"));
+}
+
+// Comparing with browser attributes NOT exposed by Sahi's built-in fetch apis
+// using _fetch
+if (_fetch(_link(0).href) == "http://sahi.co.in/"){
+  _click(_link("Partner Login"));
+}
+
+// Comparing with browser attributes NOT exposed by Sahi's built-in fetch apis
+// using _condition
+if (_condition(_link(0).href == "http://sahi.co.in/")){
+  _click(_link("Partner Login"));
+}</code></pre>
+<br/>
+<h3><a href="#for loops" name="for loops" class="headinganchor2" hideFocus="hideFocus">for loops</a></h3>
+<pre><code>for (var $i=0; $i&lt;$max; $i++){
+// statements
+}</code></pre>
+<br/>
+Eg.<br/>
+<pre><code>// This loop will login with user1, password1, user2, password2 etc.
+// login and logout are custom functions.
+for (var $i=0; $i&lt;10; $i++){
+  login("user"+$i, "password"+$i);
+  logout();
+}</code></pre>
+<br/>
+<h3><a href="#while loops" name="while loops" class="headinganchor2" hideFocus="hideFocus">while loops</a></h3>
+<pre><code>while (condition) {
+// statements
+}</code></pre>
+<br/>
+Eg.<br/>
+<pre><code>$i = 0;
+while ($i++ &lt; 10) {
+  login("user"+$i, "password"+$i);
+  logout();
+}</code></pre>
+<br/>
+<h2><a href="#Structuring Sahi Code" name="Structuring Sahi Code" class="headinganchor2" hideFocus="hideFocus">Structuring Sahi Code</a></h2>
+<br/>
+<div class="info"><strong class='heading'>info</strong>
+While recording gives us the low level steps to be performed on the browser,<br/>
+code needs to be restructured for better readability and maintainability.<br/>
+This section explains how to structure your code for effective but simple use of Sahi.<br/>
+</div>
+<br/>
+<h3><a href="#Functions" name="Functions" class="headinganchor2" hideFocus="hideFocus">Functions</a></h3>
+Functions are the basic building blocks in your automation.<br/>
+Functions are used to club together multiple steps into one logical action.<br/>
+<br/>
+Functions reduce code duplication and allow easier maintenance of scripts.<br/>
+<br/>
+<pre><code>function functionName($parameter1, $parameter2) {
+// statements
+}</code></pre>
+<br/>
+For example a login function may look like this<br/>
+<pre><code>// function declaration
+function login($usr, $pwd){
+  _click(_link("Login"));
+  _setValue(_textbox("username"), $usr);
+  _setValue(_password("password"), $pwd);
+  _click(_submit("Login"));
+}
+// function call
+login("test", "secret");</code></pre>
+<br/>
+<h3><a href="#Including another Sahi script file" name="Including another Sahi script file" class="headinganchor2" hideFocus="hideFocus">Including another Sahi script file</a></h3>
+To reuse a function from one script in another, we include the relevant script using <a href="../sahi-apis/action-apis#_include">_include</a>.<br/>
+Functions and variables declared in the included script are available in the including script.<br/>
+<br/>
+Eg.<br/>
+<br/>
+<strong>common.sah</strong><br/>
+<pre><code>// File: common.sah
+
+// declare $DEFAULT_USER variable
+var $DEFAULT_USER = "test";
+
+// login function declaration
+function login($usr, $pwd){
+  _click(_link("Login"));
+  _setValue(_textbox("username"), $usr);
+  _setValue(_password("password"), $pwd);
+  _click(_submit("Login"));
+}</code></pre>
+<br/>
+<strong>testcase1.sah</strong><br/>
+<pre><code>// File: testcase1.sah
+
+// include common.sah shown above.
+_include("common.sah");
+
+// Note how login and $DEFAULT_USER are actually declared
+// in common.sah but available here in testcase1.sah.
+login($DEFAULT_USER, "secret");</code></pre>
+
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

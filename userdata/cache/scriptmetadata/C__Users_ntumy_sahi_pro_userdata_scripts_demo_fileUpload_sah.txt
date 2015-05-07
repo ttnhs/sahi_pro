@@ -1,0 +1,11 @@
+setUp,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,3
+tearDown,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,7
+testFileSingle,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,11
+testFileSingleWithSetFile2,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,19
+testFileSingleWith3rdParam,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,27
+testFileSingleWith3rdParamAsRegex,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,35
+testFileSingleWith3rdParamWithSetFile2,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,43
+testWithTypeChange,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,51
+testSetFile2WithTypeChange,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,65
+testFileMulti,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,74
+testFileMultiWithSetFile2,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fileUpload.sah,88

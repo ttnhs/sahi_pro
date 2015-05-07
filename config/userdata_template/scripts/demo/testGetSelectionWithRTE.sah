@@ -1,0 +1,4 @@
+_navigateTo("http://batiste.dosimple.ch/blog/posts/2007-09-11-1/rich-text-editor-jquery.html");
+_selectRange(_rte(0), 0,10);
+var $string=_getSelectionText();
+_assertEqual($string, "jQuery RTE");

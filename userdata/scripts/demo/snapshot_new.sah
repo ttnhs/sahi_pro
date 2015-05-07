@@ -1,0 +1,14 @@
+_takeSnapShots(true);
+_setValue(_textbox("user"), "test");
+//_assertSnapShot("snapshot_login_short.png", 20, true);
+_setValue(_password("password"), "secret");
+_click(_submit("Login"));
+_setValue(_textbox("q"), "2");
+_setValue(_textbox("q[1]"), "1");
+_setValue(_textbox("q[2]"), "1");
+_click(_button("Add"));
+_assertEqual("1150", _textbox("total").value);
+_setValue(_textbox("total"), "8888");
+//_assertSnapShot("snapshot_totaled.png", 20, true);
+_takeSnapShots(false);
+_click(_button("Logout"));

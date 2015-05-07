@@ -1,0 +1,9 @@
+testGetText,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fetchAPIs.sah,1
+testGetValue,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fetchAPIs.sah,6
+testGetAttribute,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fetchAPIs.sah,13
+testContainsText,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fetchAPIs.sah,18
+testContainsHTML,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fetchAPIs.sah,23
+testStyle,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fetchAPIs.sah,28
+testAPIs,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fetchAPIs.sah,33
+testFetch,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fetchAPIs.sah,45
+testIsVisible,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\fetchAPIs.sah,53

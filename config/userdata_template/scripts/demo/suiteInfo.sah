@@ -1,0 +1,7 @@
+_navigateTo("http://gramam/demo/training/");
+_setValue(_textbox("user"), "test");
+//pass -xhost 10.21.13.11 -xbuild 224 as parameters to drun.bat or testrunner.bat
+$suiteInfo = _suiteInfo();
+_assertEqual("10.21.13.11", $suiteInfo["xhost"]);
+_assertEqual("224", $suiteInfo["xbuild"]);
+

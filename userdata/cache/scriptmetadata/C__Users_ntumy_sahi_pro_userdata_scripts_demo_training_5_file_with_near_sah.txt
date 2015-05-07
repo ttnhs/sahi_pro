@@ -1,0 +1,1 @@
+addAndVerify,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\training\5_file_with_near.sah,3,$numJava,$numRuby,$numPython,$total

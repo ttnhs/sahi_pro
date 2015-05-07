@@ -1,0 +1,6 @@
+verifyTotal,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\sample_lib.sah,4,$total
+logout,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\sample_lib.sah,8
+verifyNotLoggedIn,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\sample_lib.sah,16
+verifyErrorMessage,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\sample_lib.sah,26,$msg
+login,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\sample_lib_included.sah,1,$username,$password
+addBooks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\framework\sample_lib_included.sah,7,$numJava,$numRuby,$numPython

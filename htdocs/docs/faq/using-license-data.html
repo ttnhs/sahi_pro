@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Using license.data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../assets/js/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<link href="../assets/css/sahidocs.css" type="text/css" rel="stylesheet" />
+<!-- ga-code -->
+</head>
+<body>
+  <div id="navbar" class="navbar">
+    <ul>
+      <li><a id="introduction" href="../introduction/index.html">Introduction</a></li>
+      <li><a id="using-sahi" href="../using-sahi/index.html">Using Sahi</a></li>
+      <li><a id="sahi-apis" href="../sahi-apis/index.html">Sahi APIs</a></li>
+      <li><a id="scripting" href="../scripting/sahi-scripting-basics.html">Sahi Scripting</a></li>
+      <li><a id="faq" href="../faq/index.html">F.A.Q.</a></li>
+      <li><a id="troubleshooting" href="../troubleshooting/index.html">Trouble Shooting</a></li>
+      <li id="onlineDocs">
+      	<a id="viewOnlineDocs" onclick="viewOnlineDocs(this)" href="#">(View Online Docs)</a>
+      </li>
+      <!-- 
+      <li><a id="troubleshooting-internal" href="../troubleshooting-internal/index.html">Trouble Shooting Internal</a></li>
+      <li><a id="faq-internal" href="../faq-internal/index.html">F.A.Q. Internal</a></li>
+      <li><a id="dev" href="../dev/index.html">Developer</a></li>
+       -->
+    </ul>
+  </div>
+  <div class="main">
+    <div id="sideNavOuter">
+      <input type="text" style="width:160px;margin-left:20px;" onkeyup="narrow();" id="filter"/> 
+      <img src="../assets/images/expand-all.png" onclick="expandAll(true);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <img src="../assets/images/collapse-all.png" onclick="expandAll(false);" style="vertical-align:bottom;padding-bottom:5px;"/>
+      <div id="sideNav" class="focused" style="display:none"><ul><li><a href='evaluation-questions.html'>Evaluation Questions</a>
+<ul><li><a href='evaluation-questions.html#Browser and OS support'>Browser and OS support</a>
+</li><li><a href='evaluation-questions.html#AJAX support'>AJAX support</a>
+</li><li><a href='evaluation-questions.html#SSL support'>SSL support</a>
+</li><li><a href='evaluation-questions.html#Configuring Sahi'>Configuring Sahi</a>
+</li><li><a href='evaluation-questions.html#Can Sahi work without proxy configuration?'>Can Sahi work without proxy configuration?</a>
+</li></ul></li><li><a href='how-are-elements-identified.html'>How does Sahi identify elements?</a>
+<ul><li><a href='how-are-elements-identified.html#Standard attributes'>Standard attributes</a>
+</li><li><a href='how-are-elements-identified.html#Custom attributes'>Custom attributes</a>
+</li><li><a href='how-are-elements-identified.html#Relation to an anchor element'>Relation to an anchor element</a>
+</li></ul></li><li><a href='handling-streaming-responses.html'>Handling streaming responses</a>
+</li><li><a href='downloads.html'>File Downloads</a>
+<ul><li><a href='downloads.html#Pdf and Word files'>Pdf and Word files</a>
+</li><li><a href='downloads.html#Iterate a list of wsdl urls'>Iterate a list of wsdl urls</a>
+</li><li><a href='downloads.html#Saving an image'>Saving an image</a>
+</li><li><a href='downloads.html#File download dialog appears with Save & Open options'>File download dialog appears with Save & Open options</a>
+</li><li><a href='downloads.html#Blank page after download'>Blank page after download</a>
+</li><li><a href='downloads.html#Blank page appears'>Blank page appears</a>
+</li><li><a href='downloads.html#File does not get downloaded to Sahi's temp downloads folder'>File does not get downloaded to Sahi's temp downloads folder</a>
+</li><li><a href='downloads.html#Downloaded file does not get saved'>Downloaded file does not get saved</a>
+</li></ul></li><li><a href='delete-cookies.html'>How to delete cookies</a>
+</li><li><a href='how_to_show_custom_fields_in_reports.html'>How to show custom fields in reports</a>
+<ul><li><a href='how_to_show_custom_fields_in_reports.html#How to show custom fields in Excel reports'>How to show custom fields in Excel reports</a>
+</li><li><a href='how_to_show_custom_fields_in_reports.html#How to access custom fields in a test script'>How to access custom fields in a test script</a>
+</li></ul></li><li><a href='how-to-customize-html-reports.html'>How to customize HTML reports</a>
+</li><li><a href='eclipse-integration.html'>Eclipse configuration for Syntax Highlighting and Template proposals and Refactoring in Sahi scripts</a>
+<ul><li><a href='eclipse-integration.html#Sahi scripts - .sah Vs .js'>Sahi scripts - .sah Vs .js</a>
+</li><li><a href='eclipse-integration.html#Eclipse configuration'>Eclipse configuration</a>
+</li><li><a href='eclipse-integration.html#Refactoring a script into functions'>Refactoring a script into functions</a>
+</li><li><a href='eclipse-integration.html#Renaming a function or variable name'>Renaming a function or variable name</a>
+</li><li><a href='eclipse-integration.html#Navigate to functions'>Navigate to functions</a>
+</li></ul></li><li><a href='access-outlook-email.html'>How can I access an Outlook email from a Sahi script?</a>
+</li><li><a href='extract-dynamic-text.html'>How do I extract visible text of a div that changes dynamically?</a>
+</li><li><a href='extract-partial-text.html'>How do I extract text partially from dynamically changing visible text?</a>
+<ul><li><a href='extract-partial-text.html#Example 1'>Example 1</a>
+</li><li><a href='extract-partial-text.html#Example 2'>Example 2</a>
+</li></ul></li><li><a href='how-can-i-automate-ftp-file-transfer.html'>How can I automate FTP file transfer?</a>
+</li><li><a href='unit-tests.html'>Writing Unit tests - A Use Case</a>
+</li><li><a href='get-tooltip-text.html'>Getting the text of a tool tip</a>
+</li><li><a href='get-cell-data.html'>Getting cell data from a table</a>
+</li><li><a href='multiple-scripts-folders-and-network-share.html'>Multiple scripts folders and Network Share</a>
+<ul><li><a href='multiple-scripts-folders-and-network-share.html#Multiple Scripts folders'>Multiple Scripts folders</a>
+</li><li><a href='multiple-scripts-folders-and-network-share.html#Scripts on a network share'>Scripts on a network share</a>
+</li></ul></li><li><a href='using-license-data.html'>Using license.data</a>
+</li><li><a href='how-to-scroll.html'>How to scroll</a>
+<ul><li><a href='how-to-scroll.html#Check movement of scrollbar'>Check movement of scrollbar</a>
+</li></ul></li><li><a href='diagnose.html'>Using Diagnose</a>
+<ul><li><a href='diagnose.html#Diagnose does not return any results'>Diagnose does not return any results</a>
+</li></ul></li><li><a href='_under-in-5.x.y.html'>How is _under different in 5.x.y?</a>
+</li><li><a href='userdefinedid.html'>UserDefinedId</a>
+<ul><li><a href='userdefinedid.html#UserDefinedId not visible in V5.x.y by default'>UserDefinedId not visible in V5.x.y by default</a>
+</li></ul></li><li><a href='webservices.html'>Web Services via REST APIs</a>
+</li><li><a href='sahi-with-notepad++.html'>Sahi with Notepad++</a>
+</li><li><a href='sahi-with-textpad.html'>Sahi with TextPad</a>
+</li><li><a href='misc-questions.html'>Miscellaneous</a>
+<ul><li><a href='misc-questions.html#Verifying Sahi installation'>Verifying Sahi installation</a>
+</li><li><a href='misc-questions.html#How can I run the same script multiple times with different parameters simultaneously?'>How can I run the same script multiple times with different parameters simultaneously?</a>
+</li><li><a href='misc-questions.html#How can I launch/execute a url that initiates some long running activity?'>How can I launch/execute a url that initiates some long running activity?</a>
+</li><li><a href='misc-questions.html#Is it possible to add watch variables and debug a Sahi script?'>Is it possible to add watch variables and debug a Sahi script?</a>
+</li><li><a href='misc-questions.html#Copy row text and output to csv file'>Copy row text and output to csv file</a>
+</li><li><a href='misc-questions.html#Java assertEquals'>Java assertEquals</a>
+</li><li><a href='misc-questions.html#How to handle onbeforeunload popup'>How to handle onbeforeunload popup</a>
+</li><li><a href='misc-questions.html#Using pound and euro symbols'>Using pound and euro symbols</a>
+</li><li><a href='misc-questions.html#Reading an XML file'>Reading an XML file</a>
+</li><li><a href='misc-questions.html#Integration with XStudio'>Integration with XStudio</a>
+</li><li><a href='misc-questions.html#Integration with FitNesse'>Integration with FitNesse</a>
+</li><li><a href='misc-questions.html#Using _rteWrite()'>Using _rteWrite()</a>
+</li><li><a href='misc-questions.html#Accessing Sahi from a different browser'>Accessing Sahi from a different browser</a>
+</li><li><a href='misc-questions.html#How can I prevent caching of page?'>How can I prevent caching of page?</a>
+</li><li><a href='misc-questions.html#Text of alert shown through Ext.msg.show'>Text of alert shown through Ext.msg.show</a>
+</li><li><a href='misc-questions.html#_wait does not work inside an Excel file'>_wait does not work inside an Excel file</a>
+</li><li><a href='misc-questions.html#When is _condition needed?'>When is _condition needed?</a>
+</li><li><a href='misc-questions.html#_assertExists parameters'>_assertExists parameters</a>
+</li><li><a href='misc-questions.html#Java driver tests in parallel'>Java driver tests in parallel</a>
+</li><li><a href='misc-questions.html#Accessing a random row from a grid'>Accessing a random row from a grid</a>
+</li><li><a href='misc-questions.html#How do I set Date field which has date separator?'>How do I set Date field which has date separator?</a>
+</li><li><a href='misc-questions.html#Integrate Sahi with existing test repository tools'>Integrate Sahi with existing test repository tools</a>
+</li><li><a href='misc-questions.html#Read data from Excel using Sahi APIs'>Read data from Excel using Sahi APIs</a>
+</li><li><a href='misc-questions.html#_assertExists in if condition'>_assertExists in if condition</a>
+</li><li><a href='misc-questions.html#Assert equality of arrays'>Assert equality of arrays</a>
+</li><li><a href='misc-questions.html#Does Sahi Excel framework support .xlsx files?'>Does Sahi Excel framework support .xlsx files?</a>
+</li><li><a href='misc-questions.html#Identifying parent of element'>Identifying parent of element</a>
+</li><li><a href='misc-questions.html#Identify element class using Java Driver'>Identify element class using Java Driver</a>
+</li><li><a href='misc-questions.html#Scripts in suite do not run in order'>Scripts in suite do not run in order</a>
+</li><li><a href='misc-questions.html#401 authentication dialog'>401 authentication dialog</a>
+</li><li><a href='misc-questions.html#Browser in testrunner command'>Browser in testrunner command</a>
+</li><li><a href='misc-questions.html#Run tests in multiple browsers simultaneously'>Run tests in multiple browsers simultaneously</a>
+</li><li><a href='misc-questions.html#Selective login'>Selective login</a>
+</li><li><a href='misc-questions.html#Silverlight support'>Silverlight support</a>
+</li><li><a href='misc-questions.html#Dropdown with Java driver'>Dropdown with Java driver</a>
+</li><li><a href='misc-questions.html#Getting absolute file path'>Getting absolute file path</a>
+</li><li><a href='misc-questions.html#Regular expressions in Sahi'>Regular expressions in Sahi</a>
+</li><li><a href='misc-questions.html#Regular expression usecase'>Regular expression usecase</a>
+</li><li><a href='misc-questions.html#Check to see that page is functional'>Check to see that page is functional</a>
+</li><li><a href='misc-questions.html#Excel files as part of Suite'>Excel files as part of Suite</a>
+</li><li><a href='misc-questions.html#Reports database'>Reports database</a>
+</li><li><a href='misc-questions.html#Scheduling tests'>Scheduling tests</a>
+</li><li><a href='misc-questions.html#Drag and drop'>Drag and drop</a>
+</li><li><a href='misc-questions.html#Single smoke script to test multiple sites'>Single smoke script to test multiple sites</a>
+</li><li><a href='misc-questions.html#_debug() output'>_debug() output</a>
+</li><li><a href='misc-questions.html#Sahi with file: URLs'>Sahi with file: URLs</a>
+</li><li><a href='misc-questions.html#_runUnitTests'>_runUnitTests</a>
+</li></ul></li><li><a href='other-resources.html'>Other Resources</a>
+</li></ul></div>
+    </div>
+    <div id="content" class="content">
+      <h2 class="pageTitle">Sahi Pro - Using license.data</h2>
+      <!-- Using license.data -->
+<div class="question"><strong class='heading'>question</strong>
+I cannot open license.data. What program should I use to access this file?<br/>
+</div>
+<div class="answer"><strong class='heading'>answer</strong>
+We get this question many times.<br/>
+<div class="info"><strong class='heading'>info</strong>
+NOTE that you do NOT need to open or edit the license.data file to use Sahi.<br/>
+</div>
+<br/>
+Sahi needs license.data to be available inside <code>userdata\config</code>.<br/>
+<br/>
+Please follow these steps to use the license file.<br/>
+<ol>
+<li>
+Copy the license.data file into <code>userdata\config</code>.<br/>
+</li>
+<li>
+Restart Sahi server and clear browser cache.<br/>
+</li>
+</ol>
+If the license.data is valid, Sahi will startup fine and you will be able to access Sahi.<br/>
+</div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+  <script type="text/javascript" src="../assets/js/sahiapis.js"></script>
+  <script>
+	function viewOnlineDocs(el) {
+			var url = window.location.href;
+			var host = window.location.host;
+			host = host + "/_s_";
+			url = url.replace(host, "sahipro.com");
+			el.href = url;
+	   	return true;
+	}  
+  function showViewOnlineDocsLink() {
+	  var url = window.location.href;
+	  if (url.indexOf("sahipro.com") != -1) {
+		  var viewOnlineDocs = document.getElementById("onlineDocs");
+		  viewOnlineDocs.style.display = "none";
+	  }
+  }
+  function narrow() {
+	var filter = document.getElementById("filter");
+	var value = filter.value.toLowerCase();
+	if (value.length <= 1) {
+		expandAll(false);
+	} else {
+		expandAll(true);
+	}
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");	
+	var len = items.length;
+	for (var i=0; i<len; i++) {
+		var item = items[i];
+		var text = item.innerText || item.textContent;
+		item.style.display = text.toLowerCase().indexOf(value) == -1 ? "none" : "list-item";
+		var link = item.getElementsByTagName("A");
+		if (link.length > 0) {
+			link = link[0];
+			link.style.color = "blue";
+			if ((location.href+"#").indexOf(link.href+"#") == 0) {
+				link.style.color = "red";
+				openParents(link);
+			}			
+		}
+	 }
+  }
+  window.onhashchange = narrow;
+  
+window.onload = (function() {
+	var els = document.getElementsByTagName("code");
+	for ( var i = 0; i < els.length; i++) {
+		els[i].className = "prettyprint";
+	}
+	prettyPrint();
+	try {
+    	var els = document.getElementsByClassName("pln");
+    	for ( var i = 0; i < els.length; i++) {
+    		var el = els[i];
+    		var txt = el.innerText || el.textContent;
+    		txt = txt.replace(/^\s*|\s*$/g, '');
+    		if (isSchedulerFunction(txt)) {
+    			el.style.color = "#e66";
+    		} else {
+    //			el.style.color = "blue";
+    		}
+    	}	
+	} catch (e) {}
+	showViewOnlineDocsLink();
+	makeTree();
+	narrow();
+	colorCurrentTopic();
+	document.getElementById("sideNav").style.display = "block";
+});
+	
+function colorCurrentTopic() {
+	var currentLocation = window.location.href;
+	var navbar = document.getElementById("navbar");
+	var items = navbar.getElementsByTagName("A");
+	for (var i=0; i<items.length; i++) {
+		var li = items[i];
+		if(currentLocation.indexOf("/" + li.id + "/")!= -1) {
+			li.style.color = "red";
+			return;
+		}
+	}
+	return;
+}	
+	
+function makeTree() {
+	var sideNav = document.getElementById("sideNav");
+	var items = sideNav.getElementsByTagName("li");		
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		item.id = "li_"+i;
+		if (item.innerHTML.indexOf("<label>") == -1 && item.innerHTML.indexOf("<LABEL>") == -1) {
+			var icon = (item.innerHTML.indexOf("<ul") == -1 && item.innerHTML.indexOf("<UL") == -1) ? 
+					"<label style='font-family:monospace;float:left;color:orange;'>&#149;</label> " :
+				"<label id='label_li_" + i + "' onclick='showHide(this)' style='cursor:pointer;font-family:monospace;float:left;color:orange;'>+</label> ";
+			item.innerHTML = "<div id='div_li_" + i + "'>" + (icon) + item.innerHTML + "</div>";
+		}
+	}
+}
+
+function showHide(el) {
+	var span = el;
+	var el = document.getElementById(el.id.replace("label", "div"));
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = span.innerHTML == "+" ? "block" : "none"; 
+		}
+	}  
+	span.innerHTML = span.innerHTML == "+" ? "-" : "+";
+}
+
+function expandAll(expand) {
+	var labels = document.getElementsByTagName("label");
+	for (var i=0; i<labels.length; i++) {
+		var label = labels[i];
+		if (label.id && label.id.indexOf("label_li_") != -1) {
+			if (expand && label.innerHTML == '+')
+				showHide(label);
+			if (!expand && label.innerHTML == '-')
+				showHide(label);
+		}
+	}
+}
+
+function openParents(link) {
+	var el = link;
+	while (el != null && el.tagName.toLowerCase() != "body" && el.id != "sideNav") {
+		if (el.tagName.toLowerCase() == "div") {
+			showAllImmediateChildDivs(el);
+		}
+		el = el.parentNode;
+	}
+}
+function showAllImmediateChildDivs(el){
+	var items = el.getElementsByTagName("div");
+	for (var i=0; i<items.length; i++) {
+		var item = items[i];
+		if (item.parentNode.parentNode.parentNode == el) {
+			item.style.display = "block"; 
+		}
+	}  
+	var span = document.getElementById(el.id.replace("div", "label"));
+	if (span) span.innerHTML = "-";
+}
+		</script>
+<div id="footer">&copy; Tyto Software Pvt. Ltd.</div>
+</body>
+</html>
+

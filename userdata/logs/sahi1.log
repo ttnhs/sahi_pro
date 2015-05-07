@@ -1,0 +1,72 @@
+May 07, 2015 3:26:22 PM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi properties file = C:\Users\ntumy\sahi_pro\config\sahi.properties
+May 07, 2015 3:26:22 PM net.sf.sahi.config.Configuration reinitialize
+INFO: Sahi user properties file = C:\Users\ntumy\sahi_pro\userdata\config\userdata.properties
+May 07, 2015 3:26:23 PM net.sf.sahi.util.BrowserTypesLoader loadAvailableBrowserTypes
+INFO: 
+-----
+Reading browser types from: C:\Users\ntumy\sahi_pro\userdata\config\browser_types.xml
+Opera was not found at C:\Program Files (x86)\Opera\opera.exe
+-----
+
+May 07, 2015 3:26:24 PM net.sf.sahi.util.Utils setUrlConnectionFollowRedirectsInternal
+INFO: urlConnectionFollowRedirectsInternal = false
+May 07, 2015 3:26:24 PM in.co.sahi.datastore.SahiDB <clinit>
+INFO: Using Database:
+driverName=org.h2.Driver
+jdbcurl=jdbc:h2:C:/Users/ntumy/sahi_pro/userdata/database/db0;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1;IGNORECASE=TRUE
+userName=sa
+May 07, 2015 3:26:24 PM in.co.sahi.datastore.SahiDB createTables
+INFO: Check tables version
+May 07, 2015 3:26:25 PM in.co.sahi.datastore.SahiDB createTables
+INFO: versionFromDB=2014-11-17 17:12:19
+May 07, 2015 3:26:25 PM in.co.sahi.datastore.SahiDB createTables
+INFO: version=2014-11-17 17:12:19
+May 07, 2015 3:26:25 PM in.co.sahi.datastore.SahiDB createTables
+INFO: At current version. No changes were done.
+May 07, 2015 3:26:25 PM in.co.sahi.datastore.SahiDB createTables
+INFO: {result: [["KEY","VALUE"],["versionNo","2014-11-17 17:12:19"]]}
+May 07, 2015 3:26:25 PM in.co.sahi.datastore.SahiDB createTables
+INFO: Finished preparing report tables: 440ms
+May 07, 2015 3:26:59 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/add_a_new_users.sah
+May 07, 2015 3:27:00 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_51faf9160d435044fe088260489b4a86a8cbsahix74e4f67c02b2104ef2094f10644dfe74c16ax__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:27:00 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [5420, 6548, 7292]; 686 ms
+May 07, 2015 3:27:01 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [5420, 6548, 7292]
+May 07, 2015 3:27:02 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_chrome.suite
+May 07, 2015 3:27:02 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/bulk_user_actions.sah
+May 07, 2015 3:27:02 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_51faf9160d435044fe088260489b4a86a8cbsahixa2734ba301fdc0420608f110ff5e70ea67abx__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:27:02 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [6156, 7948, 7208]; 694 ms
+May 07, 2015 3:27:33 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [6156, 7948, 7208]
+May 07, 2015 3:27:33 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_chrome.suite
+May 07, 2015 3:27:57 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/add_a_new_users.sah
+May 07, 2015 3:27:57 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_51e8314d0827a04f980b57101a9c4969a900sahix5008de7f0f6f804a7c0a3220eed2ba1c43bcx__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:27:58 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [7236, 4460, 7536]; 760 ms
+May 07, 2015 3:27:59 PM net.sf.sahi.test.ProcessHelper kill
+INFO: Kill: [7236, 4460, 7536]
+May 07, 2015 3:27:59 PM net.sf.sahi.test.SahiTestSuite updateFailedSuite
+INFO: >>>> C:/Users/ntumy/sahi_pro/userdata/scripts/qamoodle_failed_chrome.suite
+May 07, 2015 3:27:59 PM net.sf.sahi.test.TestLauncher execute
+INFO: #### Running Script: C:/Users/ntumy/sahi_pro/userdata/scripts/bulk_user_actions.sah
+May 07, 2015 3:27:59 PM net.sf.sahi.test.ProcessHelper execute
+INFO: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=C:/Users/ntumy/sahi_pro/userdata\browser\chrome\profiles\sahi0 --proxy-server=localhost:9999 --disable-popup-blocking --always-authorize-plugins --allow-outdated-plugins --incognito "http://sahi.example.com/_s_/dyn/Player_auto?startUrl=http%3A%2F%2Fsahi.example.com%2F_s_%2Fdyn%2FDriver_initialized%3FbrowserType%3Dfirefox__SahiAmpersandSahi__sahisid=sahi_51e8314d0827a04f980b57101a9c4969a900sahix2d1b08e90b32b0419a0b7e10af6e3b926833x__SahiAmpersandSahi__isSingleSession=false"
+May 07, 2015 3:28:00 PM net.sf.sahi.test.ProcessHelper$PIDGatherer run
+INFO: PIDs: [7936, 7808, 1784]; 723 ms
+May 07, 2015 3:28:23 PM net.sf.sahi.test.SahiTestSuite kill
+INFO: Shutting down ...
+May 07, 2015 3:28:33 PM net.sf.sahi.Proxy startProxy
+INFO: socket closed
+May 07, 2015 3:28:33 PM net.sf.sahi.util.ProxySwitcher revertSystemProxy
+INFO: Reverting Proxy

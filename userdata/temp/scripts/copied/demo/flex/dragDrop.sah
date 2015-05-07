@@ -1,0 +1,16 @@
+function testDragDrop($draggable, $droppable, $result) {
+	_assertNotExists($draggable.inside($droppable));
+	_dragDrop($draggable, $droppable);
+	_assertExists($draggable.inside($droppable));
+}
+
+function testDragDropXY($draggable, $droppable, $x, $y) {
+	_assertNotExists($draggable.inside($droppable));
+	$droppable.setAsDroppable();
+	_dragDropXY($draggable, $x, $y);
+	_assertExists($draggable.inside($droppable));
+}
+
+_navigateTo("/sfl/dragDrop.html");
+testDragDrop(_f("sampleId1").s_label("First"), _f("sampleId1").s_list("secondList"));
+testDragDropXY(_f("sampleId1").s_label("Fourth"), _f("sampleId1").s_list("thirdList"), 240, 10);

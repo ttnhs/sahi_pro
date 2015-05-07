@@ -1,0 +1,56 @@
+function testAssociativeWithNoHeader() {
+	var $data = _readExcelFile("readExcelFile.xls");
+	_assertEqual(3, $data.length);
+	_assertEqual("tata@example.com", $data[0][4]);
+	_assertEqual("tata@example.com", $data[0]["Email"]);
+}
+
+function testAssociativeWithHeader() {
+	var $data = _readExcelFile("readExcelFile.xls", null, true);
+	_assertEqual(4, $data.length);
+	_assertEqual("tata@example.com", $data[1][4]);
+	_assertEqual("tata@example.com", $data[1]["Email"]);
+}
+
+function testSecondSheet() {
+	var $data = _readExcelFile("readExcelFile.xls", "BullSheet", true);
+	_assertEqual(1, $data.length);
+}
+
+function testFilter(){
+	var $filtered = filter("readExcelFile.xls", null, "Title", "CEO");
+	_assertEqual("CEO", $filtered[0]["Title"]);
+	_assertEqual("CEO", $filtered[1]["Title"]);
+	_assertEqual(2, $filtered.length);
+}
+
+function testDefaultSheet() {
+	var $excelObj = _getExcel("readExcelFile.xls");
+ 	var $data = $excelObj.getData(true);
+  	_assertEqual(4, $data.length);
+  	var $sheetNames = $excelObj.getSheetNames();
+  	_assertEqual("Sheet1", $sheetNames[0]);
+  	_assertEqual("BullSheet", $sheetNames[1]);
+  	_assertEqual("Sheet3", $sheetNames[2]);
+  	var $workbook = $excelObj.getRawWorkbook();
+  	_assertEqual(3, $workbook.getNumberOfSheets());
+}
+
+function filter($vFileName, $vSheetName, $vColName, $vString) {
+	var $data = _readExcelFile($vFileName, null, true);
+	if ($vColName == "" && $vString == "") {
+		return $data;
+	} else {
+		var $resultSet = [];
+		$resultSet[0] = $data[0];
+		for (var $i=1; $i<$data.length; $i++) {
+			var $row = $data[$i];
+			if ($row[$vColName] == $vString) {
+				$resultSet.push($row);
+			}
+		}
+		return _sahi.associativeArray($resultSet, false); 
+	}
+}
+
+_runUnitTests();

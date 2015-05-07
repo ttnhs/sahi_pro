@@ -1,0 +1,2 @@
+onBeforeStep,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\onBeforeStep.sah,4,$step,$debugInfo
+testOnBeforeStep,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\onBeforeStep.sah,10

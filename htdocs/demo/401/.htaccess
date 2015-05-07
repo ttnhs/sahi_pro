@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName "Secure Gateway"
+AuthUserFile "C:\sahitest\sahi_pro\htdocs\demo\401\passwd"
+#AuthUserFile "C:\Dev\Sahi\sahi_pro_g\htdocs\demo\401\passwd"
+#AuthUserFile "/home/tytosoft/.htpasswds/public_html/demo/401/passwd"
+require valid-user

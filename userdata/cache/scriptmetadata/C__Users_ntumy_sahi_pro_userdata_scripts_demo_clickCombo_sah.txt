@@ -1,0 +1,8 @@
+click,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\clickCombo.sah,1,$combo,$expected
+tearDown,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\clickCombo.sah,5
+testNormalClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\clickCombo.sah,8
+testCtrlClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\clickCombo.sah,12
+testAltClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\clickCombo.sah,16
+testShiftClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\clickCombo.sah,20
+testMetaClick,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\clickCombo.sah,24
+testCombinationClicks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\clickCombo.sah,28

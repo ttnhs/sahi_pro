@@ -1,0 +1,14 @@
+function testDoubleClick() {
+	_click(_f("sampleId1").tab("Fourth Tab"));
+	_assertExists(_f("sampleId1").textarea("dCTextArea"));
+	_assertEqual("", _getValue(_f("sampleId1").textarea("dCTextArea")));
+	_click(_f("sampleId1").button("Double Click Me"));
+	_assertEqual("This is Single Click", _getValue(_f("sampleId1").textarea("dCTextArea")));
+	_doubleClick(_f("sampleId1").button("Double Click Me"));
+	_assertEqual("This time its was Double Click", _getValue(_f("sampleId1").textarea("dCTextArea")));
+	_click(_f("sampleId1").button("Double Click Me"));
+	_assertEqual("This is Single Click", _getValue(_f("sampleId1").textarea("dCTextArea")));
+}
+
+_navigateTo("/sfl/TestApplication.html");
+_runUnitTests();

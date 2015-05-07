@@ -1,0 +1,6 @@
+var $counter=0;
+
+_include("included.sah");
+_assertEqual(1, $counter);
+_include("included.sah");
+_assertEqual(2, $counter);

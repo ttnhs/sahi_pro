@@ -1,0 +1,103 @@
+onScriptError=onScriptFailure=null
+
+function testMethodGet() {
+	_navigateTo("/demo/php/request_headers.php");
+	var $href = _fetch(window.top.location.href);
+	$request = new RESTRequest();
+	$request.setHeader("Accept-Encoding", "deflate,sdch");
+	$request.setURL($href);
+	$request.addToQueryString("Place", "Banga&lore");
+	$request.addToQueryString("PIN", "560 001");
+	var $p = new Parameter();
+	$p.add("Name", "Jane");
+	$p.add("Age", "25");
+	$request.addToBody($p);
+	$response = $request.submit("get");
+	var $responseBody = $response.getBodyAsString();
+	//_sahi.print("\n----------\n" + $responseBody + "\n----------\n");
+	_assert($responseBody.indexOf("Request Method : GET") != -1);
+	_assert($responseBody.indexOf("Request URI : /demo/php/request_headers.php?Place=Banga%26lore&PIN=560%20001") != -1);
+	_assert($responseBody.indexOf("Query String : Place=Banga%26lore&PIN=560%20001") != -1);
+	_assert($responseBody.indexOf("Request Body : </br>") != -1);
+}
+
+function testREST401() {
+	$request = new RESTRequest();
+	$request.setURL("http://localhost.sahipro.com/demo/401/index.htm");
+	$request.setCredentials("testuser", "password");
+
+	$response = new RESTResponse();
+	$response = $request.submit("get");
+ 
+	var $s = $response.getResponseCode();
+	_assertEqual("200",$s);
+}
+
+function testMethodPost() {
+	_navigateTo("/demo/php/request_headers.php");
+	var $href = _fetch(window.top.location.href);
+	$request = new RESTRequest();
+	$request.setHeader("Accept-Encoding", "deflate,sdch");
+	$request.setURL($href);
+	$request.addToQueryString("Place", "Bangalore");
+	var $p = new Parameter();
+	$p.add("Name", "Jane");
+	$p.add("Age", "25");
+	$request.addToBody($p);
+	$response = $request.submit("post");
+	var $responseBody = $response.getBodyAsString();
+	_assert($responseBody.indexOf("Request Method : POST") != -1);
+	_assert($responseBody.indexOf("Request URI : /demo/php/request_headers.php?Place=Bangalore") != -1);
+	_assert($responseBody.indexOf("Query String : Place=Bangalore") != -1);
+	_assert($responseBody.indexOf("Request Body : Name=Jane&Age=25</br>") != -1);
+}
+function testMethodDelete() {
+	_navigateTo("/demo/php/request_headers.php");
+	var $href = _fetch(window.top.location.href);
+	$request = new RESTRequest();
+	$request.setURL($href);
+	$response = $request.submit("Delete");
+	_assert($response.getBodyAsString().indexOf("Request Method : DELETE") != -1);
+}
+
+function testHttpDefaultGetCredentialKey(){
+	$request = new RESTRequest();
+	var $url ="http://localhost.sahipro.com/demo/401/index.htm";
+	_assertEqual("http://localhost.sahipro.com:80", $request.getCredentialKey($url));
+}
+
+function testHttpsDefaultGetCredentialKey() {
+	$request = new RESTRequest();
+	var $url ="https://localhost.sahipro.com/demo/401/index.htm";
+	_assertEqual("https://localhost.sahipro.com:443", $request.getCredentialKey($url));
+}
+
+function testHttpsWithPortGetCredentialKey() {
+	$request = new RESTRequest();
+	var $url ="https://localhost.sahipro.com:8888/demo/401/index.htm";
+	_assertEqual("https://localhost.sahipro.com:8888", $request.getCredentialKey($url));
+}
+
+function testHttpWithPortGetCredentialKey() {
+	$request = new RESTRequest();
+	var $url ="http://localhost.sahipro.com:50/demo/401/index.htm";
+	_assertEqual("http://localhost.sahipro.com:50", $request.getCredentialKey($url));
+}
+
+function testURLWithoutSingleSlashGetCredentialKey(){
+	$request = new RESTRequest();
+	var $url ="http://localhost.sahipro.com";
+	_assertEqual("http://localhost.sahipro.com:80", $request.getCredentialKey($url));
+}
+
+//function testMethodPut() {
+//	$request = new RESTRequest();
+//	$request.setURL("http://localhost.sahi.co.in/demo/php/put.php");
+//	$request.addToBody("This is body content");
+//	$response = $request.submit("put");
+//	$filePath = _userDataPath("../htdocs/demo/php/ZZ_PUT_FILE.txt");
+//	$content = _readFile($filePath);
+//	_assertEqual("This is body content", $content);
+//	_writeFile("", $filePath, true);
+//}
+_runUnitTests();

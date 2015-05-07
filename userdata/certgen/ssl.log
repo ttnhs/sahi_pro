@@ -1,0 +1,972 @@
+
+C:\Users\ntumy\sahi_pro\userdata\bin>cd /D C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DOMAIN_NAME=api.skype.com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set FILE_NAME=api_skype_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DEST_PATH=C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\api_skype_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEYTOOL_PATH="C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEY_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set STORE_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set PATH_TO_OPENSSL=C:\\Users\\ntumy\\sahi_pro\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo api.skype.com 
+api.skype.com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo api_skype_com 
+api_skype_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\api_skype_com 
+C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\api_skype_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -genkey -alias api.skype.com -keypass sahipassword -storepass sahipassword -keyalg RSA -keystore X509CA/certs/api_skype_com -dname "CN=api.skype.com, OU=Sahi, O=Sahi, L=Bangalore, S=Karnataka, C=IN" -validity 3650 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -certreq -alias api.skype.com -file X509CA/certs/api_skype_com.csr -keypass sahipassword -keystore X509CA/certs/api_skype_com -storepass sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl ca -config X509CA/openssl.cnf -days 3650 -in X509CA/certs/api_skype_com.csr -out X509CA/certs/api_skype_com.signed -batch -passin pass:sahipassword 
+Using configuration from X509CA/openssl.cnf
+Loading 'screen' into random state - done
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 65 (0x41)
+        Validity
+            Not Before: May  5 08:57:48 2015 GMT
+            Not After : May  2 08:57:48 2025 GMT
+        Subject:
+            countryName               = IN
+            stateOrProvinceName       = Karnataka
+            organizationName          = Sahi
+            organizationalUnitName    = Sahi
+            commonName                = api.skype.com
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                08:DB:22:26:A7:BD:F7:5E:F5:10:B4:57:1E:A9:67:E2:56:BA:97:76
+            X509v3 Authority Key Identifier: 
+                keyid:09:2F:AC:7E:33:BF:4E:00:87:EB:5F:3F:01:A8:AC:81:EE:3E:19:26
+                DirName:/C=IN/ST=Karnataka/O=Sahi
+                serial:D6:8C:78:5C:DF:F5:9E:A3
+
+Certificate is to be certified until May  2 08:57:48 2025 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl x509 -in X509CA/certs/api_skype_com.signed -out X509CA/certs/api_skype_com.signed_pem -outform PEM 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\api_skype_com X509CA\certs\api_skype_com.orig 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -list -keystore X509CA\certs\api_skype_com -storepass sahipassword 
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+api.skype.com, May 5, 2015, PrivateKeyEntry, 
+Certificate fingerprint (SHA1): 9A:76:4A:7F:30:E5:C3:E1:5D:01:B1:64:6B:38:BC:9E:19:17:18:A6
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias sahi_root -keypass sahipassword -file X509CA\ca\new_ca.pem -keystore X509CA\certs\api_skype_com -storepass sahipassword 
+Certificate was added to keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias api.skype.com -keypass sahipassword -file X509CA\certs\api_skype_com.signed_pem -keystore X509CA\certs\api_skype_com -storepass sahipassword 
+Certificate reply was installed in keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\api_skype_com C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\api_skype_com 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>del X509CA\certs\api_skype_com* 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>certutil -addstore ROOT X509CA\ca\new_ca.pem 
+ROOT
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: d68c785cdff59ea3
+Issuer: O=Sahi, S=Karnataka, C=IN
+ NotBefore: 5/15/2010 9:13 PM
+ NotAfter: 5/12/2020 9:13 PM
+Subject: O=Sahi, S=Karnataka, C=IN
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Template: 
+Cert Hash(sha1): 34 2d f9 d2 97 5a de f0 62 a7 ea da f7 b9 0c 7f 3f 28 9d 1d
+
+Certificate "O=Sahi, S=Karnataka, C=IN" already in store.
+CertUtil: -addstore command completed successfully.
+
+C:\Users\ntumy\sahi_pro\userdata\bin>cd /D C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DOMAIN_NAME=api.trap.skype.net 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set FILE_NAME=api_trap_skype_net 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DEST_PATH=C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\api_trap_skype_net 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEYTOOL_PATH="C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEY_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set STORE_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set PATH_TO_OPENSSL=C:\\Users\\ntumy\\sahi_pro\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo api.trap.skype.net 
+api.trap.skype.net
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo api_trap_skype_net 
+api_trap_skype_net
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\api_trap_skype_net 
+C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\api_trap_skype_net
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -genkey -alias api.trap.skype.net -keypass sahipassword -storepass sahipassword -keyalg RSA -keystore X509CA/certs/api_trap_skype_net -dname "CN=api.trap.skype.net, OU=Sahi, O=Sahi, L=Bangalore, S=Karnataka, C=IN" -validity 3650 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -certreq -alias api.trap.skype.net -file X509CA/certs/api_trap_skype_net.csr -keypass sahipassword -keystore X509CA/certs/api_trap_skype_net -storepass sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl ca -config X509CA/openssl.cnf -days 3650 -in X509CA/certs/api_trap_skype_net.csr -out X509CA/certs/api_trap_skype_net.signed -batch -passin pass:sahipassword 
+Using configuration from X509CA/openssl.cnf
+Loading 'screen' into random state - done
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 66 (0x42)
+        Validity
+            Not Before: May  5 08:57:50 2015 GMT
+            Not After : May  2 08:57:50 2025 GMT
+        Subject:
+            countryName               = IN
+            stateOrProvinceName       = Karnataka
+            organizationName          = Sahi
+            organizationalUnitName    = Sahi
+            commonName                = api.trap.skype.net
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                1C:C5:50:E6:25:8A:5F:41:FC:F5:70:E9:C9:C0:D2:51:12:83:88:D1
+            X509v3 Authority Key Identifier: 
+                keyid:09:2F:AC:7E:33:BF:4E:00:87:EB:5F:3F:01:A8:AC:81:EE:3E:19:26
+                DirName:/C=IN/ST=Karnataka/O=Sahi
+                serial:D6:8C:78:5C:DF:F5:9E:A3
+
+Certificate is to be certified until May  2 08:57:50 2025 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl x509 -in X509CA/certs/api_trap_skype_net.signed -out X509CA/certs/api_trap_skype_net.signed_pem -outform PEM 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\api_trap_skype_net X509CA\certs\api_trap_skype_net.orig 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -list -keystore X509CA\certs\api_trap_skype_net -storepass sahipassword 
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+api.trap.skype.net, May 5, 2015, PrivateKeyEntry, 
+Certificate fingerprint (SHA1): 42:EF:8E:1B:5C:B1:D1:93:E1:B3:F5:30:49:E1:FD:2B:FB:DA:40:D5
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias sahi_root -keypass sahipassword -file X509CA\ca\new_ca.pem -keystore X509CA\certs\api_trap_skype_net -storepass sahipassword 
+Certificate was added to keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias api.trap.skype.net -keypass sahipassword -file X509CA\certs\api_trap_skype_net.signed_pem -keystore X509CA\certs\api_trap_skype_net -storepass sahipassword 
+Certificate reply was installed in keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\api_trap_skype_net C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\api_trap_skype_net 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>del X509CA\certs\api_trap_skype_net* 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>certutil -addstore ROOT X509CA\ca\new_ca.pem 
+ROOT
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: d68c785cdff59ea3
+Issuer: O=Sahi, S=Karnataka, C=IN
+ NotBefore: 5/15/2010 9:13 PM
+ NotAfter: 5/12/2020 9:13 PM
+Subject: O=Sahi, S=Karnataka, C=IN
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Template: 
+Cert Hash(sha1): 34 2d f9 d2 97 5a de f0 62 a7 ea da f7 b9 0c 7f 3f 28 9d 1d
+
+Certificate "O=Sahi, S=Karnataka, C=IN" already in store.
+CertUtil: -addstore command completed successfully.
+
+C:\Users\ntumy\sahi_pro\userdata\bin>cd /D C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DOMAIN_NAME=a.config.skype.com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set FILE_NAME=a_config_skype_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DEST_PATH=C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\a_config_skype_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEYTOOL_PATH="C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEY_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set STORE_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set PATH_TO_OPENSSL=C:\\Users\\ntumy\\sahi_pro\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo a.config.skype.com 
+a.config.skype.com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo a_config_skype_com 
+a_config_skype_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\a_config_skype_com 
+C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\a_config_skype_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -genkey -alias a.config.skype.com -keypass sahipassword -storepass sahipassword -keyalg RSA -keystore X509CA/certs/a_config_skype_com -dname "CN=a.config.skype.com, OU=Sahi, O=Sahi, L=Bangalore, S=Karnataka, C=IN" -validity 3650 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -certreq -alias a.config.skype.com -file X509CA/certs/a_config_skype_com.csr -keypass sahipassword -keystore X509CA/certs/a_config_skype_com -storepass sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl ca -config X509CA/openssl.cnf -days 3650 -in X509CA/certs/a_config_skype_com.csr -out X509CA/certs/a_config_skype_com.signed -batch -passin pass:sahipassword 
+Using configuration from X509CA/openssl.cnf
+Loading 'screen' into random state - done
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 67 (0x43)
+        Validity
+            Not Before: May  5 08:58:15 2015 GMT
+            Not After : May  2 08:58:15 2025 GMT
+        Subject:
+            countryName               = IN
+            stateOrProvinceName       = Karnataka
+            organizationName          = Sahi
+            organizationalUnitName    = Sahi
+            commonName                = a.config.skype.com
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                60:97:59:98:1F:03:30:4C:38:DB:BF:9B:8B:69:A2:21:58:70:03:D2
+            X509v3 Authority Key Identifier: 
+                keyid:09:2F:AC:7E:33:BF:4E:00:87:EB:5F:3F:01:A8:AC:81:EE:3E:19:26
+                DirName:/C=IN/ST=Karnataka/O=Sahi
+                serial:D6:8C:78:5C:DF:F5:9E:A3
+
+Certificate is to be certified until May  2 08:58:15 2025 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl x509 -in X509CA/certs/a_config_skype_com.signed -out X509CA/certs/a_config_skype_com.signed_pem -outform PEM 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\a_config_skype_com X509CA\certs\a_config_skype_com.orig 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -list -keystore X509CA\certs\a_config_skype_com -storepass sahipassword 
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+a.config.skype.com, May 5, 2015, PrivateKeyEntry, 
+Certificate fingerprint (SHA1): B7:E2:8B:97:E9:56:77:CB:19:B9:F9:11:D2:9B:38:AB:74:99:44:4B
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias sahi_root -keypass sahipassword -file X509CA\ca\new_ca.pem -keystore X509CA\certs\a_config_skype_com -storepass sahipassword 
+Certificate was added to keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias a.config.skype.com -keypass sahipassword -file X509CA\certs\a_config_skype_com.signed_pem -keystore X509CA\certs\a_config_skype_com -storepass sahipassword 
+Certificate reply was installed in keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\a_config_skype_com C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\a_config_skype_com 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>del X509CA\certs\a_config_skype_com* 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>certutil -addstore ROOT X509CA\ca\new_ca.pem 
+ROOT
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: d68c785cdff59ea3
+Issuer: O=Sahi, S=Karnataka, C=IN
+ NotBefore: 5/15/2010 9:13 PM
+ NotAfter: 5/12/2020 9:13 PM
+Subject: O=Sahi, S=Karnataka, C=IN
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Template: 
+Cert Hash(sha1): 34 2d f9 d2 97 5a de f0 62 a7 ea da f7 b9 0c 7f 3f 28 9d 1d
+
+Certificate "O=Sahi, S=Karnataka, C=IN" already in store.
+CertUtil: -addstore command completed successfully.
+
+C:\Users\ntumy\sahi_pro\userdata\bin>cd /D C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DOMAIN_NAME=pipe.skype.com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set FILE_NAME=pipe_skype_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DEST_PATH=C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\pipe_skype_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEYTOOL_PATH="C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEY_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set STORE_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set PATH_TO_OPENSSL=C:\\Users\\ntumy\\sahi_pro\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo pipe.skype.com 
+pipe.skype.com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo pipe_skype_com 
+pipe_skype_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\pipe_skype_com 
+C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\pipe_skype_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -genkey -alias pipe.skype.com -keypass sahipassword -storepass sahipassword -keyalg RSA -keystore X509CA/certs/pipe_skype_com -dname "CN=pipe.skype.com, OU=Sahi, O=Sahi, L=Bangalore, S=Karnataka, C=IN" -validity 3650 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -certreq -alias pipe.skype.com -file X509CA/certs/pipe_skype_com.csr -keypass sahipassword -keystore X509CA/certs/pipe_skype_com -storepass sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl ca -config X509CA/openssl.cnf -days 3650 -in X509CA/certs/pipe_skype_com.csr -out X509CA/certs/pipe_skype_com.signed -batch -passin pass:sahipassword 
+Using configuration from X509CA/openssl.cnf
+Loading 'screen' into random state - done
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 68 (0x44)
+        Validity
+            Not Before: May  5 08:58:19 2015 GMT
+            Not After : May  2 08:58:19 2025 GMT
+        Subject:
+            countryName               = IN
+            stateOrProvinceName       = Karnataka
+            organizationName          = Sahi
+            organizationalUnitName    = Sahi
+            commonName                = pipe.skype.com
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                A5:29:D2:3B:9F:76:64:C9:54:88:27:3B:E5:51:0E:9A:FB:8A:7B:98
+            X509v3 Authority Key Identifier: 
+                keyid:09:2F:AC:7E:33:BF:4E:00:87:EB:5F:3F:01:A8:AC:81:EE:3E:19:26
+                DirName:/C=IN/ST=Karnataka/O=Sahi
+                serial:D6:8C:78:5C:DF:F5:9E:A3
+
+Certificate is to be certified until May  2 08:58:19 2025 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl x509 -in X509CA/certs/pipe_skype_com.signed -out X509CA/certs/pipe_skype_com.signed_pem -outform PEM 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\pipe_skype_com X509CA\certs\pipe_skype_com.orig 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -list -keystore X509CA\certs\pipe_skype_com -storepass sahipassword 
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+pipe.skype.com, May 5, 2015, PrivateKeyEntry, 
+Certificate fingerprint (SHA1): 94:A0:34:75:58:54:F3:BD:83:4A:6E:FA:17:08:EC:0F:BE:DE:17:4C
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias sahi_root -keypass sahipassword -file X509CA\ca\new_ca.pem -keystore X509CA\certs\pipe_skype_com -storepass sahipassword 
+Certificate was added to keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias pipe.skype.com -keypass sahipassword -file X509CA\certs\pipe_skype_com.signed_pem -keystore X509CA\certs\pipe_skype_com -storepass sahipassword 
+Certificate reply was installed in keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\pipe_skype_com C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\pipe_skype_com 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>del X509CA\certs\pipe_skype_com* 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>certutil -addstore ROOT X509CA\ca\new_ca.pem 
+ROOT
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: d68c785cdff59ea3
+Issuer: O=Sahi, S=Karnataka, C=IN
+ NotBefore: 5/15/2010 9:13 PM
+ NotAfter: 5/12/2020 9:13 PM
+Subject: O=Sahi, S=Karnataka, C=IN
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Template: 
+Cert Hash(sha1): 34 2d f9 d2 97 5a de f0 62 a7 ea da f7 b9 0c 7f 3f 28 9d 1d
+
+Certificate "O=Sahi, S=Karnataka, C=IN" already in store.
+CertUtil: -addstore command completed successfully.
+
+C:\Users\ntumy\sahi_pro\userdata\bin>cd /D C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DOMAIN_NAME=tiles.services.mozilla.com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set FILE_NAME=tiles_services_mozilla_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DEST_PATH=C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\tiles_services_mozilla_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEYTOOL_PATH="C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEY_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set STORE_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set PATH_TO_OPENSSL=C:\\Users\\ntumy\\sahi_pro\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo tiles.services.mozilla.com 
+tiles.services.mozilla.com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo tiles_services_mozilla_com 
+tiles_services_mozilla_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\tiles_services_mozilla_com 
+C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\tiles_services_mozilla_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -genkey -alias tiles.services.mozilla.com -keypass sahipassword -storepass sahipassword -keyalg RSA -keystore X509CA/certs/tiles_services_mozilla_com -dname "CN=tiles.services.mozilla.com, OU=Sahi, O=Sahi, L=Bangalore, S=Karnataka, C=IN" -validity 3650 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -certreq -alias tiles.services.mozilla.com -file X509CA/certs/tiles_services_mozilla_com.csr -keypass sahipassword -keystore X509CA/certs/tiles_services_mozilla_com -storepass sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl ca -config X509CA/openssl.cnf -days 3650 -in X509CA/certs/tiles_services_mozilla_com.csr -out X509CA/certs/tiles_services_mozilla_com.signed -batch -passin pass:sahipassword 
+Using configuration from X509CA/openssl.cnf
+Loading 'screen' into random state - done
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 69 (0x45)
+        Validity
+            Not Before: May  6 04:27:28 2015 GMT
+            Not After : May  3 04:27:28 2025 GMT
+        Subject:
+            countryName               = IN
+            stateOrProvinceName       = Karnataka
+            organizationName          = Sahi
+            organizationalUnitName    = Sahi
+            commonName                = tiles.services.mozilla.com
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                CC:99:82:D1:9F:1F:2B:FE:6D:58:6B:63:31:1A:A6:61:3E:64:FF:BC
+            X509v3 Authority Key Identifier: 
+                keyid:09:2F:AC:7E:33:BF:4E:00:87:EB:5F:3F:01:A8:AC:81:EE:3E:19:26
+                DirName:/C=IN/ST=Karnataka/O=Sahi
+                serial:D6:8C:78:5C:DF:F5:9E:A3
+
+Certificate is to be certified until May  3 04:27:28 2025 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl x509 -in X509CA/certs/tiles_services_mozilla_com.signed -out X509CA/certs/tiles_services_mozilla_com.signed_pem -outform PEM 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\tiles_services_mozilla_com X509CA\certs\tiles_services_mozilla_com.orig 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -list -keystore X509CA\certs\tiles_services_mozilla_com -storepass sahipassword 
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+tiles.services.mozilla.com, May 6, 2015, PrivateKeyEntry, 
+Certificate fingerprint (SHA1): 09:2C:9A:55:28:3D:03:B6:CC:73:0D:BB:A1:31:7F:DA:BD:AB:37:32
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias sahi_root -keypass sahipassword -file X509CA\ca\new_ca.pem -keystore X509CA\certs\tiles_services_mozilla_com -storepass sahipassword 
+Certificate was added to keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias tiles.services.mozilla.com -keypass sahipassword -file X509CA\certs\tiles_services_mozilla_com.signed_pem -keystore X509CA\certs\tiles_services_mozilla_com -storepass sahipassword 
+Certificate reply was installed in keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\tiles_services_mozilla_com C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\tiles_services_mozilla_com 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>del X509CA\certs\tiles_services_mozilla_com* 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>certutil -addstore ROOT X509CA\ca\new_ca.pem 
+ROOT
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: d68c785cdff59ea3
+Issuer: O=Sahi, S=Karnataka, C=IN
+ NotBefore: 5/15/2010 9:13 PM
+ NotAfter: 5/12/2020 9:13 PM
+Subject: O=Sahi, S=Karnataka, C=IN
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Template: 
+Cert Hash(sha1): 34 2d f9 d2 97 5a de f0 62 a7 ea da f7 b9 0c 7f 3f 28 9d 1d
+
+Certificate "O=Sahi, S=Karnataka, C=IN" already in store.
+CertUtil: -addstore command completed successfully.
+
+C:\Users\ntumy\sahi_pro\userdata\bin>cd /D C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DOMAIN_NAME=self-repair.mozilla.org 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set FILE_NAME=self-repair_mozilla_org 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DEST_PATH=C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\self-repair_mozilla_org 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEYTOOL_PATH="C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEY_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set STORE_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set PATH_TO_OPENSSL=C:\\Users\\ntumy\\sahi_pro\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo self-repair.mozilla.org 
+self-repair.mozilla.org
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo self-repair_mozilla_org 
+self-repair_mozilla_org
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\self-repair_mozilla_org 
+C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\self-repair_mozilla_org
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -genkey -alias self-repair.mozilla.org -keypass sahipassword -storepass sahipassword -keyalg RSA -keystore X509CA/certs/self-repair_mozilla_org -dname "CN=self-repair.mozilla.org, OU=Sahi, O=Sahi, L=Bangalore, S=Karnataka, C=IN" -validity 3650 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -certreq -alias self-repair.mozilla.org -file X509CA/certs/self-repair_mozilla_org.csr -keypass sahipassword -keystore X509CA/certs/self-repair_mozilla_org -storepass sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl ca -config X509CA/openssl.cnf -days 3650 -in X509CA/certs/self-repair_mozilla_org.csr -out X509CA/certs/self-repair_mozilla_org.signed -batch -passin pass:sahipassword 
+Using configuration from X509CA/openssl.cnf
+Loading 'screen' into random state - done
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 70 (0x46)
+        Validity
+            Not Before: May  6 04:27:35 2015 GMT
+            Not After : May  3 04:27:35 2025 GMT
+        Subject:
+            countryName               = IN
+            stateOrProvinceName       = Karnataka
+            organizationName          = Sahi
+            organizationalUnitName    = Sahi
+            commonName                = self-repair.mozilla.org
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                92:01:FB:39:B6:37:D1:8A:48:6B:17:DC:10:C6:CE:0B:B9:CB:7B:B6
+            X509v3 Authority Key Identifier: 
+                keyid:09:2F:AC:7E:33:BF:4E:00:87:EB:5F:3F:01:A8:AC:81:EE:3E:19:26
+                DirName:/C=IN/ST=Karnataka/O=Sahi
+                serial:D6:8C:78:5C:DF:F5:9E:A3
+
+Certificate is to be certified until May  3 04:27:35 2025 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl x509 -in X509CA/certs/self-repair_mozilla_org.signed -out X509CA/certs/self-repair_mozilla_org.signed_pem -outform PEM 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\self-repair_mozilla_org X509CA\certs\self-repair_mozilla_org.orig 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -list -keystore X509CA\certs\self-repair_mozilla_org -storepass sahipassword 
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+self-repair.mozilla.org, May 6, 2015, PrivateKeyEntry, 
+Certificate fingerprint (SHA1): 94:F7:9F:08:24:C7:A8:DA:CA:39:08:71:C1:03:EF:4B:1E:B3:6C:DF
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias sahi_root -keypass sahipassword -file X509CA\ca\new_ca.pem -keystore X509CA\certs\self-repair_mozilla_org -storepass sahipassword 
+Certificate was added to keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias self-repair.mozilla.org -keypass sahipassword -file X509CA\certs\self-repair_mozilla_org.signed_pem -keystore X509CA\certs\self-repair_mozilla_org -storepass sahipassword 
+Certificate reply was installed in keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\self-repair_mozilla_org C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\self-repair_mozilla_org 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>del X509CA\certs\self-repair_mozilla_org* 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>certutil -addstore ROOT X509CA\ca\new_ca.pem 
+ROOT
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: d68c785cdff59ea3
+Issuer: O=Sahi, S=Karnataka, C=IN
+ NotBefore: 5/15/2010 9:13 PM
+ NotAfter: 5/12/2020 9:13 PM
+Subject: O=Sahi, S=Karnataka, C=IN
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Template: 
+Cert Hash(sha1): 34 2d f9 d2 97 5a de f0 62 a7 ea da f7 b9 0c 7f 3f 28 9d 1d
+
+Certificate "O=Sahi, S=Karnataka, C=IN" already in store.
+CertUtil: -addstore command completed successfully.
+
+C:\Users\ntumy\sahi_pro\userdata\bin>cd /D C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DOMAIN_NAME=tiles.cdn.mozilla.net 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set FILE_NAME=tiles_cdn_mozilla_net 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DEST_PATH=C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\tiles_cdn_mozilla_net 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEYTOOL_PATH="C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEY_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set STORE_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set PATH_TO_OPENSSL=C:\\Users\\ntumy\\sahi_pro\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo tiles.cdn.mozilla.net 
+tiles.cdn.mozilla.net
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo tiles_cdn_mozilla_net 
+tiles_cdn_mozilla_net
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\tiles_cdn_mozilla_net 
+C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\tiles_cdn_mozilla_net
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -genkey -alias tiles.cdn.mozilla.net -keypass sahipassword -storepass sahipassword -keyalg RSA -keystore X509CA/certs/tiles_cdn_mozilla_net -dname "CN=tiles.cdn.mozilla.net, OU=Sahi, O=Sahi, L=Bangalore, S=Karnataka, C=IN" -validity 3650 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -certreq -alias tiles.cdn.mozilla.net -file X509CA/certs/tiles_cdn_mozilla_net.csr -keypass sahipassword -keystore X509CA/certs/tiles_cdn_mozilla_net -storepass sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl ca -config X509CA/openssl.cnf -days 3650 -in X509CA/certs/tiles_cdn_mozilla_net.csr -out X509CA/certs/tiles_cdn_mozilla_net.signed -batch -passin pass:sahipassword 
+Using configuration from X509CA/openssl.cnf
+Loading 'screen' into random state - done
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 71 (0x47)
+        Validity
+            Not Before: May  6 04:27:38 2015 GMT
+            Not After : May  3 04:27:38 2025 GMT
+        Subject:
+            countryName               = IN
+            stateOrProvinceName       = Karnataka
+            organizationName          = Sahi
+            organizationalUnitName    = Sahi
+            commonName                = tiles.cdn.mozilla.net
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                B8:85:E0:8F:29:6C:91:96:B1:AC:B8:D1:B0:D2:0D:EF:B5:93:B0:E3
+            X509v3 Authority Key Identifier: 
+                keyid:09:2F:AC:7E:33:BF:4E:00:87:EB:5F:3F:01:A8:AC:81:EE:3E:19:26
+                DirName:/C=IN/ST=Karnataka/O=Sahi
+                serial:D6:8C:78:5C:DF:F5:9E:A3
+
+Certificate is to be certified until May  3 04:27:38 2025 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl x509 -in X509CA/certs/tiles_cdn_mozilla_net.signed -out X509CA/certs/tiles_cdn_mozilla_net.signed_pem -outform PEM 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\tiles_cdn_mozilla_net X509CA\certs\tiles_cdn_mozilla_net.orig 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -list -keystore X509CA\certs\tiles_cdn_mozilla_net -storepass sahipassword 
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+tiles.cdn.mozilla.net, May 6, 2015, PrivateKeyEntry, 
+Certificate fingerprint (SHA1): 64:00:5B:78:A9:7F:77:CF:69:4C:56:68:18:51:5C:08:2D:8C:DF:3A
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias sahi_root -keypass sahipassword -file X509CA\ca\new_ca.pem -keystore X509CA\certs\tiles_cdn_mozilla_net -storepass sahipassword 
+Certificate was added to keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias tiles.cdn.mozilla.net -keypass sahipassword -file X509CA\certs\tiles_cdn_mozilla_net.signed_pem -keystore X509CA\certs\tiles_cdn_mozilla_net -storepass sahipassword 
+Certificate reply was installed in keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\tiles_cdn_mozilla_net C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\tiles_cdn_mozilla_net 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>del X509CA\certs\tiles_cdn_mozilla_net* 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>certutil -addstore ROOT X509CA\ca\new_ca.pem 
+ROOT
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: d68c785cdff59ea3
+Issuer: O=Sahi, S=Karnataka, C=IN
+ NotBefore: 5/15/2010 9:13 PM
+ NotAfter: 5/12/2020 9:13 PM
+Subject: O=Sahi, S=Karnataka, C=IN
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Template: 
+Cert Hash(sha1): 34 2d f9 d2 97 5a de f0 62 a7 ea da f7 b9 0c 7f 3f 28 9d 1d
+
+Certificate "O=Sahi, S=Karnataka, C=IN" already in store.
+CertUtil: -addstore command completed successfully.
+
+C:\Users\ntumy\sahi_pro\userdata\bin>cd /D C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DOMAIN_NAME=aus4.mozilla.org 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set FILE_NAME=aus4_mozilla_org 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DEST_PATH=C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\aus4_mozilla_org 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEYTOOL_PATH="C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEY_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set STORE_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set PATH_TO_OPENSSL=C:\\Users\\ntumy\\sahi_pro\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo aus4.mozilla.org 
+aus4.mozilla.org
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo aus4_mozilla_org 
+aus4_mozilla_org
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\aus4_mozilla_org 
+C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\aus4_mozilla_org
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -genkey -alias aus4.mozilla.org -keypass sahipassword -storepass sahipassword -keyalg RSA -keystore X509CA/certs/aus4_mozilla_org -dname "CN=aus4.mozilla.org, OU=Sahi, O=Sahi, L=Bangalore, S=Karnataka, C=IN" -validity 3650 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -certreq -alias aus4.mozilla.org -file X509CA/certs/aus4_mozilla_org.csr -keypass sahipassword -keystore X509CA/certs/aus4_mozilla_org -storepass sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl ca -config X509CA/openssl.cnf -days 3650 -in X509CA/certs/aus4_mozilla_org.csr -out X509CA/certs/aus4_mozilla_org.signed -batch -passin pass:sahipassword 
+Using configuration from X509CA/openssl.cnf
+Loading 'screen' into random state - done
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 72 (0x48)
+        Validity
+            Not Before: May  6 04:28:29 2015 GMT
+            Not After : May  3 04:28:29 2025 GMT
+        Subject:
+            countryName               = IN
+            stateOrProvinceName       = Karnataka
+            organizationName          = Sahi
+            organizationalUnitName    = Sahi
+            commonName                = aus4.mozilla.org
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                6B:A1:35:55:DB:E2:9F:0C:36:C7:09:91:3C:C4:43:76:36:EA:C4:F9
+            X509v3 Authority Key Identifier: 
+                keyid:09:2F:AC:7E:33:BF:4E:00:87:EB:5F:3F:01:A8:AC:81:EE:3E:19:26
+                DirName:/C=IN/ST=Karnataka/O=Sahi
+                serial:D6:8C:78:5C:DF:F5:9E:A3
+
+Certificate is to be certified until May  3 04:28:29 2025 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl x509 -in X509CA/certs/aus4_mozilla_org.signed -out X509CA/certs/aus4_mozilla_org.signed_pem -outform PEM 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\aus4_mozilla_org X509CA\certs\aus4_mozilla_org.orig 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -list -keystore X509CA\certs\aus4_mozilla_org -storepass sahipassword 
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+aus4.mozilla.org, May 6, 2015, PrivateKeyEntry, 
+Certificate fingerprint (SHA1): 73:0A:EE:C6:F9:00:A2:BF:8D:56:D8:5D:CF:C8:17:53:52:92:18:72
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias sahi_root -keypass sahipassword -file X509CA\ca\new_ca.pem -keystore X509CA\certs\aus4_mozilla_org -storepass sahipassword 
+Certificate was added to keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias aus4.mozilla.org -keypass sahipassword -file X509CA\certs\aus4_mozilla_org.signed_pem -keystore X509CA\certs\aus4_mozilla_org -storepass sahipassword 
+Certificate reply was installed in keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\aus4_mozilla_org C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\aus4_mozilla_org 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>del X509CA\certs\aus4_mozilla_org* 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>certutil -addstore ROOT X509CA\ca\new_ca.pem 
+ROOT
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: d68c785cdff59ea3
+Issuer: O=Sahi, S=Karnataka, C=IN
+ NotBefore: 5/15/2010 9:13 PM
+ NotAfter: 5/12/2020 9:13 PM
+Subject: O=Sahi, S=Karnataka, C=IN
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Template: 
+Cert Hash(sha1): 34 2d f9 d2 97 5a de f0 62 a7 ea da f7 b9 0c 7f 3f 28 9d 1d
+
+Certificate "O=Sahi, S=Karnataka, C=IN" already in store.
+CertUtil: -addstore command completed successfully.
+
+C:\Users\ntumy\sahi_pro\userdata\bin>cd /D C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DOMAIN_NAME=location.services.mozilla.com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set FILE_NAME=location_services_mozilla_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set DEST_PATH=C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\location_services_mozilla_com 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEYTOOL_PATH="C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set KEY_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set STORE_PASSWORD=sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>set PATH_TO_OPENSSL=C:\\Users\\ntumy\\sahi_pro\\certgen 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo location.services.mozilla.com 
+location.services.mozilla.com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo location_services_mozilla_com 
+location_services_mozilla_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>echo C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\location_services_mozilla_com 
+C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\location_services_mozilla_com
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -genkey -alias location.services.mozilla.com -keypass sahipassword -storepass sahipassword -keyalg RSA -keystore X509CA/certs/location_services_mozilla_com -dname "CN=location.services.mozilla.com, OU=Sahi, O=Sahi, L=Bangalore, S=Karnataka, C=IN" -validity 3650 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -certreq -alias location.services.mozilla.com -file X509CA/certs/location_services_mozilla_com.csr -keypass sahipassword -keystore X509CA/certs/location_services_mozilla_com -storepass sahipassword 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl ca -config X509CA/openssl.cnf -days 3650 -in X509CA/certs/location_services_mozilla_com.csr -out X509CA/certs/location_services_mozilla_com.signed -batch -passin pass:sahipassword 
+Using configuration from X509CA/openssl.cnf
+Loading 'screen' into random state - done
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 73 (0x49)
+        Validity
+            Not Before: May  6 11:01:04 2015 GMT
+            Not After : May  3 11:01:04 2025 GMT
+        Subject:
+            countryName               = IN
+            stateOrProvinceName       = Karnataka
+            organizationName          = Sahi
+            organizationalUnitName    = Sahi
+            commonName                = location.services.mozilla.com
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                2F:FE:A4:21:D6:F0:15:6D:4C:3C:6C:6E:AF:A7:0E:FD:07:9C:68:96
+            X509v3 Authority Key Identifier: 
+                keyid:09:2F:AC:7E:33:BF:4E:00:87:EB:5F:3F:01:A8:AC:81:EE:3E:19:26
+                DirName:/C=IN/ST=Karnataka/O=Sahi
+                serial:D6:8C:78:5C:DF:F5:9E:A3
+
+Certificate is to be certified until May  3 11:01:04 2025 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>C:\\Users\\ntumy\\sahi_pro\\certgen\openssl x509 -in X509CA/certs/location_services_mozilla_com.signed -out X509CA/certs/location_services_mozilla_com.signed_pem -outform PEM 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\location_services_mozilla_com X509CA\certs\location_services_mozilla_com.orig 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -list -keystore X509CA\certs\location_services_mozilla_com -storepass sahipassword 
+
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+location.services.mozilla.com, May 6, 2015, PrivateKeyEntry, 
+Certificate fingerprint (SHA1): 16:7A:A8:67:EC:A7:E8:27:7B:08:DB:72:4E:5B:D3:89:D5:D2:C8:F3
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias sahi_root -keypass sahipassword -file X509CA\ca\new_ca.pem -keystore X509CA\certs\location_services_mozilla_com -storepass sahipassword 
+Certificate was added to keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>"C:\\Program Files (x86)\\Java\\jre1.8.0_45\\bin\\keytool" -noprompt -import -alias location.services.mozilla.com -keypass sahipassword -file X509CA\certs\location_services_mozilla_com.signed_pem -keystore X509CA\certs\location_services_mozilla_com -storepass sahipassword 
+Certificate reply was installed in keystore
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>copy X509CA\certs\location_services_mozilla_com C:\\Users\\ntumy\\sahi_pro\\userdata\\certgen\\certs\\location_services_mozilla_com 
+        1 file(s) copied.
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>del X509CA\certs\location_services_mozilla_com* 
+
+C:\Users\ntumy\sahi_pro\userdata\certgen>certutil -addstore ROOT X509CA\ca\new_ca.pem 
+ROOT
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: d68c785cdff59ea3
+Issuer: O=Sahi, S=Karnataka, C=IN
+ NotBefore: 5/15/2010 9:13 PM
+ NotAfter: 5/12/2020 9:13 PM
+Subject: O=Sahi, S=Karnataka, C=IN
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Template: 
+Cert Hash(sha1): 34 2d f9 d2 97 5a de f0 62 a7 ea da f7 b9 0c 7f 3f 28 9d 1d
+
+Certificate "O=Sahi, S=Karnataka, C=IN" already in store.
+CertUtil: -addstore command completed successfully.

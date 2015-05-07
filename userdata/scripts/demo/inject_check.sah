@@ -1,0 +1,3 @@
+_navigateTo("/demo/inject_check.htm");
+_click(_link("index"));
+_assertExists(_link("Link Test"));

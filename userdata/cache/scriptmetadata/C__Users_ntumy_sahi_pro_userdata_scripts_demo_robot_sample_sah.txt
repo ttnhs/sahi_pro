@@ -1,0 +1,4 @@
+login,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\robot_sample.sah,1,$user,$pass
+addBooks,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\robot_sample.sah,6,$qJava,$qRuby,$qPython
+verifyTotal,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\robot_sample.sah,12,$total
+logout,C:\Users\ntumy\sahi_pro\userdata\scripts\demo\robot_sample.sah,17

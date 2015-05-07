@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+/**
+ * Copyright Tyto Software Pvt. Ltd.
+ */
+-->
+<project name="demo" default="drun_different_master">
+    <taskdef name="sahi" classname="net.sf.sahi.ant.RunSahiTask" classpath="lib/ant-sahi.jar"/>
+    <taskdef name="sahid" classname="in.co.sahi.ant.DAntRunner" classpath="lib/ant-sahi.jar"/>
+    <taskdef name="sahisync" classname="in.co.sahi.ant.DAntSync" classpath="lib/ant-sahi.jar"/>
+	<taskdef name="sahipull" classname="in.co.sahi.ant.DAntPull" classpath="lib/ant-sahi.jar"/>
+
+	<target name="set_timestamp">
+        <tstamp>
+            <format property="ts" pattern="yyyy_MM_dd_HH_mm_ss" locale="en, IN"/>
+        </tstamp>
+	</target>
+	
+	<target name="set_properties_common" depends="set_timestamp">
+    	<property name="scriptDir" value="$scriptDir"/>
+		<property name="masterhost" value="$masterhost"/>
+		<property name="masterport" value="$masterport"/>
+		<property name="runId" value="${ts}"/>
+	</target>	
+	
+    <target name="drun_different_master" depends="set_properties_common, set_timestamp">
+        <sequential>
+			<sahisync originFolder="${scriptDir}" destFolder="temp/scripts/staging" ignorePattern=".*(svn|copied).*">
+		    	<node host="${masterhost}" port="${masterport}"/>
+			</sahisync>
+			$callRunTargets
+        </sequential>
+    </target>	
+	$runtestTargets	
+</project>

@@ -1,0 +1,16 @@
+if (typeof $a == "undefined") $a = "-";
+else $a+="-";
+
+if (typeof $m == "undefined") $m = "";
+$m += "a1-";
+
+_log($a + "In a1");
+_log($a + "In a1: Including a2")
+_include("a2.sah");
+_log($a + "In a1: Including a3")
+_include("a3.sah");
+
+$a=$a.substring(1);
+
+_log($m);
+_assertEqual("a1-a2-a3-a4-a3-a2-a4-", $m);

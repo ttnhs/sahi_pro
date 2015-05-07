@@ -1,0 +1,48 @@
+var $string = "sahi pro";
+$string = _trim($string);
+_assertEqual("sahi pro", $string);
+
+var $s = " sahi pro  ";
+$s = _trim($s);
+_assertEqual("sahi pro", $s);
+
+var $s1 = "sahi pro  ";
+$s1 = _trim($s1);
+_assertEqual("sahi pro", $s1);
+
+var $s2 = "  sahi pro";
+$s2 = _trim($s2);
+_assertEqual("sahi pro", $s2);
+
+var $array = ["sahi", "pro"];
+$array = _trim($array);
+_assertEqual("sahi", $array[0]);
+_assertEqual("pro", $array[1]);
+_assertEqual(2, $array.length);
+
+var $arr = ["",,,"sahi", "pro",,,"",,];
+$arr = _trim($arr);
+_assertEqual("sahi", $arr[0]);
+_assertEqual("pro", $arr[1]);
+_assertEqual(2, $arr.length);
+
+var $arr1 = ["sahi", "pro",,,"",,];
+$arr1 = _trim($arr1);
+_assertEqual("sahi", $arr1[0]);
+_assertEqual("pro", $arr1[1]);
+_assertEqual(2, $arr1.length);
+
+var $arr2 = [,,,,"",,,"sahi", "pro"];
+$arr2 = _trim($arr2);
+_assertEqual("sahi", $arr2[0]);
+_assertEqual("pro", $arr2[1]);
+_assertEqual(2, $arr2.length);
+
+var $array2D = [,,,,["1", "2", "3", "", ""], ["1", "2", "3", "", ""], ["1", "2", "3", "", ""], ["1", "2", "3", "", ""], ["1", "2", "3", "", ""],,,[""],,];
+$array2D = _trim($array2D);
+_assertEqual(5, $array2D.length);
+
+var $array2D = [[],[],[],["","","","",""],["abc", "xyz", "c", "", ""], ["1", "2", "3", "", ""], ["1", "2", "3", "", ""], ["1", "2", "3", "", ""], ["1", "2", "3", "", ""],[],[],[""],[],[]];
+$array2D = _trim($array2D);
+_assertEqual("xyz", $array2D[0][1]);
+_assertEqual(5, $array2D.length);
